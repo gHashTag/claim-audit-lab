@@ -1,0 +1,34 @@
+name: banned-words
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan for banned words in case files and policy docs
+        run: |
+          set -e
+          # Scan markdown files in repo root, cases/, methodology/, templates/.
+          # Skip verbatim-quote blocks (lines starting with "> ") so we don't
+          # flag a subject's own banned word when we quote them faithfully.
+          BANNED='(breakthrough|revolutionary|first-ever|world-first|Nobel|pseudoscience|crank)'
+          FAIL=0
+          while IFS= read -r f; do
+            # Strip blockquote lines (starting with "> ") and verbatim quote blocks
+            # bounded by triple-backtick. Then case-insensitive grep for banned words.
+            content=$(awk 'BEGIN{inq=0} /^```/{inq=!inq; next} inq{next} /^> /{next} {print}' "$f")
+            if echo "$content" | grep -iEn "$BANNED" ; then
+              echo "::error file=$f::banned word in $f"
+              FAIL=1
+            fi
+          done < <(git ls-files '*.md')
+          if [ "$FAIL" -ne 0 ]; then
+            echo "Banned word(s) found outside verbatim quotes. See FRAMEWORK.md."
+            exit 1
+          fi
+          echo "OK: no banned words outside verbatim quotes."
