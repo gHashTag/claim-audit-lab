@@ -1,0 +1,58 @@
+name: Subject reply
+description: For authors of work that is the subject of an existing CASE file. Submit a one-page reply for verbatim inclusion under Section 12.
+title: "[Subject Reply] CASE-NN: <subject name>"
+labels: ["subject-reply", "right-of-reply"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for engaging with the lab.
+
+        Per `CHARTER.md` section 3 and `CONTRIBUTING.md` section 1, your reply will be included **verbatim** under Section 12 of the relevant CASE file. The lab does not edit substance; only banned-word usage against named third parties and personal contact information may be redacted.
+
+        Maintainer SLA: 14 days from this issue opening to first response.
+  - type: input
+    id: case_id
+    attributes:
+      label: CASE ID
+      description: Which CASE file are you replying to? (e.g. CASE-02)
+      placeholder: CASE-NN
+    validations:
+      required: true
+  - type: input
+    id: author_name
+    attributes:
+      label: Author name
+      description: Your name as you wish it to appear in the reply attribution.
+    validations:
+      required: true
+  - type: input
+    id: author_affiliation
+    attributes:
+      label: Affiliation (optional)
+      description: Institution or "Independent".
+  - type: textarea
+    id: reply_text
+    attributes:
+      label: Reply text (one page, ~500 words)
+      description: Your reply, in English. The lab will transliterate / translate non-English text at inclusion time and will record the original alongside the translation.
+      placeholder: |
+        I am the author of <work>. The CASE-NN audit characterises my claim X as [Risk]. I disagree because ...
+    validations:
+      required: true
+  - type: input
+    id: source_attribution
+    attributes:
+      label: How should this reply be cited?
+      description: e.g. "received via GitHub issue on 2026-06-15" or "personal email to the maintainer on 2026-06-15, included with author's permission".
+  - type: checkboxes
+    id: agreements
+    attributes:
+      label: Agreements
+      options:
+        - label: I am the author of the work being audited (or an authorised representative).
+          required: true
+        - label: I understand my reply will be included verbatim and is not edited for argument strength.
+          required: true
+        - label: I understand the lab may redact banned-word usage directed at named third parties.
+          required: true

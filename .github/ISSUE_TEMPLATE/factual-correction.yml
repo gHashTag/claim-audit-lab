@@ -1,0 +1,52 @@
+name: Factual correction
+description: Report a specific factual error in a CASE file (wrong URL, misattributed quote, wrong date, citation that does not support the cited claim, algebraic error).
+title: "[Correction] CASE-NN: <one-line description>"
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For factual errors only. Disagreement with a verdict goes through the Subject Reply flow (if you are the subject) or remains a public disagreement.
+
+        Maintainer SLA: 7 days from this issue opening to merge or decline.
+  - type: input
+    id: case_id
+    attributes:
+      label: CASE ID
+      placeholder: CASE-NN
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Location in the CASE file
+      description: Section number and line number if possible.
+      placeholder: "Section 4, line 92"
+    validations:
+      required: true
+  - type: textarea
+    id: current_text
+    attributes:
+      label: Current text (verbatim)
+      description: Quote the text you believe is incorrect.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_text
+    attributes:
+      label: Proposed corrected text
+      description: What the text should say.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: A URL, DOI, or other primary source that supports the correction.
+    validations:
+      required: true
+  - type: input
+    id: archive_url
+    attributes:
+      label: Archive snapshot URL (web.archive.org or archive.today)
+      description: Required if the supporting source is a webpage that may change.

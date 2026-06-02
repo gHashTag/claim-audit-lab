@@ -4,6 +4,9 @@ on:
   pull_request:
   push:
     branches: [main]
+  schedule:
+    # Weekly link-check sweep, Mondays 06:00 UTC. Non-blocking.
+    - cron: '0 6 * * 1'
 
 jobs:
   scan:
@@ -11,6 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Scan for banned words in case files and policy docs
+        if: github.event_name != 'schedule'
         run: |
           set -e
           # Scan markdown files in repo root, cases/, methodology/, templates/.
@@ -32,3 +36,73 @@ jobs:
             exit 1
           fi
           echo "OK: no banned words outside verbatim quotes."
+
+  ascii-only:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+      - name: ASCII-only check on public artefacts
+        run: |
+          set -e
+          # All .md and .json public artefacts MUST be ASCII-only.
+          # English+ASCII discipline (FRAMEWORK.md and CHARTER.md).
+          FAIL=0
+          while IFS= read -r f; do
+            # Find any byte outside printable ASCII range or whitespace.
+            # \x09=tab, \x0a=LF, \x0d=CR, \x20-\x7e=printable ASCII.
+            if LC_ALL=C grep -nP '[^\x09\x0a\x0d\x20-\x7e]' "$f" ; then
+              echo "::error file=$f::non-ASCII byte(s) in $f"
+              FAIL=1
+            fi
+          done < <(git ls-files '*.md' '*.json' '*.yml' '*.yaml')
+          if [ "$FAIL" -ne 0 ]; then
+            echo "Non-ASCII bytes found. Public artefacts must be English+ASCII only."
+            exit 1
+          fi
+          echo "OK: ASCII-only across all public artefacts."
+
+  symmetric-mirror:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require Symmetric mirror section in every CASE file (except CASE-00)
+        run: |
+          set -e
+          # Every cases/CASE-NN-*.md file must contain a Section 9 symmetric
+          # mirror header. CASE-00 (self-audit) is exempt because the file IS
+          # the symmetric mirror.
+          FAIL=0
+          while IFS= read -r f; do
+            base=$(basename "$f")
+            case "$base" in
+              CASE-00-*) continue ;;
+            esac
+            if ! grep -qE '^## 9\. Symmetric mirror' "$f" ; then
+              echo "::error file=$f::missing '## 9. Symmetric mirror' section in $f"
+              FAIL=1
+            fi
+          done < <(git ls-files 'cases/CASE-*.md')
+          if [ "$FAIL" -ne 0 ]; then
+            echo "Every CASE file (except CASE-00) must have a Section 9 Symmetric mirror."
+            echo "See templates/CASE-TEMPLATE.md and methodology/README.md Section 2."
+            exit 1
+          fi
+          echo "OK: every CASE file has a Symmetric mirror section."
+
+  link-check:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    # Scheduled, non-blocking sweep. Reports broken links but does not gate PRs.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Markdown link check (weekly, non-blocking)
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'yes'
+          config-file: '.github/workflows/mlc_config.json'
+          folder-path: '.'
+          file-extension: '.md'

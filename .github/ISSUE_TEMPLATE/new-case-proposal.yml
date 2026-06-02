@@ -1,0 +1,61 @@
+name: New CASE proposal
+description: Propose that the lab audit a new subject.
+title: "[Proposal] New CASE: <subject name>"
+labels: ["new-case", "proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before proposing, please verify the subject passes the intake filter in `CONTRIBUTING.md` section 3:
+        - publishes claims invoking phi / Fibonacci / Lucas / "fundamental constant" framings
+        - has at least one verifiable primary source
+        - has at least one of: explicit empirical content, explicit mathematical content, or explicit Fpath
+
+        Subjects with none of these belong in `phi_theorists_catalog.md`, not in a full CASE file.
+
+        Maintainer SLA: 21 days from this issue opening to accept / decline / queue.
+  - type: input
+    id: subject_name
+    attributes:
+      label: Subject name
+    validations:
+      required: true
+  - type: input
+    id: subject_affiliation
+    attributes:
+      label: Subject affiliation
+      placeholder: Institution or "Independent"
+  - type: textarea
+    id: primary_claim
+    attributes:
+      label: Primary claim (one sentence)
+      description: What is the central claim the lab would audit?
+    validations:
+      required: true
+  - type: textarea
+    id: primary_sources
+    attributes:
+      label: Primary sources
+      description: List 2-5 URLs / DOIs / ISBNs for the subject's published work.
+    validations:
+      required: true
+  - type: dropdown
+    id: empirical_or_math
+    attributes:
+      label: Type of content
+      description: At least one must be checked.
+      multiple: true
+      options:
+        - Explicit empirical content (predicts a measurable quantity)
+        - Explicit mathematical content (theorem or identity)
+        - Explicit Fpath stated by the subject
+    validations:
+      required: true
+  - type: textarea
+    id: independence_check
+    attributes:
+      label: Independence check
+      description: Is the subject a current collaborator of the lab maintainers? If yes, the case is COI-excluded (see `COI.md`).
+      placeholder: "No (or: yes, on project X)"
+    validations:
+      required: true

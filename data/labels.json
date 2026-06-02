@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gHashTag/claim-audit-lab/blob/main/data/labels.json",
+  "version": "0.2.0",
+  "updated": "2026-06-02",
+  "description": "Machine-readable taxonomy for the claim-audit-lab 5-label framework. Inspired in spirit (not in operational rule) by GRADE's downgrade/upgrade pattern; here downgrades are explicit and asymmetric, and the framework itself is registered as an [Open conjecture] (see methodology/README.md Section 0).",
+  "labels": [
+    {
+      "id": "verified",
+      "display": "[Verified]",
+      "definition": "Exact-by-construction (algebraic identity, integer arithmetic), or directly measured with a pre-registered, reproducible harness whose seed/config/output are committed.",
+      "preconditions": [
+        "the assertion reduces to a finite check that any reader can rerun",
+        "no post-hoc parameter selection",
+        "no matched-k or look-elsewhere ambiguity"
+      ],
+      "examples": [
+        "phi^2 + phi^-2 = 3 (Lucas L2, 1878)",
+        "ladder rule e = round((N-1)/phi^2) reproduces 9/9 realised GF format widths",
+        "Wikipedia BLP edit reverts within median 5 minutes (documented in academic study)"
+      ],
+      "downgrade_factors": [
+        {
+          "id": "V-D1",
+          "to": "empirical_fit",
+          "trigger": "a free parameter is chosen post-hoc to make the identity hold"
+        },
+        {
+          "id": "V-D2",
+          "to": "open_conjecture",
+          "trigger": "the harness exists but the reader cannot reproduce because seed/config/output are not committed"
+        }
+      ]
+    },
+    {
+      "id": "empirical_fit",
+      "display": "[Empirical fit]",
+      "definition": "Matches data but with at least one post-hoc parameter, OR a matched-k situation where k was chosen to make the fit work, OR a measurement without pre-registered held-out test.",
+      "preconditions": [
+        "the fit is real (no fabrication or arithmetic error)",
+        "but at least one degree of freedom was set after seeing the data, or the cardinality of the search space is not stated"
+      ],
+      "examples": [
+        "factor-3 ASHA schedule in IGLA (geometric scheduling is standard; the choice of 3 is an empirical fit)",
+        "alpha^-1 closed-form within X ppm given M post-hoc free coefficients"
+      ],
+      "downgrade_factors": [
+        {
+          "id": "EF-D1",
+          "to": "risk",
+          "trigger": "the search space cardinality is large enough that the look-elsewhere correction (Gross-Vitells) eliminates significance"
+        },
+        {
+          "id": "EF-D2",
+          "to": "open_conjecture",
+          "trigger": "a falsification path is stated and the matter is unresolved"
+        }
+      ],
+      "upgrade_path_to_verified": "pre-register a held-out test, run, and lock the seed/config; if it holds on the held-out data without further tuning, promote to [Verified]"
+    },
+    {
+      "id": "open_conjecture",
+      "display": "[Open conjecture]",
+      "definition": "Plausible, mathematically or empirically motivated, and explicitly carrying a falsification path (Fpath) that any reader can in principle execute.",
+      "preconditions": [
+        "the claim is stated precisely enough that a reader can name what would falsify it",
+        "the Fpath is recorded inline OR in a falsification ledger row",
+        "no post-hoc parameter that has not been disclosed"
+      ],
+      "examples": [
+        "GoldenFloat ladder's breadth-as-moat (FL-002 ledger row, Fpath = a posit/takum/MX ladder matches at matched bit budgets)",
+        "phi-canonical AdamW beats tuned standard AdamW at champion budget (Phase B1-real ablation pending)"
+      ],
+      "downgrade_factors": [
+        {
+          "id": "OC-D1",
+          "to": "risk",
+          "trigger": "the Fpath is stated but unexecutable, or a control already matches and the result is not recorded"
+        },
+        {
+          "id": "OC-D2",
+          "to": "high_risk",
+          "trigger": "weak venue (vanity press, predatory journal) AND no independent replication"
+        }
+      ],
+      "upgrade_path_to_verified": "execute the Fpath; if the conjecture survives a pre-registered, well-powered test with no matched-k ambiguity, promote to [Verified]"
+    },
+    {
+      "id": "risk",
+      "display": "[Risk]",
+      "definition": "Fails one or more of: (a) no stated Fpath, (b) no look-elsewhere correction over the search space, (c) a documented control already matches, (d) venue weakness (single-source, non-peer-reviewed, or platform with known issues).",
+      "preconditions": [
+        "the claim is published or publicly defended",
+        "at least one of (a)-(d) is documented in the case file"
+      ],
+      "examples": [
+        "El Naschie's E-infinity constants without symmetric look-elsewhere accounting [Risk via (b) and (d)]",
+        "phi-specificity for IGLA after control-grammar test failed [Risk via (c), via Pellis-Vasilev-Olsen paper Section 4]"
+      ],
+      "downgrade_factors": [
+        {
+          "id": "R-D1",
+          "to": "high_risk",
+          "trigger": "two or more of (a)-(d) apply simultaneously"
+        },
+        {
+          "id": "R-D2",
+          "to": "retracted",
+          "trigger": "the author or publisher formally withdraws"
+        }
+      ],
+      "upgrade_path_to_open_conjecture": "state the Fpath, apply the look-elsewhere correction, and (if applicable) move the claim to a peer-reviewed venue; this is the standard rehabilitation path"
+    },
+    {
+      "id": "high_risk",
+      "display": "[High-risk]",
+      "definition": "Two or more [Risk] factors apply simultaneously, OR a single factor of extreme severity (e.g. a long history of formal retractions on directly comparable claims).",
+      "preconditions": [
+        "documented (a)-(d) factors stacked",
+        "OR a documented pattern of prior retractions in the same programme"
+      ],
+      "examples": [
+        "self-citation rate >50% in a programme with multiple journal retractions",
+        "claim that matches a programme already cited in Wikipedia's WP:FRINGE noticeboard"
+      ],
+      "downgrade_factors": [
+        {
+          "id": "HR-D1",
+          "to": "retracted",
+          "trigger": "any formal retraction notice issued"
+        }
+      ],
+      "upgrade_path_to_risk": "respond to one of the stacked factors with documented evidence (e.g. an independent replication, a venue change, a published look-elsewhere analysis)"
+    },
+    {
+      "id": "retracted",
+      "display": "[Retracted]",
+      "definition": "A formal retraction notice has been issued by the author, the publisher, or the journal. Recorded as [Retracted] strictly on the basis of that notice, NOT on the basis of inferred misconduct.",
+      "preconditions": [
+        "a citable retraction notice exists (URL, DOI, or journal statement)",
+        "OR the author has issued a public withdrawal that is archivable"
+      ],
+      "examples": [
+        "delta_CP = 3/phi^2 prediction withdrawn by Vasilev (FL ledger, internal)",
+        "El Naschie's papers retracted from Chaos, Solitons and Fractals post-2009 by the new editorial board"
+      ],
+      "downgrade_factors": [],
+      "rehabilitation_path": "[Retracted] is final for the specific publication that was withdrawn. A new submission of a related claim restarts at the appropriate label (most commonly [Risk] given the prior history)."
+    }
+  ],
+  "framework_self_label": {
+    "label": "open_conjecture",
+    "Fpath": "the framework is falsified if an outside reviewer demonstrates that two or more labels collapse in practice (e.g. [Risk] and [High-risk] are not reliably distinguishable across blind raters), OR if the framework systematically misclassifies a well-bounded positive control (CASE-05 Kramer-Klimesch, CASE-06 de Groot serve this role)",
+    "rationale": "Laudan (1983) refuted the strong demarcation criterion; any 5-label taxonomy that pretends to be exact-by-construction is itself making a claim that needs the same falsifiability discipline it imposes on others. See methodology/README.md Section 0."
+  },
+  "cross_references": [
+    {
+      "external": "GRADE (Guyatt et al., BMJ 2008)",
+      "note": "GRADE downgrades the strength of evidence by named factors (risk of bias, inconsistency, indirectness, imprecision, publication bias). Our downgrade_factors borrow the asymmetric explicit-factor pattern but NOT the operational thresholds; GRADE's domain is clinical trials with statistical power, ours is heterogeneous claim auditing."
+    },
+    {
+      "external": "Cochrane Risk of Bias (RoB 2.0)",
+      "note": "Cochrane uses Low / Some concerns / High risk per signalling-question domain. Our [Verified] / [Open conjecture] / [Risk] / [High-risk] mirrors that gradient but our domains are framework-level (a)-(d) rather than per-trial."
+    },
+    {
+      "external": "Popper (1959) and Lakatos (1970)",
+      "note": "Falsification path is mandatory; the framework itself is held to the same Fpath rule (see framework_self_label)."
+    },
+    {
+      "external": "Laudan (1983), 'The Demise of the Demarcation Problem'",
+      "note": "Forces this framework to refuse the demarcation tokens listed in FRAMEWORK.md as labels; we use [Risk] and [High-risk] with named factors instead."
+    }
+  ]
+}

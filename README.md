@@ -82,6 +82,49 @@ See [`CHARTER.md`](CHARTER.md) for the full text.
 | [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | M.A. Kramer & W. Klimesch -- Golden EEG Rhythms | neuroscience (positive control) | draft |
 | [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot -- Phi-period economic cycles | econometrics (positive control) | draft |
 
+---
+
+## Scorecard dashboard
+
+Claim counts per CASE file, machine-readable source in
+[`data/scorecard.json`](data/scorecard.json). Label taxonomy in
+[`data/labels.json`](data/labels.json). Counts are bulleted top-level
+claims inside each inventory section; joint or sub-claims may share a
+bullet, so the table is a calibration aid, not a precise inventory.
+Label changes are recorded in [`PROMOTION-LEDGER.md`](PROMOTION-LEDGER.md).
+
+| Case | Subject | V | EF | OC+Fpath | R | HR | Ret | Fpath executable | Reply |
+|---|---|---:|---:|---:|---:|---:|---:|---|---|
+| [CASE-00](cases/CASE-00-self-audit.md) | self-audit (maintainers) | 4 | 1 | 2 | 2 | 0 | 1 | yes | n/a |
+| [CASE-01](cases/CASE-01-savchenko-pointer-architecture.md) | A. Savchenko | 7 | 3 | 4 | 3 | 0 | 1 | partial | pending |
+| [CASE-02](cases/CASE-02-stakhov-mathematics-of-harmony.md) | A. Stakhov | 6 | 1 | 2 | 4 | 1 | 0 | partial | pending |
+| [CASE-03](cases/CASE-03-el-naschie-e-infinity.md) | M.S. El Naschie | 3 | 0 | 0 | 2 | 3 | 0 | no | pending |
+| [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | S.V. Petoukhov | 3 | 2 | 1 | 4 | 0 | 0 | pending | pending |
+| [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | Kramer & Klimesch (positive control) | 2 | 2 | 1 | 2 | 0 | 0 | yes | pending |
+| [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot (positive control) | 3 | 1 | 1 | 3 | 0 | 0 | yes | pending |
+| **Totals (v0.2 baseline)** | 7 cases | **28** | **10** | **11** | **20** | **4** | **2** | -- | -- |
+
+**Reading the table.** `V` = [Verified], `EF` = [Empirical fit],
+`OC+Fpath` = [Open conjecture] with stated falsification path, `R` =
+[Risk], `HR` = [High-risk], `Ret` = [Retracted]. `Fpath executable` =
+whether the largest [Open] claim's falsification path can be run by an
+outside reader today. `Reply` = whether the subject's right-of-reply
+(CHARTER.md s 3) has been exercised (`pending` = invitation open, no
+reply received; `n/a` = self-audit).
+
+**What the v0.2 baseline shows.** The cleanest [Open conjecture] with
+an executable Fpath in the catalog is CASE-05 (Kramer-Klimesch),
+followed by CASE-06 (de Groot). Both are deliberately included as
+**positive controls** -- the test of whether the framework recognises
+responsibly-labelled, peer-reviewed phi work as such. CASE-00
+(self-audit) carries the only [Retracted] entry in the register, by
+construction (delta_CP = 3/phi^2, withdrawn). CASE-03 (El Naschie)
+carries the highest [High-risk] count in the register.
+
+The framework itself is labelled [Open conjecture] -- see
+[`methodology/README.md`](methodology/README.md) Section 0 and the
+`framework_self_label` block in `data/labels.json`.
+
 ### Adjacent (not audited as a primary subject)
 
 - **Scott A. Olsen** -- co-author of the Pellis-Vasilev-Olsen short paper that
@@ -145,4 +188,4 @@ to every quotation.
 
 **Maintainers:** Dmitrii Vasilev (`@gHashTag`).
 **Contact:** open an issue.
-**Last index update:** 2026-06-02 (CASE-02..CASE-06 added).
+**Last index update:** 2026-06-02 (v0.2 -- scorecard, methodology, contributing, COI, promotion-ledger added).

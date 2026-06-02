@@ -1,4 +1,26 @@
+---
+case_id: CASE-NN
+subject_name: ""
+subject_affiliation: ""
+programme: ""
+primary_source_uri: ""
+archive_uri: ""
+audit_date: YYYY-MM-DD
+last_update: YYYY-MM-DD
+maintainer: ""
+reviewers: []
+depends_on: []
+status: draft           # draft | under-review | settled
+overall_class: ""       # one of: [Verified] | [Empirical fit] | [Open conjecture] | [Risk] | [High-risk] | [Retracted] | mixed
+---
+
 # CASE-NN: <Subject Name> -- <Programme name in one phrase>
+
+> **For NEW cases only.** This upgraded template (YAML front-matter +
+> Section 0 signalling block) applies to cases written on or after
+> 2026-06-02. CASE-00..CASE-06 use the previous structure and are NOT
+> retrofitted; see CASE-05 (Kramer-Klimesch) for a worked example using
+> a similar layout.
 
 **Subject:** <Full name>
 **Affiliation:** <Institution or "Independent">
@@ -7,6 +29,45 @@
 **Maintainer:** <handle>
 **Status:** draft / under review / settled
 **Last update:** YYYY-MM-DD
+
+---
+
+## 0. Signalling question (MANDATORY before drafting)
+
+Before any audit work begins, answer the following three questions. The
+answers decide whether this case is admissible under our framework and
+which inventory sections (Sections 4-8) will carry weight.
+
+**Q0.1 -- What single, executable experiment would move the programme's
+largest claim out of [Open conjecture] or [Risk] into [Verified] or
+[Retracted]?** (One sentence. If you cannot name one, the case is not
+ready -- it stays in `draft` until you can.)
+
+> *<answer>*
+
+**Q0.2 -- Symmetric mirror commitment.** Name the comparable claim from
+the lab's own work (or "phi-architecture programme") that sits in the
+same epistemic class as the largest claim above. (Section 9 will expand
+this.)
+
+> *<answer>*
+
+**Q0.3 -- Why is this case being added now?** Choose one and elaborate
+in one sentence:
+
+- [ ] Subject has issued a public reply, request, or critique
+- [ ] Programme overlaps a [Verified]/[Open] claim of ours and a
+      symmetric audit is owed
+- [ ] Programme is a positive control (well-bounded, accepted methodology)
+- [ ] Programme is cited inside our public artefacts and needs a
+      claim-status anchor
+- [ ] Other: <stated>
+
+> *<answer>*
+
+If any of Q0.1-Q0.3 cannot be answered, **do not promote this file out
+of `draft`**. See `methodology/README.md` Section 4 (case-admissibility
+rules) and CASE-05 as the worked example.
 
 ---
 
