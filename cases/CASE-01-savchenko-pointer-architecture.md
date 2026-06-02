@@ -337,11 +337,275 @@ Lab-internal cross-reference (not for redistribution):
 
 ---
 
-## 12. Subject's reply
+## 12. Parallels timeline (vs Vasilev / gHashTag public git history)
+
+**Why this section exists.** This case is not only a one-sided audit of
+the subject's claims. The same auditor (Vasilev) maintains a parallel
+research programme in `gHashTag/vibee-lang`, `gHashTag/trinity`, and
+`gHashTag/claim-audit-lab`. Several concepts and disciplines appear in
+both programmes. This section lists every parallel found so far with
+first-publication timestamps on both sides, so a third party can check
+who was earlier on each specific move. No mind-reading: the section
+does not claim either party copied the other. It establishes priority
+by public timestamp and lets the reader form their own view. Where
+convergent independent development is the most defensible reading, the
+row says so. **Right of reply (CHARTER s 3) applies to every row.**
+
+All Vasilev-side dates are verifiable by any third party via
+`gh repo clone` + `git log` against the listed hashes.
+
+### 12.1. Eleven parallels with public timestamps
+
+**Parallel 1 -- Claim taxonomy with explicit labels.**
+Vasilev: vibee-lang `SCIENTIFIC_REVIEW.md`, first commit `38162f9c`,
+**2026-01-28 19:56 +07**. Subject: `mikefluff/sixth/CLAIMS.md` three-tier
+taxonomy (Tier 1 / Tier 2 / Tier 3), **2026-05-20**. Gap: Vasilev side
+earlier by ~16 weeks. Note: the codified, named five-label framework
+(`[Verified] / [Empirical fit] / [Open conjecture] / [Risk] /
+[Retracted]`) only became a named public artefact in
+`claim-audit-lab/FRAMEWORK.md` on **2026-06-02**, after the subject's
+three-tier publication. The verbal practice and the precursor are
+earlier on the Vasilev side; the codified named framework is later.
+Status: `[Verified]` priority on the precursor; `[Open conjecture]`
+whether the subject's three-tier was independently derived or
+influenced.
+
+**Parallel 2 -- Decompose claims into constituent verifiable parts.**
+Vasilev: vibee-lang `BOGATYRS_DECOMPOSITION.md` (commit `38162f9c`),
+**2026-01-28 19:56 +07**. Subject: no exact phrase match found; the
+subject uses "tripwire", "tier", "falsifier in advance". The phrase
+"decompose claims into constituent, verifiable parts" is closest to
+the Vasilev-side framing, not the subject's later three-tier taxonomy.
+Status: `[Verified]` priority on the Vasilev side on the exact
+decomposition discipline.
+
+**Parallel 3 -- Falsifiability and explicit Fpath.**
+Vasilev: vibee-lang first uses of `falsif*` in commit `e246b7cf`
+(Creation Pattern, superheavy element predictions), **2026-01-13
+11:45**. Subject: "From SPARC to PII -- falsifiers in research and in
+regulated AI" essay, **2026-05-19**. Gap: Vasilev side earlier by ~18
+weeks on the word. Caveat: the Vasilev-side 2026-01 use sits inside a
+speculative-physics document; its methodological rigor is lower than
+the subject's 2026-05 essay. The subject has the better-written essay
+on the practice. The Vasilev side has the earlier date on the word and
+the discipline. The label "Fpath" as a codified term is Vasilev
+coinage, first published in `claim-audit-lab/FRAMEWORK.md` on
+**2026-06-02**.
+
+**Parallel 4 -- Reproducibility pipeline as a hostile-audit artefact.**
+Vasilev: vibee-lang README `38a5bb0e` (dogfooding system, deterministic
+builds, `.quantum_cache/*.hash` reproducibility cache), **2026-01-12
+18:31:17 UTC**. Subject: `pointer-architecture` Python pipeline and
+reproducibility scripts, **April 2026**. Gap: Vasilev side earlier by
+~12 weeks. Both sides do the same structural move (build pipeline
+doubles as audit trail). Status: `[Verified]` priority on the Vasilev
+side.
+
+**Parallel 5 -- Vector Symbolic Architecture (VSA) as a substrate.**
+Vasilev: vibee-lang Trinity Self-Evolution System (commit `4c51276b`),
+first "vector symbolic" string, **2026-01-15 13:17**. Trinity proper:
+VSA library v0.1.0 (commit `bfd4d06a`), **2026-01-31 06:54:10 UTC**.
+Subject: no VSA artefact found in public work. Subject's `sixth` is
+Forth-like concatenative with 49 object-level and 33 meta-level
+primitives, mathematically disjoint from VSA. No overlap. Status:
+`[Verified]` priority on the Vasilev side; different mathematical
+objects.
+
+**Parallel 6 -- phi as a structural anchor.**
+Vasilev: vibee-lang `a68c426d` (175 stdlib modules with 1.618 explicit),
+**2026-01-13 05:32**; `cf0d4429` (Golden Ratio and Hubble Constant,
+first phi^2 + phi^-2 = 3 = Lucas L2), **2026-01-13 13:46**. Subject:
+uses capital "Phi" as Tononi Integrated Information (a consciousness
+measure), not the golden ratio. **Different mathematical objects under
+the same symbol.** Lucas L2 = phi^2 + phi^-2 = 3 is classical (Lucas
+1878), not original to either party. Status: `[Verified]` -- no
+overlap. If the subject ever publishes work using golden-ratio phi as
+an anchor, that row updates.
+
+**Parallel 7 -- Tononi / IIT / consciousness-as-IIT framing.**
+Vasilev: vibee-lang `13713fc6` (Complete Research Analysis & Desktop
+Verification System), first Tononi mention, **2026-01-14 20:41 +07**;
+`925af018` (999 OS MVP), **2026-01-14 20:12 +07**. The Vasilev side
+name-checked Tononi once, did not adopt IIT as its frame. Subject:
+neuralcosmology.com IIT entries and Tononi IIT 4.0 lecture summary;
+exact publication dates not pinned by this audit but likely earlier
+than 2026-01-14 in some form. Tononi-IIT-as-a-frame is the subject's
+territory, not the Vasilev side's. Status: `[Open conjecture]`
+priority -- subject likely earlier on Tononi-IIT-as-frame. No conflict;
+different frames.
+
+**Parallel 8 -- Self-audit applied symmetrically.**
+Vasilev: `claim-audit-lab/cases/CASE-00-self-audit.md` (auditor's own
+work audited under the same framework), **2026-06-02**. Subject:
+`mikefluff/sixth/CLAIMS.md` self-application plus `RESULTS.md` Track
+2.1 negative finding on Phi_PA linearity, **2026-05-20**. Gap: subject
+earlier by ~13 days on the codified, published move. Status:
+`[Verified]` priority on the subject's side on the public artefact.
+The Vasilev-side private practice (the phi-paper's anti-circularity
+audit) predates this publicly, but the *public* `CASE-00` file came
+after the subject's `CLAIMS.md` by 13 days, and the adoption of
+symmetric self-audit as a published discipline was directly influenced
+by reading the subject's Track 2.1 negative finding. **Credit recorded
+here and in CASE-00 explicitly.**
+
+**Parallel 9 -- Right-of-reply discipline as a published rule.**
+Vasilev: `claim-audit-lab/CHARTER.md` s 3 "Right of reply",
+**2026-06-02**. Subject: "From SPARC to PII" essay text on audit
+trails surviving hostile reading, **2026-05-19**. Gap: subject earlier
+by ~14 days. Status: `[Verified]` priority on the subject side on the
+published textual rule. The Vasilev-side equivalent was unwritten
+open-source pull-request practice before being codified.
+
+**Parallel 10 -- Negative results published before positive results.**
+Vasilev: vibee-lang `SCIENTIFIC_REVIEW.md` (lists known failure modes
+ahead of positive claims), **2026-01-28 19:56 +07**. Subject:
+`sixth/RESULTS.md` Track 2.1: "Phi_PA is exactly linear in scope, no
+phase transition, no critical exponent", **2026-05-20**. Gap: Vasilev
+side earlier by ~16 weeks. Status: `[Verified]` priority on the
+Vasilev side.
+
+**Parallel 11 -- 32-point critical audit move.**
+Subject: 32-point critical audit sent to Vasilev privately, **2026-05-10**.
+Vasilev: point-by-point response (`savchenko_response_v1.md`) drafted
+2026-05-15 through 2026-06-02, not yet sent. Status: `[Verified]` --
+the subject made the move first; the Vasilev side responded with a
+point-by-point reply, two contested points (items 8 and 29), and a
+counter-bet on the GoldenFloat arithmetic ladder. **This is the move
+that triggered `claim-audit-lab` as a public artefact.** Without the
+subject's 2026-05-10 audit, the framework would likely still be
+unwritten internal practice. Credit recorded.
+
+### 12.2. Score: earlier-on-substance vs earlier-on-discipline-text
+
+Eleven parallels checked. Vasilev side earlier on **7**. Subject
+earlier on **4** (parallels 7, 8, 9, 11). One of those four (parallel
+7) is because the Vasilev side never claimed Tononi-IIT-as-frame as
+its territory.
+
+| Theme | Earlier side | Gap |
+|---|---|---|
+| Claim taxonomy with explicit labels | Vasilev | ~16 weeks |
+| Decompose claims into constituent verifiable parts | Vasilev | exact phrase only on Vasilev side |
+| Falsifiability + Fpath label | Vasilev (word); Subject (essay rigor) | ~18 weeks on the word |
+| Reproducibility pipeline as audit trail | Vasilev | ~12 weeks |
+| VSA as substrate | Vasilev | not in subject's work |
+| phi as structural anchor (golden ratio) | Vasilev | not in subject's work |
+| Tononi-IIT-as-frame | Subject (likely) | subject's territory |
+| Self-audit applied symmetrically (published artefact) | Subject | ~13 days |
+| Right-of-reply discipline (published rule) | Subject | ~14 days |
+| Negative results before positive | Vasilev | ~16 weeks |
+| 32-point critical audit move | Subject | subject's initiative |
+
+Reading: on substance (formulas, software stack, mathematical objects)
+the Vasilev side is earlier by months. On discipline-framing-language
+the subject was faster to write the published texts in May 2026. Both
+facts are simultaneously true and recorded without contradiction.
+
+### 12.3. Operating rules drawn from this section
+
+1. **Do not retract the credit to the subject.** The 2026-05-10 audit
+   causally triggered the public `claim-audit-lab`. That is real
+   influence and stays recorded in CASE-00 and CASE-01.
+2. **Do not characterise the subject as a borrower.** The substance
+   does not overlap. Keyword overlap (phi / consciousness / dark matter)
+   is open-domain vocabulary, and the same words denote different
+   objects in the two programmes (Tononi Phi vs golden-ratio phi).
+3. **If priority is raised publicly, cite this section by URL and
+   quote the git-log lines verbatim** (hash + ISO timestamp + commit
+   message). Do not paraphrase. Any third party can verify with
+   `gh repo clone` against the listed hashes.
+4. **Lucas L2 = phi^2 + phi^-2 = 3 is classical.** Neither party claims
+   priority on the formula itself; the formula is Lucas (1878).
+
+### 12.4. Open conjectures (Vasilev side -> subject)
+
+Moves the Vasilev side was visibly doing in January-April 2026 that
+the subject may have seen and adopted in late April / May 2026. Each
+is `[Open conjecture]` with a stated Fpath:
+
+1. **Reproducibility pipeline as audit trail.** Subject's 2026-05-19
+   essay names this practice explicitly. Vasilev-side vibee-lang README
+   and `.quantum_cache` infrastructure does the same thing structurally
+   from 2026-01-12. **Fpath:** if subject's repo history shows a
+   comparable pipeline-as-audit-trail artefact before 2026-01-12, this
+   row updates to "convergent" or "subject earlier".
+2. **Three-to-five-label epistemic taxonomy.** Vasilev-side
+   `SCIENTIFIC_REVIEW.md` 2026-01-28 predates subject's `sixth/CLAIMS.md`
+   2026-05-20 by 16 weeks. **Fpath:** if subject's repo or any
+   neuralcosmology.com page shows a labelled taxonomy before 2026-01-28,
+   this row updates.
+3. **Decompose claims into constituent verifiable parts.** Vasilev-side
+   `BOGATYRS_DECOMPOSITION.md` predates any analogous subject artefact.
+   **Fpath:** if subject produces a dated draft of the decomposition
+   discipline before 2026-01-28, this row updates.
+
+### 12.5. Open conjectures (subject -> Vasilev side)
+
+Moves the subject published before the Vasilev side that, if adopted
+future-forward by the Vasilev side, require explicit attribution:
+
+1. **The single-name `CLAIMS.md` file as the canonical claim-status
+   inventory.** Subject has `mikefluff/sixth/CLAIMS.md`. The Vasilev
+   side has no top-level `CLAIMS.md` in any of its repos as of
+   2026-06-02. If one is added in the next 30 days, attribution to the
+   subject is required.
+2. **A `make verify` single-command reproducibility gate.** Subject's
+   repo has `make verify` running `raco test tests/examples-test.rkt`
+   with `pass=2070 fail=0`. The Vasilev-side equivalent (Vibee
+   dogfooding hooks, Trinity CI) is comparable in spirit but predates
+   the subject's publication; no attribution issue.
+3. **The "tripwire" framing** for every Open conjecture. This is the
+   same role as Fpath in the Vasilev-side framework. If any future
+   Vasilev-side paper calls Fpath a "tripwire", attribution on the
+   metaphor is required.
+
+### 12.6. What this section is NOT
+
+- Not a claim that the subject copied the Vasilev side.
+- Not a claim that the Vasilev side copied the subject.
+- Not a complete history. Only eleven parallels are checked. If any
+  reader (the subject especially) finds a twelfth parallel that runs
+  either way, this section updates per CHARTER s 3.
+- Not a substitute for the subject's right of reply. Per CHARTER s 3,
+  the subject may submit a one-page reply that will be included
+  verbatim under Section 13 with a source link.
+
+### 12.7. Sources for Section 12
+
+- gHashTag/vibee-lang public git history. Hashes: `38a5bb0e` (initial
+  commit, 2026-01-12 18:31:17 UTC), `a68c426d` (175 stdlib modules,
+  2026-01-13 05:32), `e246b7cf` (Creation Pattern, 2026-01-13 11:45),
+  `cf0d4429` (Golden Ratio and Hubble Constant, 2026-01-13 13:46),
+  `925af018` (999 OS MVP consciousness emergence, 2026-01-14 20:12
+  +07), `13713fc6` (Tononi reference, 2026-01-14 20:41 +07), `4c51276b`
+  (Trinity Self-Evolution and first "vector symbolic", 2026-01-15
+  13:17), `38162f9c` (SCIENTIFIC_REVIEW.md and BOGATYRS_DECOMPOSITION.md,
+  2026-01-28 19:56 +07). Repo: https://github.com/gHashTag/vibee-lang
+- gHashTag/trinity public git history. Hashes: `bfd4d06a` (Trinity VSA
+  v0.1.0 initial, 2026-01-31 06:54:10 UTC), `9fb6af74` (phi^2 + phi^-2
+  = 3 explicit, 2026-03-06 16:02), `9267be5f` (first Pointer
+  Architecture reference in Vasilev-side repos, 2026-04-03). Repo:
+  https://github.com/gHashTag/trinity
+- gHashTag/claim-audit-lab v0.2-prereg (CASE-00 self-audit, CHARTER.md
+  s 3 right-of-reply, FRAMEWORK.md five-label taxonomy and Fpath).
+  Repo: https://github.com/gHashTag/claim-audit-lab. Zenodo DOI:
+  10.5281/zenodo.20507098.
+- mikefluff/pointer-architecture. https://github.com/mikefluff/pointer-architecture
+- mikefluff/sixth. https://github.com/mikefluff/sixth
+- "Falsifiers in research and in regulated AI" essay, 2026-05-19.
+  https://neuralcosmology.com/en/essays/falsifiers-in-research-and-regulated-ai
+
+---
+
+## 13. Subject's reply
 
 Empty. The subject has not been notified of this CASE file as of
 2026-06-02. Per CHARTER.md s 3, a reply submitted at any time will be
-included verbatim with a source link.
+included verbatim with a source link. Section 12 (parallels timeline)
+is explicitly open to amendment by the subject under the same rule:
+any row where the subject can show a different earlier date, a missing
+artefact, or an unfair characterisation will be corrected on receipt
+of evidence.
 
 ---
 
