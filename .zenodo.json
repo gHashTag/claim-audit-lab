@@ -30,8 +30,13 @@
   ],
   "communities": [],
   "language": "eng",
-  "notes": "Snapshot freeze-hash anchor for the v0.2-prereg blind inter-rater study (Loop 2, Q3 2026). Cite via DOI rather than the GitHub URL when the inter-rater data is the load-bearing input.",
+  "notes": "Snapshot freeze-hash anchor for the v0.2-prereg blind inter-rater study (Loop 2, Q3 2026). Cite via DOI rather than the GitHub URL when the inter-rater data is the load-bearing input. Deposited DOI 10.5281/zenodo.20507098 (concept DOI 10.5281/zenodo.20507097).",
   "related_identifiers": [
+    {
+      "identifier": "https://github.com/gHashTag/claim-audit-lab/tree/v0.2-prereg",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
     {
       "identifier": "https://github.com/gHashTag/claim-audit-lab",
       "relation": "isSupplementTo",

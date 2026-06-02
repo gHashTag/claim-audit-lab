@@ -1,6 +1,14 @@
 cff-version: 1.2.0
-message: "If you use or cite this register, please cite the v0.2-prereg snapshot via the Zenodo DOI minted at the v0.2-prereg tag."
+message: "If you use or cite this register, please cite the v0.2-prereg snapshot via the Zenodo DOI 10.5281/zenodo.20507098."
 title: "claim-audit-lab: a public, symmetric, falsifiable register of audits of phi-anchored theoretical claims"
+doi: 10.5281/zenodo.20507098
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20507098
+    description: "Version DOI for v0.2-prereg snapshot."
+  - type: doi
+    value: 10.5281/zenodo.20507097
+    description: "Concept DOI (resolves to the latest version)."
 abstract: "A version-controlled register that applies a 5-label epistemic framework (Verified / Empirical fit / Open conjecture / Risk / High-risk / Retracted) to published phi-anchored theoretical-physics, numeric-format, and metaphysical claims, including a symmetric self-audit of the maintainers' own work. The framework itself is registered as [Open conjecture] with an explicit falsification path."
 type: software
 authors:

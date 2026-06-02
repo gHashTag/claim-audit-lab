@@ -13,6 +13,10 @@ an explicit Fpath: a blind inter-rater study (Loop 2, Q3 2026) is the
 first formal falsifier. This release is tagged `v0.2-prereg` and
 deposited at Zenodo as the freeze-hash anchor for that study.
 
+- Version DOI: `10.5281/zenodo.20507098`
+- Concept DOI: `10.5281/zenodo.20507097`
+- Zenodo record: https://zenodo.org/record/20507098
+
 ### Added
 
 - `methodology/README.md` -- methodology scaffold + 10 citations
