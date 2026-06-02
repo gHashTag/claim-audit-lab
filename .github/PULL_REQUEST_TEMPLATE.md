@@ -24,7 +24,7 @@
 ## All PRs
 
 - [ ] I have read `CHARTER.md`, `FRAMEWORK.md`, and `CONTRIBUTING.md`.
-- [ ] No ad hominem, no editorial adjectives, no membership labels ("pseudoscience", "crank") outside verbatim quotes.
+- [ ] No ad hominem, no editorial adjectives, no demarcation tokens (the list lives inside a fenced block in `FRAMEWORK.md`) outside verbatim quotes.
 - [ ] All URLs are reachable at PR open time.
 
 ## Related issues / cases
