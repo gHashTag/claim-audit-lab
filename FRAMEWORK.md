@@ -135,12 +135,20 @@ strongest published wording. Promote only when the author meets our
 
 The following words MUST NOT appear in a CASE file (except inside a verbatim
 quote from the subject's own work, in which case they remain verbatim and
-are not silently edited):
+are not silently edited). The list is inside a fenced block so the CI scanner
+skips it:
 
-- "crank", "pseudoscience", "numerology" used as a pejorative
-- "breakthrough", "revolutionary", "first-ever", "world-first", "Nobel" as
-  rhetorical amplifiers
-- "proves" used non-logically
+```
+crank
+pseudoscience
+numerology (as a pejorative)
+breakthrough
+revolutionary
+first-ever
+world-first
+Nobel (as a rhetorical amplifier)
+proves (used non-logically)
+```
 
 Use the five labels instead. They carry all the necessary epistemic force
 and require no insult.

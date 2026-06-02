@@ -55,9 +55,10 @@ Full rules and examples: [`FRAMEWORK.md`](FRAMEWORK.md).
 - **Symmetric application.** The lab's own work (IGLA, GoldenFloat, phi-paper)
   is audited under the same rules in CASE-00.
 - **English + ASCII only.** Public artefact discipline.
-- **Banned words in entries:** breakthrough, revolutionary, first-ever,
-  Nobel, world-first, "proves" used non-logically, pseudoscience, crank,
-  numerology (as a slur). State labels, not insults.
+- **Banned words in entries:** see the list inside the fenced block in
+  `FRAMEWORK.md` (the CI scanner skips fenced blocks and blockquotes, so the
+  policy can list the forbidden tokens without tripping itself). State labels,
+  not insults.
 - **Corrections welcome.** Open a PR or an issue. If a subject of a case file
   documents that we misread their claim, the case is updated and the prior
   version is preserved in `archive/`.
@@ -71,11 +72,33 @@ See [`CHARTER.md`](CHARTER.md) for the full text.
 
 ## Index of cases
 
-| ID       | Subject                           | Domain                 | Status   |
-|----------|-----------------------------------|------------------------|----------|
-| CASE-00  | self-audit (lab maintainers)      | numeric formats / ML   | draft    |
-| CASE-01  | Pointer Architecture v9.0         | consciousness / dark matter | draft |
-| ...      | (more cases pending; see queue)   |                        |          |
+| ID       | Subject                                | Domain                              | Status |
+|----------|----------------------------------------|-------------------------------------|--------|
+| [CASE-00](cases/CASE-00-self-audit.md) | self-audit (lab maintainers) | numeric formats / ML training | draft |
+| [CASE-01](cases/CASE-01-savchenko-pointer-architecture.md) | A. Savchenko -- Pointer Architecture v9.0 | consciousness / dark matter | draft |
+| [CASE-02](cases/CASE-02-stakhov-mathematics-of-harmony.md) | A. Stakhov -- Mathematics of Harmony | number systems / phi-universalism | draft |
+| [CASE-03](cases/CASE-03-el-naschie-e-infinity.md) | M.S. El Naschie -- E-infinity theory | quantum spacetime / dimensions | draft |
+| [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | S.V. Petoukhov -- Matrix Genetics | bioinformatics / phi-matrices | draft |
+| [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | M.A. Kramer & W. Klimesch -- Golden EEG Rhythms | neuroscience (positive control) | draft |
+| [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot -- Phi-period economic cycles | econometrics (positive control) | draft |
+
+### Adjacent (not audited as a primary subject)
+
+- **Scott A. Olsen** -- co-author of the Pellis-Vasilev-Olsen short paper that
+  this lab's CASE-00 self-audit is partly built around. As a current
+  collaborator he is conflict-of-interest excluded from being a primary audit
+  subject; his contribution is therefore part of the self-audit (CASE-00) and
+  the symmetric-mirror sections of CASE-02 / CASE-03 / CASE-04, not a
+  standalone case file. See [`phi_theorists_catalog.md`](phi_theorists_catalog.md)
+  entry #9 for the catalog record.
+
+### Cases under consideration (not yet written)
+
+See [`phi_theorists_catalog.md`](phi_theorists_catalog.md) for the working
+list of 14 candidate subjects ranked by independent-publication weight.
+Not every candidate will receive a full CASE file: under-verified subjects
+(no confirmed primary URL) are skipped; fringe-adjacent entries that have no
+falsifiable claim are catalog-only.
 
 ---
 
@@ -122,4 +145,4 @@ to every quotation.
 
 **Maintainers:** Dmitrii Vasilev (`@gHashTag`).
 **Contact:** open an issue.
-**Last index update:** 2026-06-02.
+**Last index update:** 2026-06-02 (CASE-02..CASE-06 added).
