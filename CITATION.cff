@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use or cite this register, please cite the v0.2-prereg snapshot via the Zenodo DOI minted at the v0.2-prereg tag."
+title: "claim-audit-lab: a public, symmetric, falsifiable register of audits of phi-anchored theoretical claims"
+abstract: "A version-controlled register that applies a 5-label epistemic framework (Verified / Empirical fit / Open conjecture / Risk / High-risk / Retracted) to published phi-anchored theoretical-physics, numeric-format, and metaphysical claims, including a symmetric self-audit of the maintainers' own work. The framework itself is registered as [Open conjecture] with an explicit falsification path."
+type: software
+authors:
+  - given-names: Dmitrii
+    family-names: Vasilev
+    email: admin@t27.ai
+    orcid: "https://orcid.org/0009-0008-4294-6159"
+    affiliation: "Independent Researcher"
+repository-code: "https://github.com/gHashTag/claim-audit-lab"
+url: "https://github.com/gHashTag/claim-audit-lab"
+license:
+  - CC-BY-4.0
+  - MIT
+keywords:
+  - epistemic-status
+  - claim-audit
+  - falsifiability
+  - golden-ratio
+  - phi
+  - Fibonacci
+  - Lucas-numbers
+  - methodology
+  - reproducibility
+  - inter-rater-reliability
+version: "0.2-prereg"
+date-released: "2026-06-02"

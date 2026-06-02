@@ -1,0 +1,41 @@
+{
+  "title": "claim-audit-lab: a public, symmetric, falsifiable register of audits of phi-anchored theoretical claims (v0.2-prereg)",
+  "version": "0.2-prereg",
+  "description": "Version-controlled register that applies a 5-label epistemic framework (Verified / Empirical fit / Open conjecture / Risk / High-risk / Retracted) to published phi-anchored theoretical-physics, numeric-format, and metaphysical claims, including a symmetric self-audit of the maintainers' own work (CASE-00). The v0.2-prereg snapshot is the freeze-hash anchor for a blind inter-rater study scheduled for Q3 2026 (Loop 2). The framework itself is registered as [Open conjecture] in data/labels.json::framework_self_label with the explicit Fpath: the framework is falsified if an outside rater study shows that two or more labels collapse below Cohen's kappa = 0.4 in practice. Includes a CHANGELOG, a PROMOTION-LEDGER (append-only label-change log), a methodology document with 10 anchor citations and a C1-C10 pitfalls list, and a CONTRIBUTING document with explicit SLAs for right-of-reply, factual corrections, and new-case proposals. CI enforces banned-word, ASCII-only, and symmetric-mirror-required gates.",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "creators": [
+    {
+      "name": "Vasilev, Dmitrii",
+      "affiliation": "Independent Researcher",
+      "orcid": "0009-0008-4294-6159"
+    }
+  ],
+  "keywords": [
+    "epistemic-status",
+    "claim-audit",
+    "falsifiability",
+    "golden-ratio",
+    "phi",
+    "Fibonacci",
+    "Lucas-numbers",
+    "methodology",
+    "reproducibility",
+    "inter-rater-reliability",
+    "GRADE",
+    "Cochrane-RoB",
+    "Popper",
+    "Laudan"
+  ],
+  "communities": [],
+  "language": "eng",
+  "notes": "Snapshot freeze-hash anchor for the v0.2-prereg blind inter-rater study (Loop 2, Q3 2026). Cite via DOI rather than the GitHub URL when the inter-rater data is the load-bearing input.",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/gHashTag/claim-audit-lab",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
