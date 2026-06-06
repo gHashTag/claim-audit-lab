@@ -59,14 +59,21 @@ cases:
     fpath: "Out-of-sample forecast on a frozen economic dataset; pre-registered window"
     file: cases/CASE-06-de-groot-economic-cycles.md
 
+  - id: CASE-07
+    title: "Carroll/Kaplan M_pl coincidence class"
+    target: "M_pl / m_e and M_pl * coupling-ratio phi-arithmetic claims (general class)"
+    claim_status: Risk
+    fpath: "Pre-registered target list + matched-cardinality control alphabet + BH-FDR at q=0.05"
+    file: cases/CASE-07-carroll-kaplan-m-planck.md
+
 # Counts (auto-derivable from the cases list above)
 counts:
-  total: 7
+  total: 8
   by_status:
     Verified: 1
     Efit: 1
     Conj: 0
-    Risk: 4
+    Risk: 5
     Retr: 1
 
 # Anchor (carried across all phi-programme artefacts)
