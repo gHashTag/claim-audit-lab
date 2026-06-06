@@ -1,0 +1,73 @@
+# claim-audit-lab — machine-readable case manifest
+# Mitigation for W-R2 (project weaknesses inventory 2026-06-06)
+# Schema: id, title, target, claim_status, fpath, file, sha256
+# Generated 2026-06-06. Refresh with `scripts/gen_cases_yaml.py` after each new CASE-XX.
+
+schema_version: "1.0"
+generated: "2026-06-06"
+license: CC-BY-4.0
+repo: gHashTag/claim-audit-lab
+zenodo_doi: "10.5281/zenodo.20507098"
+
+cases:
+  - id: CASE-00
+    title: "Self-audit — methodology calibration on our own work"
+    target: "Vasilev–Pellis–Olsen phi-programme"
+    claim_status: Verified
+    fpath: "Future independent audit of our audit; any divergence becomes a Retr"
+    file: cases/CASE-00-self-audit.md
+
+  - id: CASE-01
+    title: "Savchenko pointer architecture"
+    target: "Savchenko geometric / pointer-architecture claims"
+    claim_status: Risk
+    fpath: "Explicit construction matching the published prediction OR a published refutation"
+    file: cases/CASE-01-savchenko-pointer-architecture.md
+
+  - id: CASE-02
+    title: "Stakhov Mathematics of Harmony"
+    target: "Stakhov golden-ratio mathematics-of-harmony programme"
+    claim_status: Efit
+    fpath: "Independent empirical test of the predicted harmony invariants on a held-out dataset"
+    file: cases/CASE-02-stakhov-mathematics-of-harmony.md
+
+  - id: CASE-03
+    title: "El Naschie E-infinity theory"
+    target: "E-infinity Cantorian space-time programme"
+    claim_status: Retr
+    fpath: "Retracted in the case study; any rehabilitation would require a peer-reviewed re-derivation under matched-cardinality controls"
+    file: cases/CASE-03-el-naschie-e-infinity.md
+
+  - id: CASE-04
+    title: "Petoukhov matrix genetics"
+    target: "Petoukhov genetic-code matrix / golden-ratio claims"
+    claim_status: Risk
+    fpath: "Pre-registered test on a held-out genome with matched-cardinality random matrices"
+    file: cases/CASE-04-petoukhov-matrix-genetics.md
+
+  - id: CASE-05
+    title: "Kramer–Klimesch golden rhythms (EEG)"
+    target: "EEG golden-ratio rhythm claims (alpha/theta etc.)"
+    claim_status: Risk
+    fpath: "Pre-registered EEG study with matched-control frequency ratios; published replication"
+    file: cases/CASE-05-kramer-klimesch-golden-rhythms.md
+
+  - id: CASE-06
+    title: "de Groot economic cycles"
+    target: "Economic-cycle phi-period claims"
+    claim_status: Risk
+    fpath: "Out-of-sample forecast on a frozen economic dataset; pre-registered window"
+    file: cases/CASE-06-de-groot-economic-cycles.md
+
+# Counts (auto-derivable from the cases list above)
+counts:
+  total: 7
+  by_status:
+    Verified: 1
+    Efit: 1
+    Conj: 0
+    Risk: 4
+    Retr: 1
+
+# Anchor (carried across all phi-programme artefacts)
+anchor: "phi^2 + phi^-2 = 3"
