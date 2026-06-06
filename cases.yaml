@@ -66,13 +66,20 @@ cases:
     fpath: "Pre-registered target list + matched-cardinality control alphabet + BH-FDR at q=0.05"
     file: cases/CASE-07-carroll-kaplan-m-planck.md
 
+  - id: CASE-08
+    title: "Vasilev BNF equivalence-class result (symmetric self-audit, v2.3 phi-paper)"
+    target: "v2.3 sec 6.3 claim: G_phi MDL-rank 2/394 at p=0.0039 within depth-leq-2 BNF + anti-cancellation filter"
+    claim_status: Conj
+    fpath: "Any of three: (a) shorter depth-leq-2 phi-native form reducing to 3 surviving the filter; (b) Rissanen-Grunwald MDL shifting rank above 10; (c) EGG-SR canonicalisation producing different equivalence-class cardinality and rank"
+    file: cases/CASE-08-vasilev-bnf-equivalence-class.md
+
 # Counts (auto-derivable from the cases list above)
 counts:
-  total: 8
+  total: 9
   by_status:
     Verified: 1
     Efit: 1
-    Conj: 0
+    Conj: 1
     Risk: 5
     Retr: 1
 

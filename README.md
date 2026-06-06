@@ -81,6 +81,8 @@ See [`CHARTER.md`](CHARTER.md) for the full text.
 | [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | S.V. Petoukhov -- Matrix Genetics | bioinformatics / phi-matrices | draft |
 | [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | M.A. Kramer & W. Klimesch -- Golden EEG Rhythms | neuroscience (positive control) | draft |
 | [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot -- Phi-period economic cycles | econometrics (positive control) | draft |
+| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan -- M_pl coincidence class | adjacent class declined in v2.1 | draft |
+| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev -- BNF equivalence-class result (v2.3 self-audit) | symbolic regression / methodology calibration | draft |
 
 ---
 
@@ -102,7 +104,9 @@ Label changes are recorded in [`PROMOTION-LEDGER.md`](PROMOTION-LEDGER.md).
 | [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | S.V. Petoukhov | 3 | 2 | 1 | 4 | 0 | 0 | pending | pending |
 | [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | Kramer & Klimesch (positive control) | 2 | 2 | 1 | 2 | 0 | 0 | yes | pending |
 | [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot (positive control) | 3 | 1 | 1 | 3 | 0 | 0 | yes | pending |
-| **Totals (v0.2 baseline)** | 7 cases | **28** | **10** | **11** | **20** | **4** | **2** | -- | -- |
+| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan M_pl class | 0 | 0 | 0 | 3 | 0 | 0 | partial | n/a |
+| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev BNF (v2.3 self-audit) | 1 | 0 | 3 | 0 | 0 | 0 | yes | pending |
+| **Totals (v0.3, CASE-08)** | 9 cases | **29** | **10** | **14** | **23** | **4** | **2** | -- | -- |
 
 **Reading the table.** `V` = [Verified], `EF` = [Empirical fit],
 `OC+Fpath` = [Open conjecture] with stated falsification path, `R` =
