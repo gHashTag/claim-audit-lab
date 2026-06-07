@@ -1,24 +1,24 @@
-# CASE-07 — Carroll / Kaplan style M_pl coincidence claims
+# CASE-07  --  Carroll / Kaplan style M_pl coincidence claims
 
-**Target programme**: published proposals that exact small-integer / golden-ratio relations connect the Planck mass M_pl to particle-physics scales (e.g. M_pl / m_e, M_pl · alpha factors, golden-power towers).
+**Target programme**: published proposals that exact small-integer / golden-ratio relations connect the Planck mass M_pl to particle-physics scales (e.g. M_pl / m_e, M_pl * alpha factors, golden-power towers).
 **Claim status**: **\Risk**
-**Selection rationale**: This is a phi-adjacent class of claims that the v2.1 phi-paper deliberately does NOT make (mu = m_p/m_e was removed per 2026-06-06 Pellis review). Auditing the adjacent claim class is a calibration exercise — if these proposals fail under matched-cardinality controls, our own decision to drop M_pl-related rows is empirically supported.
+**Selection rationale**: This is a phi-adjacent class of claims that the v2.1 phi-paper deliberately does NOT make (mu = m_p/m_e was removed per 2026-06-06 Pellis review). Auditing the adjacent claim class is a calibration exercise  --  if these proposals fail under matched-cardinality controls, our own decision to drop M_pl-related rows is empirically supported.
 
 ## Specific claims surveyed
 
 The Carroll/Kaplan-class claim family includes proposals of the form:
 
-1. **M_pl / m_e ≈ phi^N · pi^M · e^K** for small integers (N, M, K).
+1. **M_pl / m_e approx phi^N * pi^M * e^K** for small integers (N, M, K).
 2. **M_pl coincidences with golden powers** of standard-model coupling ratios.
 3. **"Trans-Planckian gap closes" under specific phi-arithmetic identities.**
 
 Representative published examples (catalogued in `phi_theorists_catalog.md`):
-- Various preprints proposing M_pl / m_e ≈ small-prefactor · phi^k forms.
+- Various preprints proposing M_pl / m_e approx small-prefactor * phi^k forms.
 - Hierarchy-problem reformulations invoking exact golden-ratio splits.
 
 ## Why \Risk (not \Retr or \Verified)
 
-The claims are not categorically refuted in the literature — but they have not been tested against matched-cardinality control alphabets. Without such a test, "find one good fit" carries no statistical weight, by the same look-elsewhere argument we apply to our own G_phi grammar in §6 of the v2.1 phi-paper.
+The claims are not categorically refuted in the literature  --  but they have not been tested against matched-cardinality control alphabets. Without such a test, "find one good fit" carries no statistical weight, by the same look-elsewhere argument we apply to our own G_phi grammar in sec.6 of the v2.1 phi-paper.
 
 ## Falsification path (\Fpath)
 
@@ -33,20 +33,26 @@ If, after these three steps, the M_pl-class fits survive at q < 0.05, the claim 
 ## Audit script
 
 Concrete check applied to our own M_pl candidate (now-excluded from v2.1):
-- `mu = m_p / m_e ≈ 1836.15` — earlier draft tested form `2 · pi^5 · phi^{-4}` at 50-digit precision.
-- Result: rel. dev. ≈ 2.1e-3, which is WORSE than the BH-FDR threshold one obtains from the catalog-15 selection step.
+- `mu = m_p / m_e approx 1836.15`  --  earlier draft tested form `2 * pi^5 * phi^{-4}` at 50-digit precision.
+- Result: rel. dev. approx 2.1e-3, which is WORSE than the BH-FDR threshold one obtains from the catalog-15 selection step.
 - **Decision (Pellis 2026-06-06)**: row excluded from v2.1 methods table; reserved for a future physics-oriented manuscript where the look-elsewhere multiplier can be properly bounded.
 
 ## What this CASE adds to claim-audit-lab
 
-This is the first CASE that audits a class of claims the principal authors **declined to make in their own manuscript**. The decision-to-exclude is itself an audit datum — it demonstrates that the methodology produces null results even when they would have been favourable to the authors' broader programme.
+This is the first CASE that audits a class of claims the principal authors **declined to make in their own manuscript**. The decision-to-exclude is itself an audit datum  --  it demonstrates that the methodology produces null results even when they would have been favourable to the authors' broader programme.
+
+## 9. Symmetric mirror
+
+Per CASE-00, the lab applies the same framework to its own work. The Carroll/Kaplan M_pl coincidence class is `\Risk` because no matched-cardinality control alphabet has been tested. The lab's own decision to exclude the `mu = m_p/m_e` row from v2.1 is the symmetric action: the same absence of matched-cardinality control that makes the M_pl class `\Risk` also applied to our own candidate, so we excluded it. CASE-07 records that decision as a first-class audit datum.
+
+The joint \Fpath for CASE-07 and the excluded mu row is identical: pre-register the target list, specify a matched-cardinality control alphabet, and apply BH-FDR at q = 0.05. Executing this once would resolve both the external class (Carroll/Kaplan) and the internal excluded candidate simultaneously.
 
 ## Status row for cases.yaml
 
 ```yaml
 - id: CASE-07
   title: "Carroll/Kaplan M_pl coincidence class"
-  target: "M_pl / m_e and M_pl · coupling-ratio phi-arithmetic claims (general class)"
+  target: "M_pl / m_e and M_pl * coupling-ratio phi-arithmetic claims (general class)"
   claim_status: Risk
   fpath: "Pre-registered target list + matched-cardinality control alphabet + BH-FDR at q=0.05"
   file: cases/CASE-07-carroll-kaplan-m-planck.md
@@ -54,4 +60,4 @@ This is the first CASE that audits a class of claims the principal authors **dec
 
 ## Anchor
 
-φ² + φ⁻² = 3
+phi^2 + phi^-^2 = 3
