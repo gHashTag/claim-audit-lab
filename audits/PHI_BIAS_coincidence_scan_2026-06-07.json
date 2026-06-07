@@ -1,0 +1,1275 @@
+{
+  "metadata": {
+    "script": "tools/phi_bias_coincidence_scan.py",
+    "date": "2026-06-07",
+    "threshold_relative": 0.05,
+    "disclaimer": "This scan documents near-coincidences. It does NOT select PHI_BIAS values. PHI_BIAS for GF6/GF10/GF14/GF48/GF96 is OPEN."
+  },
+  "sanity_checks": {
+    "passed": true,
+    "log": [
+      "PASS: GF24 PHI_BIAS=1364 matched Lucas L_15=1364 (exact match, rd=0.0)",
+      "PASS: GF20 PHI_BIAS=289 matched Square 17^2=289 (exact match, rd=0.0)",
+      "PASS: GF64 PHI_BIAS=8388608 matched Power2 2^23=8388608 (exact match, rd=0.0)"
+    ]
+  },
+  "verified_rung_sanity_scan": [
+    {
+      "label": "GF4",
+      "target": 0,
+      "candidates_within_5pct": [
+        {
+          "kind": "trivial",
+          "k": 0,
+          "value": 0,
+          "side": "exact",
+          "relative_distance": 0.0
+        }
+      ],
+      "all_nearest": [],
+      "note": "PHI_BIAS=0; degenerate; no coincidence-class scan needed"
+    },
+    {
+      "label": "GF8",
+      "target": 1,
+      "candidates_within_5pct": [
+        {
+          "kind": "Fibonacci",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Lucas",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Square",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Cube",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Power2",
+          "k": 0,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Triangular",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        }
+      ],
+      "all_nearest": [
+        {
+          "kind": "Fibonacci",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Lucas",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Square",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Cube",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Power2",
+          "k": 0,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Triangular",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        }
+      ],
+      "note": "Known PHI_BIAS used as target; sanity-check scan"
+    },
+    {
+      "label": "GF12",
+      "target": 2,
+      "candidates_within_5pct": [
+        {
+          "kind": "Fibonacci",
+          "k": 3,
+          "value": 2,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Power2",
+          "k": 1,
+          "value": 2,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        }
+      ],
+      "all_nearest": [
+        {
+          "kind": "Fibonacci",
+          "k": 3,
+          "value": 2,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Lucas",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.5
+        },
+        {
+          "kind": "Lucas",
+          "k": 2,
+          "value": 3,
+          "side": "above_or_equal",
+          "relative_distance": 0.3333333333333333
+        },
+        {
+          "kind": "Square",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.5
+        },
+        {
+          "kind": "Square",
+          "k": 2,
+          "value": 4,
+          "side": "above_or_equal",
+          "relative_distance": 0.5
+        },
+        {
+          "kind": "Cube",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.5
+        },
+        {
+          "kind": "Cube",
+          "k": 2,
+          "value": 8,
+          "side": "above_or_equal",
+          "relative_distance": 0.75
+        },
+        {
+          "kind": "Power2",
+          "k": 1,
+          "value": 2,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Triangular",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.5
+        },
+        {
+          "kind": "Triangular",
+          "k": 2,
+          "value": 3,
+          "side": "above_or_equal",
+          "relative_distance": 0.3333333333333333
+        }
+      ],
+      "note": "Known PHI_BIAS used as target; sanity-check scan"
+    },
+    {
+      "label": "GF16",
+      "target": 60,
+      "candidates_within_5pct": [],
+      "all_nearest": [
+        {
+          "kind": "Fibonacci",
+          "k": 10,
+          "value": 55,
+          "side": "below_or_equal",
+          "relative_distance": 0.08333333333333333
+        },
+        {
+          "kind": "Fibonacci",
+          "k": 11,
+          "value": 89,
+          "side": "above_or_equal",
+          "relative_distance": 0.3258426966292135
+        },
+        {
+          "kind": "Lucas",
+          "k": 8,
+          "value": 47,
+          "side": "below_or_equal",
+          "relative_distance": 0.21666666666666667
+        },
+        {
+          "kind": "Lucas",
+          "k": 9,
+          "value": 76,
+          "side": "above_or_equal",
+          "relative_distance": 0.21052631578947367
+        },
+        {
+          "kind": "Square",
+          "k": 7,
+          "value": 49,
+          "side": "below_or_equal",
+          "relative_distance": 0.18333333333333332
+        },
+        {
+          "kind": "Square",
+          "k": 8,
+          "value": 64,
+          "side": "above_or_equal",
+          "relative_distance": 0.0625
+        },
+        {
+          "kind": "Cube",
+          "k": 3,
+          "value": 27,
+          "side": "below_or_equal",
+          "relative_distance": 0.55
+        },
+        {
+          "kind": "Cube",
+          "k": 4,
+          "value": 64,
+          "side": "above_or_equal",
+          "relative_distance": 0.0625
+        },
+        {
+          "kind": "Power2",
+          "k": 5,
+          "value": 32,
+          "side": "below_or_equal",
+          "relative_distance": 0.4666666666666667
+        },
+        {
+          "kind": "Power2",
+          "k": 6,
+          "value": 64,
+          "side": "above_or_equal",
+          "relative_distance": 0.0625
+        },
+        {
+          "kind": "Triangular",
+          "k": 10,
+          "value": 55,
+          "side": "below_or_equal",
+          "relative_distance": 0.08333333333333333
+        },
+        {
+          "kind": "Triangular",
+          "k": 11,
+          "value": 66,
+          "side": "above_or_equal",
+          "relative_distance": 0.09090909090909091
+        }
+      ],
+      "note": "Known PHI_BIAS used as target; sanity-check scan"
+    },
+    {
+      "label": "GF20",
+      "target": 289,
+      "candidates_within_5pct": [
+        {
+          "kind": "Square",
+          "k": 17,
+          "value": 289,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Triangular",
+          "k": 24,
+          "value": 300,
+          "side": "above_or_equal",
+          "relative_distance": 0.03666666666666667
+        },
+        {
+          "kind": "Triangular",
+          "k": 23,
+          "value": 276,
+          "side": "below_or_equal",
+          "relative_distance": 0.04498269896193772
+        }
+      ],
+      "all_nearest": [
+        {
+          "kind": "Fibonacci",
+          "k": 13,
+          "value": 233,
+          "side": "below_or_equal",
+          "relative_distance": 0.19377162629757785
+        },
+        {
+          "kind": "Fibonacci",
+          "k": 14,
+          "value": 377,
+          "side": "above_or_equal",
+          "relative_distance": 0.23342175066312998
+        },
+        {
+          "kind": "Lucas",
+          "k": 11,
+          "value": 199,
+          "side": "below_or_equal",
+          "relative_distance": 0.31141868512110726
+        },
+        {
+          "kind": "Lucas",
+          "k": 12,
+          "value": 322,
+          "side": "above_or_equal",
+          "relative_distance": 0.10248447204968944
+        },
+        {
+          "kind": "Square",
+          "k": 17,
+          "value": 289,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Cube",
+          "k": 6,
+          "value": 216,
+          "side": "below_or_equal",
+          "relative_distance": 0.25259515570934254
+        },
+        {
+          "kind": "Cube",
+          "k": 7,
+          "value": 343,
+          "side": "above_or_equal",
+          "relative_distance": 0.15743440233236153
+        },
+        {
+          "kind": "Power2",
+          "k": 8,
+          "value": 256,
+          "side": "below_or_equal",
+          "relative_distance": 0.11418685121107267
+        },
+        {
+          "kind": "Power2",
+          "k": 9,
+          "value": 512,
+          "side": "above_or_equal",
+          "relative_distance": 0.435546875
+        },
+        {
+          "kind": "Triangular",
+          "k": 23,
+          "value": 276,
+          "side": "below_or_equal",
+          "relative_distance": 0.04498269896193772
+        },
+        {
+          "kind": "Triangular",
+          "k": 24,
+          "value": 300,
+          "side": "above_or_equal",
+          "relative_distance": 0.03666666666666667
+        }
+      ],
+      "note": "Known PHI_BIAS used as target; sanity-check scan"
+    },
+    {
+      "label": "GF24",
+      "target": 1364,
+      "candidates_within_5pct": [
+        {
+          "kind": "Lucas",
+          "k": 15,
+          "value": 1364,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Square",
+          "k": 37,
+          "value": 1369,
+          "side": "above_or_equal",
+          "relative_distance": 0.003652300949598247
+        },
+        {
+          "kind": "Triangular",
+          "k": 52,
+          "value": 1378,
+          "side": "above_or_equal",
+          "relative_distance": 0.010159651669085631
+        },
+        {
+          "kind": "Cube",
+          "k": 11,
+          "value": 1331,
+          "side": "below_or_equal",
+          "relative_distance": 0.024193548387096774
+        },
+        {
+          "kind": "Triangular",
+          "k": 51,
+          "value": 1326,
+          "side": "below_or_equal",
+          "relative_distance": 0.02785923753665689
+        },
+        {
+          "kind": "Square",
+          "k": 36,
+          "value": 1296,
+          "side": "below_or_equal",
+          "relative_distance": 0.04985337243401759
+        }
+      ],
+      "all_nearest": [
+        {
+          "kind": "Fibonacci",
+          "k": 16,
+          "value": 987,
+          "side": "below_or_equal",
+          "relative_distance": 0.2763929618768328
+        },
+        {
+          "kind": "Fibonacci",
+          "k": 17,
+          "value": 1597,
+          "side": "above_or_equal",
+          "relative_distance": 0.1458985597996243
+        },
+        {
+          "kind": "Lucas",
+          "k": 15,
+          "value": 1364,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Square",
+          "k": 36,
+          "value": 1296,
+          "side": "below_or_equal",
+          "relative_distance": 0.04985337243401759
+        },
+        {
+          "kind": "Square",
+          "k": 37,
+          "value": 1369,
+          "side": "above_or_equal",
+          "relative_distance": 0.003652300949598247
+        },
+        {
+          "kind": "Cube",
+          "k": 11,
+          "value": 1331,
+          "side": "below_or_equal",
+          "relative_distance": 0.024193548387096774
+        },
+        {
+          "kind": "Cube",
+          "k": 12,
+          "value": 1728,
+          "side": "above_or_equal",
+          "relative_distance": 0.21064814814814814
+        },
+        {
+          "kind": "Power2",
+          "k": 10,
+          "value": 1024,
+          "side": "below_or_equal",
+          "relative_distance": 0.24926686217008798
+        },
+        {
+          "kind": "Power2",
+          "k": 11,
+          "value": 2048,
+          "side": "above_or_equal",
+          "relative_distance": 0.333984375
+        },
+        {
+          "kind": "Triangular",
+          "k": 51,
+          "value": 1326,
+          "side": "below_or_equal",
+          "relative_distance": 0.02785923753665689
+        },
+        {
+          "kind": "Triangular",
+          "k": 52,
+          "value": 1378,
+          "side": "above_or_equal",
+          "relative_distance": 0.010159651669085631
+        }
+      ],
+      "note": "Known PHI_BIAS used as target; sanity-check scan"
+    },
+    {
+      "label": "GF32",
+      "target": 0,
+      "candidates_within_5pct": [
+        {
+          "kind": "trivial",
+          "k": 0,
+          "value": 0,
+          "side": "exact",
+          "relative_distance": 0.0
+        }
+      ],
+      "all_nearest": [],
+      "note": "PHI_BIAS=0; degenerate; no coincidence-class scan needed"
+    },
+    {
+      "label": "GF64",
+      "target": 8388608,
+      "candidates_within_5pct": [
+        {
+          "kind": "Power2",
+          "k": 23,
+          "value": 8388608,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Square",
+          "k": 2896,
+          "value": 8386816,
+          "side": "below_or_equal",
+          "relative_distance": 0.000213623046875
+        },
+        {
+          "kind": "Triangular",
+          "k": 4096,
+          "value": 8390656,
+          "side": "above_or_equal",
+          "relative_distance": 0.000244081034903588
+        },
+        {
+          "kind": "Triangular",
+          "k": 4095,
+          "value": 8386560,
+          "side": "below_or_equal",
+          "relative_distance": 0.000244140625
+        },
+        {
+          "kind": "Square",
+          "k": 2897,
+          "value": 8392609,
+          "side": "above_or_equal",
+          "relative_distance": 0.0004767289885660109
+        },
+        {
+          "kind": "Cube",
+          "k": 203,
+          "value": 8365427,
+          "side": "below_or_equal",
+          "relative_distance": 0.00276339054107666
+        },
+        {
+          "kind": "Cube",
+          "k": 204,
+          "value": 8489664,
+          "side": "above_or_equal",
+          "relative_distance": 0.011903415729998265
+        }
+      ],
+      "all_nearest": [
+        {
+          "kind": "Fibonacci",
+          "k": 34,
+          "value": 5702887,
+          "side": "below_or_equal",
+          "relative_distance": 0.32016289234161377
+        },
+        {
+          "kind": "Fibonacci",
+          "k": 35,
+          "value": 9227465,
+          "side": "above_or_equal",
+          "relative_distance": 0.0909087165326555
+        },
+        {
+          "kind": "Lucas",
+          "k": 33,
+          "value": 7881196,
+          "side": "below_or_equal",
+          "relative_distance": 0.060488224029541016
+        },
+        {
+          "kind": "Lucas",
+          "k": 34,
+          "value": 12752043,
+          "side": "above_or_equal",
+          "relative_distance": 0.34217536750777894
+        },
+        {
+          "kind": "Square",
+          "k": 2896,
+          "value": 8386816,
+          "side": "below_or_equal",
+          "relative_distance": 0.000213623046875
+        },
+        {
+          "kind": "Square",
+          "k": 2897,
+          "value": 8392609,
+          "side": "above_or_equal",
+          "relative_distance": 0.0004767289885660109
+        },
+        {
+          "kind": "Cube",
+          "k": 203,
+          "value": 8365427,
+          "side": "below_or_equal",
+          "relative_distance": 0.00276339054107666
+        },
+        {
+          "kind": "Cube",
+          "k": 204,
+          "value": 8489664,
+          "side": "above_or_equal",
+          "relative_distance": 0.011903415729998265
+        },
+        {
+          "kind": "Power2",
+          "k": 23,
+          "value": 8388608,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Triangular",
+          "k": 4095,
+          "value": 8386560,
+          "side": "below_or_equal",
+          "relative_distance": 0.000244140625
+        },
+        {
+          "kind": "Triangular",
+          "k": 4096,
+          "value": 8390656,
+          "side": "above_or_equal",
+          "relative_distance": 0.000244081034903588
+        }
+      ],
+      "note": "Known PHI_BIAS used as target; sanity-check scan"
+    }
+  ],
+  "new_rung_coincidence_scan": [
+    {
+      "label": "GF6",
+      "target": 3,
+      "candidates_within_5pct": [
+        {
+          "kind": "Fibonacci",
+          "k": 4,
+          "value": 3,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Lucas",
+          "k": 2,
+          "value": 3,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Triangular",
+          "k": 2,
+          "value": 3,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        }
+      ],
+      "all_nearest": [
+        {
+          "kind": "Fibonacci",
+          "k": 4,
+          "value": 3,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Lucas",
+          "k": 2,
+          "value": 3,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Square",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.6666666666666666
+        },
+        {
+          "kind": "Square",
+          "k": 2,
+          "value": 4,
+          "side": "above_or_equal",
+          "relative_distance": 0.25
+        },
+        {
+          "kind": "Cube",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.6666666666666666
+        },
+        {
+          "kind": "Cube",
+          "k": 2,
+          "value": 8,
+          "side": "above_or_equal",
+          "relative_distance": 0.625
+        },
+        {
+          "kind": "Power2",
+          "k": 1,
+          "value": 2,
+          "side": "below_or_equal",
+          "relative_distance": 0.3333333333333333
+        },
+        {
+          "kind": "Power2",
+          "k": 2,
+          "value": 4,
+          "side": "above_or_equal",
+          "relative_distance": 0.25
+        },
+        {
+          "kind": "Triangular",
+          "k": 2,
+          "value": 3,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        }
+      ],
+      "note": "EXP_MAX used as target; PHI_BIAS is OPEN \u2014 do not pick a value from this scan"
+    },
+    {
+      "label": "GF10",
+      "target": 7,
+      "candidates_within_5pct": [
+        {
+          "kind": "Lucas",
+          "k": 4,
+          "value": 7,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        }
+      ],
+      "all_nearest": [
+        {
+          "kind": "Fibonacci",
+          "k": 5,
+          "value": 5,
+          "side": "below_or_equal",
+          "relative_distance": 0.2857142857142857
+        },
+        {
+          "kind": "Fibonacci",
+          "k": 6,
+          "value": 8,
+          "side": "above_or_equal",
+          "relative_distance": 0.125
+        },
+        {
+          "kind": "Lucas",
+          "k": 4,
+          "value": 7,
+          "side": "below_or_equal",
+          "relative_distance": 0.0
+        },
+        {
+          "kind": "Square",
+          "k": 2,
+          "value": 4,
+          "side": "below_or_equal",
+          "relative_distance": 0.42857142857142855
+        },
+        {
+          "kind": "Square",
+          "k": 3,
+          "value": 9,
+          "side": "above_or_equal",
+          "relative_distance": 0.2222222222222222
+        },
+        {
+          "kind": "Cube",
+          "k": 1,
+          "value": 1,
+          "side": "below_or_equal",
+          "relative_distance": 0.8571428571428571
+        },
+        {
+          "kind": "Cube",
+          "k": 2,
+          "value": 8,
+          "side": "above_or_equal",
+          "relative_distance": 0.125
+        },
+        {
+          "kind": "Power2",
+          "k": 2,
+          "value": 4,
+          "side": "below_or_equal",
+          "relative_distance": 0.42857142857142855
+        },
+        {
+          "kind": "Power2",
+          "k": 3,
+          "value": 8,
+          "side": "above_or_equal",
+          "relative_distance": 0.125
+        },
+        {
+          "kind": "Triangular",
+          "k": 3,
+          "value": 6,
+          "side": "below_or_equal",
+          "relative_distance": 0.14285714285714285
+        },
+        {
+          "kind": "Triangular",
+          "k": 4,
+          "value": 10,
+          "side": "above_or_equal",
+          "relative_distance": 0.3
+        }
+      ],
+      "note": "EXP_MAX used as target; PHI_BIAS is OPEN \u2014 do not pick a value from this scan"
+    },
+    {
+      "label": "GF14",
+      "target": 31,
+      "candidates_within_5pct": [
+        {
+          "kind": "Power2",
+          "k": 5,
+          "value": 32,
+          "side": "above_or_equal",
+          "relative_distance": 0.03125
+        }
+      ],
+      "all_nearest": [
+        {
+          "kind": "Fibonacci",
+          "k": 8,
+          "value": 21,
+          "side": "below_or_equal",
+          "relative_distance": 0.3225806451612903
+        },
+        {
+          "kind": "Fibonacci",
+          "k": 9,
+          "value": 34,
+          "side": "above_or_equal",
+          "relative_distance": 0.08823529411764706
+        },
+        {
+          "kind": "Lucas",
+          "k": 7,
+          "value": 29,
+          "side": "below_or_equal",
+          "relative_distance": 0.06451612903225806
+        },
+        {
+          "kind": "Lucas",
+          "k": 8,
+          "value": 47,
+          "side": "above_or_equal",
+          "relative_distance": 0.3404255319148936
+        },
+        {
+          "kind": "Square",
+          "k": 5,
+          "value": 25,
+          "side": "below_or_equal",
+          "relative_distance": 0.1935483870967742
+        },
+        {
+          "kind": "Square",
+          "k": 6,
+          "value": 36,
+          "side": "above_or_equal",
+          "relative_distance": 0.1388888888888889
+        },
+        {
+          "kind": "Cube",
+          "k": 3,
+          "value": 27,
+          "side": "below_or_equal",
+          "relative_distance": 0.12903225806451613
+        },
+        {
+          "kind": "Cube",
+          "k": 4,
+          "value": 64,
+          "side": "above_or_equal",
+          "relative_distance": 0.515625
+        },
+        {
+          "kind": "Power2",
+          "k": 4,
+          "value": 16,
+          "side": "below_or_equal",
+          "relative_distance": 0.4838709677419355
+        },
+        {
+          "kind": "Power2",
+          "k": 5,
+          "value": 32,
+          "side": "above_or_equal",
+          "relative_distance": 0.03125
+        },
+        {
+          "kind": "Triangular",
+          "k": 7,
+          "value": 28,
+          "side": "below_or_equal",
+          "relative_distance": 0.0967741935483871
+        },
+        {
+          "kind": "Triangular",
+          "k": 8,
+          "value": 36,
+          "side": "above_or_equal",
+          "relative_distance": 0.1388888888888889
+        }
+      ],
+      "note": "EXP_MAX used as target; PHI_BIAS is OPEN \u2014 do not pick a value from this scan"
+    },
+    {
+      "label": "GF48",
+      "target": 262143,
+      "candidates_within_5pct": [
+        {
+          "kind": "Square",
+          "k": 512,
+          "value": 262144,
+          "side": "above_or_equal",
+          "relative_distance": 3.814697265625e-06
+        },
+        {
+          "kind": "Cube",
+          "k": 64,
+          "value": 262144,
+          "side": "above_or_equal",
+          "relative_distance": 3.814697265625e-06
+        },
+        {
+          "kind": "Power2",
+          "k": 18,
+          "value": 262144,
+          "side": "above_or_equal",
+          "relative_distance": 3.814697265625e-06
+        },
+        {
+          "kind": "Triangular",
+          "k": 724,
+          "value": 262450,
+          "side": "above_or_equal",
+          "relative_distance": 0.0011697466184035054
+        },
+        {
+          "kind": "Triangular",
+          "k": 723,
+          "value": 261726,
+          "side": "below_or_equal",
+          "relative_distance": 0.0015907348279374234
+        },
+        {
+          "kind": "Square",
+          "k": 511,
+          "value": 261121,
+          "side": "below_or_equal",
+          "relative_distance": 0.003898635477582846
+        },
+        {
+          "kind": "Lucas",
+          "k": 26,
+          "value": 271443,
+          "side": "above_or_equal",
+          "relative_distance": 0.0342613366342105
+        },
+        {
+          "kind": "Cube",
+          "k": 63,
+          "value": 250047,
+          "side": "below_or_equal",
+          "relative_distance": 0.046142754145638065
+        }
+      ],
+      "all_nearest": [
+        {
+          "kind": "Fibonacci",
+          "k": 27,
+          "value": 196418,
+          "side": "below_or_equal",
+          "relative_distance": 0.25072193421148
+        },
+        {
+          "kind": "Fibonacci",
+          "k": 28,
+          "value": 317811,
+          "side": "above_or_equal",
+          "relative_distance": 0.17516070872310902
+        },
+        {
+          "kind": "Lucas",
+          "k": 25,
+          "value": 167761,
+          "side": "below_or_equal",
+          "relative_distance": 0.3600401307683211
+        },
+        {
+          "kind": "Lucas",
+          "k": 26,
+          "value": 271443,
+          "side": "above_or_equal",
+          "relative_distance": 0.0342613366342105
+        },
+        {
+          "kind": "Square",
+          "k": 511,
+          "value": 261121,
+          "side": "below_or_equal",
+          "relative_distance": 0.003898635477582846
+        },
+        {
+          "kind": "Square",
+          "k": 512,
+          "value": 262144,
+          "side": "above_or_equal",
+          "relative_distance": 3.814697265625e-06
+        },
+        {
+          "kind": "Cube",
+          "k": 63,
+          "value": 250047,
+          "side": "below_or_equal",
+          "relative_distance": 0.046142754145638065
+        },
+        {
+          "kind": "Cube",
+          "k": 64,
+          "value": 262144,
+          "side": "above_or_equal",
+          "relative_distance": 3.814697265625e-06
+        },
+        {
+          "kind": "Power2",
+          "k": 17,
+          "value": 131072,
+          "side": "below_or_equal",
+          "relative_distance": 0.4999980926440912
+        },
+        {
+          "kind": "Power2",
+          "k": 18,
+          "value": 262144,
+          "side": "above_or_equal",
+          "relative_distance": 3.814697265625e-06
+        },
+        {
+          "kind": "Triangular",
+          "k": 723,
+          "value": 261726,
+          "side": "below_or_equal",
+          "relative_distance": 0.0015907348279374234
+        },
+        {
+          "kind": "Triangular",
+          "k": 724,
+          "value": 262450,
+          "side": "above_or_equal",
+          "relative_distance": 0.0011697466184035054
+        }
+      ],
+      "note": "EXP_MAX used as target; PHI_BIAS is OPEN \u2014 do not pick a value from this scan"
+    },
+    {
+      "label": "GF96",
+      "target": 68719476735,
+      "candidates_within_5pct": [
+        {
+          "kind": "Square",
+          "k": 262144,
+          "value": 68719476736,
+          "side": "above_or_equal",
+          "relative_distance": 1.4551915228366852e-11
+        },
+        {
+          "kind": "Cube",
+          "k": 4096,
+          "value": 68719476736,
+          "side": "above_or_equal",
+          "relative_distance": 1.4551915228366852e-11
+        },
+        {
+          "kind": "Power2",
+          "k": 36,
+          "value": 68719476736,
+          "side": "above_or_equal",
+          "relative_distance": 1.4551915228366852e-11
+        },
+        {
+          "kind": "Triangular",
+          "k": 370727,
+          "value": 68719439628,
+          "side": "below_or_equal",
+          "relative_distance": 5.399779183868665e-07
+        },
+        {
+          "kind": "Triangular",
+          "k": 370728,
+          "value": 68719810356,
+          "side": "above_or_equal",
+          "relative_distance": 4.854800941267022e-06
+        },
+        {
+          "kind": "Square",
+          "k": 262143,
+          "value": 68718952449,
+          "side": "below_or_equal",
+          "relative_distance": 7.6293654275305656e-06
+        },
+        {
+          "kind": "Cube",
+          "k": 4095,
+          "value": 68669157375,
+          "side": "below_or_equal",
+          "relative_distance": 0.0007322430610763294
+        }
+      ],
+      "all_nearest": [
+        {
+          "kind": "Fibonacci",
+          "k": 53,
+          "value": 53316291173,
+          "side": "below_or_equal",
+          "relative_distance": 0.22414585054828998
+        },
+        {
+          "kind": "Fibonacci",
+          "k": 54,
+          "value": 86267571272,
+          "side": "above_or_equal",
+          "relative_distance": 0.20341472790130133
+        },
+        {
+          "kind": "Lucas",
+          "k": 51,
+          "value": 45537549124,
+          "side": "below_or_equal",
+          "relative_distance": 0.33734144543031785
+        },
+        {
+          "kind": "Lucas",
+          "k": 52,
+          "value": 73681302247,
+          "side": "above_or_equal",
+          "relative_distance": 0.06734171846429364
+        },
+        {
+          "kind": "Square",
+          "k": 262143,
+          "value": 68718952449,
+          "side": "below_or_equal",
+          "relative_distance": 7.6293654275305656e-06
+        },
+        {
+          "kind": "Square",
+          "k": 262144,
+          "value": 68719476736,
+          "side": "above_or_equal",
+          "relative_distance": 1.4551915228366852e-11
+        },
+        {
+          "kind": "Cube",
+          "k": 4095,
+          "value": 68669157375,
+          "side": "below_or_equal",
+          "relative_distance": 0.0007322430610763294
+        },
+        {
+          "kind": "Cube",
+          "k": 4096,
+          "value": 68719476736,
+          "side": "above_or_equal",
+          "relative_distance": 1.4551915228366852e-11
+        },
+        {
+          "kind": "Power2",
+          "k": 35,
+          "value": 34359738368,
+          "side": "below_or_equal",
+          "relative_distance": 0.49999999999272404
+        },
+        {
+          "kind": "Power2",
+          "k": 36,
+          "value": 68719476736,
+          "side": "above_or_equal",
+          "relative_distance": 1.4551915228366852e-11
+        },
+        {
+          "kind": "Triangular",
+          "k": 370727,
+          "value": 68719439628,
+          "side": "below_or_equal",
+          "relative_distance": 5.399779183868665e-07
+        },
+        {
+          "kind": "Triangular",
+          "k": 370728,
+          "value": 68719810356,
+          "side": "above_or_equal",
+          "relative_distance": 4.854800941267022e-06
+        }
+      ],
+      "note": "EXP_MAX used as target; PHI_BIAS is OPEN \u2014 do not pick a value from this scan"
+    }
+  ]
+}
