@@ -1,4 +1,4 @@
-# claim-audit-lab — machine-readable case manifest
+# claim-audit-lab  --  machine-readable case manifest
 # Mitigation for W-R2 (project weaknesses inventory 2026-06-06)
 # Schema: id, title, target, claim_status, fpath, file, sha256
 # Generated 2026-06-06. Refresh with `scripts/gen_cases_yaml.py` after each new CASE-XX.
@@ -11,8 +11,8 @@ zenodo_doi: "10.5281/zenodo.20507098"
 
 cases:
   - id: CASE-00
-    title: "Self-audit — methodology calibration on our own work"
-    target: "Vasilev–Pellis–Olsen phi-programme"
+    title: "Self-audit  --  methodology calibration on our own work"
+    target: "Vasilev-Pellis-Olsen phi-programme"
     claim_status: Verified
     fpath: "Future independent audit of our audit; any divergence becomes a Retr"
     file: cases/CASE-00-self-audit.md
@@ -46,7 +46,7 @@ cases:
     file: cases/CASE-04-petoukhov-matrix-genetics.md
 
   - id: CASE-05
-    title: "Kramer–Klimesch golden rhythms (EEG)"
+    title: "Kramer-Klimesch golden rhythms (EEG)"
     target: "EEG golden-ratio rhythm claims (alpha/theta etc.)"
     claim_status: Risk
     fpath: "Pre-registered EEG study with matched-control frequency ratios; published replication"
@@ -73,13 +73,20 @@ cases:
     fpath: "Any of three: (a) shorter depth-leq-2 phi-native form reducing to 3 surviving the filter; (b) Rissanen-Grunwald MDL shifting rank above 10; (c) EGG-SR canonicalisation producing different equivalence-class cardinality and rank"
     file: cases/CASE-08-vasilev-bnf-equivalence-class.md
 
+  - id: CASE-09
+    title: "Corona ROM CATALOG vs closed-form ladder rule (symmetric self-audit)"
+    target: "tt-trinity-corona tools/gen_rom.py CATALOG agreement with t27 SSOT closed rule e = round((N-1)/phi^2)"
+    claim_status: Conj
+    fpath: "Any of three: (a) returned silicon at a GoldenFloat-labelled width with (e,m) disagreeing with the rule; (b) 17-format pre-registered ratio sweep [CLOSED: count_match_17=47=count_match_12, no narrowing, see CASE-09-lookelsewhere-17.txt]; (c) closed expression strictly simpler than round((N-1)/phi^2) reproducing all 17 splits"
+    file: cases/CASE-09-corona-rom-vs-closed-rule.md
+
 # Counts (auto-derivable from the cases list above)
 counts:
-  total: 9
+  total: 10
   by_status:
     Verified: 1
     Efit: 1
-    Conj: 1
+    Conj: 2
     Risk: 5
     Retr: 1
 
