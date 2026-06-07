@@ -108,7 +108,8 @@ Label changes are recorded in [`PROMOTION-LEDGER.md`](PROMOTION-LEDGER.md).
 | [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan M_pl class | 0 | 0 | 0 | 3 | 0 | 0 | partial | n/a |
 | [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev BNF (v2.3 self-audit) | 1 | 0 | 3 | 0 | 0 | 0 | yes | pending |
 | [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM vs closed rule (self-audit) | 1 | 0 | 3 | 0 | 0 | 0 | yes | n/a |
-| **Totals (v0.4, CASE-09)** | 10 cases | **30** | **10** | **17** | **23** | **4** | **2** | -- | -- |
+| [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence-class survey (self-audit) | 0 | 0 | 1 | 0 | 0 | 0 | yes | n/a |
+| **Totals (v0.5, CASE-10)** | 11 cases | **30** | **10** | **18** | **23** | **4** | **2** | -- | -- |
 
 **Reading the table.** `V` = [Verified], `EF` = [Empirical fit],
 `OC+Fpath` = [Open conjecture] with stated falsification path, `R` =
