@@ -84,6 +84,7 @@ See [`CHARTER.md`](CHARTER.md) for the full text.
 | [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan -- M_pl coincidence class | adjacent class declined in v2.1 | draft |
 | [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev -- BNF equivalence-class result (v2.3 self-audit) | symbolic regression / methodology calibration | draft |
 | [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM CATALOG vs closed rule (self-audit) | numeric formats / ROM consistency | draft |
+| [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III -- v2.3 BNF rank 2/394 for G_phi (Conj, Pellis-gated) | symbolic regression / MDL-optimality | draft |
 
 ---
 
@@ -109,7 +110,8 @@ Label changes are recorded in [`PROMOTION-LEDGER.md`](PROMOTION-LEDGER.md).
 | [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev BNF (v2.3 self-audit) | 1 | 0 | 3 | 0 | 0 | 0 | yes | pending |
 | [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM vs closed rule (self-audit) | 1 | 0 | 3 | 0 | 0 | 0 | yes | n/a |
 | [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence-class survey (self-audit) | 0 | 0 | 1 | 0 | 0 | 0 | yes | n/a |
-| **Totals (v0.5, CASE-10)** | 11 cases | **30** | **10** | **18** | **23** | **4** | **2** | -- | -- |
+| [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III v2.3 BNF rank 2/394 | 1 | 0 | 3 | 0 | 0 | 0 | yes | n/a |
+| **Totals (v0.6, CASE-12)** | 12 cases | **31** | **10** | **21** | **23** | **4** | **2** | -- | -- |
 
 **Reading the table.** `V` = [Verified], `EF` = [Empirical fit],
 `OC+Fpath` = [Open conjecture] with stated falsification path, `R` =
@@ -195,4 +197,4 @@ to every quotation.
 
 **Maintainers:** Dmitrii Vasilev (`@gHashTag`).
 **Contact:** open an issue.
-**Last index update:** 2026-06-02 (v0.2 -- scorecard, methodology, contributing, COI, promotion-ledger added).
+**Last index update:** 2026-06-07 (v0.6 -- CASE-12 added: v2.3 BNF rank 2/394 result, Conj, Pellis-gated).

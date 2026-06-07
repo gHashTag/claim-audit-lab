@@ -87,13 +87,23 @@ cases:
     fpath: "Any closed-form derivation of PHI_BIAS solely from (E, M, phi) that correctly predicts PHI_BIAS for all five new rungs AND all eight Verified rungs without post-hoc coincidence selection would falsify this Conj"
     file: cases/CASE-10-phi-bias-coincidence-scan.md
 
+  - id: CASE-12
+    title: "Vasilev II + Pellis III -- v2.3 BNF equivalence-class rank 2/394 for G_phi (Conj, Pellis-gated)"
+    target: "v2.3 sec.6.3/6.4 claim: G_phi = \\varphi^2 + \\varphi^{-2} MDL-rank 2/394 essential phi-native forms (depth-leq-2 BNF + W1+W8 anti-cancel filter); bootstrap p=0.0039"
+    claim_status: Conj
+    fpath: "(A) depth-leq-2 phi-native form with MDL < 12 reducing to 3, surviving W1+W8 filter, not a commutative permutation of G_phi; OR (B) depth-3 BNF sweep showing G_phi rank > 10 in essential class"
+    file: cases/CASE-12-g-phi-rank-2-of-394/README.md
+    depends_on: CASE-08
+    author_strand: "Vasilev II (computational sweep) + Pellis III (MDL-optimality framing)"
+    public_status: "v2.3-draft LOCAL ONLY; hard-gated on Pellis approval (Pellis Letter v2 sent 2026-06-07)"
+
 # Counts (auto-derivable from the cases list above)
 counts:
-  total: 11
+  total: 12
   by_status:
     Verified: 1
     Efit: 1
-    Conj: 3
+    Conj: 4
     Risk: 5
     Retr: 1
 
