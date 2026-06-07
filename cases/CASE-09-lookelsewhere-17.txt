@@ -1,0 +1,77 @@
+======================================================================
+lookelsewhere_17.py -- GoldenFloat look-elsewhere recount @ 17 widths
+======================================================================
+
+--- Closed-rule structural verification (all 17 rungs) ---
+PASS: closed rule reproduces all 17 canonical (N, e) splits.
+
+--- Sanity: 9-format grid search ---
+  count_match_9  = 392
+  interval_9     = [0.37844, 0.38235]
+  Preprint states: interval [0.37844, 0.38235] (grid)
+
+--- Sanity: 12-format grid search (target: 47) ---
+  count_match_12 = 47
+  interval_12    = [0.38189, 0.38235]
+  Preprint states: 47, interval [0.38189, 0.38235]
+  PASS: count_match_12 == 47 as claimed.
+
+--- Primary: 17-format grid search ---
+  count_match_17 = 47
+  interval_17    = [0.38189, 0.38235]
+
+--- Statistics ---
+  N_s (search space)     = 80000
+  count_match_17         = 47
+  p_match_17             = 5.8750e-04  (count/N_s)
+  p_17 (normal approx)   = 5.291e-01  [P(X >= 47) under Binom(80000, 5.8750e-04)]
+  Bonferroni_17          = min(80000 * 5.8750e-04, 1) = 1.000
+  count_match_17 / count_match_12 = 47/47 = 1.0000
+
+--- p-value ambiguity note ---
+  The preprint sec:lookelsewhere states p ~ 7.1e-3 for K=83, N_s=80,000
+  under Binom(N_s, K/N_s).  However, for Binom(80000, 83/80000) the
+  normal approximation gives P(X >= 83) ~ 0.52, not 7.1e-3.  The 7.1e-3
+  cannot be reproduced from the stated formula; the discrepancy is
+  documented here as an ambiguity.  The supplementary script
+  look_elsewhere_calc.py referenced in the preprint is not present in
+  the repo, so the exact computation cannot be audited at this time.
+  The COUNT results (47 at 12 formats, 47 at 17 formats) are
+  unambiguous and are the substantive finding.
+
+--- Interpretation ---
+  TRIVIAL NON-RESULT: count_match_17 == count_match_12 == 47.
+  The 5 new rungs added (GF6, GF10, GF14, GF48, GF96) all have
+  closed-rule ratios e/(N-1) that fall inside the existing 12-format
+  matching interval [0.38189, 0.38235].  They auto-pass by construction
+  and contribute ZERO additional discriminating power.  This is
+  expected and does not constitute independent evidence for the rule.
+  The moat narrative does NOT gain strength from the 17-width expansion.
+
+--- New rungs (GF6, GF10, GF14, GF48, GF96): matching-interval check ---
+  For each new rung (N, e), the match condition round((N-1)*r)==e holds
+  for r in the interval [(e-0.5)/(N-1), (e+0.5)/(N-1)].
+  The 12-format grid interval is [0.38189, 0.38235].
+  A new rung imposes no additional constraint iff its matching interval
+  CONTAINS the 12-format grid interval (i.e., all 47 existing grid points
+  already satisfy the new rung's condition).
+
+  GF   6: e/5 interval=[0.30000,0.50000], contains 12-fmt interval: YES
+  GF  10: e/9 interval=[0.27778,0.38889], contains 12-fmt interval: YES
+  GF  14: e/13 interval=[0.34615,0.42308], contains 12-fmt interval: YES
+  GF  48: e/47 interval=[0.37234,0.39362], contains 12-fmt interval: YES
+  GF  96: e/95 interval=[0.37368,0.38421], contains 12-fmt interval: YES
+
+  All 5 new rungs' matching intervals CONTAIN the 12-format interval.
+  This is why count_match_17 == count_match_12: every grid point that
+  passed all 12 prior conditions also trivially passes all 5 new ones.
+  The new rungs add no discriminating power over the already-narrow
+  12-format interval.  This is a structural consequence of the fact
+  that small-N rungs (GF6, GF10, GF14) have wide matching intervals
+  (coarse rounding), and mid-N rungs (GF48, GF96) also fully contain
+  the 12-format interval.  None of the 5 extra rungs can narrow the
+  candidate set below 47 under the grid criterion.
+
+======================================================================
+RESULT SUMMARY: count_match_12=47 (sanity OK), count_match_17=47, ratio=1.0000
+======================================================================

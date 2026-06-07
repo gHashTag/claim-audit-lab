@@ -77,7 +77,7 @@ cases:
     title: "Corona ROM CATALOG vs closed-form ladder rule (symmetric self-audit)"
     target: "tt-trinity-corona tools/gen_rom.py CATALOG agreement with t27 SSOT closed rule e = round((N-1)/phi^2)"
     claim_status: Conj
-    fpath: "Any of three: (a) returned silicon at a GoldenFloat-labelled width with (e,m) disagreeing with the rule; (b) 17-format pre-registered ratio sweep that fails to narrow appreciably or that narrows to a singleton; (c) closed expression strictly simpler than round((N-1)/phi^2) reproducing all 17 splits"
+    fpath: "Any of three: (a) returned silicon at a GoldenFloat-labelled width with (e,m) disagreeing with the rule; (b) 17-format pre-registered ratio sweep [CLOSED: count_match_17=47=count_match_12, no narrowing, see CASE-09-lookelsewhere-17.txt]; (c) closed expression strictly simpler than round((N-1)/phi^2) reproducing all 17 splits"
     file: cases/CASE-09-corona-rom-vs-closed-rule.md
 
 # Counts (auto-derivable from the cases list above)
