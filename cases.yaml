@@ -80,13 +80,20 @@ cases:
     fpath: "Any of three: (a) returned silicon at a GoldenFloat-labelled width with (e,m) disagreeing with the rule; (b) 17-format pre-registered ratio sweep [CLOSED: count_match_17=47=count_match_12, no narrowing, see CASE-09-lookelsewhere-17.txt]; (c) closed expression strictly simpler than round((N-1)/phi^2) reproducing all 17 splits"
     file: cases/CASE-09-corona-rom-vs-closed-rule.md
 
+  - id: CASE-10
+    title: "PHI_BIAS coincidence-class survey for v1.3 rule-derived rungs (GF6/10/14/48/96)"
+    target: "GoldenFloat v1.3 rule-derived rungs: GF6, GF10, GF14, GF48, GF96 -- PHI_BIAS is OPEN"
+    claim_status: Conj
+    fpath: "Any closed-form derivation of PHI_BIAS solely from (E, M, phi) that correctly predicts PHI_BIAS for all five new rungs AND all eight Verified rungs without post-hoc coincidence selection would falsify this Conj"
+    file: cases/CASE-10-phi-bias-coincidence-scan.md
+
 # Counts (auto-derivable from the cases list above)
 counts:
-  total: 10
+  total: 11
   by_status:
     Verified: 1
     Efit: 1
-    Conj: 2
+    Conj: 3
     Risk: 5
     Retr: 1
 
