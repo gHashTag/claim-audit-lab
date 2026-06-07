@@ -135,6 +135,14 @@ is **OPEN**.
 
 ---
 
+## 9. Symmetric mirror
+
+Per CASE-00, the lab applies the same framework to its own artefacts. This CASE surveys coincidence candidates for PHI_BIAS in the GoldenFloat v1.3 rule-derived rungs. The symmetric mirror is the lab's own stance: the same matched-cardinality discipline that the lab applies to external coincidence claims (e.g. CASE-07 Carroll/Kaplan M_pl, CASE-02 Stakhov) is applied here to internally generated candidates. The result is that PHI_BIAS for all five new rungs stays OPEN, which is exactly the verdict the lab's own methodology requires when no pre-registered, matched-cardinality derivation is available.
+
+CASE-09 records that the Corona ROM CATALOG-vs-rule inconsistency was found and fixed by the lab itself. CASE-10 records that the lab chose not to assign PHI_BIAS values for new rungs on the basis of descriptive coincidences alone. Both are instances of the same symmetric discipline: the lab's framework returns null results when null results are warranted, even for its own artefacts.
+
+---
+
 ## References
 
 - Scan script: `tools/phi_bias_coincidence_scan.py`
