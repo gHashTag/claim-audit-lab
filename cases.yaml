@@ -4,7 +4,7 @@
 # Generated 2026-06-06. Refresh with `scripts/gen_cases_yaml.py` after each new CASE-XX.
 
 schema_version: "1.0"
-generated: "2026-06-06"
+generated: "2026-06-16"
 license: CC-BY-4.0
 repo: gHashTag/claim-audit-lab
 zenodo_doi: "10.5281/zenodo.20507098"
@@ -97,14 +97,50 @@ cases:
     author_strand: "Vasilev II (computational sweep) + Pellis III (MDL-optimality framing)"
     public_status: "v2.3-draft LOCAL ONLY; hard-gated on Pellis approval (Pellis Letter v2 sent 2026-06-07)"
 
+  - id: CASE-13
+    title: "Tejinder P. Singh -- trace dynamics + octonion unification with phi-arithmetic (Wave-10 HIGH)"
+    target: "Singh (TIFR/IUCAA) trace-dynamics + octonionic/Clifford-algebraic derivations of Standard Model coupling ratios and mass spectrum, with phi-arithmetic entering as a structural constant"
+    claim_status: Conj
+    fpath: "Joint pre-registered matched-cardinality control alphabet rerun (phi, e, pi, sqrt-2, sqrt-3, integers, octonion structure constants) of both Singh's coupling-ratio derivations and our G_phi BNF sweep under BH-FDR q=0.05"
+    file: cases/CASE-13-singh-trace-dynamics.md
+    depends_on: CASE-07
+    public_status: "draft; no contact attempted; Wave-Loop-10 HIGH priority; institutional first-mover threat"
+
+  - id: CASE-14
+    title: "Carles Morato de Dalmases -- phi-anchored spectral-triple SM unification (Wave-10 HIGH)"
+    target: "Zenodo monograph sequence (records 20443946, 19592588, 19112358, 19353957) claiming phi-anchored spectral-triple-style derivation of Standard Model coupling/mass spectrum"
+    claim_status: Risk
+    fpath: "Matched-cardinality control alphabet rerun of the spectral-triple derivation with (e, pi, sqrt-2, sqrt-3, integers) replacing phi; collapse under BH-FDR q=0.05 promotes to Retracted, survival demotes Risk-tier to Open conjecture"
+    file: cases/CASE-14-morato-spectral-triple.md
+    depends_on: CASE-07
+    public_status: "draft; no contact attempted; Wave-Loop-10 HIGH priority; iterative monograph versioning suggests post-hoc retuning"
+
+  - id: CASE-15
+    title: "Cosimo Pellis -- symmetric mirror-audit of solo prior phi-arithmetic publications (co-author rule)"
+    target: "Pellis solo prior publications on phi-arithmetic coupling-constant identities (SSRN 4003636 + 4442074, SCIRP/JHEPGC paperid 122814, arXiv:2310.16864 with Golmankhaneh and Zingales); independent of his Strand III role in v2.5 phi-paper"
+    claim_status: Risk
+    fpath: "Matched-cardinality control alphabet rerun applied identically to (a) Pellis solo phi-arithmetic identities and (b) our joint G_phi BNF sweep; framework demands symmetric treatment of co-author prior work"
+    file: cases/CASE-15-pellis-coupling-constants.md
+    depends_on: [CASE-08, CASE-12]
+    public_status: "draft; co-author notification gated (CHARTER.md s 3); Strand III collaboration independent of this audit's outcome"
+
+  - id: CASE-16
+    title: "Phi-Grid Project -- methodologically-aligned collaboration probe (positive control, NOT adversarial)"
+    target: "Phi-Grid Project / phigriduniversity.com -- a phi-anchored research collective publicly committing to pre-registration, matched-control methodology, and falsifiable claim structure"
+    claim_status: Conj
+    fpath: "Jointly pre-registered head-to-head protocol where one Phi-Grid Project pre-registered claim and our v2.5 G_phi result run under identical matched-control alphabet + BH-FDR q=0.05"
+    file: cases/CASE-16-phi-grid-collaboration.md
+    depends_on: []
+    public_status: "draft; methodological positive control; first-contact gated on Pellis approval + live arXiv ID for phi-paper"
+
 # Counts (auto-derivable from the cases list above)
 counts:
-  total: 12
+  total: 16
   by_status:
     Verified: 1
     Efit: 1
-    Conj: 4
-    Risk: 5
+    Conj: 6
+    Risk: 7
     Retr: 1
 
 # Anchor (carried across all phi-programme artefacts)

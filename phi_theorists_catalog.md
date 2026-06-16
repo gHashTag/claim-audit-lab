@@ -623,6 +623,242 @@ population predictions are a Red Flag indicator.
 
 ---
 
+## 15. Stergios Pellis [ADJACENT -- co-author on Pellis-Vasilev-Olsen, mirror-audit target]
+
+- **Affiliation / venue:** Independent researcher (Greece). Listed as co-author on `arXiv:2310.16864`
+  (Fractal Schrodinger Equation, quant-ph, 2023, with Golmankhaneh and Zingales). Active publication
+  record on viXra, SSRN, and SCIRP (Scientific Research Publishing) from 2022 onward.
+- **Primary phi-claim(s):** Exact closed-form expressions for the inverse fine-structure constant
+  `alpha^-1 = 360 phi^-2 - 2 phi^-3 + (3 phi)^-5` (numeric value 137.0359991647656...) and the
+  proton-to-electron mass ratio `mu` using the golden ratio and trigonometric/exponential identities;
+  unity formulas for the four fundamental coupling constants and a phi-additive hierarchical
+  expansion.
+- **Domain:** Mathematical physics, dimensionless constants of physics.
+- **Key papers (verified URLs):**
+  - Pellis, S. (2022). *Unity Formulas for the Coupling Constants and the Dimensionless Physical
+    Constants.* SSRN.
+    [papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636)
+  - Pellis, S. (2023). *Unity Formulas for the Coupling Constants and Dimensionless Physical
+    Constants.* SCIRP, *Journal of High Energy Physics, Gravitation and Cosmology* (JHEPGC).
+    [scirp.org/journal/paperinformation?paperid=122814](https://www.scirp.org/journal/paperinformation?paperid=122814)
+  - Pellis, S. (2023). *Theoretical Value of the Gravitational Constant.* SSRN.
+    [papers.ssrn.com/sol3/papers.cfm?abstract_id=4442074](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4442074)
+  - Pellis, S. (multiple). viXra author page (Mathematical Physics).
+    [vixra.org/author/stergios_pellis](https://vixra.org/author/stergios_pellis)
+  - Golmankhaneh, A.K., Pellis, S., Zingales, M. (2023). *Fractal Schrodinger Equation.* arXiv:2310.16864.
+    [arxiv.org/abs/2310.16864](https://arxiv.org/abs/2310.16864)
+- **Citation status:** Independently cited (per Wave-10 search) in *Journal of Geometry and Physics*
+  (2024) and *Classical and Quantum Gravity* (2025), per user-supplied notes (these specific
+  citations need independent verification before promoting the entry).
+- **Tier estimate (preliminary):** [Empirical fit with free params] -- multi-term closed-form
+  expressions tuned to reproduce known numeric values to ~10-digit precision; no derivation from
+  first principles or anti-circularity proof; matches 1.5e-10 relative-uncertainty target of CODATA
+  alpha within a multi-coefficient formula. Cap at `Efit` until a control-grammar test on a held-out
+  constant is published.
+- **Why notable for audit-lab:** Pellis is Strand III in our own phi-paper; auditing his independent
+  publications is the *symmetric mirror commitment* required by our framework. CASE-15 is the audit
+  vehicle. If our Strand-III citation of his alpha^-1 closed form caps at `Risk` (no MDL gain, free
+  coefficients, look-elsewhere not accounted for), his independent publications must carry the same
+  cap.
+- **Verbatim quote (strongest single claim):** *"alpha^-1 = 360 phi^-2 - 2 phi^-3 + (3 phi)^-5 with
+  numerical value: alpha^-1 = 137.035999164..."* -- SCIRP JHEPGC 2023 paper, Equation (1).
+
+---
+
+## 16. Tejinder P. Singh (TIFR / IUCAA)
+
+- **Affiliation / venue:** Tata Institute of Fundamental Research (TIFR, Mumbai) and Inter-University
+  Centre for Astronomy and Astrophysics (IUCAA, Pune), India. Established research group with PhD
+  students and named programme. Foundations of Physics editorial-board adjacent.
+- **Primary phi-claim(s):** Singh's programme does NOT depend on phi as a fundamental constant. He is
+  catalogued here as the *strongest institutional competitor* in the adjacent space of "derive
+  Standard Model parameters from first principles". His framework derives `alpha^-1 ~ 137.0xx` from
+  the exceptional Jordan algebra J3(O) and the characteristic equation of E8 x E8 trace dynamics on
+  an 8D octonionic spacetime. Phi appears (if at all) only as an algebraic by-product, not as the
+  *anchor*.
+- **Domain:** Theoretical particle physics, mathematical physics, foundations of quantum mechanics.
+- **Key papers (verified URLs):**
+  - Singh, T.P. (2020). *Octonions, trace dynamics, and non-commutative geometry: a case for
+    unification in spontaneous quantum gravity.* arXiv:2006.16274.
+    [arxiv.org/abs/2006.16274](https://arxiv.org/abs/2006.16274)
+  - Singh, T.P. (2020). *Quantum theory of gravitation with octonionic mass parameters.* arXiv:2009.05574.
+    [arxiv.org/pdf/2009.05574.pdf](https://arxiv.org/pdf/2009.05574.pdf)
+  - Singh, T.P. (2021). *Trace dynamics, and a ground state in spontaneous quantum gravity.*
+    arXiv:2104.14344.
+    [arxiv.org/abs/2104.14344](https://arxiv.org/abs/2104.14344)
+  - Singh, T.P. (2022). *Unification of gravitation with the Standard Model.* arXiv:2205.06614.
+    [arxiv.org/pdf/2205.06614.pdf](https://arxiv.org/pdf/2205.06614.pdf)
+  - Singh, T.P. (2026). *Trace dynamics, octonions and unification: An E8 x E8 ...* arXiv:2501.18139.
+    [arxiv.org/abs/2501.18139](https://arxiv.org/abs/2501.18139)
+  - Comparison paper: Finster et al. (2026). *Causal Fermion Systems, Trace Dynamics and the Spectral
+    Action.* arXiv:2603.05018.
+    [arxiv.org/html/2603.05018v1](https://arxiv.org/html/2603.05018v1)
+- **Citation status:** Verified institutional position (TIFR/IUCAA), peer-reviewed publication
+  history, active 2026 preprints. Foundations of Physics-adjacent.
+- **Tier estimate (preliminary):** [Open conjecture with Fpath] -- the framework is falsifiable
+  (predicted alpha^-1 from J3(O) eigenvalues is a concrete numerical claim). Cap at `Conj` until
+  E8 x E8 prediction matches independent measurement without per-paper coefficient retuning.
+- **Why notable for audit-lab:** HIGH-priority threat to the Pellis-Vasilev-Olsen phi-paper first-mover
+  window. Even though Singh's programme is octonion-anchored not phi-anchored, his framework already
+  produces alpha^-1, mass ratios, and SM coupling-constant derivations -- *the same surface area*
+  our paper addresses methodologically. Any peer-reviewed Singh result that supersedes alpha^-1
+  precision via octonions makes the phi route look like one of many tested hypotheses. CASE-13 stub
+  captures the audit target: does any Singh paper carry a phi-anchored claim that should be cited
+  in our prior-art section?
+- **Verbatim quote (strongest single claim):** *"the (cubic) characteristic equation of [J3(O)] very
+  likely determines the masses of three generations of elementary particles, as well as values of the
+  standard model parameters"* -- arXiv:2009.05574.
+
+---
+
+## 17. Morato de Dalmases (Zenodo author identity)
+
+- **Affiliation / venue:** Self-published on Zenodo; no institutional affiliation independently
+  verified. Publishes multi-hundred-page monographs claiming complete derivation of the Standard
+  Model + gravity + Riemann Hypothesis from a single geometric construction.
+- **Primary phi-claim(s):** The 600-cell spectral triple H4 contains phi as an eigenvalue
+  structurally; from this, the Standard Model gauge group SU(3)c x SU(2)L x U(1)Y, emergent gravity
+  with Newton's G = l0^2 / (4 pi delta0^2), and a spectral analog of the Riemann zeta function with
+  Gaussian-Unitary-Ensemble statistics are claimed to follow.
+- **Domain:** Spectral-triple physics, Connes non-commutative geometry, number-theory crossover.
+- **Key papers (verified URLs):**
+  - Morato de Dalmases (2026). *A Unified Geometric Construction of the Standard Model ...* Zenodo
+    20443946 (2026-05-29).
+    [zenodo.org/records/20443946](https://zenodo.org/records/20443946)
+  - Morato de Dalmases (2026). *600-Cell Spectral Triple Series: A Complete Derivation of the
+    Standard Model.* Zenodo 19592588 (2026-04-15).
+    [zenodo.org/records/19592588](https://zenodo.org/records/19592588)
+  - Morato de Dalmases (2026). *Complete Proof of the Riemann Hypothesis and the Unified Number
+    Theory.* Zenodo 19112358 (2026-03-19).
+    [zenodo.org/records/19112358](https://zenodo.org/records/19112358)
+  - Morato de Dalmases (2026). *The Standard Model of particles and fields, including [gravitation].*
+    Zenodo 19353957 (2026-03-31).
+    [zenodo.org/records/19353957](https://zenodo.org/records/19353957)
+- **Citation status:** Zero independent peer-reviewed citations found (2026-06-16 search). Multiple
+  Zenodo records, no arXiv ID, no SSRN entry, no journal venue.
+- **Tier estimate (preliminary):** [Risk: no Fpath stated] -- the construction makes very large
+  claims (SM + gravity + Riemann) but does not state a single falsification condition the author
+  themselves would accept. The Riemann Hypothesis claim alone is a Red Flag indicator (claim too
+  large for a single self-published preprint; should be at the Clay Institute level).
+- **Why notable for audit-lab:** HIGH-threat first-mover risk. If a single Zenodo monograph gets
+  promoted to viral visibility (e.g., picked up by a YouTube physics channel), it could occupy the
+  semantic territory "phi-anchored unification of SM" before our methodology paper is on arXiv. The
+  600-cell H4 structurally contains phi -- if Morato eventually states a phi-specific prediction, his
+  Zenodo trail predates ours. CASE-14 stub.
+- **Verbatim quote (strongest single claim):** *"complete, self-contained geometric construction
+  deriving the Standard Model gauge group SU(3)c x SU(2)L x U(1)Y, emergent gravity with Newton's
+  constant G = l0^2/(4 pi delta0^2), and a spectral analog of the Riemann zeta function ..."* --
+  Zenodo 20443946 abstract.
+
+---
+
+## 18. Phi-Grid Project (phigriduniversity.com)
+
+- **Affiliation / venue:** Independent project, anonymous or pseudonymous lead. Public website with
+  pre-registered hypotheses and methodology pages.
+- **Primary phi-claim(s):** Tests whether the golden ratio phi structures the geometry of natural
+  systems at multiple scales -- from Earth surface to stellar neighbourhood -- at statistical
+  significance levels that cannot be explained by chance. Uses *pre-registered hypotheses* and
+  matched-control tests.
+- **Domain:** Statistical geo-physics / astro-statistics; methodologically the closest competitor to
+  our claim-audit framework.
+- **Key sources (verified URLs):**
+  - Project homepage: [phigriduniversity.com](https://phigriduniversity.com)
+  - Internal connection to KAM theory (golden-mean torus as last stable structure before chaos) and
+    Fibonacci matrix on PSL(2,Z) -- pages on the same site (verified 2026-06-16).
+- **Citation status:** No peer-reviewed citations yet. Project is recent (2026-03-25 timestamp on
+  homepage). Methodology pages explicit about falsifiability.
+- **Tier estimate (preliminary):** [Open conjecture with Fpath] -- the project explicitly states a
+  falsifiable pre-registered hypothesis. This is the *correct* shape of a phi claim. Cap at `Conj`
+  until pre-registered analysis returns; if the null is rejected with matched controls, promote to
+  `Verified`; if not, retract publicly to `Risk` or `Retr`.
+- **Why notable for audit-lab:** MEDIUM-threat *and* potential ALLY. Methodologically aligned with
+  our framework -- pre-registered, falsifiable, matched-controls. Direct CASE-16 candidate as a
+  *collaboration probe* rather than an adversarial audit. If they publish a pre-registered null
+  result, we should cite it; if they publish a pre-registered positive, our paper's null becomes the
+  control for theirs.
+- **Verbatim quote (strongest single claim):** *"Phi Grid asks whether [phi's natural appearances are]
+  not coincidence: whether phi actually governs how structures are spaced at cosmic scales. We test
+  this with real data, pre-registered hypotheses, and rigorous statistics."* -- homepage.
+
+---
+
+## 19. Golden-Structured Substrate (anonymous Zenodo monograph, 2025-12-09)
+
+- **Affiliation / venue:** Self-published Zenodo monograph; author identity not stated on the
+  Zenodo metadata page. Cites Holt's propulsion-applications work as inspiration.
+- **Primary phi-claim(s):** General relativity, quantum mechanics, Dirac fermions, and internal
+  Spin(10) symmetry structure emerge from a single nonlinear substrate; a *stability selection
+  principle* under Diophantine conditions "uniquely selects the golden ratio phi as the equilibrium
+  modulus of the substrate scalar field". Predicts 16 chiral fermionic zero modes (matching the 16
+  of Spin(10)) and phi-monodromy-induced corrections to the electromagnetic coupling that reproduce
+  the fine-structure constant "to ppm accuracy".
+- **Domain:** Theoretical physics, unified field theory.
+- **Key sources (verified URLs):**
+  - Zenodo 17872438 (2025-12-09). *The Golden-Structured Substrate: Emergence of Gravity, ...*
+    [zenodo.org/records/17872438](https://zenodo.org/records/17872438)
+- **Citation status:** Zero independent peer-reviewed citations found (2026-06-16 search).
+- **Tier estimate (preliminary):** [Risk: no Fpath stated] -- the "stability selection principle"
+  uniqueness claim is exactly the type of statement our control-grammar test (CASE-08, CASE-12)
+  empirically refutes (37/40 matched-cardinality controls beat the phi-grammar). Falsified-by-control
+  unless the author shows the substrate-uniqueness claim is non-equivalent to a grammar-cardinality
+  effect.
+- **Why notable for audit-lab:** MEDIUM-threat. Same surface area as our paper (phi-anchored
+  derivation of fine-structure constant + SM-adjacent structure) but without a control-grammar test
+  or claim-status framework. If pulled into a peer-reviewed venue (unlikely given Zenodo-only
+  posture), it could occupy semantic territory.
+- **Verbatim quote (strongest single claim):** *"physically realized configurations avoid resonant
+  self-amplification; under standard Diophantine conditions, this uniquely selects the golden ratio
+  phi as the equilibrium modulus of the substrate scalar field."* -- Zenodo 17872438 abstract.
+
+---
+
+## 20. Tau-Pi-Prime Riemann (anonymous Zenodo, 2025-10-02)
+
+- **Affiliation / venue:** Self-published Zenodo. Author identity not stated.
+- **Primary phi-claim(s):** Unified framework connecting the Riemann zeta function analytic
+  structure, prime distribution, Schwarzschild-spacetime geometry, and Fibonacci/tau-pi fractal
+  recursion.
+- **Domain:** Number theory + general relativity + Fibonacci recursion.
+- **Key sources (verified URLs):**
+  - Zenodo 17253149 (2025-10-02). *Tau Pi Prime Proof of Riemann Hypotheses.*
+    [zenodo.org/records/17253149](https://zenodo.org/records/17253149)
+- **Citation status:** Zero independent peer-reviewed citations found.
+- **Tier estimate (preliminary):** [Fringe-adjacent: cited only by sympathetic outlets] -- combines
+  Riemann Hypothesis proof claim with Fibonacci numerology under a single self-published preprint.
+  The combination of "complete proof of Riemann" + "Schwarzschild geometry" + "Fibonacci recursion"
+  is a Red Flag indicator (claim spread too wide for a single anonymous Zenodo entry).
+- **Why notable for audit-lab:** Watchlist only. Listed for completeness of the 2026 phi-Riemann
+  competitive landscape. No CASE file created.
+
+---
+
+## 21. Myo Oo / Project MAYA
+
+- **Affiliation / venue:** Independent. Project MAYA is an expanding public-facing initiative; no
+  peer-reviewed venue or formal proof artefacts independently verified at Wave-10 search.
+- **Primary phi-claim(s):** phi-anchored derivation of physical constants and structure; specific
+  claims need source verification before this entry is promoted.
+- **Citation status:** Wave-10 user note ("MEDIUM-HIGH, expanding but no formal proofs"). Independent
+  source verification PENDING -- this entry is provisional.
+- **Tier estimate (preliminary):** [Risk: no Fpath stated] -- pending source-URL verification.
+- **Why notable for audit-lab:** Listed per Wave-10 user notes; entry must be promoted only after
+  a verified primary-source URL is added. CASE file not yet created.
+
+---
+
+## 22. Gray et al. (geometric / algebraic phi)
+
+- **Affiliation / venue:** Not yet verified.
+- **Primary phi-claim(s):** Geometric / algebraic phi approach without citations per Wave-10
+  user notes.
+- **Citation status:** Independent source verification PENDING.
+- **Tier estimate (preliminary):** [Risk: no Fpath stated] -- pending source-URL verification.
+- **Why notable for audit-lab:** Listed per Wave-10 user notes; entry must be promoted only after
+  primary-source URLs are added. CASE file not yet created.
+
+---
+
 ## Summary Table
 
 | # | Name | Domain | Tier | Peer-Reviewed Anchor |
@@ -641,6 +877,14 @@ population predictions are a Red Flag indicator.
 | 12 | Oleg Bodnar | Math / biology (phyllotaxis) | Open conjecture with Fpath | Via Stakhov SCIRP (2010) |
 | 13 | M.R. Mehdinia | Architecture (Persian) | *Under-verified* | URL not confirmed |
 | 14 | Phi-consciousness fringe | Consciousness | Fringe-adjacent | LinkedIn / PhilArchive only |
+| 15 | Stergios Pellis | Math-phys / coupling constants | Empirical fit with free params | viXra / SSRN / SCIRP 2022-2026 |
+| 16 | Tejinder P. Singh (TIFR/IUCAA) | Trace dynamics / octonions / E8 unification | Open conjecture with Fpath | arXiv:2006.16274, 2501.18139, 2603.05018 |
+| 17 | Morato de Dalmases (anon. Zenodo) | Spectral-triple SM + gravity + Riemann | Risk: no Fpath stated | Zenodo 20443946 / 19112358 / 19592588 |
+| 18 | Phi-Grid Project (anon.) | phi-anchored stellar/Earth geometry | Open conjecture with Fpath | phigriduniversity.com 2026 |
+| 19 | Golden-Structured Substrate (anon. Zenodo) | phi-vacuum gravity + Spin(10) | Risk: no Fpath stated | Zenodo 17872438 |
+| 20 | Tau-Pi-Prime Riemann (anon. Zenodo) | Fibonacci/Tau-Pi Riemann + Schwarzschild | Fringe-adjacent | Zenodo 17253149 |
+| 21 | Myo Oo / Project MAYA | phi-physics derivation (no formal proof) | Risk: no Fpath stated | Project MAYA public site |
+| 22 | Gray et al. (geometric/algebraic phi) | phi geometry without citations | Risk: no Fpath stated | TBD by audit-lab |
 
 ---
 
@@ -662,6 +906,25 @@ population predictions are a Red Flag indicator.
    reproduced in a non-El Naschie-authored paper.
 4. Stakhov -- verify whether "Fibonacci computers" or golden-number systems have any implemented
    hardware demonstration.
+
+**Wave-10 (2026-06-16) priority additions (HIGH-threat first-mover competition):**
+5. **Singh (TIFR/IUCAA)** -- HIGH threat. Institutional + 7+ preprints in 2026 + Foundations
+   of Physics editorial board. CASE-13 stub created. Audit target: whether E8 x E8 trace-dynamics
+   produces a *phi*-anchored numeric prediction (not just generic SM coupling-constant derivation).
+6. **Morato de Dalmases (Zenodo records 20443946, 19592588)** -- HIGH threat. Claims complete SM +
+   gravity + Riemann Hypothesis from 600-cell H4 spectral triple. CASE-14 stub created. Audit target:
+   whether the 600-cell construction actually predicts phi-specific structure or just uses H4
+   (which happens to contain phi as eigenvalue without claiming phi-specificity).
+7. **Pellis (peer-reviewed venues)** -- MEDIUM threat. *Co-author* on Pellis-Vasilev-Olsen paper,
+   independently published on phi-coupling-constants. CASE-15 stub created as **symmetric self-audit**
+   alongside CASE-08 / CASE-12 (his Strand III claims are inside our paper). Mirror commitment is
+   live.
+8. **Phi-Grid Project (phigriduniversity.com)** -- MEDIUM threat. Methodologically grounded
+   (pre-registered, falsifiable). Closest in *method* to our framework. CASE-16 stub for collaboration
+   probe rather than adversarial audit.
+9. **Golden-Structured Substrate / Tau-Pi-Prime / Project MAYA** -- watchlist; no CASE files yet.
+   Add only if cited in a peer-reviewed venue or if a sympathetic outlet promotes one to viral
+   visibility.
 
 ---
 
