@@ -72,19 +72,44 @@ See [`CHARTER.md`](CHARTER.md) for the full text.
 
 ## Index of cases
 
-| ID       | Subject                                | Domain                              | Status |
-|----------|----------------------------------------|-------------------------------------|--------|
-| [CASE-00](cases/CASE-00-self-audit.md) | self-audit (lab maintainers) | numeric formats / ML training | draft |
-| [CASE-01](cases/CASE-01-savchenko-pointer-architecture.md) | A. Savchenko -- Pointer Architecture v9.0 | consciousness / dark matter | draft |
-| [CASE-02](cases/CASE-02-stakhov-mathematics-of-harmony.md) | A. Stakhov -- Mathematics of Harmony | number systems / phi-universalism | draft |
-| [CASE-03](cases/CASE-03-el-naschie-e-infinity.md) | M.S. El Naschie -- E-infinity theory | quantum spacetime / dimensions | draft |
-| [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | S.V. Petoukhov -- Matrix Genetics | bioinformatics / phi-matrices | draft |
-| [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | M.A. Kramer & W. Klimesch -- Golden EEG Rhythms | neuroscience (positive control) | draft |
-| [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot -- Phi-period economic cycles | econometrics (positive control) | draft |
-| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan -- M_pl coincidence class | adjacent class declined in v2.1 | draft |
-| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev -- BNF equivalence-class result (v2.3 self-audit) | symbolic regression / methodology calibration | draft |
-| [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM CATALOG vs closed rule (self-audit) | numeric formats / ROM consistency | draft |
-| [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III -- v2.3 BNF rank 2/394 for G_phi (Conj, Pellis-gated) | symbolic regression / MDL-optimality | draft |
+Generated from [`cases.yaml`](cases.yaml), the machine-readable manifest.
+`Class` is the manifest's `claim_status` for the case as a whole; per-claim
+labels live in the case files. If this table and `cases.yaml` disagree,
+`cases.yaml` is authoritative.
+
+| ID       | Subject                                | Domain                              | Class  | Status |
+|----------|----------------------------------------|-------------------------------------|--------|--------|
+| [CASE-00](cases/CASE-00-self-audit.md) | self-audit (lab maintainers) | numeric formats / ML training | Verified | draft |
+| [CASE-01](cases/CASE-01-savchenko-pointer-architecture.md) | A. Savchenko -- Pointer Architecture v9.0 | consciousness / dark matter | Risk | draft |
+| [CASE-02](cases/CASE-02-stakhov-mathematics-of-harmony.md) | A. Stakhov -- Mathematics of Harmony | number systems / phi-universalism | Efit | draft |
+| [CASE-03](cases/CASE-03-el-naschie-e-infinity.md) | M.S. El Naschie -- E-infinity theory | quantum spacetime / dimensions | Retr | draft |
+| [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | S.V. Petoukhov -- Matrix Genetics | bioinformatics / phi-matrices | Risk | draft |
+| [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | M.A. Kramer & W. Klimesch -- Golden EEG Rhythms | neuroscience (positive control) | Risk | draft |
+| [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot -- Phi-period economic cycles | econometrics (positive control) | Risk | draft |
+| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan -- M_pl coincidence class | adjacent class declined in v2.1 | Risk | draft |
+| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev -- BNF equivalence-class result (v2.3 self-audit) | symbolic regression / methodology calibration | Conj | draft |
+| [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM CATALOG vs closed rule (self-audit) | numeric formats / ROM consistency | Conj | draft |
+| [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence-class survey (self-audit) | numeric formats / coincidence classes | Conj | draft |
+| [CASE-11](cases/CASE-11-gray-dennis-kauffman-mereon-600cell.md) | Gray, Dennis & Kauffman -- Mereon system and the 600-cell | geometry / H3-H4 correspondence | Verified | draft |
+| [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III -- v2.3 BNF rank 2/394 for G_phi (Conj, Pellis-gated) | symbolic regression / MDL-optimality | Conj | draft |
+| [CASE-13](cases/CASE-13-singh-trace-dynamics.md) | T.P. Singh -- trace dynamics + octonion unification | trace dynamics / octonionic unification | Conj | draft |
+| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | C. Morato de Dalmases -- phi-anchored spectral-triple SM unification | spectral triples / SM unification | Risk | draft |
+| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | C. Pellis -- solo prior phi-arithmetic work (co-author mirror-audit) | phi-arithmetic / co-author mirror-audit | Risk | draft |
+| [CASE-16](cases/CASE-16-phi-grid-collaboration.md) | Phi-Grid Project -- collaboration probe | methodology (positive control) | Conj | draft |
+| [CASE-17](cases/CASE-17-mcgirl-geometric-standard-model.md) | T. McGirl -- Geometric Standard Model | E8 -> H4 geometry / constant derivation | Risk | draft |
+| [CASE-18](cases/CASE-18-agyemang-e8-boundary-geometry.md) | Agyemang (AIMS Ghana) -- eleven constants from E8 boundary geometry | E8 boundary geometry / constants | Risk | draft |
+| [CASE-19](cases/CASE-19-singh-e8-octonionic-unification.md) | T.P. Singh -- E8 x omega-E8 octonionic unification | octonionic unification / quantum foundations | Conj | draft |
+| [CASE-20](cases/CASE-20-morato-dalmases-600cell-spectral-triple.md) | L. Morato de Dalmases -- 600-cell spectral triple and SGUP | spectral triples / Millennium-problem claims | Risk | draft |
+| [CASE-21](cases/CASE-21-pellis-unity-formulas-coupling-constants.md) | S. Pellis -- unity formulas for coupling constants | phi-arithmetic / coupling constants | Risk | draft |
+| [CASE-22](cases/CASE-22-myo-oo-e8-holographic.md) | Myo Oo (+ M.W. Vick) -- Project MAYA | E8 holographic geometry / Project MAYA | Risk | draft |
+
+**Register totals** (from the `counts` block in `cases.yaml`): 23 cases --
+Verified 2, Efit 1, Conj 7, Risk 12, Retr 1.
+
+Two entries need attention and are listed as-is rather than silently fixed:
+CASE-12's manifest path (`cases/CASE-12-g-phi-rank-2-of-394/README.md`) does
+not exist on disk, and CASE-15 / CASE-21 record different given names for a
+Pellis subject while citing the same SCIRP paper id (122814).
 
 ---
 
@@ -112,6 +137,16 @@ Label changes are recorded in [`PROMOTION-LEDGER.md`](PROMOTION-LEDGER.md).
 | [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence-class survey (self-audit) | 0 | 0 | 1 | 0 | 0 | 0 | yes | n/a |
 | [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III v2.3 BNF rank 2/394 | 1 | 0 | 3 | 0 | 0 | 0 | yes | n/a |
 | **Totals (v0.6, CASE-12)** | 12 cases | **31** | **10** | **21** | **23** | **4** | **2** | -- | -- |
+
+**Scope of this table.** The scorecard covers 12 of the 23 cases in the index
+above. It is not regenerated from `cases.yaml`, because per-claim label counts
+are not carried there; its machine-readable source
+[`data/scorecard.json`](data/scorecard.json) is itself older still (generated
+2026-06-02, CASE-00..CASE-06). CASE-13..CASE-22 are unscored: those files
+record claims in an assessment table rather than in five-label inventory
+sections, so there are no `- **[LABEL] ...**` bullets to count. Scoring them
+requires rewriting them to the structure in
+[`templates/CASE-TEMPLATE.md`](templates/CASE-TEMPLATE.md) first.
 
 **Reading the table.** `V` = [Verified], `EF` = [Empirical fit],
 `OC+Fpath` = [Open conjecture] with stated falsification path, `R` =
@@ -197,4 +232,6 @@ to every quotation.
 
 **Maintainers:** Dmitrii Vasilev (`@gHashTag`).
 **Contact:** open an issue.
-**Last index update:** 2026-06-07 (v0.6 -- CASE-12 added: v2.3 BNF rank 2/394 result, Conj, Pellis-gated).
+**Last index update:** 2026-08-10 (v0.7 -- index regenerated from `cases.yaml`:
+23 cases, adds CASE-10, CASE-11, CASE-13..CASE-22; the Wave-Loop batch was
+renumbered 12->18, 13->19, 14->20, 15->21, 16->22 to clear ID collisions).
