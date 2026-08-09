@@ -40,19 +40,31 @@ McGirl published "Geometric Standard Model (GSM) v26.0" on Zenodo (December 14, 
 
 ## 3. Critical Assessment
 
-**Endorsement gap:** McGirl has no arXiv papers under the name "Timothy McGirl." arXiv requires endorsement for hep-th; McGirl appears to lack it. This is a significant publication barrier.
+**Venue:** no arXiv record was located under this name at audit date. arXiv
+requires endorsement for hep-th. Recorded as a fact about the available
+evidence, not about the author.
 
-**Lean proofs:** 6 compiled Lean 4 proofs provide more verification than most competitors, but still far fewer than Trinity's 166 Coq theorems.
+**Formal verification:** 6 compiled Lean 4 proofs. Under FRAMEWORK.md this is
+[Verified] for the statements given to the proof assistant and nothing beyond
+them; the same restriction binds the lab's 166 theorems (Section 9).
 
-**Differentiation from Trinity:**
+**Comparison with the lab's own programme** (inventory, not merit):
 - McGirl: 58 constants, 6 Lean proofs, Python solver
-- Trinity: 23 constants, 166 Coq proofs, FPGA hardware, explicit tolerances
+- Lab (Trinity): 23 constants, 166 Coq proofs, FPGA opcodes, stated tolerances
 
 ---
 
-## 4. Risk Assessment
+## 4. Evidence calibration
 
-**Threat level:** LOW -- Effectively stalled. Single Zenodo deposit (Dec 2025), no arXiv presence, no follow-up work indexed. The endorsement barrier means McGirl is unlikely to publish on arXiv in the near term. However, the GitHub repositories show active code development.
+**Under FRAMEWORK.md (d), venue:** a single Zenodo deposit (Dec 2025), no
+peer review and no arXiv record located at audit date. This calibrates the
+evidence available, not the author. The lab's own phi-paper is likewise not
+yet accepted, so the two sit at the same point on this axis.
+
+**Under FRAMEWORK.md (b), look-elsewhere:** the zero-free-parameter claim over
+58 constants has no stated bound on the space of expressions the alphabet can
+generate, so no correction is reportable. The lab's 23-constant claim has the
+same gap.
 
 ---
 
@@ -83,9 +95,9 @@ both programmes derive constants from E8 -> H4 geometry, both claim zero free
 parameters, and both submit part of the work to a proof assistant. Every
 verification asset the lab holds, the subject holds a smaller version of, and
 every unbounded-search-space problem the subject has, the lab has at 23 constants
-instead of 58. Section 4 above records the subject as effectively stalled on the
-arXiv endorsement barrier; under the framework that is a venue fact under (d),
-which the lab shares, and not a fact about the claims.
+instead of 58. Section 4 records the absence of an arXiv record; under the
+framework that is a venue fact under (d), which the lab shares, and not a fact
+about the claims.
 
 **Joint Fpath.** Pre-register the constant list, the generating alphabet and the
 tolerance for each constant **before** running the solver, then apply one

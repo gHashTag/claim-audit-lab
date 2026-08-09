@@ -31,10 +31,10 @@ Morato de Dalmases published two major Zenodo deposits in April 2026:
 | M1 | SM + gravity from 600-cell spectral triple | Asserted, partial derivations | **Unverified** |
 | M2 | Three generations via 53-cycle automorphism | Mathematical construction | **Plausible but unverified** |
 | M3 | Dark energy from KPZ fluctuations | Physical argument | **Speculative** |
-| M4 | **Proof of Riemann Hypothesis** | Asserted | **Extraordinarily unlikely** |
-| M5 | **Proof of Goldbach conjecture** | Asserted | **Extraordinarily unlikely** |
-| M6 | **Proof of Twin Primes** | Asserted | **Extraordinarily unlikely** |
-| M7 | **Proof of Collatz conjecture** | Asserted | **Extraordinarily unlikely** |
+| M4 | **Proof of Riemann Hypothesis** | Asserted; no checkable derivation located | **No derivation to audit** |
+| M5 | **Proof of Goldbach conjecture** | Asserted; no checkable derivation located | **No derivation to audit** |
+| M6 | **Proof of Twin Primes** | Asserted; no checkable derivation located | **No derivation to audit** |
+| M7 | **Proof of Collatz conjecture** | Asserted; no checkable derivation located | **No derivation to audit** |
 | M8 | Machine-checkable proofs | None | **Absent** |
 | M9 | Published code / software | None identified | **Absent** |
 
@@ -42,21 +42,37 @@ Morato de Dalmases published two major Zenodo deposits in April 2026:
 
 ## 3. Critical Assessment
 
-**Credibility damage:** The claims of proving RH, Goldbach, Twin Primes, and Collatz are red flags. These are unsolved problems in mathematics; a single researcher claiming proofs of all four simultaneously is an extraordinary claim requiring extraordinary evidence -- which is absent.
+**M4-M7 carry no auditable derivation.** RH, Goldbach, Twin Primes and Collatz
+are open problems. The deposits assert proofs; no derivation that a reader can
+check was located at audit date, and no Fpath is stated. Under FRAMEWORK.md (a)
+that places all four at [Risk], and jointly with (d) at [High-risk]. The label
+records what evidence is available, not a judgment of the author, and a proof
+supplied later is audited on its merits like any other.
 
-**Overreach risk:** Morato's speculative claims risk guilt-by-association for the entire H4 -> SM research programme. Trinity must explicitly distance itself from these claims.
+**Shared object with the lab.** M1 works the same geometric object (the 600-cell)
+in the same formalism (spectral triples) as the lab's own programme. That makes
+this the register's sharpest mirror rather than its most distant case: the lab
+cannot label this construction unverified and exempt its own. Section 9 places
+the two side by side.
 
-**Differentiation from Trinity:**
-- Trinity makes **no** claims about Millennium Problems
-- Trinity provides **machine-checkable** proofs for SM parameter bounds
-- Trinity has **explicit error tolerances** and **honest disclaimers**
-- Trinity's self-assessed 6/10 honesty score is the antidote to Morato's overreach
+**Comparison with the lab's own programme** (inventory, not merit):
+- The lab states no Millennium-Problem claims
+- The lab supplies machine-checked proofs for stated SM parameter bounds
+- The lab states explicit error tolerances
+- The lab's own self-audit records one [Retracted] claim and one [Risk] table
 
 ---
 
-## 4. Risk Assessment
+## 4. Evidence calibration
 
-**Threat level:** HIGH -- Most direct competitor on the same geometric object (600-cell) and same formalism (spectral triples). However, the overreach into Millennium Problems damages credibility. The threat is primarily "guilt by association" rather than direct competition.
+**Fpath (a):** absent for M2-M7. This is the framework's default route to
+[Risk] and is the single largest gap in the case.
+
+**Venue (d):** Zenodo deposits, no peer review located at audit date.
+
+**Control (c):** the phi-specific reading of M1 has no matched-cardinality
+control reported. The lab's own H4 construction has the same gap, and the joint
+falsifier in Section 9 is written to settle both at once.
 
 ---
 
@@ -81,12 +97,12 @@ CASE-00, the global self-audit.
 | M2/M3: three generations via a 53-cycle automorphism; dark energy from KPZ fluctuations | CASE-00 s 6: phi as architecture prior (`beta_1 = phi^-1`, `weight_decay = phi^-3`, `grad_clip = phi^-1`, QK-Gain `= phi^2`, Fibonacci warmup) | Subject's: **[Risk]** under (a) -- a specific construction with no stated falsifier. Lab's: **[Open conjecture]** -- a structurally identical "this constant is doing real work" claim, differing only in that a falsifier is stated and executable (Phase B1-real). FRAMEWORK.md calls that sentence mandatory, and it is the entire distance between the two labels |
 | M8/M9: no machine-checkable proofs, no published code | CASE-00 s 7: the BPB-per-format table not regenerable from public HEAD `fab7d81` | Both **[Risk]** under (b). Unpublished computation is not evidence for either party |
 
-**What the symmetry is.** Section 3 above frames the concern as
-guilt-by-association: the subject's Millennium-Problem claims are read as a
+**What the symmetry is.** An earlier revision of this file framed the concern as
+guilt-by-association -- the subject's Millennium-Problem claims read as a
 reputational hazard to the wider H4-to-SM programme, the lab's own included.
-Under the framework that framing is about the lab's interests, not about the
-subject's claims, and it carries no weight in the labels assigned here. What
-does carry weight is that the lab and the subject are working the same
+That framing was about the lab's interests rather than the subject's claims and
+carried no weight in any label, so it has been removed under CHARTER.md s 1 and
+s 4. What does carry weight is that the lab and the subject work the same
 geometric object with the same formalism, and that on the shared claim (M1) the
 two programmes sit in the same epistemic class. The lab's advantage is the
 ledger and the stated Fpaths, not the derivation.

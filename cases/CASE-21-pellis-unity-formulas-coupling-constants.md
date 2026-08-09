@@ -38,20 +38,33 @@ Pellis is an active researcher publishing on alternative platforms (viXra, SSRN)
 
 ## 3. Critical Assessment
 
-**Precedence risk:** Pellis is the **first peer-reviewed researcher** in the exact niche Trinity occupies (phi-structured SM parameter formulas). His 2023 JHEPGC paper has citations in mainstream journals (JGP, CQG). Trinity MUST acknowledge this precedence in any arXiv submission.
+**Precedence.** Pellis published peer-reviewed work in the niche the lab's own
+programme occupies (phi-structured SM parameter formulas), and the 2023 JHEPGC
+paper is cited in *Journal of Geometry and Physics* (2024) and *Classical and
+Quantum Gravity* (2025). Precedence is a fact about the literature and is
+recorded as such; the lab owes the citation on that ground alone.
 
-**Recommended Trinity citation:**
-> "The empirical observation that SM parameters approximate phi-structured formulas has been explored by Pellis (JHEPGC 2023) and Olsen-El Naschie (EJAS 2022). Trinity provides the first machine-checkable formalization of this hypothesis."
-
-**Differentiation from Trinity:**
-- Pellis: Empirical/numerical derivations on alternative platforms
-- Trinity: 166 Rocq theorems with explicit tolerances, FPGA hardware, 23 formulas
+**Comparison with the lab's own programme** (inventory, not merit):
+- Pellis: empirical and numerical derivations, peer-reviewed and preprint venues
+- Lab: 166 Rocq theorems with stated tolerances, FPGA opcodes, 23 formulas
 
 ---
 
-## 4. Risk Assessment
+## 4. Evidence calibration
 
-**Threat level:** MEDIUM -- Pellis has peer-reviewed precedence but lacks formal verification. The primary risk is reviewer perception ("Trinity is rediscovering Pellis"). Citation neutralizes this risk.
+**Under FRAMEWORK.md (d), venue:** peer-reviewed (SCIRP/JHEPGC) with citations in
+two mainstream journals. On this axis the subject's record is currently stronger
+than the lab's, whose phi-paper is not yet accepted. Recorded plainly because a
+calibration that only ever runs one direction is not a calibration.
+
+**Under FRAMEWORK.md (b), look-elsewhere:** the phi expressions for alpha are
+published without a stated bound on the space of expressions searched, so no
+correction is reportable. The lab bounded its own space at 394 forms and reports
+that denominator -- a difference in disclosure, not in kind.
+
+**Under FRAMEWORK.md (c), control:** CASE-00 s 7 records the lab's own control
+result that phi-free grammars of equal cardinality reach comparable compression.
+That control bears on the subject's P2 and on the lab's own claim identically.
 
 ---
 
@@ -76,11 +89,12 @@ CASE-00, the global self-audit.
 | P3: peer-reviewed citations in *Journal of Geometry and Physics* (2024) and *Classical and Quantum Gravity* (2025) | CASE-00 s 1: phi-paper, a short manuscript in the Foundations of Physics queue, not yet accepted | On the venue axis of FRAMEWORK.md (d), the subject's record is currently **stronger** than the lab's. Venue weakness is a calibration of available evidence, not a character judgment, and here it calibrates against the lab |
 | P4/P5: no machine-checkable proofs, no SM mass formulas with tolerances | Section 3 above: Trinity's 166 machine-checked theorems with explicit tolerances | Lab's: **[Verified] for the theorem statements only**, per the FRAMEWORK.md anti-pattern rule. Formal verification of a formula establishes the formula, not that phi is the right base for it -- which is the claim actually in dispute between the two programmes |
 
-**Declared interest.** Section 3 above describes the subject's precedence as a
-"risk" to the lab's own publication position and drafts citation language to
-"neutralize" it. Under CHARTER.md s 1 and COI.md that is a statement about the
-lab's interests, and it carries no weight in the labels assigned in this
-section. The register separately carries
+**Declared interest.** An earlier revision of this file described the subject's
+precedence as a "risk" to the lab's own publication position and drafted citation
+language to "neutralize" it. Under CHARTER.md s 1 and COI.md that is a statement
+about the lab's interests, it carries no weight in any label, and it has been
+removed; the precedence is now recorded as the literature fact it is. The
+register separately carries
 [`cases/CASE-15-pellis-coupling-constants.md`](CASE-15-pellis-coupling-constants.md),
 opened under the co-author rule because a Pellis strand is a co-author on the
 lab's own phi-paper; the labels above are assigned independently of that

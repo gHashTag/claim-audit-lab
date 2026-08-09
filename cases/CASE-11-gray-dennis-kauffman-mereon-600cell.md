@@ -34,9 +34,13 @@ Gray, Dennis and Kauffman published arXiv:2604.00255v1 (March 31, 2026): "The Me
 
 ---
 
-## 3. Differentiation from Trinity S^3AI
+## 3. Comparison with the lab's own programme
 
-| Dimension | Gray et al. | Trinity S^3AI |
+Recorded so the symmetric mirror in Section 9 has a stated basis. The columns
+are inventory, not merit: under an unbounded search space a larger count is a
+larger [Risk], not a stronger result (FRAMEWORK.md (b)).
+
+| Dimension | Gray et al. | Lab (Trinity) |
 |-----------|-------------|--------------|
 | Machine proofs | None | 166 Rocq theorems |
 | SM parameter formulas | None | 23 phi-monomials |
@@ -47,11 +51,15 @@ Gray, Dennis and Kauffman published arXiv:2604.00255v1 (March 31, 2026): "The Me
 
 ---
 
-## 4. Risk Assessment
+## 4. Evidence calibration
 
-**Threat level:** MEDIUM -- Kauffman's name lends credibility, but the paper is geometric/algebraic without phenomenological claims. No direct competition on SM parameter derivation.
+**Venue, FRAMEWORK.md (d):** an arXiv preprint. No venue weakness is recorded
+against the specific geometric claims G1-G3.
 
-**Precedence:** Gray et al. do not claim SM parameter formulas; they claim geometric correspondences. Trinity's phi-monomial formulas are an independent (and narrower) claim.
+**Scope, FRAMEWORK.md (b):** Gray et al. state geometric correspondences and do
+not state SM parameter formulas. Under the framework that absence removes
+look-elsewhere exposure rather than counting against the programme. The lab's
+own phi-monomial formulas carry that exposure; Section 9 labels both.
 
 ---
 

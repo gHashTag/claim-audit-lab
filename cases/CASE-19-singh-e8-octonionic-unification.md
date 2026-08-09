@@ -42,28 +42,43 @@ Prof. T.P. Singh is a professional physicist at TIFR with extensive peer-reviewe
 
 ## 3. Critical Assessment
 
-**Institutional credibility:** Singh is a TIFR professor with peer-reviewed publications in *Physical Review D*, *Classical and Quantum Gravity*, and other mainstream journals. This is the highest institutional credibility of any Trinity competitor.
+**Venue, FRAMEWORK.md (d):** publications in *Physical Review D*, *Classical and
+Quantum Gravity* and other peer-reviewed journals. No venue weakness is recorded.
 
-**Falsification orientation:** Singh explicitly frames his work as "falsification-oriented," which aligns with good scientific practice. He lists experimental tests (e.g., Bell-CHSH > 2*sqrt(2)) that could refute the theory.
+**Stated falsifiers.** The 2026 catalogue is framed as falsification-oriented and
+lists experimental tests, including Bell-CHSH > 2*sqrt(2), that would refute the
+theory. Under FRAMEWORK.md a stated, actionable Fpath is exactly what moves a
+claim out of [Risk] into [Open conjecture]; this is recorded as a strength, and
+Section 9 places it beside the lab's own two [Open conjecture] rows.
 
-**Differentiation from Trinity:**
-- Method: Bioctonionic / E8 x omega-E8 splitting vs Trinity's H4/600-cell spectral triples
+**Comparison with the lab's own programme** (inventory, not merit):
+- Method: bioctonionic / E8 x omega-E8 splitting vs the lab's H4/600-cell spectral triples
 - No 600-cell or golden-ratio monomial formulas
 - No machine proofs or hardware instantiation
-- Broader scope (quantum foundations + cosmology) but less precision on SM parameters
+- Broader scope (quantum foundations + cosmology), fewer stated SM parameter values
 
 ---
 
-## 4. Risk Assessment
+## 4. Evidence calibration
 
-**Threat level:** HIGH -- Most dangerous institutional competitor. Rapid 2026 arXiv output, falsification-oriented approach, and TIFR affiliation make this a broad-spectrum unification programme. However, Singh does not compete directly on Trinity's niche (H4/600-cell phi-monomials with machine proofs).
+**Venue (d):** peer-reviewed journals; no weakness recorded.
+
+**Fpath (a):** stated and actionable for S2, which is the framework's threshold
+for [Open conjecture]. The falsifier is blocked on an experiment, not absent --
+a different condition from the lab's own compute-blocked falsifiers, but the
+same epistemic class.
+
+**Look-elsewhere (b):** the mass relation S4 (sqrt-ratios 1:2:3) is quoted
+without a stated bound on which ratios were examined, so it sits at
+[Empirical fit] rather than higher. Section 9 pairs it with the lab's own
+[Empirical fit] row.
 
 ---
 
 ## 5. Audit Trail
 
-- 2026-06-16 -- Wave Loop 9 competitive analysis
-- 2026-06-16 -- Threat upgraded to HIGH in Wave Loop 10 (rapid publication rate)
+- 2026-06-16 -- Wave Loop 9 intake
+- 2026-06-16 -- Wave Loop 10 re-read (2026 publication rate noted)
 - 2026-06-16 -- Added to claim-audit-lab register
 - 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
 

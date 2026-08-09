@@ -23,7 +23,7 @@ Agyemang published on Zenodo:20525049 (June 3, 2026): "Eleven Fundamental Consta
 
 | # | Claim | Evidence | Assessment |
 |---|-------|----------|------------|
-| A1 | alpha^-1 = 137.035999086 (0.11 sigma precision) | Numeric calculation | **Impressive precision** |
+| A1 | alpha^-1 = 137.035999086 (0.11 sigma precision) | Numeric calculation | **No stated error budget** |
 | A2 | 11 constants from E8 x E8 with zero free inputs | Asserted, no derivation shown | **Unverified** |
 | A3 | Inputs: dim=248, h*=30, c=8 | Listed as "inputs" but claimed as "zero free" | **Contradiction?** |
 | A4 | Machine-checkable proofs | None | **Absent** |
@@ -34,19 +34,31 @@ Agyemang published on Zenodo:20525049 (June 3, 2026): "Eleven Fundamental Consta
 
 ## 3. Critical Assessment
 
-**Precision vs. Rigor:** The 0.11 sigma alpha^-1 precision is numerically impressive but lacks transparent error budget. The claim of "zero free parameters" is undermined by the listed inputs (dim=248, h*=30, c=8), which function as implicit tuning constants.
+**Precision without a stated error budget.** The 0.11 sigma figure for alpha^-1
+is quoted without a transparent error budget, so it cannot be independently
+recomputed. The "zero free parameters" claim stands against three listed inputs
+(dim=248, h*=30, c=8), which enter the derivation as fixed constants.
 
-**Differentiation from Trinity:**
-- Scope: 11 constants vs Trinity's 23
-- Proofs: None vs 166 Rocq theorems
-- Hardware: None vs FPGA sacred opcodes
-- Predictions: None vs 4 testable predictions
+**Comparison with the lab's own programme** (inventory, not merit -- at
+unbounded alphabets a larger constant count is a larger [Risk] under
+FRAMEWORK.md (b), not a stronger result):
+- Scope: 11 constants vs the lab's 23
+- Proofs: none vs 166 Rocq theorems
+- Hardware: none vs FPGA opcodes
+- Predictions: none stated vs 4 stated
 
 ---
 
-## 4. Risk Assessment
+## 4. Evidence calibration
 
-**Threat level:** LOW -- Single Zenodo deposit (June 3, 2026), no citations, no follow-up. However, the 0.11 sigma alpha^-1 claim is attention-grabbing and could attract interest if publicized.
+**Under FRAMEWORK.md (d), venue:** a single Zenodo deposit (June 3, 2026), no
+peer review and no citations located at audit date.
+
+**Under FRAMEWORK.md (b), look-elsewhere:** neither the target constant list nor
+the generating alphabet is bounded in advance, so no multiple-testing correction
+is reportable for the 0.11 sigma figure. The lab's own 23 phi-monomials carry
+the identical gap, and CASE-00 s 7 already records the lab's control result that
+phi-free grammars of equal cardinality reach comparable compression.
 
 ---
 
