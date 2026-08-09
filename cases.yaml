@@ -87,6 +87,15 @@ cases:
     fpath: "Any closed-form derivation of PHI_BIAS solely from (E, M, phi) that correctly predicts PHI_BIAS for all five new rungs AND all eight Verified rungs without post-hoc coincidence selection would falsify this Conj"
     file: cases/CASE-10-phi-bias-coincidence-scan.md
 
+  - id: CASE-11
+    title: "Gray, Dennis & Kauffman -- Mereon system, the 600-cell, and E6/E7/E8"
+    target: "arXiv:2604.00255v1 claim of exact 62/62 vertex correspondence between the Mereon M120p (H3) and the 600-cell (H4), plus E8 realised via McKay correspondence on the binary icosahedral group 2I"
+    claim_status: Verified
+    fpath: "Independent re-derivation showing the 62/62 vertex correspondence or the McKay realisation requires a free parameter not stated in the paper; separately, any SM-parameter reading later attached to the H3/H4 correspondence by either programme falls to Risk unless it outranks a matched-cardinality control alphabet under BH-FDR q=0.05"
+    file: cases/CASE-11-gray-dennis-kauffman-mereon-600cell.md
+    depends_on: []
+    public_status: "draft; Wave-Loop-9 batch; subject claims geometry only and makes no SM-parameter claim, which is why the case carries no Risk row"
+
   - id: CASE-12
     title: "Vasilev II + Pellis III -- v2.3 BNF equivalence-class rank 2/394 for G_phi (Conj, Pellis-gated)"
     target: "v2.3 sec.6.3/6.4 claim: G_phi = \\varphi^2 + \\varphi^{-2} MDL-rank 2/394 essential phi-native forms (depth-leq-2 BNF + W1+W8 anti-cancel filter); bootstrap p=0.0039"
@@ -133,14 +142,68 @@ cases:
     depends_on: []
     public_status: "draft; methodological positive control; first-contact gated on Pellis approval + live arXiv ID for phi-paper"
 
+  - id: CASE-17
+    title: "Timothy McGirl -- Geometric Standard Model, 26-58 constants from E8 -> H4"
+    target: "GSM v26.0 (Zenodo, Dec 2025) + grapheneaffiliate GitHub repos: 26-58 constants from E8 -> H4 icosahedral geometry at claimed zero free parameters, with 6 compiled Lean 4 proofs and an 8,100-quadruple brute-force vertex check"
+    claim_status: Risk
+    fpath: "Pre-register the constant list, the generating alphabet and the per-constant tolerance before running the solver, then apply one matched-cardinality control alphabet (e, pi, sqrt-2, sqrt-3, integers) to both McGirl's 58 constants and the lab's 23 under BH-FDR q=0.05; a set whose phi-native forms do not outrank the control moves to Risk regardless of constant count or proof count"
+    file: cases/CASE-17-mcgirl-geometric-standard-model.md
+    depends_on: [CASE-00, CASE-07]
+    public_status: "draft; Wave-Loop-9 batch; closest methodological match in the register -- same E8 -> H4 derivation and the same zero-free-parameter claim as the lab's own programme"
+
+  - id: CASE-18
+    title: "Agyemang (AIMS Ghana) -- eleven fundamental constants from E8 boundary geometry"
+    target: "Zenodo:20525049 (June 3, 2026): 11 constants from the E8 x E8 heterotic root lattice at claimed zero free inputs, headline alpha^-1 = 137.035999086 at 0.11 sigma"
+    claim_status: Risk
+    fpath: "Fix the target constant list and the generating alphabet in public before computing, then run one matched-cardinality control alphabet (phi, pi, e, sqrt-2, sqrt-3, integers, plus the E8 lattice invariants dim=248, h*=30, c=8) over both Agyemang's 11 constants and the lab's 23 phi-monomials under BH-FDR q=0.05"
+    file: cases/CASE-18-agyemang-e8-boundary-geometry.md
+    depends_on: [CASE-00, CASE-07]
+    public_status: "draft; Wave-Loop-9 batch; renumbered from CASE-12 on 2026-08-10 (ID collision with the G_phi rank 2/394 entry)"
+
+  - id: CASE-19
+    title: "T.P. Singh (TIFR) -- E8 x omega-E8 octonionic unification, falsification-oriented catalogue"
+    target: "arXiv:2604.06288, 2605.29374, 2606.12477: exceptional Jordan-algebra flavour structure, Bell-CHSH > 2*sqrt(2) beyond the Tsirelson bound, mass relations sqrt-me:sqrt-mu:sqrt-md = 1:2:3, fermion-only objective collapse"
+    claim_status: Conj
+    fpath: "Two independent stated falsifiers, neither contingent on the other: (a) a Tsirelson-bound test at the precision Singh's catalogue specifies, where a null result at that precision retracts the Bell-CHSH claim; (b) the lab's Phase B1-real four-arm matched-cardinality ablation with frozen seed and pre-registered held-out split, which moves the lab's architecture-prior conjecture to Risk if a phi-free control set of equal cardinality matches"
+    file: cases/CASE-19-singh-e8-octonionic-unification.md
+    depends_on: [CASE-00, CASE-13]
+    public_status: "draft; Wave-Loop-9/10 batch; renumbered from CASE-13 on 2026-08-10 (ID collision with the Singh trace-dynamics entry -- same subject, different papers); no contact attempted; stated executable Fpath puts this in a better epistemic class than several entries in this register, including some of the lab's own"
+
+  - id: CASE-20
+    title: "L. Morato de Dalmases -- 600-cell spectral triple, SGUP, and asserted Millennium-Problem proofs"
+    target: "Zenodo:19635034, 19927449, 19112358: Standard Model + Einstein gravity + dark energy from a 600-cell (H4) spectral triple, plus asserted proofs of the Riemann Hypothesis, Goldbach, Twin Primes and Collatz"
+    claim_status: Risk
+    fpath: "Rerun both spectral-triple derivations -- Morato's and the lab's own H4/600-cell construction -- under an identical matched-cardinality control alphabet replacing phi with (e, pi, sqrt-2, sqrt-3, integers), scored under BH-FDR q=0.05 against a target list fixed before the fit; collapse moves the phi-specific reading toward Retracted, survival promotes Risk to Open conjecture, for either programme or both"
+    file: cases/CASE-20-morato-dalmases-600cell-spectral-triple.md
+    depends_on: [CASE-00, CASE-14]
+    public_status: "draft; Wave-Loop-9 batch; renumbered from CASE-14 on 2026-08-10 (ID collision with the Morato spectral-triple entry, same subject); sharpest mirror in the register -- same geometric object and same formalism as the lab's own programme"
+
+  - id: CASE-21
+    title: "Stergios Pellis -- unity formulas for coupling constants and phi-physics"
+    target: "SCIRP/JHEPGC paperid 122814 (2023) + viXra/Authorea (2021-2022) + SSRN 4731914 (2024): alpha and the coupling constants expressed exactly via phi-structured formulas; cited in Journal of Geometry and Physics (2024) and Classical and Quantum Gravity (2025)"
+    claim_status: Risk
+    fpath: "Apply one matched-cardinality control alphabet identically to (a) Pellis's phi-arithmetic identities for alpha and the coupling constants and (b) the lab's G_phi BNF sweep -- replace phi with (e, pi, sqrt-2, sqrt-3, integers) at equal expression cardinality over a target list fixed before the fit, under BH-FDR q=0.05; if phi-native forms do not outrank the control on both, both fall to Risk together"
+    file: cases/CASE-21-pellis-unity-formulas-coupling-constants.md
+    depends_on: [CASE-08, CASE-15]
+    public_status: "draft; Wave-Loop-10 batch; renumbered from CASE-15 on 2026-08-10 (ID collision with the co-author mirror-audit entry); COI declared in Section 9; subject's venue record on the peer-review axis is currently stronger than the lab's; UNRESOLVED: given name recorded as Stergios here and Cosimo in CASE-15 though both entries cite SCIRP paperid 122814"
+
+  - id: CASE-22
+    title: "Myo Oo (+ Mark W. Vick) -- Project MAYA, E8 holographic geometry"
+    target: "academia.edu/164593041 + multiple Zenodo deposits (2025-2026): 11+ constants from E8 holographic geometry at a single scale Lambda = 51.9 GeV, self-assessed 100 percent validation across 24 tests, Riemann zeta zeros mapped to lepton masses"
+    claim_status: Risk
+    fpath: "Publish the validation harness with a frozen seed, a frozen config, a sha256 of outputs and a public script that exits non-zero on any deviation, with the target list pre-registered before the run; an independent re-run that reproduces the outputs promotes the claim to Verified FOR THE HARNESS OUTPUT ONLY, a re-run that does not moves it to Retracted -- the same instrument settles the lab's own BPB-per-format table"
+    file: cases/CASE-22-myo-oo-e8-holographic.md
+    depends_on: [CASE-00, CASE-10]
+    public_status: "draft; Wave-Loop-9 batch; renumbered from CASE-16 on 2026-08-10 (ID collision with the Phi-Grid collaboration entry)"
+
 # Counts (auto-derivable from the cases list above)
 counts:
-  total: 16
+  total: 23
   by_status:
-    Verified: 1
+    Verified: 2
     Efit: 1
-    Conj: 6
-    Risk: 7
+    Conj: 7
+    Risk: 12
     Retr: 1
 
 # Anchor (carried across all phi-programme artefacts)

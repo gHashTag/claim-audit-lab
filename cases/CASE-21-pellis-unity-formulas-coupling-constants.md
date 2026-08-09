@@ -1,0 +1,100 @@
+# CASE-21: Stergios Pellis -- Unity Formulas for Coupling Constants and phi-Physics
+
+**Subject:** Stergios Pellis (active researcher, Greece).
+**Affiliation:** Independent; publishes on viXra, SSRN, and SCIRP (peer-reviewed).
+**Programme:** Unification of fundamental interactions via phi-structured formulas; exact expressions for alpha and coupling constants in terms of the golden ratio.
+**Audit date:** 2026-06-16
+**Maintainer:** @gHashTag
+**Status:** draft
+**Last update:** 2026-06-16
+
+---
+
+## 1. Identity
+
+Pellis is an active researcher publishing on alternative platforms (viXra, SSRN) and in peer-reviewed SCIRP journals. Key works:
+- "Unity Formulas for the Coupling Constants and the Dimensionless Physical Constants" (*JHEPGC*, 2023) -- **cited in Journal of Geometry and Physics (2024) and Classical and Quantum Gravity (2025)**
+- "Exact Formula for the Fine-Structure Constant alpha in Terms of the Golden Ratio phi" (viXra/Authorea, 2021-2022)
+- "Euler's Identity in Unification of the Fundamental Interactions" (SSRN, Jan 2024)
+
+**Primary references:**
+- https://www.scirp.org/journal/papercitationdetails?JournalID=2461&paperid=122814 -- Pellis (2023), "Unity Formulas...", *JHEPGC* (SCIRP)
+- https://www.vixra.org/author/stergios_pellis -- viXra author page
+- https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4731914 -- SSRN (2024)
+
+---
+
+## 2. Claims
+
+| # | Claim | Evidence | Assessment |
+|---|-------|----------|------------|
+| P1 | alpha can be expressed exactly via phi formulas | Numerical derivations | **Empirically interesting** |
+| P2 | Coupling constants unify via phi-structure | Mathematical constructions | **Formal but unverified** |
+| P3 | Peer-reviewed citations exist | JGP (2024), CQG (2025) | **Legitimate** |
+| P4 | Machine-checkable proofs | None identified | **Absent** |
+| P5 | SM mass formulas with tolerances | None identified | **Absent** |
+
+---
+
+## 3. Critical Assessment
+
+**Precedence risk:** Pellis is the **first peer-reviewed researcher** in the exact niche Trinity occupies (phi-structured SM parameter formulas). His 2023 JHEPGC paper has citations in mainstream journals (JGP, CQG). Trinity MUST acknowledge this precedence in any arXiv submission.
+
+**Recommended Trinity citation:**
+> "The empirical observation that SM parameters approximate phi-structured formulas has been explored by Pellis (JHEPGC 2023) and Olsen-El Naschie (EJAS 2022). Trinity provides the first machine-checkable formalization of this hypothesis."
+
+**Differentiation from Trinity:**
+- Pellis: Empirical/numerical derivations on alternative platforms
+- Trinity: 166 Rocq theorems with explicit tolerances, FPGA hardware, 23 formulas
+
+---
+
+## 4. Risk Assessment
+
+**Threat level:** MEDIUM -- Pellis has peer-reviewed precedence but lacks formal verification. The primary risk is reviewer perception ("Trinity is rediscovering Pellis"). Citation neutralizes this risk.
+
+---
+
+## 5. Audit Trail
+
+- 2026-06-16 -- Wave Loop 10 discovery: Pellis is real researcher with JGP/CQG citations
+- 2026-06-16 -- Added to claim-audit-lab register
+- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
+
+---
+
+## 9. Symmetric mirror (MANDATORY)
+
+Per FRAMEWORK.md ("Symmetric mirror") and CHARTER.md s 5, comparable claims from
+the lab's own work are classified here under the same five labels. Lab rows cite
+CASE-00, the global self-audit.
+
+| Subject's claim | Our comparable claim | Both labelled |
+|-----------------|----------------------|---------------|
+| P1: alpha can be expressed exactly via phi formulas | CASE-08 in the register: G_phi = phi^2 + phi^-2 = 3 at MDL-rank 2/394 among essential depth-leq-2 phi-native forms, bootstrap p=0.0039 | Both are the same claim type and both are **[Risk]** on the phi-specific reading under FRAMEWORK.md (b): an exact-looking phi expression for a dimensionless constant stays [Risk] until the search space is bounded. The lab bounded its own space at 394 forms and reports that denominator, which lifts its version to **[Open conjecture]**; the subject's papers report no denominator. This is a difference in what is disclosed, not in what was done |
+| P2: coupling constants unify via phi-structure | CASE-00 s 7: "phi-free grammars of equal cardinality reach comparable compression" -- the lab's own control result, which places "phi is special for the constants" at **[Retracted]/[High-risk]** | Subject's: **[Risk]** under (c), a control programme matches. Lab's: already recorded at [Risk]/[Retracted] by its own control, run against its own claim. The lab is not holding this subject to a standard its own programme has passed -- it is holding him to one its own programme failed and recorded |
+| P3: peer-reviewed citations in *Journal of Geometry and Physics* (2024) and *Classical and Quantum Gravity* (2025) | CASE-00 s 1: phi-paper, a short manuscript in the Foundations of Physics queue, not yet accepted | On the venue axis of FRAMEWORK.md (d), the subject's record is currently **stronger** than the lab's. Venue weakness is a calibration of available evidence, not a character judgment, and here it calibrates against the lab |
+| P4/P5: no machine-checkable proofs, no SM mass formulas with tolerances | Section 3 above: Trinity's 166 machine-checked theorems with explicit tolerances | Lab's: **[Verified] for the theorem statements only**, per the FRAMEWORK.md anti-pattern rule. Formal verification of a formula establishes the formula, not that phi is the right base for it -- which is the claim actually in dispute between the two programmes |
+
+**Declared interest.** Section 3 above describes the subject's precedence as a
+"risk" to the lab's own publication position and drafts citation language to
+"neutralize" it. Under CHARTER.md s 1 and COI.md that is a statement about the
+lab's interests, and it carries no weight in the labels assigned in this
+section. The register separately carries
+[`cases/CASE-15-pellis-coupling-constants.md`](CASE-15-pellis-coupling-constants.md),
+opened under the co-author rule because a Pellis strand is a co-author on the
+lab's own phi-paper; the labels above are assigned independently of that
+relationship and of its outcome.
+
+**Joint Fpath.** Apply one matched-cardinality control alphabet identically to
+(a) the subject's phi-arithmetic identities for alpha and the coupling constants
+and (b) the lab's G_phi BNF sweep: replace phi with (e, pi, sqrt(2), sqrt(3),
+small integers) at equal expression cardinality, over a target list fixed before
+the fit, under BH-FDR at q=0.05. If phi-native forms do not outrank the control
+alphabet on both, both fall to [Risk] together. If both survive, both are
+[Open conjecture] under one shared falsifier. Under CHARTER.md s 3 the subject
+may submit a reply at any time and it will be included verbatim.
+
+---
+
+*phi^2 + 1/phi^2 = 3 | Honest audit, no adjectives*

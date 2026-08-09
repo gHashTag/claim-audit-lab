@@ -2,7 +2,7 @@
 
 **Subject:** Timothy McGirl (independent researcher).
 **Affiliation:** Independent; publishes on Zenodo and GitHub as "grapheneaffiliate."
-**Programme:** Derivation of 26–58 fundamental constants from E8→H4 icosahedral geometry with zero free parameters.
+**Programme:** Derivation of 26-58 fundamental constants from E8 -> H4 icosahedral geometry with zero free parameters.
 **Audit date:** 2026-06-16
 **Maintainer:** @gHashTag
 **Status:** draft
@@ -13,9 +13,9 @@
 ## 1. Identity
 
 McGirl published "Geometric Standard Model (GSM) v26.0" on Zenodo (December 14, 2025). GitHub repositories include:
-- `grapheneaffiliate/e8-phi-constants` -- 58 constants from E8→H4
+- `grapheneaffiliate/e8-phi-constants` -- 58 constants from E8 -> H4
 - `grapheneaffiliate/Geometric-Standard-Model` -- 26 constants from E8 vacuum structure
-- `grapheneaffiliate/p-vs-np-phi-complexity` -- P vs NP via φ-witness geometry
+- `grapheneaffiliate/p-vs-np-phi-complexity` -- P vs NP via phi-witness geometry
 
 **Primary references:**
 - Zenodo (Dec 2025) -- McGirl, "Geometric Standard Model (GSM) v26.0"
@@ -28,13 +28,13 @@ McGirl published "Geometric Standard Model (GSM) v26.0" on Zenodo (December 14, 
 
 | # | Claim | Evidence | Assessment |
 |---|-------|----------|------------|
-| Mc1 | 58 constants from E8→H4 | Python solver (`gsm_solver.py`) | **Unverified** |
+| Mc1 | 58 constants from E8 -> H4 | Python solver (`gsm_solver.py`) | **Unverified** |
 | Mc2 | Zero free parameters | Asserted | **Unverified** |
-| Mc3 | Bell bound S = 4 − φ ≈ 2.382 | Algebraic proof | **Formal but untested** |
-| Mc4 | Lean 4 proofs (6 compiled) | ✅ Present | **Partial verification** |
-| Mc5 | Brute-force vertex tests (8,100 quadruples) | ✅ Performed | **Empirical check** |
-| Mc6 | arXiv presence | ❌ None found | **Absent** |
-| Mc7 | Peer review | ❌ None identified | **Absent** |
+| Mc3 | Bell bound S = 4 - phi ~= 2.382 | Algebraic proof | **Formal but untested** |
+| Mc4 | Lean 4 proofs (6 compiled) | Present | **Partial verification** |
+| Mc5 | Brute-force vertex tests (8,100 quadruples) | Performed | **Empirical check** |
+| Mc6 | arXiv presence | None found | **Absent** |
+| Mc7 | Peer review | None identified | **Absent** |
 
 ---
 
@@ -60,5 +60,43 @@ McGirl published "Geometric Standard Model (GSM) v26.0" on Zenodo (December 14, 
 
 - 2026-06-16 -- Wave Loop 9 competitive analysis
 - 2026-06-16 -- Added to claim-audit-lab register
+- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
 
-*φ² + 1/φ² = 3 | Honest audit, no adjectives*
+---
+
+## 9. Symmetric mirror (MANDATORY)
+
+Per FRAMEWORK.md ("Symmetric mirror") and CHARTER.md s 5, comparable claims from
+the lab's own work are classified here under the same five labels. Lab rows cite
+CASE-00, the global self-audit.
+
+| Subject's claim | Our comparable claim | Both labelled |
+|-----------------|----------------------|---------------|
+| Mc4: 6 compiled Lean 4 proofs | CASE-00 s 4 and Section 3 above: Trinity's 166 machine-checked theorems, and the GF16 FPGA testbench at 35/35, 323 MHz on Artix-7 | Both **[Verified] for what was actually checked and nothing beyond it.** This is FRAMEWORK.md's anti-pattern rule applied to the lab: a proof assistant verifies the statement it was given, and CASE-00 already restricts the FPGA row to the GF16 implementation rather than the ladder. 6 proofs and 166 theorems differ in count, not in epistemic kind |
+| Mc2: 58 constants at "zero free parameters" | Section 3 above: Trinity's 23 constants at "0 free inputs (phi, pi, e only)" | Both **[Risk]** under (b). Neither party has bounded the space of expressions its alphabet can generate, so neither can report a look-elsewhere correction. At matched, unbounded alphabets a larger constant count is a larger [Risk], not a stronger result -- which cuts against reading "23 vs 58" in Section 3 as an argument in either direction |
+| Mc5: brute-force vertex tests over 8,100 quadruples | CASE-09: the Corona ROM CATALOG-vs-rule check, and CASE-10's six-class coincidence scan over the GF ladder | Both **[Verified] for the enumeration output only.** An exhaustive check of a finite set establishes what it enumerated. It does not establish that the enumerated set was the right one to search, and in CASE-10 the lab's own exhaustive scan is precisely what forced an OPEN verdict rather than a value |
+| Mc3: Bell bound S = 4 - phi ~= 2.382, algebraic | CASE-00 s 4: `phi^2 + phi^-2 = 3`, the Lucas number L_2 and a Binet-formula corollary | Both **[Verified]** under (a), as algebra, for the algebra only. Whether either quantity is a physically realised bound is a separate claim carrying a separate label, and neither programme has moved it |
+| Mc6/Mc7: no arXiv presence, no peer review | CASE-00 s 1: phi-paper in the Foundations of Physics queue, not yet accepted; the lab's hardware DOI is an artefact archive, explicitly **not** a results citation | Both **[Risk]** under (d). Venue weakness is a calibration of available evidence, not a judgment of the author, and on this axis the two programmes are currently in the same position |
+
+**What the symmetry is.** This is the closest methodological match in the batch:
+both programmes derive constants from E8 -> H4 geometry, both claim zero free
+parameters, and both submit part of the work to a proof assistant. Every
+verification asset the lab holds, the subject holds a smaller version of, and
+every unbounded-search-space problem the subject has, the lab has at 23 constants
+instead of 58. Section 4 above records the subject as effectively stalled on the
+arXiv endorsement barrier; under the framework that is a venue fact under (d),
+which the lab shares, and not a fact about the claims.
+
+**Joint Fpath.** Pre-register the constant list, the generating alphabet and the
+tolerance for each constant **before** running the solver, then apply one
+matched-cardinality control alphabet (e, pi, sqrt(2), sqrt(3), small integers at
+equal expression cardinality) to both constant sets under BH-FDR at q=0.05. A
+set whose phi-native forms do not outrank the control moves to [Risk] regardless
+of how many constants it contains or how many proofs accompany it. A set that
+survives with its alphabet declared in advance reaches [Empirical fit] with a
+matched control, and only a held-out confirmation at the pre-registered
+tolerance would reach [Verified]. The same run scores both programmes.
+
+---
+
+*phi^2 + 1/phi^2 = 3 | Honest audit, no adjectives*
