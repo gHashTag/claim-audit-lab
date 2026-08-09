@@ -63,24 +63,60 @@ the two side by side.
 
 ---
 
-## 4. Evidence calibration
+## 4. [Verified] inventory
 
-**Fpath (a):** absent for M2-M7. This is the framework's default route to
-[Risk] and is the single largest gap in the case.
+**Empty at audit date.** No claim in the located deposits was found to meet
+FRAMEWORK.md (a) or (b): no algebraic identity re-derivable in a few lines is
+isolated as a result, and no public reproducible harness was located.
 
-**Venue (d):** Zenodo deposits, no peer review located at audit date.
-
-**Control (c):** the phi-specific reading of M1 has no matched-cardinality
-control reported. The lab's own H4 construction has the same gap, and the joint
-falsifier in Section 9 is written to settle both at once.
+Per CHARTER.md s 1 this section is filled before any criticism if such a claim
+is supplied. The construction in M1 works standing mathematics (the 600-cell,
+spectral triples), but the case file does not isolate a specific derivation
+that can be checked, so no credit can be assigned to a specific statement.
 
 ---
 
-## 5. Audit Trail
+## 5. [Empirical fit] inventory
 
-- 2026-06-16 -- Wave Loop 9 competitive analysis
-- 2026-06-16 -- Added to claim-audit-lab register
-- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
+**Empty.** No claim is presented with a stated fit procedure, free-parameter
+count or control.
+
+---
+
+## 6. [Open conjecture] inventory
+
+**Empty.** No falsification path is stated for any claim in the located
+deposits. Under FRAMEWORK.md (a) that is precisely what keeps M1-M7 out of this
+section, and it is the single largest gap in the case.
+
+---
+
+## 7. [Risk] / [High-risk] inventory
+
+- **[Risk]** M1. Standard Model plus Einstein gravity from a 600-cell (H4)
+  spectral triple. Source: Zenodo:19635034. Reason: FRAMEWORK.md (a), no stated
+  Fpath, and (c), no matched-cardinality control reported for the phi-specific
+  reading. **The lab's own H4/600-cell construction has both gaps identically**
+  -- same geometric object, same formalism -- which makes this the register's
+  sharpest mirror rather than its most distant case (Section 9).
+
+- **[Risk]** M2 (three generations via a 53-cycle automorphism) and M3 (dark
+  energy from KPZ fluctuations). Source: Zenodo:19635034, Zenodo:19927449.
+  Reason: FRAMEWORK.md (a), no stated Fpath.
+
+- **[High-risk]** M4-M7. Asserted proofs of the Riemann Hypothesis, Goldbach,
+  Twin Primes and Collatz. Source: Zenodo:19112358. Reason: **two of (a)-(d)** --
+  (a) no stated Fpath, and (d) no peer review located for the specific claims.
+  No derivation a reader can check was located at audit date, which is what the
+  label records. It is not a prediction about whether such a derivation exists:
+  a proof supplied later is audited on its merits like any other submission,
+  and this section is updated in the same pass.
+
+---
+
+## 8. [Retracted] inventory
+
+**Empty.** No claim has been withdrawn by the subject at audit date.
 
 ---
 
@@ -115,6 +151,35 @@ Morato strand in `cases.yaml`, and it applies unchanged to the lab's own H4
 construction. Collapse under the control moves the phi-specific reading toward
 [Retracted] for whichever programme collapses; survival promotes it from [Risk]
 to [Open conjecture] -- for either, or for both.
+
+---
+
+## 10. Audit summary
+
+**(a) Strongest part.** M1 shares its geometric object and formalism with an
+active research area and with the lab's own programme. No [Verified] entry is
+available at audit date because no specific checkable derivation was isolated.
+
+**(b) Weakest claim.** M4-M7 at [High-risk] -- asserted proofs of four open
+problems with no located derivation and no Fpath.
+
+**(c) Experiment that would settle the largest claim.** Rerun both
+spectral-triple derivations -- this subject's and the lab's own -- under one
+matched-cardinality control alphabet replacing phi with (e, pi, sqrt-2,
+sqrt-3, integers), under BH-FDR q=0.05 against a target list fixed before the
+fit. For M4-M7 the corresponding step is simply publication of a derivation.
+
+**(d) Symmetric position of the lab's own work.** On M1 the two programmes sit
+in the same label for the same two reasons. The lab's advantage is its ledger
+and its stated Fpaths elsewhere, not its derivation on this object.
+
+---
+
+## 11. Audit trail
+
+- 2026-06-16 -- Wave Loop 9 competitive analysis
+- 2026-06-16 -- Added to claim-audit-lab register
+- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
 
 ---
 

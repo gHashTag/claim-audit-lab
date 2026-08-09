@@ -54,25 +54,71 @@ them; the same restriction binds the lab's 166 theorems (Section 9).
 
 ---
 
-## 4. Evidence calibration
+## 4. [Verified] inventory
 
-**Under FRAMEWORK.md (d), venue:** a single Zenodo deposit (Dec 2025), no
-peer review and no arXiv record located at audit date. This calibrates the
-evidence available, not the author. The lab's own phi-paper is likewise not
-yet accepted, so the two sit at the same point on this axis.
+Written first: [Verified] credit goes to the subject before any criticism
+begins (CHARTER.md s 1).
 
-**Under FRAMEWORK.md (b), look-elsewhere:** the zero-free-parameter claim over
-58 constants has no stated bound on the space of expressions the alphabet can
-generate, so no correction is reportable. The lab's 23-constant claim has the
-same gap.
+- **[Verified]** Mc3. The Bell bound S = 4 - phi ~= 2.382 follows algebraically.
+  Source: Zenodo GSM v26.0. Evidence: algebraic derivation, re-derivable in a
+  few lines. [Verified] **for the algebra only**; whether this quantity is a
+  physically realised bound is a separate claim carrying a separate label, and
+  the subject has not supplied a measurement.
+
+- **[Verified]** Mc4. Six Lean 4 proofs compile. Source:
+  `grapheneaffiliate/e8-phi-constants`. Evidence: the compiled proofs.
+  [Verified] **for the six statements given to the proof assistant and nothing
+  beyond them** -- FRAMEWORK.md's anti-pattern rule. The identical restriction
+  binds the lab's own 166 theorems (Section 9).
+
+- **[Verified]** Mc5. A brute-force check over 8,100 vertex quadruples was
+  performed. Source: `grapheneaffiliate/Geometric-Standard-Model`. Evidence:
+  the enumeration. [Verified] **for the enumeration output only**: an
+  exhaustive check of a finite set establishes what it enumerated, not that the
+  enumerated set was the right one to search.
 
 ---
 
-## 5. Audit Trail
+## 5. [Empirical fit] inventory
 
-- 2026-06-16 -- Wave Loop 9 competitive analysis
-- 2026-06-16 -- Added to claim-audit-lab register
-- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
+**Empty.** The 58-constant result is not presented with a stated fit
+procedure, free-parameter count or control, so it does not meet the
+[Empirical fit] definition and is recorded at [Risk] in Section 7 instead.
+
+---
+
+## 6. [Open conjecture] inventory
+
+**Empty.** No falsification path is stated for Mc1 or Mc2 in the located
+sources. Under FRAMEWORK.md (a) a claim that aspires to be a conjecture but
+states no falsifier defaults to [Risk], not [Open conjecture].
+
+---
+
+## 7. [Risk] / [High-risk] inventory
+
+- **[Risk]** Mc1. 58 constants derived from E8 -> H4 geometry. Source: Zenodo
+  GSM v26.0, `gsm_solver.py`. Reason: FRAMEWORK.md (b) -- the space of
+  expressions the generating alphabet can produce is not bounded, so no
+  look-elsewhere correction is reportable. At an unbounded alphabet a larger
+  constant count is a larger exposure, not a stronger result.
+
+- **[Risk]** Mc2. Zero free parameters. Source: as above. Reason:
+  FRAMEWORK.md (b) and the [Empirical fit] definition -- "zero free parameters"
+  counts fitted coefficients and not the choice of alphabet, and an alphabet
+  selected after the target values are known is itself a post-hoc parameter.
+  **The lab's own 23-constant claim carries this identically** (Section 9).
+
+- **[Risk]** Mc6, Mc7 as they bear on Mc1/Mc2. Reason: FRAMEWORK.md (d) --
+  a single Zenodo deposit (Dec 2025), no peer review and no arXiv record
+  located at audit date. This calibrates available evidence, not the author,
+  and the lab's own phi-paper is likewise not yet accepted.
+
+---
+
+## 8. [Retracted] inventory
+
+**Empty.** No claim has been withdrawn by the subject at audit date.
 
 ---
 
@@ -108,6 +154,34 @@ of how many constants it contains or how many proofs accompany it. A set that
 survives with its alphabet declared in advance reaches [Empirical fit] with a
 matched control, and only a held-out confirmation at the pre-registered
 tolerance would reach [Verified]. The same run scores both programmes.
+
+---
+
+## 10. Audit summary
+
+**(a) Strongest part.** Three [Verified] entries (Mc3-Mc5), each restricted to
+what was actually checked: the algebra, the six Lean statements, the
+enumeration output.
+
+**(b) Weakest claim.** Mc2, zero free parameters over 58 constants -- [Risk]
+under (b), with no bound on the generating alphabet.
+
+**(c) Experiment that would settle it.** Pre-register the constant list, the
+generating alphabet and the per-constant tolerance before running the solver,
+then score against a matched-cardinality control alphabet under BH-FDR q=0.05.
+
+**(d) Symmetric position of the lab's own work.** Identical on both counts: the
+lab's 166 theorems carry the same [Verified]-for-the-statement-only
+restriction, and its 23 constants at "0 free inputs" carry the same unbounded
+alphabet. This is the closest methodological match in the register.
+
+---
+
+## 11. Audit trail
+
+- 2026-06-16 -- Wave Loop 9 competitive analysis
+- 2026-06-16 -- Added to claim-audit-lab register
+- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
 
 ---
 

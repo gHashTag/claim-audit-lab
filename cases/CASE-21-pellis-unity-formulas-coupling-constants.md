@@ -50,29 +50,66 @@ recorded as such; the lab owes the citation on that ground alone.
 
 ---
 
-## 4. Evidence calibration
+## 4. [Verified] inventory
 
-**Under FRAMEWORK.md (d), venue:** peer-reviewed (SCIRP/JHEPGC) with citations in
-two mainstream journals. On this axis the subject's record is currently stronger
-than the lab's, whose phi-paper is not yet accepted. Recorded plainly because a
-calibration that only ever runs one direction is not a calibration.
+Written first: [Verified] credit goes to the subject before any criticism
+begins (CHARTER.md s 1).
 
-**Under FRAMEWORK.md (b), look-elsewhere:** the phi expressions for alpha are
-published without a stated bound on the space of expressions searched, so no
-correction is reportable. The lab bounded its own space at 394 forms and reports
-that denominator -- a difference in disclosure, not in kind.
-
-**Under FRAMEWORK.md (c), control:** CASE-00 s 7 records the lab's own control
-result that phi-free grammars of equal cardinality reach comparable compression.
-That control bears on the subject's P2 and on the lab's own claim identically.
+- **[Verified]** P3. The 2023 JHEPGC paper is cited in *Journal of Geometry and
+  Physics* (2024) and *Classical and Quantum Gravity* (2025). Source: SCIRP
+  paper id 122814 and the citing articles. Evidence: the citation record, which
+  a reader can check directly. This is [Verified] as a fact about the
+  literature. It is recorded first because on the venue axis of FRAMEWORK.md (d)
+  the subject's record is currently **stronger than the lab's own**, whose
+  phi-paper is not yet accepted.
 
 ---
 
-## 5. Audit Trail
+## 5. [Empirical fit] inventory
 
-- 2026-06-16 -- Wave Loop 10 discovery: Pellis is real researcher with JGP/CQG citations
-- 2026-06-16 -- Added to claim-audit-lab register
-- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
+- **[Empirical fit]** P1. The fine-structure constant alpha expressed exactly
+  through phi-structured formulas. Source: viXra/Authorea (2021-2022), SCIRP
+  paper id 122814. Free parameters: the choice of expression form, not reported.
+  Control: absent. Pre-registered held-out test: absent.
+
+  **Calibration clause applies.** FRAMEWORK.md makes an [Empirical fit]
+  automatically [Risk] where model selection is not reported at matched k. No
+  bound on the space of expressions searched is published, so P1 is carried in
+  Section 7 as well and should be read at [Risk] until a denominator is
+  supplied. The lab bounded its own comparable search at 394 forms and reports
+  that denominator; that is a difference in disclosure, not in kind.
+
+---
+
+## 6. [Open conjecture] inventory
+
+**Empty.** No falsification path is stated for P1 or P2 in the located
+sources.
+
+---
+
+## 7. [Risk] / [High-risk] inventory
+
+- **[Risk]** P1, per the calibration clause in Section 5. Reason:
+  FRAMEWORK.md (b) -- an exact-looking phi expression for a dimensionless
+  constant remains [Risk] until the search space is bounded.
+
+- **[Risk]** P2. Coupling constants unify through a phi-structure. Source: SSRN
+  4731914, SCIRP paper id 122814. Reason: FRAMEWORK.md (c) -- a control
+  programme matches. CASE-00 s 7 records the lab's **own** control result that
+  phi-free grammars of equal cardinality reach comparable compression, which
+  places the lab's version of this claim at [Risk]/[Retracted]. The same
+  control bears on P2. The lab is not holding this subject to a standard its
+  own programme has passed.
+
+**Venue, FRAMEWORK.md (d):** no weakness recorded. Peer-reviewed publication
+with citations in two mainstream journals.
+
+---
+
+## 8. [Retracted] inventory
+
+**Empty.** No claim has been withdrawn by the subject at audit date.
 
 ---
 
@@ -108,6 +145,36 @@ the fit, under BH-FDR at q=0.05. If phi-native forms do not outrank the control
 alphabet on both, both fall to [Risk] together. If both survive, both are
 [Open conjecture] under one shared falsifier. Under CHARTER.md s 3 the subject
 may submit a reply at any time and it will be included verbatim.
+
+---
+
+## 10. Audit summary
+
+**(a) Strongest part.** P3 at [Verified] -- a peer-reviewed publication record
+with citations in *Journal of Geometry and Physics* and *Classical and Quantum
+Gravity*. On this axis the subject leads the lab.
+
+**(b) Weakest claim.** P1/P2 at [Risk] under (b) and (c): no bound on the
+expression space searched, and a matching control already demonstrated against
+the lab's own comparable claim.
+
+**(c) Experiment that would settle it.** One matched-cardinality control
+alphabet applied identically to this subject's phi-arithmetic identities and to
+the lab's own G_phi BNF sweep, over a target list fixed before the fit, under
+BH-FDR q=0.05.
+
+**(d) Symmetric position of the lab's own work.** The lab's claim is in the
+same class and already has the adverse control on record. See also the declared
+interest in Section 9: a Pellis strand is a co-author on the lab's own
+phi-paper, and CASE-15 audits that prior work under the co-author rule.
+
+---
+
+## 11. Audit trail
+
+- 2026-06-16 -- Wave Loop 10 discovery: Pellis is real researcher with JGP/CQG citations
+- 2026-06-16 -- Added to claim-audit-lab register
+- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
 
 ---
 

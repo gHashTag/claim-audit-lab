@@ -51,23 +51,71 @@ larger [Risk], not a stronger result (FRAMEWORK.md (b)).
 
 ---
 
-## 4. Evidence calibration
+## 4. [Verified] inventory
 
-**Venue, FRAMEWORK.md (d):** an arXiv preprint. No venue weakness is recorded
-against the specific geometric claims G1-G3.
+Written first: [Verified] credit goes to the subject before any criticism
+begins (CHARTER.md s 1).
 
-**Scope, FRAMEWORK.md (b):** Gray et al. state geometric correspondences and do
-not state SM parameter formulas. Under the framework that absence removes
-look-elsewhere exposure rather than counting against the programme. The lab's
-own phi-monomial formulas carry that exposure; Section 9 labels both.
+- **[Verified]** G2. E8 is realised via the McKay correspondence on the binary
+  icosahedral group 2I. Source: arXiv:2604.00255v1. Evidence: standing
+  mathematical result (McKay 1980), re-derivable from the correspondence
+  between finite subgroups of SU(2) and the ADE diagrams. [Verified] as
+  mathematics; **not original to the subject**, and recorded as correctly
+  applied rather than newly proved.
+
+- **[Verified]** G3. The trefoil knot links to the Brieskorn E8 singularity.
+  Source: arXiv:2604.00255v1. Evidence: standing result in singularity theory.
+  Same restriction as G2: correctly applied, not newly proved.
+
+- **[Verified]** G1. Exact 62/62 vertex correspondence between the Mereon M120p
+  (H3) and the 600-cell (H4). Source: arXiv:2604.00255v1. Evidence: geometric
+  derivation given in the source, resting on the standing H3 subset H4
+  embedding. **Limit of this label, stated:** the lab has not independently
+  re-derived the 62/62 count at audit date, so this is [Verified] on the
+  published derivation and not on an independent check. It becomes independent
+  when a reader reproduces the vertex count, which is short arithmetic once
+  M120p is fixed.
 
 ---
 
-## 5. Audit Trail
+## 5. [Empirical fit] inventory
 
-- 2026-06-16 -- Wave Loop 9 competitive analysis
-- 2026-06-16 -- Added to claim-audit-lab register
-- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
+**Empty.** No claim in the located source fits data through a post-hoc
+parameter: the programme states no numerical fit. Recorded as a fact about the
+programme's scope, not as a gap.
+
+---
+
+## 6. [Open conjecture] inventory
+
+**Empty.** No claim in the located source is advanced as a conjecture with a
+stated falsification path.
+
+---
+
+## 7. [Risk] / [High-risk] inventory
+
+**Empty**, and the reason is the substantive finding of this case.
+
+G4-G6 (SM fermion masses, numerical formulas with error bounds,
+machine-checkable proofs) are recorded in Section 2 as **not present in the
+paper**. A claim that is not made carries no label: the look-elsewhere exposure
+of FRAMEWORK.md (b) attaches to claims, not to silence.
+
+**Venue, FRAMEWORK.md (d):** an arXiv preprint. No venue weakness is recorded
+against G1-G3, which rest on standing mathematics.
+
+This is why the case carries no [Risk] row while the lab's own comparable
+programme does (Section 9). Section 3's inventory table should be read in that
+light: the columns where Gray et al. show "None" are the columns that generate
+the lab's own [Risk] entries.
+
+---
+
+## 8. [Retracted] inventory
+
+**Empty.** No claim in the located source has been withdrawn by the authors or
+by a publisher at audit date.
 
 ---
 
@@ -99,6 +147,37 @@ under BH-FDR at q=0.05 against a target list fixed before the fit. If the
 phi-specific readings do not beat what phi-free alphabets of equal cardinality
 achieve, both fall to [Risk] and the geometric [Verified] rows above are
 untouched -- which is exactly the boundary this case draws.
+
+---
+
+## 10. Audit summary
+
+**(a) Strongest part.** Three [Verified] geometric and algebraic results
+(G1-G3), of which two are standing mathematics correctly applied and one is a
+vertex-count derivation given in the source.
+
+**(b) Weakest claim.** None carries a [Risk] label. The weakest point is
+evidential rather than substantive: G1 is [Verified] on the published
+derivation, not on an independent re-derivation by this lab.
+
+**(c) Experiment that would settle the largest open question.** Reproduce the
+62/62 vertex count independently from a fixed definition of M120p. This is
+arithmetic, not an experiment, and it would move G1 from published-derivation
+[Verified] to independently-checked [Verified].
+
+**(d) Symmetric position of the lab's own work.** The lab holds the same class
+of [Verified] result (the closed ladder rule, the Lucas identity) and, unlike
+this subject, also extends into SM parameter values -- which is exactly where
+its own [Risk] rows come from. On this case the lab's programme is the more
+exposed of the two.
+
+---
+
+## 11. Audit trail
+
+- 2026-06-16 -- Wave Loop 9 competitive analysis
+- 2026-06-16 -- Added to claim-audit-lab register
+- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
 
 ---
 

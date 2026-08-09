@@ -49,24 +49,66 @@ FRAMEWORK.md (b), not a stronger result):
 
 ---
 
-## 4. Evidence calibration
+## 4. [Verified] inventory
 
-**Under FRAMEWORK.md (d), venue:** a single Zenodo deposit (June 3, 2026), no
-peer review and no citations located at audit date.
+**Empty at audit date**, and stated as a fact about what was located rather
+than about the programme.
 
-**Under FRAMEWORK.md (b), look-elsewhere:** neither the target constant list nor
-the generating alphabet is bounded in advance, so no multiple-testing correction
-is reportable for the 0.11 sigma figure. The lab's own 23 phi-monomials carry
-the identical gap, and CASE-00 s 7 already records the lab's control result that
-phi-free grammars of equal cardinality reach comparable compression.
+The E8 invariants the derivation takes as inputs (dim = 248, dual Coxeter
+number 30, level c = 8) are correct standard mathematics, but they are inputs
+the subject uses rather than claims the subject originates, so they generate no
+[Verified] credit here. CHARTER.md s 1 requires that any [Verified] claim the
+subject does hold be credited before criticism; if a derivation is supplied
+that meets FRAMEWORK.md (a) or (b), **this section is filled first**.
 
 ---
 
-## 5. Audit Trail
+## 5. [Empirical fit] inventory
 
-- 2026-06-16 -- Wave Loop 9 discovery
-- 2026-06-16 -- Added to claim-audit-lab register
-- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
+**Empty as a standalone label.** A1 matches a measured quantity, which is the
+entry condition for [Empirical fit], but FRAMEWORK.md's calibration clause
+sends it onward: an [Empirical fit] with k free parameters against a baseline
+with fewer is automatically [Risk] unless model selection is reported at
+matched k, and no matched-k comparison is reported. A1 is therefore carried in
+Section 7.
+
+---
+
+## 6. [Open conjecture] inventory
+
+**Empty.** No falsification path is stated for A1-A3 in the located source.
+
+---
+
+## 7. [Risk] / [High-risk] inventory
+
+- **[Risk]** A1. alpha^-1 = 137.035999086, quoted at 0.11 sigma. Source:
+  Zenodo:20525049. Reason: FRAMEWORK.md (b) -- neither the target constant list
+  nor the generating alphabet is bounded in advance, so no multiple-testing
+  correction is reportable; and the [Empirical fit] calibration clause, since
+  no matched-k model selection is given. No error budget is published, so the
+  figure cannot be independently recomputed.
+
+- **[Risk]** A2. Eleven constants from E8 x E8 at zero free inputs. Source: as
+  above. Reason: FRAMEWORK.md (b) and (c). **The lab's own 23 phi-monomials at
+  "0 free inputs (phi, pi, e only)" carry this identically**, and CASE-00 s 7
+  records the lab's own control result that phi-free grammars of equal
+  cardinality reach comparable compression.
+
+- **[Risk]** A3. The "zero free inputs" claim stands against three listed
+  inputs (dim = 248, h* = 30, c = 8). Reason: FRAMEWORK.md's [Empirical fit]
+  definition -- a datum fixed after the target values are known is a post-hoc
+  parameter. This is an internal tension in the claim as stated, recorded
+  without inference about how it arose.
+
+- **[Risk]** Venue. Reason: FRAMEWORK.md (d) -- a single Zenodo deposit
+  (June 3, 2026), no peer review and no citations located at audit date.
+
+---
+
+## 8. [Retracted] inventory
+
+**Empty.** No claim has been withdrawn by the subject at audit date.
 
 ---
 
@@ -98,6 +140,35 @@ at q=0.05. Whichever set does not survive the control moves to [Risk]; a set
 that survives with its alphabet declared in advance moves to [Empirical fit]
 with a matched control, and only a subsequent held-out confirmation would reach
 [Verified].
+
+---
+
+## 10. Audit summary
+
+**(a) Strongest part.** The precision quoted for alpha^-1 is the programme's
+headline, but with no published error budget it is not independently
+recomputable, so no [Verified] entry is available at audit date.
+
+**(b) Weakest claim.** A2/A3 -- "zero free inputs" asserted alongside three
+listed inputs.
+
+**(c) Experiment that would settle it.** Fix the target constant list and the
+generating alphabet in public before computing, then run a matched-cardinality
+control alphabet (including the E8 invariants) over both this constant set and
+the lab's own, under BH-FDR q=0.05.
+
+**(d) Symmetric position of the lab's own work.** The lab makes the same
+zero-free-parameter claim in the same words and trips the same definition. The
+difference is that CASE-00 s 7 already records the control result against the
+lab's version; no such control has been run against this subject's.
+
+---
+
+## 11. Audit trail
+
+- 2026-06-16 -- Wave Loop 9 discovery
+- 2026-06-16 -- Added to claim-audit-lab register
+- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
 
 ---
 

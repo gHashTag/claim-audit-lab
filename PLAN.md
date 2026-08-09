@@ -36,7 +36,7 @@ register already held.
 - [x] **P0** Clear the two failing CI gates (ASCII + symmetric mirror), register the batch, generate the index. *Done, PR #8, all gates green on the runner.*
 - [x] **P1 / W1** Remove competitive framing from all 7 files; replace threat ratings with framework-based evidence calibration.
 - [x] **P2 / W3** Expand CASE-00 with the lab's real documented record: 7 withdrawn claims (2026-08-10), the surviving theorems, the measured working point. Append PROMOTION-LEDGER rows.
-- [ ] **P3 / W2** Add five-label inventory sections (4-8) to the 7 files, converting the assessment tables. Unblocks W7.
+- [x] **P3 / W2** Add five-label inventory sections (4-8) to the 7 files, converting the assessment tables. Unblocks W7.
 - [x] **P4** Wire `gen_readme_index.py --check` into CI as a fourth job.
 - [ ] **P5 / W5** Attempt source verification of the two identity collisions; record the outcome either way.
 - [ ] **P6 / W4** Archive snapshots where sources verify.
@@ -48,6 +48,14 @@ commit, push to the PR branch. Do **not** merge PR #8.
 
 ## Status log
 
+- **2026-08-10, iteration 2.** Completed P3: all 7 files restructured to the
+  template (sections 1-11), assessment tables converted to five-label
+  inventories with FRAMEWORK.md (a)-(d) reasons cited per entry. CHARTER s 1
+  credit rule now satisfied -- CASE-11 (3), CASE-17 (3), CASE-19/21/22 (1 each)
+  carry [Verified] entries crediting the subject first; CASE-18 and CASE-20
+  state explicitly why theirs are empty and that the section is filled first if
+  a claim is supplied. Reviewer guideline 2 no longer grounds a rejection.
+  Next: W7 (scorecard, now countable), then P5/P6.
 - **2026-08-10, iteration 1 (cont 2).** Completed P4: `case-index` added as a
   fourth CI job running `gen_readme_index.py --check`. Index drift can no
   longer reach main silently.

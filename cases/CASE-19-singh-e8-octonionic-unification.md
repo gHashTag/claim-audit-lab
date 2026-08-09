@@ -59,28 +59,67 @@ Section 9 places it beside the lab's own two [Open conjecture] rows.
 
 ---
 
-## 4. Evidence calibration
+## 4. [Verified] inventory
 
-**Venue (d):** peer-reviewed journals; no weakness recorded.
+Written first: [Verified] credit goes to the subject before any criticism
+begins (CHARTER.md s 1).
 
-**Fpath (a):** stated and actionable for S2, which is the framework's threshold
-for [Open conjecture]. The falsifier is blocked on an experiment, not absent --
-a different condition from the lab's own compute-blocked falsifiers, but the
-same epistemic class.
-
-**Look-elsewhere (b):** the mass relation S4 (sqrt-ratios 1:2:3) is quoted
-without a stated bound on which ratios were examined, so it sits at
-[Empirical fit] rather than higher. Section 9 pairs it with the lab's own
-[Empirical fit] row.
+- **[Verified]** S1. The exceptional Jordan algebra supplies the flavour
+  structure used by the programme. Source: arXiv:2604.06288. Evidence:
+  algebraic derivation over standing mathematics (the exceptional Jordan
+  algebra and its automorphism group). [Verified] **as algebra**; that this
+  structure is realised in nature is a separate claim in a separate label.
 
 ---
 
-## 5. Audit Trail
+## 5. [Empirical fit] inventory
 
-- 2026-06-16 -- Wave Loop 9 intake
-- 2026-06-16 -- Wave Loop 10 re-read (2026 publication rate noted)
-- 2026-06-16 -- Added to claim-audit-lab register
-- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
+- **[Empirical fit]** S4. Mass relations sqrt(m_e):sqrt(m_u):sqrt(m_d) = 1:2:3.
+  Source: arXiv:2604.06288. Free parameters: not stated. Control: absent.
+  Pre-registered held-out test: absent. Reason for the label: the relation
+  matches measured masses, but which ratios were examined before this one was
+  advertised is not reported, so the choice of headline relation is a post-hoc
+  parameter under FRAMEWORK.md's definition.
+
+---
+
+## 6. [Open conjecture] inventory
+
+- **[Open conjecture]** S2. Bell-CHSH correlations exceeding the Tsirelson
+  bound 2*sqrt(2). Source: arXiv:2604.06288, "a falsification-oriented
+  catalogue". Fpath (stated by subject): the prediction is refuted by a Bell
+  test that does not observe violation beyond 2*sqrt(2) at the stated
+  precision. Executable: **yes** -- the experiment exists and is not blocked on
+  new apparatus.
+
+  This is the strongest epistemic position held by any subject in the
+  Wave-Loop batch, and FRAMEWORK.md is explicit that a stated, actionable
+  falsifier is what separates [Open conjecture] from [Risk]. Section 9 places
+  it beside the lab's own two [Open conjecture] rows, which are compute-blocked
+  rather than unblocked.
+
+---
+
+## 7. [Risk] / [High-risk] inventory
+
+- **[Risk]** S3 (fermion-only objective collapse) and S5 (right-handed
+  pre-gravitational sector). Source: arXiv:2604.06288, arXiv:2605.29374.
+  Reason: FRAMEWORK.md (a) -- no individual falsifier for these two claims was
+  located and quoted at audit date. **This may be a gap in the audit rather
+  than in the programme:** the source is framed as a falsification-oriented
+  catalogue, and if it states falsifiers for S3 and S5 they move to Section 6.
+  Recorded this way so the correction is cheap and the burden sits with the
+  audit, not with the subject.
+
+**Venue, FRAMEWORK.md (d):** publications in *Physical Review D*, *Classical
+and Quantum Gravity* and other peer-reviewed journals. No venue weakness is
+recorded against any claim in this case.
+
+---
+
+## 8. [Retracted] inventory
+
+**Empty.** No claim has been withdrawn by the subject at audit date.
 
 ---
 
@@ -115,6 +154,36 @@ matched-cardinality ablation with frozen seed and pre-registered held-out split
 lab's architecture-prior conjecture to [Risk]. Both are the same kind of
 experiment: a pre-declared measurement whose failure the claimant has agreed in
 advance to accept.
+
+---
+
+## 10. Audit summary
+
+**(a) Strongest part.** S2 -- a stated, executable falsifier at [Open
+conjecture]. Under this framework that is a better epistemic position than
+several claims elsewhere in this register, including the lab's own [Risk] row
+on the BPB-per-format table.
+
+**(b) Weakest claim.** S3/S5 at [Risk] under (a), with the caveat above that
+the gap may be in the audit rather than the source.
+
+**(c) Experiment that would settle the largest claim.** A Tsirelson-bound test
+at the precision the catalogue specifies. A null result at that precision moves
+S2 to [Retracted].
+
+**(d) Symmetric position of the lab's own work.** The lab holds two [Open
+conjecture] rows with stated executable falsifiers (CASE-00 s 6), both blocked
+on compute rather than on an experiment. Same epistemic class; the subject's
+falsifier is the less blocked of the two.
+
+---
+
+## 11. Audit trail
+
+- 2026-06-16 -- Wave Loop 9 intake
+- 2026-06-16 -- Wave Loop 10 re-read (2026 publication rate noted)
+- 2026-06-16 -- Added to claim-audit-lab register
+- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
 
 ---
 
