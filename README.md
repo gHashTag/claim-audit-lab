@@ -78,38 +78,48 @@ See [`CHARTER.md`](CHARTER.md) for the full text.
 
 | ID       | Subject                                | Domain                              | Class  | Status |
 |----------|----------------------------------------|-------------------------------------|--------|--------|
-| [CASE-00](cases/CASE-00-self-audit.md) | Self-audit  --  methodology calibration on our own work | numeric formats / ML training | Verified | draft |
-| [CASE-01](cases/CASE-01-savchenko-pointer-architecture.md) | Savchenko pointer architecture | consciousness / dark matter | Risk | draft |
-| [CASE-02](cases/CASE-02-stakhov-mathematics-of-harmony.md) | Stakhov Mathematics of Harmony | number systems / phi-universalism | Efit | draft |
-| [CASE-03](cases/CASE-03-el-naschie-e-infinity.md) | El Naschie E-infinity theory | quantum spacetime / dimensions | Retr | draft |
-| [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | Petoukhov matrix genetics | bioinformatics / phi-matrices | Risk | draft |
-| [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | Kramer-Klimesch golden rhythms (EEG) | neuroscience (positive control) | Risk | draft |
-| [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | de Groot economic cycles | econometrics (positive control) | Risk | draft |
-| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan M_pl coincidence class | adjacent class declined in v2.1 | Risk | draft |
-| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev BNF equivalence-class result (symmetric self-audit, v2.3 phi-paper) | symbolic regression / methodology calibration | Conj | draft |
-| [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM CATALOG vs closed-form ladder rule (symmetric self-audit) | numeric formats / ROM consistency | Conj | draft |
-| [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence-class survey for v1.3 rule-derived rungs (GF6/10/14/48/96) | numeric formats / coincidence classes | Conj | draft |
+| [CASE-00](cases/CASE-00-self-audit.md) | Self-audit -- methodology calibration on the lab's own work | numeric formats / ML training | Verified | draft |
+| [CASE-01](cases/CASE-01-savchenko-pointer-architecture.md) | A. Savchenko -- Pointer Architecture v9.0 | consciousness / dark matter | Risk | draft |
+| [CASE-02](cases/CASE-02-stakhov-mathematics-of-harmony.md) | A. Stakhov -- Mathematics of Harmony | number systems / phi-universalism | Efit | draft |
+| [CASE-03](cases/CASE-03-el-naschie-e-infinity.md) | M.S. El Naschie -- E-infinity theory | quantum spacetime / dimensions | Retr | draft |
+| [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | S.V. Petoukhov -- matrix genetics | bioinformatics / phi-matrices | Risk | draft |
+| [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | M.A. Kramer & W. Klimesch -- golden EEG rhythms | neuroscience (positive control) | Risk | draft |
+| [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot -- phi-period economic cycles | econometrics (positive control) | Risk | draft |
+| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan -- M_pl coincidence class | adjacent class declined in v2.1 | Risk | draft |
+| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev -- BNF equivalence-class result (v2.3 self-audit) | symbolic regression / methodology calibration | Conj | draft |
+| [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM CATALOG vs closed-form ladder rule (self-audit) | numeric formats / ROM consistency | Conj | draft |
+| [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence-class survey, v1.3 rule-derived rungs (self-audit) | numeric formats / coincidence classes | Conj | draft |
 | [CASE-11](cases/CASE-11-gray-dennis-kauffman-mereon-600cell.md) | Gray, Dennis & Kauffman -- Mereon system, the 600-cell, and E6/E7/E8 | geometry / H3-H4 correspondence | Verified | draft |
-| [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III -- v2.3 BNF equivalence-class rank 2/394 for G_phi (Conj, Pellis-gated) | symbolic regression / MDL-optimality | Conj | draft |
-| [CASE-13](cases/CASE-13-singh-trace-dynamics.md) | Tejinder P. Singh -- trace dynamics + octonion unification with phi-arithmetic (Wave-10 HIGH) | trace dynamics / octonionic unification | Conj | draft |
-| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | Carles Morato de Dalmases -- phi-anchored spectral-triple SM unification (Wave-10 HIGH) | spectral triples / SM unification | Risk | draft |
-| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | Cosimo Pellis -- symmetric mirror-audit of solo prior phi-arithmetic publications (co-author rule) | phi-arithmetic / co-author mirror-audit | Risk | draft |
-| [CASE-16](cases/CASE-16-phi-grid-collaboration.md) | Phi-Grid Project -- methodologically-aligned collaboration probe (positive control, NOT adversarial) | methodology (positive control) | Conj | draft |
-| [CASE-17](cases/CASE-17-mcgirl-geometric-standard-model.md) | Timothy McGirl -- Geometric Standard Model, 26-58 constants from E8 -> H4 | E8 -> H4 geometry / constant derivation | Risk | draft |
-| [CASE-18](cases/CASE-18-agyemang-e8-boundary-geometry.md) | Agyemang (AIMS Ghana) -- eleven fundamental constants from E8 boundary geometry | E8 boundary geometry / constants | Risk | draft |
-| [CASE-19](cases/CASE-19-singh-e8-octonionic-unification.md) | T.P. Singh (TIFR) -- E8 x omega-E8 octonionic unification, falsification-oriented catalogue | octonionic unification / quantum foundations | Conj | draft |
-| [CASE-20](cases/CASE-20-morato-dalmases-600cell-spectral-triple.md) | L. Morato de Dalmases -- 600-cell spectral triple, SGUP, and asserted Millennium-Problem proofs | spectral triples / Millennium-problem claims | Risk | draft |
-| [CASE-21](cases/CASE-21-pellis-unity-formulas-coupling-constants.md) | Stergios Pellis -- unity formulas for coupling constants and phi-physics | phi-arithmetic / coupling constants | Risk | draft |
-| [CASE-22](cases/CASE-22-myo-oo-e8-holographic.md) | Myo Oo (+ Mark W. Vick) -- Project MAYA, E8 holographic geometry | E8 holographic geometry / Project MAYA | Risk | draft |
+| [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III -- v2.3 BNF rank 2/394 for G_phi | symbolic regression / MDL-optimality | Conj | draft |
+| [CASE-13](cases/CASE-13-singh-trace-dynamics.md) | T.P. Singh -- trace dynamics and phi-arithmetic derivations | trace dynamics / octonionic unification | Conj | draft |
+| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | C. Morato de Dalmases -- phi-anchored spectral-triple SM unification | spectral triples / SM unification | Risk | draft |
+| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | C. Pellis -- solo prior phi-arithmetic publications | phi-arithmetic / co-author mirror-audit | Risk | draft |
+| [CASE-16](cases/CASE-16-phi-grid-collaboration.md) | Phi-Grid Project -- methodologically-aligned collaboration probe | methodology (positive control) | Conj | draft |
+| [CASE-17](cases/CASE-17-mcgirl-geometric-standard-model.md) | T. McGirl -- Geometric Standard Model | E8 -> H4 geometry / constant derivation | Risk | draft |
+| [CASE-18](cases/CASE-18-agyemang-e8-boundary-geometry.md) | Agyemang (AIMS Ghana) -- eleven constants from E8 boundary geometry | E8 boundary geometry / constants | Risk | draft |
+| [CASE-19](cases/CASE-19-singh-e8-octonionic-unification.md) | T.P. Singh -- E8 x omega-E8 octonionic unification | octonionic unification / quantum foundations | Conj | draft |
+| [CASE-20](cases/CASE-20-morato-dalmases-600cell-spectral-triple.md) | L. Morato de Dalmases -- 600-cell spectral triple and SGUP | spectral triples / Millennium-problem claims | Risk | draft |
+| [CASE-21](cases/CASE-21-pellis-unity-formulas-coupling-constants.md) | S. Pellis -- unity formulas for coupling constants | phi-arithmetic / coupling constants | Risk | draft |
+| [CASE-22](cases/CASE-22-myo-oo-e8-holographic.md) | Myo Oo & M.W. Vick -- Project MAYA | E8 holographic geometry / Project MAYA | Risk | draft |
 
 **Register totals:** 23 cases -- Verified 2, Efit 1, Conj 7, Risk 12, Retr 1.
 
 <!-- END GENERATED case-index -->
 
-Two entries need attention and are listed as-is rather than silently fixed:
-CASE-12's manifest path (`cases/CASE-12-g-phi-rank-2-of-394/README.md`) does
-not exist on disk, and CASE-15 / CASE-21 record different given names for a
-Pellis subject while citing the same SCIRP paper id (122814).
+Three register-integrity issues are recorded here as-is rather than silently
+fixed, since resolving any of them changes what a case is about:
+
+- **CASE-12's manifest path** (`cases/CASE-12-g-phi-rank-2-of-394/README.md`)
+  does not exist on disk.
+- **CASE-15 / CASE-21** record different given names (Cosimo, Stergios) for a
+  Pellis subject while citing the same SCIRP paper id (122814).
+- **CASE-14 / CASE-20** record different given names (Carles, L.) for a Morato
+  de Dalmases subject while citing the same Zenodo record (19112358).
+
+In both name cases the register may be carrying one subject twice under two
+identities, or two subjects whose work overlaps. Under CHARTER.md s 2 that is
+a sourcing question, not an editorial one, and it is left open until the
+primary sources are re-fetched.
 
 ---
 
