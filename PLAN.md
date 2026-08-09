@@ -21,7 +21,7 @@ broken is not a comparison.
 | W4 | No archive snapshot URLs | CONTRIBUTING.md s 4 mandates them | medium (needs network + source verification) |
 | W5 | Two subject-identity collisions unresolved | CASE-15/21 (SCIRP 122814), CASE-14/20 (Zenodo 19112358) | medium -- a duplicate subject means two mirrors audit one claim |
 | W6 | `cases/CASE-12-g-phi-rank-2-of-394/README.md` referenced but absent | manifest + README | low |
-| W7 | Scorecard unscoreable, `data/scorecard.json` covers CASE-00..06 only | README | low, blocked on W2 |
+| W7 | ~~Scorecard unscoreable~~ **CLOSED 2026-08-10.** Counted by `scripts/count_labels.py`, validated 6/6 against the hand-written rows | README, data/scorecard.json | closed |
 | W8 | Gates not wired to the generator; index drift can return | `.github/workflows/` | low |
 
 **Root cause of W1+W2:** the batch was produced by a competitive-analysis pass
@@ -48,6 +48,15 @@ commit, push to the PR branch. Do **not** merge PR #8.
 
 ## Status log
 
+- **2026-08-10, iteration 2 (cont).** Closed W7. Wrote
+  `scripts/count_labels.py` and regenerated `data/scorecard.json` + the README
+  scorecard for all 22 case files on disk. **The first counter was wrong**: its
+  pattern could not express `[High-risk]` or `[Risk] (a)` and reported 0 where
+  the truth was 3 and 4, which would have shipped a scorecard understating the
+  register's risk rows. Caught by validating against the hand-written numbers
+  before trusting the output; `--validate` now reproduces 6/6 and is the gate.
+  CASE-07..10 marked not-counted (they predate the inventory structure).
+  Next: P5 (identity collisions), P6 (archive snapshots).
 - **2026-08-10, iteration 2.** Completed P3: all 7 files restructured to the
   template (sections 1-11), assessment tables converted to five-label
   inventories with FRAMEWORK.md (a)-(d) reasons cited per entry. CHARTER s 1

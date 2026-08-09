@@ -132,31 +132,52 @@ claims inside each inventory section; joint or sub-claims may share a
 bullet, so the table is a calibration aid, not a precise inventory.
 Label changes are recorded in [`PROMOTION-LEDGER.md`](PROMOTION-LEDGER.md).
 
-| Case | Subject | V | EF | OC+Fpath | R | HR | Ret | Fpath executable | Reply |
+| Case | Subject | V | EF | OC | R | HR | Ret | Fpath executable | Reply |
 |---|---|---:|---:|---:|---:|---:|---:|---|---|
-| [CASE-00](cases/CASE-00-self-audit.md) | self-audit (maintainers) | 4 | 1 | 2 | 2 | 0 | 1 | yes | n/a |
+| [CASE-00](cases/CASE-00-self-audit.md) | self-audit (maintainers) | 13 | 1 | 2 | 2 | 0 | 4 | yes | n/a |
 | [CASE-01](cases/CASE-01-savchenko-pointer-architecture.md) | A. Savchenko | 7 | 3 | 4 | 3 | 0 | 1 | partial | pending |
 | [CASE-02](cases/CASE-02-stakhov-mathematics-of-harmony.md) | A. Stakhov | 6 | 1 | 2 | 4 | 1 | 0 | partial | pending |
 | [CASE-03](cases/CASE-03-el-naschie-e-infinity.md) | M.S. El Naschie | 3 | 0 | 0 | 2 | 3 | 0 | no | pending |
 | [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | S.V. Petoukhov | 3 | 2 | 1 | 4 | 0 | 0 | pending | pending |
 | [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | Kramer & Klimesch (positive control) | 2 | 2 | 1 | 2 | 0 | 0 | yes | pending |
 | [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot (positive control) | 3 | 1 | 1 | 3 | 0 | 0 | yes | pending |
-| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan M_pl class | 0 | 0 | 0 | 3 | 0 | 0 | partial | n/a |
-| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev BNF (v2.3 self-audit) | 1 | 0 | 3 | 0 | 0 | 0 | yes | pending |
-| [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM vs closed rule (self-audit) | 1 | 0 | 3 | 0 | 0 | 0 | yes | n/a |
-| [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence-class survey (self-audit) | 0 | 0 | 1 | 0 | 0 | 0 | yes | n/a |
-| [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III v2.3 BNF rank 2/394 | 1 | 0 | 3 | 0 | 0 | 0 | yes | n/a |
-| **Totals (v0.6, CASE-12)** | 12 cases | **31** | **10** | **21** | **23** | **4** | **2** | -- | -- |
+| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan M_pl class * | 0 | 0 | 0 | 3 | 0 | 0 | partial | n/a |
+| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev BNF (v2.3 self-audit) * | 1 | 0 | 3 | 0 | 0 | 0 | yes | pending |
+| [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM vs closed rule (self-audit) * | 1 | 0 | 3 | 0 | 0 | 0 | yes | n/a |
+| [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence survey (self-audit) * | 0 | 0 | 1 | 0 | 0 | 0 | yes | n/a |
+| [CASE-11](cases/CASE-11-gray-dennis-kauffman-mereon-600cell.md) | Gray, Dennis & Kauffman | 3 | 0 | 0 | 0 | 0 | 0 | n/a | pending |
+| [CASE-13](cases/CASE-13-singh-trace-dynamics.md) | T.P. Singh (trace dynamics) | 1 | 1 | 1 | 1 | 0 | 0 | pending | pending |
+| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | C. Morato de Dalmases | 0 | 1 | 1 | 3 | 0 | 0 | pending | pending |
+| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | C. Pellis (co-author mirror-audit) | 0 | 1 | 1 | 3 | 0 | 0 | pending | pending |
+| [CASE-16](cases/CASE-16-phi-grid-collaboration.md) | Phi-Grid Project (positive control) | 2 | 0 | 0 | 0 | 0 | 0 | yes | pending |
+| [CASE-17](cases/CASE-17-mcgirl-geometric-standard-model.md) | T. McGirl | 3 | 0 | 0 | 3 | 0 | 0 | pending | pending |
+| [CASE-18](cases/CASE-18-agyemang-e8-boundary-geometry.md) | Agyemang | 0 | 0 | 0 | 4 | 0 | 0 | no | pending |
+| [CASE-19](cases/CASE-19-singh-e8-octonionic-unification.md) | T.P. Singh (E8 x omega-E8) | 1 | 1 | 1 | 1 | 0 | 0 | yes | pending |
+| [CASE-20](cases/CASE-20-morato-dalmases-600cell-spectral-triple.md) | L. Morato de Dalmases | 0 | 0 | 0 | 2 | 1 | 0 | no | pending |
+| [CASE-21](cases/CASE-21-pellis-unity-formulas-coupling-constants.md) | S. Pellis | 1 | 1 | 0 | 2 | 0 | 0 | pending | pending |
+| [CASE-22](cases/CASE-22-myo-oo-e8-holographic.md) | Myo Oo & M.W. Vick | 1 | 0 | 0 | 4 | 0 | 0 | no | pending |
+| **Totals** | **22 cases** | **51** | **15** | **22** | **46** | **5** | **5** | -- | -- |
 
-**Scope of this table.** The scorecard covers 12 of the 23 cases in the index
-above. It is not regenerated from `cases.yaml`, because per-claim label counts
-are not carried there; its machine-readable source
-[`data/scorecard.json`](data/scorecard.json) is itself older still (generated
-2026-06-02, CASE-00..CASE-06). CASE-13..CASE-22 are unscored: those files
-record claims in an assessment table rather than in five-label inventory
-sections, so there are no `- **[LABEL] ...**` bullets to count. Scoring them
-requires rewriting them to the structure in
-[`templates/CASE-TEMPLATE.md`](templates/CASE-TEMPLATE.md) first.
+**Scope of this table.** Counts are produced by
+[`scripts/count_labels.py`](scripts/count_labels.py) from the five-label
+inventory sections, and written to
+[`data/scorecard.json`](data/scorecard.json). All 22 case files on disk are
+covered. CASE-12 is absent because its manifest path does not exist on disk
+(see the integrity note above the index).
+
+Rows marked **\*** are **not counted**: CASE-07..CASE-10 predate the inventory
+structure and record claims in prose sections, so their figures are
+hand-assigned and carried forward unchanged. Everything else is machine-counted.
+
+**On trusting this table.** The counter is validated against the six
+hand-written rows it replaced and reproduces all six exactly
+(`scripts/count_labels.py --validate`). That check exists because the first
+version of the counter used a pattern that could not express `[High-risk]` or
+`[Risk] (a)`, and **reported 0 where the truth was 3 and 4** -- a label the
+pattern cannot match reads as an absence, not as an error. The register uses
+four different bullet decorations; a counter that handles only the plainest one
+silently under-reports. The qualitative columns (`Fpath executable`, `Reply`)
+are not derivable from the files and remain hand-maintained.
 
 **Reading the table.** `V` = [Verified], `EF` = [Empirical fit],
 `OC+Fpath` = [Open conjecture] with stated falsification path, `R` =
