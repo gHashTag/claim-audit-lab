@@ -35,7 +35,7 @@ register already held.
 
 - [x] **P0** Clear the two failing CI gates (ASCII + symmetric mirror), register the batch, generate the index. *Done, PR #8, all gates green on the runner.*
 - [x] **P1 / W1** Remove competitive framing from all 7 files; replace threat ratings with framework-based evidence calibration.
-- [ ] **P2 / W3** Expand CASE-00 with the lab's real documented record: 7 withdrawn claims (2026-08-10), the surviving theorems, the measured working point. Append PROMOTION-LEDGER rows.
+- [x] **P2 / W3** Expand CASE-00 with the lab's real documented record: 7 withdrawn claims (2026-08-10), the surviving theorems, the measured working point. Append PROMOTION-LEDGER rows.
 - [ ] **P3 / W2** Add five-label inventory sections (4-8) to the 7 files, converting the assessment tables. Unblocks W7.
 - [ ] **P4** Wire `gen_readme_index.py --check` into CI as a fourth job.
 - [ ] **P5 / W5** Attempt source verification of the two identity collisions; record the outcome either way.
@@ -48,6 +48,13 @@ commit, push to the PR branch. Do **not** merge PR #8.
 
 ## Status log
 
+- **2026-08-10, iteration 1 (cont).** Completed P2: CASE-00 s 4a adds 9
+  [Verified] entries (Z[phi] closure, accuracy law, diagnostic theorem, Kraft
+  bound T12, regime-radix T13, exact taper laws, area law, trade-curve
+  prediction); s 8a adds the seven withdrawn silicon claims R1-R7 plus three
+  withdrawn headline results; s 8b records the common mechanism. 19 ledger rows
+  appended. Mirror table and audit summary updated. Next: P3 (five-label
+  inventories in the 7 files), which unblocks the scorecard.
 - **2026-08-10, iteration 1.** Read the owner stop-rule. Armed hourly loop.
   Built this plan. Completed P1: removed `Threat level:` ratings from 7 files,
   removed reputation and motive commentary, reframed Section 3 from

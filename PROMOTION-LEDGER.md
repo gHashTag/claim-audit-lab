@@ -61,4 +61,43 @@ row stays as it was.
 
 ---
 
+## 2026-08-10 -- self-audit retraction pass (CASE-00 s 4a / s 8a)
+
+A re-examination of the lab's own hardware programme withdrew every phi claim
+about silicon. Recorded here per CHARTER.md s 8, because a label change without
+an audit trail is itself a credibility failure. Source: the lab's hardware
+research record (`fpga-income` skill; `trinity-fpga/research/`).
+
+| Date | Case | Claim id | From | To | Reason | Commit | Reviewer |
+|---|---|---|---|---|---|---|---|
+| 2026-08-10 | CASE-00 | R1 `phi^k` correct scale grid | [Empirical fit] | [Retracted] | control-matched (APoT-2 at 0.1651% vs 2.4420%, one cycle vs k) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | R2 `dot_exact` confers advantage | [Verified] | [Retracted] | control-matched (APoT scale dyadic; `Z[1/2]` also a ring) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | R3 phi wins area 2.22x | [Empirical fit] | [Retracted] | correction (measured at 5-bit field; workload needs 2) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | R4 phi wins at frozen scale | [Empirical fit] | [Retracted] | control-matched (frozen shift is wiring; APoT 26 vs 64-256) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | R5 depth-independence is an advantage | [Open conjecture] | [Retracted] | control-matched (compile-time composition free to all) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | R6 LNS addition costs 10967 LUT | [Verified] | [Retracted] | correction (that was a decoder; honest adder 275 LUT) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | R7 mesh case is where phi wins | [Open conjecture] | [Retracted] | control-matched (APoT 103 vs Fibonacci step 128) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | "28 competitors, zero survivors" | [Verified] | [Retracted] | correction (positions-vs-bits; 6 of 17 at equal storage) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | 323 MHz / 41.2 GOPS, GF16 matmul | [Verified] | [Retracted] | correction (block has no registers; `grep -c posedge` = 0) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | "TEF best of fixed-field formats" | [Verified] | [Retracted] | correction (mid-group; spread set by field width) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | takum taper rate 0.117 bits/binade | [Verified] | [Retracted] | correction (category error: line fitted to a ladder) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | power-law area model `c*M^a` | [Empirical fit] | [Retracted] | Fpath-executed (pre-registered prediction missed by 36.3%) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | `Z[phi]` closure, exact linear tract | none | [Verified] | initial-classification (machine-checked algebra) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | accuracy law, exponent cancels | none | [Verified] | initial-classification (derived, then measured on 8 rungs) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | diagnostic theorem `M_eff` | none | [Verified] | initial-classification (recovers declared mantissa to 0.01 bit) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | Kraft bound on tapering (T12) | none | [Verified] | initial-classification (derived; runs against the lab's own claim) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | regime radix irrelevance (T13) | none | [Verified] | initial-classification (refuted the lab's own proposed third class) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | area law `141 + 2.4455*M^2` | none | [Verified] | initial-classification (R^2 = 0.99963 over 14 widths) | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-00 | trade-curve minimum, binary32 | none | [Verified] | Fpath-executed (predicted before synthesis, 2.3% / 4.7%) | see PR #8 | @gHashTag |
+
+**Note on the shape of this block.** Twelve demotions and seven promotions
+landed on the same date. That is not a normal cadence and should not be read as
+one: it is a single re-examination pass that had been deferred, and the
+deferral is itself the finding recorded in CASE-00 s 8b. The commit column
+carries "see PR #8" rather than a SHA because these rows are added in the same
+PR that adds the inventory; a follow-up commit should replace them with the
+merge SHA once PR #8 lands.
+
+---
+
 **End of ledger.**
