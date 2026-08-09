@@ -37,7 +37,7 @@ register already held.
 - [x] **P1 / W1** Remove competitive framing from all 7 files; replace threat ratings with framework-based evidence calibration.
 - [x] **P2 / W3** Expand CASE-00 with the lab's real documented record: 7 withdrawn claims (2026-08-10), the surviving theorems, the measured working point. Append PROMOTION-LEDGER rows.
 - [ ] **P3 / W2** Add five-label inventory sections (4-8) to the 7 files, converting the assessment tables. Unblocks W7.
-- [ ] **P4** Wire `gen_readme_index.py --check` into CI as a fourth job.
+- [x] **P4** Wire `gen_readme_index.py --check` into CI as a fourth job.
 - [ ] **P5 / W5** Attempt source verification of the two identity collisions; record the outcome either way.
 - [ ] **P6 / W4** Archive snapshots where sources verify.
 
@@ -48,6 +48,9 @@ commit, push to the PR branch. Do **not** merge PR #8.
 
 ## Status log
 
+- **2026-08-10, iteration 1 (cont 2).** Completed P4: `case-index` added as a
+  fourth CI job running `gen_readme_index.py --check`. Index drift can no
+  longer reach main silently.
 - **2026-08-10, iteration 1 (cont).** Completed P2: CASE-00 s 4a adds 9
   [Verified] entries (Z[phi] closure, accuracy law, diagnostic theorem, Kraft
   bound T12, regime-radix T13, exact taper laws, area law, trade-curve
