@@ -1,0 +1,18 @@
+name: Case registry
+
+# Format, then key, then sets -- in that order, because each is a precondition
+# for the next being meaningful. The pair check this replaces compared the two
+# sets in both directions and passed while the registry held two cases under
+# one identifier and had not been valid YAML for a day.
+
+on: [pull_request, push]
+
+jobs:
+  registry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install pyyaml
+      - run: python3 tools/check_registry.py

@@ -4,7 +4,7 @@
      so that the repository's own gates stop failing on work that is, by the
      framework's own rule, not yet a case. -->
 
-# CASE-15: Stergios Pellis -- Unity Formulas for Coupling Constants and phi-Physics
+# CASE-22: Stergios Pellis -- Unity Formulas for Coupling Constants and phi-Physics
 
 **Subject:** Stergios Pellis (active researcher, Greece).
 **Affiliation:** Independent; publishes on viXra, SSRN, and SCIRP (peer-reviewed).

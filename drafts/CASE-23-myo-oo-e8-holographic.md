@@ -4,7 +4,7 @@
      so that the repository's own gates stop failing on work that is, by the
      framework's own rule, not yet a case. -->
 
-# CASE-16: Myo Oo (+ Mark W. Vick) -- E8 Holographic Geometry / Project MAYA
+# CASE-23: Myo Oo (+ Mark W. Vick) -- E8 Holographic Geometry / Project MAYA
 
 **Subject:** Myo Oo (affiliation unknown), with Mark W. Vick.
 **Affiliation:** Independent / Zenodo / Academia.edu.

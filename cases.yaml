@@ -93,6 +93,7 @@ cases:
     claim_status: Conj
     fpath: "(A) depth-leq-2 phi-native form with MDL < 12 reducing to 3, surviving W1+W8 filter, not a commutative permutation of G_phi; OR (B) depth-3 BNF sweep showing G_phi rank > 10 in essential class"
     file: cases/CASE-12-g-phi-rank-2-of-394/README.md
+    file_status: not-written
     depends_on: CASE-08
     author_strand: "Vasilev II (computational sweep) + Pellis III (MDL-optimality framing)"
     public_status: "v2.3-draft LOCAL ONLY; hard-gated on Pellis approval (Pellis Letter v2 sent 2026-06-07)"
@@ -133,12 +134,12 @@ cases:
     depends_on: []
     public_status: "draft; methodological positive control; first-contact gated on Pellis approval + live arXiv ID for phi-paper"
 
-- id: CASE-10
-  title: "Vasilev Ternary Network Floats and the golden weight alphabet"
-  target: "gHashTag/trinity-fpga research/arxiv_tnf; gHashTag/trinity-s3ai derivations/golden_alphabet"
-  claim_status: Verified
-  fpath: "Sub-8-bit training run varying the element format with block scale and master-weight precision held fixed"
-  file: cases/CASE-10-vasilev-tnf-golden-alphabet.md
+  - id: CASE-18
+    title: "Vasilev Ternary Network Floats and the golden weight alphabet"
+    target: "gHashTag/trinity-fpga research/arxiv_tnf; gHashTag/trinity-s3ai derivations/golden_alphabet"
+    claim_status: Verified
+    fpath: "Sub-8-bit training run varying the element format with block scale and master-weight precision held fixed"
+    file: cases/CASE-18-vasilev-tnf-golden-alphabet.md
 
 # Counts (auto-derivable from the cases list above)
 counts:

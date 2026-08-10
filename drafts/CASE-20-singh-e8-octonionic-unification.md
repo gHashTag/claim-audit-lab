@@ -4,7 +4,7 @@
      so that the repository's own gates stop failing on work that is, by the
      framework's own rule, not yet a case. -->
 
-# CASE-13: T.P. Singh (TIFR Mumbai) -- E8xomegaE8 Octonionic Unification Programme
+# CASE-20: T.P. Singh (TIFR Mumbai) -- E8xomegaE8 Octonionic Unification Programme
 
 **Subject:** Prof. Tejinder P. Singh (born 1955, Indian physicist).
 **Affiliation:** Tata Institute of Fundamental Research (TIFR), Mumbai, India.

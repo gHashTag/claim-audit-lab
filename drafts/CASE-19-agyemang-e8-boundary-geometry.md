@@ -4,7 +4,7 @@
      so that the repository's own gates stop failing on work that is, by the
      framework's own rule, not yet a case. -->
 
-# CASE-12: Agyemang (AIMS Ghana) -- Eleven Fundamental Constants from E8 Boundary Geometry
+# CASE-19: Agyemang (AIMS Ghana) -- Eleven Fundamental Constants from E8 Boundary Geometry
 
 **Subject:** Agyemang (affiliation: African Institute for Mathematical Sciences, Ghana).
 **Affiliation:** AIMS Ghana.

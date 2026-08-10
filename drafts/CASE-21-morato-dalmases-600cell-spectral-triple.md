@@ -4,7 +4,7 @@
      so that the repository's own gates stop failing on work that is, by the
      framework's own rule, not yet a case. -->
 
-# CASE-14: L. Morato de Dalmases -- 600-Cell Spectral Triple and SGUP
+# CASE-21: L. Morato de Dalmases -- 600-Cell Spectral Triple and SGUP
 
 **Subject:** L. Morato de Dalmases (independent researcher).
 **Affiliation:** Independent.
