@@ -8,6 +8,10 @@
 **Status:** draft
 **Last update:** 2026-06-16
 
+
+> **Source verification 2026-08-10.** The subject's identity was re-checked
+> against primary sources. The name **Stergios Pellis** is confirmed against [SSRN 4003636](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636) and JHEPGC 2023 (DOI 10.4236/jhepgc.2023.91021 = SCIRP paper id 122814). **CASE-15 audits the same subject**, and records him as Strand III of the lab's own phi-paper. This case is therefore auditing a **co-author of the lab** while being gated as an ordinary external case; under CHARTER.md s 3 and COI.md the co-author notification rule should extend here. Flagged for the maintainer, not resolved by this pass.
+
 ---
 
 ## 1. Identity

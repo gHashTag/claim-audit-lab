@@ -134,7 +134,7 @@ cases:
     public_status: "draft; no contact attempted; Wave-Loop-10 HIGH priority; institutional first-mover threat"
 
   - id: CASE-14
-    title: "C. Morato de Dalmases -- phi-anchored spectral-triple SM unification"
+    title: "L. Morato de Dalmases -- phi-anchored spectral-triple SM unification"
     target: "Zenodo monograph sequence (records 20443946, 19592588, 19112358, 19353957) claiming phi-anchored spectral-triple-style derivation of Standard Model coupling/mass spectrum"
     claim_status: Risk
     domain: "spectral triples / SM unification"
@@ -144,7 +144,7 @@ cases:
     public_status: "draft; no contact attempted; Wave-Loop-10 HIGH priority; iterative monograph versioning suggests post-hoc retuning"
 
   - id: CASE-15
-    title: "C. Pellis -- solo prior phi-arithmetic publications"
+    title: "S. Pellis -- solo prior phi-arithmetic publications"
     target: "Pellis solo prior publications on phi-arithmetic coupling-constant identities (SSRN 4003636 + 4442074, SCIRP/JHEPGC paperid 122814, arXiv:2310.16864 with Golmankhaneh and Zingales); independent of his Strand III role in v2.5 phi-paper"
     claim_status: Risk
     domain: "phi-arithmetic / co-author mirror-audit"
@@ -211,7 +211,7 @@ cases:
     fpath: "Apply one matched-cardinality control alphabet identically to (a) Pellis's phi-arithmetic identities for alpha and the coupling constants and (b) the lab's G_phi BNF sweep -- replace phi with (e, pi, sqrt-2, sqrt-3, integers) at equal expression cardinality over a target list fixed before the fit, under BH-FDR q=0.05; if phi-native forms do not outrank the control on both, both fall to Risk together"
     file: cases/CASE-21-pellis-unity-formulas-coupling-constants.md
     depends_on: [CASE-08, CASE-15]
-    public_status: "draft; Wave-Loop-10 batch; renumbered from CASE-15 on 2026-08-10 (ID collision with the co-author mirror-audit entry); COI declared in Section 9; subject's venue record on the peer-review axis is currently stronger than the lab's; UNRESOLVED: given name recorded as Stergios here and Cosimo in CASE-15 though both entries cite SCIRP paperid 122814"
+    public_status: "draft; Wave-Loop-10 batch; renumbered from CASE-15 on 2026-08-10 (ID collision with the co-author mirror-audit entry); COI declared in Section 9; subject's venue record on the peer-review axis is currently stronger than the lab's; RESOLVED 2026-08-10 by source check: subject is Stergios Pellis; CASE-15 previously recorded the given name 'Cosimo' in error. CASE-15 and CASE-21 are the SAME SUBJECT -- merge decision open, see README"
 
   - id: CASE-22
     title: "Myo Oo & M.W. Vick -- Project MAYA"

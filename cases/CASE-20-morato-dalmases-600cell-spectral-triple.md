@@ -8,6 +8,10 @@
 **Status:** draft
 **Last update:** 2026-06-16
 
+
+> **Source verification 2026-08-10.** The subject's identity was re-checked
+> against primary sources. Zenodo [19112358](https://zenodo.org/records/19112358) is confirmed: author **Luis Morato de Dalmases**, CronNet-Holo Initiative, dated **2026-03-19** (this file previously recorded 2025). Full title: "Complete Proof of the Riemann Hypothesis and the Unified Number Theoretic Architecture of the 600-Cell: Goldbach, Twin Primes, and Collatz". **CASE-14 audits the same subject** -- merge decision open, recorded in README.md.
+
 ---
 
 ## 1. Identity
@@ -15,12 +19,12 @@
 Morato de Dalmases published two major Zenodo deposits in April 2026:
 - Zenodo:19635034 (April 17, 2026): "600-Cell Spectral Triple Series" -- claims complete SM + gravity derivation
 - Zenodo:19927449 (April 30, 2026): "SGUP-600cell v5" -- extends to CKM/PMNS mixing, dark energy, claims RH proof
-- Zenodo:19112358 (2025): Claims proofs of RH, Goldbach, Twin Primes, Collatz
+- Zenodo:19112358 (2026-03-19, verified): Claims proofs of RH, Goldbach, Twin Primes, Collatz
 
 **Primary references:**
 - Zenodo:19635034 -- Morato de Dalmases (2026), "600-Cell Spectral Triple Series"
 - Zenodo:19927449 -- Morato de Dalmases (2026), "SGUP-600cell v5"
-- Zenodo:19112358 -- Morato de Dalmases (2025), "Proofs of Millennium Problems"
+- Zenodo:19112358 -- Morato de Dalmases (2026-03-19), "Complete Proof of the Riemann Hypothesis and the Unified Number Theoretic Architecture of the 600-Cell: Goldbach, Twin Primes, and Collatz"
 
 ---
 

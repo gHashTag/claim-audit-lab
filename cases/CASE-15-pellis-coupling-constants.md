@@ -1,23 +1,23 @@
 ---
 case_id: CASE-15
-subject_name: "Cosimo Pellis"
-subject_affiliation: "Independent (Italy)"
+subject_name: "Stergios Pellis"
+subject_affiliation: "Independent"
 programme: "Pellis's solo phi-arithmetic publications on coupling constants and fundamental ratios (SSRN, SCIRP/JHEPGC, viXra, arXiv co-authorship with Golmankhaneh and Zingales)"
 primary_source_uri: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636"
 archive_uri: "https://arxiv.org/abs/2310.16864"
 audit_date: 2026-06-16
 last_update: 2026-06-16
 maintainer: "@gHashTag"
-reviewers: ["@cosimo-pellis-pending"]
+reviewers: ["@stergios-pellis-pending"]
 depends_on: [CASE-08, CASE-12]
 status: draft
 overall_class: "mixed"
 ---
 
-# CASE-15: Cosimo Pellis -- symmetric mirror-audit of his solo phi-arithmetic publications
+# CASE-15: Stergios Pellis -- symmetric mirror-audit of his solo phi-arithmetic publications
 
-**Subject:** Cosimo Pellis
-**Affiliation:** Independent researcher (Italy)
+**Subject:** Stergios Pellis
+**Affiliation:** Independent
 **Programme:** Solo and co-authored publications on phi-arithmetic relations among fundamental constants and coupling ratios, predating his Strand III role in the Vasilev-Pellis-Olsen phi-paper
 **Audit date:** 2026-06-16
 **Maintainer:** @gHashTag
@@ -60,11 +60,15 @@ overall_class: "mixed"
 > framework would be applied asymmetrically (we audit external authors
 > but not our own collaborators), violating the symmetric-mirror rule.
 
+
+> **Source verification 2026-08-10.** The subject's identity was re-checked
+> against primary sources. [SSRN 4003636](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636), cited by this file, is authored by **Stergios Pellis**, as is JHEPGC 2023 (DOI 10.4236/jhepgc.2023.91021 = SCIRP paper id 122814). No "Cosimo Pellis" was located in this literature. This file previously recorded "Cosimo Pellis, Independent (Italy)"; the given name is corrected and the country is withdrawn as unverified. **CASE-21 audits the same subject.** Because this file records the subject as Strand III of the lab's own phi-paper, the co-author rule (CHARTER.md s 3, COI.md) should extend to CASE-21, which is currently gated as an ordinary external case.
+
 ---
 
 ## 1. Identity
 
-Cosimo Pellis is an independent researcher (Italy) with a publication record on phi-arithmetic relations among fundamental physical constants and coupling ratios. He is **Strand III** of the Vasilev-Pellis-Olsen phi-paper (master v2.5, 25pp, 2026-06-15, Pellis approval received via letters 2026-06-07/06-08), where his contribution is the **MDL-optimality framing** of the G_phi result.
+Stergios Pellis is an independent researcher with a publication record on phi-arithmetic relations among fundamental physical constants and coupling ratios. He is **Strand III** of the Vasilev-Pellis-Olsen phi-paper (master v2.5, 25pp, 2026-06-15, Pellis approval received via letters 2026-06-07/06-08), where his contribution is the **MDL-optimality framing** of the G_phi result.
 
 This case audits his **independent prior publications**, which predate his Strand III role and stand on their own outside the joint paper. The framework requires that co-author prior work receive the same treatment as external programmes.
 

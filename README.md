@@ -92,8 +92,8 @@ See [`CHARTER.md`](CHARTER.md) for the full text.
 | [CASE-11](cases/CASE-11-gray-dennis-kauffman-mereon-600cell.md) | Gray, Dennis & Kauffman -- Mereon system, the 600-cell, and E6/E7/E8 | geometry / H3-H4 correspondence | Verified | draft |
 | [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III -- v2.3 BNF rank 2/394 for G_phi | symbolic regression / MDL-optimality | Conj | draft |
 | [CASE-13](cases/CASE-13-singh-trace-dynamics.md) | T.P. Singh -- trace dynamics and phi-arithmetic derivations | trace dynamics / octonionic unification | Conj | draft |
-| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | C. Morato de Dalmases -- phi-anchored spectral-triple SM unification | spectral triples / SM unification | Risk | draft |
-| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | C. Pellis -- solo prior phi-arithmetic publications | phi-arithmetic / co-author mirror-audit | Risk | draft |
+| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | L. Morato de Dalmases -- phi-anchored spectral-triple SM unification | spectral triples / SM unification | Risk | draft |
+| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | S. Pellis -- solo prior phi-arithmetic publications | phi-arithmetic / co-author mirror-audit | Risk | draft |
 | [CASE-16](cases/CASE-16-phi-grid-collaboration.md) | Phi-Grid Project -- methodologically-aligned collaboration probe | methodology (positive control) | Conj | draft |
 | [CASE-17](cases/CASE-17-mcgirl-geometric-standard-model.md) | T. McGirl -- Geometric Standard Model | E8 -> H4 geometry / constant derivation | Risk | draft |
 | [CASE-18](cases/CASE-18-agyemang-e8-boundary-geometry.md) | Agyemang (AIMS Ghana) -- eleven constants from E8 boundary geometry | E8 boundary geometry / constants | Risk | draft |
@@ -106,20 +106,42 @@ See [`CHARTER.md`](CHARTER.md) for the full text.
 
 <!-- END GENERATED case-index -->
 
-Three register-integrity issues are recorded here as-is rather than silently
-fixed, since resolving any of them changes what a case is about:
+### Register-integrity issues
 
-- **CASE-12's manifest path** (`cases/CASE-12-g-phi-rank-2-of-394/README.md`)
-  does not exist on disk.
-- **CASE-15 / CASE-21** record different given names (Cosimo, Stergios) for a
-  Pellis subject while citing the same SCIRP paper id (122814).
-- **CASE-14 / CASE-20** record different given names (Carles, L.) for a Morato
-  de Dalmases subject while citing the same Zenodo record (19112358).
+**Two subject-identity collisions, resolved 2026-08-10 by source check.** Both
+were the same subject entered twice, and in both cases the earlier entry
+carried an incorrect given name. Names and affiliations are corrected; the
+duplicate-case question is left open because merging cases is not a
+correction, it is a decision about what the register contains.
 
-In both name cases the register may be carrying one subject twice under two
-identities, or two subjects whose work overlaps. Under CHARTER.md s 2 that is
-a sourcing question, not an editorial one, and it is left open until the
-primary sources are re-fetched.
+| Was | Verified | Evidence, fetched 2026-08-10 |
+|---|---|---|
+| CASE-14: "Carles Morato de Dalmases", Independent (Spain) | **Luis Morato de Dalmases**, CronNet-Holo Initiative | [zenodo.org/records/20443946](https://zenodo.org/records/20443946) and [/19112358](https://zenodo.org/records/19112358) both list this author. (The sources spell the surname with an acute accent; ASCII here per CHARTER.md s 6.) |
+| CASE-15: "Cosimo Pellis", Independent (Italy) | **Stergios Pellis** | [SSRN 4003636](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636) -- the record CASE-15 itself cites -- is authored by Stergios Pellis, as is JHEPGC 2023 (DOI [10.4236/jhepgc.2023.91021](https://doi.org/10.4236/jhepgc.2023.91021)) = SCIRP paper id 122814. A search of the phi / coupling-constant literature returns no Cosimo Pellis. |
+
+**Open decisions this creates, for the maintainer and not for an automated
+pass:**
+
+1. **CASE-14 and CASE-20 are the same subject; CASE-15 and CASE-21 are the
+   same subject.** Four case files audit two people. Each pair also carries its
+   own symmetric mirror, so the register currently mirrors the same subject
+   claim against the lab's own work twice. Merging, superseding, or keeping
+   both as separate strands is a maintainer call.
+2. **COI escalation on the Pellis pair.** CASE-15 states that its subject is
+   **Strand III of the Vasilev-Pellis-Olsen phi-paper** -- a co-author of the
+   lab. Since CASE-21 audits the same person, CASE-21 is auditing a co-author
+   while being gated as an ordinary external case. Under CHARTER.md s 3 and
+   `COI.md` the co-author notification rule should extend to it.
+3. **Date correction pending verification of the rest.** CASE-20 records
+   Zenodo:19112358 as 2025; the record is dated **2026-03-19**. Corrected in
+   that file; the remaining dates in both Morato cases have not been re-checked.
+
+**Also open:** **CASE-12's manifest path**
+(`cases/CASE-12-g-phi-rank-2-of-394/README.md`) does not exist on disk.
+
+Sources: [SSRN 4003636](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636),
+[Zenodo 20443946](https://zenodo.org/records/20443946),
+[Zenodo 19112358](https://zenodo.org/records/19112358).
 
 ---
 

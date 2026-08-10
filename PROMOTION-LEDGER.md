@@ -100,4 +100,37 @@ merge SHA once PR #8 lands.
 
 ---
 
+## 2026-08-10 -- subject-identity corrections (CHARTER.md s 2)
+
+Two subject-identity collisions were resolved against primary sources. These
+are factual corrections under CONTRIBUTING.md s 2, not label changes, and are
+recorded here because they change **who** a case is about -- which the ledger
+schema does not otherwise capture, and which matters more than a label change.
+
+| Date | Case | Field | From | To | Reason | Evidence | Reviewer |
+|---|---|---|---|---|---|---|---|
+| 2026-08-10 | CASE-14 | subject_name | Carles Morato de Dalmases | Luis Morato de Dalmases | correction | zenodo.org/records/20443946 and /19112358, fetched 2026-08-10 | @gHashTag |
+| 2026-08-10 | CASE-14 | subject_affiliation | Independent (Spain) | CronNet-Holo Initiative | correction | as above | @gHashTag |
+| 2026-08-10 | CASE-15 | subject_name | Cosimo Pellis | Stergios Pellis | correction | SSRN 4003636 (cited by CASE-15 itself) and JHEPGC 2023 DOI 10.4236/jhepgc.2023.91021 = SCIRP paperid 122814, fetched 2026-08-10 | @gHashTag |
+| 2026-08-10 | CASE-15 | subject_affiliation | Independent (Italy) | Independent | correction (country withdrawn as unverified) | as above | @gHashTag |
+| 2026-08-10 | CASE-20 | source date, Zenodo:19112358 | 2025 | 2026-03-19 | correction | zenodo.org/records/19112358, fetched 2026-08-10 | @gHashTag |
+
+**Consequence not resolved by this pass.** CASE-14/CASE-20 are the same
+subject, and CASE-15/CASE-21 are the same subject: four case files audit two
+people, each pair carrying its own symmetric mirror. Merging or superseding is
+a decision about what the register contains and is left to the maintainer.
+
+**COI escalation.** CASE-15 records its subject as Strand III of the
+Vasilev-Pellis-Olsen phi-paper. CASE-21 audits that same person while gated as
+an ordinary external case. Under CHARTER.md s 3 and COI.md the co-author
+notification rule should extend to CASE-21.
+
+**How this was missed.** Both collisions were introduced when the Wave-Loop
+batch was filed into the register without checking subject identity against
+entries the register already held. The same root cause produced the CASE-12..16
+ID collisions. A subject-identity check belongs in the intake path, not in a
+later audit.
+
+---
+
 **End of ledger.**

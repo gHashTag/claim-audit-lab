@@ -19,7 +19,7 @@ broken is not a comparison.
 | W2 | No five-label inventory sections; claims sit in an assessment table with verdicts like "Plausible"/"Absent" | CASE-11, 17-22 | **blocks review** (reviewer guideline 2 -- CASE-11's subject has [Verified]-class claims with no [Verified] section) |
 | W3 | CASE-00 [Retracted] inventory has 1 entry, but the lab's own record documents 7 claims withdrawn in one night (2026-08-10) plus 12 self-caught defects | `fpga-income` skill vs CASE-00 s 8 | **high** -- every symmetric mirror written this session cites the thin inventory |
 | W4 | No archive snapshot URLs | CONTRIBUTING.md s 4 mandates them | medium (needs network + source verification) |
-| W5 | Two subject-identity collisions unresolved | CASE-15/21 (SCIRP 122814), CASE-14/20 (Zenodo 19112358) | medium -- a duplicate subject means two mirrors audit one claim |
+| W5 | ~~Two subject-identity collisions~~ **RESOLVED 2026-08-10 by source check.** Both are one subject entered twice; both earlier entries had the wrong given name. Names corrected; **merge decision + COI escalation left to maintainer** | CASE-14/20 = Luis Morato de Dalmases; CASE-15/21 = Stergios Pellis | corrections done, 2 decisions open |
 | W6 | `cases/CASE-12-g-phi-rank-2-of-394/README.md` referenced but absent | manifest + README | low |
 | W7 | ~~Scorecard unscoreable~~ **CLOSED 2026-08-10.** Counted by `scripts/count_labels.py`, validated 6/6 against the hand-written rows | README, data/scorecard.json | closed |
 | W8 | Gates not wired to the generator; index drift can return | `.github/workflows/` | low |
@@ -38,7 +38,7 @@ register already held.
 - [x] **P2 / W3** Expand CASE-00 with the lab's real documented record: 7 withdrawn claims (2026-08-10), the surviving theorems, the measured working point. Append PROMOTION-LEDGER rows.
 - [x] **P3 / W2** Add five-label inventory sections (4-8) to the 7 files, converting the assessment tables. Unblocks W7.
 - [x] **P4** Wire `gen_readme_index.py --check` into CI as a fourth job.
-- [ ] **P5 / W5** Attempt source verification of the two identity collisions; record the outcome either way.
+- [x] **P5 / W5** Attempt source verification of the two identity collisions; record the outcome either way.
 - [ ] **P6 / W4** Archive snapshots where sources verify.
 
 Each item: run the three gate scripts + `scripts/gen_readme_index.py --check`,
@@ -48,6 +48,22 @@ commit, push to the PR branch. Do **not** merge PR #8.
 
 ## Status log
 
+- **2026-08-10, iteration 3.** Completed P5 against primary sources.
+  CASE-14 "Carles Morato de Dalmases / Independent (Spain)" -> **Luis Morato de
+  Dalmases / CronNet-Holo Initiative** (Zenodo 20443946 + 19112358, both list
+  him). CASE-15 "Cosimo Pellis / Independent (Italy)" -> **Stergios Pellis**
+  (SSRN 4003636, the record CASE-15 itself cites, plus JHEPGC 2023
+  DOI 10.4236/jhepgc.2023.91021 = SCIRP paperid 122814; no Cosimo Pellis exists
+  in this literature). CASE-20 date 2025 -> 2026-03-19. 5 ledger rows.
+  **Two decisions deliberately NOT taken autonomously:** (1) merging the
+  duplicate pairs -- four files audit two people; (2) re-gating CASE-21 under
+  the co-author rule, since CASE-15 records the subject as Strand III of the
+  lab's own phi-paper, so CASE-21 audits a co-author while gated as external.
+  Also: broke cases.yaml with an unescaped inner quote; the `case-index` CI job
+  added in iteration 1 caught it immediately. Residual: CASE-21 still asserts
+  country "Greece", unverified.
+  Next: P6 (archive snapshots). Note SSRN and SCIRP return HTTP 403 to the
+  fetcher; Zenodo works. Archive coverage will be partial and must say so.
 - **2026-08-10, iteration 2 (cont).** Closed W7. Wrote
   `scripts/count_labels.py` and regenerated `data/scorecard.json` + the README
   scorecard for all 22 case files on disk. **The first counter was wrong**: its
