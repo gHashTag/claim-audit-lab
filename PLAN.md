@@ -50,7 +50,20 @@ commit, push to the PR branch. Do **not** merge PR #8.
 
 ## Status log
 
-- **2026-08-10, merge pass (owner instruction "slei sam").** Merged the two
+- **2026-08-10, hybrid merge with main.** main had solved the same problem the
+  opposite way: PR #7 moved the seven files to `drafts/`, out of the
+  symmetric-mirror gate's scope, with no mirrors written. Owner chose the
+  hybrid: main's placement, this branch's content and infrastructure.
+  Result: the seven live in `drafts/` at main's numbering, but carry the
+  mirrors, five-label inventories and charter cleanup written here; the
+  duplicate-case merge is undone (a draft is not a duplicate case, so CASE-14
+  and CASE-15 are restored to their registered form with the verified names);
+  `archive/` removed. **Two defects found in main and fixed:** its cases.yaml
+  entry from PR #7 was indented at column 1, making the manifest unparseable,
+  and it claimed id CASE-10 which the PHI_BIAS survey already held -- renumbered
+  to CASE-18 with the original id in public_status. Both are exactly what the
+  `case-index` job catches, and that job exists only on this branch.
+- **2026-08-10, superseded merge pass (owner instruction "slei sam").** Merged the two
   duplicate pairs: CASE-20 -> CASE-14, CASE-21 -> CASE-15. Surviving file in
   each pair is the template-conformant shell whose inventories were [PENDING];
   the retired file carried the real content, now folded in. Retired text kept

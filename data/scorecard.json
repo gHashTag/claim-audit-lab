@@ -1,15 +1,15 @@
 {
   "generated": "2026-08-10",
   "framework": "5-label (Verified / Empirical fit / Open conjecture / Risk+High-risk / Retracted)",
-  "source": "scripts/count_labels.py, validated against the hand-written scorecard rows it replaces (6/6 reproduced exactly)",
-  "note": "Counts are top-level claim bullets of the form '- **[LABEL]...**' in the five-label inventory sections. Four bullet decorations occur in the register and all are handled; see scripts/count_labels.py. CASE-20 and CASE-21 were merged into CASE-14 and CASE-15 on 2026-08-10 and are no longer counted; their retired text is under archive/.",
+  "source": "scripts/count_labels.py, validated against the hand-written rows it replaced (6/6)",
+  "note": "Counts are top-level claim bullets in the five-label inventory sections of cases/. Files under drafts/ are unregistered and not scored.",
   "not_countable": [
     "CASE-07",
     "CASE-08",
     "CASE-09",
     "CASE-10"
   ],
-  "not_countable_reason": "These files predate the five-label inventory structure and record claims in prose sections instead. Their figures are hand-assigned and are carried here marked counted=false.",
+  "not_countable_reason": "These predate the five-label inventory structure and record claims in prose; figures hand-assigned.",
   "cases": [
     {
       "case": "CASE-00",
@@ -122,16 +122,6 @@
       "Retracted": 0
     },
     {
-      "case": "CASE-11",
-      "counted": true,
-      "Verified": 3,
-      "Empirical fit": 0,
-      "Open conjecture": 0,
-      "Risk": 0,
-      "High-risk": 0,
-      "Retracted": 0
-    },
-    {
       "case": "CASE-13",
       "counted": true,
       "Verified": 1,
@@ -145,19 +135,19 @@
       "case": "CASE-14",
       "counted": true,
       "Verified": 0,
-      "Empirical fit": 0,
-      "Open conjecture": 0,
-      "Risk": 2,
-      "High-risk": 1,
+      "Empirical fit": 1,
+      "Open conjecture": 1,
+      "Risk": 3,
+      "High-risk": 0,
       "Retracted": 0
     },
     {
       "case": "CASE-15",
       "counted": true,
-      "Verified": 1,
+      "Verified": 0,
       "Empirical fit": 1,
-      "Open conjecture": 0,
-      "Risk": 2,
+      "Open conjecture": 1,
+      "Risk": 3,
       "High-risk": 0,
       "Retracted": 0
     },
@@ -172,42 +162,12 @@
       "Retracted": 0
     },
     {
-      "case": "CASE-17",
-      "counted": true,
-      "Verified": 3,
-      "Empirical fit": 0,
-      "Open conjecture": 0,
-      "Risk": 3,
-      "High-risk": 0,
-      "Retracted": 0
-    },
-    {
       "case": "CASE-18",
       "counted": true,
       "Verified": 0,
       "Empirical fit": 0,
       "Open conjecture": 0,
-      "Risk": 4,
-      "High-risk": 0,
-      "Retracted": 0
-    },
-    {
-      "case": "CASE-19",
-      "counted": true,
-      "Verified": 1,
-      "Empirical fit": 1,
-      "Open conjecture": 1,
-      "Risk": 1,
-      "High-risk": 0,
-      "Retracted": 0
-    },
-    {
-      "case": "CASE-22",
-      "counted": true,
-      "Verified": 1,
-      "Empirical fit": 0,
-      "Open conjecture": 0,
-      "Risk": 4,
+      "Risk": 0,
       "High-risk": 0,
       "Retracted": 0
     }

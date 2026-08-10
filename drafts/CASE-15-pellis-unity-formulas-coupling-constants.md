@@ -1,22 +1,4 @@
-> **RETIRED 2026-08-10 -- merged into CASE-15.**
->
-> This file audited **Stergios Pellis**, the same subject as
-> `cases/CASE-15-pellis-coupling-constants.md`. The two were opened
-> independently: CASE-15 under the co-author rule, CASE-21 from the Wave-Loop
-> intake pass, which did not check subject identity against entries the
-> register already held. CASE-14/CASE-20 collided the same way.
->
-> Its claim table (P1-P5), inventories and symmetric mirror are carried in
-> CASE-15. The register no longer issues the id CASE-21; **do not cite this
-> file as a live case.** It is kept unedited so the merge is auditable.
->
-> Note: this file's finding that the subject's venue record is stronger than
-> the lab's superseded an unsourced venue characterisation in CASE-15. That
-> resolution is recorded in CASE-15 Section 7.
-
----
-
-# CASE-21: Stergios Pellis -- Unity Formulas for Coupling Constants and phi-Physics
+# CASE-15: Stergios Pellis -- Unity Formulas for Coupling Constants and phi-Physics
 
 **Subject:** Stergios Pellis (active researcher, Greece).
 **Affiliation:** Independent; publishes on viXra, SSRN, and SCIRP (peer-reviewed).
@@ -28,7 +10,7 @@
 
 
 > **Source verification 2026-08-10.** The subject's identity was re-checked
-> against primary sources. The name **Stergios Pellis** is confirmed against [SSRN 4003636](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636) and JHEPGC 2023 (DOI 10.4236/jhepgc.2023.91021 = SCIRP paper id 122814). **CASE-15 audits the same subject**, and records him as Strand III of the lab's own phi-paper. This case is therefore auditing a **co-author of the lab** while being gated as an ordinary external case; under CHARTER.md s 3 and COI.md the co-author notification rule should extend here. Flagged for the maintainer, not resolved by this pass.
+> against primary sources. The name **Stergios Pellis** is confirmed against [SSRN 4003636](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636) and JHEPGC 2023 (DOI 10.4236/jhepgc.2023.91021 = SCIRP paper id 122814). The registered case for this subject is `cases/CASE-15-pellis-coupling-constants.md`; this file is an unregistered draft. He is Strand III of the lab's own phi-paper, so CHARTER.md s 3 and COI.md govern both files; the unresolved exclusion asymmetry is recorded in `COI.md`.
 
 ---
 
@@ -165,7 +147,7 @@ language to "neutralize" it. Under CHARTER.md s 1 and COI.md that is a statement
 about the lab's interests, it carries no weight in any label, and it has been
 removed; the precedence is now recorded as the literature fact it is. The
 register separately carries
-[`cases/CASE-15-pellis-coupling-constants.md`](CASE-15-pellis-coupling-constants.md),
+[`cases/CASE-15-pellis-coupling-constants.md`](../cases/CASE-15-pellis-coupling-constants.md),
 opened under the co-author rule because a Pellis strand is a co-author on the
 lab's own phi-paper; the labels above are assigned independently of that
 relationship and of its outcome.

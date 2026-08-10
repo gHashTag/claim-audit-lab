@@ -78,79 +78,59 @@ See [`CHARTER.md`](CHARTER.md) for the full text.
 
 | ID       | Subject                                | Domain                              | Class  | Status |
 |----------|----------------------------------------|-------------------------------------|--------|--------|
-| [CASE-00](cases/CASE-00-self-audit.md) | Self-audit -- methodology calibration on the lab's own work | numeric formats / ML training | Verified | draft |
-| [CASE-01](cases/CASE-01-savchenko-pointer-architecture.md) | A. Savchenko -- Pointer Architecture v9.0 | consciousness / dark matter | Risk | draft |
-| [CASE-02](cases/CASE-02-stakhov-mathematics-of-harmony.md) | A. Stakhov -- Mathematics of Harmony | number systems / phi-universalism | Efit | draft |
-| [CASE-03](cases/CASE-03-el-naschie-e-infinity.md) | M.S. El Naschie -- E-infinity theory | quantum spacetime / dimensions | Retr | draft |
-| [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | S.V. Petoukhov -- matrix genetics | bioinformatics / phi-matrices | Risk | draft |
-| [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | M.A. Kramer & W. Klimesch -- golden EEG rhythms | neuroscience (positive control) | Risk | draft |
-| [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot -- phi-period economic cycles | econometrics (positive control) | Risk | draft |
-| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan -- M_pl coincidence class | adjacent class declined in v2.1 | Risk | draft |
-| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev -- BNF equivalence-class result (v2.3 self-audit) | symbolic regression / methodology calibration | Conj | draft |
-| [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM CATALOG vs closed-form ladder rule (self-audit) | numeric formats / ROM consistency | Conj | draft |
-| [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence-class survey, v1.3 rule-derived rungs (self-audit) | numeric formats / coincidence classes | Conj | draft |
-| [CASE-11](cases/CASE-11-gray-dennis-kauffman-mereon-600cell.md) | Gray, Dennis & Kauffman -- Mereon system, the 600-cell, and E6/E7/E8 | geometry / H3-H4 correspondence | Verified | draft |
-| [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III -- v2.3 BNF rank 2/394 for G_phi | symbolic regression / MDL-optimality | Conj | draft |
-| [CASE-13](cases/CASE-13-singh-trace-dynamics.md) | T.P. Singh -- trace dynamics and phi-arithmetic derivations | trace dynamics / octonionic unification | Conj | draft |
-| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | L. Morato de Dalmases -- 600-cell spectral triple, SM unification, and asserted Millennium-Problem proofs | spectral triples / Millennium-problem claims | Risk | draft |
-| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | S. Pellis -- phi-arithmetic coupling-constant identities (co-author audit) | phi-arithmetic / co-author mirror-audit | Risk | draft |
-| [CASE-16](cases/CASE-16-phi-grid-collaboration.md) | Phi-Grid Project -- methodologically-aligned collaboration probe | methodology (positive control) | Conj | draft |
-| [CASE-17](cases/CASE-17-mcgirl-geometric-standard-model.md) | T. McGirl -- Geometric Standard Model | E8 -> H4 geometry / constant derivation | Risk | draft |
-| [CASE-18](cases/CASE-18-agyemang-e8-boundary-geometry.md) | Agyemang (AIMS Ghana) -- eleven constants from E8 boundary geometry | E8 boundary geometry / constants | Risk | draft |
-| [CASE-19](cases/CASE-19-singh-e8-octonionic-unification.md) | T.P. Singh -- E8 x omega-E8 octonionic unification | octonionic unification / quantum foundations | Conj | draft |
-| [CASE-22](cases/CASE-22-myo-oo-e8-holographic.md) | Myo Oo & M.W. Vick -- Project MAYA | E8 holographic geometry / Project MAYA | Risk | draft |
+| [CASE-00](cases/CASE-00-self-audit.md) | Self-audit  --  methodology calibration on our own work | numeric formats / ML training | Verified | draft |
+| [CASE-01](cases/CASE-01-savchenko-pointer-architecture.md) | Savchenko pointer architecture | consciousness / dark matter | Risk | draft |
+| [CASE-02](cases/CASE-02-stakhov-mathematics-of-harmony.md) | Stakhov Mathematics of Harmony | number systems / phi-universalism | Efit | draft |
+| [CASE-03](cases/CASE-03-el-naschie-e-infinity.md) | El Naschie E-infinity theory | quantum spacetime / dimensions | Retr | draft |
+| [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | Petoukhov matrix genetics | bioinformatics / phi-matrices | Risk | draft |
+| [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | Kramer-Klimesch golden rhythms (EEG) | neuroscience (positive control) | Risk | draft |
+| [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | de Groot economic cycles | econometrics (positive control) | Risk | draft |
+| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan M_pl coincidence class | adjacent class declined in v2.1 | Risk | draft |
+| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev BNF equivalence-class result (symmetric self-audit, v2.3 phi-paper) | symbolic regression / methodology calibration | Conj | draft |
+| [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM CATALOG vs closed-form ladder rule (symmetric self-audit) | numeric formats / ROM consistency | Conj | draft |
+| [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence-class survey for v1.3 rule-derived rungs (GF6/10/14/48/96) | numeric formats / coincidence classes | Conj | draft |
+| [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III -- v2.3 BNF equivalence-class rank 2/394 for G_phi (Conj, Pellis-gated) | symbolic regression / MDL-optimality | Conj | draft |
+| [CASE-13](cases/CASE-13-singh-trace-dynamics.md) | Tejinder P. Singh -- trace dynamics + octonion unification with phi-arithmetic (Wave-10 HIGH) | trace dynamics / octonionic unification | Conj | draft |
+| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | L. Morato de Dalmases -- phi-anchored spectral-triple SM unification | spectral triples / SM unification | Risk | draft |
+| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | S. Pellis -- solo prior phi-arithmetic publications (co-author audit) | phi-arithmetic / co-author mirror-audit | Risk | draft |
+| [CASE-16](cases/CASE-16-phi-grid-collaboration.md) | Phi-Grid Project -- methodologically-aligned collaboration probe (positive control, NOT adversarial) | methodology (positive control) | Conj | draft |
+| [CASE-18](cases/CASE-18-vasilev-tnf-golden-alphabet.md) | Vasilev Ternary Network Floats and the golden weight alphabet | numeric formats / ternary weight alphabet | Verified | draft |
 
-**Register totals:** 21 cases -- Verified 2, Efit 1, Conj 7, Risk 10, Retr 1.
+**Register totals:** 17 cases -- Verified 2, Efit 1, Conj 6, Risk 7, Retr 1.
 
 <!-- END GENERATED case-index -->
 
 ### Register-integrity issues
 
-**Two subject-identity collisions, resolved 2026-08-10 by source check, and the
-duplicate cases merged.** Both were the same subject entered twice, and in both
-cases the earlier entry carried an incorrect given name.
-
-| Merged | Into | Retired file |
-|---|---|---|
-| CASE-20 | **CASE-14** (Luis Morato de Dalmases) | [`archive/CASE-20-...`](archive/CASE-20-morato-dalmases-600cell-spectral-triple.md) |
-| CASE-21 | **CASE-15** (Stergios Pellis) | [`archive/CASE-21-...`](archive/CASE-21-pellis-unity-formulas-coupling-constants.md) |
-
-The register went from 23 entries to **21**, and no longer issues the ids
-CASE-20 or CASE-21. In each pair the surviving file is the template-conformant
-one, whose inventories were `[PENDING]` stubs; the retired file carried the
-actual claim tables and inventories, which are now folded in. Retired files are
-kept unedited under `archive/` so the merge is auditable, per the rule above
-that a prior version is preserved rather than overwritten.
-
-**Root cause, shared with the earlier CASE-12..16 id collisions:** the
-Wave-Loop intake pass filed a batch into the register without checking subject
-identity against entries already held. A subject-identity check belongs in the
-intake path.
+**Two subject-identity collisions, resolved 2026-08-10 by source check.** In
+both cases a register case and an unregistered draft cover the **same person**,
+and the registered file carried an incorrect given name.
 
 | Was | Verified | Evidence, fetched 2026-08-10 |
 |---|---|---|
 | CASE-14: "Carles Morato de Dalmases", Independent (Spain) | **Luis Morato de Dalmases**, CronNet-Holo Initiative | [zenodo.org/records/20443946](https://zenodo.org/records/20443946) and [/19112358](https://zenodo.org/records/19112358) both list this author. (The sources spell the surname with an acute accent; ASCII here per CHARTER.md s 6.) |
 | CASE-15: "Cosimo Pellis", Independent (Italy) | **Stergios Pellis** | [SSRN 4003636](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636) -- the record CASE-15 itself cites -- is authored by Stergios Pellis, as is JHEPGC 2023 (DOI [10.4236/jhepgc.2023.91021](https://doi.org/10.4236/jhepgc.2023.91021)) = SCIRP paper id 122814. A search of the phi / coupling-constant literature returns no Cosimo Pellis. |
 
-**Open decisions this creates, for the maintainer and not for an automated
-pass:**
+Names and affiliations are corrected in both files, and each names its draft
+counterpart. **Promoting either draft means folding it into the registered
+case, not opening a second one for the same subject.**
 
-1. **CASE-14 and CASE-20 are the same subject; CASE-15 and CASE-21 are the
-   same subject.** Four case files audit two people. Each pair also carries its
-   own symmetric mirror, so the register currently mirrors the same subject
-   claim against the lab's own work twice. Merging, superseding, or keeping
-   both as separate strands is a maintainer call.
-2. **COI escalation on the Pellis pair.** CASE-15 states that its subject is
-   **Strand III of the Vasilev-Pellis-Olsen phi-paper** -- a co-author of the
-   lab. Since CASE-21 audits the same person, CASE-21 is auditing a co-author
-   while being gated as an ordinary external case. Under CHARTER.md s 3 and
-   `COI.md` the co-author notification rule should extend to it.
-3. **Date correction pending verification of the rest.** CASE-20 records
-   Zenodo:19112358 as 2025; the record is dated **2026-03-19**. Corrected in
-   that file; the remaining dates in both Morato cases have not been re-checked.
+**COI escalation, unresolved.** CASE-15 records its subject as **Strand III of
+the Vasilev-Pellis-Olsen phi-paper** -- a co-author of the maintainer. `COI.md`
+COI-excludes the paper's *other* non-maintainer co-author from being a primary
+audit subject but not this one. See "The Pellis asymmetry" in `COI.md`; three
+readings are recorded there and none is chosen.
 
 **Also open:** **CASE-12's manifest path**
 (`cases/CASE-12-g-phi-rank-2-of-394/README.md`) does not exist on disk.
+
+**Fixed while merging `main` (2026-08-10).** The manifest entry added by PR #7
+was indented at column 1 instead of column 3, which made `cases.yaml`
+**unparseable**, and it claimed id `CASE-10`, already held by the PHI_BIAS
+survey. Indentation fixed; the new case renumbered to **CASE-18** with the
+original id recorded in its `public_status` so the change is one line to
+revert. Both defects are of the class the `case-index` CI job below now
+catches.
 
 ### Archive coverage is zero (CONTRIBUTING.md s 4)
 
@@ -212,22 +192,18 @@ Label changes are recorded in [`PROMOTION-LEDGER.md`](PROMOTION-LEDGER.md).
 | [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev BNF (v2.3 self-audit) * | 1 | 0 | 3 | 0 | 0 | 0 | yes | pending |
 | [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM vs closed rule (self-audit) * | 1 | 0 | 3 | 0 | 0 | 0 | yes | n/a |
 | [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence survey (self-audit) * | 0 | 0 | 1 | 0 | 0 | 0 | yes | n/a |
-| [CASE-11](cases/CASE-11-gray-dennis-kauffman-mereon-600cell.md) | Gray, Dennis & Kauffman | 3 | 0 | 0 | 0 | 0 | 0 | n/a | pending |
 | [CASE-13](cases/CASE-13-singh-trace-dynamics.md) | T.P. Singh (trace dynamics) | 1 | 1 | 1 | 1 | 0 | 0 | pending | pending |
-| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | L. Morato de Dalmases (incl. merged CASE-20) | 0 | 0 | 0 | 2 | 1 | 0 | pending | pending |
-| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | S. Pellis (incl. merged CASE-21; co-author) | 1 | 1 | 0 | 2 | 0 | 0 | pending | pending |
+| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | L. Morato de Dalmases | 0 | 1 | 1 | 3 | 0 | 0 | pending | pending |
+| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | S. Pellis (co-author) | 0 | 1 | 1 | 3 | 0 | 0 | pending | pending |
 | [CASE-16](cases/CASE-16-phi-grid-collaboration.md) | Phi-Grid Project (positive control) | 2 | 0 | 0 | 0 | 0 | 0 | yes | pending |
-| [CASE-17](cases/CASE-17-mcgirl-geometric-standard-model.md) | T. McGirl | 3 | 0 | 0 | 3 | 0 | 0 | pending | pending |
-| [CASE-18](cases/CASE-18-agyemang-e8-boundary-geometry.md) | Agyemang | 0 | 0 | 0 | 4 | 0 | 0 | no | pending |
-| [CASE-19](cases/CASE-19-singh-e8-octonionic-unification.md) | T.P. Singh (E8 x omega-E8) | 1 | 1 | 1 | 1 | 0 | 0 | yes | pending |
-| [CASE-22](cases/CASE-22-myo-oo-e8-holographic.md) | Myo Oo & M.W. Vick | 1 | 0 | 0 | 4 | 0 | 0 | no | pending |
-| **Totals** | **20 cases** | **51** | **13** | **20** | **40** | **5** | **5** | -- | -- |
+| [CASE-18](cases/CASE-18-vasilev-tnf-golden-alphabet.md) | Vasilev TNF golden alphabet (self-audit) | 0 | 0 | 0 | 0 | 0 | 0 | yes | n/a |
+| **Totals** | **16 cases** | **42** | **13** | **21** | **30** | **4** | **5** | -- | -- |
 
 **Scope of this table.** Counts are produced by
 [`scripts/count_labels.py`](scripts/count_labels.py) from the five-label
 inventory sections, and written to
-[`data/scorecard.json`](data/scorecard.json). All 20 case files on disk are
-covered (CASE-20 and CASE-21 were merged away on 2026-08-10). CASE-12 is absent because its manifest path does not exist on disk
+[`data/scorecard.json`](data/scorecard.json). All registered case files are covered.
+Files under `drafts/` are unregistered and not scored. CASE-12 is absent because its manifest path does not exist on disk
 (see the integrity note above the index).
 
 Rows marked **\*** are **not counted**: CASE-07..CASE-10 predate the inventory

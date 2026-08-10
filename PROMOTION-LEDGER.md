@@ -178,6 +178,17 @@ verifying subject identities earlier the same day.
 until 2026-08-10, which is part of why the overlap between the phi-paper author
 list and the audited-subject list went unnoticed.
 
+## 2026-08-10 -- SUPERSEDED: duplicate cases merged, then unwound
+
+The block below recorded merging CASE-20 into CASE-14 and CASE-21 into
+CASE-15. It was **superseded the same day** by the hybrid merge with `main`:
+PR #7 had already moved those files to `drafts/` as unregistered drafts, so
+they are not duplicate *cases* and there was nothing to merge. CASE-14 and
+CASE-15 are restored to their registered form, keeping the verified name
+corrections. The row is kept rather than deleted, per the append-only rule.
+
+### Original entry (no longer in effect)
+
 ## 2026-08-10 -- duplicate cases merged (register structure)
 
 Following the identity corrections above, the two duplicate pairs were merged
@@ -206,6 +217,19 @@ corrections:
 
 Register: 23 entries -> **21**. The ids CASE-20 and CASE-21 are not reissued.
 Retired files are kept unedited under `archive/` so the merge is auditable.
+
+## 2026-08-10 -- manifest defects inherited from main, fixed
+
+Found while merging `main` into PR #8. Neither is a label change; both are
+recorded because the manifest is the register's machine-readable contract.
+
+| Date | File | Defect | Fix |
+|---|---|---|---|
+| 2026-08-10 | cases.yaml | The entry added by PR #7 was indented at column 1 instead of column 3, so the whole manifest **failed to parse**. Nothing on main detects this. | Re-indented under `cases:` |
+| 2026-08-10 | cases.yaml | That entry claimed id **CASE-10**, already held by the PHI_BIAS coincidence survey -- a duplicate id | Renumbered to **CASE-18**; file renamed to match; original id recorded in its `public_status` so the change is one line to revert |
+
+Both are the class the `case-index` CI job catches, and that job exists only on
+this branch. Landing it is what prevents a recurrence.
 
 ---
 

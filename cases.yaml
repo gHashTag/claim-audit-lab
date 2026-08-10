@@ -2,10 +2,9 @@
 # Mitigation for W-R2 (project weaknesses inventory 2026-06-06)
 # Schema: id, title, target, claim_status, domain, fpath, file, sha256
 #   optional: status (default "draft"), depends_on, author_strand, public_status
-# This file is hand-authored and is the source of truth for the register.
-# After adding or editing a CASE-XX entry, regenerate the README index:
-#   python3 scripts/gen_readme_index.py
-# That script also validates the counts block below against the entries.
+# Hand-authored; source of truth for the register.
+# After editing, regenerate the README index:  python3 scripts/gen_readme_index.py
+# That script also validates this file (unique ids, required fields, counts).
 
 schema_version: "1.0"
 generated: "2026-06-16"
@@ -15,7 +14,7 @@ zenodo_doi: "10.5281/zenodo.20507098"
 
 cases:
   - id: CASE-00
-    title: "Self-audit -- methodology calibration on the lab's own work"
+    title: "Self-audit  --  methodology calibration on our own work"
     target: "Vasilev-Pellis-Olsen phi-programme"
     claim_status: Verified
     domain: "numeric formats / ML training"
@@ -23,7 +22,7 @@ cases:
     file: cases/CASE-00-self-audit.md
 
   - id: CASE-01
-    title: "A. Savchenko -- Pointer Architecture v9.0"
+    title: "Savchenko pointer architecture"
     target: "Savchenko geometric / pointer-architecture claims"
     claim_status: Risk
     domain: "consciousness / dark matter"
@@ -31,7 +30,7 @@ cases:
     file: cases/CASE-01-savchenko-pointer-architecture.md
 
   - id: CASE-02
-    title: "A. Stakhov -- Mathematics of Harmony"
+    title: "Stakhov Mathematics of Harmony"
     target: "Stakhov golden-ratio mathematics-of-harmony programme"
     claim_status: Efit
     domain: "number systems / phi-universalism"
@@ -39,7 +38,7 @@ cases:
     file: cases/CASE-02-stakhov-mathematics-of-harmony.md
 
   - id: CASE-03
-    title: "M.S. El Naschie -- E-infinity theory"
+    title: "El Naschie E-infinity theory"
     target: "E-infinity Cantorian space-time programme"
     claim_status: Retr
     domain: "quantum spacetime / dimensions"
@@ -47,7 +46,7 @@ cases:
     file: cases/CASE-03-el-naschie-e-infinity.md
 
   - id: CASE-04
-    title: "S.V. Petoukhov -- matrix genetics"
+    title: "Petoukhov matrix genetics"
     target: "Petoukhov genetic-code matrix / golden-ratio claims"
     claim_status: Risk
     domain: "bioinformatics / phi-matrices"
@@ -55,7 +54,7 @@ cases:
     file: cases/CASE-04-petoukhov-matrix-genetics.md
 
   - id: CASE-05
-    title: "M.A. Kramer & W. Klimesch -- golden EEG rhythms"
+    title: "Kramer-Klimesch golden rhythms (EEG)"
     target: "EEG golden-ratio rhythm claims (alpha/theta etc.)"
     claim_status: Risk
     domain: "neuroscience (positive control)"
@@ -63,7 +62,7 @@ cases:
     file: cases/CASE-05-kramer-klimesch-golden-rhythms.md
 
   - id: CASE-06
-    title: "B. de Groot -- phi-period economic cycles"
+    title: "de Groot economic cycles"
     target: "Economic-cycle phi-period claims"
     claim_status: Risk
     domain: "econometrics (positive control)"
@@ -71,7 +70,7 @@ cases:
     file: cases/CASE-06-de-groot-economic-cycles.md
 
   - id: CASE-07
-    title: "Carroll/Kaplan -- M_pl coincidence class"
+    title: "Carroll/Kaplan M_pl coincidence class"
     target: "M_pl / m_e and M_pl * coupling-ratio phi-arithmetic claims (general class)"
     claim_status: Risk
     domain: "adjacent class declined in v2.1"
@@ -79,7 +78,7 @@ cases:
     file: cases/CASE-07-carroll-kaplan-m-planck.md
 
   - id: CASE-08
-    title: "Vasilev -- BNF equivalence-class result (v2.3 self-audit)"
+    title: "Vasilev BNF equivalence-class result (symmetric self-audit, v2.3 phi-paper)"
     target: "v2.3 sec 6.3 claim: G_phi MDL-rank 2/394 at p=0.0039 within depth-leq-2 BNF + anti-cancellation filter"
     claim_status: Conj
     domain: "symbolic regression / methodology calibration"
@@ -87,7 +86,7 @@ cases:
     file: cases/CASE-08-vasilev-bnf-equivalence-class.md
 
   - id: CASE-09
-    title: "Corona ROM CATALOG vs closed-form ladder rule (self-audit)"
+    title: "Corona ROM CATALOG vs closed-form ladder rule (symmetric self-audit)"
     target: "tt-trinity-corona tools/gen_rom.py CATALOG agreement with t27 SSOT closed rule e = round((N-1)/phi^2)"
     claim_status: Conj
     domain: "numeric formats / ROM consistency"
@@ -95,25 +94,15 @@ cases:
     file: cases/CASE-09-corona-rom-vs-closed-rule.md
 
   - id: CASE-10
-    title: "PHI_BIAS coincidence-class survey, v1.3 rule-derived rungs (self-audit)"
+    title: "PHI_BIAS coincidence-class survey for v1.3 rule-derived rungs (GF6/10/14/48/96)"
     target: "GoldenFloat v1.3 rule-derived rungs: GF6, GF10, GF14, GF48, GF96 -- PHI_BIAS is OPEN"
     claim_status: Conj
     domain: "numeric formats / coincidence classes"
     fpath: "Any closed-form derivation of PHI_BIAS solely from (E, M, phi) that correctly predicts PHI_BIAS for all five new rungs AND all eight Verified rungs without post-hoc coincidence selection would falsify this Conj"
     file: cases/CASE-10-phi-bias-coincidence-scan.md
 
-  - id: CASE-11
-    title: "Gray, Dennis & Kauffman -- Mereon system, the 600-cell, and E6/E7/E8"
-    target: "arXiv:2604.00255v1 claim of exact 62/62 vertex correspondence between the Mereon M120p (H3) and the 600-cell (H4), plus E8 realised via McKay correspondence on the binary icosahedral group 2I"
-    claim_status: Verified
-    domain: "geometry / H3-H4 correspondence"
-    fpath: "Independent re-derivation showing the 62/62 vertex correspondence or the McKay realisation requires a free parameter not stated in the paper; separately, any SM-parameter reading later attached to the H3/H4 correspondence by either programme falls to Risk unless it outranks a matched-cardinality control alphabet under BH-FDR q=0.05"
-    file: cases/CASE-11-gray-dennis-kauffman-mereon-600cell.md
-    depends_on: []
-    public_status: "draft; Wave-Loop-9 batch; subject claims geometry only and makes no SM-parameter claim, which is why the case carries no Risk row"
-
   - id: CASE-12
-    title: "Vasilev II + Pellis III -- v2.3 BNF rank 2/394 for G_phi"
+    title: "Vasilev II + Pellis III -- v2.3 BNF equivalence-class rank 2/394 for G_phi (Conj, Pellis-gated)"
     target: "v2.3 sec.6.3/6.4 claim: G_phi = \\varphi^2 + \\varphi^{-2} MDL-rank 2/394 essential phi-native forms (depth-leq-2 BNF + W1+W8 anti-cancel filter); bootstrap p=0.0039"
     claim_status: Conj
     domain: "symbolic regression / MDL-optimality"
@@ -124,7 +113,7 @@ cases:
     public_status: "v2.3-draft LOCAL ONLY; hard-gated on Pellis approval (Pellis Letter v2 sent 2026-06-07)"
 
   - id: CASE-13
-    title: "T.P. Singh -- trace dynamics and phi-arithmetic derivations"
+    title: "Tejinder P. Singh -- trace dynamics + octonion unification with phi-arithmetic (Wave-10 HIGH)"
     target: "Singh (TIFR/IUCAA) trace-dynamics + octonionic/Clifford-algebraic derivations of Standard Model coupling ratios and mass spectrum, with phi-arithmetic entering as a structural constant"
     claim_status: Conj
     domain: "trace dynamics / octonionic unification"
@@ -134,17 +123,17 @@ cases:
     public_status: "draft; no contact attempted; Wave-Loop-10 HIGH priority; institutional first-mover threat"
 
   - id: CASE-14
-    title: "L. Morato de Dalmases -- 600-cell spectral triple, SM unification, and asserted Millennium-Problem proofs"
+    title: "L. Morato de Dalmases -- phi-anchored spectral-triple SM unification"
     target: "Zenodo monograph sequence (records 20443946, 19592588, 19112358, 19353957) claiming phi-anchored spectral-triple-style derivation of Standard Model coupling/mass spectrum"
     claim_status: Risk
-    domain: "spectral triples / Millennium-problem claims"
+    domain: "spectral triples / SM unification"
     fpath: "Matched-cardinality control alphabet rerun of the spectral-triple derivation with (e, pi, sqrt-2, sqrt-3, integers) replacing phi; collapse under BH-FDR q=0.05 promotes to Retracted, survival demotes Risk-tier to Open conjecture"
     file: cases/CASE-14-morato-spectral-triple.md
     depends_on: CASE-07
     public_status: "draft; no contact attempted; Wave-Loop-10 HIGH priority; iterative monograph versioning suggests post-hoc retuning"
 
   - id: CASE-15
-    title: "S. Pellis -- phi-arithmetic coupling-constant identities (co-author audit)"
+    title: "S. Pellis -- solo prior phi-arithmetic publications (co-author audit)"
     target: "Pellis solo prior publications on phi-arithmetic coupling-constant identities (SSRN 4003636 + 4442074, SCIRP/JHEPGC paperid 122814, arXiv:2310.16864 with Golmankhaneh and Zingales); independent of his Strand III role in v2.5 phi-paper"
     claim_status: Risk
     domain: "phi-arithmetic / co-author mirror-audit"
@@ -154,7 +143,7 @@ cases:
     public_status: "draft; co-author notification gated (CHARTER.md s 3); Strand III collaboration independent of this audit's outcome"
 
   - id: CASE-16
-    title: "Phi-Grid Project -- methodologically-aligned collaboration probe"
+    title: "Phi-Grid Project -- methodologically-aligned collaboration probe (positive control, NOT adversarial)"
     target: "Phi-Grid Project / phigriduniversity.com -- a phi-anchored research collective publicly committing to pre-registration, matched-control methodology, and falsifiable claim structure"
     claim_status: Conj
     domain: "methodology (positive control)"
@@ -163,56 +152,23 @@ cases:
     depends_on: []
     public_status: "draft; methodological positive control; first-contact gated on Pellis approval + live arXiv ID for phi-paper"
 
-  - id: CASE-17
-    title: "T. McGirl -- Geometric Standard Model"
-    target: "GSM v26.0 (Zenodo, Dec 2025) + grapheneaffiliate GitHub repos: 26-58 constants from E8 -> H4 icosahedral geometry at claimed zero free parameters, with 6 compiled Lean 4 proofs and an 8,100-quadruple brute-force vertex check"
-    claim_status: Risk
-    domain: "E8 -> H4 geometry / constant derivation"
-    fpath: "Pre-register the constant list, the generating alphabet and the per-constant tolerance before running the solver, then apply one matched-cardinality control alphabet (e, pi, sqrt-2, sqrt-3, integers) to both McGirl's 58 constants and the lab's 23 under BH-FDR q=0.05; a set whose phi-native forms do not outrank the control moves to Risk regardless of constant count or proof count"
-    file: cases/CASE-17-mcgirl-geometric-standard-model.md
-    depends_on: [CASE-00, CASE-07]
-    public_status: "draft; Wave-Loop-9 batch; closest methodological match in the register -- same E8 -> H4 derivation and the same zero-free-parameter claim as the lab's own programme"
-
   - id: CASE-18
-    title: "Agyemang (AIMS Ghana) -- eleven constants from E8 boundary geometry"
-    target: "Zenodo:20525049 (June 3, 2026): 11 constants from the E8 x E8 heterotic root lattice at claimed zero free inputs, headline alpha^-1 = 137.035999086 at 0.11 sigma"
-    claim_status: Risk
-    domain: "E8 boundary geometry / constants"
-    fpath: "Fix the target constant list and the generating alphabet in public before computing, then run one matched-cardinality control alphabet (phi, pi, e, sqrt-2, sqrt-3, integers, plus the E8 lattice invariants dim=248, h*=30, c=8) over both Agyemang's 11 constants and the lab's 23 phi-monomials under BH-FDR q=0.05"
-    file: cases/CASE-18-agyemang-e8-boundary-geometry.md
-    depends_on: [CASE-00, CASE-07]
-    public_status: "draft; Wave-Loop-9 batch; renumbered from CASE-12 on 2026-08-10 (ID collision with the G_phi rank 2/394 entry)"
-
-  - id: CASE-19
-    title: "T.P. Singh -- E8 x omega-E8 octonionic unification"
-    target: "arXiv:2604.06288, 2605.29374, 2606.12477: exceptional Jordan-algebra flavour structure, Bell-CHSH > 2*sqrt(2) beyond the Tsirelson bound, mass relations sqrt-me:sqrt-mu:sqrt-md = 1:2:3, fermion-only objective collapse"
-    claim_status: Conj
-    domain: "octonionic unification / quantum foundations"
-    fpath: "Two independent stated falsifiers, neither contingent on the other: (a) a Tsirelson-bound test at the precision Singh's catalogue specifies, where a null result at that precision retracts the Bell-CHSH claim; (b) the lab's Phase B1-real four-arm matched-cardinality ablation with frozen seed and pre-registered held-out split, which moves the lab's architecture-prior conjecture to Risk if a phi-free control set of equal cardinality matches"
-    file: cases/CASE-19-singh-e8-octonionic-unification.md
-    depends_on: [CASE-00, CASE-13]
-    public_status: "draft; Wave-Loop-9/10 batch; renumbered from CASE-13 on 2026-08-10 (ID collision with the Singh trace-dynamics entry -- same subject, different papers); no contact attempted; stated executable Fpath puts this in a better epistemic class than several entries in this register, including some of the lab's own"
-
-
-
-  - id: CASE-22
-    title: "Myo Oo & M.W. Vick -- Project MAYA"
-    target: "academia.edu/164593041 + multiple Zenodo deposits (2025-2026): 11+ constants from E8 holographic geometry at a single scale Lambda = 51.9 GeV, self-assessed 100 percent validation across 24 tests, Riemann zeta zeros mapped to lepton masses"
-    claim_status: Risk
-    domain: "E8 holographic geometry / Project MAYA"
-    fpath: "Publish the validation harness with a frozen seed, a frozen config, a sha256 of outputs and a public script that exits non-zero on any deviation, with the target list pre-registered before the run; an independent re-run that reproduces the outputs promotes the claim to Verified FOR THE HARNESS OUTPUT ONLY, a re-run that does not moves it to Retracted -- the same instrument settles the lab's own BPB-per-format table"
-    file: cases/CASE-22-myo-oo-e8-holographic.md
-    depends_on: [CASE-00, CASE-10]
-    public_status: "draft; Wave-Loop-9 batch; renumbered from CASE-16 on 2026-08-10 (ID collision with the Phi-Grid collaboration entry)"
+    title: "Vasilev Ternary Network Floats and the golden weight alphabet"
+    target: "gHashTag/trinity-fpga research/arxiv_tnf; gHashTag/trinity-s3ai derivations/golden_alphabet"
+    claim_status: Verified
+    fpath: "Sub-8-bit training run varying the element format with block scale and master-weight precision held fixed"
+    file: cases/CASE-18-vasilev-tnf-golden-alphabet.md
+    domain: "numeric formats / ternary weight alphabet"
+    public_status: "id was CASE-10 in PR #7, which collided with the PHI_BIAS survey already holding that id; renumbered 2026-08-10 to keep the manifest parseable and unique. Revert by changing this id and the filename back."
 
 # Counts (auto-derivable from the cases list above)
 counts:
-  total: 21
+  total: 17
   by_status:
     Verified: 2
     Efit: 1
-    Conj: 7
-    Risk: 10
+    Conj: 6
+    Risk: 7
     Retr: 1
 
 # Anchor (carried across all phi-programme artefacts)

@@ -1,4 +1,4 @@
-# CASE-19: T.P. Singh (TIFR Mumbai) -- E8 x omega-E8 Octonionic Unification Programme
+# CASE-13: T.P. Singh (TIFR Mumbai) -- E8 x omega-E8 Octonionic Unification Programme
 
 **Subject:** Prof. Tejinder P. Singh (born 1955, Indian physicist).
 **Affiliation:** Tata Institute of Fundamental Research (TIFR), Mumbai, India.

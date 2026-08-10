@@ -1,4 +1,4 @@
-# CASE-18: Agyemang (AIMS Ghana) -- Eleven Fundamental Constants from E8 Boundary Geometry
+# CASE-12: Agyemang (AIMS Ghana) -- Eleven Fundamental Constants from E8 Boundary Geometry
 
 **Subject:** Agyemang (affiliation: African Institute for Mathematical Sciences, Ghana).
 **Affiliation:** AIMS Ghana.
