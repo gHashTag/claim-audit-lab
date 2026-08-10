@@ -1,7 +1,7 @@
 ---
 case_id: CASE-14
-subject_name: "Carles Morato de Dalmases"
-subject_affiliation: "Independent (Spain)"
+subject_name: "Luis Morato de Dalmases"
+subject_affiliation: "CronNet-Holo Initiative"
 programme: "Phi-anchored unification of the Standard Model via spectral-triple / non-commutative-geometry construction"
 primary_source_uri: "https://zenodo.org/records/20443946"
 archive_uri: "https://zenodo.org/records/20443946"
@@ -14,10 +14,10 @@ status: draft
 overall_class: "Risk"
 ---
 
-# CASE-14: Carles Morato de Dalmases -- phi-anchored spectral-triple SM unification
+# CASE-14: Luis Morato de Dalmases -- phi-anchored spectral-triple SM unification
 
-**Subject:** Carles Morato de Dalmases
-**Affiliation:** Independent (Spain)
+**Subject:** Luis Morato de Dalmases
+**Affiliation:** CronNet-Holo Initiative
 **Programme:** A Zenodo-published monograph sequence claiming a phi-anchored, spectral-triple style derivation of Standard Model coupling constants and mass spectrum
 **Audit date:** 2026-06-16
 **Maintainer:** @gHashTag
@@ -56,11 +56,15 @@ overall_class: "Risk"
 > name an experiment that distinguishes the two programmes or we
 > classify ours in the same risk tier.
 
+
+> **Source verification 2026-08-10.** The subject's identity was re-checked
+> against primary sources. Zenodo records [20443946](https://zenodo.org/records/20443946) and [19112358](https://zenodo.org/records/19112358) both list the author as **Luis Morato de Dalmases**, CronNet-Holo Initiative. This file previously recorded "Carles ... , Independent (Spain)"; both were incorrect and are corrected above. The same subject is also covered by the unregistered draft `drafts/CASE-14-morato-dalmases-600cell-spectral-triple.md`, which carries the Millennium-Problem claims and a fuller inventory. That file is a draft, not a register case; promoting it means folding it into this one.
+
 ---
 
 ## 1. Identity
 
-Carles Morato de Dalmases is an independent researcher publishing a sequence of monograph-length manuscripts on Zenodo. The programme is positioned as a "phi-anchored" derivation of Standard Model parameters using spectral-triple / non-commutative-geometry vocabulary. No peer-reviewed venue placement has been located. No INSPIRE-HEP record has been located. The monographs are self-archived on Zenodo with CC-BY or similar licenses.
+Luis Morato de Dalmases (CronNet-Holo Initiative) publishes a sequence of monograph-length manuscripts on Zenodo. The programme is positioned as a "phi-anchored" derivation of Standard Model parameters using spectral-triple / non-commutative-geometry vocabulary. No peer-reviewed venue placement has been located. No INSPIRE-HEP record has been located. The monographs are self-archived on Zenodo with CC-BY or similar licenses.
 
 Primary references for this case (all URLs fetched on 2026-06-16):
 

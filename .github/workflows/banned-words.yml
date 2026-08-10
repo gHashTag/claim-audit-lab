@@ -91,6 +91,27 @@ jobs:
           fi
           echo "OK: every CASE file has a Symmetric mirror section."
 
+  case-index:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install PyYAML
+        run: pip install --quiet pyyaml
+      - name: README index must match cases.yaml
+        run: |
+          set -e
+          # cases.yaml is the hand-authored source of truth; the README index
+          # is generated from it. --check exits 1 if they disagree, and also
+          # validates the manifest (required fields, duplicate ids,
+          # claim_status in the five-label set, counts block vs entries).
+          # This job exists because the index silently went 12 cases stale:
+          # cases.yaml advertised a generator that had never been written.
+          python3 scripts/gen_readme_index.py --check
+
   link-check:
     runs-on: ubuntu-latest
     if: github.event_name == 'schedule'

@@ -1,4 +1,4 @@
-# CASE-10  --  Vasilev / Ternary Network Floats and the golden weight alphabet
+# CASE-18  --  Vasilev / Ternary Network Floats and the golden weight alphabet
 
 **Target:** `gHashTag/trinity-fpga`, `research/arxiv_tnf/tnf_paper.tex`, with
 measurements in `research/block/` and `fpga/tnet/`, and the machine-checked

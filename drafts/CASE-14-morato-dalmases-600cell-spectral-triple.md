@@ -1,9 +1,3 @@
-<!-- UNREGISTERED DRAFT. Not listed in cases.yaml, so it is not in the register.
-     FRAMEWORK.md: a case file without a Section 9 symmetric mirror is rejected
-     from the register until the mirror is added. Held here rather than in cases/
-     so that the repository's own gates stop failing on work that is, by the
-     framework's own rule, not yet a case. -->
-
 # CASE-14: L. Morato de Dalmases -- 600-Cell Spectral Triple and SGUP
 
 **Subject:** L. Morato de Dalmases (independent researcher).
@@ -14,6 +8,10 @@
 **Status:** draft
 **Last update:** 2026-06-16
 
+
+> **Source verification 2026-08-10.** The subject's identity was re-checked
+> against primary sources. Zenodo [19112358](https://zenodo.org/records/19112358) is confirmed: author **Luis Morato de Dalmases**, CronNet-Holo Initiative, dated **2026-03-19** (this file previously recorded 2025). Full title: "Complete Proof of the Riemann Hypothesis and the Unified Number Theoretic Architecture of the 600-Cell: Goldbach, Twin Primes, and Collatz". The registered case for this subject is `cases/CASE-14-morato-spectral-triple.md`; this file is an unregistered draft.
+
 ---
 
 ## 1. Identity
@@ -21,12 +19,12 @@
 Morato de Dalmases published two major Zenodo deposits in April 2026:
 - Zenodo:19635034 (April 17, 2026): "600-Cell Spectral Triple Series" -- claims complete SM + gravity derivation
 - Zenodo:19927449 (April 30, 2026): "SGUP-600cell v5" -- extends to CKM/PMNS mixing, dark energy, claims RH proof
-- Zenodo:19112358 (2025): Claims proofs of RH, Goldbach, Twin Primes, Collatz
+- Zenodo:19112358 (2026-03-19, verified): Claims proofs of RH, Goldbach, Twin Primes, Collatz
 
 **Primary references:**
 - Zenodo:19635034 -- Morato de Dalmases (2026), "600-Cell Spectral Triple Series"
 - Zenodo:19927449 -- Morato de Dalmases (2026), "SGUP-600cell v5"
-- Zenodo:19112358 -- Morato de Dalmases (2025), "Proofs of Millennium Problems"
+- Zenodo:19112358 -- Morato de Dalmases (2026-03-19), "Complete Proof of the Riemann Hypothesis and the Unified Number Theoretic Architecture of the 600-Cell: Goldbach, Twin Primes, and Collatz"
 
 ---
 
@@ -37,38 +35,156 @@ Morato de Dalmases published two major Zenodo deposits in April 2026:
 | M1 | SM + gravity from 600-cell spectral triple | Asserted, partial derivations | **Unverified** |
 | M2 | Three generations via 53-cycle automorphism | Mathematical construction | **Plausible but unverified** |
 | M3 | Dark energy from KPZ fluctuations | Physical argument | **Speculative** |
-| M4 | **Proof of Riemann Hypothesis** | Asserted | **Extraordinarily unlikely** |
-| M5 | **Proof of Goldbach conjecture** | Asserted | **Extraordinarily unlikely** |
-| M6 | **Proof of Twin Primes** | Asserted | **Extraordinarily unlikely** |
-| M7 | **Proof of Collatz conjecture** | Asserted | **Extraordinarily unlikely** |
-| M8 | Machine-checkable proofs | [no] None | **Absent** |
-| M9 | Published code / software | [no] None identified | **Absent** |
+| M4 | **Proof of Riemann Hypothesis** | Asserted; no checkable derivation located | **No derivation to audit** |
+| M5 | **Proof of Goldbach conjecture** | Asserted; no checkable derivation located | **No derivation to audit** |
+| M6 | **Proof of Twin Primes** | Asserted; no checkable derivation located | **No derivation to audit** |
+| M7 | **Proof of Collatz conjecture** | Asserted; no checkable derivation located | **No derivation to audit** |
+| M8 | Machine-checkable proofs | None | **Absent** |
+| M9 | Published code / software | None identified | **Absent** |
 
 ---
 
 ## 3. Critical Assessment
 
-**Credibility damage:** The claims of proving RH, Goldbach, Twin Primes, and Collatz are red flags. These are unsolved problems in mathematics; a single researcher claiming proofs of all four simultaneously is an extraordinary claim requiring extraordinary evidence -- which is absent.
+**M4-M7 carry no auditable derivation.** RH, Goldbach, Twin Primes and Collatz
+are open problems. The deposits assert proofs; no derivation that a reader can
+check was located at audit date, and no Fpath is stated. Under FRAMEWORK.md (a)
+that places all four at [Risk], and jointly with (d) at [High-risk]. The label
+records what evidence is available, not a judgment of the author, and a proof
+supplied later is audited on its merits like any other.
 
-**Overreach risk:** Morato's speculative claims risk guilt-by-association for the entire H4->SM research programme. Trinity must explicitly distance itself from these claims.
+**Shared object with the lab.** M1 works the same geometric object (the 600-cell)
+in the same formalism (spectral triples) as the lab's own programme. That makes
+this the register's sharpest mirror rather than its most distant case: the lab
+cannot label this construction unverified and exempt its own. Section 9 places
+the two side by side.
 
-**Differentiation from Trinity:**
-- Trinity makes **no** claims about Millennium Problems
-- Trinity provides **machine-checkable** proofs for SM parameter bounds
-- Trinity has **explicit error tolerances** and **honest disclaimers**
-- Trinity's self-assessed 6/10 honesty score is the antidote to Morato's overreach
+**Comparison with the lab's own programme** (inventory, not merit):
+- The lab states no Millennium-Problem claims
+- The lab supplies machine-checked proofs for stated SM parameter bounds
+- The lab states explicit error tolerances
+- The lab's own self-audit records one [Retracted] claim and one [Risk] table
 
 ---
 
-## 4. Risk Assessment
+## 4. [Verified] inventory
 
-**Threat level:** HIGH -- Most direct competitor on the same geometric object (600-cell) and same formalism (spectral triples). However, the overreach into Millennium Problems damages credibility. The threat is primarily "guilt by association" rather than direct competition.
+**Empty at audit date.** No claim in the located deposits was found to meet
+FRAMEWORK.md (a) or (b): no algebraic identity re-derivable in a few lines is
+isolated as a result, and no public reproducible harness was located.
+
+Per CHARTER.md s 1 this section is filled before any criticism if such a claim
+is supplied. The construction in M1 works standing mathematics (the 600-cell,
+spectral triples), but the case file does not isolate a specific derivation
+that can be checked, so no credit can be assigned to a specific statement.
 
 ---
 
-## 5. Audit Trail
+## 5. [Empirical fit] inventory
+
+**Empty.** No claim is presented with a stated fit procedure, free-parameter
+count or control.
+
+---
+
+## 6. [Open conjecture] inventory
+
+**Empty.** No falsification path is stated for any claim in the located
+deposits. Under FRAMEWORK.md (a) that is precisely what keeps M1-M7 out of this
+section, and it is the single largest gap in the case.
+
+---
+
+## 7. [Risk] / [High-risk] inventory
+
+- **[Risk]** M1. Standard Model plus Einstein gravity from a 600-cell (H4)
+  spectral triple. Source: Zenodo:19635034. Reason: FRAMEWORK.md (a), no stated
+  Fpath, and (c), no matched-cardinality control reported for the phi-specific
+  reading. **The lab's own H4/600-cell construction has both gaps identically**
+  -- same geometric object, same formalism -- which makes this the register's
+  sharpest mirror rather than its most distant case (Section 9).
+
+- **[Risk]** M2 (three generations via a 53-cycle automorphism) and M3 (dark
+  energy from KPZ fluctuations). Source: Zenodo:19635034, Zenodo:19927449.
+  Reason: FRAMEWORK.md (a), no stated Fpath.
+
+- **[High-risk]** M4-M7. Asserted proofs of the Riemann Hypothesis, Goldbach,
+  Twin Primes and Collatz. Source: Zenodo:19112358. Reason: **two of (a)-(d)** --
+  (a) no stated Fpath, and (d) no peer review located for the specific claims.
+  No derivation a reader can check was located at audit date, which is what the
+  label records. It is not a prediction about whether such a derivation exists:
+  a proof supplied later is audited on its merits like any other submission,
+  and this section is updated in the same pass.
+
+---
+
+## 8. [Retracted] inventory
+
+**Empty.** No claim has been withdrawn by the subject at audit date.
+
+---
+
+## 9. Symmetric mirror (MANDATORY)
+
+Per FRAMEWORK.md ("Symmetric mirror") and CHARTER.md s 5, comparable claims from
+the lab's own work are classified here under the same five labels. Lab rows cite
+CASE-00, the global self-audit.
+
+| Subject's claim | Our comparable claim | Both labelled |
+|-----------------|----------------------|---------------|
+| M1: Standard Model plus Einstein gravity from a 600-cell (H4) spectral triple | Section 3 above: Trinity's own H4 / 600-cell spectral-triple programme -- the same geometric object and the same formalism | Both **[Open conjecture]** at best. Neither has produced a pre-registered, matched-control derivation of an SM parameter. The lab cannot label this construction unverified and exempt its own construction on the same object; the shared object is the whole reason this mirror is the sharpest one in the register |
+| M4-M7: asserted proofs of the Riemann Hypothesis, Goldbach, Twin Primes and Collatz | CASE-00 s 8: `delta_CP = 3/phi^2` as a phi-structured value of the CP-violating phase -- published by the lab, then **[Retracted]** after an independent arithmetic check failed at the required precision | Subject's: **[Risk]/[High-risk]** under (a) no stated Fpath and (d) venue -- assertion without a checkable derivation. Lab's: **[Retracted]**. The difference on the ledger is not that the lab never over-claimed. It is that the lab's over-claim carries a withdrawal date and is never cited again as evidence |
+| M2/M3: three generations via a 53-cycle automorphism; dark energy from KPZ fluctuations | CASE-00 s 6: phi as architecture prior (`beta_1 = phi^-1`, `weight_decay = phi^-3`, `grad_clip = phi^-1`, QK-Gain `= phi^2`, Fibonacci warmup) | Subject's: **[Risk]** under (a) -- a specific construction with no stated falsifier. Lab's: **[Open conjecture]** -- a structurally identical "this constant is doing real work" claim, differing only in that a falsifier is stated and executable (Phase B1-real). FRAMEWORK.md calls that sentence mandatory, and it is the entire distance between the two labels |
+| M8/M9: no machine-checkable proofs, no published code | CASE-00 s 7: the BPB-per-format table not regenerable from public HEAD `fab7d81` | Both **[Risk]** under (b). Unpublished computation is not evidence for either party |
+
+**What the symmetry is.** An earlier revision of this file framed the concern as
+guilt-by-association -- the subject's Millennium-Problem claims read as a
+reputational hazard to the wider H4-to-SM programme, the lab's own included.
+That framing was about the lab's interests rather than the subject's claims and
+carried no weight in any label, so it has been removed under CHARTER.md s 1 and
+s 4. What does carry weight is that the lab and the subject work the same
+geometric object with the same formalism, and that on the shared claim (M1) the
+two programmes sit in the same epistemic class. The lab's advantage is the
+ledger and the stated Fpaths, not the derivation.
+
+**Joint Fpath.** Rerun both spectral-triple derivations under an identical
+matched-cardinality control alphabet, replacing phi with (e, pi, sqrt(2),
+sqrt(3), small integers), scored under BH-FDR at q=0.05 against a target list
+fixed before the fit. This is the falsifier the register already records for the
+Morato strand in `cases.yaml`, and it applies unchanged to the lab's own H4
+construction. Collapse under the control moves the phi-specific reading toward
+[Retracted] for whichever programme collapses; survival promotes it from [Risk]
+to [Open conjecture] -- for either, or for both.
+
+---
+
+## 10. Audit summary
+
+**(a) Strongest part.** M1 shares its geometric object and formalism with an
+active research area and with the lab's own programme. No [Verified] entry is
+available at audit date because no specific checkable derivation was isolated.
+
+**(b) Weakest claim.** M4-M7 at [High-risk] -- asserted proofs of four open
+problems with no located derivation and no Fpath.
+
+**(c) Experiment that would settle the largest claim.** Rerun both
+spectral-triple derivations -- this subject's and the lab's own -- under one
+matched-cardinality control alphabet replacing phi with (e, pi, sqrt-2,
+sqrt-3, integers), under BH-FDR q=0.05 against a target list fixed before the
+fit. For M4-M7 the corresponding step is simply publication of a derivation.
+
+**(d) Symmetric position of the lab's own work.** On M1 the two programmes sit
+in the same label for the same two reasons. The lab's advantage is its ledger
+and its stated Fpaths elsewhere, not its derivation on this object.
+
+---
+
+## 11. Audit trail
 
 - 2026-06-16 -- Wave Loop 9 competitive analysis
 - 2026-06-16 -- Added to claim-audit-lab register
+- 2026-08-10 -- Section 9 symmetric mirror added; non-ASCII transliterated
+
+---
 
 *phi^2 + 1/phi^2 = 3 | Honest audit, no adjectives*
