@@ -31,8 +31,57 @@ applies equally to the lab's own claims.**
 |---|---|---|
 | Maintainer is author of IGLA / GoldenFloat / phi-paper | CASE-00 self-audit | All claims labelled under the same framework; retracted claim ([Retracted] delta_CP = 3 / phi^2) recorded plainly. |
 | Maintainer is co-author with Scott Olsen on the Pellis-Vasilev-Olsen short paper | (Olsen is ADJACENT) | Olsen is COI-excluded from being a primary audit subject. His contribution is recorded in CASE-00 and in the symmetric-mirror sections of CASE-02, CASE-03, CASE-04. See `phi_theorists_catalog.md` entry #9. |
+| **Maintainer is co-author with Stergios Pellis on the same paper** -- Pellis is Strand III, per CASE-15, with approval recorded via letters 2026-06-07/06-08 | **CASE-15 and CASE-21, which audit him as a primary subject** | **UNRESOLVED, recorded 2026-08-10.** See "The Pellis asymmetry" below. |
 | Maintainer has historical email correspondence with several catalog entries (Stakhov, Pellis, Olsen) | CASE-02 (Stakhov), CASE-09+ (when written) | Correspondence is not cited as evidence; only published primary sources are. If correspondence is used to confirm a subject's stated view, the relevant message is shared with the subject for inclusion in Section 12. |
 | Maintainer has pending submissions to Foundations of Physics, arXiv cs.AR, and ARITH 2027 that build on phi-architecture claims | All cases that mention phi-as-architecture-prior | The submissions are disclosed in `task-status-board` and CASE-00; the lab does not modify a verdict to favour a submission. Quiet relabelling is forbidden under CHARTER s 8. |
+
+---
+
+## The Pellis asymmetry (unresolved, recorded 2026-08-10)
+
+The short paper at `gHashTag/phi-paper` is named, in this file's own line
+above, **Pellis-Vasilev-Olsen**. It has three authors. This declaration
+excludes **one** of the two non-maintainer co-authors from being a primary
+audit subject.
+
+| Co-author | Declared here | Audited as a primary subject? |
+|---|---|---|
+| Scott Olsen | COI-excluded, ADJACENT, contribution recorded in CASE-00 | No -- catalog entry only |
+| **Stergios Pellis** | mentioned only under "historical email correspondence" | **Yes -- CASE-15 and CASE-21** |
+
+`CONTRIBUTING.md` s 3 states the rule this bears on: *"Proposals naming a
+current collaborator of the lab maintainers (currently: Scott Olsen) are
+declined as primary audit subjects; their contribution is recorded inside
+CASE-00 and the symmetric-mirror sections of related cases."* The parenthetical
+names one collaborator. The co-author list names two.
+
+**What is verified.** Pellis's co-authorship is not in doubt and is not an
+inference from the paper title: CASE-15 records him as Strand III with approval
+received via letters dated 2026-06-07 and 2026-06-08. His identity was
+confirmed against primary sources on 2026-08-10 (see `PROMOTION-LEDGER.md`);
+CASE-15 had previously recorded the given name incorrectly, which is part of
+why the overlap went unnoticed.
+
+**What is not decided here, and why.** Three readings are open, and choosing
+between them changes what the register contains, so it is a maintainer
+decision and not an automated one:
+
+1. The exclusion is correct and simply under-documented for Pellis -- in which
+   case CASE-15 and CASE-21 should be withdrawn as primary audits and folded
+   into CASE-00 and the symmetric-mirror sections, as was done for Olsen.
+2. Auditing a co-author is the *stronger* symmetric position -- CASE-15 was
+   opened deliberately under a "co-author rule" and reads that way -- in which
+   case the Olsen exclusion is the anomaly and `CONTRIBUTING.md` s 3 should say
+   so explicitly rather than naming one person.
+3. The two co-authors differ in some respect that justifies different handling.
+   No such difference is documented anywhere in this repository.
+
+**Why this is recorded rather than left for the next revision.** A register
+whose premise is symmetric treatment, excluding one co-author from audit while
+auditing the other twice, is the single most damaging finding an external
+reviewer could make about it -- and it would be correct. Recording it before it
+is found is the same discipline the lab applies to its own retracted claims.
+Until it is resolved, both readings are visible to any reader of this file.
 
 ---
 
@@ -103,4 +152,5 @@ The lab responds within 7 days per the CONTRIBUTING.md SLA.
 
 ---
 
-**Last update:** 2026-06-02.
+**Last update:** 2026-08-10 (Pellis co-authorship recorded as an unresolved
+COI; see "The Pellis asymmetry"). Previous: 2026-06-02.

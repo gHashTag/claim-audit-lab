@@ -40,6 +40,7 @@ register already held.
 - [x] **P4** Wire `gen_readme_index.py --check` into CI as a fourth job.
 - [x] **P5 / W5** Attempt source verification of the two identity collisions; record the outcome either way.
 - [x] **PA** Apply the s 8b comparison instrument to external cases (was candidate A). Done 2026-08-10, CASE-00 s 8c: 2 reason-corrections, 0 label changes, 48 entries enumerated.
+- [x] **PC-partial** COI declaration gap recorded (was candidate C, factual half only). COI.md now declares the Pellis co-authorship and the Olsen/Pellis asymmetry; the resolution is left to the maintainer.
 - [~] **P6 / W4** Archive snapshots. **BLOCKED on network, not on effort.** web.archive.org unreachable from this environment (API 429 on every request incl. serial+delayed+UA; site blocked). SSRN and SCIRP additionally 403 automated fetches. Delivered instead: `scripts/check_archive_coverage.py` (measures coverage, validates archive HOST not field presence, `--commands` emits the save calls, `--strict` ready to become a gate once coverage is real). **Finding: coverage is 0/93 URLs, and all 4 populated `archive_uri` fields are not archives.** Needs a human session to finish.
 
 Each item: run the three gate scripts + `scripts/gen_readme_index.py --check`,
@@ -49,6 +50,18 @@ commit, push to the PR branch. Do **not** merge PR #8.
 
 ## Status log
 
+- **2026-08-10, iteration 6.** Took the *factual* half of candidate C, leaving
+  the decision half alone. Found that COI.md declares the phi-paper as
+  "Pellis-Vasilev-Olsen" (three authors) but COI-excludes only **Olsen** from
+  being a primary audit subject, while the register audits **Pellis** as a
+  primary subject in CASE-15 and CASE-21. CONTRIBUTING.md s 3 names one
+  collaborator where the author list names two. Recorded in COI.md as "The
+  Pellis asymmetry" with all three possible readings stated and none chosen,
+  plus a ledger row. Contributing cause noted: CASE-15 had the co-author's
+  given name wrong until this morning, which is part of why the overlap between
+  the author list and the audited-subject list went unnoticed.
+  **This is the last item I can take without a decision from the owner.** The
+  loop should be stopped or given a direction.
 - **2026-08-10, iteration 5.** Ran candidate A -- the s 8b instrument turned on
   the register, which CASE-00 s 10 had committed the lab to. Enumerated all 48
   [Risk]/[High-risk] entries by clause. Three external (c) entries reference a

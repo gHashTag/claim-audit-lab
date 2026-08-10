@@ -164,6 +164,20 @@ comparison. An earlier draft of s 8c asserted that every external [Risk]
 carries a second independent clause; the enumeration falsified that, and the
 correction is recorded in s 8c rather than silently dropped.
 
+## 2026-08-10 -- COI declaration gap recorded (COI.md)
+
+Not a label change. Recorded here because CHARTER.md s 8 and COI.md both make
+COI handling epistemically load-bearing, and because the gap was found while
+verifying subject identities earlier the same day.
+
+| Date | Document | Finding | Status | Reviewer |
+|---|---|---|---|---|
+| 2026-08-10 | COI.md | The phi-paper has three authors (Pellis-Vasilev-Olsen). Only Olsen was declared COI-excluded from being a primary audit subject. Stergios Pellis, co-author and Strand III, is audited as a primary subject in CASE-15 and CASE-21. | **UNRESOLVED** -- three readings recorded in COI.md; choosing between them changes what the register contains and is a maintainer decision | @gHashTag |
+
+**Contributing cause.** CASE-15 recorded the co-author's given name incorrectly
+until 2026-08-10, which is part of why the overlap between the phi-paper author
+list and the audited-subject list went unnoticed.
+
 ---
 
 **End of ledger.**
