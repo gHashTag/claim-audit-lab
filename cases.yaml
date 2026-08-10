@@ -133,11 +133,18 @@ cases:
     depends_on: []
     public_status: "draft; methodological positive control; first-contact gated on Pellis approval + live arXiv ID for phi-paper"
 
+- id: CASE-10
+  title: "Vasilev Ternary Network Floats and the golden weight alphabet"
+  target: "gHashTag/trinity-fpga research/arxiv_tnf; gHashTag/trinity-s3ai derivations/golden_alphabet"
+  claim_status: Verified
+  fpath: "Sub-8-bit training run varying the element format with block scale and master-weight precision held fixed"
+  file: cases/CASE-10-vasilev-tnf-golden-alphabet.md
+
 # Counts (auto-derivable from the cases list above)
 counts:
-  total: 16
+  total: 17
   by_status:
-    Verified: 1
+    Verified: 2
     Efit: 1
     Conj: 6
     Risk: 7

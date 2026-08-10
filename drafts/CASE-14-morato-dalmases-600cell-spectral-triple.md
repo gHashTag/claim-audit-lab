@@ -1,6 +1,12 @@
-# CASE-14: L. Morató de Dalmases -- 600-Cell Spectral Triple and SGUP
+<!-- UNREGISTERED DRAFT. Not listed in cases.yaml, so it is not in the register.
+     FRAMEWORK.md: a case file without a Section 9 symmetric mirror is rejected
+     from the register until the mirror is added. Held here rather than in cases/
+     so that the repository's own gates stop failing on work that is, by the
+     framework's own rule, not yet a case. -->
 
-**Subject:** L. Morató de Dalmases (independent researcher).
+# CASE-14: L. Morato de Dalmases -- 600-Cell Spectral Triple and SGUP
+
+**Subject:** L. Morato de Dalmases (independent researcher).
 **Affiliation:** Independent.
 **Programme:** Derivation of Standard Model + Einstein gravity + dark energy from 600-cell (H4) spectral triple; claims proofs of Riemann Hypothesis, Goldbach conjecture, Twin Primes, and Collatz conjecture.
 **Audit date:** 2026-06-16
@@ -12,15 +18,15 @@
 
 ## 1. Identity
 
-Morató de Dalmases published two major Zenodo deposits in April 2026:
+Morato de Dalmases published two major Zenodo deposits in April 2026:
 - Zenodo:19635034 (April 17, 2026): "600-Cell Spectral Triple Series" -- claims complete SM + gravity derivation
 - Zenodo:19927449 (April 30, 2026): "SGUP-600cell v5" -- extends to CKM/PMNS mixing, dark energy, claims RH proof
 - Zenodo:19112358 (2025): Claims proofs of RH, Goldbach, Twin Primes, Collatz
 
 **Primary references:**
-- Zenodo:19635034 -- Morató de Dalmases (2026), "600-Cell Spectral Triple Series"
-- Zenodo:19927449 -- Morató de Dalmases (2026), "SGUP-600cell v5"
-- Zenodo:19112358 -- Morató de Dalmases (2025), "Proofs of Millennium Problems"
+- Zenodo:19635034 -- Morato de Dalmases (2026), "600-Cell Spectral Triple Series"
+- Zenodo:19927449 -- Morato de Dalmases (2026), "SGUP-600cell v5"
+- Zenodo:19112358 -- Morato de Dalmases (2025), "Proofs of Millennium Problems"
 
 ---
 
@@ -35,8 +41,8 @@ Morató de Dalmases published two major Zenodo deposits in April 2026:
 | M5 | **Proof of Goldbach conjecture** | Asserted | **Extraordinarily unlikely** |
 | M6 | **Proof of Twin Primes** | Asserted | **Extraordinarily unlikely** |
 | M7 | **Proof of Collatz conjecture** | Asserted | **Extraordinarily unlikely** |
-| M8 | Machine-checkable proofs | ❌ None | **Absent** |
-| M9 | Published code / software | ❌ None identified | **Absent** |
+| M8 | Machine-checkable proofs | [no] None | **Absent** |
+| M9 | Published code / software | [no] None identified | **Absent** |
 
 ---
 
@@ -44,13 +50,13 @@ Morató de Dalmases published two major Zenodo deposits in April 2026:
 
 **Credibility damage:** The claims of proving RH, Goldbach, Twin Primes, and Collatz are red flags. These are unsolved problems in mathematics; a single researcher claiming proofs of all four simultaneously is an extraordinary claim requiring extraordinary evidence -- which is absent.
 
-**Overreach risk:** Morató's speculative claims risk guilt-by-association for the entire H4→SM research programme. Trinity must explicitly distance itself from these claims.
+**Overreach risk:** Morato's speculative claims risk guilt-by-association for the entire H4->SM research programme. Trinity must explicitly distance itself from these claims.
 
 **Differentiation from Trinity:**
 - Trinity makes **no** claims about Millennium Problems
 - Trinity provides **machine-checkable** proofs for SM parameter bounds
 - Trinity has **explicit error tolerances** and **honest disclaimers**
-- Trinity's self-assessed 6/10 honesty score is the antidote to Morató's overreach
+- Trinity's self-assessed 6/10 honesty score is the antidote to Morato's overreach
 
 ---
 
@@ -65,4 +71,4 @@ Morató de Dalmases published two major Zenodo deposits in April 2026:
 - 2026-06-16 -- Wave Loop 9 competitive analysis
 - 2026-06-16 -- Added to claim-audit-lab register
 
-*φ² + 1/φ² = 3 | Honest audit, no adjectives*
+*phi^2 + 1/phi^2 = 3 | Honest audit, no adjectives*
