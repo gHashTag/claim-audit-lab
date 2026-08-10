@@ -90,10 +90,17 @@ Section 7.
   figure cannot be independently recomputed.
 
 - **[Risk]** A2. Eleven constants from E8 x E8 at zero free inputs. Source: as
-  above. Reason: FRAMEWORK.md (b) and (c). **The lab's own 23 phi-monomials at
-  "0 free inputs (phi, pi, e only)" carry this identically**, and CASE-00 s 7
-  records the lab's own control result that phi-free grammars of equal
-  cardinality reach comparable compression.
+  above. Reason: FRAMEWORK.md (b) -- the generating alphabet is unbounded, so
+  no look-elsewhere correction is reportable -- and (c), whose trigger is a
+  **plausible** non-phi alternative of comparable cardinality.
+
+  **The lab's own 23 phi-monomials at "0 free inputs (phi, pi, e only)" carry
+  this identically.** CASE-00 s 7 records that phi-free grammars of equal
+  cardinality reach comparable compression, but that control was run against
+  the lab's own grammar and constant set. It establishes plausibility for this
+  class of claim, which is what (c) requires; it is **not** a control run
+  against A2, and none has been. The label is unchanged; the reason now
+  distinguishes what was measured from what was inferred.
 
 - **[Risk]** A3. The "zero free inputs" claim stands against three listed
   inputs (dim = 248, h* = 30, c = 8). Reason: FRAMEWORK.md's [Empirical fit]

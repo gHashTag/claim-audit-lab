@@ -336,6 +336,64 @@ standing on the same quantity, not only to the one where it surfaced.** The
 packing-limit defect was recorded twice as a local fact before it was carried
 to the headline result it most affected.
 
+### 8c. First application of s 8b to the register itself (2026-08-10)
+
+Section 10 committed the lab to turning the s 8b instrument on its own external
+cases, on the grounds that several external labels rest on comparisons the lab
+constructed. That pass has now been run over every external case that invokes
+FRAMEWORK.md (c).
+
+**What was found.** Two cases -- CASE-18 (A2) and CASE-21 (P2) -- cited the
+lab's own control result (CASE-00 s 7: phi-free grammars of equal cardinality
+reach comparable compression) as the evidence for (c) against the subject.
+CASE-21 stated it outright: *"the same control bears on P2."* That control was
+run against the lab's own grammar over the lab's own constant set. It is
+evidence that a non-phi alternative is **plausible** for this class of claim.
+It is not a result about either subject's claim, and no control has been run
+against either.
+
+**What did not change: the labels.** FRAMEWORK.md (c) triggers on a *plausible*
+alternative and holds "until the control is ruled out", so plausibility is
+sufficient and both entries remain [Risk] on the same clause. Only the stated
+reason changed, to separate what was measured from what was inferred. This is
+recorded rather than passed over precisely because the correction is modest:
+a pass that reported a label change would be overselling it.
+
+**The rule this establishes.** *A control the lab ran against its own claim
+establishes plausibility for a claim of the same class. It is not a match
+against another programme's claim, and it may not be cited as one.* This is the
+s 8b mechanism in its exact register-facing form: a comparison built for one
+side, doing work against the other. The lab caught it seven times in its own
+hardware claims before noticing that the register does the same thing to
+subjects.
+
+**What was checked, and the one place a label could have moved.** All 48
+[Risk] / [High-risk] entries in the register were enumerated by clause. Three
+external (c) entries reference a lab result:
+
+| Case | How the lab result is used | Verdict |
+|---|---|---|
+| CASE-18 A2 | as **evidence** that (c) holds against the subject | defect, corrected |
+| CASE-21 P2 | as evidence, stated outright: "the same control bears on P2" | defect, corrected |
+| CASE-20 M1 | as a **mirror** -- the lab's own construction has the same gap -- while (c) rests on the subject reporting no control | correct usage, unchanged |
+
+Exactly one label in the register rests on (c) **alone**, so it is the only
+place where this defect could have flipped an outcome rather than a reason:
+**CASE-05 (Kramer-Klimesch), a deliberate positive control.** It was checked
+directly. It does not import anything: it cites the subject's own published
+phi-specificity sweep (Ursachi 2026, Frontiers), states why that sweep measures
+a derived index rather than a direct model comparison, and names the specific
+alternative not ruled out -- a near-phi irrational with comparably motivated
+properties. That is (c) invoked on the subject's own data, correctly. The label
+stands.
+
+**So no label moved, and the reason no label moved is now on the record rather
+than assumed.** An earlier draft of this section claimed that every external
+[Risk] carries an independent second clause. The enumeration above **falsified
+that** -- CASE-05 carries (c) alone -- and the claim was corrected before this
+section was committed. It is left visible here because a self-audit that only
+records the checks which passed is the failure mode this file exists to catch.
+
 ---
 
 ## 9. Symmetric mirror

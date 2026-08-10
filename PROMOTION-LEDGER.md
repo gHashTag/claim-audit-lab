@@ -133,4 +133,37 @@ later audit.
 
 ---
 
+
+
+## 2026-08-10 -- s 8b instrument applied to the register (CASE-00 s 8c)
+
+CASE-00 s 10 committed the lab to turning its own comparison-discipline
+instrument on its external cases. The pass was run over every entry invoking
+FRAMEWORK.md (c).
+
+| Date | Case | Claim id | From | To | Reason | Commit | Reviewer |
+|---|---|---|---|---|---|---|---|
+| 2026-08-10 | CASE-18 | A2 stated reason | [Risk] (b)+(c) citing the lab's control as evidence | [Risk] (b)+(c) with the lab's control restated as plausibility only | correction | see PR #8 | @gHashTag |
+| 2026-08-10 | CASE-21 | P2 stated reason | [Risk] (c), "the same control bears on P2" | [Risk] (c) with the transfer claim withdrawn | correction | see PR #8 | @gHashTag |
+
+**No label changed.** FRAMEWORK.md (c) triggers on a plausible alternative and
+holds until a control is ruled out, so plausibility suffices and both entries
+remain [Risk] on the same clause. Only the stated reason changed, separating
+what was measured from what was inferred. Recorded because the correction is
+modest: a pass reporting a label change would be overselling it.
+
+**Rule established:** a control the lab ran against its own claim establishes
+plausibility for a claim of the same class; it is not a match against another
+programme's claim and may not be cited as one.
+
+**Auditability.** All 48 [Risk]/[High-risk] entries were enumerated by clause.
+CASE-05 is the only label resting on (c) alone -- the only place the defect
+could have changed an outcome rather than a reason -- and it was checked
+directly: it rests on the subject's own published sweep, not on any lab
+comparison. An earlier draft of s 8c asserted that every external [Risk]
+carries a second independent clause; the enumeration falsified that, and the
+correction is recorded in s 8c rather than silently dropped.
+
+---
+
 **End of ledger.**

@@ -39,6 +39,7 @@ register already held.
 - [x] **P3 / W2** Add five-label inventory sections (4-8) to the 7 files, converting the assessment tables. Unblocks W7.
 - [x] **P4** Wire `gen_readme_index.py --check` into CI as a fourth job.
 - [x] **P5 / W5** Attempt source verification of the two identity collisions; record the outcome either way.
+- [x] **PA** Apply the s 8b comparison instrument to external cases (was candidate A). Done 2026-08-10, CASE-00 s 8c: 2 reason-corrections, 0 label changes, 48 entries enumerated.
 - [~] **P6 / W4** Archive snapshots. **BLOCKED on network, not on effort.** web.archive.org unreachable from this environment (API 429 on every request incl. serial+delayed+UA; site blocked). SSRN and SCIRP additionally 403 automated fetches. Delivered instead: `scripts/check_archive_coverage.py` (measures coverage, validates archive HOST not field presence, `--commands` emits the save calls, `--strict` ready to become a gate once coverage is real). **Finding: coverage is 0/93 URLs, and all 4 populated `archive_uri` fields are not archives.** Needs a human session to finish.
 
 Each item: run the three gate scripts + `scripts/gen_readme_index.py --check`,
@@ -48,6 +49,23 @@ commit, push to the PR branch. Do **not** merge PR #8.
 
 ## Status log
 
+- **2026-08-10, iteration 5.** Ran candidate A -- the s 8b instrument turned on
+  the register, which CASE-00 s 10 had committed the lab to. Enumerated all 48
+  [Risk]/[High-risk] entries by clause. Three external (c) entries reference a
+  lab result; **two used it as evidence against the subject** (CASE-18 A2;
+  CASE-21 P2, which said outright "the same control bears on P2") and are
+  corrected, one (CASE-20 M1) uses it correctly as a mirror. **No label
+  changed** -- (c) triggers on plausibility, so the clause still holds; only the
+  reason changed. Rule recorded: a control the lab ran against its own claim
+  establishes plausibility for that claim class, not a match against another
+  programme's claim. **My first draft of s 8c claimed every external [Risk]
+  carries a second independent clause; the enumeration falsified it** (CASE-05
+  rests on (c) alone), so CASE-05 was checked directly -- it cites the subject's
+  own published sweep, not any lab comparison -- and the false claim is recorded
+  as corrected rather than dropped.
+  Remaining, all needing an owner decision: (B) merge the two duplicate case
+  pairs; (C) re-gate CASE-21 under the co-author rule; P6 archive snapshots
+  (blocked on network).
 - **2026-08-10, iteration 4.** P6 attempted and **blocked on network**, recorded
   as blocked rather than skipped. web.archive.org is unreachable here: the
   availability API returned 429 to all 91 URLs in parallel AND to a 5-URL serial

@@ -99,12 +99,23 @@ sources.
   constant remains [Risk] until the search space is bounded.
 
 - **[Risk]** P2. Coupling constants unify through a phi-structure. Source: SSRN
-  4731914, SCIRP paper id 122814. Reason: FRAMEWORK.md (c) -- a control
-  programme matches. CASE-00 s 7 records the lab's **own** control result that
-  phi-free grammars of equal cardinality reach comparable compression, which
-  places the lab's version of this claim at [Risk]/[Retracted]. The same
-  control bears on P2. The lab is not holding this subject to a standard its
-  own programme has passed.
+  4731914, SCIRP paper id 122814. Reason: FRAMEWORK.md (c) -- the trigger is a
+  **plausible** non-phi alternative of comparable cardinality, and the label
+  stands until such a control is ruled out.
+
+  **What the lab's own result does and does not establish here.** CASE-00 s 7
+  records that phi-free grammars of equal cardinality reach comparable
+  compression. That control was run against the **lab's own** grammar over the
+  **lab's own** constant set. It establishes that a non-phi alternative is
+  plausible for this class of claim, which is what (c) requires to trigger. It
+  is **not** a result about P2, and no control has been run against P2. An
+  earlier revision of this file said "the same control bears on P2", which
+  asserted a transfer that was never demonstrated; corrected here. The
+  [Risk] label is unchanged -- (c) triggers on plausibility -- but the reason
+  now says what was measured and against what.
+
+  The lab is not holding this subject to a standard its own programme has
+  passed: the lab's programme failed this control, on its own data.
 
 **Venue, FRAMEWORK.md (d):** no weakness recorded. Peer-reviewed publication
 with citations in two mainstream journals.
