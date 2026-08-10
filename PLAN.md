@@ -18,7 +18,7 @@ broken is not a comparison.
 | W1 | Batch is written as competitive analysis, not audit: `Threat level:` ratings, "Most dangerous institutional competitor", "red flags", "Numerological", "lends credibility" | 7 files, greppable | **blocks review** (CHARTER s1/s4, reviewer guideline 6) |
 | W2 | No five-label inventory sections; claims sit in an assessment table with verdicts like "Plausible"/"Absent" | CASE-11, 17-22 | **blocks review** (reviewer guideline 2 -- CASE-11's subject has [Verified]-class claims with no [Verified] section) |
 | W3 | CASE-00 [Retracted] inventory has 1 entry, but the lab's own record documents 7 claims withdrawn in one night (2026-08-10) plus 12 self-caught defects | `fpga-income` skill vs CASE-00 s 8 | **high** -- every symmetric mirror written this session cites the thin inventory |
-| W4 | No archive snapshot URLs | CONTRIBUTING.md s 4 mandates them | medium (needs network + source verification) |
+| W4 | **Measured 2026-08-10: 0 of 93 URLs archived; 4 `archive_uri` fields populated with non-archives** (2 repeat the primary URL, 2 point at a different paper) | `scripts/check_archive_coverage.py` | medium; blocked on network access, tooling delivered |
 | W5 | ~~Two subject-identity collisions~~ **RESOLVED 2026-08-10 by source check.** Both are one subject entered twice; both earlier entries had the wrong given name. Names corrected; **merge decision + COI escalation left to maintainer** | CASE-14/20 = Luis Morato de Dalmases; CASE-15/21 = Stergios Pellis | corrections done, 2 decisions open |
 | W6 | `cases/CASE-12-g-phi-rank-2-of-394/README.md` referenced but absent | manifest + README | low |
 | W7 | ~~Scorecard unscoreable~~ **CLOSED 2026-08-10.** Counted by `scripts/count_labels.py`, validated 6/6 against the hand-written rows | README, data/scorecard.json | closed |
@@ -39,7 +39,7 @@ register already held.
 - [x] **P3 / W2** Add five-label inventory sections (4-8) to the 7 files, converting the assessment tables. Unblocks W7.
 - [x] **P4** Wire `gen_readme_index.py --check` into CI as a fourth job.
 - [x] **P5 / W5** Attempt source verification of the two identity collisions; record the outcome either way.
-- [ ] **P6 / W4** Archive snapshots where sources verify.
+- [~] **P6 / W4** Archive snapshots. **BLOCKED on network, not on effort.** web.archive.org unreachable from this environment (API 429 on every request incl. serial+delayed+UA; site blocked). SSRN and SCIRP additionally 403 automated fetches. Delivered instead: `scripts/check_archive_coverage.py` (measures coverage, validates archive HOST not field presence, `--commands` emits the save calls, `--strict` ready to become a gate once coverage is real). **Finding: coverage is 0/93 URLs, and all 4 populated `archive_uri` fields are not archives.** Needs a human session to finish.
 
 Each item: run the three gate scripts + `scripts/gen_readme_index.py --check`,
 commit, push to the PR branch. Do **not** merge PR #8.
@@ -48,6 +48,22 @@ commit, push to the PR branch. Do **not** merge PR #8.
 
 ## Status log
 
+- **2026-08-10, iteration 4.** P6 attempted and **blocked on network**, recorded
+  as blocked rather than skipped. web.archive.org is unreachable here: the
+  availability API returned 429 to all 91 URLs in parallel AND to a 5-URL serial
+  probe with 4s delays and a User-Agent, and WebFetch on web.archive.org is
+  blocked outright. Built `scripts/check_archive_coverage.py` instead and
+  measured the gap: **0 of 93 cited URLs have any archive snapshot**, and all
+  **4 populated `archive_uri` fields contain something that is not an archive**
+  (CASE-14/16 repeat primary_source_uri; CASE-13/15 point at a different paper)
+  -- a field that reads as satisfied to a reviewer and to any presence-only
+  check. `--strict` exits 1 and is deliberately NOT wired to CI while coverage
+  is zero. Also noted: the parallel probe's summary line read "already archived
+  0", which alone would have looked like a clean measurement; only the error
+  count distinguished a real zero from 91 failed probes.
+  Next: no unstarted plan items remain. Candidates for the owner to choose --
+  (A) apply the s 8b comparison instrument to external cases, (B) merge the two
+  duplicate case pairs, (C) re-gate CASE-21 under the co-author rule.
 - **2026-08-10, iteration 3.** Completed P5 against primary sources.
   CASE-14 "Carles Morato de Dalmases / Independent (Spain)" -> **Luis Morato de
   Dalmases / CronNet-Holo Initiative** (Zenodo 20443946 + 19112358, both list

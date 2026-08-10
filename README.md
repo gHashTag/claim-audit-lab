@@ -139,6 +139,38 @@ pass:**
 **Also open:** **CASE-12's manifest path**
 (`cases/CASE-12-g-phi-rank-2-of-394/README.md`) does not exist on disk.
 
+### Archive coverage is zero (CONTRIBUTING.md s 4)
+
+`CONTRIBUTING.md` s 4 requires every primary-source URL in a CASE file to carry
+an archived snapshot (web.archive.org or archive.today). Measured by
+[`scripts/check_archive_coverage.py`](scripts/check_archive_coverage.py):
+
+| | |
+|---|---|
+| CASE files | 22 |
+| Distinct URLs cited | 93 |
+| **Archive-host URLs anywhere in the register** | **0** |
+| `archive_uri` front-matter fields | 0 real, **4 populated but not an archive**, 18 absent |
+
+The four populated fields are the part worth acting on. CASE-14 and CASE-16
+repeat `primary_source_uri` verbatim; CASE-13 and CASE-15 point at a different
+paper. **A populated field reads as satisfied** -- to a reviewer skimming the
+front matter, and to any check that tests for non-emptiness rather than for an
+archive host. The checker validates the host for that reason.
+
+`--strict` exits 1 and is deliberately **not** wired into CI: a gate that fails
+on every run from day one teaches people to ignore it. Wire it once coverage is
+real.
+
+**Snapshots could not be created from the environment that produced this
+report.** `web.archive.org` was unreachable: the availability API returned
+HTTP 429 to every request (parallel and serial, with delays and a User-Agent),
+and the site itself was blocked. Separately, `papers.ssrn.com` and
+`www.scirp.org` return HTTP 403 to automated fetches, so two of the venues this
+register depends on resist both verification and archiving by script. Closing
+this gap needs a human session or a host that those services accept;
+`--commands` emits the exact `web.archive.org/save/` calls, one per URL.
+
 Sources: [SSRN 4003636](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636),
 [Zenodo 20443946](https://zenodo.org/records/20443946),
 [Zenodo 19112358](https://zenodo.org/records/19112358).
