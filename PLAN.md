@@ -50,6 +50,17 @@ commit, push to the PR branch. Do **not** merge PR #8.
 
 ## Status log
 
+- **2026-08-10, merge pass (owner instruction "slei sam").** Merged the two
+  duplicate pairs: CASE-20 -> CASE-14, CASE-21 -> CASE-15. Surviving file in
+  each pair is the template-conformant shell whose inventories were [PENDING];
+  the retired file carried the real content, now folded in. Retired text kept
+  unedited under `archive/` with a RETIRED banner. Register 23 -> 21 entries.
+  Two inconsistencies surfaced and fixed: CASE-14's mirror said "[Open
+  conjecture] at best" where its own s 7 said [Risk]; CASE-15 carried an
+  unsourced "SCIRP has weak peer-review reputation" that the merged-in file
+  contradicted with a checkable citation record. Scorecard and index
+  regenerated. **PR #8 NOT merged** -- that was a separate option and was not
+  the one chosen.
 - **2026-08-10, iteration 6.** Took the *factual* half of candidate C, leaving
   the decision half alone. Found that COI.md declares the phi-paper as
   "Pellis-Vasilev-Olsen" (three authors) but COI-excludes only **Olsen** from

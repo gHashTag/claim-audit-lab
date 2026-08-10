@@ -1,3 +1,18 @@
+> **RETIRED 2026-08-10 -- merged into CASE-14.**
+>
+> This file audited **Luis Morato de Dalmases**, the same subject as
+> `cases/CASE-14-morato-spectral-triple.md`. The two were opened independently:
+> CASE-14 from the monograph-sequence intake, CASE-20 from the Wave-Loop intake
+> pass, which did not check subject identity against entries the register
+> already held. CASE-15/CASE-21 collided the same way and for the same reason.
+>
+> Its claim table (M1-M9), inventories and symmetric mirror are carried in
+> CASE-14. The register no longer issues the id CASE-20; **do not cite this
+> file as a live case.** It is kept unedited so the merge is auditable, per the
+> README's rule that a prior version is preserved rather than overwritten.
+
+---
+
 # CASE-20: L. Morato de Dalmases -- 600-Cell Spectral Triple and SGUP
 
 **Subject:** L. Morato de Dalmases (independent researcher).

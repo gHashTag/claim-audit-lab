@@ -92,27 +92,40 @@ See [`CHARTER.md`](CHARTER.md) for the full text.
 | [CASE-11](cases/CASE-11-gray-dennis-kauffman-mereon-600cell.md) | Gray, Dennis & Kauffman -- Mereon system, the 600-cell, and E6/E7/E8 | geometry / H3-H4 correspondence | Verified | draft |
 | [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III -- v2.3 BNF rank 2/394 for G_phi | symbolic regression / MDL-optimality | Conj | draft |
 | [CASE-13](cases/CASE-13-singh-trace-dynamics.md) | T.P. Singh -- trace dynamics and phi-arithmetic derivations | trace dynamics / octonionic unification | Conj | draft |
-| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | L. Morato de Dalmases -- phi-anchored spectral-triple SM unification | spectral triples / SM unification | Risk | draft |
-| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | S. Pellis -- solo prior phi-arithmetic publications | phi-arithmetic / co-author mirror-audit | Risk | draft |
+| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | L. Morato de Dalmases -- 600-cell spectral triple, SM unification, and asserted Millennium-Problem proofs | spectral triples / Millennium-problem claims | Risk | draft |
+| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | S. Pellis -- phi-arithmetic coupling-constant identities (co-author audit) | phi-arithmetic / co-author mirror-audit | Risk | draft |
 | [CASE-16](cases/CASE-16-phi-grid-collaboration.md) | Phi-Grid Project -- methodologically-aligned collaboration probe | methodology (positive control) | Conj | draft |
 | [CASE-17](cases/CASE-17-mcgirl-geometric-standard-model.md) | T. McGirl -- Geometric Standard Model | E8 -> H4 geometry / constant derivation | Risk | draft |
 | [CASE-18](cases/CASE-18-agyemang-e8-boundary-geometry.md) | Agyemang (AIMS Ghana) -- eleven constants from E8 boundary geometry | E8 boundary geometry / constants | Risk | draft |
 | [CASE-19](cases/CASE-19-singh-e8-octonionic-unification.md) | T.P. Singh -- E8 x omega-E8 octonionic unification | octonionic unification / quantum foundations | Conj | draft |
-| [CASE-20](cases/CASE-20-morato-dalmases-600cell-spectral-triple.md) | L. Morato de Dalmases -- 600-cell spectral triple and SGUP | spectral triples / Millennium-problem claims | Risk | draft |
-| [CASE-21](cases/CASE-21-pellis-unity-formulas-coupling-constants.md) | S. Pellis -- unity formulas for coupling constants | phi-arithmetic / coupling constants | Risk | draft |
 | [CASE-22](cases/CASE-22-myo-oo-e8-holographic.md) | Myo Oo & M.W. Vick -- Project MAYA | E8 holographic geometry / Project MAYA | Risk | draft |
 
-**Register totals:** 23 cases -- Verified 2, Efit 1, Conj 7, Risk 12, Retr 1.
+**Register totals:** 21 cases -- Verified 2, Efit 1, Conj 7, Risk 10, Retr 1.
 
 <!-- END GENERATED case-index -->
 
 ### Register-integrity issues
 
-**Two subject-identity collisions, resolved 2026-08-10 by source check.** Both
-were the same subject entered twice, and in both cases the earlier entry
-carried an incorrect given name. Names and affiliations are corrected; the
-duplicate-case question is left open because merging cases is not a
-correction, it is a decision about what the register contains.
+**Two subject-identity collisions, resolved 2026-08-10 by source check, and the
+duplicate cases merged.** Both were the same subject entered twice, and in both
+cases the earlier entry carried an incorrect given name.
+
+| Merged | Into | Retired file |
+|---|---|---|
+| CASE-20 | **CASE-14** (Luis Morato de Dalmases) | [`archive/CASE-20-...`](archive/CASE-20-morato-dalmases-600cell-spectral-triple.md) |
+| CASE-21 | **CASE-15** (Stergios Pellis) | [`archive/CASE-21-...`](archive/CASE-21-pellis-unity-formulas-coupling-constants.md) |
+
+The register went from 23 entries to **21**, and no longer issues the ids
+CASE-20 or CASE-21. In each pair the surviving file is the template-conformant
+one, whose inventories were `[PENDING]` stubs; the retired file carried the
+actual claim tables and inventories, which are now folded in. Retired files are
+kept unedited under `archive/` so the merge is auditable, per the rule above
+that a prior version is preserved rather than overwritten.
+
+**Root cause, shared with the earlier CASE-12..16 id collisions:** the
+Wave-Loop intake pass filed a batch into the register without checking subject
+identity against entries already held. A subject-identity check belongs in the
+intake path.
 
 | Was | Verified | Evidence, fetched 2026-08-10 |
 |---|---|---|
@@ -201,22 +214,20 @@ Label changes are recorded in [`PROMOTION-LEDGER.md`](PROMOTION-LEDGER.md).
 | [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence survey (self-audit) * | 0 | 0 | 1 | 0 | 0 | 0 | yes | n/a |
 | [CASE-11](cases/CASE-11-gray-dennis-kauffman-mereon-600cell.md) | Gray, Dennis & Kauffman | 3 | 0 | 0 | 0 | 0 | 0 | n/a | pending |
 | [CASE-13](cases/CASE-13-singh-trace-dynamics.md) | T.P. Singh (trace dynamics) | 1 | 1 | 1 | 1 | 0 | 0 | pending | pending |
-| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | C. Morato de Dalmases | 0 | 1 | 1 | 3 | 0 | 0 | pending | pending |
-| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | C. Pellis (co-author mirror-audit) | 0 | 1 | 1 | 3 | 0 | 0 | pending | pending |
+| [CASE-14](cases/CASE-14-morato-spectral-triple.md) | L. Morato de Dalmases (incl. merged CASE-20) | 0 | 0 | 0 | 2 | 1 | 0 | pending | pending |
+| [CASE-15](cases/CASE-15-pellis-coupling-constants.md) | S. Pellis (incl. merged CASE-21; co-author) | 1 | 1 | 0 | 2 | 0 | 0 | pending | pending |
 | [CASE-16](cases/CASE-16-phi-grid-collaboration.md) | Phi-Grid Project (positive control) | 2 | 0 | 0 | 0 | 0 | 0 | yes | pending |
 | [CASE-17](cases/CASE-17-mcgirl-geometric-standard-model.md) | T. McGirl | 3 | 0 | 0 | 3 | 0 | 0 | pending | pending |
 | [CASE-18](cases/CASE-18-agyemang-e8-boundary-geometry.md) | Agyemang | 0 | 0 | 0 | 4 | 0 | 0 | no | pending |
 | [CASE-19](cases/CASE-19-singh-e8-octonionic-unification.md) | T.P. Singh (E8 x omega-E8) | 1 | 1 | 1 | 1 | 0 | 0 | yes | pending |
-| [CASE-20](cases/CASE-20-morato-dalmases-600cell-spectral-triple.md) | L. Morato de Dalmases | 0 | 0 | 0 | 2 | 1 | 0 | no | pending |
-| [CASE-21](cases/CASE-21-pellis-unity-formulas-coupling-constants.md) | S. Pellis | 1 | 1 | 0 | 2 | 0 | 0 | pending | pending |
 | [CASE-22](cases/CASE-22-myo-oo-e8-holographic.md) | Myo Oo & M.W. Vick | 1 | 0 | 0 | 4 | 0 | 0 | no | pending |
-| **Totals** | **22 cases** | **51** | **15** | **22** | **46** | **5** | **5** | -- | -- |
+| **Totals** | **20 cases** | **51** | **13** | **20** | **40** | **5** | **5** | -- | -- |
 
 **Scope of this table.** Counts are produced by
 [`scripts/count_labels.py`](scripts/count_labels.py) from the five-label
 inventory sections, and written to
-[`data/scorecard.json`](data/scorecard.json). All 22 case files on disk are
-covered. CASE-12 is absent because its manifest path does not exist on disk
+[`data/scorecard.json`](data/scorecard.json). All 20 case files on disk are
+covered (CASE-20 and CASE-21 were merged away on 2026-08-10). CASE-12 is absent because its manifest path does not exist on disk
 (see the integrity note above the index).
 
 Rows marked **\*** are **not counted**: CASE-07..CASE-10 predate the inventory

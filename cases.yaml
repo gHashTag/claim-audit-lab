@@ -134,17 +134,17 @@ cases:
     public_status: "draft; no contact attempted; Wave-Loop-10 HIGH priority; institutional first-mover threat"
 
   - id: CASE-14
-    title: "L. Morato de Dalmases -- phi-anchored spectral-triple SM unification"
+    title: "L. Morato de Dalmases -- 600-cell spectral triple, SM unification, and asserted Millennium-Problem proofs"
     target: "Zenodo monograph sequence (records 20443946, 19592588, 19112358, 19353957) claiming phi-anchored spectral-triple-style derivation of Standard Model coupling/mass spectrum"
     claim_status: Risk
-    domain: "spectral triples / SM unification"
+    domain: "spectral triples / Millennium-problem claims"
     fpath: "Matched-cardinality control alphabet rerun of the spectral-triple derivation with (e, pi, sqrt-2, sqrt-3, integers) replacing phi; collapse under BH-FDR q=0.05 promotes to Retracted, survival demotes Risk-tier to Open conjecture"
     file: cases/CASE-14-morato-spectral-triple.md
     depends_on: CASE-07
     public_status: "draft; no contact attempted; Wave-Loop-10 HIGH priority; iterative monograph versioning suggests post-hoc retuning"
 
   - id: CASE-15
-    title: "S. Pellis -- solo prior phi-arithmetic publications"
+    title: "S. Pellis -- phi-arithmetic coupling-constant identities (co-author audit)"
     target: "Pellis solo prior publications on phi-arithmetic coupling-constant identities (SSRN 4003636 + 4442074, SCIRP/JHEPGC paperid 122814, arXiv:2310.16864 with Golmankhaneh and Zingales); independent of his Strand III role in v2.5 phi-paper"
     claim_status: Risk
     domain: "phi-arithmetic / co-author mirror-audit"
@@ -193,25 +193,7 @@ cases:
     depends_on: [CASE-00, CASE-13]
     public_status: "draft; Wave-Loop-9/10 batch; renumbered from CASE-13 on 2026-08-10 (ID collision with the Singh trace-dynamics entry -- same subject, different papers); no contact attempted; stated executable Fpath puts this in a better epistemic class than several entries in this register, including some of the lab's own"
 
-  - id: CASE-20
-    title: "L. Morato de Dalmases -- 600-cell spectral triple and SGUP"
-    target: "Zenodo:19635034, 19927449, 19112358: Standard Model + Einstein gravity + dark energy from a 600-cell (H4) spectral triple, plus asserted proofs of the Riemann Hypothesis, Goldbach, Twin Primes and Collatz"
-    claim_status: Risk
-    domain: "spectral triples / Millennium-problem claims"
-    fpath: "Rerun both spectral-triple derivations -- Morato's and the lab's own H4/600-cell construction -- under an identical matched-cardinality control alphabet replacing phi with (e, pi, sqrt-2, sqrt-3, integers), scored under BH-FDR q=0.05 against a target list fixed before the fit; collapse moves the phi-specific reading toward Retracted, survival promotes Risk to Open conjecture, for either programme or both"
-    file: cases/CASE-20-morato-dalmases-600cell-spectral-triple.md
-    depends_on: [CASE-00, CASE-14]
-    public_status: "draft; Wave-Loop-9 batch; renumbered from CASE-14 on 2026-08-10 (ID collision with the Morato spectral-triple entry, same subject); sharpest mirror in the register -- same geometric object and same formalism as the lab's own programme"
 
-  - id: CASE-21
-    title: "S. Pellis -- unity formulas for coupling constants"
-    target: "SCIRP/JHEPGC paperid 122814 (2023) + viXra/Authorea (2021-2022) + SSRN 4731914 (2024): alpha and the coupling constants expressed exactly via phi-structured formulas; cited in Journal of Geometry and Physics (2024) and Classical and Quantum Gravity (2025)"
-    claim_status: Risk
-    domain: "phi-arithmetic / coupling constants"
-    fpath: "Apply one matched-cardinality control alphabet identically to (a) Pellis's phi-arithmetic identities for alpha and the coupling constants and (b) the lab's G_phi BNF sweep -- replace phi with (e, pi, sqrt-2, sqrt-3, integers) at equal expression cardinality over a target list fixed before the fit, under BH-FDR q=0.05; if phi-native forms do not outrank the control on both, both fall to Risk together"
-    file: cases/CASE-21-pellis-unity-formulas-coupling-constants.md
-    depends_on: [CASE-08, CASE-15]
-    public_status: "draft; Wave-Loop-10 batch; renumbered from CASE-15 on 2026-08-10 (ID collision with the co-author mirror-audit entry); COI declared in Section 9; subject's venue record on the peer-review axis is currently stronger than the lab's; RESOLVED 2026-08-10 by source check: subject is Stergios Pellis; CASE-15 previously recorded the given name 'Cosimo' in error. CASE-15 and CASE-21 are the SAME SUBJECT -- merge decision open, see README"
 
   - id: CASE-22
     title: "Myo Oo & M.W. Vick -- Project MAYA"
@@ -225,12 +207,12 @@ cases:
 
 # Counts (auto-derivable from the cases list above)
 counts:
-  total: 23
+  total: 21
   by_status:
     Verified: 2
     Efit: 1
     Conj: 7
-    Risk: 12
+    Risk: 10
     Retr: 1
 
 # Anchor (carried across all phi-programme artefacts)

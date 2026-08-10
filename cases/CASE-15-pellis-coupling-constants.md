@@ -4,14 +4,15 @@ subject_name: "Stergios Pellis"
 subject_affiliation: "Independent"
 programme: "Pellis's solo phi-arithmetic publications on coupling constants and fundamental ratios (SSRN, SCIRP/JHEPGC, viXra, arXiv co-authorship with Golmankhaneh and Zingales)"
 primary_source_uri: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636"
-archive_uri: "https://arxiv.org/abs/2310.16864"
+archive_uri: ""   # was a different paper, not an archive; see scripts/check_archive_coverage.py
 audit_date: 2026-06-16
-last_update: 2026-06-16
+last_update: 2026-08-10
 maintainer: "@gHashTag"
 reviewers: ["@stergios-pellis-pending"]
 depends_on: [CASE-08, CASE-12]
 status: draft
 overall_class: "mixed"
+merged_from: [CASE-21]   # CASE-21 audited the same subject; merged 2026-08-10
 ---
 
 # CASE-15: Stergios Pellis -- symmetric mirror-audit of his solo phi-arithmetic publications
@@ -22,7 +23,7 @@ overall_class: "mixed"
 **Audit date:** 2026-06-16
 **Maintainer:** @gHashTag
 **Status:** draft
-**Last update:** 2026-06-16
+**Last update:** 2026-08-10
 
 ---
 
@@ -68,112 +69,236 @@ overall_class: "mixed"
 
 ## 1. Identity
 
-Stergios Pellis is an independent researcher with a publication record on phi-arithmetic relations among fundamental physical constants and coupling ratios. He is **Strand III** of the Vasilev-Pellis-Olsen phi-paper (master v2.5, 25pp, 2026-06-15, Pellis approval received via letters 2026-06-07/06-08), where his contribution is the **MDL-optimality framing** of the G_phi result.
+Stergios Pellis is an independent researcher with a publication record on
+phi-arithmetic relations among fundamental physical constants and coupling
+ratios. He is **Strand III** of the Vasilev-Pellis-Olsen phi-paper (master
+v2.5, 25pp, 2026-06-15; approval recorded via letters 2026-06-07 / 06-08),
+where his contribution is the **MDL-optimality framing** of the G_phi result.
 
-This case audits his **independent prior publications**, which predate his Strand III role and stand on their own outside the joint paper. The framework requires that co-author prior work receive the same treatment as external programmes.
+This file audits his **independent prior** publications, which predate that
+role. Because he is a co-author of the maintainer, `COI.md` applies; the
+exclusion asymmetry between him and the paper's other non-maintainer
+co-author is recorded there and is not resolved.
 
-Primary references for this case (all URLs fetched on 2026-06-16):
+Key works (all URLs fetched 2026-06-16 unless noted):
 
-- https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636 -- SSRN preprint on phi and fundamental constants
-- https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4442074 -- SSRN preprint, follow-up
-- https://www.scirp.org/journal/paperinformation?paperid=122814 -- JHEPGC (Journal of High Energy Physics, Gravitation and Cosmology) 2023 paper
-- https://arxiv.org/abs/2310.16864 -- "Mass formula for fundamental particles" with A. K. Golmankhaneh and L. Zingales (arXiv-endorsed via this co-author chain)
-- viXra author page (auxiliary; lower-tier venue, recorded for completeness)
+- "Unity Formulas for the Coupling Constants and the Dimensionless Physical
+  Constants", *JHEPGC* 9:245-294 (2023), DOI 10.4236/jhepgc.2023.91021 =
+  SCIRP paper id 122814. **Cited in *Journal of Geometry and Physics* (2024)
+  and *Classical and Quantum Gravity* (2025).**
+- SSRN 4003636 (same title, preprint) -- *author confirmed 2026-08-10*
+- SSRN 4442074 -- follow-up
+- SSRN 4731914 (2024) -- "Euler's Identity in Unification of the Fundamental
+  Interactions"
+- "Exact Formula for the Fine-Structure Constant alpha in Terms of the Golden
+  Ratio phi" (viXra / Authorea, 2021-2022)
+- arXiv:2310.16864 -- co-authored with Golmankhaneh and Zingales
 
 ---
 
-## 2. Programme claims (verbatim)
+## 2. Programme claims
 
-To be filled in `under-review` promotion AFTER Pellis has been notified and given the opportunity to respond (per CHARTER.md s 3, symmetric mirror-audit of a co-author requires explicit notification before promotion out of `draft`).
+Claim identifiers P1-P5 are carried over from CASE-21 so that prior references
+resolve.
 
-> *[PENDING -- extract verbatim coupling-constant phi-arithmetic identities from SSRN 4003636, SSRN 4442074, SCIRP paperid 122814, and arXiv:2310.16864 during under-review promotion]*
+| # | Claim | Evidence | Assessment |
+|---|-------|----------|------------|
+| P1 | alpha can be expressed exactly via phi formulas | Numerical derivations | **Empirically interesting** |
+| P2 | Coupling constants unify via phi-structure | Mathematical constructions | **Formal but unverified** |
+| P3 | Peer-reviewed citations exist | JGP (2024), CQG (2025) | **Verifiable** |
+| P4 | Machine-checkable proofs | None identified | **Absent** |
+| P5 | SM mass formulas with tolerances | None identified | **Absent** |
+
+Verbatim quotation with equation pointers is still outstanding and is required
+before this case leaves `draft`.
 
 ---
 
 ## 3. Tier mapping
 
-Pellis does not use an explicit Verified/Efit/Conj/Risk/Retr taxonomy in the prior publications. Mapping will be done claim-by-claim in Sections 4-7.
+The publications do not use an explicit Verified/Efit/Conj/Risk/Retr taxonomy.
+Mapping is done claim-by-claim in Sections 4-8.
 
 ---
 
 ## 4. [Verified] inventory
 
-*[PENDING under-review promotion + Pellis notification]*
+Written first: [Verified] credit goes to the subject before any criticism
+begins (CHARTER.md s 1).
 
-Within the **joint** v2.5 phi-paper, Pellis's Strand III MDL-optimality framing of G_phi = phi^2 + phi^-2 = 3 reaches **[Open conjecture]** at MDL-rank 2/394 (CASE-12), not [Verified]. The audit of his **independent prior** publications is separate and starts from no [Verified] inventory at draft stage.
+- **[Verified]** P3. The 2023 JHEPGC paper is cited in *Journal of Geometry and
+  Physics* (2024) and *Classical and Quantum Gravity* (2025). Source: SCIRP
+  paper id 122814 and the citing articles. Evidence: the citation record, which
+  a reader can check directly. This is [Verified] as a fact about the
+  literature. It is recorded first because on the venue axis of FRAMEWORK.md (d)
+  the subject's record is currently **stronger than the lab's own**, whose
+  phi-paper is not yet accepted.
+
+---
 
 ---
 
 ## 5. [Empirical fit] inventory
 
-*[PENDING]*
+- **[Empirical fit]** P1. The fine-structure constant alpha expressed exactly
+  through phi-structured formulas. Source: viXra/Authorea (2021-2022), SCIRP
+  paper id 122814. Free parameters: the choice of expression form, not reported.
+  Control: absent. Pre-registered held-out test: absent.
 
-Provisional candidates pending under-review extraction:
+  **Calibration clause applies.** FRAMEWORK.md makes an [Empirical fit]
+  automatically [Risk] where model selection is not reported at matched k. No
+  bound on the space of expressions searched is published, so P1 is carried in
+  Section 7 as well and should be read at [Risk] until a denominator is
+  supplied. The lab bounded its own comparable search at 394 forms and reports
+  that denominator; that is a difference in disclosure, not in kind.
 
-- **[Empirical fit, provisional]** Specific phi-arithmetic coupling-ratio identities (e.g. alpha_em vs phi-power expressions) in SSRN 4003636. Free parameters: unclear pending recount. Matched control: absent in the publication.
+---
 
 ---
 
 ## 6. [Open conjecture] inventory
 
-*[PENDING]*
+**Empty.** No falsification path is stated for P1 or P2 in the located
+sources.
 
-Provisional candidates:
-
-- **[Open conjecture, provisional]** Phi-arithmetic relations among coupling constants reflect a non-accidental underlying structure. Source: SSRN 4003636 + 4442074. Fpath (to be stated): matched-cardinality control alphabet rerun + BH-FDR q=0.05. **Note:** the joint paper's G_phi result (CASE-12) is the strongest formulation of this conjecture under explicit MDL controls; the solo SSRN identities lack equivalent controls and rank lower in our framework until reanalysed.
+---
 
 ---
 
 ## 7. [Risk] / [High-risk] inventory
 
-*[PENDING]*
+- **[Risk]** P1, per the calibration clause in Section 5. Reason:
+  FRAMEWORK.md (b) -- an exact-looking phi expression for a dimensionless
+  constant remains [Risk] until the search space is bounded.
 
-Provisional candidates:
+- **[Risk]** P2. Coupling constants unify through a phi-structure. Source: SSRN
+  4731914, SCIRP paper id 122814. Reason: FRAMEWORK.md (c) -- the trigger is a
+  **plausible** non-phi alternative of comparable cardinality, and the label
+  stands until such a control is ruled out.
 
-- **[Risk, provisional]** Solo SSRN/SCIRP/viXra publications lack matched-cardinality control alphabet tests. Reason: (b).
-- **[Risk, provisional]** SCIRP/JHEPGC venue has weak peer-review reputation independent of this work. Reason: (d) venue weakness.
-- **[Risk, provisional]** viXra entries (recorded for completeness) are not peer-reviewed. Reason: (d) venue.
+  **What the lab's own result does and does not establish here.** CASE-00 s 7
+  records that phi-free grammars of equal cardinality reach comparable
+  compression. That control was run against the **lab's own** grammar over the
+  **lab's own** constant set. It establishes that a non-phi alternative is
+  plausible for this class of claim, which is what (c) requires to trigger. It
+  is **not** a result about P2, and no control has been run against P2. An
+  earlier revision of this file said "the same control bears on P2", which
+  asserted a transfer that was never demonstrated; corrected here. The
+  [Risk] label is unchanged -- (c) triggers on plausibility -- but the reason
+  now says what was measured and against what.
+
+  The lab is not holding this subject to a standard its own programme has
+  passed: the lab's programme failed this control, on its own data.
+
+**Venue, FRAMEWORK.md (d):** no weakness recorded. Peer-reviewed publication
+with citations in two mainstream journals.
+
+---
+
+**Venue: a conflict between the two merged files, resolved here.** CASE-15
+previously recorded "[Risk, provisional] SCIRP/JHEPGC venue has weak
+peer-review reputation independent of this work. Reason: (d)". That was
+asserted without a source. CASE-21 recorded the opposite: the specific paper is
+cited in *Journal of Geometry and Physics* (2024) and *Classical and Quantum
+Gravity* (2025), which is checkable. FRAMEWORK.md (d) calibrates the evidence
+available for a specific claim, not a publisher's general standing, so the
+citation record governs and **no venue weakness is recorded against P1-P3**.
+The unsourced characterisation is withdrawn rather than carried forward; the
+viXra items remain non-peer-reviewed and are labelled as such where cited.
 
 ---
 
 ## 8. [Retracted] inventory
 
-None known. No public retraction of any Pellis solo publication has been located.
+**Empty.** No claim has been withdrawn by the subject at audit date.
+
+---
 
 ---
 
 ## 9. Symmetric mirror (MANDATORY)
 
+Per FRAMEWORK.md ("Symmetric mirror") and CHARTER.md s 5. This case is the
+**inverted** mirror: where an external case commits the lab to auditing its own
+work against a subject's, this one audits a co-author's independent prior work
+against the lab's joint result with that same co-author.
+
 | Subject's claim | Our comparable claim | Both labelled |
 |-----------------|----------------------|---------------|
-| Phi-arithmetic relations among coupling constants are non-accidental (SSRN 4003636 et al.) | G_phi = phi^2 + phi^-2 = 3 MDL-rank 2/394 in depth-leq-2 BNF + W1+W8 filter (CASE-12) | Both [Open conjecture]; the joint paper has matched-control protocol, the solo prior work does not |
+| P1: alpha expressible exactly through phi formulas | CASE-08: G_phi = phi^2 + phi^-2 = 3 at MDL-rank 2/394 among essential depth-leq-2 phi-native forms, bootstrap p=0.0039 | Both are the same claim type. The lab bounded its own search at 394 forms and reports that denominator, which lifts its version to **[Open conjecture]**; the solo publications report no denominator and sit at **[Risk]** under (b). A difference in disclosure, not in kind |
+| P2: coupling constants unify through a phi-structure | CASE-00 s 7: "phi-free grammars of equal cardinality reach comparable compression" -- the lab's own control result, which places "phi is special for the constants" at [Risk]/[Retracted] for the lab | Subject's: **[Risk]** under (c), which triggers on a *plausible* alternative. The lab's control was run against the lab's own grammar and constant set: it establishes plausibility for this claim class, **not** a match against P2, and no control has been run against P2 (CASE-00 s 8c) |
+| P3: peer-reviewed citations in JGP (2024) and CQG (2025) | CASE-00 s 1: phi-paper, in the Foundations of Physics queue, not yet accepted | On the venue axis of FRAMEWORK.md (d) the subject's record is currently **stronger than the lab's**. Recorded plainly, because a calibration that only ever runs one direction is not a calibration |
+| P4/P5: no machine-checkable proofs, no SM mass formulas with tolerances | The lab's 166 machine-checked theorems | Lab's: **[Verified] for the theorem statements only**, per FRAMEWORK.md's anti-pattern rule. Formal verification establishes the formula, not that phi is the right base for it -- which is the claim actually in dispute |
 
-**Symmetry:** This case IS the inverted symmetric mirror. Where external CASE-NN files commit the lab to a symmetric audit of its own work against an external programme, CASE-15 commits the lab to a symmetric audit of its **own co-author's prior independent work** against the **lab's joint result with that co-author**. The framework demands that the same matched-cardinality control protocol applied to G_phi (CASE-08, CASE-12) be applied to Pellis's solo SSRN/SCIRP coupling-constant identities. If they survive: both [Open conjecture] under joint Fpath. If they collapse: solo work becomes [Risk]/[Retracted]; the joint G_phi result is unaffected (its controls are explicit).
+**Joint Fpath.** One matched-cardinality control alphabet applied identically to
+(a) the subject's phi-arithmetic identities for alpha and the coupling constants
+and (b) the lab's own G_phi BNF sweep: replace phi with (e, pi, sqrt(2),
+sqrt(3), small integers) at equal expression cardinality, over a target list
+fixed before the fit, under BH-FDR q=0.05. If phi-native forms do not outrank
+the control on both, both fall to [Risk] together. If both survive, both are
+[Open conjecture] under one shared falsifier.
 
-**Co-author notification rule:** under CHARTER.md s 3, this case stays in `draft` until Pellis has been notified of its existence and given an opportunity to reply. Strand III collaboration on the joint paper continues independently of this audit's outcome -- the framework demands symmetry, not adversarial framing.
+**Co-author notification rule.** Under CHARTER.md s 3 this case stays in
+`draft` until Pellis has been notified of its existence and given at least 14
+days to reply. Strand III collaboration on the joint paper continues
+independently of this audit's outcome. The unresolved COI question -- that the
+phi-paper's other non-maintainer co-author is excluded from primary audit while
+this subject is not -- is recorded in `COI.md`.
 
 ---
 
 ## 10. Audit summary
 
-*[PENDING under-review promotion + Pellis notification + claim extraction.]*
+**(a) Strongest part.** P3 at [Verified]: a peer-reviewed publication record
+with citations in *Journal of Geometry and Physics* and *Classical and Quantum
+Gravity*. On this axis the subject leads the lab.
 
-Provisional 200-word stub: Pellis's solo prior publications (SSRN 4003636, SSRN 4442074, SCIRP/JHEPGC paperid 122814, arXiv:2310.16864 co-authored) occupy phi-arithmetic-coupling-constant territory predating his Strand III role in our joint phi-paper. The strongest aspect (provisional): the framework of writing down explicit phi-arithmetic identities for coupling constants is itself testable. The weakest aspect (provisional **[Risk]**): the solo publications lack matched-cardinality controls and BH-FDR q=0.05 tests. The single experiment that would resolve the largest claim: a matched-cardinality control rerun applied identically to (a) Pellis's solo phi-arithmetic identities and (b) our joint G_phi BNF sweep. The lab's symmetric position: the joint v2.5 G_phi result (CASE-12) carries the controls; the solo prior work is owed the same treatment before promotion out of [Risk]. Strand III collaboration on the joint paper is independent of this audit's outcome.
+**(b) Weakest claim.** P1/P2 at [Risk] under (b) and (c): no bound on the
+expression space searched, and a plausible non-phi alternative not ruled out.
+
+**(c) Experiment that would settle it.** The matched-cardinality control rerun
+in Section 9, applied identically to the subject's identities and the lab's own
+G_phi sweep.
+
+**(d) Symmetric position of the lab's own work.** The lab's claim is in the
+same class and already has the adverse control on record against its own
+version. The lab is not holding this subject to a standard its own programme
+has passed -- it is holding him to one its own programme failed.
 
 ---
 
 ## 11. Sources
 
-- 2026-06-16: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636 -- SSRN phi + constants
+- 2026-06-16: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4003636 -- SSRN, phi and constants
 - 2026-06-16: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4442074 -- SSRN follow-up
 - 2026-06-16: https://www.scirp.org/journal/paperinformation?paperid=122814 -- JHEPGC 2023
-- 2026-06-16: https://arxiv.org/abs/2310.16864 -- arXiv co-authored (Pellis, Golmankhaneh, Zingales)
+- 2026-06-16: https://arxiv.org/abs/2310.16864 -- arXiv, co-authored (Pellis, Golmankhaneh, Zingales)
+- 2026-08-10: SSRN 4003636 and DOI 10.4236/jhepgc.2023.91021 -- author confirmed as **Stergios Pellis**; the given name previously recorded in this file was incorrect
+
+No archive snapshots yet. SSRN and SCIRP return HTTP 403 to automated fetches,
+so this case's two primary venues resist scripted archiving; see
+`scripts/check_archive_coverage.py`.
 
 ---
 
-## 12. Subject's reply
+## 12. Audit trail
 
-Empty. Pellis has NOT yet been notified of this CASE-15's existence. Under CHARTER.md s 3 (co-author symmetric audit notification rule), this file stays in `draft` until notification has been documented and Pellis has had reasonable time (>= 14 days) to reply.
+- 2026-06-16 -- CASE-15 opened under the co-author rule; CASE-21 opened
+  separately from the Wave-Loop intake pass, both on the same subject
+- 2026-08-10 -- subject identity verified; given name corrected, country
+  withdrawn as unverified
+- 2026-08-10 -- **CASE-21 merged into this file**; CASE-21 retired, pre-merge
+  text preserved under `archive/`
+- 2026-08-10 -- unsourced SCIRP venue characterisation withdrawn; COI
+  asymmetry recorded in `COI.md`
+
+---
+
+## 13. Subject's reply
+
+Empty. Pellis has **not** yet been notified of this case's existence. Under
+CHARTER.md s 3 this file stays in `draft` until notification is documented and
+he has had at least 14 days to reply.
 
 ---
 

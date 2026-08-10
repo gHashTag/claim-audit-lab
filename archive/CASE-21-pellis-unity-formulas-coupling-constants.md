@@ -1,3 +1,21 @@
+> **RETIRED 2026-08-10 -- merged into CASE-15.**
+>
+> This file audited **Stergios Pellis**, the same subject as
+> `cases/CASE-15-pellis-coupling-constants.md`. The two were opened
+> independently: CASE-15 under the co-author rule, CASE-21 from the Wave-Loop
+> intake pass, which did not check subject identity against entries the
+> register already held. CASE-14/CASE-20 collided the same way.
+>
+> Its claim table (P1-P5), inventories and symmetric mirror are carried in
+> CASE-15. The register no longer issues the id CASE-21; **do not cite this
+> file as a live case.** It is kept unedited so the merge is auditable.
+>
+> Note: this file's finding that the subject's venue record is stronger than
+> the lab's superseded an unsourced venue characterisation in CASE-15. That
+> resolution is recorded in CASE-15 Section 7.
+
+---
+
 # CASE-21: Stergios Pellis -- Unity Formulas for Coupling Constants and phi-Physics
 
 **Subject:** Stergios Pellis (active researcher, Greece).

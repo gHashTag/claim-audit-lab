@@ -178,6 +178,35 @@ verifying subject identities earlier the same day.
 until 2026-08-10, which is part of why the overlap between the phi-paper author
 list and the audited-subject list went unnoticed.
 
+## 2026-08-10 -- duplicate cases merged (register structure)
+
+Following the identity corrections above, the two duplicate pairs were merged
+on the maintainer's instruction. Four case files audited two people.
+
+| Date | Merged | Into | Subject | Retired to |
+|---|---|---|---|---|
+| 2026-08-10 | CASE-20 | CASE-14 | Luis Morato de Dalmases | `archive/CASE-20-morato-dalmases-600cell-spectral-triple.md` |
+| 2026-08-10 | CASE-21 | CASE-15 | Stergios Pellis | `archive/CASE-21-pellis-unity-formulas-coupling-constants.md` |
+
+**Which file survived, and why.** In both pairs the surviving file is the
+template-conformant one (front matter, sections 0-12) whose inventories were
+`[PENDING]` stubs, and the retired file is the one carrying the actual claim
+table and inventories. The merge therefore fills real content into a valid
+shell rather than discarding either.
+
+**Label movements caused by the merge.** None. Every inventory entry keeps the
+label and the FRAMEWORK.md clause it carried in the retired file. Two internal
+inconsistencies surfaced by the merge were fixed and are recorded as
+corrections:
+
+| Date | Case | Item | From | To | Reason |
+|---|---|---|---|---|---|
+| 2026-08-10 | CASE-14 | M1 in the symmetric mirror | "[Open conjecture] at best" | [Risk] | correction -- the mirror contradicted its own Section 7; FRAMEWORK.md (a) sends a conjecture with no stated falsifier to [Risk] |
+| 2026-08-10 | CASE-15 | SCIRP/JHEPGC venue | "[Risk, provisional] ... weak peer-review reputation", unsourced | withdrawn; no venue weakness recorded against P1-P3 | correction -- the merged-in file established that the specific paper is cited in JGP (2024) and CQG (2025), which is checkable, and (d) calibrates evidence for a claim rather than a publisher's standing |
+
+Register: 23 entries -> **21**. The ids CASE-20 and CASE-21 are not reissued.
+Retired files are kept unedited under `archive/` so the merge is auditable.
+
 ---
 
 **End of ledger.**

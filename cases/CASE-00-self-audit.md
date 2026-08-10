@@ -338,6 +338,11 @@ to the headline result it most affected.
 
 ### 8c. First application of s 8b to the register itself (2026-08-10)
 
+> **Id note.** This section was written before the duplicate-case merge later
+> the same day. CASE-21 is now merged into **CASE-15** and CASE-20 into
+> **CASE-14**; the findings below travelled with their content and the
+> corrections are in the surviving files. Retired text is under `archive/`.
+
 Section 10 committed the lab to turning the s 8b instrument on its own external
 cases, on the grounds that several external labels rest on comparisons the lab
 constructed. That pass has now been run over every external case that invokes
