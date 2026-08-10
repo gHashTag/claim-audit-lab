@@ -78,6 +78,23 @@ for c in cases:
     elif c.get("file_status") == "not-written":
         fails.append(f"{c.get('id')}: declared not-written but {f} exists")
 
+# The identifier lives in more than two places: the registry row, the file
+# path, the document's own heading, and -- in at least one case -- a copy of
+# the registry row embedded in the document. A rename fixes the carriers you
+# look at and leaves the rest to drift, so every carrier is compared, not the
+# two that happen to form the obvious pair.
+for c in cases:
+    f = ROOT / str(c.get("file", ""))
+    if not f.exists(): continue
+    body = f.read_text()
+    head = re.search(r"CASE-\d+", body)
+    if head and head.group(0) != c["id"]:
+        fails.append(f"{c['id']}: the document calls itself {head.group(0)}")
+    stale = re.findall(r"CASE-\d+-[A-Za-z0-9_-]+\.md", body)
+    for s_ in set(stale):
+        if not (ROOT / "cases" / s_).exists() and not (ROOT / "drafts" / s_).exists():
+            fails.append(f"{c['id']}: names {s_}, which is in no tree")
+
 for p in sorted((ROOT / "cases").rglob("*.md")):
     rel = str(p.relative_to(ROOT))
     if rel not in registered:

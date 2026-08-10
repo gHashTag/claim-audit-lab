@@ -1,4 +1,4 @@
-# CASE-10  --  Vasilev / Ternary Network Floats and the golden weight alphabet
+# CASE-18  --  Vasilev / Ternary Network Floats and the golden weight alphabet
 
 **Target:** `gHashTag/trinity-fpga`, `research/arxiv_tnf/tnf_paper.tex`, with
 measurements in `research/block/` and `fpga/tnet/`, and the machine-checked
@@ -108,12 +108,12 @@ once would resolve both the subject's standing condition and the external row.
 ## Status row for cases.yaml
 
 ```yaml
-- id: CASE-10
+- id: CASE-18
   title: "Vasilev Ternary Network Floats and the golden weight alphabet"
   target: "gHashTag/trinity-fpga research/arxiv_tnf; gHashTag/trinity-s3ai derivations/golden_alphabet"
   claim_status: Verified
   fpath: "Sub-8-bit training run varying the element format with block scale and master-weight precision held fixed"
-  file: cases/CASE-10-vasilev-tnf-golden-alphabet.md
+  file: cases/CASE-18-vasilev-tnf-golden-alphabet.md
 ```
 
 ## Anchor
