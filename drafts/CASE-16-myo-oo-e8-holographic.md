@@ -1,8 +1,14 @@
+<!-- UNREGISTERED DRAFT. Not listed in cases.yaml, so it is not in the register.
+     FRAMEWORK.md: a case file without a Section 9 symmetric mirror is rejected
+     from the register until the mirror is added. Held here rather than in cases/
+     so that the repository's own gates stop failing on work that is, by the
+     framework's own rule, not yet a case. -->
+
 # CASE-16: Myo Oo (+ Mark W. Vick) -- E8 Holographic Geometry / Project MAYA
 
 **Subject:** Myo Oo (affiliation unknown), with Mark W. Vick.
 **Affiliation:** Independent / Zenodo / Academia.edu.
-**Programme:** "Project MAYA" -- derivation of 11+ physical constants from E8 holographic geometry; single scale Λ = 51.9 GeV; claims 100% validation across 24 tests.
+**Programme:** "Project MAYA" -- derivation of 11+ physical constants from E8 holographic geometry; single scale ? = 51.9 GeV; claims 100% validation across 24 tests.
 **Audit date:** 2026-06-16
 **Maintainer:** @gHashTag
 **Status:** draft
@@ -13,14 +19,14 @@
 ## 1. Identity
 
 Myo Oo publishes on Zenodo and Academia.edu under the "Project MAYA" framework. Claims include:
-- Single scale Λ = 51.9 GeV
-- Derivation of α, Higgs mass, Planck mass, strong coupling, lepton masses from E8
+- Single scale ? = 51.9 GeV
+- Derivation of alpha, Higgs mass, Planck mass, strong coupling, lepton masses from E8
 - "Shadow sector" (112 vector vs 128 spinor roots) for dark matter
 - Links Riemann zeta zeros to lepton masses
 
 **Primary references:**
 - https://www.academia.edu/164593041 -- Myo Oo (2026), "The Complete Standard Model and Quantum Gravity from E8 Holographic Geometry"
-- Multiple Zenodo deposits (2025–2026)
+- Multiple Zenodo deposits (2025-2026)
 
 ---
 
@@ -29,12 +35,12 @@ Myo Oo publishes on Zenodo and Academia.edu under the "Project MAYA" framework. 
 | # | Claim | Evidence | Assessment |
 |---|-------|----------|------------|
 | O1 | 11+ constants from E8 holographic geometry | Asserted | **Unverified** |
-| O2 | Single scale Λ = 51.9 GeV | Asserted | **Speculative** |
+| O2 | Single scale ? = 51.9 GeV | Asserted | **Speculative** |
 | O3 | "100% validation across 24 tests" | Self-assessed | **Not independently verified** |
 | O4 | Dark matter from E8 "shadow sector" | Theoretical construction | **Speculative** |
-| O5 | Riemann zeta zeros → lepton masses | Correlation claimed | **Numerological** |
-| O6 | Machine-checkable proofs | ❌ None | **Absent** |
-| O7 | Published software | ❌ None identified | **Absent** |
+| O5 | Riemann zeta zeros -> lepton masses | Correlation claimed | **Numerological** |
+| O6 | Machine-checkable proofs | [no] None | **Absent** |
+| O7 | Published software | [no] None identified | **Absent** |
 
 ---
 
@@ -59,4 +65,4 @@ Myo Oo publishes on Zenodo and Academia.edu under the "Project MAYA" framework. 
 - 2026-06-16 -- Wave Loop 9 competitive analysis
 - 2026-06-16 -- Added to claim-audit-lab register
 
-*φ² + 1/φ² = 3 | Honest audit, no adjectives*
+*phi^2 + 1/phi^2 = 3 | Honest audit, no adjectives*
