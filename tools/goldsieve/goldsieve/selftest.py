@@ -1,0 +1,156 @@
+"""Самопроверка самого сита.
+
+Сито — тоже инструмент, и на него распространяется то же правило, что и на всё
+остальное: у инструмента обязан быть тест, включая тест на подставленный
+неверный ответ. Здесь проверяется, что сито выдаёт нужный вердикт на четырёх
+заведомо известных случаях, и что вырожденную проверку оно ловит.
+"""
+
+import math
+
+from .sieve import (Claim, run, CONFIRMED, REFUTED, QUESTION, EMPTY, VOID,
+                    PASS, OPEN, rel_dev)
+
+
+def _cases():
+    # 1. Верное утверждение с вычисляемым эталоном: sum 1/n^2 = pi^2/6
+    def zeta2():
+        return sum(1.0 / n ** 2 for n in range(1, 2_000_00))
+
+    truth = Claim(
+        name="сумма 1/n^2 равна pi^2/6",
+        stated=math.pi ** 2 / 6.0,
+        reference=zeta2,
+        wrong=lambda: math.pi ** 2 / 5.0,
+        tolerance=1e-4,
+    )
+
+    # 2. Ложное утверждение при живом эталоне: должно быть ОПРОВЕРГНУТО
+    lie = Claim(
+        name="сумма 1/n^2 равна 1.75 (заведомо неверно)",
+        stated=1.75,
+        reference=zeta2,
+        wrong=lambda: 1.0,
+        tolerance=1e-3,
+    )
+
+    # 3. Эталона нет, только цитата: должно быть ВОПРОС, а не находка
+    nore = Claim(
+        name="эталон 2.15 из документа без вывода",
+        stated=2.15,
+        reference=None,
+        observed=lambda: 1.72,
+        tolerance=0.01,
+    )
+
+    # 4. Вырожденная проверка: терпимость такая, что проходит и неверный ответ
+    void = Claim(
+        name="проверка с терпимостью, которая пропускает всё",
+        stated=math.pi ** 2 / 6.0,
+        reference=zeta2,
+        wrong=lambda: 10.0 * math.pi ** 2 / 6.0,
+        tolerance=100.0,
+    )
+
+    # 5. Вывод зависит от оценки: должно быть ВОПРОС (случай Хинчина)
+    est = Claim(
+        name="величина, у которой две законные оценки дают разные знаки",
+        stated=2.62,
+        reference=lambda: 2.6854520,
+        estimators={"по-разложенчески": lambda: 2.755,
+                    "пулированно": lambda: 2.668},
+        tolerance=0.005,
+    )
+    # 6. Негативный контроль, который воспроизводит эталон: проверка вырождена
+    noisy = Claim(
+        name="шум даёт то же, что эталон (негативный контроль)",
+        stated=1.0,
+        reference=lambda: 1.0,
+        null_model=lambda: 1.0,
+        null_kind="negative",
+        tolerance=0.01,
+    )
+
+    # 7. Позитивный контроль, который НЕ даёт эталон: сломан конвейер
+    broken = Claim(
+        name="позитивный контроль не даёт эталон",
+        stated=1.0,
+        reference=lambda: 1.0,
+        null_model=lambda: 1.5,
+        null_kind="positive",
+        tolerance=0.01,
+    )
+
+    # 8. С9: расхождение с трендом по 1/N, экстраполяция садится на эталон
+    trend = Claim(
+        name="расхождение уходит при экстраполяции по 1/N",
+        stated=0.95,
+        reference=lambda: 1.0,
+        observed=lambda: 0.95,
+        wrong=lambda: 2.0,
+        bins=lambda: [(0.10, 0.90), (0.05, 0.95), (0.02, 0.98), (0.01, 0.99)],
+        tolerance=0.01,
+    )
+
+    # 9. С9: расхождение без тренда, конечным размером НЕ объясняется
+    flat = Claim(
+        name="расхождение без тренда по 1/N",
+        stated=0.95,
+        reference=lambda: 1.0,
+        observed=lambda: 0.95,
+        wrong=lambda: 2.0,
+        bins=lambda: [(0.10, 0.95), (0.05, 0.951), (0.02, 0.949), (0.01, 0.95)],
+        tolerance=0.01,
+    )
+    return truth, lie, nore, void, est, noisy, broken, trend, flat
+
+
+def main() -> int:
+    truth, lie, nore, void, est, noisy, broken, trend, flat = _cases()
+    checks = [
+        ("верное утверждение -> ПОДТВЕРЖДЕНО", run(truth).verdict, CONFIRMED),
+        ("ложное утверждение -> ОПРОВЕРГНУТО", run(lie).verdict, REFUTED),
+        ("нет вычисляемого эталона -> ВОПРОС", run(nore).verdict, QUESTION),
+        ("вырожденная проверка -> ПУСТО", run(void).verdict, EMPTY),
+        ("вывод зависит от оценки -> ВОПРОС", run(est).verdict, QUESTION),
+        ("шум похож на сигнал -> ПУСТО", run(noisy).verdict, EMPTY),
+        ("позитивный контроль сломан -> ВОПРОС", run(broken).verdict, QUESTION),
+        ("тренд по 1/N -> ВОПРОС", run(trend).verdict, QUESTION),
+        ("нет тренда по 1/N -> ОПРОВЕРГНУТО", run(flat).verdict, REFUTED),
+    ]
+    ok = fail = 0
+    print("самопроверка сита:")
+    for name, got, want in checks:
+        if got == want:
+            ok += 1
+            print("  ok   %-45s %s" % (name, got))
+        else:
+            fail += 1
+            print("  FAIL %-45s получено %s, ожидалось %s" % (name, got, want))
+
+    # 6. Отдельно: сито С4 обязано помечать VOID именно вырожденный случай,
+    #    а не просто выдавать общий вердикт.
+    r = run(void)
+    s4 = [x for x in r.results if x.sieve.startswith("С4")][0]
+    if s4.status == VOID:
+        ok += 1
+        print("  ok   %-45s %s" % ("сито подставки помечает вырождение", s4.status))
+    else:
+        fail += 1
+        print("  FAIL %-45s %s" % ("сито подставки помечает вырождение", s4.status))
+
+    # 7. rel_dev на dict должен считать по ключам, а не по порядку
+    d = rel_dev({"a": 2.0, "b": 3.0}, {"b": 3.0, "a": 4.0})
+    if abs(d["a"] + 0.5) < 1e-12 and abs(d["b"]) < 1e-12:
+        ok += 1
+        print("  ok   %-45s a %+.3f b %+.3f" % ("сравнение по именам", d["a"], d["b"]))
+    else:
+        fail += 1
+        print("  FAIL %-45s %r" % ("сравнение по именам", d))
+
+    print("\n  итог: %d пройдено, %d провалено" % (ok, fail))
+    return fail
+
+
+if __name__ == "__main__":
+    raise SystemExit(1 if main() else 0)
