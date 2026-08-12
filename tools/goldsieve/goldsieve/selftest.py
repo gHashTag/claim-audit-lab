@@ -8,8 +8,15 @@
 
 import math
 
+import os
+
+import numpy as np
+
 from .sieve import (Claim, run, CONFIRMED, REFUTED, QUESTION, EMPTY, VOID,
-                    PASS, OPEN, rel_dev)
+                    PASS, OPEN, FAIL, rel_dev)
+
+# Все пропуски обязаны быть объявлены (сито С13), иначе вердикт ВОПРОС.
+SR = {"С%d" % i: "неприменимо к синтетическому случаю" for i in range(1, 15)}
 
 
 def _cases():
@@ -23,6 +30,7 @@ def _cases():
         reference=zeta2,
         wrong=lambda: math.pi ** 2 / 5.0,
         tolerance=1e-4,
+        skip_reasons=SR,
     )
 
     # 2. Ложное утверждение при живом эталоне: должно быть ОПРОВЕРГНУТО
@@ -32,6 +40,7 @@ def _cases():
         reference=zeta2,
         wrong=lambda: 1.0,
         tolerance=1e-3,
+        skip_reasons=SR,
     )
 
     # 3. Эталона нет, только цитата: должно быть ВОПРОС, а не находка
@@ -41,6 +50,7 @@ def _cases():
         reference=None,
         observed=lambda: 1.72,
         tolerance=0.01,
+        skip_reasons=SR,
     )
 
     # 4. Вырожденная проверка: терпимость такая, что проходит и неверный ответ
@@ -50,6 +60,7 @@ def _cases():
         reference=zeta2,
         wrong=lambda: 10.0 * math.pi ** 2 / 6.0,
         tolerance=100.0,
+        skip_reasons=SR,
     )
 
     # 5. Вывод зависит от оценки: должно быть ВОПРОС (случай Хинчина)
@@ -60,6 +71,7 @@ def _cases():
         estimators={"по-разложенчески": lambda: 2.755,
                     "пулированно": lambda: 2.668},
         tolerance=0.005,
+        skip_reasons=SR,
     )
     # 6. Негативный контроль, который воспроизводит эталон: проверка вырождена
     noisy = Claim(
@@ -69,6 +81,7 @@ def _cases():
         null_model=lambda: 1.0,
         null_kind="negative",
         tolerance=0.01,
+        skip_reasons=SR,
     )
 
     # 7. Позитивный контроль, который НЕ даёт эталон: сломан конвейер
@@ -79,6 +92,7 @@ def _cases():
         null_model=lambda: 1.5,
         null_kind="positive",
         tolerance=0.01,
+        skip_reasons=SR,
     )
 
     # 8. С9: расхождение с трендом по 1/N, экстраполяция садится на эталон
@@ -90,6 +104,7 @@ def _cases():
         wrong=lambda: 2.0,
         bins=lambda: [(0.10, 0.90), (0.05, 0.95), (0.02, 0.98), (0.01, 0.99)],
         tolerance=0.01,
+        skip_reasons=SR,
     )
 
     # 9. С9: расхождение без тренда, конечным размером НЕ объясняется
@@ -101,12 +116,65 @@ def _cases():
         wrong=lambda: 2.0,
         bins=lambda: [(0.10, 0.95), (0.05, 0.951), (0.02, 0.949), (0.01, 0.95)],
         tolerance=0.01,
+        skip_reasons=SR,
     )
-    return truth, lie, nore, void, est, noisy, broken, trend, flat
+    # 10. Незаявленный пропуск сита: гигиена обязана дать ВОПРОС
+    silent = Claim(
+        name="пропуски сит не объявлены",
+        stated=1.0,
+        reference=lambda: 1.0,
+        wrong=lambda: 2.0,
+        tolerance=0.01,
+    )
+
+    # 11. Расхождение в пределах выборочного шума: не опровержение, а вопрос
+    rng = np.random.default_rng(11)
+    x = rng.normal(loc=0.0, scale=1.0, size=3000)
+    stat = {"std": lambda a: float(a.std(ddof=1)),
+            "p50": lambda a: float(np.percentile(a, 50)),
+            "p90": lambda a: float(np.percentile(a, 90))}
+    noise = Claim(
+        name="отклонение внутри шума",
+        stated={"std": 1.0, "p50": 0.0 + 1e-9, "p90": 1.2816},
+        reference=lambda: {"std": 1.0, "p50": 1e-9, "p90": 1.2816},
+        observed=lambda: {k: f(x) for k, f in stat.items()},
+        sample=lambda: x,
+        statistics=stat,
+        wrong=lambda: {"std": 2.0, "p50": 1.0, "p90": 3.0},
+        tolerance=1e-4,          # заведомо жёстче шума
+        skip_reasons=SR,
+    )
+
+    # 12. Слишком хорошо: эталон совпал с измерением точнее шума по трём статистикам
+    toogood = Claim(
+        name="согласие точнее выборочного шума",
+        stated={k: f(x) for k, f in stat.items()},
+        reference=lambda: {k: f(x) for k, f in stat.items()},
+        observed=lambda: {k: f(x) for k, f in stat.items()},
+        sample=lambda: x,
+        statistics=stat,
+        wrong=lambda: {"std": 2.0, "p50": 1.0, "p90": 3.0},
+        tolerance=0.01,
+        skip_reasons=SR,
+    )
+
+    # 13. Второй метод не подтверждает эталон
+    altbad = Claim(
+        name="второй метод даёт другой эталон",
+        stated=1.0,
+        reference=lambda: 1.0,
+        reference_alt=lambda: 1.2,
+        wrong=lambda: 5.0,
+        tolerance=0.01,
+        skip_reasons=SR,
+    )
+    return (truth, lie, nore, void, est, noisy, broken, trend, flat,
+            silent, noise, toogood, altbad)
 
 
 def main() -> int:
-    truth, lie, nore, void, est, noisy, broken, trend, flat = _cases()
+    (truth, lie, nore, void, est, noisy, broken, trend, flat,
+     silent, noise, toogood, altbad) = _cases()
     checks = [
         ("верное утверждение -> ПОДТВЕРЖДЕНО", run(truth).verdict, CONFIRMED),
         ("ложное утверждение -> ОПРОВЕРГНУТО", run(lie).verdict, REFUTED),
@@ -117,6 +185,10 @@ def main() -> int:
         ("позитивный контроль сломан -> ВОПРОС", run(broken).verdict, QUESTION),
         ("тренд по 1/N -> ВОПРОС", run(trend).verdict, QUESTION),
         ("нет тренда по 1/N -> ОПРОВЕРГНУТО", run(flat).verdict, REFUTED),
+        ("незаявленный пропуск -> ВОПРОС", run(silent).verdict, QUESTION),
+        ("расхождение внутри шума -> ВОПРОС", run(noise).verdict, QUESTION),
+        ("слишком точное согласие -> ВОПРОС", run(toogood).verdict, QUESTION),
+        ("второй метод не сходится -> ВОПРОС", run(altbad).verdict, QUESTION),
     ]
     ok = fail = 0
     print("самопроверка сита:")
@@ -139,6 +211,39 @@ def main() -> int:
         fail += 1
         print("  FAIL %-45s %s" % ("сито подставки помечает вырождение", s4.status))
 
+    # Сквозная подставка обязана срывать каскад на верном утверждении
+    r = run(truth)
+    s14 = [x for x in r.results if x.sieve.startswith("С14")][0]
+    if s14.status == PASS and "ПОДТВЕРЖДЕНО" not in s14.detail:
+        ok += 1
+        print("  ok   %-45s %s" % ("сквозная подставка срывает каскад", s14.detail))
+    else:
+        fail += 1
+        print("  FAIL %-45s %s" % ("сквозная подставка срывает каскад", s14.detail))
+
+    # Сито «слишком хорошо» обязано пометить именно тот случай
+    s11 = [x for x in run(toogood).results if x.sieve.startswith("С11")][0]
+    if s11.status == FAIL:
+        ok += 1
+        print("  ok   %-45s %s" % ("сито «слишком хорошо» срабатывает", s11.detail))
+    else:
+        fail += 1
+        print("  FAIL %-45s %s" % ("сито «слишком хорошо» срабатывает", s11.status))
+
+    # Набор подставок: плохая подставка обязана называться плохой подставкой,
+    # а не «вырожденной проверкой»
+    from .sieve import Claim as _C
+    multi = _C(name="набор подставок", stated=1.0, reference=lambda: 1.0,
+               wrong=[lambda: 2.0, lambda: 1.0009], tolerance=0.01,
+               skip_reasons=SR)
+    s4 = [x for x in run(multi).results if x.sieve.startswith("С4")][0]
+    if s4.status == VOID and "неотличима" in s4.detail and "подставка 1 отклонена" in s4.detail:
+        ok += 1
+        print("  ok   %-45s %s" % ("плохая подставка отделена от вырождения", s4.detail[:60]))
+    else:
+        fail += 1
+        print("  FAIL %-45s %s" % ("плохая подставка отделена от вырождения", s4.detail))
+
     # 7. rel_dev на dict должен считать по ключам, а не по порядку
     d = rel_dev({"a": 2.0, "b": 3.0}, {"b": 3.0, "a": 4.0})
     if abs(d["a"] + 0.5) < 1e-12 and abs(d["b"]) < 1e-12:
@@ -147,6 +252,20 @@ def main() -> int:
     else:
         fail += 1
         print("  FAIL %-45s %r" % ("сравнение по именам", d))
+
+    print("\n  модули-эталоны и служебные модули:")
+    from . import stats as _stats
+    from .coverage import selftest as _cov
+    mods = [("неопределённость", _stats.selftest, 6), ("покрытие", _cov, 3)]
+    if os.environ.get("GOLDSIEVE_FULL"):
+        from .refs.khinchin_reference import selftest as _kh
+        from .refs.gue_montecarlo import selftest as _mc
+        mods += [("эталон Хинчина", _kh, 3), ("Монте-Карло GUE", _mc, 5)]
+    for name, fn, n in mods:
+        print("  -- %s" % name)
+        f = fn()
+        fail += f
+        ok += n - f
 
     print("\n  итог: %d пройдено, %d провалено" % (ok, fail))
     return fail

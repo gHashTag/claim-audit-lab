@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import time
 import traceback
 from dataclasses import dataclass, field, asdict
@@ -89,6 +90,14 @@ class Claim:
     estimators: Optional[dict] = None
     precision: Optional[float] = None
     bins: Optional[Callable[[], list]] = None
+    sample: Optional[Callable[[], object]] = None      # сырые наблюдения
+    statistics: Optional[dict] = None                  # имя -> f(массив) -> число
+    reference_alt: Optional[Callable[[], object]] = None  # эталон другим методом
+    alt_tolerance: Optional[Callable[[], float]] = None    # ВЫВОДИМАЯ погрешность
+                                                          # второго метода
+    inputs: Optional[list] = None                      # файлы данных для провенанса
+    alpha: float = 0.05
+    skip_reasons: Optional[dict] = None                # сито -> причина пропуска
     notes: str = ""
 
 
@@ -169,18 +178,29 @@ def sieve_observation(c: Claim) -> Result:
 def sieve_discriminates(c: Claim) -> Result:
     """С4. Подставка: на заведомо неверном значении проверка обязана упасть.
 
-    Сито против «проверок», которые проходят всегда. Если неверное значение
-    проходит с той же терпимостью — предыдущие сита ничего не значат.
+    Сито против «проверок», которые проходят всегда. Поддерживается СПИСОК
+    подставок: одна вручную придуманная мутация проверяет меньше, чем набор
+    (перенято из мутационного тестирования). Различаются две причины провала,
+    которые раньше сливались в один статус: плоха сама подставка (она
+    неотличима от эталона при этой терпимости) — или вырождена проверка.
     """
     if c.reference is None or c.wrong is None:
         return Result("С4 подставка ловится", SKIP)
-    dev = rel_dev(c.wrong(), c.reference())
-    k, w = worst(dev)
-    if abs(w) <= c.tolerance:
-        return Result("С4 подставка ловится", VOID,
-                      "неверный ответ проходит: %s" % fmt_dev(dev), numbers=dev)
-    return Result("С4 подставка ловится", PASS,
-                  "неверный ответ отклонён: %s %+.2f%%" % (k, 100.0 * w))
+    wrongs = c.wrong if isinstance(c.wrong, (list, tuple)) else [c.wrong]
+    ref = c.reference()
+    bad, good = [], []
+    for i, fn in enumerate(wrongs, 1):
+        dev = rel_dev(fn(), ref)
+        k, w = worst(dev)
+        if abs(w) <= c.tolerance:
+            bad.append("подставка %d неотличима от эталона (%s %+.2f%%) при "
+                       "терпимости %.2f%%: неверный ответ проходит"
+                       % (i, k, 100.0 * w, 100.0 * c.tolerance))
+        else:
+            good.append("подставка %d отклонена: %s %+.2f%%" % (i, k, 100.0 * w))
+    if bad:
+        return Result("С4 подставка ловится", VOID, "; ".join(bad + good))
+    return Result("С4 подставка ловится", PASS, "; ".join(good))
 
 
 def sieve_null_model(c: Claim) -> Result:
@@ -325,6 +345,146 @@ def sieve_finite_size(c: Claim) -> Result:
                   "конечным размером не объясняется; " + msg)
 
 
+def _z_table(c: Claim):
+    """Отклонения наблюдения от эталона в единицах полуширины бутстрэп-интервала."""
+    from . import stats as S
+    x = c.sample()
+    ref = _as_dict(c.reference())
+    m = len(c.statistics)
+    alpha = S.sidak_alpha(c.alpha, m)
+    rows = {}
+    for name, f in c.statistics.items():
+        if name not in ref:
+            continue
+        point, lo, hi, rel = S.bootstrap_ci(x, f, alpha=alpha)
+        half = (hi - lo) / 2.0
+        rows[name] = {"point": point, "lo": lo, "hi": hi, "half": half,
+                      "ref": ref[name], "rel": rel,
+                      "z": S.z_of_deviation(point, ref[name], half)}
+    return rows
+
+
+def sieve_uncertainty(c: Claim) -> Result:
+    """С10. Неопределённость измерения: значимо ли расхождение вообще.
+
+    Терпимость больше не назначается рукой: ширина бутстрэп-интервала с
+    поправкой Шидака на число сравниваемых статистик и есть масштаб, в котором
+    измеряется расхождение. |z| <= 1 означает «данные совместимы с эталоном».
+    """
+    if c.sample is None or c.statistics is None or c.reference is None:
+        return Result("С10 неопределённость", SKIP)
+    rows = _z_table(c)
+    det = "; ".join("%s %+.2f%% (полуширина %.2f%%, z %+.1f)"
+                    % (k, 100.0 * (v["point"] - v["ref"]) / v["ref"],
+                       100.0 * v["half"] / abs(v["point"]), v["z"])
+                    for k, v in rows.items())
+    zmax = max(abs(v["z"]) for v in rows.values())
+    st = FAIL if zmax > 1.0 else PASS
+    return Result("С10 неопределённость", st, det,
+                  numbers={k: v["z"] for k, v in rows.items()})
+
+
+def sieve_too_good(c: Claim) -> Result:
+    """С11. Слишком хорошо: согласие точнее, чем позволяет выборочный шум.
+
+    Если измерение садится на теорию заметно точнее случайной погрешности сразу
+    по нескольким статистикам, вероятнее, что число списано из теории, а не
+    измерено. Возвращается верхняя граница подозрительности при независимости
+    статистик; настоящие статистики скоррелированы, поэтому истинная
+    вероятность БОЛЬШЕ приведённой — это ограничение, не оценка.
+    """
+    if c.sample is None or c.statistics is None or c.reference is None:
+        return Result("С11 слишком хорошо", SKIP)
+    rows = _z_table(c)
+    if len(rows) < 3:
+        return Result("С11 слишком хорошо", SKIP, "меньше трёх статистик")
+    zs = [abs(v["z"]) for v in rows.values()]
+    # z нормирован на полуширину 95%-интервала, то есть на 1.96 сигма
+    p = 1.0
+    for z in zs:
+        p *= math.erf(1.96 * z / math.sqrt(2.0)) or 1e-16
+    det = "медианное |z| %.2f, верхняя граница вероятности при независимости %.1e" \
+          % (sorted(zs)[len(zs) // 2], p)
+    if p < 1e-3:
+        return Result("С11 слишком хорошо", FAIL,
+                      "согласие подозрительно точное: " + det, numbers={"p": p})
+    return Result("С11 слишком хорошо", PASS, det, numbers={"p": p})
+
+
+def sieve_independent_method(c: Claim) -> Result:
+    """С12. Эталон подтверждён вторым, независимым методом.
+
+    С6 проверяет только сетку внутри одного алгоритма: ошибка в самой формуле
+    пройдёт при любом разрешении. Здесь та же величина считается другим путём.
+    """
+    if c.reference is None or c.reference_alt is None:
+        return Result("С12 независимый метод", SKIP)
+    dev = rel_dev(c.reference_alt(), c.reference())
+    k, w = worst(dev)
+    # Масштаб сравнения — собственная погрешность второго метода, а не
+    # терпимость утверждения: у метода Монте-Карло она своя и её надо ВЫВЕСТИ.
+    if c.alt_tolerance is not None:
+        tol = c.alt_tolerance()
+        note = " (порог %.2f%% — измеренный разброс второго метода)" % (100 * tol)
+    else:
+        tol = max(c.tolerance, 0.01)
+        note = " (порог %.2f%% — терпимость утверждения; погрешность второго " \
+               "метода не объявлена)" % (100 * tol)
+    st = PASS if abs(w) <= tol else FAIL
+    return Result("С12 независимый метод", st, fmt_dev(dev) + note, numbers=dev)
+
+
+def declared_skips_check(claim: Claim, results: list) -> Result:
+    """С13 гигиена: молчаливый пропуск сита не допускается.
+
+    Пустое поле даёт skip, и контроль слабеет незаметно — так со временем умирает
+    любая проверка. Каждый skip обязан быть объявлен в claim.skip_reasons.
+    """
+    reasons = claim.skip_reasons or {}
+    skipped = [r.sieve for r in results if r.status == SKIP]
+    # ключ обязан точно совпадать с номером сита ("С10"), а не быть общей
+    # отпиской "С", закрывающей все пропуски сразу
+    keys = {k.strip() for k in reasons}
+    undeclared = [s for s in skipped if s.split()[0] not in keys]
+    if not skipped:
+        return Result("С13 объявленные пропуски", PASS, "пропусков нет")
+    if undeclared:
+        return Result("С13 объявленные пропуски", FAIL,
+                      "не объявлены причины пропуска: " + ", ".join(undeclared))
+    return Result("С13 объявленные пропуски", PASS,
+                  "все %d пропуска объявлены" % len(skipped))
+
+
+def end_to_end_mutation(claim: Claim, base_sieves) -> Result:
+    """С14 сквозная подставка: подменяем измерение неверным и требуем срыва.
+
+    С4 лишь мерит расстояние между неверным ответом и эталоном. Здесь неверный
+    ответ прогоняется через ВЕСЬ каскад: если вердикт остаётся ПОДТВЕРЖДЕНО,
+    конвейер не различает измерение от подделки.
+    """
+    if claim.wrong is None or (claim.observed is None and claim.stated is None):
+        return Result("С14 сквозная подставка", SKIP)
+    import copy as _copy
+    mut = _copy.copy(claim)
+    ws = claim.wrong if isinstance(claim.wrong, (list, tuple)) else [claim.wrong]
+    w = ws[0]()
+    mut.stated = w
+    if claim.observed is not None:
+        mut.observed = lambda: w
+    mut.sample = None          # выборка не соответствует подделке, честно снимаем
+    mut.statistics = None
+    mut.bins = None
+    mut.estimators = None
+    mut.skip_reasons = {"С%d" % i: "мутационный прогон" for i in range(1, 15)}
+    sub = [s(mut) for s in base_sieves]
+    v = verdict_of(sub)
+    if v == CONFIRMED:
+        return Result("С14 сквозная подставка", VOID,
+                      "подделка получила вердикт ПОДТВЕРЖДЕНО — каскад не различает")
+    return Result("С14 сквозная подставка", PASS,
+                  "подделка получила вердикт %s" % v)
+
+
 ALL_SIEVES = [
     sieve_regenerable,
     sieve_agreement,
@@ -335,12 +495,73 @@ ALL_SIEVES = [
     sieve_estimator_stability,
     sieve_precision_budget,
     sieve_finite_size,
+    sieve_uncertainty,
+    sieve_too_good,
+    sieve_independent_method,
 ]
 
 
 # --------------------------------------------------------------------------
 # прогон и вердикт
 # --------------------------------------------------------------------------
+
+def provenance(claim: Claim) -> dict:
+    """Провенанс: чем именно получен вердикт. Без этого он невоспроизводим."""
+    import hashlib
+    import platform
+    import subprocess
+    d = {"python": platform.python_version()}
+    try:
+        import numpy
+        d["numpy"] = numpy.__version__
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        import scipy
+        d["scipy"] = scipy.__version__
+    except Exception:  # noqa: BLE001
+        pass
+    files = {}
+    for path in (claim.inputs or []):
+        try:
+            h = hashlib.sha256()
+            with open(path, "rb") as f:
+                for chunk in iter(lambda: f.read(1 << 20), b""):
+                    h.update(chunk)
+            files[path] = h.hexdigest()[:16]
+            try:
+                out = subprocess.run(["git", "-C", os.path.dirname(path) or ".",
+                                      "rev-parse", "--short", "HEAD"],
+                                     capture_output=True, text=True, timeout=10)
+                if out.returncode == 0:
+                    files[path + " @commit"] = out.stdout.strip()
+            except Exception:  # noqa: BLE001
+                pass
+        except Exception as e:  # noqa: BLE001
+            files[path] = "недоступен: %r" % (e,)
+    if files:
+        d["inputs"] = files
+    # Отпечаток рецепта: если терпимость, подставку или эталон подкрутили после
+    # того, как результат стал известен, отпечаток изменится. Машинный аналог
+    # пре-регистрации (перенято из Registered Reports).
+    import inspect
+    parts = ["tol=%r" % claim.tolerance, "alpha=%r" % claim.alpha]
+    fns = [(nm, getattr(claim, nm, None)) for nm in
+           ("reference", "reference_alt", "observed", "null_model", "alt_tolerance")]
+    ws = claim.wrong if isinstance(claim.wrong, (list, tuple)) else [claim.wrong]
+    fns += [("wrong", f) for f in ws]
+    for nm, fn in fns:
+        if callable(fn):
+            try:
+                parts.append(nm + ":" + inspect.getsource(fn))
+            except (OSError, TypeError):
+                parts.append(nm + ":<источник недоступен>")
+    d["отпечаток рецепта"] = hashlib.sha256(
+        "\n".join(parts).encode("utf-8")).hexdigest()[:16]
+    d["alpha"] = claim.alpha
+    d["tolerance"] = claim.tolerance
+    return d
+
 
 @dataclass
 class Report:
@@ -349,6 +570,7 @@ class Report:
     verdict: str
     results: list
     notes: str = ""
+    prov: dict = field(default_factory=dict)
 
     def text(self) -> str:
         out = ["утверждение: %s" % self.claim]
@@ -356,13 +578,22 @@ class Report:
             out.append("источник:    %s" % self.source)
         out += [r.line() for r in self.results]
         out.append("вердикт:     %s" % self.verdict)
+        if self.prov:
+            flat = []
+            for k, v in self.prov.items():
+                if isinstance(v, dict):
+                    flat += ["%s=%s" % (kk, vv) for kk, vv in v.items()]
+                else:
+                    flat.append("%s=%s" % (k, v))
+            out.append("провенанс:   " + "; ".join(flat))
         if self.notes:
             out.append("примечание:  %s" % self.notes)
         return "\n".join(out)
 
     def to_json(self) -> str:
         d = {"claim": self.claim, "source": self.source, "verdict": self.verdict,
-             "notes": self.notes, "results": [asdict(r) for r in self.results]}
+             "notes": self.notes, "provenance": self.prov,
+             "results": [asdict(r) for r in self.results]}
         return json.dumps(d, ensure_ascii=False, indent=1)
 
 
@@ -380,15 +611,25 @@ def verdict_of(results: list) -> str:
     if (st.get("С7 выбор оценки") == OPEN or st.get("С6 сходимость") == OPEN
             or st.get("С9 конечный размер") == OPEN):
         return QUESTION
-    # 4. Расхождение по существу при живых контролях — опровержение.
+    # 4. Эталон не подтверждён вторым методом — вопрос, а не опровержение.
+    if st.get("С12 независимый метод") == FAIL:
+        return QUESTION
+    # 5. Подозрительно точное согласие — отдельный флаг, не подтверждение.
+    if st.get("С11 слишком хорошо") == FAIL:
+        return QUESTION
+    # 6. Расхождение по существу при живых контролях — опровержение, но только
+    #    если оно значимо на фоне выборочного шума (С10). Если шум объясняет —
+    #    вопрос: расхождения могло и не быть.
     if st.get("С2 заявленное=эталон") == FAIL or st.get("С3 данные=эталон") == FAIL:
+        if st.get("С10 неопределённость") == PASS:
+            return QUESTION
         return REFUTED
     if any(v == FAIL for v in st.values()):
         return QUESTION
     return CONFIRMED
 
 
-def run(claim: Claim, sieves=None) -> Report:
+def run(claim: Claim, sieves=None, meta: bool = True) -> Report:
     sieves = sieves or ALL_SIEVES
     results = []
     for s in sieves:
@@ -400,7 +641,17 @@ def run(claim: Claim, sieves=None) -> Report:
             r.detail += " | " + traceback.format_exc(limit=1).replace("\n", " ")
         r.seconds = time.time() - t0
         results.append(r)
-    return Report(claim.name, claim.source, verdict_of(results), results, claim.notes)
+    if meta:
+        results.append(declared_skips_check(claim, results))
+        t0 = time.time()
+        try:
+            r = end_to_end_mutation(claim, sieves)
+        except Exception as e:  # noqa: BLE001
+            r = Result("С14 сквозная подставка", FAIL, "мутационный прогон упал: %r" % (e,))
+        r.seconds = time.time() - t0
+        results.append(r)
+    return Report(claim.name, claim.source, verdict_of(results), results, claim.notes,
+                  provenance(claim))
 
 
 def run_all(claims: Iterable[Claim]) -> list:

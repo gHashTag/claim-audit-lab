@@ -17,18 +17,24 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from goldsieve.sieve import Claim  # noqa: E402
 from goldsieve.refs.khinchin_finite_sample import partial_quotients, geo_mean  # noqa: E402
+from goldsieve.refs.khinchin_reference import khinchin, khinchin_quadrature  # noqa: E402
 
 ZEROS = "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt"
 TERMS = 30
 SAMPLES = 500
 
 
-def khinchin_reference(nmax=200000):
-    """K = prod_{n>=1} (1 + 1/(n(n+2)))^{log2 n}. Считается, а не цитируется."""
-    s = 0.0
-    for n in range(1, nmax + 1):
-        s += math.log2(n) * math.log1p(1.0 / (n * (n + 2.0)))
-    return math.exp(s)
+def khinchin_reference(nmax=1000000):
+    """Эталон с аналитическим хвостом: прямое произведение сходилось как ln N / N
+    и на 2e5 давало разброс 6.1e-03 — сито С6 это показало, и эталон заменён."""
+    return khinchin(nmax)
+
+
+def per_zero_means():
+    """Выборка для бутстрэпа: по одному геометрическому среднему на ноль."""
+    g = zeros()[:SAMPLES]
+    return np.array([geo_mean(partial_quotients(float(x) - math.floor(float(x)),
+                                                TERMS)) for x in g])
 
 
 def zeros():
@@ -97,7 +103,13 @@ CLAIMS = [
         estimators={"по-корзинно": observed_binned, "пулированно": observed_pooled},
         bins=by_terms,
         precision=1e-9,
-        resolutions=[2000, 20000, 200000],
+        resolutions=[250000, 500000, 1000000],
         resolve=khinchin_reference,
+        sample=per_zero_means,
+        statistics={"value": lambda a: float(np.mean(a))},
+        reference_alt=lambda: khinchin_quadrature(20000),
+        inputs=[ZEROS],
+        skip_reasons={"С8": "точность эталона проверена ситом С6 и вторым методом",
+                      "С11": "одна статистика, совместная вероятность не определена"},
     ),
 ]

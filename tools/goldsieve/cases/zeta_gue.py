@@ -17,6 +17,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from goldsieve.sieve import Claim  # noqa: E402
 from goldsieve.refs.gue_exact_gap import GapLaw, surmise_quantile, SURMISE_STD  # noqa: E402
+from goldsieve.refs.gue_montecarlo import mc_summary  # noqa: E402
 
 ZEROS = "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt"
 
@@ -55,6 +56,49 @@ def exact(n=100, h=2.0e-3):
                        "p90": law.quantile(0.9), "p95": law.quantile(0.95),
                        "p99": law.quantile(0.99)}
     return _cache[key]
+
+
+KEYS = ("std", "p50", "p90", "p95", "p99")
+
+
+def _mc_runs():
+    if "mc_runs" not in _cache:
+        _cache["mc_runs"] = [{k: m[k] for k in KEYS}
+                             for m in (mc_summary(n=500, reps=20, seed=s)
+                                       for s in (11, 22, 33))]
+    return _cache["mc_runs"]
+
+
+def mc_reference():
+    """Тот же закон, полученный принципиально иначе: спектры матриц GUE."""
+    runs = _mc_runs()
+    return {k: float(np.mean([r[k] for r in runs])) for k in KEYS}
+
+
+def mc_error():
+    """Погрешность Монте-Карло ВЫВОДИТСЯ из разброса по сидам, а не назначается.
+
+    Берётся стандартная ошибка среднего по трём независимым прогонам, умноженная
+    на 3 (грубая замена коэффициента Стьюдента при двух степенях свободы, t_0.975
+    = 4.30 — то есть порог остаётся консервативным, но не безразмерно широким).
+    """
+    runs = _mc_runs()
+    m = mc_reference()
+    worst = 0.0
+    for k in KEYS:
+        vals = np.array([r[k] for r in runs])
+        sem = float(vals.std(ddof=1)) / np.sqrt(len(vals))
+        worst = max(worst, 3.0 * sem / abs(m[k]))
+    return worst
+
+
+STAT_FUNCS = {
+    "std": lambda a: float(np.std(a, ddof=1)),
+    "p50": lambda a: float(np.percentile(a, 50)),
+    "p90": lambda a: float(np.percentile(a, 90)),
+    "p95": lambda a: float(np.percentile(a, 95)),
+    "p99": lambda a: float(np.percentile(a, 99)),
+}
 
 
 def surmise():
@@ -104,6 +148,8 @@ CLAIMS = [
         reference=lambda: {k: exact()[k] for k in ("p50", "p95", "p99")},
         wrong=lambda: {k: surmise()[k] for k in ("p50", "p95", "p99")},
         tolerance=0.01,
+        skip_reasons={"С%d" % i: "документное утверждение: выборки и контроля нет"
+                      for i in (3, 5, 6, 7, 8, 9, 10, 11, 12)},
         notes="wrong здесь — surmise Вигнера: он отличается от точного закона "
               "лишь на 0.3-0.5%, поэтому при терпимости 1% сито С4 обязано "
               "показать вырождение — и это правда: на этой терпимости surmise "
@@ -119,6 +165,10 @@ CLAIMS = [
         tolerance=0.002,
         resolutions=[(60, 4.0e-3), (100, 2.0e-3), (140, 1.0e-3)],
         resolve=lambda r: exact(n=r[0], h=r[1]),
+        reference_alt=mc_reference,
+        alt_tolerance=mc_error,
+        skip_reasons={"С%d" % i: "сравниваются две формулы, выборки нет"
+                      for i in (3, 5, 7, 8, 9, 10, 11)},
     ),
     # 3. Само наблюдение: дефицит хвостов и дисперсии.
     Claim(
@@ -132,12 +182,20 @@ CLAIMS = [
         null_expect={"std": 1.0, "p50": 0.6931, "p90": 2.3026,
                      "p95": 2.9957, "p99": 4.6052},
         tolerance=0.01,
+        sample=lambda: unfolded(),
+        statistics=STAT_FUNCS,
+        reference_alt=mc_reference,
+        alt_tolerance=mc_error,
+        inputs=[ZEROS],
         estimators={"развёртка тэта": lambda: stats(unfolded()),
                     "развёртка ведущим членом": leading_unfold},
         precision=1e-6,
         bins=height_bins,
+        skip_reasons={"С6": "эталон проверяется ситом С6 во втором утверждении "
+                            "этого же файла"},
         notes="Обе развёртки дают одно и то же (сито С7), значит расхождение "
-              "не артефакт развёртки.",
+              "не артефакт развёртки. Терпимость 1% сохранена для сит С2/С3, но "
+              "решает теперь С10: масштабом служит ширина бутстрэп-интервала.",
     ),
 ]
 

@@ -1,0 +1,19 @@
+# Реестр утверждений, прогнанных через каскад. Источник = файл корпуса.
+# Покрытие меряется по этому файлу: см. `python3 -m goldsieve cover`.
+claims:
+  - source: data/zeta/zeta_gue_analysis_results.md
+    case: cases/zeta_gue.py
+    claim: колонка «GUE Expected» = 0.91 / 2.15 / 2.75
+    verdict: ПУСТО
+  - source: src/sacred/zeta_spacing.zig
+    case: cases/zeta_gue.py
+    claim: surmise Вигнера годится как эталон на уровне 2%
+    verdict: ОПРОВЕРГНУТО
+  - source: data/zeta/zeros_odlyzko_100k.txt
+    case: cases/zeta_gue.py
+    claim: наблюдённые расстояния совпадают с GUE в пределах 1%
+    verdict: ВОПРОС
+  - source: data/zeta/zeta_bin_analysis_update.md
+    case: cases/khinchin.py
+    claim: K по нулям дзеты = 2.620, систематически ниже 2.685
+    verdict: ВОПРОС

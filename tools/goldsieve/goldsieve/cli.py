@@ -82,6 +82,54 @@ def cmd_run(args):
     return 1 if (tally.get(REFUTED) or tally.get(EMPTY)) else 0
 
 
+def cmd_power(args):
+    """Минимально различимое отклонение: вносим сдвиг и смотрим, когда сорвётся.
+
+    Отвечает на вопрос, который иначе остаётся без ответа: проверка есть — а
+    эффекты какой величины она вообще видит.
+    """
+    from .sieve import run, CONFIRMED, _as_dict, Claim
+    import copy
+    for path in args.files:
+        for c in load_claims(path):
+            if c.reference is None:
+                print("%s: эталона нет, мощность не определена" % c.name)
+                continue
+            base = run(c)
+            print("утверждение: %s" % c.name)
+            print("  исходный вердикт: %s" % base.verdict)
+            found = None
+            for k in (0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.10, 0.20):
+                m = copy.copy(c)
+                ref = _as_dict(c.reference())
+                shifted = {kk: v * (1.0 + k) for kk, v in ref.items()}
+                m.stated = shifted if isinstance(c.stated, dict) else \
+                    list(shifted.values())[0]
+                m.observed = (lambda s=shifted: s) if c.observed is not None else None
+                m.sample = None
+                m.statistics = None
+                m.bins = None
+                m.estimators = None
+                m.skip_reasons = {"С%d" % i: "прогон мощности" for i in range(1, 15)}
+                v = run(m).verdict
+                mark = "срыв" if v != CONFIRMED else "проходит"
+                print("  сдвиг %+6.2f%% -> %-13s %s" % (100 * k, v, mark))
+                if v != CONFIRMED and found is None:
+                    found = k
+            if found is not None:
+                print("  минимально различимое отклонение: %.2f%%" % (100 * found))
+            else:
+                print("  ВНИМАНИЕ: не сорвалось даже на +20%% — проверка слепая")
+            print()
+    return 0
+
+
+def cmd_cover(args):
+    from .coverage import report
+    print(report(args.root, args.registry))
+    return 0
+
+
 def cmd_selftest(args):
     from .selftest import main
     return 1 if main() else 0
@@ -108,6 +156,15 @@ def main(argv=None):
 
     s = sub.add_parser("selftest", help="проверить сам инструмент")
     s.set_defaults(fn=cmd_selftest)
+
+    pw = sub.add_parser("power", help="минимально различимое отклонение")
+    pw.add_argument("files", nargs="+")
+    pw.set_defaults(fn=cmd_power)
+
+    cv = sub.add_parser("cover", help="триаж: покрытие корпуса утверждениями")
+    cv.add_argument("root")
+    cv.add_argument("--registry", default="claims.yaml")
+    cv.set_defaults(fn=cmd_cover)
 
     n = sub.add_parser("new", help="заготовка новой задачи")
     n.add_argument("path")
