@@ -1,0 +1,494 @@
+[
+ {
+  "claim": "3^(φ²) напечатано как 17,74678",
+  "source": "docs/docs/math-foundations/transcendental-numbers.md:185",
+  "verdict": "ПОДТВЕРЖДЕНО",
+  "notes": "Эталон вычислен из определения выражения и округлён до пяти знаков.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md": "31f8d1512d1009ea",
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md @commit": "bcd46a5"
+   },
+   "отпечаток рецепта": "93313dcc1a40ae20",
+   "alpha": 0.05,
+   "tolerance": 0.0
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 17.74678
+    },
+    "seconds": 0.00011754035949707031
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.00011873245239257812
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.0002186298370361328
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +5.63%; подставка 2 отклонена: value -65.41%",
+    "numbers": {},
+    "seconds": 0.0003333091735839844
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "негативный контроль отличается от эталона: value -65.41%",
+    "numbers": {},
+    "seconds": 0.0002682209014892578
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "PASS",
+    "detail": "value +0.00% (полуширина 0.00%, z +0.0)",
+    "numbers": {
+     "value": 0.0,
+     "сопоставлено_с_заявленным": 1
+    },
+    "seconds": 0.049387216567993164
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик",
+    "numbers": {},
+    "seconds": 0.002597808837890625
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.0002720355987548828
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 10 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.0012805461883544922
+   }
+  ]
+ },
+ {
+  "claim": "3^(1/φ²) напечатано как 1,52140",
+  "source": "docs/docs/math-foundations/transcendental-numbers.md:186",
+  "verdict": "ПОДТВЕРЖДЕНО",
+  "notes": "Эталон вычислен из определения выражения и округлён до пяти знаков.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md": "31f8d1512d1009ea",
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md @commit": "bcd46a5"
+   },
+   "отпечаток рецепта": "e7591ea6c1cd3275",
+   "alpha": 0.05,
+   "tolerance": 0.0
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 1.5214
+    },
+    "seconds": 0.00014209747314453125
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.0001232624053955078
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.00024390220642089844
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +65.73%; подставка 2 отклонена: value +288.83%",
+    "numbers": {},
+    "seconds": 0.00032067298889160156
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "негативный контроль отличается от эталона: value +288.83%",
+    "numbers": {},
+    "seconds": 0.00021886825561523438
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "PASS",
+    "detail": "value +0.00% (полуширина 0.00%, z +0.0)",
+    "numbers": {
+     "value": 0.0,
+     "сопоставлено_с_заявленным": 1
+    },
+    "seconds": 0.002534627914428711
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик",
+    "numbers": {},
+    "seconds": 0.0025055408477783203
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.0002605915069580078
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.291534423828125e-06
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 10 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.00469207763671875
+   }
+  ]
+ },
+ {
+  "claim": "3^√5 напечатано как 11,66475",
+  "source": "docs/docs/math-foundations/transcendental-numbers.md:187",
+  "verdict": "ПОДТВЕРЖДЕНО",
+  "notes": "Эталон вычислен из определения выражения и округлён до пяти знаков.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md": "31f8d1512d1009ea",
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md @commit": "bcd46a5"
+   },
+   "отпечаток рецепта": "554ba8a7989ff0af",
+   "alpha": 0.05,
+   "tolerance": 0.0
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 11.66475
+    },
+    "seconds": 0.00014328956604003906
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.0001246929168701172
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.00024819374084472656
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +8.57%; подставка 2 отклонена: value -42.52%",
+    "numbers": {},
+    "seconds": 0.00032401084899902344
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "негативный контроль отличается от эталона: value -42.52%",
+    "numbers": {},
+    "seconds": 0.00021076202392578125
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "PASS",
+    "detail": "value +0.00% (полуширина 0.00%, z +0.0)",
+    "numbers": {
+     "value": 0.0,
+     "сопоставлено_с_заявленным": 1
+    },
+    "seconds": 0.0025587081909179688
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик",
+    "numbers": {},
+    "seconds": 0.0024919509887695312
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.00024700164794921875
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 10 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.0054187774658203125
+   }
+  ]
+ }
+]

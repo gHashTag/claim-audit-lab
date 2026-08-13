@@ -610,7 +610,7 @@ def main() -> int:
     from .family import selftest as _fam
     from .threshold import selftest as _thr
     from .exact import selftest as _exa
-    mods = [("неопределённость", _stats.selftest, 6), ("покрытие", _cov, 3),
+    mods = [("неопределённость", _stats.selftest, 6), ("покрытие", _cov, 9),
             ("семейство и множественность", _fam, 14),
             ("порог разрешающей способности", _thr, 9),
             ("достаточность арифметики", _exa, 5)]

@@ -98,7 +98,18 @@ claims:
   verdict: ОПРОВЕРГНУТО
 - source: docs/docs/math-foundations/sacred-formulas.md:234
   case: cases/sacred_random_probability.py
-  claim: Вероятность случайного попадания в класс EXACT равна 1 из 500 (0,2 %)
+  claim: Вероятность случайного попадания в класс EXACT при стандартном переборе
+    равна 1 из 500 (0,2 %)
+  verdict: ОПРОВЕРГНУТО
+- source: docs/docs/math-foundations/sacred-formulas.md:234
+  case: cases/sacred_random_probability.py
+  claim: Вероятность случайного попадания в класс EXACT при расширенном переборе
+    равна 1 из 35 (2,9 %)
+  verdict: ОПРОВЕРГНУТО
+- source: docs/docs/math-foundations/sacred-formulas.md:285
+  case: cases/sacred_random_probability.py
+  claim: Объявленный размер стандартного перебора 20 412 согласуется с объявленными
+    границами стандартного перебора
   verdict: ОПРОВЕРГНУТО
 - source: docs/docs/math-foundations/sacred-formulas.md:206
   case: cases/reionization_zre_prediction.py
@@ -115,4 +126,28 @@ claims:
 - source: docs/docs/math-foundations/transcendental-numbers.md:215
   case: cases/transcendental_catalog_values.py
   claim: ln(3) напечатано как 1,09861
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/transcendental-numbers.md:185
+  case: cases/transcendental_catalog_values_2.py
+  claim: 3^(φ²) напечатано как 17,74678
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/transcendental-numbers.md:186
+  case: cases/transcendental_catalog_values_2.py
+  claim: 3^(1/φ²) напечатано как 1,52140
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/transcendental-numbers.md:187
+  case: cases/transcendental_catalog_values_2.py
+  claim: 3^√5 напечатано как 11,66475
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/transcendental-numbers.md:188
+  case: cases/transcendental_catalog_values_3.py
+  claim: φ^φ напечатано как 2,17846
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/transcendental-numbers.md:189
+  case: cases/transcendental_catalog_values_3.py
+  claim: φ^(1/φ) напечатано как 1,34636
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/transcendental-numbers.md:190
+  case: cases/transcendental_catalog_values_3.py
+  claim: φ^(φ²) напечатано как 3,52482
   verdict: ПОДТВЕРЖДЕНО
