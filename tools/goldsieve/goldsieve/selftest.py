@@ -292,6 +292,26 @@ def main() -> int:
         fail += 1
         print("  FAIL %-45s %s" % ("С15 пропускает согласие в 1 сигма", st15))
 
+    # Нулевое отклонение — это точное согласие, а не отсутствие данных.
+    exact_pred = Claim(
+        name="формула точно совпала с внешним измерением",
+        stated=878.4,
+        reference=lambda: 878.4,
+        wrong=lambda: 950.0,
+        claim_kind="prediction",
+        external_target=lambda: {"value": 878.4, "uncertainty": 0.5},
+        stated_target=lambda: 878.4,
+        skip_reasons=SR,
+    )
+    st15_exact = {
+        x.sieve: x.status for x in run(exact_pred).results
+    }["С15 внешняя цель"]
+    if st15_exact == PASS:
+        print("  ok   %-45s %s" % ("С15 guard: нулевое отклонение", st15_exact))
+    else:
+        fail += 1
+        print("  FAIL %-45s %s" % ("С15 guard: нулевое отклонение", st15_exact))
+
     # подставка для С15: то же, но формула ушла на 20 сигм -> FAIL
     bad_pred = Claim(
         name="формула разошлась с измерением на 20 сигм",
@@ -400,6 +420,87 @@ def main() -> int:
     else:
         fail += 1
         print("  FAIL %-45s %s" % ("С18 без ложных срабатываний", st18))
+
+    print("\n  калибровка прогона мощности:")
+    import subprocess as _sp, os as _os
+    _root = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+    # Прогон мощности на ОПРОВЕРГНУТОМ утверждении обязан сказать, что мощность
+    # не определена, а НЕ жаловаться на калибровку: мутация сама устраняет
+    # расхождение, поэтому претензия была бы не по адресу.
+    _case = _os.path.join(_root, "cases", "master_catalog_msme_error.py")
+    if _os.path.exists(_case):
+        _out = _sp.run(["python3", "-m", "goldsieve", "power", _case],
+                       cwd=_root, capture_output=True, text=True,
+                       timeout=600).stdout
+        if "мощность в этой постановке не определена" in _out and \
+                "КАЛИБРОВКА НЕ ПРОШЛА" not in _out:
+            ok += 1
+            print("  ok   на опровергнутом мощность объявлена неопределённой")
+        else:
+            fail += 1
+            print("  FAIL на опровергнутом мощность объявлена неопределённой")
+        # ПОДСТАВКА: команда обязана вообще не печатать число разрешения там,
+        # где сканирования не было — иначе в ведомость снова попадёт значение
+        # сетки, выданное за измерение.
+        if "минимально различимое отклонение" not in _out:
+            ok += 1
+            print("  ok   без сканирования число разрешения не печатается")
+        else:
+            fail += 1
+            print("  FAIL без сканирования число разрешения не печатается")
+
+    print("\n  свод: смягчение опровержения по С10:")
+    from .sieve import run as _run, Claim as _Cv, REFUTED as _R, QUESTION as _Q
+    _sk = {"С%d" % i: "проверка свода" for i in
+           (1, 4, 5, 6, 7, 8, 9, 11, 12, 15, 16, 17, 18, 19)}
+    # С10 сравнивает ЧУЖУЮ величину: смягчать опровержение он не вправе
+    c_alien = _Cv(name="чужая выборка", stated={"заявленное": 2.0},
+                  reference=lambda: {"заявленное": 1.0, "другое": 5.0},
+                  sample=lambda: [5.0, 5.01, 4.99],
+                  statistics={"другое": lambda a: sum(a) / len(a)},
+                  tolerance=0.01, skip_reasons=_sk)
+    if _run(c_alien).verdict == _R:
+        ok += 1
+        print("  ok   С10 по чужой величине НЕ смягчает опровержение")
+    else:
+        fail += 1
+        print("  FAIL С10 по чужой величине НЕ смягчает опровержение (%s)"
+              % _run(c_alien).verdict)
+    # ПОДСТАВКА: та же конструкция, но выборка относится к ЗАЯВЛЕННОЙ величине —
+    # здесь смягчение законно, и вердикт обязан стать ВОПРОС. Без этой проверки
+    # правило можно было бы «починить», запретив смягчение вообще.
+    c_own = _Cv(name="своя выборка", stated={"заявленное": 2.0},
+                reference=lambda: {"заявленное": 2.0},
+                sample=lambda: [2.0, 2.01, 1.99],
+                statistics={"заявленное": lambda a: sum(a) / len(a)},
+                tolerance=0.0, skip_reasons=_sk)
+    if _run(c_own).verdict == _Q:
+        ok += 1
+        print("  ok   С10 по заявленной величине смягчение сохраняет")
+    else:
+        fail += 1
+        print("  FAIL С10 по заявленной величине смягчение сохраняет (%s)"
+              % _run(c_own).verdict)
+
+    print("\n  прогон мощности (power):")
+    from .sieve import sieve_numbers as _sn, ALL_SIEVES as _AS
+    _nums = _sn()
+    if 18 in _nums and 19 in _nums:
+        ok += 1
+        print("  ok   номера сит собраны с прогона, С18 и С19 на месте")
+    else:
+        fail += 1
+        print("  FAIL номера сит собраны с прогона, С18 и С19 на месте (%s)"
+              % _nums)
+    # ПОДСТАВКА: len(ALL_SIEVES) НЕ должен годиться как перечисление номеров —
+    # именно эта подмена и дала 28 недействительных записей о разрешающей
+    # способности. Проверка обязана падать, если кто-то вернёт счётчик длины.
+    if max(_nums) > len(_AS):
+        ok += 1
+        print("  ok   счётчик длины списка не годится как перечисление номеров")
+    else:
+        fail += 1
+        print("  FAIL счётчик длины списка не годится как перечисление номеров")
 
     print("\n  сито С10 при несопоставленных именах статистик:")
     from .sieve import sieve_uncertainty, Claim as _C10, OPEN as _O

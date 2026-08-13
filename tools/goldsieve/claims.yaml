@@ -100,3 +100,19 @@ claims:
   case: cases/sacred_random_probability.py
   claim: Вероятность случайного попадания в класс EXACT равна 1 из 500 (0,2 %)
   verdict: ОПРОВЕРГНУТО
+- source: docs/docs/math-foundations/sacred-formulas.md:206
+  case: cases/reionization_zre_prediction.py
+  claim: Формула реионизации z_re даёт 7,67
+  verdict: ПУСТО
+- source: docs/docs/math-foundations/transcendental-numbers.md:184
+  case: cases/transcendental_catalog_values.py
+  claim: 3^(1/φ) напечатано как 1,97186
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/transcendental-numbers.md:201
+  case: cases/transcendental_catalog_values.py
+  claim: e^φ напечатано как 5,04317
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/transcendental-numbers.md:215
+  case: cases/transcendental_catalog_values.py
+  claim: ln(3) напечатано как 1,09861
+  verdict: ПОДТВЕРЖДЕНО

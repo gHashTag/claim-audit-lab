@@ -402,8 +402,16 @@ def sieve_uncertainty(c: Claim) -> Result:
                     for k, v in rows.items())
     zmax = max(abs(v["z"]) for v in rows.values())
     st = FAIL if zmax > 1.0 else PASS
-    return Result("С10 неопределённость", st, det,
-                  numbers={k: v["z"] for k, v in rows.items()})
+    nums = {k: v["z"] for k, v in rows.items()}
+    # Свод вердиктов имеет право смягчить опровержение по С10 только если С10
+    # сравнивал ЗАЯВЛЕННУЮ величину. Признак выставляется здесь, потому что
+    # только здесь известно, какие именно имена сопоставились: если ни одно из
+    # них не встречается среди ключей заявленного, выборка относится к другой
+    # величине, и смягчать опровержение ею нельзя.
+    stated_keys = set(_as_dict(c.stated)) if c.stated is not None else set()
+    nums["сопоставлено_с_заявленным"] = 1 if (
+        not stated_keys or (set(rows) & stated_keys)) else 0
+    return Result("С10 неопределённость", st, det, numbers=nums)
 
 
 def sieve_too_good(c: Claim) -> Result:
@@ -609,7 +617,10 @@ def sieve_external_target(c: Claim) -> Result:
     nums["погрешность"] = unc
     det = "внешнее %.6g +- %.3g; " % (value, unc) + "; ".join(
         "%s %.4g" % (k, v) for k, v in nums.items() if k.startswith("сигм"))
-    if not nums.get("сигм_формула") and not nums.get("сигм_цель"):
+    # Нулевое отклонение — действительное согласие, а не отсутствие
+    # сравнения. Проверять нужно наличие ключей, иначе точное попадание
+    # ошибочно превращается в OPEN.
+    if "сигм_формула" not in nums and "сигм_цель" not in nums:
         return Result(name, OPEN, "нечего сравнивать с внешней величиной")
     thr, thr_note = sigma_threshold(c)
     nums["порог_сигм"] = thr
@@ -741,6 +752,31 @@ ALL_SIEVES = [
     sieve_declared_domain,
     sieve_arithmetic,
 ]
+
+def sieve_numbers() -> list:
+    """Номера всех сит, взятые из ИХ ЖЕ вердиктов, а не из счётчика.
+
+    Первая попытка исправления брала len(ALL_SIEVES) = 17, но номера сит идут
+    до 19 (нумерация не непрерывна: С13 и С14 — мета-сита, стоящие отдельно), и
+    С18 с С19 снова остались необъявленными. Счётчик длины — тот же класс
+    ошибки, что и константа: он предполагает, что номера плотно заполняют
+    диапазон. Поэтому номера собираются с пустого прогона.
+    """
+    empty = Claim(name="calibration")
+    nums = []
+    for s in ALL_SIEVES:
+        try:
+            title = s(empty).sieve
+        except Exception:
+            continue
+        head = title.split()[0]
+        if head.startswith("С") and head[1:].isdigit():
+            nums.append(int(head[1:]))
+    return sorted(set(nums))
+
+
+N_SIEVES = len(ALL_SIEVES)     # оставлено для совместимости, НЕ использовать
+                               # для перечисления номеров сит
 
 
 # --------------------------------------------------------------------------
@@ -874,7 +910,18 @@ def verdict_of(results: list) -> str:
     if (st.get("С2 заявленное=эталон") == FAIL or st.get("С3 данные=эталон") == FAIL
             or st.get("С15 внешняя цель") == FAIL
             or st.get("С18 объявленная область") == FAIL):
-        if st.get("С10 неопределённость") == PASS:
+        # С10 смягчает опровержение до вопроса ТОЛЬКО если он сравнивал
+        # заявленную величину. Прежде любой PASS у С10 понижал опровержение —
+        # включая случай, когда С10 сравнивал эталон сам с собой (выборка
+        # относилась к другой величине) или когда имена статистик вовсе не
+        # сопоставились. Это был путь тихо погасить опровержение, подложив
+        # безобидную выборку. Теперь смягчение требует, чтобы С10 действительно
+        # сопоставил хотя бы одну статистику с эталоном.
+        c10 = next((r for r in results
+                    if r.sieve == "С10 неопределённость"), None)
+        if c10 is not None and c10.status == PASS and \
+                "не сопоставлены" not in (c10.detail or "") and \
+                c10.numbers.get("сопоставлено_с_заявленным", 1):
             return QUESTION
         return REFUTED
     if any(v == FAIL for v in st.values()):
