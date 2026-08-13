@@ -196,6 +196,20 @@ def cmd_cover(args):
     return 0
 
 
+def _inputs_digest(report):
+    """Свёрнутый отпечаток входных файлов прогона.
+
+    Нужен, чтобы перепрогон реестра отличал «сито стало строже» от «корпус
+    исправлен»: во втором случае прежний вердикт не является регрессией.
+    """
+    import hashlib
+    inputs = (report.prov or {}).get("inputs") or {}
+    if not isinstance(inputs, dict) or not inputs:
+        return None
+    parts = ["%s=%s" % (k, inputs[k]) for k in sorted(inputs)]
+    return hashlib.sha256("|".join(parts).encode()).hexdigest()[:16]
+
+
 def cmd_regress(args):
     """Перепрогон всего реестра: новый цикл не имеет права молча ломать старое.
 
@@ -213,7 +227,8 @@ def cmd_regress(args):
     for e in entries:
         recorded.setdefault(e.get("case", ""), {})[e.get("claim", "")] = e.get("verdict")
 
-    changed, same, missing = [], [], []
+    changed, same, missing, corpus_moved = [], [], [], []
+    _all_digests = {}
     root = os.path.dirname(os.path.abspath(args.registry))
     for case, by_claim in sorted(recorded.items()):
         path = case if os.path.isabs(case) else os.path.join(root, case)
@@ -221,10 +236,18 @@ def cmd_regress(args):
             missing.append(case)
             continue
         try:
-            fresh = {c.name: run(c).verdict for c in load_claims(path)}
+            reports = [run(c) for c in load_claims(path)]
         except Exception as exc:  # noqa: BLE001
             missing.append("%s (упал: %r)" % (case, exc))
             continue
+        fresh = {r.claim: r.verdict for r in reports}
+        digests = {r.claim: _inputs_digest(r) for r in reports}
+        _all_digests[case] = digests
+        e_superseded = {}
+        for e in entries:
+            if e.get("case") == case and e.get("superseded_by"):
+                e_superseded[" ".join(str(e.get("claim")).split()).lower()] = \
+                    str(e["superseded_by"])
         for claim_text, old in by_claim.items():
             new = None
             # сопоставление без учёта регистра и лишних пробелов: расхождение
@@ -240,19 +263,59 @@ def cmd_regress(args):
             if new is None:
                 missing.append("%s :: %s" % (case, claim_text))
             elif new != old:
-                changed.append((case, claim_text, old, new))
+                # Отделяем регрессию сита от исправленного корпуса: если
+                # отпечатки входных файлов не совпадают с записанными, вердикт
+                # изменился потому, что изменились ДАННЫЕ, а не инструмент.
+                # Смешивать эти два случая нельзя: первый — дефект, который надо
+                # разбирать, второй — ожидаемое следствие принятой правки.
+                rec_digest = None
+                for e in entries:
+                    if e.get("case") == case and norm(e.get("claim")) == want:
+                        rec_digest = e.get("inputs_digest")
+                        break
+                got_digest = None
+                for name, dig in digests.items():
+                    if norm(name) == want or norm(name) in want or want in norm(name):
+                        got_digest = dig
+                        break
+                if e_superseded.get(want):
+                    # Утверждение уже исправлено в корпусе принятой правкой:
+                    # свежий прогон читает исправленный текст, поэтому прежний
+                    # вердикт не воспроизводится по построению. Это не
+                    # регрессия сита и не требует разбора.
+                    corpus_moved.append((case, claim_text, old, new,
+                                         "исправлено " + e_superseded[want],
+                                         "текущий корпус"))
+                elif rec_digest and got_digest and rec_digest != got_digest:
+                    corpus_moved.append((case, claim_text, old, new,
+                                         rec_digest, got_digest))
+                else:
+                    changed.append((case, claim_text, old, new))
             else:
                 same.append((case, claim_text, old))
 
-    print("перепрогон реестра: %d совпало, %d изменилось, %d не сопоставлено"
-          % (len(same), len(changed), len(missing)))
+    print("перепрогон реестра: %d совпало, %d изменилось ситом, "
+          "%d изменилось из-за корпуса, %d не сопоставлено"
+          % (len(same), len(changed), len(corpus_moved), len(missing)))
+    for case, claim_text, old, new, was, now in corpus_moved:
+        print("  КОРПУС ИЗМЕНИЛСЯ %s -> %s | %s | %s | %s -> %s"
+              % (old, new, claim_text, case, was, now))
     for case, claim_text, old, new in changed:
         print("  ИЗМЕНЁН %s -> %s | %s | %s" % (old, new, claim_text, case))
     for m in missing:
         print("  НЕ СОПОСТАВЛЕНО %s" % m)
-    if args.update and changed:
+    if args.update:
+        # Отпечаток входов пишется всегда: без него следующий перепрогон не
+        # сможет отличить исправленный корпус от ужесточённого сита.
         for e in entries:
-            for case, claim_text, old, new in changed:
+            case = e.get("case", "")
+            for name, dig in _all_digests.get(case, {}).items():
+                if " ".join(str(name).split()).lower() == \
+                        " ".join(str(e.get("claim")).split()).lower() and dig:
+                    e["inputs_digest"] = dig
+        for e in entries:
+            for case, claim_text, old, new in changed + [
+                    (c, t_, o, n) for c, t_, o, n, _w, _g in corpus_moved]:
                 if e.get("case") == case and e.get("claim") == claim_text:
                     e["verdict"] = new
                     e["verdict_was"] = old

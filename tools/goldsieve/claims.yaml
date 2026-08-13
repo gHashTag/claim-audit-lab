@@ -11,143 +11,213 @@ claims:
   case: cases/zeta_gue.py
   claim: наблюдённые расстояния совпадают с GUE в пределах 1%
   verdict: ВОПРОС
+  inputs_digest: 8e0cc0c774a33542
 - source: data/zeta/zeta_bin_analysis_update.md
   case: cases/khinchin.py
   claim: K по нулям дзеты = 2.620, систематически ниже 2.685
   verdict: ВОПРОС
+  inputs_digest: 8e0cc0c774a33542
 - source: docs/docs/math-foundations/sacred-formulas.md:25
   case: cases/sacred_search_count.py
   claim: стандартный поиск содержит 20 412 комбинаций
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/transcendental-numbers.md:169
   case: cases/transcendental_3phi_value.py
   claim: 3^φ напечатано как 5,91559
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 7df30c36cc64c8fc
 - source: deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138
   case: cases/master_catalog_lucas_l10.py
   claim: В таблице каталога для n=10 указано L(10)=123
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: a986d4874ad47b48
 - source: docs/docs/math-foundations/sacred-formulas.md:30
   case: cases/established_constants_fit_count.py
   claim: раздел Established Constants содержит 75 совпадений
   verdict: ОПРОВЕРГНУТО
+  inputs_digest: 3febbc70e0847989
+  superseded_by: gHashTag/trinity#738
+  corpus_ref: main@bcd46a5 (до исправления)
 - source: deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:37
   case: cases/master_catalog_msme_error.py
   claim: Для m_s/m_e в каталоге указано значение 182,8
   verdict: ОПРОВЕРГНУТО
+  inputs_digest: a986d4874ad47b48
 - source: docs/docs/math-foundations/sacred-formulas.md:194
   case: cases/neutron_lifetime_formula.py
   claim: Формула времени жизни нейтрона даёт 879,4 с
   verdict: ПУСТО
   verdict_was: ПОДТВЕРЖДЕНО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:197
   case: cases/m_theory_dimension_formula.py
   claim: Формула размерности M-теории даёт 11,0001
   verdict: ПУСТО
   verdict_was: ПОДТВЕРЖДЕНО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:37
   case: cases/proton_mass_ratio_error.py
   claim: для m_p/m_e указана ошибка 0,109 %
   verdict: ОПРОВЕРГНУТО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:201
   case: cases/qcd_phase_tc_formula.py
   claim: Формула QCD phase даёт 156,5 МэВ
   verdict: ПУСТО
   verdict_was: ПОДТВЕРЖДЕНО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:202
   case: cases/dirac_cp_phase_formula.py
   claim: Формула фазы Дирака CP даёт 222,0°
   verdict: ПУСТО
   verdict_was: ПОДТВЕРЖДЕНО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:203
   case: cases/dark_photon_x17_formula.py
   claim: Формула тёмного фотона X17 даёт 17,0 МэВ
   verdict: ПУСТО
   verdict_was: ПОДТВЕРЖДЕНО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:25
   case: cases/sacred_fit_multiplicity.py
   claim: объявленного перебора 20 412 достаточно для формул из таблиц
   verdict: ОПРОВЕРГНУТО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:30
   case: cases/sacred_fit_multiplicity.py
   claim: совпадения священных формул с константами содержательны, а не подогнаны
   verdict: ПУСТО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:194
   case: cases/sacred_external_targets.py
   claim: Формула tau_n согласуется с измеренным временем жизни нейтрона
   verdict: ПУСТО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:37
   case: cases/sacred_external_targets.py
   claim: Формула воспроизводит отношение масс протона и электрона
   verdict: ОПРОВЕРГНУТО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:201
   case: cases/sacred_external_targets.py
   claim: Формула T_c согласуется с измеренной температурой перехода КХД
   verdict: ПУСТО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:203
   case: cases/sacred_external_targets.py
   claim: Формула X17 согласуется с независимым измерением массы бозона
   verdict: ПУСТО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:26
   case: cases/sacred_table_audit_20260813.py
   claim: Расширенный поиск содержит 123 201 комбинацию
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:214
   case: cases/sacred_table_audit_20260813.py
   claim: Раздел Error Classification содержит 35 совпадений с ошибкой менее 0,01%
   verdict: ОПРОВЕРГНУТО
+  inputs_digest: 3febbc70e0847989
+  superseded_by: gHashTag/trinity#738
+  corpus_ref: main@bcd46a5 (до исправления)
 - source: docs/docs/math-foundations/sacred-formulas.md:234
   case: cases/sacred_random_probability.py
-  claim: Вероятность случайного попадания в класс EXACT при стандартном переборе
-    равна 1 из 500 (0,2 %)
+  claim: Вероятность случайного попадания в класс EXACT при стандартном переборе равна
+    1 из 500 (0,2 %)
   verdict: ОПРОВЕРГНУТО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:234
   case: cases/sacred_random_probability.py
-  claim: Вероятность случайного попадания в класс EXACT при расширенном переборе
-    равна 1 из 35 (2,9 %)
+  claim: Вероятность случайного попадания в класс EXACT при расширенном переборе равна
+    1 из 35 (2,9 %)
   verdict: ОПРОВЕРГНУТО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:285
   case: cases/sacred_random_probability.py
   claim: Объявленный размер стандартного перебора 20 412 согласуется с объявленными
     границами стандартного перебора
   verdict: ОПРОВЕРГНУТО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/sacred-formulas.md:206
   case: cases/reionization_zre_prediction.py
   claim: Формула реионизации z_re даёт 7,67
   verdict: ПУСТО
+  inputs_digest: 3febbc70e0847989
 - source: docs/docs/math-foundations/transcendental-numbers.md:184
   case: cases/transcendental_catalog_values.py
   claim: 3^(1/φ) напечатано как 1,97186
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 7df30c36cc64c8fc
 - source: docs/docs/math-foundations/transcendental-numbers.md:201
   case: cases/transcendental_catalog_values.py
   claim: e^φ напечатано как 5,04317
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 7df30c36cc64c8fc
 - source: docs/docs/math-foundations/transcendental-numbers.md:215
   case: cases/transcendental_catalog_values.py
   claim: ln(3) напечатано как 1,09861
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 7df30c36cc64c8fc
 - source: docs/docs/math-foundations/transcendental-numbers.md:185
   case: cases/transcendental_catalog_values_2.py
   claim: 3^(φ²) напечатано как 17,74678
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 7df30c36cc64c8fc
 - source: docs/docs/math-foundations/transcendental-numbers.md:186
   case: cases/transcendental_catalog_values_2.py
   claim: 3^(1/φ²) напечатано как 1,52140
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 7df30c36cc64c8fc
 - source: docs/docs/math-foundations/transcendental-numbers.md:187
   case: cases/transcendental_catalog_values_2.py
   claim: 3^√5 напечатано как 11,66475
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 7df30c36cc64c8fc
 - source: docs/docs/math-foundations/transcendental-numbers.md:188
   case: cases/transcendental_catalog_values_3.py
   claim: φ^φ напечатано как 2,17846
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 7df30c36cc64c8fc
 - source: docs/docs/math-foundations/transcendental-numbers.md:189
   case: cases/transcendental_catalog_values_3.py
   claim: φ^(1/φ) напечатано как 1,34636
   verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 7df30c36cc64c8fc
 - source: docs/docs/math-foundations/transcendental-numbers.md:190
   case: cases/transcendental_catalog_values_3.py
   claim: φ^(φ²) напечатано как 3,52482
+  verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 7df30c36cc64c8fc
+- source: docs/papers/README_FOR_SCIENTISTS.md:71
+  case: cases/cosmology_columns.py
+  claim: Ω_Λ = γ⁸π⁴/φ² даёт 0,688
+  verdict: ОПРОВЕРГНУТО
+- source: docs/papers/README_FOR_SCIENTISTS.md:71
+  case: cases/cosmology_columns.py
+  claim: Формула γ⁸π⁴/φ² предсказывает Ω_Λ из Planck 2018
+  verdict: ПУСТО
+- source: docs/papers/README_FOR_SCIENTISTS.md:72
+  case: cases/cosmology_columns.py
+  claim: Ω_DM = γ⁴π²/φ даёт 0,257
+  verdict: ОПРОВЕРГНУТО
+- source: docs/papers/README_FOR_SCIENTISTS.md:40
+  case: cases/cosmology_columns.py
+  claim: Колонка Error для α_s(M_Z) равна 0,005 %
+  verdict: ОПРОВЕРГНУТО
+- source: docs/papers/README_FOR_SCIENTISTS.md:43
+  case: cases/cosmology_columns.py
+  claim: Колонка Error для sin²θ₁₃ равна 0,008 %
+  verdict: ОПРОВЕРГНУТО
+- source: docs/papers/README_FOR_SCIENTISTS.md:71
+  case: cases/axes_omega_lambda.py
+  claim: Вывод о Ω_Λ устойчив к зависимости членов семейства
+  verdict: ПУСТО
+- source: docs/papers/README_FOR_SCIENTISTS.md:71
+  case: cases/axes_omega_lambda.py
+  claim: Близость к Ω_Λ не объясняется алгебраически (форма с log π)
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/papers/README_FOR_SCIENTISTS.md:71
+  case: cases/axes_omega_lambda.py
+  claim: Теория линейных форм не запрещает близость к Ω_Λ (подсемейство без π)
   verdict: ПОДТВЕРЖДЕНО

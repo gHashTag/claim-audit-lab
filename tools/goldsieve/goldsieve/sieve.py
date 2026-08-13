@@ -107,6 +107,13 @@ class Claim:
     arithmetic: Optional[Callable[[], dict]] = None  # {"params":(n,k,m,p,q),
                                     # "rel_uncertainty": относит. погрешность}
                                     # для проверки достаточности арифметики
+    meff: Optional[Callable[[], dict]] = None   # {"values": члены семейства,
+                                    # "eps": полоса сравнения, "sigma":
+                                    # наблюдённое отклонение в сигмах}
+                                    # для С20: устойчив ли вывод к замене
+                                    # числа попыток на ЭФФЕКТИВНОЕ
+    algebraic: Optional[Callable[[], dict]] = None  # {"target","coeffs",
+                                    # "has_pi","rel_deviation"} для С21
     search_size: Optional[int] = None  # сколько формул/гипотез реально перебрано;
                                        # из него ВЫВОДИТСЯ порог С15 по Шидаку
     notes: str = ""
@@ -648,7 +655,11 @@ def sieve_multiplicity(c: Claim) -> Result:
     nums = {"ожидаемых_попаданий": exp_hits, "p_глоб": p_glob}
     if frac is not None:
         nums["доля_случайных_целей_с_попаданием"] = float(frac)
-    det = ("ожидаемых случайных попаданий %.3g; p_глоб %.3g" % (exp_hits, p_glob))
+    # Молчаливый nan в выводе — след необъявленного ключа в задаче, и он
+    # читается как настоящее число. Отсутствие величины называется отсутствием.
+    det = ("ожидаемых случайных попаданий %.3g; p_глоб %s"
+           % (exp_hits, ("%.3g" % p_glob) if p_glob == p_glob
+              else "НЕ ЗАДАН (ключ p_global отсутствует)"))
     if frac is not None:
         det += "; случайная цель накрывается в %.1f%% случаев" % (100.0 * float(frac))
     if exp_hits >= 1.0 or (frac is not None and float(frac) >= 0.5):
@@ -733,6 +744,125 @@ def sieve_arithmetic(c: Claim) -> Result:
                   numbers=nums)
 
 
+def sieve_effective_multiplicity(c: Claim) -> Result:
+    """С20. Эффективное число попыток: устойчив ли вывод к зависимости членов.
+
+    Поправка Шидака до сих пор считалась при ПРЕДПОЛОЖЕНИИ независимости
+    перебранных формул. Предположение неверно: члены семейства лежат на
+    логарифмической решётке, и два члена, отстоящие меньше чем на полосу
+    сравнения, дают один и тот же вердикт — то есть один тест, а не два.
+
+    Сито не заменяет один порог другим «правильным», а проверяет УСТОЙЧИВОСТЬ:
+    если вывод (превышает ли отклонение порог) одинаков и при полном числе
+    попыток, и при эффективном, ось множественности вывод не определяет. Если
+    вывод меняется — он держится на предположении о независимости, и это
+    ВОПРОС, а не находка. Логика та же, что у С7 для выбора оценки.
+
+    M_eff считается двумя независимыми путями (goldsieve/meff.py): разрешающая
+    кластеризация в духе trials factor Гросса-Витальса и собственные значения
+    корреляционной матрицы по Ли-Цзи 2005.
+    """
+    name = "С20 эффективное число попыток"
+    if c.meff is None:
+        return Result(name, SKIP)
+    spec = c.meff()
+    try:
+        from .meff import meff_from_family, sidak_sigma
+    except Exception as e:  # noqa: BLE001
+        return Result(name, OPEN, "проверить нечем: %r" % (e,))
+    values = list(spec["values"])
+    eps = float(spec["eps"])
+    sigma = abs(float(spec["sigma"]))
+    m_full = int(spec.get("search_size") or c.search_size or len(values))
+    info = meff_from_family(values, eps)
+    ratio = info["independence_ratio"]
+    if ratio <= 0.0:
+        return Result(name, OPEN, "эффективное число попыток не оценивается: "
+                                  "пустое семейство")
+    m_eff = max(1.0, ratio * m_full)
+    thr_full = sidak_sigma(m_full, c.alpha)
+    thr_eff = sidak_sigma(m_eff, c.alpha)
+    nums = {"M": float(m_full), "M_eff": m_eff,
+            "доля_независимых": ratio,
+            "порог_M_сигма": thr_full, "порог_Meff_сигма": thr_eff,
+            "отклонение_сигма": sigma}
+    if info.get("M_eff_eigen") is not None:
+        nums["M_eff_собств_подвыборка"] = info["M_eff_eigen"]
+        nums["подвыборка"] = float(info["M_eff_eigen_of"])
+    det = ("M=%d, M_eff=%.4g (доля независимых %.3g при полосе %.2g); "
+           "порог %.3g сигма против %.3g сигма; отклонение %.3g сигма"
+           % (m_full, m_eff, ratio, eps, thr_full, thr_eff, sigma))
+    if (sigma > thr_full) == (sigma > thr_eff):
+        return Result(name, PASS, det + " | вывод не зависит от того, считать "
+                                        "попытки полными или эффективными",
+                      numbers=nums)
+    return Result(name, FAIL, det + " | вывод ДЕРЖИТСЯ на предположении о "
+                                    "независимости членов семейства",
+                  numbers=nums)
+
+
+def sieve_algebraic_explanation(c: Claim) -> Result:
+    """С21. Алгебраическая объяснимость: не бесплатно ли совпадение по теории.
+
+    Близость члена семейства к цели — это малость линейной формы в логарифмах.
+    Два инструмента:
+
+    1. PSLQ (Фергюсон-Бейли-Арно): ищет целочисленное соотношение между
+       логарифмом цели и логарифмами базиса. Если соотношение находится при
+       МАЛЫХ коэффициентах, цель воспроизводится семейством почти точно, и
+       совпадение получено бесплатно — VOID, то есть ПУСТО.
+    2. Граница бейкеровского типа (Бейкер-Вюстхольц, усиление Матвеева 2000):
+       теоретический потолок случайной близости.
+
+    Область применимости объявляется, а не замалчивается: log pi не является
+    логарифмом алгебраического числа, и оценок бейкеровского типа для форм с
+    log pi не доказано. При m != 0 сито даёт OPEN с этой причиной. Ожидаемый и
+    честный результат для остальных случаев: граница астрономически слаба и
+    наблюдаемую близость НЕ запрещает — значит третья ось не заменяет ось
+    перебора, а дополняет её.
+    """
+    name = "С21 алгебраическая объяснимость"
+    if c.algebraic is None:
+        return Result(name, SKIP)
+    spec = c.algebraic()
+    try:
+        from .algebraic import analyse
+    except Exception as e:  # noqa: BLE001
+        return Result(name, OPEN, "проверить нечем: %r" % (e,))
+    res = analyse(spec["target"], spec.get("coeffs", (1,)),
+                  bool(spec.get("has_pi", True)),
+                  float(spec["rel_deviation"]),
+                  max_coeff=int(spec.get("max_coeff", 12)))
+    limit = int(spec.get("free_coeff_limit", 6))
+    nums = {}
+    if res.get("pslq_max_coeff"):
+        nums["макс_коэффициент"] = float(res["pslq_max_coeff"])
+    if res.get("log_bound") is not None:
+        nums["log_граница"] = res["log_bound"]
+        nums["log_наблюдение"] = res["log_observed"]
+    rel = res.get("pslq_relation")
+    if rel and res.get("pslq_max_coeff", 999) <= limit:
+        return Result(name, VOID,
+                      "цель воспроизводится семейством при коэффициентах не "
+                      "больше %d (%s): совпадение получено бесплатно"
+                      % (limit, rel), numbers=nums)
+    if not res.get("bound_applicable", False):
+        return Result(name, OPEN, res.get("bound_reason", "граница неприменима"),
+                      numbers=nums)
+    if res.get("bound_binding"):
+        return Result(name, FAIL,
+                      "наблюдённая близость меньше теоретического минимума "
+                      "(log %.3g против границы %.3g): либо цель лежит в "
+                      "семействе точно, либо не хватает точности"
+                      % (res["log_observed"], res["log_bound"]), numbers=nums)
+    return Result(name, PASS,
+                  "алгебраического объяснения нет: соотношение при малых "
+                  "коэффициентах не найдено, граница бейкеровского типа "
+                  "(log %.3g) слабее наблюдения (log %.3g) и близость не "
+                  "запрещает" % (res["log_bound"], res["log_observed"]),
+                  numbers=nums)
+
+
 ALL_SIEVES = [
     sieve_regenerable,
     sieve_agreement,
@@ -751,6 +881,8 @@ ALL_SIEVES = [
     sieve_description_length,
     sieve_declared_domain,
     sieve_arithmetic,
+    sieve_effective_multiplicity,
+    sieve_algebraic_explanation,
 ]
 
 def sieve_numbers() -> list:
@@ -906,6 +1038,13 @@ def verdict_of(results: list) -> str:
     # ПЕРЕД опровержениями намеренно — иначе опровержение могло бы оказаться
     # артефактом округления.
     if st.get("С19 достаточность арифметики") == FAIL:
+        return QUESTION
+    # 5г. Вывод меняется при законной замене числа попыток на эффективное, или
+    # близость упирается в теоретический потолок: и то и другое означает, что
+    # вердикт держится на допущении, а не на данных. Вопрос, не опровержение.
+    if st.get("С20 эффективное число попыток") == FAIL:
+        return QUESTION
+    if st.get("С21 алгебраическая объяснимость") == FAIL:
         return QUESTION
     if (st.get("С2 заявленное=эталон") == FAIL or st.get("С3 данные=эталон") == FAIL
             or st.get("С15 внешняя цель") == FAIL

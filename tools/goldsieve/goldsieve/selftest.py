@@ -16,7 +16,7 @@ from .sieve import (Claim, run, CONFIRMED, REFUTED, QUESTION, EMPTY, VOID,
                     PASS, OPEN, FAIL, rel_dev)
 
 # Все пропуски обязаны быть объявлены (сито С13), иначе вердикт ВОПРОС.
-SR = {"С%d" % i: "неприменимо к синтетическому случаю" for i in range(1, 20)}
+SR = {"С%d" % i: "неприменимо к синтетическому случаю" for i in range(1, 22)}
 
 
 def _cases():
@@ -170,6 +170,40 @@ def _cases():
     )
     return (truth, lie, nore, void, est, noisy, broken, trend, flat,
             silent, noise, toogood, altbad)
+
+
+
+def _regress_cause():
+    """Перепрогон обязан отличать ужесточение сита от исправленного корпуса.
+
+    Иначе принятая правка корпуса выглядит как регрессия инструмента, и
+    наоборот: молчаливое ослабление сита прячется за «данные изменились».
+    Возвращает число провалов, как остальные модульные самопроверки.
+    """
+    from .cli import _inputs_digest
+
+    class _Rep:
+        def __init__(self, prov):
+            self.prov = prov
+
+    fail = 0
+
+    def check(name, ok):
+        nonlocal fail
+        print("  %s %s" % ("ok  " if ok else "FAIL", name))
+        if not ok:
+            fail += 1
+
+    a = _inputs_digest(_Rep({"inputs": {"f.md": "aaaa"}}))
+    b = _inputs_digest(_Rep({"inputs": {"f.md": "bbbb"}}))
+    check("отпечаток входов различает содержимое файла", a != b)
+    a2 = _inputs_digest(_Rep({"inputs": {"f.md": "aaaa"}}))
+    check("отпечаток входов устойчив при том же содержимом", a == a2)
+    check("без входов отпечатка нет", _inputs_digest(_Rep({})) is None)
+    x = _inputs_digest(_Rep({"inputs": {"a": "1", "b": "2"}}))
+    y = _inputs_digest(_Rep({"inputs": {"a": "2", "b": "1"}}))
+    check("перестановка хешей между файлами меняет отпечаток", x != y)
+    return fail
 
 
 def main() -> int:
@@ -610,10 +644,15 @@ def main() -> int:
     from .family import selftest as _fam
     from .threshold import selftest as _thr
     from .exact import selftest as _exa
+    from .meff import selftest as _mef
+    from .algebraic import selftest as _alg
     mods = [("неопределённость", _stats.selftest, 6), ("покрытие", _cov, 9),
+        ("причина переворота", _regress_cause, 4),
             ("семейство и множественность", _fam, 14),
             ("порог разрешающей способности", _thr, 9),
-            ("достаточность арифметики", _exa, 5)]
+            ("достаточность арифметики", _exa, 5),
+            ("эффективное число попыток", _mef, 9),
+            ("алгебраическая объяснимость", _alg, 8)]
     if os.environ.get("GOLDSIEVE_FULL"):
         from .refs.khinchin_reference import selftest as _kh
         from .refs.gue_montecarlo import selftest as _mc
