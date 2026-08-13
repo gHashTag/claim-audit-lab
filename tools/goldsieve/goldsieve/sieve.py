@@ -1,0 +1,795 @@
+"""Золотое сито — ядро.
+
+Задача: не «проверить одно утверждение вручную», а прогнать любое численное
+утверждение через фиксированный каскад сит и получить вердикт, который нельзя
+получить случайно. Каждое сито — независимая причина НЕ поверить; утверждение
+проходит только то, что прошло все применимые сита.
+
+Вердикты (единственные допустимые):
+  ПОДТВЕРЖДЕНО — все применимые сита PASS
+  ОПРОВЕРГНУТО — есть сито, которое даёт FAIL по существу (расхождение с
+                 вычисляемым эталоном при пройденных контролях)
+  ВОПРОС       — не хватает данных/рецепта, чтобы решить (это НЕ находка)
+  ПУСТО        — проверка вырождена: она прошла бы и на неверном ответе
+
+Правило, ради которого всё написано: утверждение без вычисляемого эталона
+никогда не становится ни ПОДТВЕРЖДЕНО, ни ОПРОВЕРГНУТО. Оно становится ВОПРОС.
+"""
+
+from __future__ import annotations
+
+import json
+import math
+import os
+import time
+import traceback
+from dataclasses import dataclass, field, asdict
+from typing import Callable, Iterable, Optional
+
+PASS = "PASS"
+FAIL = "FAIL"
+OPEN = "OPEN"
+VOID = "VOID"      # сито выродилось: прошло бы и на неверном ответе
+SKIP = "SKIP"      # сито неприменимо к этому утверждению
+
+CONFIRMED = "ПОДТВЕРЖДЕНО"
+REFUTED = "ОПРОВЕРГНУТО"
+QUESTION = "ВОПРОС"
+EMPTY = "ПУСТО"
+
+
+@dataclass
+class Result:
+    """Результат одного сита."""
+
+    sieve: str
+    status: str
+    detail: str = ""
+    numbers: dict = field(default_factory=dict)
+    seconds: float = 0.0
+
+    def line(self) -> str:
+        mark = {PASS: "ok  ", FAIL: "FAIL", OPEN: "open", VOID: "VOID", SKIP: "skip"}[self.status]
+        return "  %s %-28s %s" % (mark, self.sieve, self.detail)
+
+
+@dataclass
+class Claim:
+    """Утверждение, поданное в сито.
+
+    name       — как называется утверждение
+    source     — откуда взято (файл:строка, документ, статья)
+    stated     — заявленное значение (число или dict именованных чисел)
+    reference  — callable() -> то же по форме, что stated. ВЫЧИСЛЯЕМЫЙ эталон.
+                 None означает: эталона нет, рецепта нет. Тогда вердикт ВОПРОС.
+    observed   — callable() -> измерение из данных (может быть None)
+    tolerance  — относительная терпимость для сравнения (доля, не проценты)
+    wrong      — callable() -> заведомо НЕВЕРНОЕ значение той же формы.
+                 Нужно, чтобы проверить, что проверка вообще различает.
+    null_model — callable() -> измерение на нулевой модели (шум, Пуассон,
+                 перестановка). Сито требует, чтобы её отвергли.
+    null_expect— что должна дать нулевая модель (форма как stated)
+    resolutions— callable(param) -> значение; список параметров для сходимости
+    estimators — dict имя -> callable(); разные оценки одной величины
+    precision  — абсолютная погрешность входных данных (для бюджета точности)
+    """
+
+    name: str
+    source: str = ""
+    stated: object = None
+    reference: Optional[Callable[[], object]] = None
+    observed: Optional[Callable[[], object]] = None
+    tolerance: float = 0.01
+    wrong: Optional[Callable[[], object]] = None
+    null_model: Optional[Callable[[], object]] = None
+    null_expect: object = None
+    null_kind: str = "negative"   # negative: контроль ОБЯЗАН отличаться от
+                                  # эталона; positive: обязан его воспроизвести
+    resolutions: Optional[Iterable] = None
+    resolve: Optional[Callable[[object], object]] = None
+    estimators: Optional[dict] = None
+    precision: Optional[float] = None
+    bins: Optional[Callable[[], list]] = None
+    sample: Optional[Callable[[], object]] = None      # сырые наблюдения
+    statistics: Optional[dict] = None                  # имя -> f(массив) -> число
+    reference_alt: Optional[Callable[[], object]] = None  # эталон другим методом
+    alt_tolerance: Optional[Callable[[], float]] = None    # ВЫВОДИМАЯ погрешность
+                                                          # второго метода
+    inputs: Optional[list] = None                      # файлы данных для провенанса
+    alpha: float = 0.05
+    skip_reasons: Optional[dict] = None                # сито -> причина пропуска
+    claim_kind: str = "value"          # value | prediction (формула про внешнюю величину)
+    external_target: Optional[Callable[[], dict]] = None   # авторитетное измерение
+    stated_target: Optional[Callable[[], float]] = None    # цель, как её пишет корпус
+    multiplicity: Optional[Callable[[], dict]] = None      # ожидаемые случайные попадания
+    mdl: Optional[Callable[[], dict]] = None               # биты описания против бит совпадения
+    declared_domain: Optional[Callable[[], list]] = None   # нарушения объявленных границ
+    notes: str = ""
+
+
+# --------------------------------------------------------------------------
+# сравнение значений: скаляр или dict скаляров
+# --------------------------------------------------------------------------
+
+def _as_dict(v) -> dict:
+    if isinstance(v, dict):
+        return {k: float(x) for k, x in v.items()}
+    return {"value": float(v)}
+
+
+def rel_dev(a, b) -> dict:
+    """Относительные отклонения a от b, по ключам."""
+    da, db = _as_dict(a), _as_dict(b)
+    out = {}
+    for k in db:
+        if k not in da:
+            continue
+        base = db[k]
+        out[k] = (da[k] - base) / base if base != 0 else da[k] - base
+    return out
+
+
+def worst(dev: dict) -> tuple:
+    if not dev:
+        return ("", 0.0)
+    k = max(dev, key=lambda k: abs(dev[k]))
+    return (k, dev[k])
+
+
+def fmt_dev(dev: dict) -> str:
+    return ", ".join("%s %+.2f%%" % (k, 100.0 * v) for k, v in dev.items())
+
+
+# --------------------------------------------------------------------------
+# сита
+# --------------------------------------------------------------------------
+
+def sieve_regenerable(c: Claim) -> Result:
+    """С1. Эталон вычисляем, а не процитирован.
+
+    Единственное сито, которое может остановить всё остальное: если эталон —
+    голое десятичное число из документа, сравнивать не с чем.
+    """
+    if c.reference is None:
+        return Result("С1 регенерируемость", OPEN,
+                      "эталон не вычисляем: рецепта нет, только значение")
+    try:
+        v = c.reference()
+    except Exception as e:  # noqa: BLE001
+        return Result("С1 регенерируемость", FAIL, "эталон падает: %r" % (e,))
+    return Result("С1 регенерируемость", PASS, "эталон пересчитан",
+                  numbers=_as_dict(v))
+
+
+def sieve_agreement(c: Claim) -> Result:
+    """С2. Заявленное совпадает с вычисленным эталоном."""
+    if c.reference is None or c.stated is None:
+        return Result("С2 заявленное=эталон", SKIP)
+    dev = rel_dev(c.stated, c.reference())
+    k, w = worst(dev)
+    st = PASS if abs(w) <= c.tolerance else FAIL
+    return Result("С2 заявленное=эталон", st, fmt_dev(dev), numbers=dev)
+
+
+def sieve_observation(c: Claim) -> Result:
+    """С3. Измерение из данных против вычисленного эталона."""
+    if c.reference is None or c.observed is None:
+        return Result("С3 данные=эталон", SKIP)
+    dev = rel_dev(c.observed(), c.reference())
+    k, w = worst(dev)
+    st = PASS if abs(w) <= c.tolerance else FAIL
+    return Result("С3 данные=эталон", st, fmt_dev(dev), numbers=dev)
+
+
+def sieve_discriminates(c: Claim) -> Result:
+    """С4. Подставка: на заведомо неверном значении проверка обязана упасть.
+
+    Сито против «проверок», которые проходят всегда. Поддерживается СПИСОК
+    подставок: одна вручную придуманная мутация проверяет меньше, чем набор
+    (перенято из мутационного тестирования). Различаются две причины провала,
+    которые раньше сливались в один статус: плоха сама подставка (она
+    неотличима от эталона при этой терпимости) — или вырождена проверка.
+    """
+    if c.reference is None or c.wrong is None:
+        return Result("С4 подставка ловится", SKIP)
+    wrongs = c.wrong if isinstance(c.wrong, (list, tuple)) else [c.wrong]
+    ref = c.reference()
+    bad, good = [], []
+    for i, fn in enumerate(wrongs, 1):
+        dev = rel_dev(fn(), ref)
+        k, w = worst(dev)
+        if abs(w) <= c.tolerance:
+            bad.append("подставка %d неотличима от эталона (%s %+.2f%%) при "
+                       "терпимости %.2f%%: неверный ответ проходит"
+                       % (i, k, 100.0 * w, 100.0 * c.tolerance))
+        else:
+            good.append("подставка %d отклонена: %s %+.2f%%" % (i, k, 100.0 * w))
+    if bad:
+        return Result("С4 подставка ловится", VOID, "; ".join(bad + good))
+    return Result("С4 подставка ловится", PASS, "; ".join(good))
+
+
+def sieve_null_model(c: Claim) -> Result:
+    """С5. Контроль прогоняется тем же конвейером.
+
+    Два вида контроля, и вид обязан быть объявлен заранее:
+      negative — модель без сигнала (шум, Пуассон, перестановка). Если она
+                 воспроизводит эталон, проверка ничего не различает: VOID.
+      positive — модель, которая ОБЯЗАНА дать эталон (генерическая по
+                 построению). Если не даёт — сломан конвейер, а не данные: FAIL.
+    """
+    if c.null_model is None:
+        return Result("С5 контроль", SKIP)
+    got = c.null_model()
+    if c.null_expect is not None:
+        dev = rel_dev(got, c.null_expect)
+        k, w = worst(dev)
+        if abs(w) > max(0.1, 10.0 * c.tolerance):
+            return Result("С5 контроль", FAIL,
+                          "контроль сам не воспроизводится: %s" % fmt_dev(dev),
+                          numbers=dev)
+    if c.reference is None:
+        return Result("С5 контроль", PASS, "контроль воспроизводится")
+    dev = rel_dev(got, c.reference())
+    k, w = worst(dev)
+    if c.null_kind == "positive":
+        if abs(w) <= max(c.tolerance, 0.01):
+            return Result("С5 контроль", PASS,
+                          "позитивный контроль даёт эталон: %s %+.2f%%" % (k, 100.0 * w))
+        return Result("С5 контроль", FAIL,
+                      "позитивный контроль НЕ даёт эталон, сломан конвейер: %s"
+                      % fmt_dev(dev), numbers=dev)
+    if abs(w) <= c.tolerance:
+        return Result("С5 контроль", VOID,
+                      "шум выглядит как сигнал: %s" % fmt_dev(dev), numbers=dev)
+    return Result("С5 контроль", PASS,
+                  "негативный контроль отличается от эталона: %s %+.2f%%" % (k, 100.0 * w))
+
+
+def sieve_convergence(c: Claim) -> Result:
+    """С6. Сходимость по разрешению: результат не должен зависеть от сетки."""
+    if not c.resolutions or c.resolve is None:
+        return Result("С6 сходимость", SKIP)
+    vals = [( r, _as_dict(c.resolve(r)) ) for r in c.resolutions]
+    keys = vals[0][1].keys()
+    worst_swing = 0.0
+    detail = []
+    for k in keys:
+        seq = [v[1][k] for v in vals]
+        base = seq[-1]
+        swing = max(abs(x - base) / (abs(base) or 1.0) for x in seq)
+        worst_swing = max(worst_swing, swing)
+        detail.append("%s разброс %.2e" % (k, swing))
+    st = PASS if worst_swing <= c.tolerance / 10.0 else OPEN
+    return Result("С6 сходимость", st, "; ".join(detail),
+                  numbers={"swing": worst_swing})
+
+
+def sieve_estimator_stability(c: Claim) -> Result:
+    """С7. Устойчивость вывода к выбору оценки.
+
+    Если разные законные оценки одной величины дают разные знаки вывода —
+    утверждение не находка, а ВОПРОС. Ровно этим кончился дефицит Хинчина.
+    """
+    if not c.estimators or c.reference is None:
+        return Result("С7 выбор оценки", SKIP)
+    ref = c.reference()
+    signs = set()
+    detail = []
+    for name, f in c.estimators.items():
+        dev = rel_dev(f(), ref)
+        k, w = worst(dev)
+        detail.append("%s %+.2f%%" % (name, 100.0 * w))
+        if abs(w) > c.tolerance:
+            signs.add(1 if w > 0 else -1)
+        else:
+            signs.add(0)
+    if len(signs) > 1:
+        return Result("С7 выбор оценки", OPEN,
+                      "вывод зависит от оценки: " + "; ".join(detail))
+    return Result("С7 выбор оценки", PASS, "; ".join(detail))
+
+
+def sieve_precision_budget(c: Claim) -> Result:
+    """С8. Бюджет точности: заявленный эффект больше погрешности входа."""
+    if c.precision is None or c.stated is None:
+        return Result("С8 бюджет точности", SKIP)
+    ref = c.reference() if c.reference is not None else None
+    if ref is None:
+        return Result("С8 бюджет точности", SKIP)
+    dev = rel_dev(c.stated, ref)
+    k, w = worst(dev)
+    effect = abs(w)
+    if effect <= c.precision:
+        return Result("С8 бюджет точности", VOID,
+                      "эффект %.2e не превышает погрешность входа %.2e"
+                      % (effect, c.precision))
+    return Result("С8 бюджет точности", PASS,
+                  "эффект %.2e против погрешности %.2e" % (effect, c.precision))
+
+
+def sieve_finite_size(c: Claim) -> Result:
+    """С9. Конечный размер данных: известная систематика, а не эффект.
+
+    Сито против обратной ошибки — объявить находкой то, что объясняется
+    конечностью выборки. bins() возвращает [(x, значения)], где x -> 0 в
+    пределе бесконечных данных (например 1/ln(gamma)). Линейная экстраполяция
+    к x = 0 сравнивается с эталоном.
+
+    Если экстраполяция садится на эталон хотя бы по части величин, но не по
+    всем — статус OPEN: рычаг короткий, вывод не закрывается этими данными.
+    """
+    if c.bins is None or c.reference is None:
+        return Result("С9 конечный размер", SKIP)
+    pts = c.bins()
+    if len(pts) < 3:
+        return Result("С9 конечный размер", OPEN, "меньше трёх корзин")
+    xs = [float(p[0]) for p in pts]
+    ref = _as_dict(c.reference())
+    lever = max(xs) / min(xs) if min(xs) > 0 else float("inf")
+    agree, disagree, detail = [], [], []
+    for k in ref:
+        ys = [_as_dict(p[1])[k] for p in pts]
+        n = len(xs)
+        mx = sum(xs) / n
+        my = sum(ys) / n
+        den = sum((x - mx) ** 2 for x in xs)
+        slope = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / den if den else 0.0
+        y0 = my - slope * mx
+        dev = (y0 - ref[k]) / ref[k] if ref[k] else y0 - ref[k]
+        detail.append("%s -> %+.2f%%" % (k, 100.0 * dev))
+        (agree if abs(dev) <= c.tolerance else disagree).append(k)
+    msg = "экстраполяция к x=0 (рычаг %.1fx): %s" % (lever, "; ".join(detail))
+    if agree and not disagree:
+        return Result("С9 конечный размер", OPEN,
+                      "расхождение объясняется конечным размером; " + msg)
+    if agree and disagree:
+        return Result("С9 конечный размер", OPEN,
+                      "систематика объясняет %s, но не %s; "
+                      % (",".join(agree), ",".join(disagree)) + msg)
+    return Result("С9 конечный размер", PASS,
+                  "конечным размером не объясняется; " + msg)
+
+
+def _z_table(c: Claim):
+    """Отклонения наблюдения от эталона в единицах полуширины бутстрэп-интервала."""
+    from . import stats as S
+    x = c.sample()
+    ref = _as_dict(c.reference())
+    m = len(c.statistics)
+    alpha = S.sidak_alpha(c.alpha, m)
+    rows = {}
+    for name, f in c.statistics.items():
+        if name not in ref:
+            continue
+        point, lo, hi, rel = S.bootstrap_ci(x, f, alpha=alpha)
+        half = (hi - lo) / 2.0
+        rows[name] = {"point": point, "lo": lo, "hi": hi, "half": half,
+                      "ref": ref[name], "rel": rel,
+                      "z": S.z_of_deviation(point, ref[name], half)}
+    return rows
+
+
+def sieve_uncertainty(c: Claim) -> Result:
+    """С10. Неопределённость измерения: значимо ли расхождение вообще.
+
+    Терпимость больше не назначается рукой: ширина бутстрэп-интервала с
+    поправкой Шидака на число сравниваемых статистик и есть масштаб, в котором
+    измеряется расхождение. |z| <= 1 означает «данные совместимы с эталоном».
+    """
+    if c.sample is None or c.statistics is None or c.reference is None:
+        return Result("С10 неопределённость", SKIP)
+    rows = _z_table(c)
+    det = "; ".join("%s %+.2f%% (полуширина %.2f%%, z %+.1f)"
+                    % (k, 100.0 * (v["point"] - v["ref"]) / v["ref"],
+                       100.0 * v["half"] / abs(v["point"]), v["z"])
+                    for k, v in rows.items())
+    zmax = max(abs(v["z"]) for v in rows.values())
+    st = FAIL if zmax > 1.0 else PASS
+    return Result("С10 неопределённость", st, det,
+                  numbers={k: v["z"] for k, v in rows.items()})
+
+
+def sieve_too_good(c: Claim) -> Result:
+    """С11. Слишком хорошо: согласие точнее, чем позволяет выборочный шум.
+
+    Если измерение садится на теорию заметно точнее случайной погрешности сразу
+    по нескольким статистикам, вероятнее, что число списано из теории, а не
+    измерено. Возвращается верхняя граница подозрительности при независимости
+    статистик; настоящие статистики скоррелированы, поэтому истинная
+    вероятность БОЛЬШЕ приведённой — это ограничение, не оценка.
+    """
+    if c.sample is None or c.statistics is None or c.reference is None:
+        return Result("С11 слишком хорошо", SKIP)
+    rows = _z_table(c)
+    if len(rows) < 3:
+        return Result("С11 слишком хорошо", SKIP, "меньше трёх статистик")
+    zs = [abs(v["z"]) for v in rows.values()]
+    # z нормирован на полуширину 95%-интервала, то есть на 1.96 сигма
+    p = 1.0
+    for z in zs:
+        p *= math.erf(1.96 * z / math.sqrt(2.0)) or 1e-16
+    det = "медианное |z| %.2f, верхняя граница вероятности при независимости %.1e" \
+          % (sorted(zs)[len(zs) // 2], p)
+    if p < 1e-3:
+        return Result("С11 слишком хорошо", FAIL,
+                      "согласие подозрительно точное: " + det, numbers={"p": p})
+    return Result("С11 слишком хорошо", PASS, det, numbers={"p": p})
+
+
+def sieve_independent_method(c: Claim) -> Result:
+    """С12. Эталон подтверждён вторым, независимым методом.
+
+    С6 проверяет только сетку внутри одного алгоритма: ошибка в самой формуле
+    пройдёт при любом разрешении. Здесь та же величина считается другим путём.
+    """
+    if c.reference is None or c.reference_alt is None:
+        return Result("С12 независимый метод", SKIP)
+    dev = rel_dev(c.reference_alt(), c.reference())
+    k, w = worst(dev)
+    # Масштаб сравнения — собственная погрешность второго метода, а не
+    # терпимость утверждения: у метода Монте-Карло она своя и её надо ВЫВЕСТИ.
+    if c.alt_tolerance is not None:
+        tol = c.alt_tolerance()
+        note = " (порог %.2f%% — измеренный разброс второго метода)" % (100 * tol)
+    else:
+        tol = max(c.tolerance, 0.01)
+        note = " (порог %.2f%% — терпимость утверждения; погрешность второго " \
+               "метода не объявлена)" % (100 * tol)
+    st = PASS if abs(w) <= tol else FAIL
+    return Result("С12 независимый метод", st, fmt_dev(dev) + note, numbers=dev)
+
+
+def declared_skips_check(claim: Claim, results: list) -> Result:
+    """С13 гигиена: молчаливый пропуск сита не допускается.
+
+    Пустое поле даёт skip, и контроль слабеет незаметно — так со временем умирает
+    любая проверка. Каждый skip обязан быть объявлен в claim.skip_reasons.
+    """
+    reasons = claim.skip_reasons or {}
+    skipped = [r.sieve for r in results if r.status == SKIP]
+    # ключ обязан точно совпадать с номером сита ("С10"), а не быть общей
+    # отпиской "С", закрывающей все пропуски сразу
+    keys = {k.strip() for k in reasons}
+    undeclared = [s for s in skipped if s.split()[0] not in keys]
+    if not skipped:
+        return Result("С13 объявленные пропуски", PASS, "пропусков нет")
+    if undeclared:
+        return Result("С13 объявленные пропуски", FAIL,
+                      "не объявлены причины пропуска: " + ", ".join(undeclared))
+    return Result("С13 объявленные пропуски", PASS,
+                  "все %d пропуска объявлены" % len(skipped))
+
+
+def end_to_end_mutation(claim: Claim, base_sieves) -> Result:
+    """С14 сквозная подставка: подменяем измерение неверным и требуем срыва.
+
+    С4 лишь мерит расстояние между неверным ответом и эталоном. Здесь неверный
+    ответ прогоняется через ВЕСЬ каскад: если вердикт остаётся ПОДТВЕРЖДЕНО,
+    конвейер не различает измерение от подделки.
+    """
+    if claim.wrong is None or (claim.observed is None and claim.stated is None):
+        return Result("С14 сквозная подставка", SKIP)
+    import copy as _copy
+    mut = _copy.copy(claim)
+    ws = claim.wrong if isinstance(claim.wrong, (list, tuple)) else [claim.wrong]
+    w = ws[0]()
+    mut.stated = w
+    if claim.observed is not None:
+        mut.observed = lambda: w
+    mut.sample = None          # выборка не соответствует подделке, честно снимаем
+    mut.statistics = None
+    mut.bins = None
+    mut.estimators = None
+    mut.skip_reasons = {"С%d" % i: "мутационный прогон" for i in range(1, 19)}
+    sub = [s(mut) for s in base_sieves]
+    v = verdict_of(sub)
+    if v == CONFIRMED:
+        return Result("С14 сквозная подставка", VOID,
+                      "подделка получила вердикт ПОДТВЕРЖДЕНО — каскад не различает")
+    return Result("С14 сквозная подставка", PASS,
+                  "подделка получила вердикт %s" % v)
+
+
+def sieve_external_target(c: Claim) -> Result:
+    """С15. Внешняя цель: проверка не должна быть тавтологией.
+
+    Если утверждение по смыслу предсказательное («формула даёт величину X»),
+    то сравнивать вычисление формулы с напечатанным рядом числом бессмысленно:
+    такая проверка проходит при ЛЮБОМ значении формулы, потому что и то и другое
+    получено из одного выражения. Содержательное сравнение — только с внешним
+    измерением и его погрешностью.
+
+    Сито делает две вещи: (1) требует внешнюю цель для предсказательных
+    утверждений, иначе объявляет конвейер вырожденным; (2) меряет отклонение в
+    единицах погрешности внешней величины, а не в процентах от неё.
+    """
+    name = "С15 внешняя цель"
+    if c.claim_kind != "prediction":
+        return Result(name, SKIP, "утверждение о самом числе, не о внешней величине")
+    if c.external_target is None:
+        return Result(name, VOID,
+                      "предсказательное утверждение без внешнего измерения: "
+                      "сверка формулы с напечатанным числом прошла бы при любом "
+                      "значении формулы")
+    tgt = c.external_target()
+    value = float(tgt["value"])
+    unc = float(tgt["uncertainty"])
+    if unc <= 0:
+        return Result(name, VOID, "погрешность внешней величины не задана")
+    nums = {}
+    worst_sigma = 0.0
+    if c.reference is not None:
+        f = float(_as_dict(c.reference())["value"]) if isinstance(c.reference(), dict) \
+            else float(c.reference())
+        nums["формула"] = f
+        nums["сигм_формула"] = (f - value) / unc
+        worst_sigma = max(worst_sigma, abs(nums["сигм_формула"]))
+    if c.stated_target is not None:
+        s = float(c.stated_target())
+        nums["цель_в_корпусе"] = s
+        nums["сигм_цель"] = (s - value) / unc
+        worst_sigma = max(worst_sigma, abs(nums["сигм_цель"]))
+    nums["внешнее"] = value
+    nums["погрешность"] = unc
+    det = "внешнее %.6g +- %.3g; " % (value, unc) + "; ".join(
+        "%s %.4g" % (k, v) for k, v in nums.items() if k.startswith("сигм"))
+    if not nums.get("сигм_формула") and not nums.get("сигм_цель"):
+        return Result(name, OPEN, "нечего сравнивать с внешней величиной")
+    st = PASS if worst_sigma <= 3.0 else FAIL
+    return Result(name, st, det + " | порог 3 сигма", numbers=nums)
+
+
+def sieve_multiplicity(c: Claim) -> Result:
+    """С16. Подгонка под ответ: сколько попаданий даёт СЛУЧАЙ.
+
+    Если формулу выбирают перебором из M кандидатов, то попадание в цель с
+    точностью eps ожидается случайно с вероятностью p_glob = 1-(1-p_loc)^M.
+    При ожидаемом числе попаданий E[h] >= 1 совпадение перестаёт быть
+    свидетельством: контроль показывает, что так же хорошо накрывается и
+    произвольная цель. Это эффект look-elsewhere, перенесённый на перебор
+    формул.
+    """
+    name = "С16 подгонка под ответ"
+    if c.multiplicity is None:
+        return Result(name, SKIP)
+    m = c.multiplicity()
+    exp_hits = float(m["expected_hits"])
+    p_glob = float(m.get("p_global", float("nan")))
+    frac = m.get("fraction_random_targets_hit")
+    nums = {"ожидаемых_попаданий": exp_hits, "p_глоб": p_glob}
+    if frac is not None:
+        nums["доля_случайных_целей_с_попаданием"] = float(frac)
+    det = ("ожидаемых случайных попаданий %.3g; p_глоб %.3g" % (exp_hits, p_glob))
+    if frac is not None:
+        det += "; случайная цель накрывается в %.1f%% случаев" % (100.0 * float(frac))
+    if exp_hits >= 1.0 or (frac is not None and float(frac) >= 0.5):
+        return Result(name, VOID, det + " | попадание ожидается случайно",
+                      numbers=nums)
+    if p_glob == p_glob and p_glob > c.alpha:
+        return Result(name, FAIL, det + " | не проходит порог alpha=%.3g" % c.alpha,
+                      numbers=nums)
+    return Result(name, PASS, det, numbers=nums)
+
+
+def sieve_description_length(c: Claim) -> Result:
+    """С17. Описание короче данных: критерий содержательности по MDL.
+
+    Совпадение с точностью eps несёт log2(1/(2 eps)) бит, но не больше, чем
+    позволяет собственная погрешность цели. Указание одного члена семейства из M
+    стоит log2(M) бит. Если описание стоит дороже, чем объясняет, никакого
+    сжатия не произошло — «закон» не короче самого числа (Rissanen, MDL).
+    """
+    name = "С17 описание короче данных"
+    if c.mdl is None:
+        return Result(name, SKIP)
+    m = c.mdl()
+    db = float(m["description_bits"])
+    mb = float(m["match_bits"])
+    nums = {"бит_описания": db, "бит_совпадения": mb, "выигрыш": mb - db}
+    det = "описание %.2f бит против совпадения %.2f бит (выигрыш %.2f)" % (
+        db, mb, mb - db)
+    if mb <= db:
+        return Result(name, FAIL, det + " | сжатия нет", numbers=nums)
+    return Result(name, PASS, det, numbers=nums)
+
+
+def sieve_declared_domain(c: Claim) -> Result:
+    """С18. Объявленная область: перебор шире, чем признано.
+
+    Если фактически использованные параметры выходят за объявленные границы
+    перебора, то заявленный размер пространства занижен, а вместе с ним занижена
+    и поправка на множественность. Сито ловит расхождение между объявленным и
+    использованным.
+    """
+    name = "С18 объявленная область"
+    if c.declared_domain is None:
+        return Result(name, SKIP)
+    bad = c.declared_domain()
+    if not bad:
+        return Result(name, PASS, "все параметры внутри объявленных границ")
+    head = "; ".join("%s" % (b,) for b in bad[:4])
+    return Result(name, FAIL, "выход за объявленные границы: %s%s" % (
+        head, " ..." if len(bad) > 4 else ""), numbers={"нарушений": len(bad)})
+
+
+ALL_SIEVES = [
+    sieve_regenerable,
+    sieve_agreement,
+    sieve_observation,
+    sieve_discriminates,
+    sieve_null_model,
+    sieve_convergence,
+    sieve_estimator_stability,
+    sieve_precision_budget,
+    sieve_finite_size,
+    sieve_uncertainty,
+    sieve_too_good,
+    sieve_independent_method,
+    sieve_external_target,
+    sieve_multiplicity,
+    sieve_description_length,
+    sieve_declared_domain,
+]
+
+
+# --------------------------------------------------------------------------
+# прогон и вердикт
+# --------------------------------------------------------------------------
+
+def provenance(claim: Claim) -> dict:
+    """Провенанс: чем именно получен вердикт. Без этого он невоспроизводим."""
+    import hashlib
+    import platform
+    import subprocess
+    d = {"python": platform.python_version()}
+    try:
+        import numpy
+        d["numpy"] = numpy.__version__
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        import scipy
+        d["scipy"] = scipy.__version__
+    except Exception:  # noqa: BLE001
+        pass
+    files = {}
+    for path in (claim.inputs or []):
+        try:
+            h = hashlib.sha256()
+            with open(path, "rb") as f:
+                for chunk in iter(lambda: f.read(1 << 20), b""):
+                    h.update(chunk)
+            files[path] = h.hexdigest()[:16]
+            try:
+                out = subprocess.run(["git", "-C", os.path.dirname(path) or ".",
+                                      "rev-parse", "--short", "HEAD"],
+                                     capture_output=True, text=True, timeout=10)
+                if out.returncode == 0:
+                    files[path + " @commit"] = out.stdout.strip()
+            except Exception:  # noqa: BLE001
+                pass
+        except Exception as e:  # noqa: BLE001
+            files[path] = "недоступен: %r" % (e,)
+    if files:
+        d["inputs"] = files
+    # Отпечаток рецепта: если терпимость, подставку или эталон подкрутили после
+    # того, как результат стал известен, отпечаток изменится. Машинный аналог
+    # пре-регистрации (перенято из Registered Reports).
+    import inspect
+    parts = ["tol=%r" % claim.tolerance, "alpha=%r" % claim.alpha]
+    fns = [(nm, getattr(claim, nm, None)) for nm in
+           ("reference", "reference_alt", "observed", "null_model", "alt_tolerance")]
+    ws = claim.wrong if isinstance(claim.wrong, (list, tuple)) else [claim.wrong]
+    fns += [("wrong", f) for f in ws]
+    for nm, fn in fns:
+        if callable(fn):
+            try:
+                parts.append(nm + ":" + inspect.getsource(fn))
+            except (OSError, TypeError):
+                parts.append(nm + ":<источник недоступен>")
+    d["отпечаток рецепта"] = hashlib.sha256(
+        "\n".join(parts).encode("utf-8")).hexdigest()[:16]
+    d["alpha"] = claim.alpha
+    d["tolerance"] = claim.tolerance
+    return d
+
+
+@dataclass
+class Report:
+    claim: str
+    source: str
+    verdict: str
+    results: list
+    notes: str = ""
+    prov: dict = field(default_factory=dict)
+
+    def text(self) -> str:
+        out = ["утверждение: %s" % self.claim]
+        if self.source:
+            out.append("источник:    %s" % self.source)
+        out += [r.line() for r in self.results]
+        out.append("вердикт:     %s" % self.verdict)
+        if self.prov:
+            flat = []
+            for k, v in self.prov.items():
+                if isinstance(v, dict):
+                    flat += ["%s=%s" % (kk, vv) for kk, vv in v.items()]
+                else:
+                    flat.append("%s=%s" % (k, v))
+            out.append("провенанс:   " + "; ".join(flat))
+        if self.notes:
+            out.append("примечание:  %s" % self.notes)
+        return "\n".join(out)
+
+    def to_json(self) -> str:
+        d = {"claim": self.claim, "source": self.source, "verdict": self.verdict,
+             "notes": self.notes, "provenance": self.prov,
+             "results": [asdict(r) for r in self.results]}
+        return json.dumps(d, ensure_ascii=False, indent=1)
+
+
+def verdict_of(results: list) -> str:
+    """Свод вердикта. Порядок правил важен и не переставляется."""
+    st = {r.sieve: r.status for r in results}
+    # 1. Вырожденная проверка бьёт всё: если подставка проходит или шум похож
+    #    на сигнал, ни подтверждать, ни опровергать нечего.
+    if any(v == VOID for v in st.values()):
+        return EMPTY
+    # 2. Нет вычисляемого эталона — вопрос, а не находка.
+    if st.get("С1 регенерируемость") in (OPEN, FAIL):
+        return QUESTION
+    # 3. Вывод зависит от выбора оценки или не сошёлся по сетке — вопрос.
+    if (st.get("С7 выбор оценки") == OPEN or st.get("С6 сходимость") == OPEN
+            or st.get("С9 конечный размер") == OPEN):
+        return QUESTION
+    # 4. Эталон не подтверждён вторым методом — вопрос, а не опровержение.
+    if st.get("С12 независимый метод") == FAIL:
+        return QUESTION
+    # 5. Подозрительно точное согласие — отдельный флаг, не подтверждение.
+    if st.get("С11 слишком хорошо") == FAIL:
+        return QUESTION
+    # 6. Расхождение по существу при живых контролях — опровержение, но только
+    #    если оно значимо на фоне выборочного шума (С10). Если шум объясняет —
+    #    вопрос: расхождения могло и не быть.
+    # 5b. Формула не сжимает данные — «закон» не короче числа, это не находка.
+    if st.get("С17 описание короче данных") == FAIL:
+        return QUESTION
+    if (st.get("С2 заявленное=эталон") == FAIL or st.get("С3 данные=эталон") == FAIL
+            or st.get("С15 внешняя цель") == FAIL
+            or st.get("С18 объявленная область") == FAIL):
+        if st.get("С10 неопределённость") == PASS:
+            return QUESTION
+        return REFUTED
+    if any(v == FAIL for v in st.values()):
+        return QUESTION
+    return CONFIRMED
+
+
+def run(claim: Claim, sieves=None, meta: bool = True) -> Report:
+    sieves = sieves or ALL_SIEVES
+    results = []
+    for s in sieves:
+        t0 = time.time()
+        try:
+            r = s(claim)
+        except Exception as e:  # noqa: BLE001
+            r = Result(s.__name__, FAIL, "сито упало: %r" % (e,))
+            r.detail += " | " + traceback.format_exc(limit=1).replace("\n", " ")
+        r.seconds = time.time() - t0
+        results.append(r)
+    if meta:
+        results.append(declared_skips_check(claim, results))
+        t0 = time.time()
+        try:
+            r = end_to_end_mutation(claim, sieves)
+        except Exception as e:  # noqa: BLE001
+            r = Result("С14 сквозная подставка", FAIL, "мутационный прогон упал: %r" % (e,))
+        r.seconds = time.time() - t0
+        results.append(r)
+    return Report(claim.name, claim.source, verdict_of(results), results, claim.notes,
+                  provenance(claim))
+
+
+def run_all(claims: Iterable[Claim]) -> list:
+    return [run(c) for c in claims]

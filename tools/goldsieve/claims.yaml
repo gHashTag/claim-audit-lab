@@ -1,0 +1,90 @@
+claims:
+- source: data/zeta/zeta_gue_analysis_results.md
+  case: cases/zeta_gue.py
+  claim: колонка «GUE Expected» = 0.91 / 2.15 / 2.75
+  verdict: ПУСТО
+- source: src/sacred/zeta_spacing.zig
+  case: cases/zeta_gue.py
+  claim: surmise Вигнера годится как эталон на уровне 2%
+  verdict: ОПРОВЕРГНУТО
+- source: data/zeta/zeros_odlyzko_100k.txt
+  case: cases/zeta_gue.py
+  claim: наблюдённые расстояния совпадают с GUE в пределах 1%
+  verdict: ВОПРОС
+- source: data/zeta/zeta_bin_analysis_update.md
+  case: cases/khinchin.py
+  claim: K по нулям дзеты = 2.620, систематически ниже 2.685
+  verdict: ВОПРОС
+- source: docs/docs/math-foundations/sacred-formulas.md:25
+  case: cases/sacred_search_count.py
+  claim: стандартный поиск содержит 20 412 комбинаций
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/transcendental-numbers.md:169
+  case: cases/transcendental_3phi_value.py
+  claim: 3^φ напечатано как 5,91559
+  verdict: ПОДТВЕРЖДЕНО
+- source: deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138
+  case: cases/master_catalog_lucas_l10.py
+  claim: В таблице каталога для n=10 указано L(10)=123
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/sacred-formulas.md:30
+  case: cases/established_constants_fit_count.py
+  claim: раздел Established Constants содержит 75 совпадений
+  verdict: ОПРОВЕРГНУТО
+- source: deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:37
+  case: cases/master_catalog_msme_error.py
+  claim: Для m_s/m_e в каталоге указано значение 182,8
+  verdict: ОПРОВЕРГНУТО
+- source: docs/docs/math-foundations/sacred-formulas.md:194
+  case: cases/neutron_lifetime_formula.py
+  claim: Формула времени жизни нейтрона даёт 879,4 с
+  verdict: ПУСТО
+  verdict_was: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/sacred-formulas.md:197
+  case: cases/m_theory_dimension_formula.py
+  claim: Формула размерности M-теории даёт 11,0001
+  verdict: ПУСТО
+  verdict_was: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/sacred-formulas.md:37
+  case: cases/proton_mass_ratio_error.py
+  claim: для m_p/m_e указана ошибка 0,109 %
+  verdict: ОПРОВЕРГНУТО
+- source: docs/docs/math-foundations/sacred-formulas.md:201
+  case: cases/qcd_phase_tc_formula.py
+  claim: Формула QCD phase даёт 156,5 МэВ
+  verdict: ПУСТО
+  verdict_was: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/sacred-formulas.md:202
+  case: cases/dirac_cp_phase_formula.py
+  claim: Формула фазы Дирака CP даёт 222,0°
+  verdict: ПУСТО
+  verdict_was: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/sacred-formulas.md:203
+  case: cases/dark_photon_x17_formula.py
+  claim: Формула тёмного фотона X17 даёт 17,0 МэВ
+  verdict: ПУСТО
+  verdict_was: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/sacred-formulas.md:25
+  case: cases/sacred_fit_multiplicity.py
+  claim: объявленного перебора 20 412 достаточно для формул из таблиц
+  verdict: ОПРОВЕРГНУТО
+- source: docs/docs/math-foundations/sacred-formulas.md:30
+  case: cases/sacred_fit_multiplicity.py
+  claim: совпадения священных формул с константами содержательны, а не подогнаны
+  verdict: ПУСТО
+- source: docs/docs/math-foundations/sacred-formulas.md:194
+  case: cases/sacred_external_targets.py
+  claim: Формула tau_n согласуется с измеренным временем жизни нейтрона
+  verdict: ПУСТО
+- source: docs/docs/math-foundations/sacred-formulas.md:37
+  case: cases/sacred_external_targets.py
+  claim: Формула воспроизводит отношение масс протона и электрона
+  verdict: ОПРОВЕРГНУТО
+- source: docs/docs/math-foundations/sacred-formulas.md:201
+  case: cases/sacred_external_targets.py
+  claim: Формула T_c согласуется с измеренной температурой перехода КХД
+  verdict: ПУСТО
+- source: docs/docs/math-foundations/sacred-formulas.md:203
+  case: cases/sacred_external_targets.py
+  claim: Формула X17 согласуется с независимым измерением массы бозона
+  verdict: ПУСТО
