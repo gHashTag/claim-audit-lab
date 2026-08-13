@@ -104,6 +104,11 @@ class Claim:
     multiplicity: Optional[Callable[[], dict]] = None      # ожидаемые случайные попадания
     mdl: Optional[Callable[[], dict]] = None               # биты описания против бит совпадения
     declared_domain: Optional[Callable[[], list]] = None   # нарушения объявленных границ
+    arithmetic: Optional[Callable[[], dict]] = None  # {"params":(n,k,m,p,q),
+                                    # "rel_uncertainty": относит. погрешность}
+                                    # для проверки достаточности арифметики
+    search_size: Optional[int] = None  # сколько формул/гипотез реально перебрано;
+                                       # из него ВЫВОДИТСЯ порог С15 по Шидаку
     notes: str = ""
 
 
@@ -380,6 +385,17 @@ def sieve_uncertainty(c: Claim) -> Result:
     if c.sample is None or c.statistics is None or c.reference is None:
         return Result("С10 неопределённость", SKIP)
     rows = _z_table(c)
+    # Найденный дефект: если ни одно имя статистики не совпало с ключами
+    # эталона, таблица пуста и сито падало с ValueError на max(). Падение
+    # маскировалось общим перехватом и превращалось в FAIL, то есть в
+    # обвинение утверждению за ошибку инструмента. Теперь это OPEN с прямым
+    # указанием несопоставленных имён.
+    if not rows:
+        ref_keys = ", ".join(sorted(_as_dict(c.reference()))) or "нет"
+        stat_keys = ", ".join(sorted(c.statistics)) or "нет"
+        return Result("С10 неопределённость", OPEN,
+                      "имена статистик не сопоставлены с эталоном: "
+                      "статистики [%s], эталон [%s]" % (stat_keys, ref_keys))
     det = "; ".join("%s %+.2f%% (полуширина %.2f%%, z %+.1f)"
                     % (k, 100.0 * (v["point"] - v["ref"]) / v["ref"],
                        100.0 * v["half"] / abs(v["point"]), v["z"])
@@ -491,6 +507,65 @@ def end_to_end_mutation(claim: Claim, base_sieves) -> Result:
                   "подделка получила вердикт %s" % v)
 
 
+def sidak_local_alpha(alpha: float, m: int) -> float:
+    """Локальный уровень по Шидаку: 1-(1-alpha)^(1/m).
+
+    Доказанное тождество, а не эвристика: если m тестов независимы, то
+    вероятность хотя бы одной ложной тревоги равна 1-(1-alpha_loc)^m, и
+    приравнивание её к alpha даёт эту формулу. Для больших m она мягче
+    Бонферрони (alpha/m), но остаётся консервативной при положительной
+    зависимости тестов.
+    """
+    if m <= 1:
+        return alpha
+    return 1.0 - (1.0 - alpha) ** (1.0 / m)
+
+
+def sigma_threshold(c: Claim):
+    """Порог С15 в сигмах, ВЫВЕДЕННЫЙ из размера перебора.
+
+    Порог «3 сигма» — соглашение, а не вывод, и это была честно записанная
+    слабость версии 3. Правильный порог зависит от того, сколько гипотез
+    перебрано: при переборе m формул локальный уровень надо ужать по Шидаку, и
+    двусторонний порог в сигмах равен обратной функции нормального
+    распределения от 1-alpha_loc/2.
+
+    Если размер перебора не объявлен, порог остаётся 3 сигма, но в тексте
+    результата это помечено как соглашение — чтобы вердикт нельзя было принять
+    за выведенный.
+    """
+    m = c.search_size
+    if m is None:
+        return 3.0, "порог 3 сигма (СОГЛАШЕНИЕ: размер перебора не объявлен)"
+    if int(m) < 1:
+        raise ValueError("размер перебора не может быть меньше единицы")
+    a_loc = sidak_local_alpha(c.alpha, int(m))
+    try:
+        from scipy.stats import norm
+        z = float(norm.isf(a_loc / 2.0))
+    except Exception:
+        z = _isf_normal(a_loc / 2.0)
+    return z, ("порог %.3g сигма ВЫВЕДЕН: перебор %d, alpha=%.3g, "
+               "локальный alpha=%.3g по Шидаку" % (z, int(m), c.alpha, a_loc))
+
+
+def _isf_normal(p: float) -> float:
+    """Обратная функция хвоста нормального распределения без scipy.
+
+    Двоичный поиск по erfc: p = erfc(z/sqrt(2))/2. Нужен только как запасной
+    путь, поэтому важна не скорость, а то, что он не врёт: точность проверяется
+    в самопроверке против scipy.
+    """
+    lo, hi = 0.0, 40.0
+    for _ in range(200):
+        mid = 0.5 * (lo + hi)
+        if 0.5 * math.erfc(mid / math.sqrt(2.0)) > p:
+            lo = mid
+        else:
+            hi = mid
+    return 0.5 * (lo + hi)
+
+
 def sieve_external_target(c: Claim) -> Result:
     """С15. Внешняя цель: проверка не должна быть тавтологией.
 
@@ -536,8 +611,10 @@ def sieve_external_target(c: Claim) -> Result:
         "%s %.4g" % (k, v) for k, v in nums.items() if k.startswith("сигм"))
     if not nums.get("сигм_формула") and not nums.get("сигм_цель"):
         return Result(name, OPEN, "нечего сравнивать с внешней величиной")
-    st = PASS if worst_sigma <= 3.0 else FAIL
-    return Result(name, st, det + " | порог 3 сигма", numbers=nums)
+    thr, thr_note = sigma_threshold(c)
+    nums["порог_сигм"] = thr
+    st = PASS if worst_sigma <= thr else FAIL
+    return Result(name, st, det + " | " + thr_note, numbers=nums)
 
 
 def sieve_multiplicity(c: Claim) -> Result:
@@ -613,6 +690,38 @@ def sieve_declared_domain(c: Claim) -> Result:
         head, " ..." if len(bad) > 4 else ""), numbers={"нарушений": len(bad)})
 
 
+def sieve_arithmetic(c: Claim) -> Result:
+    """С19. Достаточность арифметики: не подменяет ли округление вывод.
+
+    Вердикт, полученный на double, законен лишь тогда, когда ошибка машинной
+    арифметики на порядки меньше погрешности, с которой сравнивается результат.
+    Сито не верит в это, а проверяет: то же значение пересчитывается на 50
+    знаках, и разность сопоставляется с погрешностью сравнения.
+
+    FAIL означает не «формула неверна», а «вердикт по этому утверждению
+    выносить нельзя, пока не поднята точность» — поэтому он ведёт к ВОПРОСУ, а
+    не к опровержению.
+    """
+    name = "С19 достаточность арифметики"
+    if c.arithmetic is None:
+        return Result(name, SKIP)
+    spec = c.arithmetic()
+    params = tuple(spec["params"])
+    unc = float(spec["rel_uncertainty"])
+    try:
+        from .exact import arithmetic_is_sufficient
+        ok, err, limit = arithmetic_is_sufficient(params, unc)
+    except RuntimeError as e:
+        return Result(name, OPEN, "проверить нечем: %s" % e)
+    det = ("ошибка арифметики %.2e; предел %.2e (сотая доля погрешности "
+           "сравнения %.2e)" % (err, limit, unc))
+    nums = {"ошибка_арифметики": err, "предел": limit, "погрешность": unc}
+    if ok:
+        return Result(name, PASS, det, numbers=nums)
+    return Result(name, FAIL, det + " | точности не хватает для вывода",
+                  numbers=nums)
+
+
 ALL_SIEVES = [
     sieve_regenerable,
     sieve_agreement,
@@ -630,6 +739,7 @@ ALL_SIEVES = [
     sieve_multiplicity,
     sieve_description_length,
     sieve_declared_domain,
+    sieve_arithmetic,
 ]
 
 
@@ -754,6 +864,12 @@ def verdict_of(results: list) -> str:
     #    вопрос: расхождения могло и не быть.
     # 5b. Формула не сжимает данные — «закон» не короче числа, это не находка.
     if st.get("С17 описание короче данных") == FAIL:
+        return QUESTION
+    # 5в. Точности арифметики не хватает: вердикт по существу выносить нельзя,
+    # это вопрос к вычислению, а не опровержение утверждения. Проверка стоит
+    # ПЕРЕД опровержениями намеренно — иначе опровержение могло бы оказаться
+    # артефактом округления.
+    if st.get("С19 достаточность арифметики") == FAIL:
         return QUESTION
     if (st.get("С2 заявленное=эталон") == FAIL or st.get("С3 данные=эталон") == FAIL
             or st.get("С15 внешняя цель") == FAIL

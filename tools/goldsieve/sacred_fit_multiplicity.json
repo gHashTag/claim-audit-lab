@@ -1,0 +1,318 @@
+[
+ {
+  "claim": "объявленного перебора 20 412 достаточно для формул из таблиц",
+  "source": "docs/docs/math-foundations/sacred-formulas.md:25 и таблицы",
+  "verdict": "ОПРОВЕРГНУТО",
+  "notes": "нарушение означает, что фактическое пространство перебора шире объявленного, а значит занижена и поправка на множественность",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md": "ecdcc1ebcfb4cdd0",
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md @commit": "bcd46a5"
+   },
+   "отпечаток рецепта": "1258227c94589214",
+   "alpha": 0.05,
+   "tolerance": 1e-09
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 4.76837158203125e-06
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 1.8358230590820312e-05
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "FAIL",
+    "detail": "value +3200.00%",
+    "numbers": {
+     "value": 32.0
+    },
+    "seconds": 0.000881195068359375
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +100.00%; подставка 2 отклонена: value +500.00%",
+    "numbers": {},
+    "seconds": 1.2874603271484375e-05
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "позитивный контроль даёт эталон: value +0.00%",
+    "numbers": {},
+    "seconds": 0.0012116432189941406
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "FAIL",
+    "detail": "выход за объявленные границы: ('k', 5, (-4, 4)); ('m', -4, (-3, 0)); ('m', 1, (-3, 0)); ('p', 5, (-4, 4)) ...",
+    "numbers": {
+     "нарушений": 32
+    },
+    "seconds": 0.0005898475646972656
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 10 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.0013091564178466797
+   }
+  ]
+ },
+ {
+  "claim": "совпадения священных формул с константами содержательны, а не подогнаны",
+  "source": "docs/docs/math-foundations/sacred-formulas.md:30 (75 совпадений)",
+  "verdict": "ПУСТО",
+  "notes": "проверяется не арифметика формулы, а то, несёт ли совпадение информацию: сколько попаданий даёт случай и сжимает ли формула данные",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md": "ecdcc1ebcfb4cdd0",
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md @commit": "bcd46a5"
+   },
+   "отпечаток рецепта": "8d9862ef4eab2641",
+   "alpha": 0.05,
+   "tolerance": 1e-09
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 1.0
+    },
+    "seconds": 6.9141387939453125e-06
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 1.3828277587890625e-05
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 6.67572021484375e-06
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +100.00%",
+    "numbers": {},
+    "seconds": 1.1682510375976562e-05
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.1457672119140625e-06
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "VOID",
+    "detail": "ожидаемых случайных попаданий 1.48; p_глоб 0.905; случайная цель накрывается в 62.0% случаев | попадание ожидается случайно",
+    "numbers": {
+     "ожидаемых_попаданий": 1.4776666666666667,
+     "p_глоб": 0.9050367343763366,
+     "доля_случайных_целей_с_попаданием": 0.6196666666666667
+    },
+    "seconds": 0.10389161109924316
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "FAIL",
+    "detail": "описание 16.91 бит против совпадения 12.15 бит (выигрыш -4.76) | сжатия нет",
+    "numbers": {
+     "бит_описания": 16.91065444060912,
+     "бит_совпадения": 12.150208855799514,
+     "выигрыш": -4.760445584809608
+    },
+    "seconds": 0.0013055801391601562
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "FAIL",
+    "detail": "выход за объявленные границы: ('k', 5, (-4, 4)); ('m', -4, (-3, 0)); ('m', 1, (-3, 0)); ('p', 5, (-4, 4)) ...",
+    "numbers": {
+     "нарушений": 32
+    },
+    "seconds": 0.0005645751953125
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 9 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ПУСТО",
+    "numbers": {},
+    "seconds": 0.0936882495880127
+   }
+  ]
+ }
+]

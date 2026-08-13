@@ -16,7 +16,7 @@ from .sieve import (Claim, run, CONFIRMED, REFUTED, QUESTION, EMPTY, VOID,
                     PASS, OPEN, FAIL, rel_dev)
 
 # Все пропуски обязаны быть объявлены (сито С13), иначе вердикт ВОПРОС.
-SR = {"С%d" % i: "неприменимо к синтетическому случаю" for i in range(1, 19)}
+SR = {"С%d" % i: "неприменимо к синтетическому случаю" for i in range(1, 20)}
 
 
 def _cases():
@@ -401,12 +401,118 @@ def main() -> int:
         fail += 1
         print("  FAIL %-45s %s" % ("С18 без ложных срабатываний", st18))
 
+    print("\n  сито С10 при несопоставленных именах статистик:")
+    from .sieve import sieve_uncertainty, Claim as _C10, OPEN as _O
+    c10 = _C10(name="x", reference=lambda: 1.0,
+               sample=lambda: [1.0, 1.01, 0.99],
+               statistics={"иное_имя": lambda a: sum(a) / len(a)})
+    try:
+        r10 = sieve_uncertainty(c10)
+        if r10.status == _O and "не сопоставлены" in r10.detail:
+            ok += 1
+            print("  ok   С10 не падает и объясняет несопоставленные имена")
+        else:
+            fail += 1
+            print("  FAIL С10 не падает и объясняет несопоставленные имена (%s)"
+                  % r10.status)
+    except Exception as e:
+        fail += 1
+        print("  FAIL С10 упало с %r" % (e,))
+    # ПОДСТАВКА: при СОВПАДАЮЩЕМ имени сито обязано работать по существу, а не
+    # уходить в тот же OPEN — иначе заглушка съела бы всю проверку.
+    c10ok = _C10(name="x", reference=lambda: 1.0,
+                 sample=lambda: [1.0, 1.01, 0.99],
+                 statistics={"value": lambda a: sum(a) / len(a)})
+    if sieve_uncertainty(c10ok).status != _O or "не сопоставлены" not in \
+            sieve_uncertainty(c10ok).detail:
+        ok += 1
+        print("  ok   С10 при совпадающем имени работает по существу")
+    else:
+        fail += 1
+        print("  FAIL С10 при совпадающем имени работает по существу")
+
+    print("\n  сито С19 достаточность арифметики:")
+    from .sieve import sieve_arithmetic, Claim as _C19, PASS as _P, FAIL as _F
+    c_ok = _C19(name="x", arithmetic=lambda: {"params": (9, 4, 0, 4, -1),
+                                              "rel_uncertainty": 1.7e-11})
+    r_ok = sieve_arithmetic(c_ok)
+    # ПОДСТАВКА: вымышленная погрешность точнее самой double обязана дать FAIL.
+    c_bad = _C19(name="x", arithmetic=lambda: {"params": (9, 4, 0, 4, -1),
+                                              "rel_uncertainty": 1e-16})
+    r_bad = sieve_arithmetic(c_bad)
+    if r_ok.status == _P and r_bad.status == _F:
+        ok += 1
+        print("  ok   С19 пропускает достаточную и ловит недостаточную точность")
+    else:
+        fail += 1
+        print("  FAIL С19 пропускает достаточную и ловит недостаточную (%s/%s)"
+              % (r_ok.status, r_bad.status))
+    # без поля сито обязано молчать, а не выносить вердикт
+    if sieve_arithmetic(_C19(name="x")).status not in (_P, _F):
+        ok += 1
+        print("  ok   С19 без данных не выносит вердикт")
+    else:
+        fail += 1
+        print("  FAIL С19 без данных не выносит вердикт")
+
+    print("\n  порог сита С15 (выведенный, не соглашение):")
+    from .sieve import sidak_local_alpha, sigma_threshold, _isf_normal
+    from .sieve import Claim as _C
+    # 1. Порог растёт с размером перебора: 1 гипотеза -> 1,96 сигма (обычные
+    # 95 %), 123 201 гипотеза -> около 5 сигм. Это ВЫВОД из поправки Шидака,
+    # а не выбранное число.
+    z1 = sigma_threshold(_C(name="x", search_size=1))[0]
+    zM = sigma_threshold(_C(name="x", search_size=123201))[0]
+    if abs(z1 - 1.96) < 0.01 and 4.9 < zM < 5.2:
+        ok += 1
+        print("  ok   порог выведен из перебора (%.2f -> %.2f сигма)" % (z1, zM))
+    else:
+        fail += 1
+        print("  FAIL порог выведен из перебора (%.3f, %.3f)" % (z1, zM))
+    # 2. Без объявленного перебора порог остаётся 3 сигма, но ОБЯЗАН быть
+    # помечен словом СОГЛАШЕНИЕ — иначе его примут за выведенный.
+    z0, note = sigma_threshold(_C(name="x"))
+    if z0 == 3.0 and "СОГЛАШЕНИЕ" in note:
+        ok += 1
+        print("  ok   порог без перебора помечен как соглашение")
+    else:
+        fail += 1
+        print("  FAIL порог без перебора помечен как соглашение")
+    # 3. ПОДСТАВКА: Бонферрони alpha/m обязан отличаться от Шидака настолько,
+    # чтобы проверка это видела при малом m (при большом m они сближаются, и
+    # там подстановка прошла бы незамеченной).
+    a_sid = sidak_local_alpha(0.05, 2)
+    if abs(a_sid - 0.05 / 2) > 1e-4:
+        ok += 1
+        print("  ok   Шидак отличим от Бонферрони при m=2 (%.5f)" % a_sid)
+    else:
+        fail += 1
+        print("  FAIL Шидак отличим от Бонферрони при m=2")
+    # 4. Запасной обратный нормальный без scipy совпадает со scipy.
+    try:
+        from scipy.stats import norm
+        d = max(abs(_isf_normal(p) - float(norm.isf(p)))
+                for p in (0.025, 1e-4, 1e-7))
+        if d < 1e-6:
+            ok += 1
+            print("  ok   запасной обратный нормальный совпал со scipy (%.1e)" % d)
+        else:
+            fail += 1
+            print("  FAIL запасной обратный нормальный совпал со scipy (%.1e)" % d)
+    except ImportError:
+        ok += 1
+        print("  ok   scipy отсутствует, запасной путь единственный")
+
     print("\n  модули-эталоны и служебные модули:")
     from . import stats as _stats
     from .coverage import selftest as _cov
     from .family import selftest as _fam
+    from .threshold import selftest as _thr
+    from .exact import selftest as _exa
     mods = [("неопределённость", _stats.selftest, 6), ("покрытие", _cov, 3),
-            ("семейство и множественность", _fam, 14)]
+            ("семейство и множественность", _fam, 14),
+            ("порог разрешающей способности", _thr, 9),
+            ("достаточность арифметики", _exa, 5)]
     if os.environ.get("GOLDSIEVE_FULL"):
         from .refs.khinchin_reference import selftest as _kh
         from .refs.gue_montecarlo import selftest as _mc

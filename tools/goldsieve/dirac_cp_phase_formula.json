@@ -1,0 +1,130 @@
+[
+ {
+  "claim": "Формула фазы Дирака CP даёт 222,0°",
+  "source": "docs/docs/math-foundations/sacred-formulas.md:202",
+  "verdict": "ПОДТВЕРЖДЕНО",
+  "notes": "Сравнение выполняется на точности источника: один знак после запятой. Строка помечена в корпусе как непроверенное предсказание; аудит вычисляет только численное значение формулы.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md": "ecdcc1ebcfb4cdd0",
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md @commit": "bcd46a5"
+   },
+   "отпечаток рецепта": "f2f9c376032c3d47",
+   "alpha": 0.05,
+   "tolerance": 0.0
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 222.0
+    },
+    "seconds": 7.152557373046875e-06
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 1.5497207641601562e-05
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.00021982192993164062
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value -0.45%; подставка 2 отклонена: value +0.45%; подставка 3 отклонена: value +61.80%",
+    "numbers": {},
+    "seconds": 2.4557113647460938e-05
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "негативный контроль отличается от эталона: value +61.80%",
+    "numbers": {},
+    "seconds": 9.775161743164062e-06
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 3.337860107421875e-06
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "PASS",
+    "detail": "value +0.00% (полуширина 0.00%, z +0.0)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.0787801742553711
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик",
+    "numbers": {},
+    "seconds": 0.0024526119232177734
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.004510641098022461
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 5 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.005197763442993164
+   }
+  ]
+ }
+]

@@ -88,3 +88,15 @@ claims:
   case: cases/sacred_external_targets.py
   claim: Формула X17 согласуется с независимым измерением массы бозона
   verdict: ПУСТО
+- source: docs/docs/math-foundations/sacred-formulas.md:26
+  case: cases/sacred_table_audit_20260813.py
+  claim: Расширенный поиск содержит 123 201 комбинацию
+  verdict: ПОДТВЕРЖДЕНО
+- source: docs/docs/math-foundations/sacred-formulas.md:214
+  case: cases/sacred_table_audit_20260813.py
+  claim: Раздел Error Classification содержит 35 совпадений с ошибкой менее 0,01%
+  verdict: ОПРОВЕРГНУТО
+- source: docs/docs/math-foundations/sacred-formulas.md:234
+  case: cases/sacred_random_probability.py
+  claim: Вероятность случайного попадания в класс EXACT равна 1 из 500 (0,2 %)
+  verdict: ОПРОВЕРГНУТО

@@ -146,6 +146,12 @@ def _pred(name, source_line, f, target, stated, notes, wrong):
         name=name,
         source=source_line,
         claim_kind="prediction",
+        # фактический перебор семейства: 9*13*9*13*9 = 123 201 комбинация
+        # (подтверждено обходом таблиц корпуса). Из него ВЫВОДИТСЯ порог С15.
+        search_size=123201,
+        # проверка, что вердикт не является артефактом округления double
+        arithmetic=lambda: {"params": (9, 4, 0, 4, -1),
+                            "rel_uncertainty": 1.7e-11},
         stated=f,
         reference=f,
         observed=f,
@@ -171,6 +177,7 @@ def _pred(name, source_line, f, target, stated, notes, wrong):
                    "sacred_fit_multiplicity",
             "С18": "объявленные границы разобраны отдельным случаем "
                    "sacred_fit_multiplicity",
+            "С19": "утверждение не о члене семейства формул; ошибка double несопоставимо меньше сравниваемой погрешности",
         },
     )
 
