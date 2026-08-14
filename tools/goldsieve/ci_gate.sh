@@ -7,7 +7,11 @@
 #   * ложное срабатывание на негативном стресс-корпусе;
 #   * необнаруженная внесённая поломка (мутационная проверка);
 #   * ложное срабатывание на реальных кейсах реестра (калибровка);
-#   * отклонение от baseline без reason-code.
+#   * отклонение от baseline без reason-code;
+#   * расхождение coverage manifest с фактическим составом корпуса (тик 41);
+#   * провал самопроверки трёхуровневых статусов и линтера «подтверждено» (тик 41);
+#   * провал самопроверки pre-filter (тик 41);
+#   * нарушение целостности заморозки v12 (тик 41).
 #
 # Матрица интерпретаторов задаётся переменной GOLDSIEVE_PYTHONS.
 set -u
@@ -52,6 +56,10 @@ for PY in $PYTHONS; do
     [ "$FULL" = 1 ] && step "самопроверка каскада"  "$PY" -m goldsieve.selftest
     step "корпус фикстур"            "$PY" measure_identity.py
     step "мутационная проверка"      "$PY" mutation_identity.py
+    # Трёхуровневые статусы, линтер и счётчики не зависят от numpy/pyyaml
+    # и обязаны проходить на всей матрице интерпретаторов.
+    step "трёхуровневые статусы"    "$PY" -m goldsieve.scope
+    step "счётчики тика"             "$PY" tick_counters.py selftest
     [ "$FULL" = 1 ] && step "калибровка на реестре" "$PY" calibrate_identity.py
 done
 
@@ -67,6 +75,12 @@ if [ -z "$BASE_PY" ]; then
     FAIL=1; FAILED+=("гейт baseline: нет пригодного интерпретатора")
 else
     step "гейт baseline" "$BASE_PY" baseline.py check
+    # Заморозка v12: режим frozen НЕ падает при отличиях от замороженной
+    # версии (работа идёт, отличия ожидаются), но падает при НАРУШЕНИИ
+    # ЦЕЛОСТНОСТИ самой записи: переписать историю задним числом нельзя.
+    step "целостность заморозки v12" "$BASE_PY" baseline.py frozen
+    step "coverage manifest"          "$BASE_PY" coverage_manifest.py
+    step "pre-filter Golden Chain"    "$BASE_PY" -m goldsieve.prefilter
 fi
 
 echo

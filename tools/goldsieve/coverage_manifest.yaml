@@ -1,0 +1,198 @@
+# Coverage manifest детектора косвенной тавтологии (пункт 3 приказа тика 41).
+#
+# ЭТО ОБЪЯВЛЕНИЕ, А НЕ ДОКАЗАТЕЛЬСТВО. Каждая строка сверяется кодом
+# (coverage_manifest.py) с фактическим составом корпуса фикстур и каталога
+# мутаций: расхождение объявления с фактом закрывает гейт. Иначе манифест
+# превратился бы ровно в то, чем был отчёт тика 39 — заявление о покрытии,
+# которого нет.
+#
+# Поля по каждому конструкту:
+#   supported        — разбирается ли конструкция (true/false)
+#   positive         — сколько положительных фикстур ОБЯЗАНО быть в корпусе
+#   negative         — сколько негативных фикстур ОБЯЗАНО быть
+#   mutation_targets — имена мутаций, целящихся в код именно этого разбора
+#   fallback         — что делает детектор, когда разбор не удаётся
+#   limits           — известные ограничения внутри поддержанного класса
+
+runtimes:
+  # Версии, на которых прогон фактически состоялся. Формулировка «проверено на
+  # указанных версиях CPython», а НЕ «платформонезависимо»: другая ОС в матрице
+  # отсутствует (пункт 5 приказа), статус — not-evaluated.
+  verified:
+    - CPython 3.14.3
+    - CPython 3.14.4
+  partial:
+    - id: CPython 3.12.13
+      reason: >-
+        нет numpy и pyyaml: каскад сит и калибровка на реестре физически
+        непрогоняемы; разбор конструкций (корпус фикстур и мутации) от этих
+        пакетов не зависит и прогоняется полностью
+  platforms:
+    verified:
+      - Linux (песочница)
+    not_evaluated:
+      - id: macOS
+        reason: >-
+          локальное устройство не ответило в трёх попытках тика 41 (120 с,
+          120 с, 630 с); брутфорс запрещён, поэтому статус not-evaluated,
+          а не «работает»
+      - id: Windows
+        reason: устройство недоступно
+
+constructs:
+  прямые формы:
+    supported: true
+    positive: 3
+    negative: 8
+    mutation_targets:
+      - разбор прямых вызовов (calls и имя-функция)
+    fallback: нет
+    limits: []
+
+  globals:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - извлечение глобального состояния (_tainted_globals)
+      - наполнители глобального состояния (_tainted_writers)
+    fallback: при неразрешимом имени возвращается False (подозрение снимается)
+    limits:
+      - запись в глобальное состояние из другого модуля не отслеживается
+
+  closure:
+    supported: true
+    positive: 8
+    negative: 3
+    mutation_targets:
+      - чтение захваченного значения (_closure_value)
+      - вложенные определения (_local_defs)
+    fallback: при недоступной ячейке возвращается False
+    limits:
+      - ячейка, заполняемая после первого вызова, читается как пустая
+
+  descriptor:
+    supported: true
+    positive: 6
+    negative: 5
+    mutation_targets:
+      - разбор дескриптора (_descriptor_origin)
+      - игнор параметров протокола (PROTOCOL_PARAMS)
+      - база разобранного атрибута (resolved_bases)
+    fallback: >-
+      при неизвестном виде дескриптора возвращается None, и разбор идёт по
+      прежнему пути (чтение поля объекта)
+    limits:
+      - >-
+        имя читаемого поля, собранное в __set_name__ и известное только в
+        рантайме, не связывается с полем, заполненным в __init__ (фикстура в
+        LIMITATIONS)
+
+  bound method:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - приёмник связанного объекта (self/cls)
+      - разбор поля объекта (_field_from_ref)
+    fallback: нет
+    limits: []
+
+  callable object:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - разбор вызываемого объекта (__call__)
+    fallback: нет
+    limits: []
+
+  decorator:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - разбор обёртки декоратора (__wrapped__)
+    fallback: нет
+    limits:
+      - декоратор, подменяющий источник данных без __wrapped__, не прослеживается
+
+  default arg:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - значение по умолчанию от эталона
+    fallback: нет
+    limits: []
+
+  lambda:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - разбор lambda (_node_for)
+    fallback: при недоступном исходном тексте возвращается False
+    limits: []
+
+  partial:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - нормализация functools.partial
+    fallback: нет
+    limits: []
+
+  # --- конструкции, охват по которым НЕ заявлен -----------------------------
+  # Приказ тика 41: глубина вместо ширины. Эти классы не берутся, пока closures
+  # и descriptors не доведены до позитивных, негативных и мутационных
+  # доказательств. Перечислены явно, чтобы «не заявлено» нельзя было прочитать
+  # как «работает».
+  exec/eval:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: исходный текст недоступен, возвращается False
+    limits: [охват не заявлен; фикстур нет]
+
+  генераторы:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: разбор тела идёт как у обычной функции, yield не отслеживается
+    limits: [охват не заявлен; фикстур нет]
+
+  корутины:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: await не отслеживается
+    limits: [охват не заявлен; фикстур нет]
+
+  метаклассы:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: атрибут, созданный метаклассом, читается как обычный
+    limits: [охват не заявлен; фикстур нет]
+
+  contextvars:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: значение из контекста не отслеживается
+    limits: [охват не заявлен; фикстур нет]
+
+  C-расширения:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: исходный текст недоступен, возвращается False
+    limits: [охват не заявлен; исходного текста нет в принципе]

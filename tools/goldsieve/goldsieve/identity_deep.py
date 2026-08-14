@@ -329,16 +329,114 @@ def _resolve_attr(instance, dotted: str):
 
 
 def _origin_function(fn, ref, depth: int, seen: set[int],
-                     trail: list[str], instance=None) -> tuple[bool, list[str]]:
+                     trail: list[str], instance=None,
+                     protocol: bool = False) -> tuple[bool, list[str]]:
     """Разбор одной функции: все ли её источники значения ведут к эталону."""
     node, tree = _node_for(fn)
     if node is None or tree is None:
         return False, trail
+    return _origin_node(node, tree, fn, ref, depth, seen, trail, instance,
+                        protocol)
+
+
+def _local_defs(node: ast.AST) -> dict[str, ast.AST]:
+    """Функции, определённые ВНУТРИ тела разбираемого узла.
+
+    Такое имя не лежит ни в globals, ни в ячейке замыкания, поэтому прежний
+    разбор считал его неизвестным источником и снимал подозрение. На самом деле
+    это ближайший разбираемый узел: `def _l3(): return fn()` внутри `_l2`.
+    Учитываются только определения ПЕРВОГО уровня вложенности: определения
+    глубже разбираются рекурсивно, когда до них дойдёт разбор.
+    """
+    out: dict[str, ast.AST] = {}
+    for stmt in _body_of(node):
+        for sub in ast.walk(stmt):
+            if isinstance(sub, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                out.setdefault(sub.name, sub)
+            elif isinstance(sub, ast.Assign) and isinstance(sub.value, ast.Lambda):
+                for tgt in sub.targets:
+                    if isinstance(tgt, ast.Name):
+                        out.setdefault(tgt.id, sub.value)
+    return out
+
+
+def _descriptor_origin(owner, attr: str, ref, depth: int, seen: set[int],
+                       trail: list[str]) -> tuple[bool, list[str]] | None:
+    """Происхождение значения атрибута `owner.attr` через дескриптор.
+
+    Возвращает (вердикт, путь) либо None, если разобрать нечем — тогда решение
+    принимает вызывающий по общему правилу «неизвестный источник снимает
+    подозрение».
+
+    Разбираются: property (fget), functools.cached_property (func),
+    staticmethod и classmethod (__func__), произвольный дескриптор с методом
+    __get__, и падение в __getattr__ класса, когда атрибута нет в mro.
+    """
+    if owner is None or isinstance(owner, types.ModuleType):
+        return None
+    cls = owner if isinstance(owner, type) else type(owner)
+    inst = None if isinstance(owner, type) else owner
+    descr = None
+    for base in getattr(cls, "__mro__", (cls,)):
+        if attr in getattr(base, "__dict__", {}):
+            descr = base.__dict__[attr]
+            break
+
+    if descr is None:
+        getattr_fn = getattr(cls, "__getattr__", None)
+        if isinstance(getattr_fn, types.FunctionType):
+            return _origin_function(getattr_fn, ref, depth + 1, seen,
+                                    trail + ["__getattr__ %s" % cls.__name__],
+                                    instance=inst, protocol=True)
+        return None
+
+    if isinstance(descr, property):
+        if descr.fget is None:
+            return None
+        return _origin_function(descr.fget, ref, depth + 1, seen,
+                                trail + ["property %s.%s" % (cls.__name__, attr)],
+                                instance=inst)
+
+    if isinstance(descr, functools.cached_property):
+        func = getattr(descr, "func", None)
+        if not isinstance(func, types.FunctionType):
+            return None
+        return _origin_function(func, ref, depth + 1, seen,
+                                trail + ["cached_property %s.%s"
+                                         % (cls.__name__, attr)],
+                                instance=inst)
+
+    if isinstance(descr, (staticmethod, classmethod)):
+        func = getattr(descr, "__func__", None)
+        if not isinstance(func, types.FunctionType):
+            return None
+        return origin_is(func, ref, depth + 1, seen,
+                         trail + ["%s %s.%s" % (type(descr).__name__,
+                                                cls.__name__, attr)])
+
+    get = getattr(type(descr), "__get__", None)
+    if isinstance(get, types.FunctionType):
+        return _origin_function(get, ref, depth + 1, seen,
+                                trail + ["дескриптор %s.%s"
+                                         % (cls.__name__, attr)],
+                                instance=descr, protocol=True)
+    return None
+
+
+# Параметры протоколов Python, которые не приносят данных извне разбора.
+PROTOCOL_PARAMS = frozenset({"self", "cls", "obj", "owner", "objtype",
+                             "instance", "name"})
+
+
+def _origin_node(node, tree, fn, ref, depth: int, seen: set[int],
+                 trail: list[str], instance=None,
+                 protocol: bool = False) -> tuple[bool, list[str]]:
     ref_name = getattr(ref, "__name__", None)
     globals_ = getattr(fn, "__globals__", {}) or {}
     tainted = _tainted_globals(tree, ref_name) if ref_name else set()
     writers = _tainted_writers(tree, ref_name, tainted) if ref_name else set()
 
+    local_defs = _local_defs(node)
     body = _body_of(node)
     calls, dotted, names = [], [], []
     for stmt in body:
@@ -377,6 +475,10 @@ def _origin_function(fn, ref, depth: int, seen: set[int],
             # вызываемые объекты молча выпадали из разбора.
             if instance is not None and i == 0 and arg.arg in ("self", "cls"):
                 continue
+            # Метод протокола (__get__, __getattr__ и подобные): служебные
+            # аргументы собственным источником данных не являются.
+            if protocol and arg.arg in PROTOCOL_PARAMS:
+                continue
             default = defaults[i - pad] if i >= pad else None
             if not _default_from_ref(default, ref, ref_name, globals_,
                                      tainted, depth, seen):
@@ -385,6 +487,8 @@ def _origin_function(fn, ref, depth: int, seen: set[int],
                 default_from_ref = True
         for arg, default in zip(args.kwonlyargs, args.kw_defaults):
             param_names.add(arg.arg)
+            if protocol and arg.arg in PROTOCOL_PARAMS:
+                continue
             if not _default_from_ref(default, ref, ref_name, globals_,
                                      tainted, depth, seen):
                 defaults_ok = False
@@ -412,6 +516,15 @@ def _origin_function(fn, ref, depth: int, seen: set[int],
             if name in tainted:
                 found_ref = True
                 continue
+            if name in local_defs:
+                ok, tr = _origin_node(local_defs[name], tree, fn, ref,
+                                      depth + 1, seen, trail + [name],
+                                      instance)
+                if not ok:
+                    return False, trail
+                trail = tr
+                found_ref = True
+                continue
             return False, trail       # неизвестный источник — подозрение снято
         if target is ref:
             found_ref = True
@@ -423,6 +536,7 @@ def _origin_function(fn, ref, depth: int, seen: set[int],
         found_ref = True
 
     # --- вызовы через точку -------------------------------------------------
+    dotted_bases: set[str] = set()
     for label in dotted:
         base = label.split(".")[0]
         if base in PURE_MODULES:
@@ -447,16 +561,38 @@ def _origin_function(fn, ref, depth: int, seen: set[int],
         if base in tainted:
             found_ref = True
             continue
+        owner = _lookup(base, fn, globals_, instance)
+        got = _descriptor_origin(owner, label.split(".")[-1], ref, depth,
+                                 seen, trail) if owner is not None else None
+        if got is not None:
+            ok, tr = got
+            if not ok:
+                return False, trail
+            trail = tr
+            found_ref = True
+            dotted_bases.add(base)
+            continue
         return False, trail
 
     # --- прочитанные имена: свободные переменные, глобальные, self.атрибуты --
-    for name in names:
+    # Порядок не случаен: имена С ТОЧКОЙ разбираются первыми. Значение приходит
+    # через атрибут (`_panel.value`), а чтение самого имени объекта (`_panel`)
+    # данных не приносит — иначе разобранный дескриптор тут же перекрывался бы
+    # вердиктом «объект не callable, источник неизвестен».
+    resolved_bases: set[str] = set(dotted_bases)
+    for name in [x for x in names if "." in x] + [x for x in names if "." not in x]:
         if name in param_names or name in PURE_BUILTINS:
+            continue
+        if name in resolved_bases:
             continue
         # Имя функции-наполнителя попадает и в список ПРОЧИТАННЫХ имён (её надо
         # разрешить, чтобы вызвать). Само чтение имени данных не приносит.
         if name in writers:
             found_ref = True
+            continue
+        # Имя вложенной функции читается только чтобы её вызвать; сам вызов
+        # разобран выше в списке вызовов, поэтому данных чтение не приносит.
+        if name in local_defs:
             continue
         if "." in name:
             base = name.split(".")[0]
@@ -478,11 +614,38 @@ def _origin_function(fn, ref, depth: int, seen: set[int],
                                    ref_name, instance):
                     found_ref = True
                     continue
+                # Поля нет в __init__: значение могло прийти через дескриптор
+                # класса (property, cached_property, свой __get__).
+                got = _descriptor_origin(instance, name.split(".")[-1], ref,
+                                         depth, seen, trail)
+                if got is not None:
+                    ok, tr = got
+                    if not ok:
+                        return False, trail
+                    trail = tr
+                    found_ref = True
+                    resolved_bases.add(base)
+                    continue
                 return False, trail
+            if base in tainted:
+                found_ref = True
+                resolved_bases.add(base)
+                continue
             if base in PURE_MODULES:
                 continue
             if base in tainted:
                 found_ref = True
+                continue
+            owner = _lookup(base, fn, globals_, instance)
+            got = _descriptor_origin(owner, name.split(".")[-1], ref, depth,
+                                     seen, trail) if owner is not None else None
+            if got is not None:
+                ok, tr = got
+                if not ok:
+                    return False, trail
+                trail = tr
+                found_ref = True
+                resolved_bases.add(base)
                 continue
             return False, trail
         if name == ref_name:

@@ -52,13 +52,40 @@ def run() -> int:
         print("ошибки загрузки: %d" % len(errors))
         for name, err in errors:
             print("  %s | %s" % (name, err[:100]))
+    # --- объявленные ограничения --------------------------------------------
+    # Конструкция, которую детектор НЕ разбирает, обязана давать False. Если
+    # она начала ловиться, объявленный охват устарел: это расхождение надо
+    # заметить так же, как пропуск. Молчаливое расширение охвата тоже дефект
+    # отчётности — им и был отчёт тика 39.
+    lim_bad = []
+    for name, src in getattr(C, "LIMITATIONS", {}).items():
+        try:
+            _mod, obs, ref = C.load(name, src)
+            same, chain = derives_from(obs, ref)
+        except Exception:
+            errors.append((name, traceback.format_exc().strip().splitlines()[-1]))
+            continue
+        if same:
+            lim_bad.append((name, chain))
+    print()
+    print("=== объявленные ограничения: %d"
+          % len(getattr(C, "LIMITATIONS", {})))
+    if lim_bad:
+        for name, chain in lim_bad:
+            print("  ОХВАТ ВЫРОС (объявление устарело)  %s | %s" % (name, chain))
+    else:
+        for name in getattr(C, "LIMITATIONS", {}):
+            reason = getattr(C, "LIMITATION_REASONS", {}).get(name, "")
+            print("  не разбирается (заявлено)  %s" % name)
+            if reason:
+                print("      причина: %s" % reason)
     print()
     npos, nneg = len(C.POSITIVE), len(C.NEGATIVE)
     print("чувствительность: %.4f  [%d/%d]"
           % (len(pos_hit) / npos, len(pos_hit), npos))
     print("специфичность:    %.4f  [%d/%d]"
           % (len(neg_ok) / nneg, len(neg_ok), nneg))
-    return 1 if (pos_miss or neg_fp or errors) else 0
+    return 1 if (pos_miss or neg_fp or errors or lim_bad) else 0
 
 
 if __name__ == "__main__":

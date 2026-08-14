@@ -56,6 +56,42 @@ MUTANTS: list[tuple[str, str, tuple[str, ...]]] = [
     ("разбор поля объекта (_field_from_ref)", "append", (
         "\n\ndef _field_from_ref(cls, field, ref_name, instance=None):\n"
         "    return False\n",)),
+    # --- мутации тика 41: дескрипторы и глубокие замыкания -----------
+    # Без них вновь внесённые фикстуры доказывали бы только то, что на них
+    # вернулся True, но не то, что он вернулся ИМЕННО через разбор дескриптора.
+    ("разбор дескриптора (_descriptor_origin)", "append", (
+        "\n\ndef _descriptor_origin(owner, attr, ref, depth, seen, trail,\n"
+        "                       instance=None):\n    return None\n",)),
+    ("вложенные определения (_local_defs)", "append", (
+        "\n\ndef _local_defs(node):\n    return {}\n",)),
+    ("игнор параметров протокола (PROTOCOL_PARAMS)", "replace", (
+        "PROTOCOL_PARAMS = frozenset({\"self\", \"cls\", \"obj\", \"owner\", \"objtype\",",
+        "PROTOCOL_PARAMS = frozenset({")),
+    ("база разобранного атрибута (resolved_bases)", "replace", (
+        "        if name in resolved_bases:",
+        "        if False:")),
+    # --- мутации тика 41б: классы, поддержанные без мутационных целей -------
+    # Наблюдение coverage manifest: у классов «callable object», «decorator» и
+    # «прямые формы» мутационных целей не было, то есть их прохождение
+    # доказывало возврат True, но НЕ то, что он получен именно разбором
+    # вызываемого объекта, обёртки или прямого вызова. Молчание проверки на
+    # этих классах было непроверенным (урок тика 40).
+    ("разбор вызываемого объекта (__call__)", "replace", (
+        '    call = getattr(type(obj), "__call__", None)',
+        "    call = None")),
+    ("разбор обёртки декоратора (__wrapped__)", "replace", (
+        '    wrapped = getattr(obj, "__wrapped__", None)',
+        "    wrapped = None")),
+    # Одноточечное отключение calls детектор ПЕРЕЖИЛ: имя вызываемой функции
+    # попадает и в calls (как ast.Call), и в names (как ast.Name в позиции func),
+    # то есть прямой вызов покрыт двумя независимыми путями. Это измеренное
+    # свойство, а не догадка. Поэтому мутация для этого класса обязана убрать
+    # ОБА пути — иначе она не различает наличие разбора от его отсутствия.
+    ("разбор прямых вызовов (calls и имя-функция)", "append", (
+        "\n\n_orig_value_sources = _value_sources\n\n\n"
+        "def _value_sources(node):\n"
+        "    calls, dotted, names = _orig_value_sources(node)\n"
+        "    return [], dotted, [n for n in names if n not in set(calls)]\n",)),
 ]
 
 
