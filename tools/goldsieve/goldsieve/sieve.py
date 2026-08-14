@@ -27,6 +27,8 @@ import inspect
 from dataclasses import dataclass, field, asdict
 from typing import Callable, Iterable, Optional
 
+from . import preconditions as _pre
+
 PASS = "PASS"
 FAIL = "FAIL"
 OPEN = "OPEN"
@@ -146,6 +148,12 @@ class Claim:
     independent_of: Optional[list] = None  # от каких прежних проверок независима
     precision_gain: Optional[float] = None  # во сколько раз точнее прежней
     out_of_sample: bool = False      # проверка на данных вне калибровки
+    # Семантическая предпосылка (тик 48): независимы ли перебранные испытания.
+    # true | false | unknown, пусто — не объявлено. Поправки Šidák и Бонферрони
+    # опираются на РАЗНЫЕ предпосылки, и утверждение о пороге не имеет права
+    # получить безусловное ПОДТВЕРЖДЕНО, пока предпосылка молчит: см.
+    # goldsieve.preconditions.
+    tests_independent: Optional[str] = None
     notes: str = ""
 
     def target(self):
@@ -169,6 +177,8 @@ class Claim:
             models=tuple(self.models or ()),
             independent_of=dict(self.independent_of or {}),
             precision_gain=self.precision_gain,
+            tests_independent=(_pre.normalize(self.tests_independent)
+                               or "not-declared"),
         )
 
 
@@ -1250,6 +1260,16 @@ class Report:
 # --------------------------------------------------------------------------
 
 ACTION = {
+    "independence_unknown":
+        "доказано тождество, не его применимость: измерить зависимость "
+        "испытаний (m_eff) либо перейти на поправку, не требующую "
+        "независимости (Бонферрони)",
+    "independence_undeclared":
+        "объявить в паспорте цели поле tests_independent: молчание о "
+        "предпосылке не считается её выполнением",
+    "independence_violated":
+        "поправка Šidák неприменима к зависимым испытаниям: использовать "
+        "Бонферрони или порог по эффективному числу испытаний",
     "observation_is_reference":
         "переписать наблюдение так, чтобы оно получалось иным путём, чем "
         "эталон; сравнение величины с собой вердикта не даёт",
@@ -1308,6 +1328,11 @@ ACTION = {
 # Подтипы, при которых вердикт НЕ идёт в счётчик находок: он говорит о
 # состоянии проверки, а не об утверждении.
 NON_AGGREGATABLE = (
+    # Необъявленная или непроверенная предпосылка: такой вердикт не имеет
+    # права попасть в сводный счётчик подтверждённых.
+    "independence_unknown",
+    "independence_undeclared",
+    "independence_violated",
     "observation_is_reference",
     "systematics_unmodeled",
     "significance_untestable",
@@ -1510,8 +1535,17 @@ def run(claim: Claim, sieves=None, meta: bool = True) -> Report:
         results.append(r)
     verdict = verdict_of(results)
     code = reason_of(results, verdict, claim)
+    # Предпосылка применяется ПОСЛЕ свода: она не отменяет ни одного сита, а
+    # только запрещает читать ПОДТВЕРЖДЕНО как безусловное, если допущение о
+    # независимости испытаний не объявлено верным.
+    verdict, pre = _pre.apply(claim, verdict, CONFIRMED)
+    if pre.get("applied"):
+        code = _pre.REASON[pre["status"]]
+    prov = provenance(claim)
+    prov["предпосылка независимости"] = pre["declared"]
+    prov["статус предпосылки"] = pre["status"]
     return Report(claim.name, claim.source, verdict, results, claim.notes,
-                  provenance(claim), reason_code=code,
+                  prov, reason_code=code,
                   action=ACTION.get(code, ""),
                   aggregatable=code not in NON_AGGREGATABLE)
 

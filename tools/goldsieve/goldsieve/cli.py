@@ -15,6 +15,7 @@ import os
 import sys
 
 from .sieve import run, CONFIRMED, REFUTED, QUESTION, EMPTY
+from . import preconditions as _pre
 
 TEMPLATE = '''"""Задача: <одна строка, что проверяем>.
 
@@ -68,7 +69,10 @@ def cmd_run(args):
             reports.append(r)
             print(r.text())
             print()
-    tally = {CONFIRMED: 0, REFUTED: 0, QUESTION: 0, EMPTY: 0}
+    # Вердикты предпосылки (тик 48) перечислены явно: без них свод показал бы
+    # их только при ненулевом счёте и в конце списка.
+    tally = {CONFIRMED: 0, REFUTED: 0, QUESTION: 0, EMPTY: 0,
+             _pre.ASSUMPTION: 0, _pre.NOT_APPLICABLE: 0}
     for r in reports:
         tally[r.verdict] = tally.get(r.verdict, 0) + 1
     print("свод: " + ", ".join("%s %d" % (k, v) for k, v in tally.items() if v))

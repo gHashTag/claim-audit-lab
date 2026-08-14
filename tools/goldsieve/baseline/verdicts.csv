@@ -20,6 +20,7 @@ cases/dark_photon_x17_formula.py,"Формула тёмного фотона X17
 cases/delta001_additional_claims_20260814.py,"γ = 0,274 занимает 10-е место из 13 по спектральной дисперсии",ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:63-88,5e321473565ec35f
 cases/delta001_additional_claims_20260814.py,В таблице DELTA-001 две сильные φ-коинциденции с ошибкой менее 1%,ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:23-31,5e321473565ec35f
 cases/delta001_additional_claims_20260814.py,В таблице DELTA-001 две слабые φ-коинциденции с ошибкой 1–5%,ОПРОВЕРГНУТО,docs/docs/research/delta-001/phase4-consistency.md:32-41,5e321473565ec35f
+cases/delta001_strong_coincidences_20260815.py,Сводка DELTA-001 содержит 2 сильных φ-совпадения с ошибкой менее 1 %,ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:22-29,5e321473565ec35f
 cases/delta001_variance_claims_20260814.py,"γ = 0,200 даёт минимальную дисперсию спектральных промежутков",ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:63-68,5e321473565ec35f
 cases/delta001_variance_claims_20260814.py,γ = φ⁻³ занимает 5-е место из 13 по спектральной дисперсии,ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:72-86,c69d48f08d2b0d79
 cases/dirac_cp_phase_formula.py,"Формула фазы Дирака CP даёт 222,0°",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:202,3febbc70e0847989
@@ -81,6 +82,7 @@ cases/sacred_random_probability.py,Объявленный размер стан�
 cases/sacred_search_count.py,стандартный поиск содержит 20 412 комбинаций,ПОДТВЕРЖДЕНО,docs/docs/math-foundations/sacred-formulas.md:25,3febbc70e0847989
 cases/sacred_table_audit_20260813.py,"Раздел Error Classification содержит 35 совпадений с ошибкой менее 0,01%",ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:214,3febbc70e0847989
 cases/sacred_table_audit_20260813.py,Расширенный поиск содержит 123 201 комбинацию,ПОДТВЕРЖДЕНО,docs/docs/math-foundations/sacred-formulas.md:26,3febbc70e0847989
+cases/sidak_threshold_20260815.py,"При 123 201 испытании и семейной ошибке 0,05 порог Шидака равен 5,06σ",ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,docs/docs/math-foundations/sacred-formulas.md:257-259,e969471db87977c8
 cases/transcendental_3phi_value.py,"3^φ напечатано как 5,91559",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:169,7df30c36cc64c8fc
 cases/transcendental_catalog_values.py,"3^(1/φ) напечатано как 1,97186",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:184,7df30c36cc64c8fc
 cases/transcendental_catalog_values.py,"e^φ напечатано как 5,04317",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:201,7df30c36cc64c8fc
@@ -93,6 +95,7 @@ cases/transcendental_catalog_values_3.py,"φ^(φ²) напечатано как 
 cases/transcendental_catalog_values_3.py,"φ^φ напечатано как 2,17846",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:188,7df30c36cc64c8fc
 cases/trinity_external_targets_20260813.py,α = 4φ²/(9π²) воспроизводит тонкую структуру,ОПРОВЕРГНУТО,docs/FOR_SCIENTISTS.md:15,8c0c456a38e25ba6
 cases/trinity_external_targets_20260813.py,γ = φ⁻³ согласуется с каноническим параметром Барберо–Иммирци,ПУСТО,docs/FOR_SCIENTISTS.md:29,8c0c456a38e25ba6
+cases/wilcoxon_v20_pvalue_20260815.py,"Точное двустороннее p-значение критерия Вилкоксона равно 0,0625",ПОДТВЕРЖДЕНО,docs/research/ZENODO_V20_STATISTICAL_SIGNIFICANCE.md:156-163,759fee1903757b0c
 cases/zeta_chi2_independent_20260814.py,Сводка χ²/dof из таблицы совпадает с независимой реконструкцией по 100000 нулей,ОПРОВЕРГНУТО,data/zeta/zeta_bin_analysis_update.md:10-40,74e70460f38ecc48
 cases/zeta_chi2_statistics_20260814.py,"χ²/dof по десяти высотным корзинам = 2,67 ± 0,49",ПУСТО,data/zeta/zeta_bin_analysis_update.md:24-38,d32c98af192622e1
 cases/zeta_gue.py,surmise Вигнера годится как эталон на уровне 2%,ОПРОВЕРГНУТО,src/sacred/zeta_spacing.zig,

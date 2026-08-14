@@ -519,3 +519,49 @@ claims:
   fingerprint: 7f019ab7dc341f29
   novelty_key: golden_chain:v241:offset_eval_delta:v1
   inputs_digest: 14f8f3b1002b9732
+- source: docs/research/ZENODO_V20_STATISTICAL_SIGNIFICANCE.md:156-163
+  case: cases/wilcoxon_v20_pvalue_20260815.py
+  claim: Точное двустороннее p-значение критерия Вилкоксона равно 0,0625
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: confirmed
+  fingerprint: 2b01e8d6f6d9ca02
+  target: 5123b8d9937b8f3f
+  novelty_key: zenodo:v20:wilcoxon:pvalue:v1
+  inputs_digest: 759fee1903757b0c
+- source: docs/docs/research/delta-001/phase4-consistency.md:22-29
+  case: cases/delta001_strong_coincidences_20260815.py
+  claim: Сводка DELTA-001 содержит 2 сильных φ-совпадения с ошибкой менее 1 %
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: confirmed
+  fingerprint: 6476a67053a597ce
+  novelty_key: delta001:strong_coincidences:count:v1
+  inputs_digest: 5e321473565ec35f
+- source: docs/docs/math-foundations/sacred-formulas.md:257-259
+  case: cases/sidak_threshold_20260815.py
+  claim: При 123 201 испытании и семейной ошибке 0,05 порог Шидака равен 5,06σ
+  verdict: ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО
+  reason_subtype: independence_unknown
+  fingerprint: bd7159ae56060155
+  novelty_key: sacred:statistics:sidak_threshold:v1
+  inputs_digest: e969471db87977c8
+  # Формулировка области охвата (тик 48). Отделяет то, что доказано
+  # (тождество двумя арифметиками), от того, что НЕ доказано (что именно эта
+  # поправка применима к зависимому семейству формул корпуса).
+  scope_statement: >-
+    Подтверждено в области охвата: для 123 201 статистических
+    испытаний, заданного семейного уровня ошибки 0,05 и конкретного
+    рецепта bd7159ae56060155 порог Шидака составляет 5,0613316768 сигма
+    на CPython 3.14.3 (напечатанное в корпусе 5,06 сигма согласуется в
+    пределах допуска 0,01 сигма). НЕ доказано, что эта поправка
+    применима к перебору корпуса: допущение о независимости испытаний
+    было частью ИСХОДНОГО рецепта (тик 47) НЕЯВНО и не проверялось;
+    тик 48 сделал его явным полем tests_independent=unknown.
+    Это проверка корректности численного статистического значения, а НЕ
+    доказательство какой-либо физической закономерности.
+  corrections:
+    # Две РАЗНЫЕ поправки с разными предпосылками, а не два названия одной.
+    sidak_sigma: 5.0613316768
+    bonferroni_sigma: 5.0661974955
+    delta_sigma_bonferroni_minus_sidak: 4.866e-3
+    sidak_assumption: независимость испытаний (точное равенство)
+    bonferroni_assumption: неравенство Буля, независимость не требуется

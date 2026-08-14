@@ -913,6 +913,9 @@ def main() -> int:
     from .algebraic import selftest as _alg
     from .proof import selftest as _prf
     from .modgraph import selftest as _mgr
+    # Тик 48: порог множественности двумя путями и семантическая предпосылка.
+    from .sidak import selftest as _sid
+    from .preconditions import selftest as _pre
     mods = [("неопределённость", _stats.selftest, 9), ("покрытие", _cov, 11),
             ("подтипы причины", _reason_subtypes, 9),
         ("вырождение по тождественности", _identity_guards, 10),
@@ -927,7 +930,9 @@ def main() -> int:
             # Новые модули тика 42 возвращают пару (прошло, провалено),
             # поэтому берётся второй элемент — число провалов.
             ("машинный след анализатора", lambda: _prf()[1], 17),
-            ("межмодульный граф", lambda: _mgr()[1], 17)]
+            ("межмодульный граф", lambda: _mgr()[1], 17),
+            ("порог множественности: два пути", _sid, 24),
+            ("предпосылка независимости испытаний", _pre, 20)]
     if os.environ.get("GOLDSIEVE_FULL"):
         from .refs.khinchin_reference import selftest as _kh
         from .refs.gue_montecarlo import selftest as _mc

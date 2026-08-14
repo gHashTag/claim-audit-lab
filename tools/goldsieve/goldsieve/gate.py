@@ -93,6 +93,11 @@ class Target:
     models: tuple = ()
     independent_of: dict = field(default_factory=dict)
     precision_gain: Optional[float] = None
+    # Семантическая предпосылка (тик 48): true | false | unknown |
+    # not-declared. Входит в отпечаток паспорта именно потому, что от неё
+    # зависит вердикт: подменить её после прогона и не изменить отпечаток было б
+    # способом тихо вернуть безусловное ПОДТВЕРЖДЕНО.
+    tests_independent: str = "not-declared"
 
     def hash(self) -> str:
         d = asdict(self)
