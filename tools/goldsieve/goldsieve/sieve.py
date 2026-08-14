@@ -47,6 +47,13 @@ class Result:
     detail: str = ""
     numbers: dict = field(default_factory=dict)
     seconds: float = 0.0
+    # Машиночитаемая причина статуса. Нужна, чтобы «пропуск» и «провал» не
+    # сливались в одну строку текста: свод вердикта читает код, а не текст.
+    reason_code: str = ""
+    # Пропуск, объявленный САМИМ ситом (а не автором задачи). С13 обязан
+    # принимать такие пропуски: иначе честный отказ сита выглядит как
+    # незаявленный skip и портит вердикт.
+    auto_skip: bool = False
 
     def line(self) -> str:
         mark = {PASS: "ok  ", FAIL: "FAIL", OPEN: "open", VOID: "VOID", SKIP: "skip"}[self.status]
@@ -116,7 +123,52 @@ class Claim:
                                     # "has_pi","rel_deviation"} для С21
     search_size: Optional[int] = None  # сколько формул/гипотез реально перебрано;
                                        # из него ВЫВОДИТСЯ порог С15 по Шидаку
+    # Длина блока для бутстрэпа зависимой выборки: None — i.i.d., "auto" —
+    # вывести из автокорреляции, целое — задать вручную. Зависимость данных
+    # обязана быть ИЗМЕРЕНА, а не предположена.
+    bootstrap_block: object = None
+    # ---- паспорт цели: заполняется ДО прогона и входит в отпечаток ----
+    # Он существует, чтобы гейт полезности мог отказать в заведомо
+    # неинформативной проверке ДО того, как она израсходует ресурс, и чтобы
+    # отказ был воспроизводимым.
+    claim_family: str = ""           # семейство утверждений (например formula_family)
+    observable: str = ""             # что именно измеряется
+    measurement_source: str = ""     # CODATA 2022, PDG 2024, корпус, …
+    uncertainty_type: str = ""       # statistical | systematic | both | none
+    expected_effect_sigma: Optional[float] = None   # ожидаемый эффект в сигмах
+    resolution_sigma: Optional[float] = None        # разрешение метода в сигмах
+    novelty_key: str = ""            # класс новизны: бюджет тратится на класс
+    information_class: str = ""      # precision | novelty | discrimination |
+                                     # independence
+    purpose: str = ""                # tool_selftest | calibration | audit | …
+    models: Optional[list] = None    # какие модели различает проверка
+    independent_of: Optional[list] = None  # от каких прежних проверок независима
+    precision_gain: Optional[float] = None  # во сколько раз точнее прежней
+    out_of_sample: bool = False      # проверка на данных вне калибровки
     notes: str = ""
+
+    def target(self):
+        """Паспорт цели как объект гейта полезности.
+
+        Импорт локальный: gate.py не должен зависеть от sieve.py, иначе
+        гейт нельзя запускать до сборки каскада.
+        """
+        from .gate import Target
+        return Target(
+            name=self.name,
+            claim_family=self.claim_family or "unspecified",
+            observable=self.observable or self.name,
+            measurement_source=self.measurement_source,
+            uncertainty_type=self.uncertainty_type,
+            expected_effect_sigma=self.expected_effect_sigma,
+            resolution_sigma=self.resolution_sigma,
+            novelty_key=self.novelty_key,
+            information_class=self.information_class,
+            purpose=self.purpose or "external_prediction",
+            models=tuple(self.models or ()),
+            independent_of=dict(self.independent_of or {}),
+            precision_gain=self.precision_gain,
+        )
 
 
 # --------------------------------------------------------------------------
@@ -183,14 +235,59 @@ def sieve_agreement(c: Claim) -> Result:
     return Result("С2 заявленное=эталон", st, fmt_dev(dev), numbers=dev)
 
 
+def printed_tolerance(value) -> float:
+    """Относительная терпимость, вытекающая из ЧИСЛА НАПЕЧАТАННЫХ ЦИФР.
+
+    Корпус печатает число с конечным числом значащих цифр, значит истинное
+    значение известно лишь с точностью до половины последнего разряда.
+    Расхождение мельче этой величины не может быть находкой: оно
+    ненаблюдаемо в тех данных, на которые ссылается утверждение.
+
+    Возвращает наибольшую печатную терпимость по всем ключам: сравнение
+    обязано быть не строже, чем самое грубо напечатанное число.
+    """
+    worst_tol = 0.0
+    for v in _as_dict(value).values():
+        if v == 0 or not math.isfinite(v):
+            continue
+        a = abs(v)
+        # repr даёт кратчайшую запись, воспроизводящую double; для чисел,
+        # выписанных из корпуса, она совпадает с напечатанной.
+        txt = repr(float(v)).lstrip("-")
+        if "e" in txt or "E" in txt:
+            mant = txt.split("e")[0].split("E")[0]
+        else:
+            mant = txt
+        digits = len(mant.replace(".", "").lstrip("0")) or 1
+        # половина последнего значащего разряда, отнесённая к величине
+        worst_tol = max(worst_tol, 0.5 * 10.0 ** (-(digits - 1)) *
+                        10.0 ** (math.floor(math.log10(a))) / a)
+    return worst_tol
+
+
 def sieve_observation(c: Claim) -> Result:
-    """С3. Измерение из данных против вычисленного эталона."""
+    """С3. Измерение из данных против вычисленного эталона.
+
+    Ремонт: терпимость больше не может быть строже печатной точности
+    заявленного числа. Прежде задача с tolerance = 1e-12 против выписанного из
+    корпуса «0.91» давала FAIL всегда — опровергалось не утверждение, а
+    округление. Действующий порог берётся как максимум из объявленной
+    терпимости и печатной, и сообщается в тексте.
+    """
     if c.reference is None or c.observed is None:
         return Result("С3 данные=эталон", SKIP)
     dev = rel_dev(c.observed(), c.reference())
     k, w = worst(dev)
-    st = PASS if abs(w) <= c.tolerance else FAIL
-    return Result("С3 данные=эталон", st, fmt_dev(dev), numbers=dev)
+    tol = c.tolerance
+    note = ""
+    if c.stated is not None:
+        ptol = printed_tolerance(c.stated)
+        if ptol > tol:
+            tol = ptol
+            note = (" | порог поднят до печатной точности заявленного числа "
+                    "%.3g" % ptol)
+    st = PASS if abs(w) <= tol else FAIL
+    return Result("С3 данные=эталон", st, fmt_dev(dev) + note, numbers=dev)
 
 
 def sieve_discriminates(c: Claim) -> Result:
@@ -374,7 +471,8 @@ def _z_table(c: Claim):
     for name, f in c.statistics.items():
         if name not in ref:
             continue
-        point, lo, hi, rel = S.bootstrap_ci(x, f, alpha=alpha)
+        point, lo, hi, rel = S.bootstrap_ci(x, f, alpha=alpha,
+                                            block=c.bootstrap_block)
         half = (hi - lo) / 2.0
         rows[name] = {"point": point, "lo": lo, "hi": hi, "half": half,
                       "ref": ref[name], "rel": rel,
@@ -420,6 +518,21 @@ def sieve_uncertainty(c: Claim) -> Result:
                    100.0 * v["half"] / abs(v["point"]), v["z"])
             )
     det = "; ".join(details)
+    # Вырожденная выборка: полуширина бутстрэп-интервала равна нулю, потому что
+    # наблюдение детерминированное (одно значение, константа). Тогда z не
+    # определён — прежняя версия выдавала z = +inf и FAIL, то есть обвиняла
+    # утверждение в том, что разброс не определён В ПРИНЦИПЕ. Это дефект
+    # инструмента: значимость здесь не проверяема, и правильный ответ —
+    # объявленный пропуск с машинной причиной, а не провал.
+    live = {k: v for k, v in rows.items()
+            if v["half"] > 0 and math.isfinite(v["z"])}
+    if not live:
+        return Result("С10 неопределённость", SKIP,
+                      "значимость не проверяема: выборка детерминированная, "
+                      "полуширина интервала равна нулю (" + det + ")",
+                      numbers={k: v["z"] for k, v in rows.items()},
+                      reason_code="significance_untestable", auto_skip=True)
+    rows = live
     zmax = max(abs(v["z"]) for v in rows.values())
     st = FAIL if zmax > 1.0 else PASS
     nums = {k: v["z"] for k, v in rows.items()}
@@ -445,9 +558,14 @@ def sieve_too_good(c: Claim) -> Result:
     """
     if c.sample is None or c.statistics is None or c.reference is None:
         return Result("С11 слишком хорошо", SKIP)
-    rows = _z_table(c)
+    rows = {k: v for k, v in _z_table(c).items()
+            if v["half"] > 0 and math.isfinite(v["z"])}
+    # Вырожденные строки исключаются по той же причине, что и в С10: у них z не
+    # определён, а произведение с ними давало бы «подозрительно точное
+    # согласие» из ничего.
     if len(rows) < 3:
-        return Result("С11 слишком хорошо", SKIP, "меньше трёх статистик")
+        return Result("С11 слишком хорошо", SKIP,
+                      "меньше трёх статистик с определённым разбросом")
     zs = [abs(v["z"]) for v in rows.values()]
     # z нормирован на полуширину 95%-интервала, то есть на 1.96 сигма
     p = 1.0
@@ -491,13 +609,22 @@ def declared_skips_check(claim: Claim, results: list) -> Result:
     любая проверка. Каждый skip обязан быть объявлен в claim.skip_reasons.
     """
     reasons = claim.skip_reasons or {}
-    skipped = [r.sieve for r in results if r.status == SKIP]
+    # Пропуск, объявленный САМИМ ситом (auto_skip), уже несёт машинную
+    # причину и не считается молчаливым: требовать от автора задачи объяснять
+    # честный отказ инструмента значило бы наказывать за прозрачность.
+    skipped = [r.sieve for r in results
+               if r.status == SKIP and not getattr(r, "auto_skip", False)]
+    auto = [r.sieve for r in results
+            if r.status == SKIP and getattr(r, "auto_skip", False)]
     # ключ обязан точно совпадать с номером сита ("С10"), а не быть общей
     # отпиской "С", закрывающей все пропуски сразу
     keys = {k.strip() for k in reasons}
     undeclared = [s for s in skipped if s.split()[0] not in keys]
     if not skipped:
-        return Result("С13 объявленные пропуски", PASS, "пропусков нет")
+        return Result("С13 объявленные пропуски", PASS,
+                      "пропусков нет" if not auto else
+                      "все %d пропуска объявлены ситом: %s"
+                      % (len(auto), ", ".join(auto)))
     if undeclared:
         return Result("С13 объявленные пропуски", FAIL,
                       "не объявлены причины пропуска: " + ", ".join(undeclared))
@@ -989,6 +1116,15 @@ def provenance(claim: Claim) -> dict:
         "\n".join(parts).encode("utf-8")).hexdigest()[:16]
     d["alpha"] = claim.alpha
     d["tolerance"] = claim.tolerance
+    # Паспорт цели входит в провенанс: порог гейта, бюджет и ключ новизны
+    # меняют решение о том, стоит ли вообще запускать проверку, а значит
+    # обязаны быть зафиксированы до того, как результат стал известен.
+    if claim.novelty_key or claim.claim_family:
+        try:
+            d["паспорт цели"] = claim.target().hash()
+            d["ключ новизны"] = claim.novelty_key
+        except Exception:  # noqa: BLE001
+            pass
     return d
 
 
@@ -1000,6 +1136,9 @@ class Report:
     results: list
     notes: str = ""
     prov: dict = field(default_factory=dict)
+    reason_code: str = ""
+    action: str = ""
+    aggregatable: bool = True
 
     def text(self) -> str:
         out = ["утверждение: %s" % self.claim]
@@ -1007,6 +1146,12 @@ class Report:
             out.append("источник:    %s" % self.source)
         out += [r.line() for r in self.results]
         out.append("вердикт:     %s" % self.verdict)
+        if self.reason_code:
+            out.append("подтип:      %s" % self.reason_code)
+        if self.action:
+            out.append("действие:    %s" % self.action)
+        if not self.aggregatable:
+            out.append("свод:        не агрегируется в итоговый счётчик")
         if self.prov:
             flat = []
             for k, v in self.prov.items():
@@ -1024,6 +1169,134 @@ class Report:
              "notes": self.notes, "provenance": self.prov,
              "results": [asdict(r) for r in self.results]}
         return json.dumps(d, ensure_ascii=False, indent=1)
+
+
+# --------------------------------------------------------------------------
+# машиночитаемая причина вердикта и предписанное действие
+# --------------------------------------------------------------------------
+
+ACTION = {
+    "resolution_limited":
+        "не запускать похожие цели до появления более точных данных",
+    "multiplicity_limited":
+        "требовать предрегистрацию пространства поиска либо выигрыш по MDL",
+    "model_nonidentifiable":
+        "требовать альтернативные модели и независимые наблюдаемые",
+    "systematics_unmodeled":
+        "не агрегировать в итоговый счётчик: учтена только случайная "
+        "неопределённость",
+    "significance_untestable":
+        "усилить выборку либо объявить внешнюю погрешность: разброс не определён",
+    "out_of_sample":
+        "отметить как предсказательный успех: проверка шла на данных, не "
+        "участвовавших в калибровке",
+    "no_computable_reference":
+        "восстановить рецепт эталона: сравнивать пока не с чем",
+    "estimator_dependent":
+        "зафиксировать выбор оценки или сетки до прогона",
+    "arithmetic_insufficient":
+        "повысить разрядность вычисления до запаса 100x",
+    "algebraically_explainable":
+        "совпадение объясняется алгебраически: требовать цели вне решётки",
+    "observation_mismatch":
+        "расхождение с вычисляемым эталоном: исправить корпус",
+    "external_mismatch":
+        "формула противоречит внешнему измерению: исправить корпус",
+    "domain_understated":
+        "занижен размер перебора: пересчитать поправку на множественность",
+    "too_good":
+        "согласие точнее шума: проверить, не списано ли число из теории",
+    "no_second_method":
+        "подтвердить эталон принципиально иным путём",
+    "no_compression":
+        "формула не сжимает данные: требовать выигрыш по MDL",
+    "meff_unstable":
+        "вывод держится на числе попыток: пересчитать эффективное число",
+    "pipeline_broken":
+        "починить конвейер: контроль не воспроизводит эталон",
+    "control_broken":
+        "сломан КОНТРОЛЬ, а не утверждение: починить позитивный контроль и "
+        "перепрогнать (урок лупов 5 и 10)",
+    "input_precision_limited":
+        "заявленный эффект не превышает погрешность входа: уточнить входные "
+        "данные или переопределить эффект",
+    "confirmed":
+        "записать в реестр как подтверждённое",
+    "unclassified":
+        "подтип не определён: разобрать вручную и добавить правило",
+}
+
+# Подтипы, которые НЕЛЬЗЯ складывать в общий счётчик находок: вердикт получен
+# при неполной модели неопределённости либо при вырожденной проверке.
+NON_AGGREGATABLE = ("systematics_unmodeled", "significance_untestable",
+                    "unclassified", "control_broken",
+                    "input_precision_limited")
+
+
+def reason_of(results: list, verdict: str, claim: Optional[Claim] = None) -> str:
+    """Машиночитаемый подтип причины вердикта. Порядок правил важен."""
+    st = {r.sieve: r.status for r in results}
+    by = {r.sieve: r for r in results}
+
+    if verdict == EMPTY:
+        # Избыток степеней свободы семейства: совпадение куплено перебором.
+        if st.get("С16 подгонка под ответ") == VOID:
+            return "multiplicity_limited"
+        if st.get("С21 алгебраическая объяснимость") == VOID:
+            return "algebraically_explainable"
+        # Контроль или сквозная подставка не различает модель от шума.
+        if st.get("С5 контроль") == VOID or st.get("С14 сквозная подставка") == VOID:
+            return "model_nonidentifiable"
+        # Подставка неотличима от эталона, или внешняя цель слишком груба:
+        # это про разрешение, а не про множественность.
+        if st.get("С4 подставка ловится") == VOID or \
+                st.get("С15 внешняя цель") == VOID:
+            return "resolution_limited"
+        # Сломанный позитивный контроль — дефект ПРОВЕРКИ, не утверждения.
+        if st.get("С5 контроль") == FAIL:
+            return "control_broken"
+        # Заявленный эффект утонул в погрешности входа.
+        if st.get("С8 бюджет точности") == VOID:
+            return "input_precision_limited"
+        return "unclassified"
+
+    if verdict == REFUTED:
+        if st.get("С15 внешняя цель") == FAIL:
+            return "external_mismatch"
+        if st.get("С18 объявленная область") == FAIL:
+            return "domain_understated"
+        return "observation_mismatch"
+
+    if verdict == QUESTION:
+        if st.get("С1 регенерируемость") in (OPEN, FAIL):
+            return "no_computable_reference"
+        if st.get("С5 контроль") == FAIL:
+            return "pipeline_broken"
+        if st.get("С19 достаточность арифметики") == FAIL:
+            return "arithmetic_insufficient"
+        if st.get("С17 описание короче данных") == FAIL:
+            return "no_compression"
+        if st.get("С20 эффективное число попыток") == FAIL:
+            return "meff_unstable"
+        if st.get("С12 независимый метод") == FAIL:
+            return "no_second_method"
+        if st.get("С11 слишком хорошо") == FAIL:
+            return "too_good"
+        if (st.get("С7 выбор оценки") == OPEN or st.get("С6 сходимость") == OPEN
+                or st.get("С9 конечный размер") == OPEN):
+            return "estimator_dependent"
+        c10 = by.get("С10 неопределённость")
+        if c10 is not None and c10.reason_code == "significance_untestable":
+            return "significance_untestable"
+        if claim is not None and claim.claim_kind == "prediction" and \
+                claim.uncertainty_type == "statistical":
+            return "systematics_unmodeled"
+        return "unclassified"
+
+    # ПОДТВЕРЖДЕНО: предсказательный успех вне калибровки сильнее обычного.
+    if claim is not None and getattr(claim, "out_of_sample", False):
+        return "out_of_sample"
+    return "confirmed"
 
 
 def verdict_of(results: list) -> str:
@@ -1077,6 +1350,26 @@ def verdict_of(results: list) -> str:
         # сопоставил хотя бы одну статистику с эталоном.
         c10 = next((r for r in results
                     if r.sieve == "С10 неопределённость"), None)
+        # Если значимость НЕ ПРОВЕРЯЕМА (выборка детерминированная), то
+        # расхождение ИЗ ДАННЫХ нельзя объявить опровержением: неизвестно,
+        # больше оно шума или нет.
+        #
+        # Правило намеренно узкое. Первая версия понижала и расхождение по С2
+        # (заявленное против вычисляемого эталона) — и перепрогон реестра сразу
+        # показал ошибку: пять арифметических опровержений вида «в каталоге
+        # написано 182,8 против пересчитанного 182,78» превратились в ВОПРОС.
+        # Там нет и не может быть выборочного шума: сравниваются два числа,
+        # оба вычислимы. Выборочная значимость относится только к величине,
+        # ИЗМЕРЕННОЙ из данных, то есть к С3. Для С15 и С18 правило не
+        # действует — там масштаб задан погрешностью внешнего измерения либо
+        # прямым подсчётом.
+        sample_based = (st.get("С3 данные=эталон") == FAIL
+                        and st.get("С2 заявленное=эталон") != FAIL
+                        and st.get("С15 внешняя цель") != FAIL
+                        and st.get("С18 объявленная область") != FAIL)
+        if sample_based and c10 is not None and \
+                c10.reason_code == "significance_untestable":
+            return QUESTION
         if c10 is not None and c10.status == PASS and \
                 "не сопоставлены" not in (c10.detail or "") and \
                 c10.numbers.get("сопоставлено_с_заявленным", 1):
@@ -1108,8 +1401,12 @@ def run(claim: Claim, sieves=None, meta: bool = True) -> Report:
             r = Result("С14 сквозная подставка", FAIL, "мутационный прогон упал: %r" % (e,))
         r.seconds = time.time() - t0
         results.append(r)
-    return Report(claim.name, claim.source, verdict_of(results), results, claim.notes,
-                  provenance(claim))
+    verdict = verdict_of(results)
+    code = reason_of(results, verdict, claim)
+    return Report(claim.name, claim.source, verdict, results, claim.notes,
+                  provenance(claim), reason_code=code,
+                  action=ACTION.get(code, ""),
+                  aggregatable=code not in NON_AGGREGATABLE)
 
 
 def run_all(claims: Iterable[Claim]) -> list:

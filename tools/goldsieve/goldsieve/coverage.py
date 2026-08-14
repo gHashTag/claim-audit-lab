@@ -105,6 +105,158 @@ def registry(path: str) -> set:
     return srcs
 
 
+# Вердикты, при которых цель признаётся ИСЧЕРПАННОЙ как класс: повторять её
+# аналогом бессмысленно, потому что проверка оказалась вырожденной, а не
+# утверждение — неверным.
+VOID_VERDICTS = ("ПУСТО",)
+
+
+def registry_entries(path: str) -> list:
+    """Записи реестра как список dict: имя, источник, вердикт, подтип.
+
+    Разбор строчный намеренно: реестр правится руками и обязан читаться даже
+    когда он не полностью валидный YAML — иначе гейт замолчит именно в тот
+    момент, когда он нужнее всего.
+    """
+    entries, cur = [], None
+    if not os.path.exists(path):
+        return entries
+    with open(path, "r", errors="replace") as f:
+        for line in f:
+            t = line.strip()
+            if t.startswith("- "):
+                if cur:
+                    entries.append(cur)
+                cur = {}
+                t = t[2:].strip()
+            if cur is None or ":" not in t:
+                continue
+            k, v = t.split(":", 1)
+            cur[k.strip().lstrip("- ")] = v.strip().strip('"\'')
+    if cur:
+        entries.append(cur)
+    return entries
+
+
+def novelty_key_of(rel: str, prio: int) -> str:
+    """Ключ новизны для цели ИЗ КОРПУСА.
+
+    Найденный дефект первой версии: ключ включал ИМЯ ФАЙЛА, поэтому каждый файл
+    оказывался новым классом и гейт допускал 828 целей из 828 — ось новизны
+    была вырождена по построению, а «отпечаток настроек» придавал этому вид
+    работающей проверки. Класс обязан быть шире одного файла, иначе бюджет
+    невозможно исчерпать.
+
+    Класс определяется приоритетом цели: п0 — печатное значение замкнутого
+    выражения (проверяет округление), п1 — статистическое заявление, п2 — за
+    числом стоит внешнее измерение. Имя файла остаётся в observable, поэтому
+    другой файл того же класса всё равно проходит, если меняется observable, —
+    но лишь до первого ПУСТО по этому классу.
+    """
+    return "corpus:p%d" % prio
+
+
+def e_prio(entry: dict) -> int:
+    """Приоритет класса для записи реестра.
+
+    По умолчанию 2: запись реестра появляется у утверждений, за которыми стоит
+    внешняя величина. Явное поле priority уважается, если оно есть.
+    """
+    try:
+        return int(entry.get("priority", 2))
+    except (TypeError, ValueError):
+        return 2
+
+
+def budget_from_registry(registry_path: str, root: str):
+    """Бюджет гейта, СОБРАННЫЙ ИЗ УЖЕ ВЫНЕСЕННЫХ ВЕРДИКТОВ.
+
+    Смысл: если по классу целей уже получено ПУСТО, следующая цель того же
+    класса не добавит информации, и гейт обязан отказать ДО прогона. Бюджет
+    восстанавливается из реестра, а не хранится отдельно, — тогда его нельзя
+    рассинхронизировать с ведомостью.
+    """
+    from .gate import FamilyBudget
+    spent = {}
+    for e in registry_entries(registry_path):
+        if e.get("verdict") not in VOID_VERDICTS:
+            continue
+        src = e.get("source", "")
+        rel = src.split(":")[0] if src else ""
+        if not rel:
+            continue
+        spent.setdefault(novelty_key_of(rel, e_prio(e)), {
+            "case": e.get("case", e.get("name", "?")),
+            # source — КЛАСС цели, а не файл: иначе цель из другого файла
+            # всегда считается «другим источником измерения» и класс
+            # невозможно исчерпать.
+            "source": novelty_key_of(rel, e_prio(e)),
+            # observable — ФАЙЛ корпуса, а не имя утверждения: гейт
+            # сопоставляет цели по источнику, а имена утверждений уникальны и
+            # никогда не совпали бы, обнуляя проверку.
+            "observable": rel,
+            "models": [],
+        })
+    return FamilyBudget(spent=spent)
+
+
+def gate_report(root: str, registry_path: str, top: int = 12,
+                per_file=None) -> str:
+    """Решение гейта по целям триажа: какие из них стоит запускать.
+
+    Без этого шага триаж предлагает цели по одному лишь приоритету, и тик
+    тратится на класс, где ответ уже известен (накопленные ПУСТО по грубым
+    внешним величинам — ровно этот случай).
+    """
+    from .gate import Target, evaluate, fingerprint, DEFAULT_U_MIN
+    per_file = per_file if per_file is not None else scan_tree(root)
+    budget = budget_from_registry(registry_path, root)
+    rows = []
+    for p, v in per_file.items():
+        rel = os.path.relpath(p, root)
+        best = max((h[3] for h in v), default=0)
+        n_best = sum(1 for h in v if h[3] == best)
+        t = Target(
+            name=rel,
+            claim_family="corpus_numeric",
+            observable=rel,   # сопоставляется с observable бюджета
+            measurement_source=novelty_key_of(rel, best),
+            uncertainty_type="unknown",
+            # Ни ожидаемый эффект, ни разрешение до прогона НЕИЗВЕСТНЫ:
+            # подставлять сюда приоритет триажа означало бы измерять
+            # информативность самой сортировкой и получать допуск всегда
+            # (первая версия так и делала: 828 из 828). Ось precision честно
+            # остаётся необъявленной.
+            expected_effect_sigma=None,
+            resolution_sigma=None,
+            novelty_key=novelty_key_of(rel, best),
+            information_class="triage",
+            purpose="external_prediction",
+            # Различающие модели известны только после того, как автор
+            # напишет кейс; объявлять их за него — самообман. Ось
+            # discrimination остаётся необъявленной, и решение гейта
+            # опирается на то единственное, что известно ДО прогона: не
+            # исчерпан ли уже класс целей вердиктом ПУСТО.
+            models=(),
+        )
+        d = evaluate(t, budget)
+        rows.append((-best, not d.admitted, -n_best, rel, best, n_best, d))
+    rows.sort()
+    admitted = sum(1 for r in rows if r[6].admitted)
+    lines = ["", "  ГЕЙТ ПОЛЕЗНОСТИ: какие цели стоит запускать",
+             "  (U_min = %.2f, отпечаток настроек %s)"
+             % (DEFAULT_U_MIN, fingerprint(DEFAULT_U_MIN, budget)),
+             "  допущено %d из %d файлов; SKIPPED_LOW_INFORMATION %d"
+             % (admitted, len(rows), len(rows) - admitted)]
+    for _, _, _, rel, best, n_best, d in rows[:top]:
+        lines.append("    %s п%d %4d строк  %s" %
+                     ("ДОПУСК " if d.admitted else "ОТКАЗ  ", best, n_best, rel))
+        lines.append("             %s" % d.line())
+    lines.append("  Отказ гейта — РЕШЕНИЕ О ЗАПУСКЕ, а не вердикт по "
+                 "утверждению.")
+    return "\n".join(lines)
+
+
 def report(root: str, registry_path: str, top: int = 12) -> str:
     per_file = scan_tree(root)
     reg = registry(registry_path)
@@ -151,7 +303,40 @@ def report(root: str, registry_path: str, top: int = 12) -> str:
     lines.append("")
     lines.append("  Вердикта по этим числам НЕТ. Пока утверждение не прогнано через")
     lines.append("  каскад, его статус — ВОПРОС, а не дефект.")
+    lines.append(gate_report(root, registry_path, top=top, per_file=per_file))
     return "\n".join(lines)
+
+
+def _selftest_gate_integration() -> int:
+    """Гейт обязан ОТКАЗЫВАТЬ там, где класс цели исчерпан вердиктом ПУСТО.
+
+    Подставка стоит там, где неверный ответ отличается: цель того же класса, но
+    ИЗ ДРУГОГО файла, обязана остаться допущенной, иначе один вердикт ПУСТО
+    закрыл бы весь корпус.
+    """
+    import tempfile
+    fail = 0
+
+    def check(name, ok):
+        nonlocal fail
+        print("  %s %s" % ("ok  " if ok else "FAIL", name))
+        if not ok:
+            fail += 1
+
+    with tempfile.TemporaryDirectory() as d:
+        root = os.path.join(d, "corpus")
+        os.makedirs(root)
+        for nm in ("a.md", "b.md"):
+            with open(os.path.join(root, nm), "w") as f:
+                f.write("измеренное значение 1.23456 +- 0.00002 sigma\n")
+        reg = os.path.join(d, "claims.yaml")
+        with open(reg, "w") as f:
+            f.write('- name: "утв"\n  source: "a.md:1"\n  verdict: "ПУСТО"\n')
+        out = gate_report(root, reg, top=10)
+        check("исчерпанный класс получает отказ", "ОТКАЗ" in out)
+        check("другой файл того же класса остаётся допущенным",
+              "ДОПУСК" in out and "b.md" in out)
+    return fail
 
 
 def selftest() -> int:
@@ -181,6 +366,7 @@ def selftest() -> int:
               % ("ok  " if ok else "FAIL"))
         fail += 0 if ok else 1
         fail += _selftest_priority()
+    fail += _selftest_gate_integration()
     return fail
 
 

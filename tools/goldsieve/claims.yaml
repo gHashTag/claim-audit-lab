@@ -441,3 +441,34 @@ claims:
   claim: Потеря оценки большого корпуса на 15,8% ниже случайного базиса
   verdict: ПОДТВЕРЖДЕНО
   inputs_digest: 2635099cd9629f12
+- source: docs/papers/README_FOR_SCIENTISTS.md:37-43
+  case: cases/jarlskog_theta13_external_20260814.py
+  claim: Формула Jarlskog J согласуется с внешней оценкой PDG
+  verdict: ПУСТО
+  inputs_digest: 7424155384454ccb
+- source: docs/papers/README_FOR_SCIENTISTS.md:37-43
+  case: cases/jarlskog_theta13_external_20260814.py
+  claim: Формула sin²θ₁₃ согласуется с внешней оценкой NuFIT
+  verdict: ПУСТО
+  inputs_digest: 7424155384454ccb
+- source: docs/docs/research/papers/gravitational-constants.md:10-15
+  case: cases/gravitational_constant_external_20260814.py
+  claim: Формула G = π³γ²/φ согласуется с CODATA
+  verdict: ВОПРОС
+  inputs_digest: d5b3e20a0308f63e
+- source: data/zeta/zeta_gue_analysis_results.md:форма распределения
+  case: cases/zeta_shape.py
+  claim: форма распределения расстояний согласуется с точным законом GUE в пределах конечновыборочного разброса
+  verdict: ОПРОВЕРГНУТО
+  fingerprint: f5f5ab97d1531ca3
+  target: 79e4ed3c2403facc
+  novelty_key: zeta:gap_shape:v1
+  inputs_digest: 3436c916a7878261
+- source: data/zeta/zeta_gue_analysis_results.md:конечновысотная поправка
+  case: cases/zeta_shape.py
+  claim: масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка out-of-sample по верхним полосам высот)
+  verdict: ОПРОВЕРГНУТО
+  fingerprint: 9369cd12cf451750
+  target: 372305cfe9ea9799
+  novelty_key: zeta:gap_shape_correction:v1
+  inputs_digest: 3436c916a7878261

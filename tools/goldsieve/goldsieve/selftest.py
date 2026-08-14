@@ -206,6 +206,81 @@ def _regress_cause():
     return fail
 
 
+def _gof_selftest() -> int:
+    from .refs.gof import selftest as _g
+    return _g()
+
+
+def _reason_subtypes() -> int:
+    """Подтипы причины вердикта: сломанный контроль и предел точности входа.
+
+    Оба подтипа введены после лупа 10, где вердикт ПУСТО дважды означал дефект
+    МОЕЙ проверки (контроль сравнивал одну реализацию со средним по репликам;
+    С8 сравнивал ноль с погрешностью 1e-9), а не дефект утверждения. Без
+    отдельного подтипа такой случай попадал в 'unclassified' и терялся.
+    """
+    from .sieve import (Result, reason_of, ACTION, NON_AGGREGATABLE,
+                        EMPTY, FAIL as _F, VOID as _V, PASS as _P2,
+                        SKIP as _S2)
+    fail = 0
+
+    def check(name, ok):
+        nonlocal fail
+        print("  %s %s" % ("ok  " if ok else "FAIL", name))
+        if not ok:
+            fail += 1
+
+    broken = [Result("С5 контроль", _F, "позитивный контроль не воспроизвёл эталон")]
+    check("сломанный контроль опознан как control_broken",
+          reason_of(broken, EMPTY) == "control_broken")
+    check("для control_broken объявлено действие",
+          "control_broken" in ACTION and
+          "контроль" in ACTION["control_broken"].lower())
+
+    prec = [Result("С5 контроль", _P2), Result("С8 бюджет точности", _V,
+                                               "эффект 0 против погрешности 1e-9")]
+    check("предел точности входа опознан как input_precision_limited",
+          reason_of(prec, EMPTY) == "input_precision_limited")
+    check("для input_precision_limited объявлено действие",
+          "input_precision_limited" in ACTION and
+          "погрешность" in ACTION["input_precision_limited"].lower())
+
+    # ПОРЯДОК ПРАВИЛ: множественность сильнее обоих новых подтипов. Иначе
+    # совпадение, купленное перебором, объяснялось бы «сломанным контролем» и
+    # уходило из-под правила о предрегистрации пространства поиска.
+    both = [Result("С16 подгонка под ответ", _V, "1.5 ожидаемых попаданий"),
+            Result("С5 контроль", _F), Result("С8 бюджет точности", _V)]
+    check("множественность приоритетнее сломанного контроля",
+          reason_of(both, EMPTY) == "multiplicity_limited")
+
+    # Оба новых подтипа не агрегируются: вердикт получен при неисправной
+    # проверке, складывать его в счётчик находок нельзя.
+    # Правило свода: непроверяемая значимость понижает опровержение по С2/С3
+    # до вопроса, но НЕ трогает опровержение по внешней цели.
+    from .sieve import verdict_of, QUESTION as _Q, REFUTED as _R
+    c10u = Result("С10 неопределённость", _S2, "значимость не проверяема",
+                  reason_code="significance_untestable", auto_skip=True)
+    # Расхождение ИЗ ДАННЫХ понижается: масштаб задаёт выборочный шум.
+    base = [Result("С3 данные=эталон", _F, "расхождение 5%"), c10u]
+    check("непроверяемая значимость понижает опровержение по С3 до вопроса",
+          verdict_of(base) == _Q)
+    # ПОДСТАВКА: арифметическое расхождение (С2) понижаться НЕ должно —
+    # сравниваются два вычислимых числа, выборочного шума там нет. На этой
+    # подставке первая версия правила и упала: перепрогон реестра перевернул
+    # пять арифметических опровержений в ВОПРОС.
+    arith = [Result("С2 заявленное=эталон", _F, "расхождение 0,01%"), c10u]
+    check("арифметическое опровержение по С2 не понижается",
+          verdict_of(arith) == _R)
+    ext = [Result("С15 внешняя цель", _F, "промах 40 сигм"), c10u]
+    check("опровержение по внешней цели не понижается",
+          verdict_of(ext) == _R)
+
+    check("оба подтипа исключены из агрегирования",
+          "control_broken" in NON_AGGREGATABLE and
+          "input_precision_limited" in NON_AGGREGATABLE)
+    return fail
+
+
 def main() -> int:
     (truth, lie, nore, void, est, noisy, broken, trend, flat,
      silent, noise, toogood, altbad) = _cases()
@@ -542,6 +617,8 @@ def main() -> int:
         Claim as _C10,
         OPEN as _O,
         PASS as _P,
+        SKIP as _S,
+        FAIL as _FL,
     )
     c10 = _C10(name="x", reference=lambda: 1.0,
                sample=lambda: [1.0, 1.01, 0.99],
@@ -579,7 +656,9 @@ def main() -> int:
         stated=0.0,
         reference=lambda: 0.0,
         observed=lambda: 0.0,
-        sample=lambda: [0.0],
+        # Выборка с ЖИВЫМ разбросом: иначе тест проверял бы сразу две вещи —
+        # нулевой эталон и вырожденную выборку — и провал не различал бы их.
+        sample=lambda: [-0.01, 0.0, 0.01, 0.005, -0.005],
         statistics={"value": lambda a: float(sum(a) / len(a))},
         skip_reasons=SR,
     )
@@ -594,6 +673,39 @@ def main() -> int:
     except Exception as e:
         fail += 1
         print("  FAIL С10 обрабатывает нулевой эталон (%r)" % (e,))
+
+    # Вырожденная выборка: разброса нет вовсе, значимость не проверяема. Это
+    # ОБЪЯВЛЕННЫЙ пропуск с машинной причиной, а не провал утверждения. Прежде
+    # здесь получалось z = +inf и FAIL — инструмент обвинял утверждение в своей
+    # собственной неспособности измерить разброс.
+    c10deg = _C10(name="вырожденная выборка", stated=1.0,
+                  reference=lambda: 1.0, sample=lambda: [1.0, 1.0, 1.0, 1.0],
+                  statistics={"value": lambda a: float(sum(a) / len(a))},
+                  skip_reasons=SR)
+    rdeg = sieve_uncertainty(c10deg)
+    if rdeg.status == _S and rdeg.reason_code == "significance_untestable" \
+            and rdeg.auto_skip:
+        ok += 1
+        print("  ok   С10 на вырожденной выборке объявляет пропуск")
+    else:
+        fail += 1
+        print("  FAIL С10 на вырожденной выборке объявляет пропуск (%s/%s)"
+              % (rdeg.status, rdeg.reason_code))
+
+    # ПОДСТАВКА к предыдущему: вырожденность не должна проглатывать РЕАЛЬНОЕ
+    # расхождение там, где разброс есть. Иначе «пропуск» стал бы способом
+    # погасить любое опровержение.
+    c10live = _C10(name="живой разброс", stated=1.0, reference=lambda: 1.0,
+                   sample=lambda: [1.4, 1.5, 1.45, 1.55, 1.5],
+                   statistics={"value": lambda a: float(sum(a) / len(a))},
+                   skip_reasons=SR)
+    rlive = sieve_uncertainty(c10live)
+    if rlive.status == _FL:
+        ok += 1
+        print("  ok   С10 при живом разбросе ловит расхождение")
+    else:
+        fail += 1
+        print("  FAIL С10 при живом разбросе ловит расхождение (%s)" % rlive.status)
 
     print("\n  сито С19 достаточность арифметики:")
     from .sieve import sieve_arithmetic, Claim as _C19, PASS as _P, FAIL as _F
@@ -675,7 +787,9 @@ def main() -> int:
     from .exact import selftest as _exa
     from .meff import selftest as _mef
     from .algebraic import selftest as _alg
-    mods = [("неопределённость", _stats.selftest, 6), ("покрытие", _cov, 9),
+    mods = [("неопределённость", _stats.selftest, 9), ("покрытие", _cov, 11),
+            ("подтипы причины", _reason_subtypes, 9),
+            ("метрики согласия формы", _gof_selftest, 6),
         ("причина переворота", _regress_cause, 4),
             ("семейство и множественность", _fam, 14),
             ("порог разрешающей способности", _thr, 9),

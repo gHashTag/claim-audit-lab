@@ -20,15 +20,59 @@ from typing import Callable, Sequence
 import numpy as np
 
 
-def bootstrap_ci(sample: Sequence[float], stat: Callable[[np.ndarray], float],
-                 b: int = 400, alpha: float = 0.05, seed: int = 20260813):
-    """Процентильный бутстрэп: (оценка, низ, верх, полуширина/оценка)."""
+def acf_block_length(sample: Sequence[float], max_lag: int = 200) -> int:
+    """Длина блока из автокорреляции: 2*tau по правилу Соколя.
+
+    Обычный бутстрэп предполагает независимость наблюдений. Для зависимой
+    выборки он занижает разброс, а значит ЗАВЫШАЕТ значимость расхождения —
+    ровно та ошибка, против которой стоит сито С10. Длина блока не назначается
+    рукой, а ВЫВОДИТСЯ из интегрального времени автокорреляции: tau = 1 + 2*sum
+    rho_k по первым лагам до первого неположительного значения.
+    """
     x = np.asarray(sample, dtype=float)
     n = len(x)
+    if n < 50:
+        return 1
+    x = x - x.mean()
+    denom = float(np.dot(x, x))
+    if denom <= 0:
+        return 1
+    tau = 1.0
+    for k in range(1, min(max_lag, n - 1) + 1):
+        rho = float(np.dot(x[:-k], x[k:])) / denom
+        if rho <= 0.0:
+            break
+        tau += 2.0 * rho
+    return int(max(1, min(round(2.0 * tau), n // 20)))
+
+
+def _moving_block_indices(n: int, block: int, rng) -> np.ndarray:
+    """Индексы бутстрэпа скользящими блоками (Kunsch 1989)."""
+    if block <= 1:
+        return rng.integers(0, n, n)
+    starts = rng.integers(0, n - block + 1, int(np.ceil(n / block)))
+    idx = (starts[:, None] + np.arange(block)[None, :]).ravel()
+    return idx[:n]
+
+
+def bootstrap_ci(sample: Sequence[float], stat: Callable[[np.ndarray], float],
+                 b: int = 400, alpha: float = 0.05, seed: int = 20260813,
+                 block=None):
+    """Процентильный бутстрэп: (оценка, низ, верх, полуширина/оценка).
+
+    block: None — независимые наблюдения; "auto" — длина блока выводится из
+    автокорреляции; целое — задана вручную. Для зависимых данных блочный
+    бутстрэп даёт ШИРЕ интервал, то есть более осторожный вывод.
+    """
+    x = np.asarray(sample, dtype=float)
+    n = len(x)
+    if block == "auto":
+        block = acf_block_length(x)
+    block = int(block or 1)
     rng = np.random.default_rng(seed)
     vals = np.empty(b)
     for i in range(b):
-        vals[i] = stat(x[rng.integers(0, n, n)])
+        vals[i] = stat(x[_moving_block_indices(n, block, rng)])
     lo, hi = np.percentile(vals, [100 * alpha / 2, 100 * (1 - alpha / 2)])
     point = float(stat(x))
     half = (hi - lo) / 2.0
@@ -68,6 +112,45 @@ def z_of_deviation(point: float, ref: float, half_width: float) -> float:
     if half_width == 0:
         return float("inf") if point != ref else 0.0
     return (point - ref) / half_width
+
+
+def _selftest_block(rng) -> int:
+    """Блочный бутстрэп обязан быть ШИРЕ независимого на зависимой выборке.
+
+    Подставка стоит там, где неверный ответ отличается: на белом шуме блочный
+    интервал НЕ должен раздуваться, иначе метод просто портит все оценки.
+    """
+    fail = 0
+
+    def check(name, ok):
+        nonlocal fail
+        print("  %s %s" % ("ok  " if ok else "FAIL", name))
+        if not ok:
+            fail += 1
+
+    n = 20000
+    e = rng.normal(size=n)
+    ar = np.empty(n)
+    ar[0] = e[0]
+    for i in range(1, n):
+        ar[i] = 0.8 * ar[i - 1] + e[i]
+    f = lambda a: float(a.mean())
+    _, lo_i, hi_i, _ = bootstrap_ci(ar, f)
+    _, lo_b, hi_b, _ = bootstrap_ci(ar, f, block="auto")
+    check("блочный интервал шире независимого на AR(1): %.2f против %.2f"
+          % (100 * (hi_b - lo_b), 100 * (hi_i - lo_i)),
+          (hi_b - lo_b) > 1.5 * (hi_i - lo_i))
+
+    w = rng.normal(size=n)
+    _, lo_i, hi_i, _ = bootstrap_ci(w, f)
+    _, lo_b, hi_b, _ = bootstrap_ci(w, f, block="auto")
+    check("на белом шуме блочный интервал не раздувается",
+          (hi_b - lo_b) < 1.6 * (hi_i - lo_i))
+
+    k_ar, k_w = acf_block_length(ar), acf_block_length(w)
+    check("длина блока у AR(1) больше, чем у шума: %d против %d" % (k_ar, k_w),
+          k_ar > k_w)
+    return fail
 
 
 def selftest() -> int:
@@ -128,6 +211,7 @@ def selftest() -> int:
     print("  %s поправка Шидака: alpha_5 = %.5f" % ("ok  " if ok else "FAIL", a))
     fail += 0 if ok else 1
 
+    fail += _selftest_block(rng)
     return fail
 
 
