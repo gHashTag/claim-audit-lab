@@ -337,8 +337,15 @@ def _is_same_computation(fn, ref) -> bool:
         return True
     # КОСВЕННАЯ тавтология: observed -> посредник -> ... -> reference.
     # Строчный признак её не видит, поэтому разбирается граф вызовов модуля.
+    from . import proof
     from .identity import derives_from
-    same, _ = derives_from(fn, ref)
+    # Execution-proof (пункт 4 приказа тика 42): реальный маршрут сита обязан
+    # оставлять машинный след. След НЕ влияет на вердикт: инструмент, у
+    # которого измерение меняет результат, нельзя ни калибровать, ни сравнивать
+    # с baseline.
+    with proof.scope("След тавтологии: %s" % getattr(fn, "__name__", "?")) as pr:
+        same, _ = derives_from(fn, ref)
+    proof.record(pr)
     return same
 
 

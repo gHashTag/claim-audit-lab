@@ -295,6 +295,95 @@ def _observed():
     return BUF[0]
 '''
 
+# --- класс: mutable globals (пункт 2 приказа тика 42) ----------------------
+#
+# Отдельный класс, а НЕ расширение класса `globals`. Причина: приказ прямо
+# запрещает объединять опасные классы — у каждого обязаны быть свои фикстуры,
+# свои негативные пары, свои мутации и своя строка в манифесте. Класс `globals`
+# покрывает НЕИЗМЕНЯЕМУЮ передачу через модульное имя; здесь проверяется именно
+# ИЗМЕНЯЕМОЕ состояние: чтение, локальная тень, запись до и после наблюдения,
+# alias через контейнер.
+
+POSITIVE["mutable globals: чтение изменяемого состояния"] = '''
+STATE = {}
+STATE["v"] = _reference()
+
+
+def _observed():
+    return STATE["v"]
+'''
+
+POSITIVE["mutable globals: локальная тень читает то же состояние"] = '''
+STATE = {"v": _reference()}
+
+
+def _observed():
+    state = STATE            # локальный ярлык на загрязнённое состояние
+    return state["v"]
+'''
+
+POSITIVE["mutable globals: запись ДО объявления наблюдения"] = '''
+STATE = {}
+
+
+def _fill():
+    STATE["v"] = _reference()
+
+
+_fill()
+
+
+def _observed():
+    return STATE["v"]
+'''
+
+POSITIVE["mutable globals: запись ПОСЛЕ объявления наблюдения"] = '''
+STATE = {}
+
+
+def _observed():
+    return STATE["v"]
+
+
+def _fill():
+    STATE["v"] = _reference()
+
+
+_fill()
+'''
+
+POSITIVE["mutable globals: alias эталона в контейнере"] = '''
+BOX = {"fn": _reference}
+
+
+def _observed():
+    return BOX["fn"]()
+'''
+
+POSITIVE["mutable globals: alias во вложенном контейнере"] = '''
+BOX = {"inner": {"fn": _reference}}
+
+
+def _observed():
+    return BOX["inner"]["fn"]()
+'''
+
+POSITIVE["mutable globals: состояние изменено через global"] = '''
+STATE = 0.0
+
+
+def _bump():
+    global STATE
+    STATE = _reference()
+
+
+_bump()
+
+
+def _observed():
+    return STATE
+'''
+
 # --- класс: прямые формы (регрессия лупов 11-12) ---------------------------
 
 POSITIVE["прямой вызов эталона"] = '''
@@ -573,6 +662,70 @@ def _observed():
     if "v" not in CACHE:
         CACHE["v"] = _read_own()
     return CACHE["v"]
+'''
+
+# --- негативные пары к классу mutable globals ------------------------------
+#
+# Главная ловушка класса: глобальное состояние МОЖЕТ быть загрязнено эталоном,
+# при этом НАБЛЮДЕНИЕ его не читает. Признак вида «в модуле есть
+# загрязнённый контейнер» сломался бы здесь. Вторая ловушка — РАВНОЕ ЗНАЧЕНИЕ
+# при независимом происхождении: sqrt(288) = 12*sqrt(2) бит-в-бит, но эталон не
+# вызывался ни разу. Признак по равенству чисел сломался бы здесь.
+
+NEGATIVE["mutable globals: локальная тень со своим источником"] = '''
+STATE = {"v": _reference()}
+
+
+def _observed():
+    state = {"v": _read_own()}      # тень: читает СВОЙ источник
+    return state["v"]
+'''
+
+NEGATIVE["mutable globals: равное значение, независимое происхождение"] = '''
+def _own_equal():
+    """Своё выражение, бит-в-бит равное эталону, но без вызова эталона."""
+    return math.sqrt(288.0)
+
+
+STATE = {}
+STATE["v"] = _own_equal()
+
+
+def _observed():
+    return STATE["v"]
+'''
+
+NEGATIVE["mutable globals: состояние наполнено своим чтением"] = '''
+STATE = {}
+
+
+def _fill():
+    STATE["v"] = _read_own()
+
+
+_fill()
+
+
+def _observed():
+    return STATE["v"]
+'''
+
+NEGATIVE["mutable globals: alias своей функции в контейнере"] = '''
+BOX = {"fn": _read_own}
+
+
+def _observed():
+    return BOX["fn"]()
+'''
+
+NEGATIVE["mutable globals: загрязнённое состояние рядом, но не читается"] = '''
+DIRTY = {"v": _reference()}
+CLEAN = {}
+CLEAN["v"] = _read_own()
+
+
+def _observed():
+    return CLEAN["v"]
 '''
 
 NEGATIVE["lambda со своим чтением"] = '''

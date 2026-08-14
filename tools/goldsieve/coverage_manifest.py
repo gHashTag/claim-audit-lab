@@ -134,6 +134,80 @@ def check() -> int:
         if not row.get("reason"):
             problems.append("платформа not-evaluated без причины: %s"
                             % row.get("id"))
+        # Ссылка на ожидающую задачу обязана вести на файл с владельцем
+        # и бюджетом повторов: иначе «выведено в очередь» — только слова.
+        ref = row.get("pending")
+        if ref:
+            path = os.path.join(ROOT, ref)
+            if not os.path.exists(path):
+                problems.append("ожидающая задача не найдена: %s" % ref)
+                continue
+            with open(path, encoding="utf-8") as fh:
+                task = yaml.safe_load(fh) or {}
+            miss = [k for k in ("owner", "retry_budget", "acceptance",
+                                "status") if not task.get(k)]
+            if miss:
+                problems.append("ожидающая задача %s без полей: %s"
+                                % (ref, ", ".join(miss)))
+            rb = task.get("retry_budget") or {}
+            if not isinstance(rb.get("total_attempts_left"), int):
+                problems.append("ожидающая задача %s: бюджет повторов не "
+                                "число" % ref)
+            print("  ожидает: %s — %s, попыток осталось %s"
+                  % (ref, task.get("status"), rb.get("total_attempts_left")))
+
+    # --- анализаторы (тик 42) ------------------------------------------
+    ana = man.get("analyzers", {})
+    print()
+    print("=== объявленных анализаторов: %d" % len(ana))
+    for name, spec in sorted(ana.items()):
+        try:
+            mod = __import__("goldsieve." + name, fromlist=["selftest"])
+        except Exception as exc:
+            problems.append("анализатор %s не импортируется: %s" % (name, exc))
+            continue
+        st = getattr(mod, "selftest", None)
+        if st is None:
+            problems.append("анализатор %s без самопроверки" % name)
+            continue
+        got_ok, got_fail = st()
+        want = int(spec.get("selftest_checks", 0))
+        print("  %-10s самопроверка %d/%d (объявлено %d)"
+              % (name, got_ok, got_ok + got_fail, want))
+        if got_fail:
+            problems.append("анализатор %s: провалов %d" % (name, got_fail))
+        if got_ok != want:
+            problems.append("анализатор %s: проверок %d, объявлено %d"
+                            % (name, got_ok, want))
+        if spec.get("affects_verdict") is not False:
+            problems.append("анализатор %s обязан быть объявлен как не "
+                            "влияющий на вердикт" % name)
+
+    # --- границы применимости: считаются ЗДЕСЬ, а не переписываются -
+    # руками. Правило трёх (Hanley & Lippman-Hand 1983): при нуле событий на N
+    # наблюдениях грубая 95 %-верхняя граница доли равна 3/N.
+    b = man.get("bounds", {})
+    n_neg = len(C.NEGATIVE)
+    print()
+    print("=== границы: негативных фикстур %d" % n_neg)
+    if int(b.get("negative_fixtures", -1)) != n_neg:
+        problems.append("границы: объявлено %s негативных фикстур, фактически %d"
+                        % (b.get("negative_fixtures"), n_neg))
+    fp = int(b.get("false_positives", -1))
+    if fp != 0:
+        problems.append("границы: объявлено %s ложных — гейт не пропускает "
+                        "ненулевое число" % b.get("false_positives"))
+    want_upper = float(b.get("rule_of_three_upper", -1))
+    calc_upper = 3.0 / n_neg if n_neg else 1.0
+    print("  правило трёх: 3/%d = %.4f (объявлено %.4f)"
+          % (n_neg, calc_upper, want_upper))
+    if abs(calc_upper - want_upper) > 5e-5:
+        problems.append("границы: верхняя оценка объявлена %.4f, считается %.4f"
+                        % (want_upper, calc_upper))
+    note = str(b.get("note", ""))
+    for banned in ("полностью верен", "нулевая вероятность ложн"):
+        if banned in note.replace("«", "").replace("»", "") and "запрещ" not in note:
+            problems.append("границы: запрещённая формулировка в note")
 
     print()
     if problems:

@@ -33,6 +33,7 @@ import ast
 import functools
 import types
 
+from . import proof
 from .identity import PURE_BUILTINS, PURE_MODULES
 
 MAX_DEPTH = 12
@@ -59,10 +60,16 @@ def _node_for(fn) -> tuple[ast.AST | None, ast.Module | None]:
     """
     code = getattr(fn, "__code__", None)
     if code is None:
+        proof.note_unsupported("no-code-object", type(fn).__name__)
         return None, None
     tree = _parse_file(code.co_filename)
     if tree is None:
+        proof.note_unsupported("syntax-error", code.co_filename)
         return None, None
+    # След пишется ПОСЛЕ разбора и без учёта кэша: измеряется работа
+    # анализатора, а не число промахов lru_cache.
+    proof.bump("files_parsed")
+    proof.bump("functions_seen")
     want = code.co_firstlineno
     best = None
     for node in ast.walk(tree):
@@ -79,6 +86,8 @@ def _node_for(fn) -> tuple[ast.AST | None, ast.Module | None]:
                  and getattr(n, "lineno", 10 ** 9) >= want]
         if cands:
             best = min(cands, key=lambda n: n.lineno)
+    if best is None:
+        proof.note_unsupported("node-not-found", getattr(fn, "__name__", "?"))
     return best, tree
 
 
@@ -270,9 +279,11 @@ def origin_is(obj, ref, _depth: int = 0, _seen: set[int] | None = None,
     вырождение проверялось руками.
     """
     trail = list(_trail or [])
+    proof.bump("chains_expanded")
     if obj is None or ref is None:
         return False, trail
     if _depth > MAX_DEPTH:
+        proof.note_unsupported("depth-limit", str(_depth))
         return False, trail
     seen = set(_seen or set())
     if id(obj) in seen:
@@ -431,6 +442,7 @@ PROTOCOL_PARAMS = frozenset({"self", "cls", "obj", "owner", "objtype",
 def _origin_node(node, tree, fn, ref, depth: int, seen: set[int],
                  trail: list[str], instance=None,
                  protocol: bool = False) -> tuple[bool, list[str]]:
+    proof.bump("nodes_visited")
     ref_name = getattr(ref, "__name__", None)
     globals_ = getattr(fn, "__globals__", {}) or {}
     tainted = _tainted_globals(tree, ref_name) if ref_name else set()
@@ -715,8 +727,10 @@ def _lookup(name, fn, globals_, instance):
     """Разрешить имя: замыкание -> globals -> атрибут экземпляра."""
     cell = _closure_value(fn, name)
     if cell is not _MISSING:
+        proof.bump("edges_resolved")
         return cell
     if name in globals_:
+        proof.bump("edges_resolved")
         return globals_[name]
     if instance is not None:
         return getattr(instance, name, None)

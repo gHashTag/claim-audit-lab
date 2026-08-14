@@ -59,6 +59,10 @@ for PY in $PYTHONS; do
     # Трёхуровневые статусы, линтер и счётчики не зависят от numpy/pyyaml
     # и обязаны проходить на всей матрице интерпретаторов.
     step "трёхуровневые статусы"    "$PY" -m goldsieve.scope
+    # Тик 42: разбор AST от numpy/pyyaml не зависит и обязан проходить всюду.
+    step "машинный след анализатора" "$PY" -m goldsieve.proof
+    step "межмодульный граф"        "$PY" -m goldsieve.modgraph
+    step "независимость разметки"   "$PY" independence.py
     step "счётчики тика"             "$PY" tick_counters.py selftest
     [ "$FULL" = 1 ] && step "калибровка на реестре" "$PY" calibrate_identity.py
 done
@@ -81,6 +85,14 @@ else
     step "целостность заморозки v12" "$BASE_PY" baseline.py frozen
     step "coverage manifest"          "$BASE_PY" coverage_manifest.py
     step "pre-filter Golden Chain"    "$BASE_PY" -m goldsieve.prefilter
+    # Execution-proof: пустой граф при непустом кейсе — авария, а не тихое
+    # отрицательное заключение. Маршрут реальный (подпроцесс CLI), поэтому
+    # шаг требует полного окружения.
+    step "execution-proof на маршруте CLI" "$BASE_PY" execution_proof.py
+    # tri — оболочка тика. Она пишет в ведомость и читает счётчики,
+    # поэтому её тихий отказ стоит дороже всего: пропадают именно записи
+    # опыта. Проверка идёт на временных файлах, ведомость не трогается.
+    step "tri: самопроверка оболочки" "$BASE_PY" tri selftest
 fi
 
 echo

@@ -911,6 +911,8 @@ def main() -> int:
     from .exact import selftest as _exa
     from .meff import selftest as _mef
     from .algebraic import selftest as _alg
+    from .proof import selftest as _prf
+    from .modgraph import selftest as _mgr
     mods = [("неопределённость", _stats.selftest, 9), ("покрытие", _cov, 11),
             ("подтипы причины", _reason_subtypes, 9),
         ("вырождение по тождественности", _identity_guards, 10),
@@ -921,7 +923,11 @@ def main() -> int:
             ("порог разрешающей способности", _thr, 9),
             ("достаточность арифметики", _exa, 5),
             ("эффективное число попыток", _mef, 9),
-            ("алгебраическая объяснимость", _alg, 8)]
+            ("алгебраическая объяснимость", _alg, 8),
+            # Новые модули тика 42 возвращают пару (прошло, провалено),
+            # поэтому берётся второй элемент — число провалов.
+            ("машинный след анализатора", lambda: _prf()[1], 17),
+            ("межмодульный граф", lambda: _mgr()[1], 17)]
     if os.environ.get("GOLDSIEVE_FULL"):
         from .refs.khinchin_reference import selftest as _kh
         from .refs.gue_montecarlo import selftest as _mc

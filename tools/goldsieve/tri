@@ -1,0 +1,347 @@
+#!/usr/bin/env python3
+"""tri — единая командная строка тика непрерывного аудита.
+
+Зачем. Каждый тик повторял одни и те же длинные строки: фоновый запуск с
+опросом, путь к ведомости, путь к счётчикам, сборка скила. Повторение руками —
+источник расхождений (в тике 41 из-за него дважды терялся `bump`). Здесь
+детерминированная часть работы делается кодом, а не памятью.
+
+Команды (`tri <команда> --help` для подробностей):
+
+  быстрые проверки
+    tri gate            гейт слияния (ci_gate.sh) целиком
+    tri quick           короткий круг: самопроверка + корпус + мутации
+    tri proof           execution-proof на реальном маршруте CLI
+    tri mut             мутационная проверка детектора
+    tri indep           независимость разметки от детектора
+    tri manifest        сверка coverage manifest с фактом
+
+  длинные шаги (в фоне, с опросом)
+    tri regress         перепрогон реестра
+    tri run <кейс>      прогон одного кейса
+    tri cover           выбор цели по корпусу
+    tri watch           показать, что сейчас работает в фоне
+
+  состояние и опыт
+    tri status          сводка: счётчики, отпечатки, состав корпуса, границы
+    tri note <текст>    записать опыт в ведомость (с отметкой времени и тика)
+    tri exp [N]         последние N записей опыта
+    tri tick start|done|abort [причина]
+
+  сопровождение
+    tri snapshot        снимок baseline
+    tri skill           сборка и проверка пакета скила
+    tri selftest        самопроверка самой tri
+
+Код возврата ненулевой при провале — tri можно ставить в CI.
+"""
+from __future__ import annotations
+
+import json
+import os
+import re
+import shlex
+import subprocess
+import sys
+import tempfile
+import time
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+TRACK = "/home/user/workspace/cron_tracking/8dff7aa3"
+LEDGER = os.path.join(TRACK, "audit-ledger.md")
+COUNTERS = os.path.join(TRACK, "tick-counters.json")
+CORPUS = "/home/user/workspace/corpus/trinity"
+SKILL_SRC = "/home/user/workspace/skills/user/goldsieve"
+SKILL_BUILD = "/home/user/workspace/skills-build"
+
+# Метка опыта в ведомости. По ней `tri exp` находит записи, поэтому она
+# фиксирована и не переписывается в каждом тике.
+EXP_MARK = "ОПЫТ:"
+
+
+def _run(args: list[str], timeout: int = 3600) -> int:
+    # Вывод подпроцесса идёт прямо в дескриптор, а свой — через буфер, поэтому
+    # без сброса порядок строк перемешивается (найдено при первом же `tri
+    # status`: заголовки печатались ПОСЛЕ вывода дочерних команд).
+    print("$ " + " ".join(shlex.quote(a) for a in args), flush=True)
+    return subprocess.call(args, cwd=ROOT, timeout=timeout)
+
+
+def _bg(args: list[str], log: str) -> int:
+    """Фоновый запуск с опросом. Ловушка `cd X && A & B` обойдена: команда
+    целиком уходит в bash -c, а не склеивается оператором фона."""
+    cmd = "cd %s && %s" % (shlex.quote(ROOT),
+                           " ".join(shlex.quote(a) for a in args))
+    subprocess.Popen(["setsid", "nohup", "bash", "-c",
+                      "%s > %s 2>&1" % (cmd, shlex.quote(log))],
+                     start_new_session=True)
+    print("фон запущен, журнал: %s" % log)
+    print("опрос: tail -f %s   |   что работает: tri watch" % log)
+    return 0
+
+
+def _counters() -> dict:
+    """Счётчики лежат ВЛОЖЕННО под ключом `counters` рядом с журналом
+    событий. Первая версия читала верхний уровень и молча давала ноль —
+    тихий отказ, пойманный первым же запуском `tri status`."""
+    try:
+        with open(COUNTERS, encoding="utf-8") as fh:
+            data = json.load(fh)
+    except Exception:
+        return {}
+    inner = data.get("counters")
+    return inner if isinstance(inner, dict) else {
+        k: v for k, v in data.items() if isinstance(v, int)}
+
+
+def _tick_no() -> int:
+    """Номер тика = число начатых тиков по счётчикам (0 при отсутствии)."""
+    return int(_counters().get("tick_started", 0))
+
+
+def cmd_gate(argv: list[str]) -> int:
+    return _run(["bash", os.path.join(ROOT, "ci_gate.sh")])
+
+
+def cmd_quick(argv: list[str]) -> int:
+    fail = 0
+    for step in (["python3", "-m", "goldsieve.selftest"],
+                 ["python3", "measure_identity.py"],
+                 ["python3", "mutation_identity.py"],
+                 ["python3", "independence.py"]):
+        rc = _run(step)
+        print("  -> код %d" % rc)
+        fail |= 1 if rc else 0
+    return fail
+
+
+def cmd_proof(argv: list[str]) -> int:
+    return _run(["python3", "execution_proof.py"])
+
+
+def cmd_mut(argv: list[str]) -> int:
+    return _run(["python3", "mutation_identity.py"])
+
+
+def cmd_indep(argv: list[str]) -> int:
+    return _run(["python3", "independence.py"])
+
+
+def cmd_manifest(argv: list[str]) -> int:
+    return _run(["python3", "coverage_manifest.py"])
+
+
+def cmd_regress(argv: list[str]) -> int:
+    return _bg(["timeout", "3000", "python3", "-m", "goldsieve", "regress",
+                "--registry", "claims.yaml"], "/tmp/tri-regress.txt")
+
+
+def cmd_run(argv: list[str]) -> int:
+    if not argv:
+        print("нужен путь к кейсу: tri run cases/имя.py")
+        return 2
+    log = "/tmp/tri-run-%s.txt" % os.path.basename(argv[0]).replace(".py", "")
+    return _bg(["timeout", "1800", "python3", "-m", "goldsieve", "run"]
+               + argv, log)
+
+
+def cmd_cover(argv: list[str]) -> int:
+    return _bg(["timeout", "900", "python3", "-m", "goldsieve", "cover",
+                CORPUS, "--registry", "claims.yaml"], "/tmp/tri-cover.txt")
+
+
+def cmd_watch(argv: list[str]) -> int:
+    out = subprocess.run(["ps", "ax"], capture_output=True, text=True).stdout
+    rows = [l for l in out.splitlines()
+            if re.search(r"ci_gate|goldsieve (regress|run|cover)"
+                         r"|mutation_identity|execution_proof", l)
+            and "grep" not in l]
+    if not rows:
+        print("в фоне ничего из инструментов не работает")
+        return 0
+    print("работает в фоне: %d" % len(rows))
+    for r in rows:
+        print("  " + r.strip()[:150])
+    return 0
+
+
+def cmd_status(argv: list[str]) -> int:
+    print("=== тик: %d" % _tick_no(), flush=True)
+    cnt = _counters()
+    if not cnt:
+        print("  счётчики недоступны: %s" % COUNTERS, flush=True)
+    for k, v in sorted(cnt.items()):
+        print("  %-26s %s" % (k, v), flush=True)
+    print("=== корпус", flush=True)
+    head = subprocess.run(["git", "-C", CORPUS, "rev-parse", "--short", "HEAD"],
+                          capture_output=True, text=True).stdout.strip()
+    print("  HEAD %s" % (head or "неизвестен"), flush=True)
+    print("=== состав корпуса фикстур и границы", flush=True)
+    rc = _run(["python3", "-c",
+               "import sys; sys.path.insert(0,'.');"
+               "from goldsieve import identity_corpus as C;"
+               "print('  положительных', len(C.POSITIVE),"
+               " 'негативных', len(C.NEGATIVE));"
+               "print('  правило трёх: 3/%d = %.4f'"
+               " % (len(C.NEGATIVE), 3/len(C.NEGATIVE)))"])
+    print("=== baseline", flush=True)
+    _run(["python3", "baseline.py", "check"])
+    return rc
+
+
+def cmd_note(argv: list[str]) -> int:
+    """Записать опыт в ведомость. Опыт, не записанный сразу, теряется к концу
+    тика — поэтому команда одна строка, а не процедура."""
+    text = " ".join(argv).strip()
+    if not text:
+        print("нужен текст: tri note 'что выяснилось и чем доказано'")
+        return 2
+    line = "- %s тик %d, %s — %s\n" % (
+        EXP_MARK, _tick_no(), time.strftime("%Y-%m-%d %H:%M"), text)
+    with open(LEDGER, "a", encoding="utf-8") as fh:
+        fh.write(line)
+    print("записано в ведомость: %s" % LEDGER)
+    print(line.rstrip())
+    return 0
+
+
+def cmd_exp(argv: list[str]) -> int:
+    n = int(argv[0]) if argv and argv[0].isdigit() else 10
+    try:
+        rows = [l.rstrip() for l in open(LEDGER, encoding="utf-8")
+                if EXP_MARK in l]
+    except OSError as exc:
+        print("ведомость недоступна: %s" % exc)
+        return 1
+    print("записей опыта: %d, показаны последние %d" % (len(rows), min(n, len(rows))))
+    for r in rows[-n:]:
+        print("  " + r)
+    return 0
+
+
+def cmd_tick(argv: list[str]) -> int:
+    if not argv:
+        print("нужно: tri tick start|done|abort [причина]")
+        return 2
+    what = argv[0]
+    key = {"start": "tick_started", "done": "tick_completed",
+           "abort": "tick_aborted_other"}.get(what)
+    if key is None:
+        print("неизвестно: %s" % what)
+        return 2
+    return _run(["python3", "tick_counters.py", "bump", key])
+
+
+def cmd_snapshot(argv: list[str]) -> int:
+    return _run(["python3", "baseline.py", "snapshot"])
+
+
+def cmd_skill(argv: list[str]) -> int:
+    """Сборка пакета скила: синхронизация, валидация, zip. Ловушка ≤100 файлов
+    проверяется здесь же, чтобы не узнавать об этом от сервиса."""
+    os.makedirs(SKILL_BUILD, exist_ok=True)
+    rc = _run(["rsync", "-a", "--delete",
+               "--exclude", "*.json", "--exclude", "*.txt",
+               "--exclude", "__pycache__",
+               SKILL_SRC + "/", os.path.join(SKILL_BUILD, "goldsieve") + "/"])
+    if rc:
+        return rc
+    pkg = os.path.join(SKILL_BUILD, "goldsieve")
+    files = sum(len(f) for _r, _d, f in os.walk(pkg))
+    print("файлов в пакете: %d (предел 100)" % files)
+    if files > 100:
+        print("ПРОВАЛ: пакет превышает предел, лишнее не кладётся в скил")
+        return 1
+    rc = _run(["agentskills", "validate", pkg])
+    if rc:
+        return rc
+    zip_path = os.path.join(SKILL_BUILD, "goldsieve.zip")
+    if os.path.exists(zip_path):
+        os.remove(zip_path)
+    return _run(["bash", "-c", "cd %s && zip -qr goldsieve.zip goldsieve"
+                 % shlex.quote(SKILL_BUILD)])
+
+
+def selftest() -> tuple[int, int]:
+    ok = fail = 0
+
+    def check(name: str, cond: bool, note: str = "") -> None:
+        nonlocal ok, fail
+        if cond:
+            ok += 1
+            print("  ок      %s" % name)
+        else:
+            fail += 1
+            print("  ПРОВАЛ  %s %s" % (name, note))
+
+    check("каждая команда имеет обработчик",
+          all(callable(v) for v in COMMANDS.values()))
+    check("справка перечисляет все команды",
+          all(("tri " + k) in __doc__ for k in COMMANDS))
+    # Запись опыта: проверяется на ВРЕМЕННОЙ ведомости, а не на настоящей.
+    global LEDGER
+    real = LEDGER
+    with tempfile.TemporaryDirectory() as tmp:
+        LEDGER = os.path.join(tmp, "ledger.md")
+        open(LEDGER, "w", encoding="utf-8").write("# заголовок\n")
+        rc = cmd_note(["проверка", "записи"])
+        body = open(LEDGER, encoding="utf-8").read()
+        check("опыт дописывается строкой с меткой",
+              rc == 0 and EXP_MARK in body and "проверка записи" in body)
+        check("пустой опыт не пишется",
+              cmd_note([]) == 2)
+        check("чтение опыта находит запись", cmd_exp(["5"]) == 0)
+        # ПОДСТАВКА: заголовок ведомости не должен считаться опытом.
+        rows = [l for l in open(LEDGER, encoding="utf-8") if EXP_MARK in l]
+        check("метка не ловит посторонние строки", len(rows) == 1)
+    LEDGER = real
+    check("номер тика читается числом", isinstance(_tick_no(), int))
+    # Счётчики: вложенная раскладка и плоская — обе читаются, а журнал
+    # событий не попадает в счётчики. ПОДСТАВКА: чтение верхнего уровня
+    # вместо вложенного даёт ноль и провалит эту проверку.
+    global COUNTERS
+    real_c = COUNTERS
+    with tempfile.TemporaryDirectory() as tmp:
+        COUNTERS = os.path.join(tmp, "c.json")
+        json.dump({"counters": {"tick_started": 7}, "events": [1, 2, 3]},
+                  open(COUNTERS, "w", encoding="utf-8"))
+        check("вложенные счётчики читаются", _tick_no() == 7)
+        check("журнал событий не попадает в счётчики",
+              "events" not in _counters())
+        json.dump({"tick_started": 5}, open(COUNTERS, "w", encoding="utf-8"))
+        check("плоская раскладка тоже читается", _tick_no() == 5)
+        COUNTERS = os.path.join(tmp, "нет.json")
+        check("отсутствие файла даёт пустоту, а не исключение",
+              _counters() == {})
+    COUNTERS = real_c
+    check("неизвестная команда даёт код 2", main(["нетакой"]) == 2)
+    print("tri: %d пройдено, %d провалено" % (ok, fail))
+    return ok, fail
+
+
+def cmd_selftest(argv: list[str]) -> int:
+    return 1 if selftest()[1] else 0
+
+
+COMMANDS = {
+    "gate": cmd_gate, "quick": cmd_quick, "proof": cmd_proof, "mut": cmd_mut,
+    "indep": cmd_indep, "manifest": cmd_manifest, "regress": cmd_regress,
+    "run": cmd_run, "cover": cmd_cover, "watch": cmd_watch,
+    "status": cmd_status, "note": cmd_note, "exp": cmd_exp, "tick": cmd_tick,
+    "snapshot": cmd_snapshot, "skill": cmd_skill, "selftest": cmd_selftest,
+}
+
+
+def main(argv: list[str]) -> int:
+    if not argv or argv[0] in ("-h", "--help", "help"):
+        print(__doc__)
+        return 0
+    fn = COMMANDS.get(argv[0])
+    if fn is None:
+        print("неизвестная команда: %s\nсписок: tri --help" % argv[0])
+        return 2
+    return fn(argv[1:])
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

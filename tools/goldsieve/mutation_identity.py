@@ -92,6 +92,32 @@ MUTANTS: list[tuple[str, str, tuple[str, ...]]] = [
         "def _value_sources(node):\n"
         "    calls, dotted, names = _orig_value_sources(node)\n"
         "    return [], dotted, [n for n in names if n not in set(calls)]\n",)),
+    # --- мутации тика 42: класс mutable globals ---------------------------
+    # Запись в контейнер (`STATE["v"] = _reference()`) и загрязнение из тела
+    # функции — ДВА НЕЗАВИСИМЫХ пути покрытия этого класса. Каждый получает
+    # свою мутацию с ОБЯЗАТЕЛЬНОЙ привязкой к классу: если поломку видит
+    # только чужой класс, значит именно этот класс остался непроверенным.
+    # ИЗМЕРЕНО в тике 42: одноточечное отключение ветки `ast.Subscript`
+    # в `_tainted_globals` корпус НЕ заметил — и это не дефект корпуса:
+    # `ast.walk(tgt)` по цели `STATE["v"]` всё равно выдаёт `ast.Name STATE`,
+    # поэтому ветка Subscript избыточна (измерено трассировкой: вердикт
+    # приходит через `name in tainted`). Мутация заменена на такую, которая
+    # убирает ОБА пути: загрязнять только цели-голые-имена, то есть любая
+    # запись в контейнер перестаёт быть видимой.
+    ("запись в глобальный контейнер (оба пути)", "replace", (
+        "                    for sub in ast.walk(tgt):",
+        "                    for sub in ([tgt] if isinstance(tgt, ast.Name)"
+        " else []):"), "mutable globals"),
+    ("загрязнение из тела функции (обход всего дерева)", "append", (
+        "\n\n_orig_tainted_globals = _tainted_globals\n\n\n"
+        "def _tainted_globals(tree, ref_name):\n"
+        "    shallow = ast.Module(body=[n for n in tree.body\n"
+        "                              if not isinstance(n, (ast.FunctionDef,\n"
+        "                                                    ast.AsyncFunctionDef,\n"
+        "                                                    ast.ClassDef))],\n"
+        "                         type_ignores=[])\n"
+        "    return _orig_tainted_globals(shallow, ref_name)\n",),
+     "mutable globals"),
 ]
 
 
@@ -117,11 +143,17 @@ def _load_mutant(text: str):
     return mod
 
 
-def _score() -> tuple[int, int, int]:
-    """Прогон корпуса: (пропущено, ложных, ошибок)."""
+def _score() -> tuple[int, int, int, list[str]]:
+    """Прогон корпуса: (пропущено, ложных, ошибок, имена сработавших).
+
+    Имена нужны для ПРИВЯЗКИ поломки к классу конструкций: агрегатный
+    счёт пропусков показывал только то, что поломку вообще кто-то увидел, а не
+    то, что её увидели фикстуры проверяемого класса.
+    """
     from goldsieve import identity_corpus as C
     from goldsieve.identity import derives_from
     miss = fp = err = 0
+    flagged: list[str] = []
     for name, src in C.POSITIVE.items():
         try:
             _m, obs, ref = C.load(name, src)
@@ -131,6 +163,7 @@ def _score() -> tuple[int, int, int]:
             continue
         if not same:
             miss += 1
+            flagged.append(name)
     for name, src in C.NEGATIVE.items():
         try:
             _m, obs, ref = C.load(name, src)
@@ -140,7 +173,8 @@ def _score() -> tuple[int, int, int]:
             continue
         if same:
             fp += 1
-    return miss, fp, err
+            flagged.append(name)
+    return miss, fp, err, flagged
 
 
 def run() -> int:
@@ -149,7 +183,7 @@ def run() -> int:
         import goldsieve.identity_deep as real  # noqa: F401
         real = sys.modules["goldsieve.identity_deep"]
 
-    base_miss, base_fp, base_err = _score()
+    base_miss, base_fp, base_err, _base_flagged = _score()
     print("исходный детектор: пропусков %d, ложных %d, ошибок %d"
           % (base_miss, base_fp, base_err))
     if base_miss or base_fp:
@@ -160,7 +194,9 @@ def run() -> int:
     undetected = []
     print()
     print("=== внесение поломок: %d" % len(MUTANTS))
-    for label, kind, args in MUTANTS:
+    for entry in MUTANTS:
+        label, kind, args = entry[0], entry[1], entry[2]
+        want_class = entry[3] if len(entry) > 3 else None
         try:
             mod = _load_mutant(_mutate(kind, args))
         except Exception:
@@ -170,13 +206,25 @@ def run() -> int:
             continue
         sys.modules["goldsieve.identity_deep"] = mod
         try:
-            miss, fp, err = _score()
+            miss, fp, err, flagged = _score()
         finally:
             sys.modules["goldsieve.identity_deep"] = real
         caught = (miss > base_miss) or (fp > base_fp)
-        print("  %-7s %-46s пропусков %d, ложных %d, ошибок %d"
-              % ("поймана" if caught else "НЕ ВИДНА", label, miss, fp, err))
-        if not caught:
+        attributed = True
+        if caught and want_class:
+            # Привязка: среди сработавших фикстур обязана быть хотя бы одна
+            # из объявленного класса — иначе класс остался непроверенным.
+            attributed = any(n.split(":")[0] == want_class for n in flagged)
+        status = "поймана" if caught else "НЕ ВИДНА"
+        if caught and not attributed:
+            status = "НЕ ТОТКЛ"
+        extra = ""
+        if want_class:
+            extra = " | класс %s: %s" % (
+                want_class, "видит" if attributed else "НЕ ВИДИТ")
+        print("  %-9s %-46s пропусков %d, ложных %d, ошибок %d%s"
+              % (status, label, miss, fp, err, extra))
+        if not caught or not attributed:
             undetected.append(label)
 
     print()
