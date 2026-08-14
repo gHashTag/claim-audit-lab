@@ -269,21 +269,57 @@ bounds:
 # объявленное число утверждений. Первые два условия ловят самый частый отказ:
 # проверка написана, но в гейт не включена — и её падение никого не блокирует.
 shell_checks:
+  goldsieve/chain.py:
+    gate_step: хеш-цепочка журнала
+    selftest_cmd: [-m, goldsieve.chain]
+    selftest_checks: 29
+    role: >-
+      append-only цепочка JSONL (seq, prev_hash, entry_hash, каноническое
+      представление), обнаружение изменения, удаления, вставки,
+      перестановки, подмены prev_hash, обрыва записи и сегмента без
+      ссылки на checkpoint; префиксный отпечаток для растущего журнала
+    limits: >-
+      цепочка НЕ подпись: она обнаруживает правку проверяемой копии,
+      но не доказывает автора записей и не защищает от полной подмены
+      журнала ВМЕСТЕ с checkpoint; временные метки — не доверенное время
+  tri:
+    gate_step: цепочка живого журнала
+    selftest_cmd: null
+    selftest_checks: 0
+    role: >-
+      проверка цепочки НАСТОЯЩЕГО журнала песочницы (`tri log
+      verify`): машинный JSON и ненулевой код при нарушении
+    skip_run_reason: >-
+      шаг гейта И ЕСТЬ прогон на живом журнале; повторный вызов из
+      манифеста дописал бы в тот же журнал ещё две записи — проверка
+      меняла бы то, что проверяет; число утверждений каскада цепочки
+      проверяется шагом goldsieve/chain.py
   goldsieve/runlog.py:
     gate_step: журнал вызовов (run_id)
     selftest_cmd: [-m, goldsieve.runlog]
-    selftest_checks: 19
+    selftest_checks: 27
     role: единый run_id, статусы, замок, чтение неполного журнала
   snapshot_manifest.py:
     gate_step: проверяемый снимок
     selftest_cmd: [snapshot_manifest.py, selftest]
-    selftest_checks: 8
-    role: SHA-256 входов, отчётов и журналов; перепроверка без сети
+    selftest_checks: 13
+    role: >-
+      SHA-256 входов, отчётов и журналов; перепроверка без сети;
+      checkpoint (имя журнала, last_seq, head_hash, SHA-256 снимка) и
+      append-only сверка префикса журнала вместо sha целого файла
   archive_contract.py:
     gate_step: контракт архива скила
     selftest_cmd: [archive_contract.py, selftest]
     selftest_checks: 9
     role: предел записей, порядок, дубликаты, детерминированный zip
+  chain_overhead.py:
+    gate_step: статистика стоимости цепочки
+    selftest_cmd: [chain_overhead.py, --selftest]
+    selftest_checks: 8
+    role: >-
+      сравнение дозаписи журнала без цепочки и с цепочкой; median/p95/min/max,
+      сырые точки, правило «разность меньше разброса повторов — замедление НЕ
+      измерено», объявленная причина малого числа повторов у полного гейта
   bench.py:
     gate_step: статистика измерителя
     selftest_cmd: [bench.py, --selftest]

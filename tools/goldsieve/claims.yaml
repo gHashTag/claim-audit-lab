@@ -511,3 +511,11 @@ claims:
   claim: Межмодульное чтение корпуса не распознаётся как тождество
   verdict: ПОДТВЕРЖДЕНО
   inputs_digest: 1235b6ac4959d34b
+- source: docs/docs/research/trinity-golden-chain-v2-41-offsets-report.md:70-78
+  case: cases/golden_chain_v241_offsets_20260815.py
+  claim: Разность ошибки оценки при 500 и 50 смещениях равна 0,0007
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: confirmed
+  fingerprint: 7f019ab7dc341f29
+  novelty_key: golden_chain:v241:offset_eval_delta:v1
+  inputs_digest: 14f8f3b1002b9732

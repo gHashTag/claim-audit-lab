@@ -12,9 +12,16 @@
 на класс, который бросает исключение при любой попытке создать сокет. Если
 проверка прошла, значит сети она не касалась.
 
-    python3 snapshot_manifest.py build     собрать снимок
-    python3 snapshot_manifest.py verify    перепроверить (сеть запрещена)
-    python3 snapshot_manifest.py selftest  самопроверка модуля
+    python3 snapshot_manifest.py build       собрать снимок
+    python3 snapshot_manifest.py checkpoint  связать снимок с головой журнала
+    python3 snapshot_manifest.py verify      перепроверить (сеть запрещена)
+    python3 snapshot_manifest.py selftest    самопроверка модуля
+
+С тика 44 снимок связан с хеш-цепочкой журнала вызовов: checkpoint
+запоминает имя журнала, последний seq, хеш головы и SHA-256 самого снимка.
+Граница здесь важнее возможности: связка обнаруживает правку или сброс
+журнала МЕЖДУ снимками, но не доказывает авторства и не защищает от
+согласованной подмены журнала ВМЕСТЕ с checkpoint.
 """
 from __future__ import annotations
 
@@ -26,6 +33,9 @@ import socket
 import sys
 import tempfile
 import time
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from goldsieve import chain, runlog  # noqa: E402
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "baseline", "snapshot-manifest.json")
@@ -70,11 +80,16 @@ def _logs(patterns: list[str] | None = None) -> list[str]:
     каждого файла хранится ещё и размер: пропавший журнал отличим от
     подменённого."""
     pats = patterns or ["/tmp/tri-*.txt", "/tmp/g4*.txt", "/tmp/r4*.txt",
-                        os.path.join(TRACK, "runs.jsonl")]
+                        os.path.join(TRACK, "runs.jsonl"),
+                        # Тик 44. Журнал берётся ИЗ runlog, а не из жёстко
+                        # прописанного пути: при другом GOLDSIEVE_RUNS снимок
+                        # покрывал бы журнал, который НИЧТО не пишет, и молчал
+                        # о том журнале, на который ссылается отчёт.
+                        runlog.runs_path()]
     out: list[str] = []
     for pat in pats:
         out.extend(glob.glob(pat))
-    return sorted(p for p in out if os.path.isfile(p))
+    return sorted(set(p for p in out if os.path.isfile(p)))
 
 
 def build(out_path: str = OUT, root: str = ROOT) -> dict:
@@ -88,9 +103,34 @@ def build(out_path: str = OUT, root: str = ROOT) -> dict:
         entries = {}
         for p in paths:
             rel = os.path.relpath(p, WORK)
+            if name == "logs" and os.path.abspath(p) == \
+                    os.path.abspath(runlog.runs_path()):
+                # Журнал вызовов append-only и растёт при ЛЮБОМ вызове,
+                # включая `tri verify`. Фиксация sha целого файла давала бы
+                # расхождение сразу после сборки снимка — шум, который
+                # пришлось бы игнорировать, а значит проверка выродилась бы.
+                # Фиксируется ПРЕФИКС: рост разрешён, правка и сброс нет.
+                rec = chain.prefix_digest(p)
+                rec["size"] = os.path.getsize(p)
+                rec["append_only"] = True
+                entries[rel] = rec
+                continue
             entries[rel] = {"sha256": sha256(p), "size": os.path.getsize(p)}
         body["groups"][name] = entries
     body["counts"] = {k: len(v) for k, v in body["groups"].items()}
+    # Ограничения хранятся В САМОМ манифесте, а не только в отчёте тика:
+    # кто читает снимок машинно, тот обязан видеть, чего он НЕ доказывает.
+    body["limitations"] = [
+        "хеш-цепочка журнала — НЕ подпись: она обнаруживает изменения в "
+        "проверяемой копии, но не доказывает автора записей",
+        "полная подмена журнала вместе с checkpoint не обнаруживается: "
+        "обнаружение опирается на то, что checkpoint зафиксирован раньше и "
+        "независимо (в отчёте и коммите), а не на невозможность подделки",
+        "временные метки берутся у того же процесса: цепочка задаёт порядок "
+        "записи, а не доверенное время",
+        "между двумя соседними checkpoint последовательность защищена "
+        "только цепочкой в самом журнале",
+    ]
     body["digest"] = hashlib.sha256(
         json.dumps(body["groups"], sort_keys=True,
                    ensure_ascii=False).encode()).hexdigest()[:16]
@@ -107,7 +147,8 @@ class _NoNetwork:
         raise RuntimeError("перепроверка снимка не имеет права ходить в сеть")
 
 
-def verify(path: str = OUT, allow_missing_logs: bool = True) -> tuple[int, list[str]]:
+def verify(path: str = OUT, allow_missing_logs: bool = True,
+           check_chain: bool = True) -> tuple[int, list[str]]:
     """Перепроверка снимка. Возвращает (код, список расхождений).
 
     Пропавший журнал по умолчанию НЕ считается расхождением: журналы живут во
@@ -136,14 +177,52 @@ def verify(path: str = OUT, allow_missing_logs: bool = True) -> tuple[int, list[
                         continue
                     problems.append("пропал файл (%s): %s" % (group, rel))
                     continue
+                if rec.get("append_only"):
+                    for msg in chain.check_prefix(full, rec):
+                        problems.append("append-only журнал (%s): %s — %s"
+                                        % (group, rel, msg))
+                    continue
                 got = sha256(full)
                 if got != rec["sha256"]:
                     problems.append(
                         "изменился файл (%s): %s\n    было %s\n    стало %s"
                         % (group, rel, rec["sha256"][:16], got[:16]))
+        # Цепочка журнала входит в ту же перепроверку: иначе снимок "сходится"
+        # при порванной цепочке, которую он же и призван закрепить.
+        cp = body.get("log_checkpoint") or runlog.read_checkpoint()
+        log_path = runlog.runs_path()
+        if check_chain and os.path.isfile(log_path):
+            rep = chain.verify(log_path, checkpoint=cp)
+            for v in rep["violations"]:
+                problems.append("журнал вызовов: %s — %s"
+                                % (v["kind"], v.get("detail", "")))
     finally:
         socket.socket = real_socket
     return (1 if problems else 0), problems
+
+
+def checkpoint(out_path: str = OUT) -> dict:
+    """Связать собранный снимок с головой журнала вызовов.
+
+    Порядок важен: сначала build (снимок существует и имеет SHA-256), потом
+    checkpoint. Обратный порядок дал бы checkpoint, ссылающийся на старый файл.
+    """
+    cp = runlog.write_checkpoint(
+        snapshot_sha256=sha256(out_path) if os.path.isfile(out_path) else None)
+    cp["snapshot_manifest"] = os.path.relpath(out_path, WORK)
+    # Та же связка записывается И в сам снимок: читающий снимок видит,
+    # какой голове журнала он соответствует, без второго файла. Поле не
+    # входит в groups, поэтому отпечаток состава остаётся тем же.
+    try:
+        with open(out_path, encoding="utf-8") as fh:
+            body = json.load(fh)
+        body["log_checkpoint"] = {k: v for k, v in cp.items()
+                                  if k != "snapshot_sha256"}
+        with open(out_path, "w", encoding="utf-8") as fh:
+            json.dump(body, fh, ensure_ascii=False, indent=2, sort_keys=True)
+    except (OSError, ValueError):
+        pass
+    return cp
 
 
 def selftest() -> tuple[int, int]:
@@ -210,6 +289,54 @@ def selftest() -> tuple[int, int]:
         bad = os.path.join(tmp, "нет.json")
         rc, probs = verify(bad)
         check("отсутствующий снимок даёт код 1, а не исключение", rc == 1)
+
+        # --- append-only журнал в снимке: рост разрешён, правка нет.
+        # Проверяется именно различение: одного согласия на росте мало —
+        # проверка, которая всегда молчит, прошла бы и на подмене.
+        jl = os.path.join(tmp, "runs.jsonl")
+        with open(jl, "w", encoding="utf-8") as fh:
+            prev = chain.GENESIS
+            for i in (1, 2):
+                ev = chain.chain_fields({"run_id": "x%d" % i}, i, prev)
+                prev = ev[chain.HASH_FIELD]
+                fh.write(json.dumps(ev, ensure_ascii=False,
+                                    sort_keys=True) + "\n")
+        rec = chain.prefix_digest(jl)
+        rec["append_only"] = True
+        rec["size"] = os.path.getsize(jl)
+        body2 = {"groups": {"logs": {os.path.relpath(jl, WORK): rec}}}
+        body2["digest"] = hashlib.sha256(
+            json.dumps(body2["groups"], sort_keys=True,
+                       ensure_ascii=False).encode()).hexdigest()[:16]
+        man2 = os.path.join(tmp, "snap2.json")
+        json.dump(body2, open(man2, "w", encoding="utf-8"), ensure_ascii=False)
+        with open(jl, "a", encoding="utf-8") as fh:
+            ev = chain.chain_fields({"run_id": "x3"}, 3, rec["head_hash"])
+            fh.write(json.dumps(ev, ensure_ascii=False, sort_keys=True) + "\n")
+        rc, probs = verify(man2, check_chain=False)
+        check("дописанная запись журнала не считается расхождением",
+              rc == 0 and not probs, str(probs))
+        rows = [json.loads(x) for x in open(jl, encoding="utf-8")]
+        rows[0]["command"] = "подмена"
+        with open(jl, "w", encoding="utf-8") as fh:
+            for r in rows:
+                fh.write(json.dumps(r, ensure_ascii=False,
+                                    sort_keys=True) + "\n")
+        rc, probs = verify(man2, check_chain=False)
+        check("правка старой записи журнала ловится снимком",
+              rc == 1 and any("append-only" in p for p in probs), str(probs))
+
+        # --- ограничения обязаны быть В СНИМКЕ, а не только в отчёте.
+        toy = build(os.path.join(tmp, "snap3.json"), root=ROOT)
+        lim = " ".join(toy.get("limitations", []))
+        check("в снимке записано, что цепочка — не подпись",
+              "НЕ подпись" in lim and "автор" in lim, lim[:80])
+        check("оговорена полная подмена вместе с checkpoint",
+              "checkpoint" in lim and "полная подмена" in lim)
+        check("журнал вызовов в снимке помечен как append-only",
+              any(r.get("append_only")
+                  for r in toy["groups"]["logs"].values())
+              or not toy["groups"]["logs"])
     print("snapshot_manifest: %d пройдено, %d провалено" % (ok, fail))
     return ok, fail
 
@@ -232,6 +359,14 @@ def main(argv: list[str]) -> int:
             for p in probs:
                 print("  " + p)
         return rc
+    if cmd == "checkpoint":
+        cp = checkpoint()
+        print("checkpoint журнала: %s, seq %s, голова %s"
+              % (cp["log_name"], cp["last_seq"], str(cp["head_hash"])[:16]))
+        print("  SHA-256 снимка: %s" % str(cp.get("snapshot_sha256"))[:16])
+        print("  граница: цепочка ловит правку копии, но не доказывает "
+              "авторства")
+        return 0
     if cmd == "selftest":
         return 1 if selftest()[1] else 0
     print(__doc__)

@@ -69,7 +69,9 @@ def _tool_files() -> list[str]:
                  # Тик 43: оболочка и её обвязка. Отпечаток обязан замечать
                  # правку tri и ослабление интеграционных тестов.
                  "tri", "tri_integration_test.py", "snapshot_manifest.py",
-                 "archive_contract.py", "bench.py"):
+                 "archive_contract.py", "bench.py",
+                 # Тик 44: измеритель стоимости журналирования.
+                 "chain_overhead.py"):
         p = os.path.join(ROOT, name)
         if os.path.exists(p):
             out.append(name)

@@ -37,6 +37,7 @@ cases/formulas_summary_external_20260814.py,Формула α_s = 4φ²/(9π²) 
 cases/golden_chain_v240_statistics_20260814.py,"Большой корпус увеличил покрытие триграмм в 1,9 раза",ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:47-49,2635099cd9629f12
 cases/golden_chain_v240_statistics_20260814.py,"Потеря обучения большого корпуса на 21,7% ниже случайного базиса",ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:55-59,2635099cd9629f12
 cases/golden_chain_v240_statistics_20260814.py,"Потеря оценки большого корпуса на 15,8% ниже случайного базиса",ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:55-59,2635099cd9629f12
+cases/golden_chain_v241_offsets_20260815.py,"Разность ошибки оценки при 500 и 50 смещениях равна 0,0007",ПОДТВЕРЖДЕНО,docs/docs/research/trinity-golden-chain-v2-41-offsets-report.md:70-78,14f8f3b1002b9732
 cases/gravitational_constant_external_20260814.py,Формула G = π³γ²/φ согласуется с CODATA,ВОПРОС,docs/docs/research/papers/gravitational-constants.md:10-15,d5b3e20a0308f63e
 cases/identity_cross_module_20260814.py,Межмодульная цепочка наблюдение→эталон распознаётся как тождество,ПУСТО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,1235b6ac4959d34b
 cases/identity_cross_module_20260814.py,Межмодульное чтение корпуса не распознаётся как тождество,ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,1235b6ac4959d34b

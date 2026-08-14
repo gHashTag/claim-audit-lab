@@ -30,6 +30,7 @@
 
   наблюдаемость и воспроизводимость
     tri runs [N]        последние вызовы: run_id, статус, код, артефакты
+    tri log verify      проверка хеш-цепочки журнала (машинный JSON)
     tri verify          перепроверка снимка по SHA-256 без сети
     tri archive         контракт архива скила (записи, порядок, детерминизм)
     tri bench [N]       измерение времени команд: median, p95, min/max
@@ -58,7 +59,7 @@ import time
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT)
-from goldsieve import runlog  # noqa: E402
+from goldsieve import chain, runlog  # noqa: E402
 
 TRACK = "/home/user/workspace/cron_tracking/8dff7aa3"
 # Переопределения через среду нужны интеграционным тестам: они гоняют
@@ -255,7 +256,12 @@ def cmd_snapshot(argv: list[str]) -> int:
         return rc
     # Снимок baseline покрывает только файлы инструмента; проверяемый
     # манифест добавляет отчёты, ведомость и журналы прогонов.
-    return _run(["python3", "snapshot_manifest.py", "build"])
+    rc = _run(["python3", "snapshot_manifest.py", "build"])
+    if rc:
+        return rc
+    # Checkpoint журнала (тик 44): снимок обязан связать свой SHA-256 с
+    # головой журнала, иначе журнал можно начать заново без следа.
+    return _run(["python3", "snapshot_manifest.py", "checkpoint"])
 
 
 def cmd_verify(argv: list[str]) -> int:
@@ -285,6 +291,27 @@ def cmd_runs(argv: list[str]) -> int:
             r.get("command"), r.get("exit_code", "-"),
             ",".join(r.get("artifacts", [])) or "-", mark), flush=True)
     return 0
+
+
+def cmd_log(argv: list[str]) -> int:
+    """`tri log verify [путь]` — проверка хеш-цепочки журнала.
+
+    Печатает машинный JSON и возвращает ненулевой код при любом нарушении:
+    команда годится в гейт, а не только для глаз.
+
+    Ограничение, которое печатается ВМЕСТЕ с результатом: цепочка обнаруживает
+    правку проверяемой копии, но не доказывает авторства и не защищает от
+    полной подмены журнала вместе с checkpoint.
+    """
+    if not argv or argv[0] != "verify":
+        print("использование: tri log verify [путь-к-журналу]", flush=True)
+        return 2
+    path = argv[1] if len(argv) > 1 else runlog.runs_path()
+    cp = runlog.read_checkpoint()
+    rep = chain.verify(path, checkpoint=cp)
+    print(json.dumps(rep, ensure_ascii=False, indent=2, sort_keys=True),
+          flush=True)
+    return 0 if rep["ok"] else 1
 
 
 def cmd_bench(argv: list[str]) -> int:
@@ -428,7 +455,7 @@ COMMANDS = {
     "status": cmd_status, "note": cmd_note, "exp": cmd_exp, "tick": cmd_tick,
     "snapshot": cmd_snapshot, "skill": cmd_skill, "selftest": cmd_selftest,
     "runs": cmd_runs, "verify": cmd_verify, "archive": cmd_archive,
-    "bench": cmd_bench,
+    "bench": cmd_bench, "log": cmd_log,
 }
 
 # Служебные команды для интеграционных тестов. В справке их нет, и в

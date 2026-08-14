@@ -266,6 +266,13 @@
     "inputs_digest": "2635099cd9629f12"
   },
   {
+    "case": "cases/golden_chain_v241_offsets_20260815.py",
+    "claim": "Разность ошибки оценки при 500 и 50 смещениях равна 0,0007",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/research/trinity-golden-chain-v2-41-offsets-report.md:70-78",
+    "inputs_digest": "14f8f3b1002b9732"
+  },
+  {
     "case": "cases/gravitational_constant_external_20260814.py",
     "claim": "Формула G = π³γ²/φ согласуется с CODATA",
     "verdict": "ВОПРОС",

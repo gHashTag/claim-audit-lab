@@ -16,12 +16,15 @@
 """
 from __future__ import annotations
 
+import fcntl
 import json
 import os
 import secrets
 import subprocess
 import tempfile
 import time
+
+from . import chain
 
 # Закрытый набор статусов. `pending` и `not-evaluated` — не «почти сделано»:
 # первый обязан иметь владельца, бюджет и критерии приёмки (проверяет
@@ -97,6 +100,36 @@ def _tail_byte(path: str) -> bytes:
         return b"\n"
 
 
+def checkpoint_path() -> str:
+    """Где живёт последний checkpoint журнала."""
+    return os.environ.get(
+        "GOLDSIEVE_LOG_CHECKPOINT",
+        os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                     "..", "baseline", "log-checkpoint.json"))
+
+
+def read_checkpoint() -> dict | None:
+    try:
+        with open(os.path.normpath(checkpoint_path()), encoding="utf-8") as fh:
+            data = json.load(fh)
+        return data if isinstance(data, dict) and data.get("head_hash") \
+            else None
+    except (OSError, ValueError):
+        return None
+
+
+def write_checkpoint(path: str | None = None,
+                     snapshot_sha256: str | None = None) -> dict:
+    """Зафиксировать checkpoint текущего журнала."""
+    cp = chain.make_checkpoint(path or runs_path(), snapshot_sha256)
+    dst = os.path.normpath(checkpoint_path())
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    with open(dst, "w", encoding="utf-8") as fh:
+        json.dump(cp, fh, ensure_ascii=False, indent=2, sort_keys=True)
+        fh.write("\n")
+    return cp
+
+
 def _append(event: dict, path: str | None = None) -> None:
     """Дописать событие строкой.
 
@@ -110,13 +143,51 @@ def _append(event: dict, path: str | None = None) -> None:
     parent = os.path.dirname(path)
     if parent:
         os.makedirs(parent, exist_ok=True)
-    prefix = ""
-    if os.path.exists(path) and _tail_byte(path) != b"\n":
-        prefix = "\n"
-        event = dict(event, after_truncated_write=True)
-    line = json.dumps(event, ensure_ascii=False, sort_keys=True)
-    with open(path, "a", encoding="utf-8") as fh:
+    # Цепочка (тик 44): чтение головы и дозапись обязаны быть одним
+    # критическим участком: два процесса, прочитав одну и ту же голову,
+    # выдали бы две записи с одинаковым seq и разорвали связь. Поэтому
+    # flock на самом файле журнала, а не общий замок команд: журнал пишут и
+    # незамоченные команды.
+    with open(path, "a+", encoding="utf-8") as fh:
+        try:
+            fcntl.flock(fh.fileno(), fcntl.LOCK_EX)
+        except OSError:
+            pass
+        prefix = ""
+        if _tail_byte(path) not in (b"\n", b""):
+            prefix = "\n"
+            event = dict(event, after_truncated_write=True)
+        if os.environ.get("GOLDSIEVE_CHAIN") == "0":
+            # Только для ИЗМЕРЕНИЯ стоимости цепочки: путь «до» без связи
+            # записей. Сравнивать с прежней версией кода было бы хуже:
+            # различался бы не только журнал. В работе переменная НЕ
+            # выставляется, а гейт проверяет целостность живого журнала,
+            # поэтому постоянное отключение было бы заметно как нарушение.
+            line = json.dumps(event, ensure_ascii=False, sort_keys=True)
+            fh.write(prefix + line + "\n")
+            fh.flush()
+            try:
+                fcntl.flock(fh.fileno(), fcntl.LOCK_UN)
+            except OSError:
+                pass
+            return
+        seq, prev = chain.head_tail(path)
+        prev_cp = None
+        if seq == 0:
+            cp = read_checkpoint()
+            if cp and os.path.basename(str(cp.get("log_name", ""))) != \
+                    os.path.basename(path):
+                prev_cp = {"log_name": cp.get("log_name"),
+                           "last_seq": cp.get("last_seq"),
+                           "head_hash": cp.get("head_hash")}
+        event = chain.chain_fields(event, seq + 1, prev, prev_cp)
+        line = json.dumps(event, ensure_ascii=False, sort_keys=True)
         fh.write(prefix + line + "\n")
+        fh.flush()
+        try:
+            fcntl.flock(fh.fileno(), fcntl.LOCK_UN)
+        except OSError:
+            pass
 
 
 def start(command: str, argv: list[str] | None = None,
@@ -133,6 +204,7 @@ def start(command: str, argv: list[str] | None = None,
         "pid": pid if pid is not None else os.getpid(),
         "corpus_commit": corpus_commit(),
         "baseline_fingerprint": baseline_fingerprint(),
+        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "started": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "started_unix": round(time.time(), 3),
     }
@@ -163,6 +235,7 @@ def finish(run: dict, exit_code: int, artifacts: list[str] | None = None,
         "child_pid": child_pid,
         "exit_code": exit_code,
         "artifacts": list(artifacts or []),
+        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "finished": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "duration_s": round(time.time() - float(run.get("started_unix", 0)), 3)
         if run.get("started_unix") else None,
@@ -336,6 +409,49 @@ def selftest() -> tuple[int, int]:
         check("незавершённый вызов с мёртвым PID выводится как aborted",
               rows[1]["status"] == "aborted" and rows[1]["derived"] is True)
         check("битых строк нет", broken == 0)
+        # Цепочка (тик 44): запись обязана быть цепочечной СРАЗУ, а не
+        # только когда её проверяют отдельной командой.
+        ev_chain, _ = read_events(path)
+        check("записи получают seq, prev_hash и entry_hash",
+              all(e.get("entry_hash") and "prev_hash" in e
+                  and isinstance(e.get("seq"), int) for e in ev_chain),
+              str(ev_chain[:1]))
+        check("seq идёт подряд с единицы",
+              [e["seq"] for e in ev_chain] == list(range(1, len(ev_chain) + 1)))
+        check("все записи имеют timestamp",
+              all(e.get("timestamp") for e in ev_chain))
+        check("живой журнал проходит проверку цепочки",
+              chain.verify(path)["ok"], str(chain.verify(path)["violations"]))
+        # checkpoint темпорально: пишется в своё место и связывает голову.
+        old_env = os.environ.get("GOLDSIEVE_LOG_CHECKPOINT")
+        os.environ["GOLDSIEVE_LOG_CHECKPOINT"] = os.path.join(tmp, "cp.json")
+        try:
+            cp = write_checkpoint(path, snapshot_sha256="a" * 64)
+            check("checkpoint знает имя журнала, seq, голову и sha снимка",
+                  cp["log_name"] == "runs.jsonl"
+                  and cp["last_seq"] == len(ev_chain)
+                  and cp["head_hash"] == ev_chain[-1]["entry_hash"]
+                  and cp["snapshot_sha256"] == "a" * 64)
+            check("checkpoint читается обратно",
+                  (read_checkpoint() or {}).get("head_hash")
+                  == cp["head_hash"])
+            # НОВЫЙ СЕГМЕНТ: другое имя журнала обязан продолжаться от
+            # checkpoint, и ссылка ставится АВТОМАТИЧЕСКИ при записи.
+            seg = os.path.join(tmp, "runs-2.jsonl")
+            rs = start("quick", tick=44, path=seg)
+            ev_seg, _ = read_events(seg)
+            check("новый segment автоматически ссылается на checkpoint",
+                  (ev_seg[0].get("prev_checkpoint") or {}).get("head_hash")
+                  == cp["head_hash"], str(ev_seg[0].get("prev_checkpoint")))
+            check("новый segment проходит проверку с checkpoint",
+                  chain.verify(seg, checkpoint=cp)["ok"],
+                  str(chain.verify(seg, checkpoint=cp)["violations"]))
+            finish(rs, 0, path=seg)
+        finally:
+            if old_env is None:
+                os.environ.pop("GOLDSIEVE_LOG_CHECKPOINT", None)
+            else:
+                os.environ["GOLDSIEVE_LOG_CHECKPOINT"] = old_env
         # ПОДСТАВКА: обрыв последней строки на середине.
         with open(path, "a", encoding="utf-8") as fh:
             fh.write('{"run_id": "обрыв", "event": "sta')
