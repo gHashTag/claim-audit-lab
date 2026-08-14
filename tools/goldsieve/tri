@@ -28,10 +28,20 @@
     tri exp [N]         последние N записей опыта
     tri tick start|done|abort [причина]
 
+  наблюдаемость и воспроизводимость
+    tri runs [N]        последние вызовы: run_id, статус, код, артефакты
+    tri verify          перепроверка снимка по SHA-256 без сети
+    tri archive         контракт архива скила (записи, порядок, детерминизм)
+    tri bench [N]       измерение времени команд: median, p95, min/max
+
   сопровождение
-    tri snapshot        снимок baseline
+    tri snapshot        снимок baseline и проверяемый манифест SHA-256
     tri skill           сборка и проверка пакета скила
     tri selftest        самопроверка самой tri
+
+Каждый вызов оставляет событие в журнале вызовов (run_id, тик, коммит
+корпуса, отпечаток baseline, PID, код возврата, артефакты). Длительные
+исключительные команды берут замок: два одновременных тика запрещены.
 
 Код возврата ненулевой при провале — tri можно ставить в CI.
 """
@@ -47,9 +57,16 @@ import tempfile
 import time
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, ROOT)
+from goldsieve import runlog  # noqa: E402
+
 TRACK = "/home/user/workspace/cron_tracking/8dff7aa3"
-LEDGER = os.path.join(TRACK, "audit-ledger.md")
-COUNTERS = os.path.join(TRACK, "tick-counters.json")
+# Переопределения через среду нужны интеграционным тестам: они гоняют
+# НАСТОЯЩУЮ tri как подпроцесс, но на временной ведомости и счётчиках.
+LEDGER = os.environ.get("TRI_LEDGER", os.path.join(TRACK, "audit-ledger.md"))
+COUNTERS = os.environ.get("GOLDSIEVE_COUNTERS",
+                          os.path.join(TRACK, "tick-counters.json"))
+LOCK = os.environ.get("TRI_LOCK", "/tmp/tri-tick.lock")
 CORPUS = "/home/user/workspace/corpus/trinity"
 SKILL_SRC = "/home/user/workspace/skills/user/goldsieve"
 SKILL_BUILD = "/home/user/workspace/skills-build"
@@ -233,7 +250,57 @@ def cmd_tick(argv: list[str]) -> int:
 
 
 def cmd_snapshot(argv: list[str]) -> int:
-    return _run(["python3", "baseline.py", "snapshot"])
+    rc = _run(["python3", "baseline.py", "snapshot"])
+    if rc:
+        return rc
+    # Снимок baseline покрывает только файлы инструмента; проверяемый
+    # манифест добавляет отчёты, ведомость и журналы прогонов.
+    return _run(["python3", "snapshot_manifest.py", "build"])
+
+
+def cmd_verify(argv: list[str]) -> int:
+    return _run(["python3", "snapshot_manifest.py", "verify"])
+
+
+def cmd_archive(argv: list[str]) -> int:
+    """Контракт архива: две сборки из одного состояния обязаны совпасть по
+    SHA-256, записей не больше ста, каталогов и повторов нет."""
+    src = argv[0] if argv else os.path.join(SKILL_BUILD, "goldsieve")
+    return _run(["python3", "archive_contract.py", "build", src,
+                 os.path.join(SKILL_BUILD, "goldsieve.zip")])
+
+
+def cmd_runs(argv: list[str]) -> int:
+    n = int(argv[0]) if argv and argv[0].isdigit() else 15
+    rows, broken = runlog.runs()
+    if broken:
+        print("битых строк в журнале: %d (обрыв записи при падении)"
+              % broken, flush=True)
+    print("вызовов всего: %d, показаны последние %d"
+          % (len(rows), min(n, len(rows))), flush=True)
+    for r in rows[-n:]:
+        mark = " (выведено)" if r.get("derived") else ""
+        print("  %-8s %-9sтик %-4s %-22s код %-5s %s%s" % (
+            r["run_id"][-8:], r.get("status", "?"), r.get("tick"),
+            r.get("command"), r.get("exit_code", "-"),
+            ",".join(r.get("artifacts", [])) or "-", mark), flush=True)
+    return 0
+
+
+def cmd_bench(argv: list[str]) -> int:
+    n = argv[0] if argv and argv[0].isdigit() else "20"
+    return _run(["python3", "bench.py", "--repeats", n])
+
+
+def cmd__sleep(argv: list[str]) -> int:
+    """Служебная команда для интеграционных тестов: держать замок N секунд."""
+    time.sleep(float(argv[0]) if argv else 1.0)
+    return 0
+
+
+def cmd__crash(argv: list[str]) -> int:
+    """Служебная команда для интеграционных тестов: аварийное падение."""
+    raise RuntimeError("проверочное падение")
 
 
 def cmd_skill(argv: list[str]) -> int:
@@ -258,7 +325,10 @@ def cmd_skill(argv: list[str]) -> int:
     zip_path = os.path.join(SKILL_BUILD, "goldsieve.zip")
     if os.path.exists(zip_path):
         os.remove(zip_path)
-    return _run(["bash", "-c", "cd %s && zip -qr goldsieve.zip goldsieve"
+    # Ключ -D обязателен: без него zip кладёт ещё и записи КАТАЛОГОВ, а предел
+    # в 100 считается по записям архива. 96 файлов + 9 каталогов = 105, и
+    # сохранение скила отвергается с сообщением про «too many files».
+    return _run(["bash", "-c", "cd %s && zip -qrD goldsieve.zip goldsieve"
                  % shlex.quote(SKILL_BUILD)])
 
 
@@ -278,6 +348,8 @@ def selftest() -> tuple[int, int]:
           all(callable(v) for v in COMMANDS.values()))
     check("справка перечисляет все команды",
           all(("tri " + k) in __doc__ for k in COMMANDS))
+    check("справка не разглашает служебные команды",
+          all(("tri " + k) not in __doc__ for k in HIDDEN))
     # Запись опыта: проверяется на ВРЕМЕННОЙ ведомости, а не на настоящей.
     global LEDGER
     real = LEDGER
@@ -315,6 +387,32 @@ def selftest() -> tuple[int, int]:
               _counters() == {})
     COUNTERS = real_c
     check("неизвестная команда даёт код 2", main(["нетакой"]) == 2)
+    # Новое в тике 43: журнал вызовов, замок, служебные команды.
+    check("служебные команды не в рабочем списке",
+          all(k.startswith("_") for k in HIDDEN)
+          and not set(HIDDEN) & set(COMMANDS))
+    check("замок берётся только известными командами",
+          LOCKED <= (set(COMMANDS) | set(HIDDEN)))
+    with tempfile.TemporaryDirectory() as tmp:
+        old = os.environ.get("GOLDSIEVE_RUNS")
+        os.environ["GOLDSIEVE_RUNS"] = os.path.join(tmp, "runs.jsonl")
+        rc = main(["watch"])
+        rows, broken = runlog.runs()
+        check("вызов попадает в журнал со статусом и кодом",
+              rc == 0 and len(rows) == 1 and rows[0]["status"] == "passed"
+              and rows[0]["command"] == "watch" and broken == 0)
+        try:
+            main(["_crash"])
+            check("падение попадает в журнал как failed", False, "без исключения")
+        except RuntimeError:
+            rows, _ = runlog.runs()
+            crashed = [r for r in rows if r["command"] == "_crash"]
+            check("падение попадает в журнал как failed",
+                  len(crashed) == 1 and crashed[0]["status"] == "failed")
+        if old is None:
+            os.environ.pop("GOLDSIEVE_RUNS", None)
+        else:
+            os.environ["GOLDSIEVE_RUNS"] = old
     print("tri: %d пройдено, %d провалено" % (ok, fail))
     return ok, fail
 
@@ -329,18 +427,70 @@ COMMANDS = {
     "run": cmd_run, "cover": cmd_cover, "watch": cmd_watch,
     "status": cmd_status, "note": cmd_note, "exp": cmd_exp, "tick": cmd_tick,
     "snapshot": cmd_snapshot, "skill": cmd_skill, "selftest": cmd_selftest,
+    "runs": cmd_runs, "verify": cmd_verify, "archive": cmd_archive,
+    "bench": cmd_bench,
 }
+
+# Служебные команды для интеграционных тестов. В справке их нет, и в
+# самопроверке требование «справка перечисляет все команды» на них не
+# распространяется: они не часть рабочего интерфейса тика.
+HIDDEN = {"_sleep": cmd__sleep, "_crash": cmd__crash}
+
+# Команды, которые меняют общее состояние (baseline, пакет скила) или
+# долго держат процессор. Два таких вызова одновременно — ошибка, а не
+# ожидание: иначе два тика пишут в один baseline и одну ведомость.
+LOCKED = {"gate", "quick", "snapshot", "skill", "archive", "bench", "_sleep"}
 
 
 def main(argv: list[str]) -> int:
     if not argv or argv[0] in ("-h", "--help", "help"):
         print(__doc__)
         return 0
-    fn = COMMANDS.get(argv[0])
+    name = argv[0]
+    fn = COMMANDS.get(name) or HIDDEN.get(name)
     if fn is None:
-        print("неизвестная команда: %s\nсписок: tri --help" % argv[0])
+        print("неизвестная команда: %s\nсписок: tri --help" % name)
         return 2
-    return fn(argv[1:])
+    run = runlog.start(name, argv[1:], tick=_tick_no())
+    lock = None
+    try:
+        if name in LOCKED:
+            try:
+                lock = runlog.Lock(LOCK).acquire()
+            except runlog.LockBusy as exc:
+                print("ЗАМОК ЗАНЯТ: %s. Одновременные тики запрещены." % exc,
+                      flush=True)
+                runlog.finish(run, 3, status="aborted")
+                return 3
+        rc = fn(argv[1:])
+    except BaseException as exc:
+        # Падение ОБЯЗАНО попасть в журнал: вызов без финального события
+        # выглядит как работающая задача и молча искажает картину здоровья.
+        runlog.finish(run, 70, status="failed",
+                      artifacts=["исключение: %s" % type(exc).__name__])
+        raise
+    finally:
+        if lock is not None:
+            lock.release()
+    runlog.finish(run, rc, artifacts=_artifacts(name, argv[1:]))
+    return rc
+
+
+def _artifacts(name: str, argv: list[str]) -> list[str]:
+    """Артефакты вызова: то, на что потом сошлётся отчёт."""
+    if name == "regress":
+        return ["/tmp/tri-regress.txt"]
+    if name == "cover":
+        return ["/tmp/tri-cover.txt"]
+    if name == "run" and argv:
+        return ["/tmp/tri-run-%s.txt"
+                % os.path.basename(argv[0]).replace(".py", "")]
+    if name in ("skill", "archive"):
+        return [os.path.join(SKILL_BUILD, "goldsieve.zip")]
+    if name == "snapshot":
+        return [os.path.join(ROOT, "baseline", "manifest.json"),
+                os.path.join(ROOT, "baseline", "snapshot-manifest.json")]
+    return []
 
 
 if __name__ == "__main__":

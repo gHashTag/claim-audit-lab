@@ -65,7 +65,11 @@ def _tool_files() -> list[str]:
     for name in ("claims.yaml", "measure_identity.py", "mutation_identity.py",
                  "calibrate_identity.py", "baseline.py", "ci_gate.sh",
                  "coverage_manifest.py", "coverage_manifest.yaml",
-                 "tick_counters.py"):
+                 "tick_counters.py",
+                 # Тик 43: оболочка и её обвязка. Отпечаток обязан замечать
+                 # правку tri и ослабление интеграционных тестов.
+                 "tri", "tri_integration_test.py", "snapshot_manifest.py",
+                 "archive_contract.py", "bench.py"):
         p = os.path.join(ROOT, name)
         if os.path.exists(p):
             out.append(name)

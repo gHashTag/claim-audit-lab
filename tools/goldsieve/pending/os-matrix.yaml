@@ -8,7 +8,7 @@
 
 task: проверить каскад и детектор на macOS
 id: os-matrix-macos
-status: waiting
+status: pending   # закрытый словарь статусов: runlog.STATUSES
 owner: Dmitrii Vasilev (gHashTag) — только у него есть доступ к устройству
 blocked_by: |
   MacBook Pro AE943F77-18DF-5F84-8883-AE8B9763D1BD offline; pc bash не ответил

@@ -1,0 +1,481 @@
+{
+  "counts": {
+    "docs": 18,
+    "logs": 8,
+    "tool": 90
+  },
+  "created": "2026-08-14T18:29:29",
+  "digest": "cb145218351ee180",
+  "groups": {
+    "docs": {
+      "cron_tracking/8dff7aa3/audit-ledger.md": {
+        "sha256": "37834ea2b17c57c7c1e1f1c4aca9341dcabd55df15845b71706874036bebbdf5",
+        "size": 198441
+      },
+      "goldsieve/claims.yaml": {
+        "sha256": "e5843ffcd92e93f259bbab4ca7492776efaaf68241e8790e419b2b4c13811900",
+        "size": 27969
+      },
+      "goldsieve/coverage_manifest.yaml": {
+        "sha256": "81ad0f86267d6e57be49fe838be2f9fc0f8de7ecb10c03fb4515deac81d001c7",
+        "size": 15507
+      },
+      "goldsieve/docs/rfc-tri-zig-external-commands.md": {
+        "sha256": "c1fb30c369c16d231b78ba0f25da78fc43c2521cb2d3c927cfecbaf03fe20d48",
+        "size": 10598
+      },
+      "goldsieve/pending/os-matrix.yaml": {
+        "sha256": "5397f9da5c575d5e487700f3d12032fd6d7b93656ada7668d8237363f12f1855",
+        "size": 2145
+      },
+      "loop10/report.md": {
+        "sha256": "8bd18a6b62cb0f40c703ae83a70c182f25465c1a42118e6df0a4833e33ea9e4f",
+        "size": 12444
+      },
+      "loop11/report.md": {
+        "sha256": "783d90334fd6184ef36505bae30e5e697a13f64fae81c5bb81e9b0e5af3305ca",
+        "size": 9302
+      },
+      "loop12/report.md": {
+        "sha256": "ba085232bea304e4482c5fffe2c6d1b9b0c93ac90e09a804ea34efa4687821cf",
+        "size": 10546
+      },
+      "loop13/report.md": {
+        "sha256": "5ff2795078b9b6749f717be5c3b7a123f28e4f4d8be120d9e83919181d0e5272",
+        "size": 16616
+      },
+      "loop14/report.md": {
+        "sha256": "e95faec533b48480bc80b3adff26d0729122a4973625bf3979d04dd7cca48ca6",
+        "size": 16384
+      },
+      "loop15/report.md": {
+        "sha256": "ead76e035c89f54d4cab94eb6b0fcf5c4a27178513f79b3aa24753b263924ef2",
+        "size": 7775
+      },
+      "loop16/report.md": {
+        "sha256": "c1e9ac74eb4404473df46766d3467fcb56f24ba5f8f48befb21ef5f8e39a5ce2",
+        "size": 12387
+      },
+      "loop3/report.md": {
+        "sha256": "48c903be9120ff383638f99bad9049ea777d08befab9ccbffa3be9a5d5f215b9",
+        "size": 22077
+      },
+      "loop4/report.md": {
+        "sha256": "eb6da30f00b52e2a031cd57aaf481e12e6d78df1e8d790132bbdb7b68a68893d",
+        "size": 24784
+      },
+      "loop5/report.md": {
+        "sha256": "f65b31e133b4a444016ecfd6aa3a5390504aacab3438bc460aa09f421ec63f67",
+        "size": 14509
+      },
+      "loop6/report.md": {
+        "sha256": "79223a313d8375f067b27dc924b52db451cac7f47ea34c8dbfa6cbefb52c3512",
+        "size": 13630
+      },
+      "loop8/report.md": {
+        "sha256": "5bd3c599fa1305235dd7fe95e5feaf91769b27159fe82f93dfe05ed933dc178b",
+        "size": 7935
+      },
+      "loop9/report.md": {
+        "sha256": "d1b67861ddc9a282a833e41d2aa3e2f353a9b95d155d43b6f76a1dd3ed7d271e",
+        "size": 10957
+      }
+    },
+    "logs": {
+      "../../../tmp/g42.txt": {
+        "sha256": "bdeca3fcecd0dbe6a38b742695ab50aff6cecf34cd682303b4685029cf0f6e67",
+        "size": 1721
+      },
+      "../../../tmp/g42b.txt": {
+        "sha256": "9cc28785ae956f1ac5d22c13914f0ba2927a61c361db4dd05f6070f2be4b222f",
+        "size": 2491
+      },
+      "../../../tmp/g43.txt": {
+        "sha256": "9cc28785ae956f1ac5d22c13914f0ba2927a61c361db4dd05f6070f2be4b222f",
+        "size": 2491
+      },
+      "../../../tmp/g43b.txt": {
+        "sha256": "8d7d0f2fe524819c1c623f74cc2aa9abb013961d0d13cd607e255bd4359d69eb",
+        "size": 2848
+      },
+      "../../../tmp/r42.txt": {
+        "sha256": "287739d73fad6f40e8e987d4bb6f3e8e6550e27daf6fd78d25ef34e8b7e7c2bd",
+        "size": 1002
+      },
+      "../../../tmp/r42b.txt": {
+        "sha256": "287739d73fad6f40e8e987d4bb6f3e8e6550e27daf6fd78d25ef34e8b7e7c2bd",
+        "size": 1002
+      },
+      "../../../tmp/r43.txt": {
+        "sha256": "dcaa2cbf1354a504b386b45939a947417ff283ce4ce1fa8744b0ee12185a0f2a",
+        "size": 1011
+      },
+      "cron_tracking/8dff7aa3/runs.jsonl": {
+        "sha256": "3c5aa1a08535fc7581e2deca7049abc245cbef88cc983926f51a79af1d934d66",
+        "size": 508
+      }
+    },
+    "tool": {
+      "goldsieve/archive_contract.py": {
+        "sha256": "f2bc14152cf8f0c46386dc01343b572bbec708de2346612a6dd43fdd048b398d",
+        "size": 11095
+      },
+      "goldsieve/baseline.py": {
+        "sha256": "cf5e4a987f0ed75736a9fbacf53cedf0964cfaa296704cf963cba58440124d68",
+        "size": 19339
+      },
+      "goldsieve/bench.py": {
+        "sha256": "638205d3d621ec5ea9af62c951ccd464d1dea2af8b6eab71d8982400f30dc7b9",
+        "size": 11326
+      },
+      "goldsieve/calibrate_identity.py": {
+        "sha256": "16e57d1ffd25c329a96c04fb32767725b9154d317b5ac4c0abd93c2831cd75fe",
+        "size": 12379
+      },
+      "goldsieve/cases/_template_probe.py": {
+        "sha256": "f3564a9f35bfc1d3c0ba96de0788f3c128289581f2e03458b365037a0ee8f639",
+        "size": 1036
+      },
+      "goldsieve/cases/appendix_external_targets_20260813.py": {
+        "sha256": "0f1299772765d1851a93985ec2ad29757d2b70764f5b71e7b73983084a1f1819",
+        "size": 9309
+      },
+      "goldsieve/cases/axes_omega_lambda.py": {
+        "sha256": "f34a5fff20c0e4ab599a176dacf012c0e2b63661807426dd552863e778088922",
+        "size": 13089
+      },
+      "goldsieve/cases/ckm_lqg_external_20260813.py": {
+        "sha256": "d12646fd9695852a18e698938d229819de34b84260b47dcee06c89507a4c95b5",
+        "size": 10228
+      },
+      "goldsieve/cases/ckm_vtd_vts_vub_external_20260814.py": {
+        "sha256": "ac0525a25ca1a4b0fd534323361608d69aaf35101b03e965439e36c58a039287",
+        "size": 9721
+      },
+      "goldsieve/cases/cosmology_columns.py": {
+        "sha256": "d24c1153cb57797c21a5592d38a2edaaa2f0d8d97e0ba03973263fcbd8a162e6",
+        "size": 17256
+      },
+      "goldsieve/cases/dark_photon_x17_formula.py": {
+        "sha256": "1eb79592e69c54e9b532027afbdd17e339ad38fdb4e3bf874b50b993c7a4c2a4",
+        "size": 9316
+      },
+      "goldsieve/cases/delta001_additional_claims_20260814.py": {
+        "sha256": "375531d7c3182f0cc5f10f1a2686a6d999b4a4f40404b4958fdbe682b8174f3f",
+        "size": 10406
+      },
+      "goldsieve/cases/delta001_variance_claims_20260814.py": {
+        "sha256": "7c94880b4be75033e1e3a5ea7209e34421930e0e55db423e323f680949c78a2d",
+        "size": 8546
+      },
+      "goldsieve/cases/dirac_cp_phase_formula.py": {
+        "sha256": "dbf675e28a24f6ef1c7a5209c60a046f2362e0cb29a9ce80ff2aadcc8168dc92",
+        "size": 9476
+      },
+      "goldsieve/cases/established_constants_fit_count.py": {
+        "sha256": "d0645c4ea9958b95bb97e2c52cb1edea96157a9e08374bef223f98edd3fdee10",
+        "size": 7406
+      },
+      "goldsieve/cases/formulas_deploy_external_20260814.py": {
+        "sha256": "abfa08379023e0223344be99cd8a2d15974bfbfd447e8d694b7680673093bc86",
+        "size": 9257
+      },
+      "goldsieve/cases/formulas_external_targets_20260813.py": {
+        "sha256": "3b335a869639bf0255034539c727f3264ca71e59fb8d856a1566356ff48c0b63",
+        "size": 9123
+      },
+      "goldsieve/cases/formulas_precision_external_20260814.py": {
+        "sha256": "8dabe4cd8290b281e991bd74fe25ca27f3ecae183ec04022f491df9f41520f96",
+        "size": 8883
+      },
+      "goldsieve/cases/formulas_summary_external_20260814.py": {
+        "sha256": "2ac50b5307633416429552f831346b938dc6d332684141d0fb58a0eaff50dd19",
+        "size": 9752
+      },
+      "goldsieve/cases/golden_chain_v240_statistics_20260814.py": {
+        "sha256": "925dcad4316c03d1a5866b99929afdf7bcd45f9dbe0a342a1ee4f8de35104ee4",
+        "size": 9620
+      },
+      "goldsieve/cases/gravitational_constant_external_20260814.py": {
+        "sha256": "5d28a0ca7ac91fff7d6581565705604f2cc350365980d9593cda2f130ce8103a",
+        "size": 6180
+      },
+      "goldsieve/cases/identity_cross_module_20260814.py": {
+        "sha256": "d608859014a85856cb7f60d005ed1a7bad1bfecf10919a3b48c1d43cf06bd853",
+        "size": 6116
+      },
+      "goldsieve/cases/identity_honest_controls_20260814.py": {
+        "sha256": "9710b34b8e7f4c2369976abe1bf2c0eaf49028e5afd26cc204c19eb11b254645",
+        "size": 7311
+      },
+      "goldsieve/cases/jarlskog_theta13_external_20260814.py": {
+        "sha256": "930ae4fc601c9bb37564568ef501efdd80b9b98099616ee7a7d5ed4f4e0ddecd",
+        "size": 9154
+      },
+      "goldsieve/cases/khinchin.py": {
+        "sha256": "7e303b555966820d216730ec9605a20ada7af8d6416c8f3bf03d317d65e6d6ed",
+        "size": 5974
+      },
+      "goldsieve/cases/m_theory_dimension_formula.py": {
+        "sha256": "b20d95407b14c532861468f55526a9048caf5264b6825c8f288c58bc31a13bba",
+        "size": 8794
+      },
+      "goldsieve/cases/master_catalog_lucas_l10.py": {
+        "sha256": "3776ab1592e7ff1eeb9d6f7ba89c5990c6e6858c7cab2ca140108f61d38d601b",
+        "size": 6163
+      },
+      "goldsieve/cases/master_catalog_msme_error.py": {
+        "sha256": "f11ecaaac476aba592301112b6afa0fd5590640917c5c0f3dbace89f37f8a6eb",
+        "size": 7546
+      },
+      "goldsieve/cases/neutrino_mixing_external_20260814.py": {
+        "sha256": "7fb2f0cb9913b80e22e7b64b30f5f0d2e2f26c3d0139427c3abc477099c53097",
+        "size": 9706
+      },
+      "goldsieve/cases/neutron_lifetime_formula.py": {
+        "sha256": "97de857c69db0319de0e7aa5afbaa2f2dac4992d0a0ae9ef2ae5ea5c6b0c293b",
+        "size": 8859
+      },
+      "goldsieve/cases/pellis_external_targets_20260814.py": {
+        "sha256": "b70be1e22d1ba72d662da749c123e6851b03963609cad86e74384cac0d727b53",
+        "size": 10215
+      },
+      "goldsieve/cases/pointer_architecture_external_20260814.py": {
+        "sha256": "097f9683e98604769ce996edb013f015d281efb4c29499db6160df26311d71f6",
+        "size": 9469
+      },
+      "goldsieve/cases/proton_mass_ratio_error.py": {
+        "sha256": "b3ced273ff4e97055fb337c7840f0d43564fecd48153326d5b69f61869990d9d",
+        "size": 9243
+      },
+      "goldsieve/cases/pvalue_leq69_lambda286.py": {
+        "sha256": "9afa92e62a16ab128d6a8d5deb1b16afc230f7e2d0b23786a83e50f4624feef5",
+        "size": 4814
+      },
+      "goldsieve/cases/qcd_phase_tc_formula.py": {
+        "sha256": "e268b572b77dac81b8163325bcab94510f8bd9cfa4fb8906f1c40d3366aa8eae",
+        "size": 8826
+      },
+      "goldsieve/cases/reionization_zre_prediction.py": {
+        "sha256": "ecc5cab214e757297ddce26be99645a124f876b9114f3ef9c49a3fc1bc6dfb54",
+        "size": 9050
+      },
+      "goldsieve/cases/sacred_external_targets.py": {
+        "sha256": "d49f7ddfa273780ba4190879e97bcf38c9a6289e17e18e2d825b2bbd244f7b6e",
+        "size": 13485
+      },
+      "goldsieve/cases/sacred_fit_multiplicity.py": {
+        "sha256": "6456340d291c56d03b604075c35bde0bcd54c4c68aa8cccb612d06076c363279",
+        "size": 13645
+      },
+      "goldsieve/cases/sacred_formula_complete_v2_external_20260814.py": {
+        "sha256": "0628af843ec35760e49925a6cca4f6b68b5ad03c1b56ebb86a1ba0686cd1c042",
+        "size": 9872
+      },
+      "goldsieve/cases/sacred_formula_full_external_20260814.py": {
+        "sha256": "8e8a0611c755241c9df36eb9192de5a4d325b4d60d587c5edea8fbdcd814b232",
+        "size": 9917
+      },
+      "goldsieve/cases/sacred_random_probability.py": {
+        "sha256": "a86c09a365f56a6a0a10aa560709ee751ed9e17a056bcea3752c21d6e9a774fe",
+        "size": 13477
+      },
+      "goldsieve/cases/sacred_search_count.py": {
+        "sha256": "629d72fab7326613b2619519b7b810cc1c29c5ffe3218807fe121722d0e84f64",
+        "size": 6330
+      },
+      "goldsieve/cases/sacred_table_audit_20260813.py": {
+        "sha256": "0aed104264b09dc4d1bb14ca1bacd9de90ff7de0c2d87c053b35694b92e70fb0",
+        "size": 9794
+      },
+      "goldsieve/cases/transcendental_3phi_value.py": {
+        "sha256": "3e7432850bb7dc15d156dca80dc90a67001d2840fc93b528d513a31a1006ed2c",
+        "size": 6267
+      },
+      "goldsieve/cases/transcendental_catalog_values.py": {
+        "sha256": "1d2772024a8af0660fb535f32366d7fe23361e983b55535db087f81a027130c4",
+        "size": 9649
+      },
+      "goldsieve/cases/transcendental_catalog_values_2.py": {
+        "sha256": "94493dcbeca3a2f6da2e4c430766618b719e83b3b02804a7309817f4496bade1",
+        "size": 7522
+      },
+      "goldsieve/cases/transcendental_catalog_values_3.py": {
+        "sha256": "b32efcc1957a87fc48459b70ea8adb6dc778a7833a9b8ab53361512a328e7408",
+        "size": 7483
+      },
+      "goldsieve/cases/trinity_external_targets_20260813.py": {
+        "sha256": "a6477e68872778cfaf514d534a5e84fd1984400dbe412ea72a5754d1e24d4911",
+        "size": 12162
+      },
+      "goldsieve/cases/zeta_chi2_independent_20260814.py": {
+        "sha256": "9e5397c1d6471ee88764006e28c116a7a5091d00065a03ed08421d7e168d4752",
+        "size": 9977
+      },
+      "goldsieve/cases/zeta_chi2_statistics_20260814.py": {
+        "sha256": "b934339ef0ca44b1dfd48d5541dcc2a1d86cc88abb8e7658089a6cb4e95106fa",
+        "size": 5728
+      },
+      "goldsieve/cases/zeta_gue.py": {
+        "sha256": "4c5000a3eb79708d1c8dea49d549bcfd4a8c953e6bcce92b0493439f06ee175e",
+        "size": 11239
+      },
+      "goldsieve/cases/zeta_shape.py": {
+        "sha256": "c02094c5109c899f4cb9d93d6f4b0cb4fa2dffea5b9e8910b5b372f125e273f8",
+        "size": 19681
+      },
+      "goldsieve/ci_gate.sh": {
+        "sha256": "65adff08984d0950beaf40b7b45778f58df0e40037099d0fe0939f21cde68f60",
+        "size": 7740
+      },
+      "goldsieve/claims.yaml": {
+        "sha256": "e5843ffcd92e93f259bbab4ca7492776efaaf68241e8790e419b2b4c13811900",
+        "size": 27969
+      },
+      "goldsieve/coverage_manifest.py": {
+        "sha256": "bd76a02968cac4f08448513d2f49856a8d827896697f1e0cbc9a4d07cd5f4167",
+        "size": 17032
+      },
+      "goldsieve/coverage_manifest.yaml": {
+        "sha256": "81ad0f86267d6e57be49fe838be2f9fc0f8de7ecb10c03fb4515deac81d001c7",
+        "size": 15507
+      },
+      "goldsieve/goldsieve/__init__.py": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "goldsieve/goldsieve/__main__.py": {
+        "sha256": "6ce05b79ee1666025af142adc913f1d468781e77af67ae431fe163472a52fb3a",
+        "size": 50
+      },
+      "goldsieve/goldsieve/algebraic.py": {
+        "sha256": "f090ed16e35af85217fe66d7c395cd66c8c4deb91f03023f19988bb5fc3bcc64",
+        "size": 10898
+      },
+      "goldsieve/goldsieve/cli.py": {
+        "sha256": "afdca39868943d93a1f7f2a86ee215beb9046a5225fb6a330060955530952dce",
+        "size": 20239
+      },
+      "goldsieve/goldsieve/coverage.py": {
+        "sha256": "ca16d239ee7c0423189cfa8873a218fc278ea22328daa0f547765449dec83ea4",
+        "size": 22707
+      },
+      "goldsieve/goldsieve/exact.py": {
+        "sha256": "9596e75b063cbd3094df48abd1da16baffc680fe66263ab66e5e2e2b060a47c3",
+        "size": 8752
+      },
+      "goldsieve/goldsieve/family.py": {
+        "sha256": "e234474280484367c1aeba111e0c3b626a8f611ab7ad3ca5f6b1c7bce2e2b718",
+        "size": 14083
+      },
+      "goldsieve/goldsieve/gate.py": {
+        "sha256": "226a9e1855c9f214c3dbaf8796e7e0bfc06e3563a7e58d6e01c5a77b9da39450",
+        "size": 23311
+      },
+      "goldsieve/goldsieve/identity.py": {
+        "sha256": "06440aa0413552ed319834462782ff354373537da0f01b2d7a1bdd61126b4081",
+        "size": 25633
+      },
+      "goldsieve/goldsieve/identity_corpus.py": {
+        "sha256": "0589d36699a8a3443d57175a26d5fc1f37f8a13782758ecddfc383a06b32f0ff",
+        "size": 25470
+      },
+      "goldsieve/goldsieve/identity_cross_helper.py": {
+        "sha256": "678b62405fb85eee6f1a010bb1dac13c6bdb2a0cb7365d7ef3f15ab5652981f9",
+        "size": 1385
+      },
+      "goldsieve/goldsieve/identity_deep.py": {
+        "sha256": "2d7f4b404a7b2ca41fdc87f20a6b8ca3ba80778451987be31164b99505905368",
+        "size": 39016
+      },
+      "goldsieve/goldsieve/meff.py": {
+        "sha256": "103c1eac5cc677bef41791cfa475f9e56c5dfa1556d04761e4397cf77ae56595",
+        "size": 13297
+      },
+      "goldsieve/goldsieve/modgraph.py": {
+        "sha256": "08f1cc2dcf6ef4c55ff53b9be97071f52838bf897b0918d957b50024041b3b34",
+        "size": 18797
+      },
+      "goldsieve/goldsieve/prefilter.py": {
+        "sha256": "402c46afea160106451e2187e86957800ee7403b6927395f08a635a5042cfe61",
+        "size": 12882
+      },
+      "goldsieve/goldsieve/proof.py": {
+        "sha256": "fe86bd0f3597cff34d619aa23d5c20d149875e690d089ba649e4adc4af4901b5",
+        "size": 13502
+      },
+      "goldsieve/goldsieve/refs/gof.py": {
+        "sha256": "3f70255052447b7945ab0a9ec2194171fa5a35c032cbcd0dbff9c33f24d07a45",
+        "size": 9817
+      },
+      "goldsieve/goldsieve/refs/gue_exact_gap.py": {
+        "sha256": "a72ffcb95362ef9c886306bb1b1ebbd3da453e045dddaa43fc2ca0ce1675779e",
+        "size": 6156
+      },
+      "goldsieve/goldsieve/refs/gue_montecarlo.py": {
+        "sha256": "b3b6ed31f6e4b5c24a8e24e9689521b6ff6260fff791a192c025f176b7f1e027",
+        "size": 4660
+      },
+      "goldsieve/goldsieve/refs/khinchin_finite_sample.py": {
+        "sha256": "21744f3d5c56ed1c20b6113a79a96ef55ace827035474f704eec30c9806e3708",
+        "size": 2617
+      },
+      "goldsieve/goldsieve/refs/khinchin_reference.py": {
+        "sha256": "bf2384427c586fde07612f421942c3b94573353fa62ada06ce1c23caa6193e62",
+        "size": 4881
+      },
+      "goldsieve/goldsieve/refs/unfolding_test.py": {
+        "sha256": "c40b160da7b5f8589432a978bb788242d83cb77fd14e741358185b68c277a4e4",
+        "size": 5509
+      },
+      "goldsieve/goldsieve/runlog.py": {
+        "sha256": "d6441890f03992635e4907778f819eee6fc951a0463f005a1b41bacdc4c2a0e0",
+        "size": 19169
+      },
+      "goldsieve/goldsieve/scope.py": {
+        "sha256": "b669b61a09a3a0ec8170cd662c7e74b980ea8eb926ddb9e55fa9625e1f824067",
+        "size": 10357
+      },
+      "goldsieve/goldsieve/selftest.py": {
+        "sha256": "1b123eb05f7f336b12ef5450580eec3ad8280e13b7b8e13757059482fdf28b13",
+        "size": 50899
+      },
+      "goldsieve/goldsieve/sieve.py": {
+        "sha256": "55ebf918dd87bf2e3dc81056ba83574d70ccd13a50191456bf46c08e80ebbd3d",
+        "size": 91250
+      },
+      "goldsieve/goldsieve/stats.py": {
+        "sha256": "aafab1e86a6b1139298ca34a57b32c406b8a7619dc241ab60e0ae048adf5f1cd",
+        "size": 10374
+      },
+      "goldsieve/goldsieve/threshold.py": {
+        "sha256": "786efabb73227bc4b31b977dfdedf4a063e2fb6935c3cd41e124695d08f0cec3",
+        "size": 13762
+      },
+      "goldsieve/measure_identity.py": {
+        "sha256": "b5bafcebbf50115c6c5ef54106350a43fe8cb7f8282182346459beebab8b0b59",
+        "size": 4092
+      },
+      "goldsieve/mutation_identity.py": {
+        "sha256": "4050d47c1d13bc6e5c8c1d04db87ad522437cb522f3d65232d3b15ead97bd1e8",
+        "size": 14082
+      },
+      "goldsieve/snapshot_manifest.py": {
+        "sha256": "4192ad421b3ad6ff01d72af5d319a6777000c0cd5e2911cf042dba9b7e8d3345",
+        "size": 11517
+      },
+      "goldsieve/tick_counters.py": {
+        "sha256": "840bc3f432364309a9160795629f6ca9a0ceb99c77f19850fbdc8b48ab548384",
+        "size": 9317
+      },
+      "goldsieve/tri": {
+        "sha256": "05c63434a7dfa38ec35b39ccf33e182200b8b4f08d72934d60f72b221b2bba9b",
+        "size": 23920
+      },
+      "goldsieve/tri_integration_test.py": {
+        "sha256": "7a0620c1dae6e53c330f742d3860cabc8c5bd2d2cda0e371f9d36f3e6f07858f",
+        "size": 9144
+      }
+    }
+  }
+}

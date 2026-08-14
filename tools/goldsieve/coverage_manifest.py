@@ -156,6 +156,81 @@ def check() -> int:
             print("  ожидает: %s — %s, попыток осталось %s"
                   % (ref, task.get("status"), rb.get("total_attempts_left")))
 
+    # --- статусы задач (тик 43) --------------------------------------
+    # Словарь статусов ЗАКРЫТ: свободное слово в поле status делает
+    # очередь несравнимой от тика к тику — именно так «waiting» жило рядом
+    # с «pending» и никто этого не заметил. Проверяются ВСЕ файлы очереди,
+    # а не только те, на кого есть ссылка из манифеста: забытый файл в
+    # pending/ — такая же невидимая задача, как и ненаписанная.
+    from goldsieve import runlog as _runlog
+    pend_dir = os.path.join(ROOT, "pending")
+    tasks = sorted(f for f in os.listdir(pend_dir)) if os.path.isdir(pend_dir) \
+        else []
+    print()
+    print("=== задач в очереди: %d, словарь статусов: %s"
+          % (len(tasks), ", ".join(_runlog.STATUSES)))
+    for fname in tasks:
+        if not fname.endswith((".yaml", ".yml")):
+            continue
+        with open(os.path.join(pend_dir, fname), encoding="utf-8") as fh:
+            task = yaml.safe_load(fh) or {}
+        st = task.get("status")
+        print("  %-20s %s" % (fname, st))
+        if st not in _runlog.STATUSES:
+            problems.append("задача %s: статус %r вне закрытого словаря %s"
+                            % (fname, st, list(_runlog.STATUSES)))
+        # Правило приказа: pending без владельца, бюджета и критериев
+        # приёмки — провал гейта, а не заметка на потом.
+        if st == "pending":
+            miss = [k for k in ("owner", "retry_budget", "acceptance")
+                    if not task.get(k)]
+            if miss:
+                problems.append("задача %s в статусе pending без полей: %s"
+                                % (fname, ", ".join(miss)))
+
+    # --- оболочка и её обвязка (тик 43) ---------------------------
+    # Проверяется три вещи: файл в составе отпечатка baseline, шаг есть
+    # в гейте, число утверждений совпадает с объявленным. Проверка, не
+    # включённая в гейт, никого не блокирует — это и есть молчание
+    # проверки вместо покрытия.
+    import subprocess
+    from baseline import _tool_files
+    sh = man.get("shell_checks", {})
+    covered = set(_tool_files())
+    gate_text = open(os.path.join(ROOT, "ci_gate.sh"), encoding="utf-8").read()
+    print()
+    print("=== проверок оболочки: %d" % len(sh))
+    for name, spec in sorted(sh.items()):
+        if name not in covered:
+            problems.append("проверка %s вне состава отпечатка baseline"
+                            % name)
+        stepname = spec.get("gate_step") or ""
+        # Искать ПОДСТРОКУ недостаточно: переименование шага в
+        # «…_отключено» подстроку сохраняет, и подставка прошла бы.
+        # Проверяется точный вызов step с этим именем.
+        if ('step "%s"' % stepname) not in gate_text:
+            problems.append("проверка %s: шаг гейта %r не найден в "
+                            "ci_gate.sh" % (name, stepname))
+        cmd = spec.get("selftest_cmd")
+        want = int(spec.get("selftest_checks", 0))
+        if cmd is None:
+            if not spec.get("skip_run_reason"):
+                problems.append("проверка %s без запуска и без объявленной "
+                                "причины" % name)
+            print("  %-26s шаг есть, запуск пропущен по объявленной "
+                  "причине" % name)
+            continue
+        res = subprocess.run([sys.executable, *cmd], cwd=ROOT,
+                             capture_output=True, text=True, timeout=300)
+        got = res.stdout.count("  ок  ")
+        print("  %-26s самопроверка %d (объявлено %d)" % (name, got, want))
+        if res.returncode != 0:
+            problems.append("проверка %s вернула код %d"
+                            % (name, res.returncode))
+        if got != want:
+            problems.append("проверка %s: утверждений %d, объявлено %d"
+                            % (name, got, want))
+
     # --- анализаторы (тик 42) ------------------------------------------
     ana = man.get("analyzers", {})
     print()

@@ -1,7 +1,9 @@
 {
   "corpus_head": "04430c0dc154ed3ec987704fe9b74bbcb40a3e9b",
   "files": {
-    "baseline.py": "e60df4e6b4558f1f5d1f90d80548fc20af6723be3baef984de8a62debf4f7033",
+    "archive_contract.py": "f2bc14152cf8f0c46386dc01343b572bbec708de2346612a6dd43fdd048b398d",
+    "baseline.py": "cf5e4a987f0ed75736a9fbacf53cedf0964cfaa296704cf963cba58440124d68",
+    "bench.py": "638205d3d621ec5ea9af62c951ccd464d1dea2af8b6eab71d8982400f30dc7b9",
     "calibrate_identity.py": "16e57d1ffd25c329a96c04fb32767725b9154d317b5ac4c0abd93c2831cd75fe",
     "cases/_template_probe.py": "f3564a9f35bfc1d3c0ba96de0788f3c128289581f2e03458b365037a0ee8f639",
     "cases/appendix_external_targets_20260813.py": "0f1299772765d1851a93985ec2ad29757d2b70764f5b71e7b73983084a1f1819",
@@ -51,10 +53,10 @@
     "cases/zeta_chi2_statistics_20260814.py": "b934339ef0ca44b1dfd48d5541dcc2a1d86cc88abb8e7658089a6cb4e95106fa",
     "cases/zeta_gue.py": "4c5000a3eb79708d1c8dea49d549bcfd4a8c953e6bcce92b0493439f06ee175e",
     "cases/zeta_shape.py": "c02094c5109c899f4cb9d93d6f4b0cb4fa2dffea5b9e8910b5b372f125e273f8",
-    "ci_gate.sh": "1220c54298dbfd13a8d7f186e9033c7c913fd25ad7f8d585970d2bd80c23b9d7",
+    "ci_gate.sh": "65adff08984d0950beaf40b7b45778f58df0e40037099d0fe0939f21cde68f60",
     "claims.yaml": "e5843ffcd92e93f259bbab4ca7492776efaaf68241e8790e419b2b4c13811900",
-    "coverage_manifest.py": "8174c0efc6ff8676daabb47e41e46b2ced3a979bf57cc93d9df6d54ff9b3bca0",
-    "coverage_manifest.yaml": "e8dacdba0b322397445e98c58db015cfaa9a26c5e2bd5509da734a02a431d726",
+    "coverage_manifest.py": "bd76a02968cac4f08448513d2f49856a8d827896697f1e0cbc9a4d07cd5f4167",
+    "coverage_manifest.yaml": "81ad0f86267d6e57be49fe838be2f9fc0f8de7ecb10c03fb4515deac81d001c7",
     "goldsieve/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "goldsieve/__main__.py": "6ce05b79ee1666025af142adc913f1d468781e77af67ae431fe163472a52fb3a",
     "goldsieve/algebraic.py": "f090ed16e35af85217fe66d7c395cd66c8c4deb91f03023f19988bb5fc3bcc64",
@@ -77,6 +79,7 @@
     "goldsieve/refs/khinchin_finite_sample.py": "21744f3d5c56ed1c20b6113a79a96ef55ace827035474f704eec30c9806e3708",
     "goldsieve/refs/khinchin_reference.py": "bf2384427c586fde07612f421942c3b94573353fa62ada06ce1c23caa6193e62",
     "goldsieve/refs/unfolding_test.py": "c40b160da7b5f8589432a978bb788242d83cb77fd14e741358185b68c277a4e4",
+    "goldsieve/runlog.py": "d6441890f03992635e4907778f819eee6fc951a0463f005a1b41bacdc4c2a0e0",
     "goldsieve/scope.py": "b669b61a09a3a0ec8170cd662c7e74b980ea8eb926ddb9e55fa9625e1f824067",
     "goldsieve/selftest.py": "1b123eb05f7f336b12ef5450580eec3ad8280e13b7b8e13757059482fdf28b13",
     "goldsieve/sieve.py": "55ebf918dd87bf2e3dc81056ba83574d70ccd13a50191456bf46c08e80ebbd3d",
@@ -84,9 +87,12 @@
     "goldsieve/threshold.py": "786efabb73227bc4b31b977dfdedf4a063e2fb6935c3cd41e124695d08f0cec3",
     "measure_identity.py": "b5bafcebbf50115c6c5ef54106350a43fe8cb7f8282182346459beebab8b0b59",
     "mutation_identity.py": "4050d47c1d13bc6e5c8c1d04db87ad522437cb522f3d65232d3b15ead97bd1e8",
-    "tick_counters.py": "840bc3f432364309a9160795629f6ca9a0ceb99c77f19850fbdc8b48ab548384"
+    "snapshot_manifest.py": "4192ad421b3ad6ff01d72af5d319a6777000c0cd5e2911cf042dba9b7e8d3345",
+    "tick_counters.py": "840bc3f432364309a9160795629f6ca9a0ceb99c77f19850fbdc8b48ab548384",
+    "tri": "05c63434a7dfa38ec35b39ccf33e182200b8b4f08d72934d60f72b221b2bba9b",
+    "tri_integration_test.py": "7a0620c1dae6e53c330f742d3860cabc8c5bd2d2cda0e371f9d36f3e6f07858f"
   },
-  "files_digest": "f472070bdb62c2f0",
+  "files_digest": "fff28e1b19e314c9",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,
