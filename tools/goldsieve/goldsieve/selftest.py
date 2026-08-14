@@ -150,7 +150,10 @@ def _cases():
         name="согласие точнее выборочного шума",
         stated={k: f(x) for k, f in stat.items()},
         reference=lambda: {k: f(x) for k, f in stat.items()},
-        observed=lambda: {k: f(x) for k, f in stat.items()},
+        # Наблюдение отличается на 1e-9 — не бит в бит. Так и должно быть: в
+        # тождественном наблюдении С3 теперь видит вырождение (луп 11), а
+        # проверяем мы здесь С11, «слишком точное согласие», а не тождество.
+        observed=lambda: {k: f(x) * (1.0 + 1e-9) for k, f in stat.items()},
         sample=lambda: x,
         statistics=stat,
         wrong=lambda: {"std": 2.0, "p50": 1.0, "p90": 3.0},
@@ -209,6 +212,115 @@ def _regress_cause():
 def _gof_selftest() -> int:
     from .refs.gof import selftest as _g
     return _g()
+
+
+def _identity_guards() -> int:
+    """Вырождение по тождественности: наблюдение = эталон, второй метод = эталон.
+
+    Найдено разбором тика 37: кейс сравнивал таблицу самой с собой (observed
+    возвращал reference()), а «независимый метод» повторял ту же арифметику на
+    Decimal. Оба сита давали PASS и складывались в ПОДТВЕРЖДЕНО.
+
+    Признак берётся ИЗ КОДА. Первая версия ловила ровное нулевое расхождение
+    ЗНАЧЕНИЙ — перепрогон реестра сразу перевернул 17 вердиктов, потому что у
+    целых величин (20 412 комбинаций) и простых констант (3^phi) независимый
+    путь законно совпадает с эталоном до последнего бита.
+    """
+    from .sieve import (Claim, sieve_observation, sieve_independent_method,
+                        VOID, PASS, FAIL)
+    fail = 0
+
+    def check(name, ok):
+        nonlocal fail
+        print("  %s %s" % ("ok  " if ok else "FAIL", name))
+        if not ok:
+            fail += 1
+
+    def ref():
+        return {"mean": 2.666, "std": 0.494938}
+
+    def obs_is_ref():
+        """Ровно случай тика 37."""
+        return ref()
+
+    def obs_real():
+        return {"mean": 2.6661, "std": 0.494939}
+
+    def obs_off():
+        return {"mean": 3.5, "std": 0.494938}
+
+    def alt_same_value():
+        """Иной путь, дающий бит в бит то же: законно для простых величин."""
+        total = 0.0
+        for v in (2.666,):
+            total += v
+        return {"mean": total, "std": 0.494938}
+
+    c = Claim(name="t", source="s", reference=ref, observed=obs_is_ref,
+              tolerance=0.02)
+    r = sieve_observation(c)
+    check("С3 ловит наблюдение, вычисленное вызовом эталона",
+          r.status == VOID and r.reason_code == "observation_is_reference")
+
+    c1 = Claim(name="t", source="s", reference=ref, observed=ref,
+               tolerance=0.02)
+    check("С3 ловит наблюдение — тот же объект, что эталон",
+          sieve_observation(c1).status == VOID)
+
+    c2 = Claim(name="t", source="s", reference=ref, observed=obs_real,
+               tolerance=0.02)
+    check("С3 не путает живое измерение с тождеством",
+          sieve_observation(c2).status == PASS)
+
+    # ПОДСТАВКА, на которой упала первая версия: значения совпадают бит в бит,
+    # но путь другой. Вырождением это НЕ является.
+    c3 = Claim(name="t", source="s", reference=ref, observed=alt_same_value,
+               tolerance=0.02)
+    check("С3 не считает вырождением совпадение значений при ином пути",
+          sieve_observation(c3).status == PASS)
+
+    c4 = Claim(name="t", source="s", reference=ref, observed=obs_off,
+               tolerance=0.02)
+    check("С3 продолжает ловить расхождение",
+          sieve_observation(c4).status == FAIL)
+
+    def alt_is_ref():
+        return ref()
+
+    c5 = Claim(name="t", source="s", reference=ref, reference_alt=alt_is_ref,
+               alt_tolerance=lambda: 1e-12, tolerance=0.02)
+    r5 = sieve_independent_method(c5)
+    check("С12 ловит второй метод, вычисленный вызовом эталона",
+          r5.status == VOID and r5.reason_code == "no_second_method")
+
+    c6 = Claim(name="t", source="s", reference=ref,
+               reference_alt=alt_same_value, alt_tolerance=lambda: 1e-12,
+               tolerance=0.02)
+    check("С12 принимает иной путь, совпавший бит в бит",
+          sieve_independent_method(c6).status == PASS)
+
+    # Свод: вырождение С3/С12 не отменяет опровержение по ВНЕШНЕЙ цели.
+    # Найдено перепрогоном: формула m_p/m_e с промахом 6,3e7 сигм понижалась
+    # до ПУСТО из-за того, что в том же кейсе observed вызывал reference().
+    from .sieve import Result, verdict_of, REFUTED, EMPTY
+    ext = [Result("С3 данные=эталон", VOID, "вырождено"),
+           Result("С15 внешняя цель", FAIL, "промах 6,3e7 сигм")]
+    check("вырождение С3 не гасит опровержение по внешней цели",
+          verdict_of(ext) == REFUTED)
+
+    # ПОДСТАВКА: без внешнего опровержения вырождение по-прежнему даёт ПУСТО.
+    only_void = [Result("С3 данные=эталон", VOID, "вырождено"),
+                 Result("С2 заявленное=эталон", FAIL, "расхождение 5%")]
+    check("вырождение С3 без внешней цели даёт ПУСТО",
+          verdict_of(only_void) == EMPTY)
+
+    # ПОДСТАВКА: вырождение по множественности (С16) гасит вывод и при
+    # внешнем расхождении — оно относится к сути, а не к внутреннему сравнению.
+    mult = [Result("С16 подгонка под ответ", VOID, "126 ожидаемых попаданий"),
+            Result("С15 внешняя цель", FAIL, "промах")]
+    check("вырождение С16 продолжает гасить вывод",
+          verdict_of(mult) == EMPTY)
+    return fail
 
 
 def _reason_subtypes() -> int:
@@ -789,6 +901,7 @@ def main() -> int:
     from .algebraic import selftest as _alg
     mods = [("неопределённость", _stats.selftest, 9), ("покрытие", _cov, 11),
             ("подтипы причины", _reason_subtypes, 9),
+        ("вырождение по тождественности", _identity_guards, 10),
             ("метрики согласия формы", _gof_selftest, 6),
         ("причина переворота", _regress_cause, 4),
             ("семейство и множественность", _fam, 14),

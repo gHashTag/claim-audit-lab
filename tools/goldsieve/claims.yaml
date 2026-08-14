@@ -472,3 +472,8 @@ claims:
   target: 372305cfe9ea9799
   novelty_key: zeta:gap_shape_correction:v1
   inputs_digest: 3436c916a7878261
+- source: data/zeta/zeta_bin_analysis_update.md:24-38
+  case: cases/zeta_chi2_statistics_20260814.py
+  claim: χ²/dof по десяти высотным корзинам = 2,67 ± 0,49
+  verdict: ПУСТО
+  inputs_digest: d32c98af192622e1

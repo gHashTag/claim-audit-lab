@@ -23,6 +23,7 @@ import math
 import os
 import time
 import traceback
+import inspect
 from dataclasses import dataclass, field, asdict
 from typing import Callable, Iterable, Optional
 
@@ -277,6 +278,14 @@ def sieve_observation(c: Claim) -> Result:
     if c.reference is None or c.observed is None:
         return Result("С3 данные=эталон", SKIP)
     dev = rel_dev(c.observed(), c.reference())
+    # ВЫРОЖДЕНИЕ: наблюдение тождественно эталону ПО ПОСТРОЕНИЮ (тик 37:
+    # observed возвращал reference()). Признак берётся из кода: равенство
+    # ЗНАЧЕНИЙ бит в бит законно для целых величин и простых констант.
+    if _is_same_computation(c.observed, c.reference):
+        return Result("С3 данные=эталон", VOID,
+                      "наблюдение вычисляется вызовом эталона: сравнения нет, "
+                      "проверка прошла бы при любых данных",
+                      numbers=dev, reason_code="observation_is_reference")
     k, w = worst(dev)
     tol = c.tolerance
     note = ""
@@ -288,6 +297,42 @@ def sieve_observation(c: Claim) -> Result:
                     "%.3g" % ptol)
     st = PASS if abs(w) <= tol else FAIL
     return Result("С3 данные=эталон", st, fmt_dev(dev) + note, numbers=dev)
+
+
+def _is_same_computation(fn, ref) -> bool:
+    """Функция ТОЖДЕСТВЕННА эталону по построению, а не по значению.
+
+    Признак ищется в КОДЕ, а не в числах. Первая версия (луп 11) объявляла
+    вырождением ровное нулевое расхождение значений — и перепрогон реестра
+    немедленно показал ошибку: у целочисленных величин (число комбинаций
+    20 412) и у простых констант (3^phi) независимый путь высокой точности
+    ЗАКОННО совпадает с эталоном до последнего бита. Бит-в-бит равенство не
+    доказывает тождества вычислений.
+
+    Детектируется ровно то, что было в тике 37: наблюдение — тот же объект, что
+    эталон, либо его тело состоит из единственного вызова эталона.
+    """
+    if fn is None or ref is None:
+        return False
+    if fn is ref:
+        return True
+    name = getattr(ref, "__name__", None)
+    if not name:
+        return False
+    try:
+        src = inspect.getsource(fn)
+    except (OSError, TypeError):
+        return False
+    skip = ('"' * 3, "'" * 3, "def ", "@")
+    body = []
+    for line in src.splitlines():
+        line = line.split("#")[0].strip()
+        if not line or line.startswith(skip):
+            continue
+        body.append(line)
+    # тело из одного возврата вызова эталона: return _reference() и т.п.
+    return (len(body) == 1 and body[0].startswith("return")
+            and (name + "(") in body[0])
 
 
 def sieve_discriminates(c: Claim) -> Result:
@@ -588,6 +633,13 @@ def sieve_independent_method(c: Claim) -> Result:
     if c.reference is None or c.reference_alt is None:
         return Result("С12 независимый метод", SKIP)
     dev = rel_dev(c.reference_alt(), c.reference())
+    # ВЫРОЖДЕНИЕ: «второй метод» — тот же вызов эталона. Проверяется КОД, а не
+    # значение.
+    if _is_same_computation(c.reference_alt, c.reference):
+        return Result("С12 независимый метод", VOID,
+                      "второй метод вычисляется вызовом эталона: это тот же "
+                      "путь, а не независимый",
+                      numbers=dev, reason_code="no_second_method")
     k, w = worst(dev)
     # Масштаб сравнения — собственная погрешность второго метода, а не
     # терпимость утверждения: у метода Монте-Карло она своя и её надо ВЫВЕСТИ.
@@ -1176,6 +1228,9 @@ class Report:
 # --------------------------------------------------------------------------
 
 ACTION = {
+    "observation_is_reference":
+        "переписать наблюдение так, чтобы оно получалось иным путём, чем "
+        "эталон; сравнение величины с собой вердикта не даёт",
     "resolution_limited":
         "не запускать похожие цели до появления более точных данных",
     "multiplicity_limited":
@@ -1228,9 +1283,16 @@ ACTION = {
 
 # Подтипы, которые НЕЛЬЗЯ складывать в общий счётчик находок: вердикт получен
 # при неполной модели неопределённости либо при вырожденной проверке.
-NON_AGGREGATABLE = ("systematics_unmodeled", "significance_untestable",
-                    "unclassified", "control_broken",
-                    "input_precision_limited")
+# Подтипы, при которых вердикт НЕ идёт в счётчик находок: он говорит о
+# состоянии проверки, а не об утверждении.
+NON_AGGREGATABLE = (
+    "observation_is_reference",
+    "systematics_unmodeled",
+    "significance_untestable",
+    "unclassified",
+    "control_broken",
+    "input_precision_limited",
+)
 
 
 def reason_of(results: list, verdict: str, claim: Optional[Claim] = None) -> str:
@@ -1258,6 +1320,13 @@ def reason_of(results: list, verdict: str, claim: Optional[Claim] = None) -> str
         # Заявленный эффект утонул в погрешности входа.
         if st.get("С8 бюджет точности") == VOID:
             return "input_precision_limited"
+        # Сравнение величины с самой собой: наблюдение тождественно эталону
+        # либо «второй метод» — та же арифметика. Дефект ПОСТРОЕНИЯ проверки,
+        # а не утверждения. Введено после разбора тика 37 (луп 11).
+        if st.get("С3 данные=эталон") == VOID:
+            return "observation_is_reference"
+        if st.get("С12 независимый метод") == VOID:
+            return "no_second_method"
         return "unclassified"
 
     if verdict == REFUTED:
@@ -1304,8 +1373,24 @@ def verdict_of(results: list) -> str:
     st = {r.sieve: r.status for r in results}
     # 1. Вырожденная проверка бьёт всё: если подставка проходит или шум похож
     #    на сигнал, ни подтверждать, ни опровергать нечего.
-    if any(v == VOID for v in st.values()):
-        return EMPTY
+    #
+    # Исключение НАЙДЕНО ПЕРЕПРОГОНОМ (луп 11). Вырождение С3 или С12 означает
+    # ровно одно: сравнение с эталоном ВНУТРИ корпуса ничего не даёт. Оно не
+    # касается опровержения по ВНЕШНЕЙ цели (С15) или по заниженной области
+    # перебора (С18): там масштаб задан погрешностью внешнего измерения либо
+    # прямым подсчётом, а не сравнением величины с собой. Без исключения
+    # опровержение формулы m_p/m_e с промахом 6,3e7 сигм понижалось до ПУСТО
+    # из-за того, что в том же кейсе observed вызывал reference().
+    #
+    # Исключение НЕ распространяется на С16: там вырождение говорит, что
+    # попадание объясняется перебором, и это относится к сути вывода.
+    voids = {k for k, v in st.items() if v == VOID}
+    if voids:
+        internal_only = voids <= {"С3 данные=эталон", "С12 независимый метод"}
+        external_refutation = (st.get("С15 внешняя цель") == FAIL
+                               or st.get("С18 объявленная область") == FAIL)
+        if not (internal_only and external_refutation):
+            return EMPTY
     # 2. Нет вычисляемого эталона — вопрос, а не находка.
     if st.get("С1 регенерируемость") in (OPEN, FAIL):
         return QUESTION
