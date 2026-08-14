@@ -283,8 +283,9 @@ def sieve_observation(c: Claim) -> Result:
     # ЗНАЧЕНИЙ бит в бит законно для целых величин и простых констант.
     if _is_same_computation(c.observed, c.reference):
         return Result("С3 данные=эталон", VOID,
-                      "наблюдение вычисляется вызовом эталона: сравнения нет, "
-                      "проверка прошла бы при любых данных",
+                      "наблюдение целиком производно от эталона: сравнения "
+                      "нет, проверка прошла бы при любых данных"
+                      + _identity_explanation(c.observed, c.reference),
                       numbers=dev, reason_code="observation_is_reference")
     k, w = worst(dev)
     tol = c.tolerance
@@ -330,9 +331,22 @@ def _is_same_computation(fn, ref) -> bool:
         if not line or line.startswith(skip):
             continue
         body.append(line)
-    # тело из одного возврата вызова эталона: return _reference() и т.п.
-    return (len(body) == 1 and body[0].startswith("return")
-            and (name + "(") in body[0])
+    # быстрый путь: тело из одного возврата вызова эталона
+    if (len(body) == 1 and body[0].startswith("return")
+            and (name + "(") in body[0]):
+        return True
+    # КОСВЕННАЯ тавтология: observed -> посредник -> ... -> reference.
+    # Строчный признак её не видит, поэтому разбирается граф вызовов модуля.
+    from .identity import derives_from
+    same, _ = derives_from(fn, ref)
+    return same
+
+
+def _identity_explanation(fn, ref) -> str:
+    """Текст, по которому вырождение можно проверить руками."""
+    from .identity import derives_from
+    same, chain = derives_from(fn, ref)
+    return (" | " + chain) if (same and chain) else ""
 
 
 def sieve_discriminates(c: Claim) -> Result:
@@ -637,8 +651,9 @@ def sieve_independent_method(c: Claim) -> Result:
     # значение.
     if _is_same_computation(c.reference_alt, c.reference):
         return Result("С12 независимый метод", VOID,
-                      "второй метод вычисляется вызовом эталона: это тот же "
-                      "путь, а не независимый",
+                      "второй метод целиком производен от эталона: это тот же "
+                      "путь, а не независимый"
+                      + _identity_explanation(c.reference_alt, c.reference),
                       numbers=dev, reason_code="no_second_method")
     k, w = worst(dev)
     # Масштаб сравнения — собственная погрешность второго метода, а не

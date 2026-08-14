@@ -1,0 +1,231 @@
+[
+ {
+  "claim": "Сводка χ²/dof из таблицы совпадает с независимой реконструкцией по 100000 нулей",
+  "source": "data/zeta/zeta_bin_analysis_update.md:10-40",
+  "verdict": "ОПРОВЕРГНУТО",
+  "notes": "Цель закрывает открытую проверку χ²/dof: observed проходит через разбор десяти строк таблицы, reference — через промежуточный массив χ²/dof, полученный из сырого файла, reference_alt — через иную развёртку тэта-функцией.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md": "d32c98af192622e1",
+    "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md @commit": "04430c0",
+    "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt": "3436c916a7878261",
+    "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt @commit": "04430c0"
+   },
+   "отпечаток рецепта": "fccde3edc8056de9",
+   "alpha": 0.05,
+   "tolerance": 0.05,
+   "паспорт цели": "663cdcc7b05c3fd5",
+   "ключ новизны": "zeta:chi2:independent-reconstruction:v1"
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "mean": 7.08784914935938,
+     "std": 2.1380958212563543
+    },
+    "seconds": 0.015526771545410156,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "FAIL",
+    "detail": "mean -62.33%, std -77.08%",
+    "numbers": {
+     "mean": -0.6232989805883041,
+     "std": -0.7708241159593708
+    },
+    "seconds": 2.5272369384765625e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "FAIL",
+    "detail": "mean -62.39%, std -76.85%",
+    "numbers": {
+     "mean": -0.6238633266848012,
+     "std": -0.7685144065656617
+    },
+    "seconds": 0.0005619525909423828,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: std +900.00%",
+    "numbers": {},
+    "seconds": 1.3828277587890625e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "негативный контроль отличается от эталона: mean +17399.68%",
+    "numbers": {},
+    "seconds": 0.00313568115234375,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.1457672119140625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.9073486328125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "FAIL",
+    "detail": "mean -62.39% (полуширина 12.36%, z -13.4); std -76.85% (полуширина 64.51%, z -5.1)",
+    "numbers": {
+     "mean": -13.42361212289017,
+     "std": -5.1462312314617815,
+     "сопоставлено_с_заявленным": 1
+    },
+    "seconds": 0.009572744369506836,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик с определённым разбросом",
+    "numbers": {},
+    "seconds": 0.009742021560668945,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "mean -0.12%, std -0.66% (порог 5.00% — терпимость утверждения; погрешность второго метода не объявлена)",
+    "numbers": {
+     "mean": -0.001247831924476684,
+     "std": -0.006647536107975807
+    },
+    "seconds": 0.011206388473510742,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 2.384185791015625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С20 эффективное число попыток",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С21 алгебраическая объяснимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 12 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подставка 1: ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.005341768264770508,
+    "reason_code": "",
+    "auto_skip": false
+   }
+  ]
+ }
+]
