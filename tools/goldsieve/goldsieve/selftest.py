@@ -537,7 +537,12 @@ def main() -> int:
         print("  FAIL счётчик длины списка не годится как перечисление номеров")
 
     print("\n  сито С10 при несопоставленных именах статистик:")
-    from .sieve import sieve_uncertainty, Claim as _C10, OPEN as _O
+    from .sieve import (
+        sieve_uncertainty,
+        Claim as _C10,
+        OPEN as _O,
+        PASS as _P,
+    )
     c10 = _C10(name="x", reference=lambda: 1.0,
                sample=lambda: [1.0, 1.01, 0.99],
                statistics={"иное_имя": lambda a: sum(a) / len(a)})
@@ -565,6 +570,30 @@ def main() -> int:
     else:
         fail += 1
         print("  FAIL С10 при совпадающем имени работает по существу")
+
+    # Нулевой эталон — валидная статистика счётчика, а не отсутствие данных.
+    # Процентная запись для нуля невозможна, поэтому С10 обязан сообщить
+    # абсолютную разность и не падать с ZeroDivisionError.
+    c10zero = _C10(
+        name="нулевой эталон статистики",
+        stated=0.0,
+        reference=lambda: 0.0,
+        observed=lambda: 0.0,
+        sample=lambda: [0.0],
+        statistics={"value": lambda a: float(sum(a) / len(a))},
+        skip_reasons=SR,
+    )
+    try:
+        r10zero = sieve_uncertainty(c10zero)
+        if r10zero.status == _P and "абсолютная разность" in r10zero.detail:
+            ok += 1
+            print("  ok   С10 обрабатывает нулевой эталон")
+        else:
+            fail += 1
+            print("  FAIL С10 обрабатывает нулевой эталон (%s)" % r10zero.detail)
+    except Exception as e:
+        fail += 1
+        print("  FAIL С10 обрабатывает нулевой эталон (%r)" % (e,))
 
     print("\n  сито С19 достаточность арифметики:")
     from .sieve import sieve_arithmetic, Claim as _C19, PASS as _P, FAIL as _F

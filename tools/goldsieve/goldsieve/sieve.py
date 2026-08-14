@@ -403,10 +403,23 @@ def sieve_uncertainty(c: Claim) -> Result:
         return Result("С10 неопределённость", OPEN,
                       "имена статистик не сопоставлены с эталоном: "
                       "статистики [%s], эталон [%s]" % (stat_keys, ref_keys))
-    det = "; ".join("%s %+.2f%% (полуширина %.2f%%, z %+.1f)"
-                    % (k, 100.0 * (v["point"] - v["ref"]) / v["ref"],
-                       100.0 * v["half"] / abs(v["point"]), v["z"])
-                    for k, v in rows.items())
+    details = []
+    for k, v in rows.items():
+        if v["ref"] == 0:
+            # Нулевой эталон — валидная статистика, а не отсутствие
+            # сравнения. Процентное отклонение от нуля не определено, поэтому
+            # сообщаем абсолютную разность и сохраняем z-бал.
+            details.append(
+                "%s абсолютная разность %+.6g (полуширина %.6g, z %+.1f)"
+                % (k, v["point"] - v["ref"], v["half"], v["z"])
+            )
+        else:
+            details.append(
+                "%s %+.2f%% (полуширина %.2f%%, z %+.1f)"
+                % (k, 100.0 * (v["point"] - v["ref"]) / v["ref"],
+                   100.0 * v["half"] / abs(v["point"]), v["z"])
+            )
+    det = "; ".join(details)
     zmax = max(abs(v["z"]) for v in rows.values())
     st = FAIL if zmax > 1.0 else PASS
     nums = {k: v["z"] for k, v in rows.items()}
@@ -502,24 +515,30 @@ def end_to_end_mutation(claim: Claim, base_sieves) -> Result:
     if claim.wrong is None or (claim.observed is None and claim.stated is None):
         return Result("С14 сквозная подставка", SKIP)
     import copy as _copy
-    mut = _copy.copy(claim)
     ws = claim.wrong if isinstance(claim.wrong, (list, tuple)) else [claim.wrong]
-    w = ws[0]()
-    mut.stated = w
-    if claim.observed is not None:
-        mut.observed = lambda: w
-    mut.sample = None          # выборка не соответствует подделке, честно снимаем
-    mut.statistics = None
-    mut.bins = None
-    mut.estimators = None
-    mut.skip_reasons = {"С%d" % i: "мутационный прогон" for i in range(1, 19)}
-    sub = [s(mut) for s in base_sieves]
-    v = verdict_of(sub)
-    if v == CONFIRMED:
-        return Result("С14 сквозная подставка", VOID,
-                      "подделка получила вердикт ПОДТВЕРЖДЕНО — каскад не различает")
+    outcomes = []
+    for i, wrong_fn in enumerate(ws, 1):
+        # С4 уже поддерживает несколько подставок; С14 должен прогонять через
+        # весь каскад каждую из них, а не молча брать только первую.
+        mut = _copy.copy(claim)
+        w = wrong_fn()
+        mut.stated = w
+        if claim.observed is not None:
+            mut.observed = lambda w=w: w
+        mut.sample = None          # выборка не соответствует подделке, честно снимаем
+        mut.statistics = None
+        mut.bins = None
+        mut.estimators = None
+        mut.skip_reasons = {"С%d" % i: "мутационный прогон" for i in range(1, 19)}
+        sub = [s(mut) for s in base_sieves]
+        v = verdict_of(sub)
+        outcomes.append("подставка %d: %s" % (i, v))
+        if v == CONFIRMED:
+            return Result("С14 сквозная подставка", VOID,
+                          "подделка получила вердикт ПОДТВЕРЖДЕНО — каскад не различает; "
+                          + "; ".join(outcomes))
     return Result("С14 сквозная подставка", PASS,
-                  "подделка получила вердикт %s" % v)
+                  "; ".join(outcomes))
 
 
 def sidak_local_alpha(alpha: float, m: int) -> float:

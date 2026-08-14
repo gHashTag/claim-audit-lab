@@ -221,3 +221,223 @@ claims:
   case: cases/axes_omega_lambda.py
   claim: Теория линейных форм не запрещает близость к Ω_Λ (подсемейство без π)
   verdict: ПОДТВЕРЖДЕНО
+- source: docs/FOR_SCIENTISTS.md:29
+  case: cases/trinity_external_targets_20260813.py
+  claim: γ = φ⁻³ согласуется с каноническим параметром Барберо–Иммирци
+  verdict: ПУСТО
+  inputs_digest: 8c0c456a38e25ba6
+- source: docs/FOR_SCIENTISTS.md:15
+  case: cases/trinity_external_targets_20260813.py
+  claim: α = 4φ²/(9π²) воспроизводит тонкую структуру
+  verdict: ОПРОВЕРГНУТО
+  inputs_digest: 8c0c456a38e25ba6
+- source: docs/papers/README_FOR_SCIENTISTS.md:20
+  case: cases/ckm_lqg_external_20260813.py
+  claim: γ = φ⁻³ согласуется с внешней оценкой параметра Барберо–Иммирци
+  verdict: ПУСТО
+  inputs_digest: 7424155384454ccb
+- source: docs/papers/README_FOR_SCIENTISTS.md:47,95
+  case: cases/ckm_lqg_external_20260813.py
+  claim: '|V_us| = 3γ/π согласуется с внешним значением CKM'
+  verdict: ПУСТО
+  inputs_digest: 6893f19297705c6d
+- source: docs/papers/README_FOR_SCIENTISTS.md:49,96
+  case: cases/ckm_lqg_external_20260813.py
+  claim: '|V_cb| = γ³π согласуется с внешним значением CKM'
+  verdict: ПУСТО
+  inputs_digest: fb46d9572a26c132
+- source: docs/docs/math-foundations/formulas.md:202-206
+  case: cases/formulas_external_targets_20260813.py
+  claim: Формула M(W) = 3^4·φ·π согласуется с массой W-бозона
+  verdict: ПУСТО
+  inputs_digest: ec394b57d317ae59
+- source: docs/docs/math-foundations/formulas.md:226-230
+  case: cases/formulas_external_targets_20260813.py
+  claim: Формула M(H) = 3^3·φ^3·π^2/e согласуется с массой бозона Хиггса
+  verdict: ПУСТО
+  inputs_digest: ec394b57d317ae59
+- source: deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:9-17
+  case: cases/appendix_external_targets_20260813.py
+  claim: Формула 1/α = 4π³ + π² + π согласуется с CODATA
+  verdict: ОПРОВЕРГНУТО
+  inputs_digest: 9530c3044725d9dd
+- source: deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:184-193
+  case: cases/appendix_external_targets_20260813.py
+  claim: Формула Ω_m = 1/π согласуется с плотностью материи
+  verdict: ПУСТО
+  inputs_digest: 9530c3044725d9dd
+- source: deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:204-212
+  case: cases/appendix_external_targets_20260813.py
+  claim: Формула n_s = 94π⁻⁴ согласуется со спектральным индексом
+  verdict: ПУСТО
+  inputs_digest: 9530c3044725d9dd
+- source: docs/research/FORMULAS_SUMMARY.md:42
+  case: cases/formulas_summary_external_20260814.py
+  claim: Формула α = 36/(π⁴φ⁴e²) согласуется с измеренной постоянной тонкой структуры
+  verdict: ОПРОВЕРГНУТО
+  inputs_digest: 3d1f62c417f680ea
+- source: docs/research/FORMULAS_SUMMARY.md:43
+  case: cases/formulas_summary_external_20260814.py
+  claim: Формула α_s = 4φ²/(9π²) согласуется с измеренной сильной связью
+  verdict: ПУСТО
+  inputs_digest: 3d1f62c417f680ea
+- source: docs/research/FORMULAS_SUMMARY.md:53
+  case: cases/formulas_summary_external_20260814.py
+  claim: Формула T_CMB = 5π⁴φ⁵/(729e) согласуется с температурой реликтового излучения
+  verdict: ПУСТО
+  inputs_digest: 3d1f62c417f680ea
+- source: docs/research/pointer_architecture_companion.md:212-220
+  case: cases/pointer_architecture_external_20260814.py
+  claim: Формула H₀ = 4·3³·π⁻³·φ²·e² согласуется с оценкой Planck
+  verdict: ПУСТО
+  inputs_digest: 725cdd17b496fe6f
+- source: docs/research/pointer_architecture_companion.md:223-231
+  case: cases/pointer_architecture_external_20260814.py
+  claim: Формула Ω_Λ = 4·3²·φ⁻²·e⁻³ согласуется с оценкой Planck
+  verdict: ПУСТО
+  inputs_digest: 725cdd17b496fe6f
+- source: docs/research/pointer_architecture_companion.md:234-244
+  case: cases/pointer_architecture_external_20260814.py
+  claim: Формула 1/α = 4·3²·π⁻¹·φ·e² согласуется с CODATA
+  verdict: ОПРОВЕРГНУТО
+  inputs_digest: 725cdd17b496fe6f
+- source: deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:170-176
+  case: cases/sacred_formula_full_external_20260814.py
+  claim: Формула 6π⁵ воспроизводит отношение масс протона и электрона
+  verdict: ВОПРОС
+  inputs_digest: 1f4d53ef6425f029
+- source: deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:180-185
+  case: cases/sacred_formula_full_external_20260814.py
+  claim: Формула 17π²φ⁵/9 воспроизводит отношение масс мюона и электрона
+  verdict: ВОПРОС
+  inputs_digest: 1f4d53ef6425f029
+- source: deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:187-192
+  case: cases/sacred_formula_full_external_20260814.py
+  claim: Формула 76·3²·π·φ воспроизводит отношение масс тау-лептона и электрона
+  verdict: ВОПРОС
+  inputs_digest: 1f4d53ef6425f029
+- source: deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md:198-206
+  case: cases/sacred_formula_complete_v2_external_20260814.py
+  claim: Формула W = 25·3·π⁵·φ⁴ согласуется с внешней массой W-бозона
+  verdict: ПУСТО
+  inputs_digest: 83cfe65ff088a13e
+- source: deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md:198-206
+  case: cases/sacred_formula_complete_v2_external_20260814.py
+  claim: Формула Z = 5·3⁴·π⁷·φ⁻⁴ согласуется с внешней массой Z-бозона
+  verdict: ВОПРОС
+  inputs_digest: 83cfe65ff088a13e
+- source: deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md:198-206
+  case: cases/sacred_formula_complete_v2_external_20260814.py
+  claim: Формула H = 40·3³·π⁶·φ⁻³ согласуется с внешней массой бозона Хиггса
+  verdict: ПУСТО
+  inputs_digest: 83cfe65ff088a13e
+- source: deploy/trinity-nexus/docs/research/formulas.md:88-98
+  case: cases/formulas_deploy_external_20260814.py
+  claim: Формула m(μ)/m(e) = 3(3π−1)²/π согласуется с отношением масс мюона и электрона
+  verdict: ОПРОВЕРГНУТО
+  inputs_digest: cf217f636057ecbe
+- source: deploy/trinity-nexus/docs/research/formulas.md:100-110
+  case: cases/formulas_deploy_external_20260814.py
+  claim: Формула m(τ)/m(e) = 3φ(6π)² согласуется с отношением масс тау-лептона и электрона
+  verdict: ВОПРОС
+  inputs_digest: cf217f636057ecbe
+- source: deploy/trinity-nexus/docs/research/formulas.md:130-142
+  case: cases/formulas_deploy_external_20260814.py
+  claim: Формула Ω_Λ = (π−1)/π согласуется с долей тёмной энергии
+  verdict: ПУСТО
+  inputs_digest: cf217f636057ecbe
+- source: docs/research/PELLIS_TRINITY_COMPARISON.md:106-115
+  case: cases/pellis_external_targets_20260814.py
+  claim: Формула Ω_Λ = 6561φ⁻³/(π⁵e²) согласуется с Planck
+  verdict: ПУСТО
+  inputs_digest: ca3de79351385e3a
+- source: docs/research/PELLIS_TRINITY_COMPARISON.md:128
+  case: cases/pellis_external_targets_20260814.py
+  claim: Формула sin²θ_W = 2π³e/729 согласуется с PDG
+  verdict: ПУСТО
+  inputs_digest: ca3de79351385e3a
+- source: docs/research/PELLIS_TRINITY_COMPARISON.md:138
+  case: cases/pellis_external_targets_20260814.py
+  claim: Формула r_e = 54φ/π³ согласуется с CODATA
+  verdict: ОПРОВЕРГНУТО
+  inputs_digest: ca3de79351385e3a
+- source: docs/docs/research/trinity-status-2026.md:172-178
+  case: cases/ckm_vtd_vts_vub_external_20260814.py
+  claim: Формула V_td = e³/(81φ⁷) согласуется с внешним значением PDG
+  verdict: ПУСТО
+  inputs_digest: 723e58dc8c516835
+- source: docs/docs/research/trinity-status-2026.md:172-178
+  case: cases/ckm_vtd_vts_vub_external_20260814.py
+  claim: Формула V_ts = 2916/(π⁵φ³e⁴) согласуется с внешним значением PDG
+  verdict: ПУСТО
+  inputs_digest: 723e58dc8c516835
+- source: docs/docs/research/trinity-status-2026.md:172-178
+  case: cases/ckm_vtd_vts_vub_external_20260814.py
+  claim: Формула V_ub = 7/(729φ²) согласуется с внешним значением PDG
+  verdict: ПУСТО
+  inputs_digest: 723e58dc8c516835
+- source: deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:64-69
+  case: cases/neutrino_mixing_external_20260814.py
+  claim: Формула sin θ_C = φ⁻³ согласуется с внешним значением PDG
+  verdict: ПУСТО
+  inputs_digest: b15f3d88e57a4dae
+- source: deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:71-77
+  case: cases/neutrino_mixing_external_20260814.py
+  claim: Формула sin θ₂₃ = 4·3⁻²·π⁻² согласуется с внешним значением PDG
+  verdict: ПУСТО
+  inputs_digest: b15f3d88e57a4dae
+- source: deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:87-93
+  case: cases/neutrino_mixing_external_20260814.py
+  claim: Формула δ = π/φ² согласуется с внешним значением PDG
+  verdict: ПУСТО
+  inputs_digest: b15f3d88e57a4dae
+- source: docs/docs/math-foundations/formulas.md:305-319
+  case: cases/formulas_precision_external_20260814.py
+  claim: Формула Δaμ = (π−3)×10⁻⁹ согласуется с измерением FNAL E989
+  verdict: ПУСТО
+  inputs_digest: ec394b57d317ae59
+- source: docs/docs/math-foundations/formulas.md:321-333
+  case: cases/formulas_precision_external_20260814.py
+  claim: Формула rₚ = φ/(π+1) согласуется с измерением радиуса протона
+  verdict: ПУСТО
+  inputs_digest: ec394b57d317ae59
+- source: docs/docs/research/delta-001/phase4-consistency.md:63-68
+  case: cases/delta001_variance_claims_20260814.py
+  claim: γ = 0,200 даёт минимальную дисперсию спектральных промежутков
+  verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 5e321473565ec35f
+- source: docs/docs/research/delta-001/phase4-consistency.md:72-86
+  case: cases/delta001_variance_claims_20260814.py
+  claim: γ = φ⁻³ занимает 5-е место из 13 по спектральной дисперсии
+  verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: c69d48f08d2b0d79
+- source: docs/docs/research/delta-001/phase4-consistency.md:63-88
+  case: cases/delta001_additional_claims_20260814.py
+  claim: γ = 0,274 занимает 10-е место из 13 по спектральной дисперсии
+  verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 5e321473565ec35f
+- source: docs/docs/research/delta-001/phase4-consistency.md:23-31
+  case: cases/delta001_additional_claims_20260814.py
+  claim: В таблице DELTA-001 две сильные φ-коинциденции с ошибкой менее 1%
+  verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 5e321473565ec35f
+- source: docs/docs/research/delta-001/phase4-consistency.md:32-41
+  case: cases/delta001_additional_claims_20260814.py
+  claim: В таблице DELTA-001 две слабые φ-коинциденции с ошибкой 1–5%
+  verdict: ОПРОВЕРГНУТО
+  inputs_digest: 5e321473565ec35f
+- source: deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:47-49
+  case: cases/golden_chain_v240_statistics_20260814.py
+  claim: Большой корпус увеличил покрытие триграмм в 1,9 раза
+  verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 2635099cd9629f12
+- source: deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:55-59
+  case: cases/golden_chain_v240_statistics_20260814.py
+  claim: Потеря обучения большого корпуса на 21,7% ниже случайного базиса
+  verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 2635099cd9629f12
+- source: deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:55-59
+  case: cases/golden_chain_v240_statistics_20260814.py
+  claim: Потеря оценки большого корпуса на 15,8% ниже случайного базиса
+  verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 2635099cd9629f12
