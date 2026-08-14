@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import ast
 import inspect
+import types
 
 # Чистые операции: не приносят данных извне, лишь переупаковывают уже
 # полученное значение. Список узкий намеренно: любое неизвестное имя трактуется
@@ -164,6 +165,21 @@ def derives_from(fn, ref) -> tuple[bool, str]:
         return False, ""
     if fn is ref:
         return True, "наблюдение и эталон — одна и та же функция"
+    # Глубокий разбор происхождения значения (тик 40). Закрывает классы
+    # конструкций, которые прямой разбор графа вызовов не видел: замыкания,
+    # значения по умолчанию, связанные методы, декораторы, вызываемые объекты,
+    # functools.partial и передачу значения через глобальное состояние модуля.
+    # Стоит ПЕРЕД проверкой имён: у lambda, partial и вызываемого объекта
+    # атрибута __name__ может не быть вообще, и прежний код на них молча
+    # возвращал False — тот же тихий отказ, что был найден в лупе 12.
+    try:
+        from .identity_deep import origin_is
+        deep_ok, trail = origin_is(fn, ref)
+    except Exception:
+        deep_ok, trail = False, []
+    if deep_ok:
+        return True, "происхождение значения: " + " <- ".join(
+            reversed(trail)) if trail else "значение производно от эталона"
     ref_name = getattr(ref, "__name__", None)
     fn_name = getattr(fn, "__name__", None)
     if not ref_name or not fn_name:
@@ -176,8 +192,12 @@ def derives_from(fn, ref) -> tuple[bool, str]:
     fn_file = getattr(getattr(fn, "__code__", None), "co_filename", None)
     ref_file = getattr(getattr(ref, "__code__", None), "co_filename", None)
     if not fn_file or fn_file != ref_file:
-        # эталон объявлен в другом файле: цепочку внутри одного файла не
-        # построить, остаётся только прямое совпадение объектов (выше)
+        # Межмодульная цепочка требует разрешать реальные объекты из globals,
+        # а не сравнивать только имена. Это важно для module_from_spec: такой
+        # модуль не обязан быть зарегистрирован в sys.modules.
+        same, chain = _derives_cross_module(fn, ref)
+        if same:
+            return True, chain
         return False, ""
     try:
         with open(fn_file, encoding="utf-8") as fh:
@@ -192,6 +212,118 @@ def derives_from(fn, ref) -> tuple[bool, str]:
         return False, ""
     chain = _explain_chain(src, fn_name, ref_name, wrappers)
     return True, chain
+
+
+def _called_functions(fn) -> tuple[list[object], list[str]]:
+    """Вернуть реальные вызываемые объекты и неизвестные вызовы функции.
+
+    Объекты разрешаются из ``fn.__globals__``. Для атрибута ``m.f()`` сначала
+    разрешается модуль или объект ``m``, после чего берётся ``f``. Возврат
+    неизвестного вызова отдельно нужен, чтобы не превратить любую функцию с
+    побочным эффектом в «обёртку» эталона.
+    """
+    code = getattr(fn, "__code__", None)
+    if code is None:
+        return [], ["объект без тела функции"]
+    try:
+        src = open(code.co_filename, encoding="utf-8").read()
+        funcs = _functions_of(src)
+        ast_fn = funcs.get(getattr(fn, "__name__", ""))
+        if ast_fn is None:
+            return [], ["тело функции не найдено"]
+    except (OSError, SyntaxError):
+        return [], ["исходник функции недоступен"]
+
+    globals_ = getattr(fn, "__globals__", {})
+    calls: list[object] = []
+    foreign: list[str] = []
+    for node in ast.walk(ast_fn):
+        if not isinstance(node, ast.Call):
+            continue
+        called = None
+        label = None
+        if isinstance(node.func, ast.Name):
+            label = node.func.id
+            if label in PURE_BUILTINS:
+                continue
+            called = globals_.get(label)
+        elif isinstance(node.func, ast.Attribute):
+            parts = []
+            root = node.func
+            while isinstance(root, ast.Attribute):
+                parts.append(root.attr)
+                root = root.value
+            if isinstance(root, ast.Name):
+                base = globals_.get(root.id)
+                label = root.id + "." + ".".join(reversed(parts))
+                try:
+                    called = base
+                    for attr in reversed(parts):
+                        called = getattr(called, attr)
+                except AttributeError:
+                    called = None
+                if isinstance(base, types.ModuleType) and base.__name__ in PURE_MODULES:
+                    continue
+        if callable(called):
+            calls.append(called)
+        else:
+            foreign.append(label or "?")
+    return calls, foreign
+
+
+def _derives_cross_module(fn, ref) -> tuple[bool, str]:
+    """Проверить прозрачную цепочку, даже если функции живут в разных файлах.
+
+    Для каждого звена требуются отсутствие параметров, наличие возврата и
+    отсутствие неизвестных вызовов. Разрешаются только чистые операции,
+    вызов самого эталона или следующего звена, найденные по реальным
+    объектам в ``__globals__``. Поэтому совпадение имён в разных модулях не
+    является доказательством тождества.
+    """
+    seen: set[int] = set()
+    path: list[str] = []
+
+    def visit(cur) -> bool:
+        ident = id(cur)
+        if ident in seen:
+            return False
+        seen.add(ident)
+        code = getattr(cur, "__code__", None)
+        if code is None:
+            return False
+        try:
+            src = open(code.co_filename, encoding="utf-8").read()
+            ast_fn = _functions_of(src).get(getattr(cur, "__name__", ""))
+        except (OSError, SyntaxError):
+            return False
+        if ast_fn is None:
+            return False
+        if (ast_fn.args.args or ast_fn.args.posonlyargs
+                or ast_fn.args.kwonlyargs or ast_fn.args.vararg
+                or ast_fn.args.kwarg):
+            return False
+        returns = _returns(ast_fn)
+        if not returns:
+            return False
+        calls, foreign = _called_functions(cur)
+        if foreign:
+            return False
+        if not calls:
+            return False
+        path.append(getattr(cur, "__name__", "?"))
+        for called in calls:
+            if called is ref:
+                return True
+            if not visit(called):
+                path.pop()
+                return False
+        return True
+
+    ok = visit(fn)
+    if not ok:
+        return False, ""
+    path.append(getattr(ref, "__name__", "?"))
+    return True, "межмодульная цепочка вызовов: " + " -> ".join(path)
 
 
 def _explain_chain(src: str, start: str, target: str,
@@ -383,6 +515,64 @@ def selftest() -> int:
     spec2.loader.exec_module(mod2)
     same2, _ = derives_from(mod2._observed, mod2._reference)
     check("честный кейс вне sys.modules не помечается", not same2)
+
+    # Межмодульный guard: case-файл также не регистрируется в sys.modules, а
+    # звено и эталон живут в отдельном реально импортированном модуле.
+    helper_src = '''\
+def reference():
+    return 7
+
+def relay():
+    return reference()
+
+def read_file():
+    with open(DATA_FILE, encoding="utf-8") as fh:
+        return int(fh.read())
+'''
+    helper_path = os.path.join(tmp, "identity_helper.py")
+    data_path = os.path.join(tmp, "identity_data.txt")
+    with open(helper_path, "w", encoding="utf-8") as fh:
+        fh.write(helper_src)
+    with open(data_path, "w", encoding="utf-8") as fh:
+        fh.write("7")
+    spec_h = importlib.util.spec_from_file_location("identity_helper", helper_path)
+    helper = importlib.util.module_from_spec(spec_h)
+    helper.DATA_FILE = data_path
+    spec_h.loader.exec_module(helper)
+    cross_src = '''\
+def observed():
+    return h.relay()
+'''
+    cross_path = os.path.join(tmp, "case_cross.py")
+    with open(cross_path, "w", encoding="utf-8") as fh:
+        fh.write(cross_src)
+    spec3 = importlib.util.spec_from_file_location("case_cross", cross_path)
+    mod3 = importlib.util.module_from_spec(spec3)
+    spec3.loader.exec_module(mod3)
+    # Обе функции остаются вне sys.modules; зависимость передаётся в globals
+    # так же, как это делают загрузчики плагинов.
+    mod3.h = helper
+    mod3.reference = helper.reference
+    same3, chain3 = derives_from(mod3.observed, mod3.reference)
+    check("ловит межмодульную цепочку", same3)
+    check("объяснение межмодульной цепочки доступно",
+          "межмодульная цепочка" in chain3 and "relay" in chain3)
+
+    honest_cross_src = '''\
+def observed():
+    return h.read_file()
+'''
+    honest_cross_path = os.path.join(tmp, "case_cross_honest.py")
+    with open(honest_cross_path, "w", encoding="utf-8") as fh:
+        fh.write(honest_cross_src)
+    spec4 = importlib.util.spec_from_file_location(
+        "case_cross_honest", honest_cross_path)
+    mod4 = importlib.util.module_from_spec(spec4)
+    spec4.loader.exec_module(mod4)
+    mod4.h = helper
+    mod4.reference = helper.reference
+    same4, _ = derives_from(mod4.observed, mod4.reference)
+    check("межмодульное чтение данных не помечается", not same4)
     return fail
 
 

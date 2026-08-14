@@ -489,3 +489,25 @@ claims:
   target: 663cdcc7b05c3fd5
   novelty_key: zeta:chi2:independent-reconstruction:v1
   inputs_digest: 74e70460f38ecc48
+- source: deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138
+  case: cases/identity_honest_controls_20260814.py
+  claim: Чтение каталога через глобальное состояние не тождественно эталону
+  verdict: ПОДТВЕРЖДЕНО
+- source: deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138
+  case: cases/identity_honest_controls_20260814.py
+  claim: Чтение каталога через functools.partial не тождественно эталону
+  verdict: ПОДТВЕРЖДЕНО
+- source: deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138
+  case: cases/identity_honest_controls_20260814.py
+  claim: Чтение каталога через lambda не тождественно эталону
+  verdict: ПОДТВЕРЖДЕНО
+- source: deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138
+  case: cases/identity_cross_module_20260814.py
+  claim: Межмодульная цепочка наблюдение→эталон распознаётся как тождество
+  verdict: ПУСТО
+  inputs_digest: 1235b6ac4959d34b
+- source: deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138
+  case: cases/identity_cross_module_20260814.py
+  claim: Межмодульное чтение корпуса не распознаётся как тождество
+  verdict: ПОДТВЕРЖДЕНО
+  inputs_digest: 1235b6ac4959d34b

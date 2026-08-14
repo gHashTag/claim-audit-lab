@@ -1,0 +1,101 @@
+case,claim,verdict,source,inputs_digest
+cases/appendix_external_targets_20260813.py,Формула 1/α = 4π³ + π² + π согласуется с CODATA,ОПРОВЕРГНУТО,deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:9-17,9530c3044725d9dd
+cases/appendix_external_targets_20260813.py,Формула n_s = 94π⁻⁴ согласуется со спектральным индексом,ПУСТО,deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:204-212,9530c3044725d9dd
+cases/appendix_external_targets_20260813.py,Формула Ω_m = 1/π согласуется с плотностью материи,ПУСТО,deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:184-193,9530c3044725d9dd
+cases/axes_omega_lambda.py,Близость к Ω_Λ не объясняется алгебраически (форма с log π),ПОДТВЕРЖДЕНО,docs/papers/README_FOR_SCIENTISTS.md:71,
+cases/axes_omega_lambda.py,Вывод о Ω_Λ устойчив к зависимости членов семейства,ПУСТО,docs/papers/README_FOR_SCIENTISTS.md:71,
+cases/axes_omega_lambda.py,Теория линейных форм не запрещает близость к Ω_Λ (подсемейство без π),ПОДТВЕРЖДЕНО,docs/papers/README_FOR_SCIENTISTS.md:71,
+cases/ckm_lqg_external_20260813.py,|V_cb| = γ³π согласуется с внешним значением CKM,ПУСТО,"docs/papers/README_FOR_SCIENTISTS.md:49,96",fb46d9572a26c132
+cases/ckm_lqg_external_20260813.py,|V_us| = 3γ/π согласуется с внешним значением CKM,ПУСТО,"docs/papers/README_FOR_SCIENTISTS.md:47,95",6893f19297705c6d
+cases/ckm_lqg_external_20260813.py,γ = φ⁻³ согласуется с внешней оценкой параметра Барберо–Иммирци,ПУСТО,docs/papers/README_FOR_SCIENTISTS.md:20,7424155384454ccb
+cases/ckm_vtd_vts_vub_external_20260814.py,Формула V_td = e³/(81φ⁷) согласуется с внешним значением PDG,ПУСТО,docs/docs/research/trinity-status-2026.md:172-178,723e58dc8c516835
+cases/ckm_vtd_vts_vub_external_20260814.py,Формула V_ts = 2916/(π⁵φ³e⁴) согласуется с внешним значением PDG,ПУСТО,docs/docs/research/trinity-status-2026.md:172-178,723e58dc8c516835
+cases/ckm_vtd_vts_vub_external_20260814.py,Формула V_ub = 7/(729φ²) согласуется с внешним значением PDG,ПУСТО,docs/docs/research/trinity-status-2026.md:172-178,723e58dc8c516835
+cases/cosmology_columns.py,"Ω_DM = γ⁴π²/φ даёт 0,257",ОПРОВЕРГНУТО,docs/papers/README_FOR_SCIENTISTS.md:72,
+cases/cosmology_columns.py,"Ω_Λ = γ⁸π⁴/φ² даёт 0,688",ОПРОВЕРГНУТО,docs/papers/README_FOR_SCIENTISTS.md:71,
+cases/cosmology_columns.py,"Колонка Error для sin²θ₁₃ равна 0,008 %",ОПРОВЕРГНУТО,docs/papers/README_FOR_SCIENTISTS.md:43,
+cases/cosmology_columns.py,"Колонка Error для α_s(M_Z) равна 0,005 %",ОПРОВЕРГНУТО,docs/papers/README_FOR_SCIENTISTS.md:40,
+cases/cosmology_columns.py,Формула γ⁸π⁴/φ² предсказывает Ω_Λ из Planck 2018,ПУСТО,docs/papers/README_FOR_SCIENTISTS.md:71,
+cases/dark_photon_x17_formula.py,"Формула тёмного фотона X17 даёт 17,0 МэВ",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:203,3febbc70e0847989
+cases/delta001_additional_claims_20260814.py,"γ = 0,274 занимает 10-е место из 13 по спектральной дисперсии",ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:63-88,5e321473565ec35f
+cases/delta001_additional_claims_20260814.py,В таблице DELTA-001 две сильные φ-коинциденции с ошибкой менее 1%,ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:23-31,5e321473565ec35f
+cases/delta001_additional_claims_20260814.py,В таблице DELTA-001 две слабые φ-коинциденции с ошибкой 1–5%,ОПРОВЕРГНУТО,docs/docs/research/delta-001/phase4-consistency.md:32-41,5e321473565ec35f
+cases/delta001_variance_claims_20260814.py,"γ = 0,200 даёт минимальную дисперсию спектральных промежутков",ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:63-68,5e321473565ec35f
+cases/delta001_variance_claims_20260814.py,γ = φ⁻³ занимает 5-е место из 13 по спектральной дисперсии,ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:72-86,c69d48f08d2b0d79
+cases/dirac_cp_phase_formula.py,"Формула фазы Дирака CP даёт 222,0°",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:202,3febbc70e0847989
+cases/established_constants_fit_count.py,раздел Established Constants содержит 75 совпадений,ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:30,3febbc70e0847989
+cases/formulas_deploy_external_20260814.py,Формула m(μ)/m(e) = 3(3π−1)²/π согласуется с отношением масс мюона и электрона,ОПРОВЕРГНУТО,deploy/trinity-nexus/docs/research/formulas.md:88-98,cf217f636057ecbe
+cases/formulas_deploy_external_20260814.py,Формула m(τ)/m(e) = 3φ(6π)² согласуется с отношением масс тау-лептона и электрона,ВОПРОС,deploy/trinity-nexus/docs/research/formulas.md:100-110,cf217f636057ecbe
+cases/formulas_deploy_external_20260814.py,Формула Ω_Λ = (π−1)/π согласуется с долей тёмной энергии,ПУСТО,deploy/trinity-nexus/docs/research/formulas.md:130-142,cf217f636057ecbe
+cases/formulas_external_targets_20260813.py,Формула M(H) = 3^3·φ^3·π^2/e согласуется с массой бозона Хиггса,ПУСТО,docs/docs/math-foundations/formulas.md:226-230,ec394b57d317ae59
+cases/formulas_external_targets_20260813.py,Формула M(W) = 3^4·φ·π согласуется с массой W-бозона,ПУСТО,docs/docs/math-foundations/formulas.md:202-206,ec394b57d317ae59
+cases/formulas_precision_external_20260814.py,Формула rₚ = φ/(π+1) согласуется с измерением радиуса протона,ПУСТО,docs/docs/math-foundations/formulas.md:321-333,ec394b57d317ae59
+cases/formulas_precision_external_20260814.py,Формула Δaμ = (π−3)×10⁻⁹ согласуется с измерением FNAL E989,ПУСТО,docs/docs/math-foundations/formulas.md:305-319,ec394b57d317ae59
+cases/formulas_summary_external_20260814.py,Формула T_CMB = 5π⁴φ⁵/(729e) согласуется с температурой реликтового излучения,ПУСТО,docs/research/FORMULAS_SUMMARY.md:53,3d1f62c417f680ea
+cases/formulas_summary_external_20260814.py,Формула α = 36/(π⁴φ⁴e²) согласуется с измеренной постоянной тонкой структуры,ОПРОВЕРГНУТО,docs/research/FORMULAS_SUMMARY.md:42,3d1f62c417f680ea
+cases/formulas_summary_external_20260814.py,Формула α_s = 4φ²/(9π²) согласуется с измеренной сильной связью,ПУСТО,docs/research/FORMULAS_SUMMARY.md:43,3d1f62c417f680ea
+cases/golden_chain_v240_statistics_20260814.py,"Большой корпус увеличил покрытие триграмм в 1,9 раза",ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:47-49,2635099cd9629f12
+cases/golden_chain_v240_statistics_20260814.py,"Потеря обучения большого корпуса на 21,7% ниже случайного базиса",ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:55-59,2635099cd9629f12
+cases/golden_chain_v240_statistics_20260814.py,"Потеря оценки большого корпуса на 15,8% ниже случайного базиса",ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:55-59,2635099cd9629f12
+cases/gravitational_constant_external_20260814.py,Формула G = π³γ²/φ согласуется с CODATA,ВОПРОС,docs/docs/research/papers/gravitational-constants.md:10-15,d5b3e20a0308f63e
+cases/identity_cross_module_20260814.py,Межмодульная цепочка наблюдение→эталон распознаётся как тождество,ПУСТО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,1235b6ac4959d34b
+cases/identity_cross_module_20260814.py,Межмодульное чтение корпуса не распознаётся как тождество,ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,1235b6ac4959d34b
+cases/identity_honest_controls_20260814.py,Чтение каталога через functools.partial не тождественно эталону,ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,
+cases/identity_honest_controls_20260814.py,Чтение каталога через lambda не тождественно эталону,ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,
+cases/identity_honest_controls_20260814.py,Чтение каталога через глобальное состояние не тождественно эталону,ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,
+cases/jarlskog_theta13_external_20260814.py,Формула Jarlskog J согласуется с внешней оценкой PDG,ПУСТО,docs/papers/README_FOR_SCIENTISTS.md:37-43,7424155384454ccb
+cases/jarlskog_theta13_external_20260814.py,Формула sin²θ₁₃ согласуется с внешней оценкой NuFIT,ПУСТО,docs/papers/README_FOR_SCIENTISTS.md:37-43,7424155384454ccb
+cases/khinchin.py,"K по нулям дзеты = 2.620, систематически ниже 2.685",ВОПРОС,data/zeta/zeta_bin_analysis_update.md,8e0cc0c774a33542
+cases/m_theory_dimension_formula.py,"Формула размерности M-теории даёт 11,0001",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:197,3febbc70e0847989
+cases/master_catalog_lucas_l10.py,В таблице каталога для n=10 указано L(10)=123,ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,a986d4874ad47b48
+cases/master_catalog_msme_error.py,"Для m_s/m_e в каталоге указано значение 182,8",ОПРОВЕРГНУТО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:37,a986d4874ad47b48
+cases/neutrino_mixing_external_20260814.py,Формула sin θ_C = φ⁻³ согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:64-69,b15f3d88e57a4dae
+cases/neutrino_mixing_external_20260814.py,Формула sin θ₂₃ = 4·3⁻²·π⁻² согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:71-77,b15f3d88e57a4dae
+cases/neutrino_mixing_external_20260814.py,Формула δ = π/φ² согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:87-93,b15f3d88e57a4dae
+cases/neutron_lifetime_formula.py,"Формула времени жизни нейтрона даёт 879,4 с",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:194,3febbc70e0847989
+cases/pellis_external_targets_20260814.py,Формула r_e = 54φ/π³ согласуется с CODATA,ОПРОВЕРГНУТО,docs/research/PELLIS_TRINITY_COMPARISON.md:138,ca3de79351385e3a
+cases/pellis_external_targets_20260814.py,Формула sin²θ_W = 2π³e/729 согласуется с PDG,ПУСТО,docs/research/PELLIS_TRINITY_COMPARISON.md:128,ca3de79351385e3a
+cases/pellis_external_targets_20260814.py,Формула Ω_Λ = 6561φ⁻³/(π⁵e²) согласуется с Planck,ПУСТО,docs/research/PELLIS_TRINITY_COMPARISON.md:106-115,ca3de79351385e3a
+cases/pointer_architecture_external_20260814.py,Формула 1/α = 4·3²·π⁻¹·φ·e² согласуется с CODATA,ОПРОВЕРГНУТО,docs/research/pointer_architecture_companion.md:234-244,725cdd17b496fe6f
+cases/pointer_architecture_external_20260814.py,Формула H₀ = 4·3³·π⁻³·φ²·e² согласуется с оценкой Planck,ПУСТО,docs/research/pointer_architecture_companion.md:212-220,725cdd17b496fe6f
+cases/pointer_architecture_external_20260814.py,Формула Ω_Λ = 4·3²·φ⁻²·e⁻³ согласуется с оценкой Planck,ПУСТО,docs/research/pointer_architecture_companion.md:223-231,725cdd17b496fe6f
+cases/proton_mass_ratio_error.py,"для m_p/m_e указана ошибка 0,109 %",ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:37,3febbc70e0847989
+cases/qcd_phase_tc_formula.py,"Формула QCD phase даёт 156,5 МэВ",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:201,3febbc70e0847989
+cases/reionization_zre_prediction.py,"Формула реионизации z_re даёт 7,67",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:206,3febbc70e0847989
+cases/sacred_external_targets.py,Формула T_c согласуется с измеренной температурой перехода КХД,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:201,3febbc70e0847989
+cases/sacred_external_targets.py,Формула X17 согласуется с независимым измерением массы бозона,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:203,3febbc70e0847989
+cases/sacred_external_targets.py,Формула tau_n согласуется с измеренным временем жизни нейтрона,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:194,3febbc70e0847989
+cases/sacred_external_targets.py,Формула воспроизводит отношение масс протона и электрона,ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:37,3febbc70e0847989
+cases/sacred_fit_multiplicity.py,объявленного перебора 20 412 достаточно для формул из таблиц,ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:25,3febbc70e0847989
+cases/sacred_fit_multiplicity.py,"совпадения священных формул с константами содержательны, а не подогнаны",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:30,3febbc70e0847989
+cases/sacred_formula_complete_v2_external_20260814.py,Формула H = 40·3³·π⁶·φ⁻³ согласуется с внешней массой бозона Хиггса,ПУСТО,deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md:198-206,83cfe65ff088a13e
+cases/sacred_formula_complete_v2_external_20260814.py,Формула W = 25·3·π⁵·φ⁴ согласуется с внешней массой W-бозона,ПУСТО,deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md:198-206,83cfe65ff088a13e
+cases/sacred_formula_complete_v2_external_20260814.py,Формула Z = 5·3⁴·π⁷·φ⁻⁴ согласуется с внешней массой Z-бозона,ВОПРОС,deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md:198-206,83cfe65ff088a13e
+cases/sacred_formula_full_external_20260814.py,Формула 17π²φ⁵/9 воспроизводит отношение масс мюона и электрона,ВОПРОС,deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:180-185,1f4d53ef6425f029
+cases/sacred_formula_full_external_20260814.py,Формула 6π⁵ воспроизводит отношение масс протона и электрона,ВОПРОС,deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:170-176,1f4d53ef6425f029
+cases/sacred_formula_full_external_20260814.py,Формула 76·3²·π·φ воспроизводит отношение масс тау-лептона и электрона,ВОПРОС,deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:187-192,1f4d53ef6425f029
+cases/sacred_random_probability.py,"Вероятность случайного попадания в класс EXACT при расширенном переборе равна 1 из 35 (2,9 %)",ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:234,3febbc70e0847989
+cases/sacred_random_probability.py,"Вероятность случайного попадания в класс EXACT при стандартном переборе равна 1 из 500 (0,2 %)",ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:234,3febbc70e0847989
+cases/sacred_random_probability.py,Объявленный размер стандартного перебора 20 412 согласуется с объявленными границами стандартного перебора,ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:285,3febbc70e0847989
+cases/sacred_search_count.py,стандартный поиск содержит 20 412 комбинаций,ПОДТВЕРЖДЕНО,docs/docs/math-foundations/sacred-formulas.md:25,3febbc70e0847989
+cases/sacred_table_audit_20260813.py,"Раздел Error Classification содержит 35 совпадений с ошибкой менее 0,01%",ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:214,3febbc70e0847989
+cases/sacred_table_audit_20260813.py,Расширенный поиск содержит 123 201 комбинацию,ПОДТВЕРЖДЕНО,docs/docs/math-foundations/sacred-formulas.md:26,3febbc70e0847989
+cases/transcendental_3phi_value.py,"3^φ напечатано как 5,91559",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:169,7df30c36cc64c8fc
+cases/transcendental_catalog_values.py,"3^(1/φ) напечатано как 1,97186",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:184,7df30c36cc64c8fc
+cases/transcendental_catalog_values.py,"e^φ напечатано как 5,04317",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:201,7df30c36cc64c8fc
+cases/transcendental_catalog_values.py,"ln(3) напечатано как 1,09861",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:215,7df30c36cc64c8fc
+cases/transcendental_catalog_values_2.py,"3^(1/φ²) напечатано как 1,52140",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:186,7df30c36cc64c8fc
+cases/transcendental_catalog_values_2.py,"3^(φ²) напечатано как 17,74678",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:185,7df30c36cc64c8fc
+cases/transcendental_catalog_values_2.py,"3^√5 напечатано как 11,66475",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:187,7df30c36cc64c8fc
+cases/transcendental_catalog_values_3.py,"φ^(1/φ) напечатано как 1,34636",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:189,7df30c36cc64c8fc
+cases/transcendental_catalog_values_3.py,"φ^(φ²) напечатано как 3,52482",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:190,7df30c36cc64c8fc
+cases/transcendental_catalog_values_3.py,"φ^φ напечатано как 2,17846",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:188,7df30c36cc64c8fc
+cases/trinity_external_targets_20260813.py,α = 4φ²/(9π²) воспроизводит тонкую структуру,ОПРОВЕРГНУТО,docs/FOR_SCIENTISTS.md:15,8c0c456a38e25ba6
+cases/trinity_external_targets_20260813.py,γ = φ⁻³ согласуется с каноническим параметром Барберо–Иммирци,ПУСТО,docs/FOR_SCIENTISTS.md:29,8c0c456a38e25ba6
+cases/zeta_chi2_independent_20260814.py,Сводка χ²/dof из таблицы совпадает с независимой реконструкцией по 100000 нулей,ОПРОВЕРГНУТО,data/zeta/zeta_bin_analysis_update.md:10-40,74e70460f38ecc48
+cases/zeta_chi2_statistics_20260814.py,"χ²/dof по десяти высотным корзинам = 2,67 ± 0,49",ПУСТО,data/zeta/zeta_bin_analysis_update.md:24-38,d32c98af192622e1
+cases/zeta_gue.py,surmise Вигнера годится как эталон на уровне 2%,ОПРОВЕРГНУТО,src/sacred/zeta_spacing.zig,
+cases/zeta_gue.py,колонка «GUE Expected» = 0.91 / 2.15 / 2.75,ПУСТО,data/zeta/zeta_gue_analysis_results.md,
+cases/zeta_gue.py,наблюдённые расстояния совпадают с GUE в пределах 1%,ВОПРОС,data/zeta/zeros_odlyzko_100k.txt,8e0cc0c774a33542
+cases/zeta_shape.py,масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка out-of-sample по верхним полосам высот),ОПРОВЕРГНУТО,data/zeta/zeta_gue_analysis_results.md:конечновысотная поправка,3436c916a7878261
+cases/zeta_shape.py,форма распределения расстояний согласуется с точным законом GUE в пределах конечновыборочного разброса,ОПРОВЕРГНУТО,data/zeta/zeta_gue_analysis_results.md:форма распределения,3436c916a7878261

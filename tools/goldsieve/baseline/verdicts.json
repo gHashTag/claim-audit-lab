@@ -1,0 +1,702 @@
+[
+  {
+    "case": "cases/appendix_external_targets_20260813.py",
+    "claim": "Формула 1/α = 4π³ + π² + π согласуется с CODATA",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:9-17",
+    "inputs_digest": "9530c3044725d9dd"
+  },
+  {
+    "case": "cases/appendix_external_targets_20260813.py",
+    "claim": "Формула n_s = 94π⁻⁴ согласуется со спектральным индексом",
+    "verdict": "ПУСТО",
+    "source": "deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:204-212",
+    "inputs_digest": "9530c3044725d9dd"
+  },
+  {
+    "case": "cases/appendix_external_targets_20260813.py",
+    "claim": "Формула Ω_m = 1/π согласуется с плотностью материи",
+    "verdict": "ПУСТО",
+    "source": "deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:184-193",
+    "inputs_digest": "9530c3044725d9dd"
+  },
+  {
+    "case": "cases/axes_omega_lambda.py",
+    "claim": "Близость к Ω_Λ не объясняется алгебраически (форма с log π)",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:71",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/axes_omega_lambda.py",
+    "claim": "Вывод о Ω_Λ устойчив к зависимости членов семейства",
+    "verdict": "ПУСТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:71",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/axes_omega_lambda.py",
+    "claim": "Теория линейных форм не запрещает близость к Ω_Λ (подсемейство без π)",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:71",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/ckm_lqg_external_20260813.py",
+    "claim": "|V_cb| = γ³π согласуется с внешним значением CKM",
+    "verdict": "ПУСТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:49,96",
+    "inputs_digest": "fb46d9572a26c132"
+  },
+  {
+    "case": "cases/ckm_lqg_external_20260813.py",
+    "claim": "|V_us| = 3γ/π согласуется с внешним значением CKM",
+    "verdict": "ПУСТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:47,95",
+    "inputs_digest": "6893f19297705c6d"
+  },
+  {
+    "case": "cases/ckm_lqg_external_20260813.py",
+    "claim": "γ = φ⁻³ согласуется с внешней оценкой параметра Барберо–Иммирци",
+    "verdict": "ПУСТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:20",
+    "inputs_digest": "7424155384454ccb"
+  },
+  {
+    "case": "cases/ckm_vtd_vts_vub_external_20260814.py",
+    "claim": "Формула V_td = e³/(81φ⁷) согласуется с внешним значением PDG",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/research/trinity-status-2026.md:172-178",
+    "inputs_digest": "723e58dc8c516835"
+  },
+  {
+    "case": "cases/ckm_vtd_vts_vub_external_20260814.py",
+    "claim": "Формула V_ts = 2916/(π⁵φ³e⁴) согласуется с внешним значением PDG",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/research/trinity-status-2026.md:172-178",
+    "inputs_digest": "723e58dc8c516835"
+  },
+  {
+    "case": "cases/ckm_vtd_vts_vub_external_20260814.py",
+    "claim": "Формула V_ub = 7/(729φ²) согласуется с внешним значением PDG",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/research/trinity-status-2026.md:172-178",
+    "inputs_digest": "723e58dc8c516835"
+  },
+  {
+    "case": "cases/cosmology_columns.py",
+    "claim": "Ω_DM = γ⁴π²/φ даёт 0,257",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:72",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/cosmology_columns.py",
+    "claim": "Ω_Λ = γ⁸π⁴/φ² даёт 0,688",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:71",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/cosmology_columns.py",
+    "claim": "Колонка Error для sin²θ₁₃ равна 0,008 %",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:43",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/cosmology_columns.py",
+    "claim": "Колонка Error для α_s(M_Z) равна 0,005 %",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:40",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/cosmology_columns.py",
+    "claim": "Формула γ⁸π⁴/φ² предсказывает Ω_Λ из Planck 2018",
+    "verdict": "ПУСТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:71",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/dark_photon_x17_formula.py",
+    "claim": "Формула тёмного фотона X17 даёт 17,0 МэВ",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:203",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/delta001_additional_claims_20260814.py",
+    "claim": "γ = 0,274 занимает 10-е место из 13 по спектральной дисперсии",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/research/delta-001/phase4-consistency.md:63-88",
+    "inputs_digest": "5e321473565ec35f"
+  },
+  {
+    "case": "cases/delta001_additional_claims_20260814.py",
+    "claim": "В таблице DELTA-001 две сильные φ-коинциденции с ошибкой менее 1%",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/research/delta-001/phase4-consistency.md:23-31",
+    "inputs_digest": "5e321473565ec35f"
+  },
+  {
+    "case": "cases/delta001_additional_claims_20260814.py",
+    "claim": "В таблице DELTA-001 две слабые φ-коинциденции с ошибкой 1–5%",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/docs/research/delta-001/phase4-consistency.md:32-41",
+    "inputs_digest": "5e321473565ec35f"
+  },
+  {
+    "case": "cases/delta001_variance_claims_20260814.py",
+    "claim": "γ = 0,200 даёт минимальную дисперсию спектральных промежутков",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/research/delta-001/phase4-consistency.md:63-68",
+    "inputs_digest": "5e321473565ec35f"
+  },
+  {
+    "case": "cases/delta001_variance_claims_20260814.py",
+    "claim": "γ = φ⁻³ занимает 5-е место из 13 по спектральной дисперсии",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/research/delta-001/phase4-consistency.md:72-86",
+    "inputs_digest": "c69d48f08d2b0d79"
+  },
+  {
+    "case": "cases/dirac_cp_phase_formula.py",
+    "claim": "Формула фазы Дирака CP даёт 222,0°",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:202",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/established_constants_fit_count.py",
+    "claim": "раздел Established Constants содержит 75 совпадений",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:30",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/formulas_deploy_external_20260814.py",
+    "claim": "Формула m(μ)/m(e) = 3(3π−1)²/π согласуется с отношением масс мюона и электрона",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "deploy/trinity-nexus/docs/research/formulas.md:88-98",
+    "inputs_digest": "cf217f636057ecbe"
+  },
+  {
+    "case": "cases/formulas_deploy_external_20260814.py",
+    "claim": "Формула m(τ)/m(e) = 3φ(6π)² согласуется с отношением масс тау-лептона и электрона",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/formulas.md:100-110",
+    "inputs_digest": "cf217f636057ecbe"
+  },
+  {
+    "case": "cases/formulas_deploy_external_20260814.py",
+    "claim": "Формула Ω_Λ = (π−1)/π согласуется с долей тёмной энергии",
+    "verdict": "ПУСТО",
+    "source": "deploy/trinity-nexus/docs/research/formulas.md:130-142",
+    "inputs_digest": "cf217f636057ecbe"
+  },
+  {
+    "case": "cases/formulas_external_targets_20260813.py",
+    "claim": "Формула M(H) = 3^3·φ^3·π^2/e согласуется с массой бозона Хиггса",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/formulas.md:226-230",
+    "inputs_digest": "ec394b57d317ae59"
+  },
+  {
+    "case": "cases/formulas_external_targets_20260813.py",
+    "claim": "Формула M(W) = 3^4·φ·π согласуется с массой W-бозона",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/formulas.md:202-206",
+    "inputs_digest": "ec394b57d317ae59"
+  },
+  {
+    "case": "cases/formulas_precision_external_20260814.py",
+    "claim": "Формула rₚ = φ/(π+1) согласуется с измерением радиуса протона",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/formulas.md:321-333",
+    "inputs_digest": "ec394b57d317ae59"
+  },
+  {
+    "case": "cases/formulas_precision_external_20260814.py",
+    "claim": "Формула Δaμ = (π−3)×10⁻⁹ согласуется с измерением FNAL E989",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/formulas.md:305-319",
+    "inputs_digest": "ec394b57d317ae59"
+  },
+  {
+    "case": "cases/formulas_summary_external_20260814.py",
+    "claim": "Формула T_CMB = 5π⁴φ⁵/(729e) согласуется с температурой реликтового излучения",
+    "verdict": "ПУСТО",
+    "source": "docs/research/FORMULAS_SUMMARY.md:53",
+    "inputs_digest": "3d1f62c417f680ea"
+  },
+  {
+    "case": "cases/formulas_summary_external_20260814.py",
+    "claim": "Формула α = 36/(π⁴φ⁴e²) согласуется с измеренной постоянной тонкой структуры",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/research/FORMULAS_SUMMARY.md:42",
+    "inputs_digest": "3d1f62c417f680ea"
+  },
+  {
+    "case": "cases/formulas_summary_external_20260814.py",
+    "claim": "Формула α_s = 4φ²/(9π²) согласуется с измеренной сильной связью",
+    "verdict": "ПУСТО",
+    "source": "docs/research/FORMULAS_SUMMARY.md:43",
+    "inputs_digest": "3d1f62c417f680ea"
+  },
+  {
+    "case": "cases/golden_chain_v240_statistics_20260814.py",
+    "claim": "Большой корпус увеличил покрытие триграмм в 1,9 раза",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:47-49",
+    "inputs_digest": "2635099cd9629f12"
+  },
+  {
+    "case": "cases/golden_chain_v240_statistics_20260814.py",
+    "claim": "Потеря обучения большого корпуса на 21,7% ниже случайного базиса",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:55-59",
+    "inputs_digest": "2635099cd9629f12"
+  },
+  {
+    "case": "cases/golden_chain_v240_statistics_20260814.py",
+    "claim": "Потеря оценки большого корпуса на 15,8% ниже случайного базиса",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:55-59",
+    "inputs_digest": "2635099cd9629f12"
+  },
+  {
+    "case": "cases/gravitational_constant_external_20260814.py",
+    "claim": "Формула G = π³γ²/φ согласуется с CODATA",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/research/papers/gravitational-constants.md:10-15",
+    "inputs_digest": "d5b3e20a0308f63e"
+  },
+  {
+    "case": "cases/identity_cross_module_20260814.py",
+    "claim": "Межмодульная цепочка наблюдение→эталон распознаётся как тождество",
+    "verdict": "ПУСТО",
+    "source": "deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138",
+    "inputs_digest": "1235b6ac4959d34b"
+  },
+  {
+    "case": "cases/identity_cross_module_20260814.py",
+    "claim": "Межмодульное чтение корпуса не распознаётся как тождество",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138",
+    "inputs_digest": "1235b6ac4959d34b"
+  },
+  {
+    "case": "cases/identity_honest_controls_20260814.py",
+    "claim": "Чтение каталога через functools.partial не тождественно эталону",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/identity_honest_controls_20260814.py",
+    "claim": "Чтение каталога через lambda не тождественно эталону",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/identity_honest_controls_20260814.py",
+    "claim": "Чтение каталога через глобальное состояние не тождественно эталону",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/jarlskog_theta13_external_20260814.py",
+    "claim": "Формула Jarlskog J согласуется с внешней оценкой PDG",
+    "verdict": "ПУСТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:37-43",
+    "inputs_digest": "7424155384454ccb"
+  },
+  {
+    "case": "cases/jarlskog_theta13_external_20260814.py",
+    "claim": "Формула sin²θ₁₃ согласуется с внешней оценкой NuFIT",
+    "verdict": "ПУСТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:37-43",
+    "inputs_digest": "7424155384454ccb"
+  },
+  {
+    "case": "cases/khinchin.py",
+    "claim": "K по нулям дзеты = 2.620, систематически ниже 2.685",
+    "verdict": "ВОПРОС",
+    "source": "data/zeta/zeta_bin_analysis_update.md",
+    "inputs_digest": "8e0cc0c774a33542"
+  },
+  {
+    "case": "cases/m_theory_dimension_formula.py",
+    "claim": "Формула размерности M-теории даёт 11,0001",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:197",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/master_catalog_lucas_l10.py",
+    "claim": "В таблице каталога для n=10 указано L(10)=123",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138",
+    "inputs_digest": "a986d4874ad47b48"
+  },
+  {
+    "case": "cases/master_catalog_msme_error.py",
+    "claim": "Для m_s/m_e в каталоге указано значение 182,8",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:37",
+    "inputs_digest": "a986d4874ad47b48"
+  },
+  {
+    "case": "cases/neutrino_mixing_external_20260814.py",
+    "claim": "Формула sin θ_C = φ⁻³ согласуется с внешним значением PDG",
+    "verdict": "ПУСТО",
+    "source": "deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:64-69",
+    "inputs_digest": "b15f3d88e57a4dae"
+  },
+  {
+    "case": "cases/neutrino_mixing_external_20260814.py",
+    "claim": "Формула sin θ₂₃ = 4·3⁻²·π⁻² согласуется с внешним значением PDG",
+    "verdict": "ПУСТО",
+    "source": "deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:71-77",
+    "inputs_digest": "b15f3d88e57a4dae"
+  },
+  {
+    "case": "cases/neutrino_mixing_external_20260814.py",
+    "claim": "Формула δ = π/φ² согласуется с внешним значением PDG",
+    "verdict": "ПУСТО",
+    "source": "deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:87-93",
+    "inputs_digest": "b15f3d88e57a4dae"
+  },
+  {
+    "case": "cases/neutron_lifetime_formula.py",
+    "claim": "Формула времени жизни нейтрона даёт 879,4 с",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:194",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/pellis_external_targets_20260814.py",
+    "claim": "Формула r_e = 54φ/π³ согласуется с CODATA",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/research/PELLIS_TRINITY_COMPARISON.md:138",
+    "inputs_digest": "ca3de79351385e3a"
+  },
+  {
+    "case": "cases/pellis_external_targets_20260814.py",
+    "claim": "Формула sin²θ_W = 2π³e/729 согласуется с PDG",
+    "verdict": "ПУСТО",
+    "source": "docs/research/PELLIS_TRINITY_COMPARISON.md:128",
+    "inputs_digest": "ca3de79351385e3a"
+  },
+  {
+    "case": "cases/pellis_external_targets_20260814.py",
+    "claim": "Формула Ω_Λ = 6561φ⁻³/(π⁵e²) согласуется с Planck",
+    "verdict": "ПУСТО",
+    "source": "docs/research/PELLIS_TRINITY_COMPARISON.md:106-115",
+    "inputs_digest": "ca3de79351385e3a"
+  },
+  {
+    "case": "cases/pointer_architecture_external_20260814.py",
+    "claim": "Формула 1/α = 4·3²·π⁻¹·φ·e² согласуется с CODATA",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/research/pointer_architecture_companion.md:234-244",
+    "inputs_digest": "725cdd17b496fe6f"
+  },
+  {
+    "case": "cases/pointer_architecture_external_20260814.py",
+    "claim": "Формула H₀ = 4·3³·π⁻³·φ²·e² согласуется с оценкой Planck",
+    "verdict": "ПУСТО",
+    "source": "docs/research/pointer_architecture_companion.md:212-220",
+    "inputs_digest": "725cdd17b496fe6f"
+  },
+  {
+    "case": "cases/pointer_architecture_external_20260814.py",
+    "claim": "Формула Ω_Λ = 4·3²·φ⁻²·e⁻³ согласуется с оценкой Planck",
+    "verdict": "ПУСТО",
+    "source": "docs/research/pointer_architecture_companion.md:223-231",
+    "inputs_digest": "725cdd17b496fe6f"
+  },
+  {
+    "case": "cases/proton_mass_ratio_error.py",
+    "claim": "для m_p/m_e указана ошибка 0,109 %",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:37",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/qcd_phase_tc_formula.py",
+    "claim": "Формула QCD phase даёт 156,5 МэВ",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:201",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/reionization_zre_prediction.py",
+    "claim": "Формула реионизации z_re даёт 7,67",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:206",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_external_targets.py",
+    "claim": "Формула T_c согласуется с измеренной температурой перехода КХД",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:201",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_external_targets.py",
+    "claim": "Формула X17 согласуется с независимым измерением массы бозона",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:203",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_external_targets.py",
+    "claim": "Формула tau_n согласуется с измеренным временем жизни нейтрона",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:194",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_external_targets.py",
+    "claim": "Формула воспроизводит отношение масс протона и электрона",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:37",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_fit_multiplicity.py",
+    "claim": "объявленного перебора 20 412 достаточно для формул из таблиц",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:25",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_fit_multiplicity.py",
+    "claim": "совпадения священных формул с константами содержательны, а не подогнаны",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:30",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_formula_complete_v2_external_20260814.py",
+    "claim": "Формула H = 40·3³·π⁶·φ⁻³ согласуется с внешней массой бозона Хиггса",
+    "verdict": "ПУСТО",
+    "source": "deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md:198-206",
+    "inputs_digest": "83cfe65ff088a13e"
+  },
+  {
+    "case": "cases/sacred_formula_complete_v2_external_20260814.py",
+    "claim": "Формула W = 25·3·π⁵·φ⁴ согласуется с внешней массой W-бозона",
+    "verdict": "ПУСТО",
+    "source": "deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md:198-206",
+    "inputs_digest": "83cfe65ff088a13e"
+  },
+  {
+    "case": "cases/sacred_formula_complete_v2_external_20260814.py",
+    "claim": "Формула Z = 5·3⁴·π⁷·φ⁻⁴ согласуется с внешней массой Z-бозона",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md:198-206",
+    "inputs_digest": "83cfe65ff088a13e"
+  },
+  {
+    "case": "cases/sacred_formula_full_external_20260814.py",
+    "claim": "Формула 17π²φ⁵/9 воспроизводит отношение масс мюона и электрона",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:180-185",
+    "inputs_digest": "1f4d53ef6425f029"
+  },
+  {
+    "case": "cases/sacred_formula_full_external_20260814.py",
+    "claim": "Формула 6π⁵ воспроизводит отношение масс протона и электрона",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:170-176",
+    "inputs_digest": "1f4d53ef6425f029"
+  },
+  {
+    "case": "cases/sacred_formula_full_external_20260814.py",
+    "claim": "Формула 76·3²·π·φ воспроизводит отношение масс тау-лептона и электрона",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:187-192",
+    "inputs_digest": "1f4d53ef6425f029"
+  },
+  {
+    "case": "cases/sacred_random_probability.py",
+    "claim": "Вероятность случайного попадания в класс EXACT при расширенном переборе равна 1 из 35 (2,9 %)",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:234",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_random_probability.py",
+    "claim": "Вероятность случайного попадания в класс EXACT при стандартном переборе равна 1 из 500 (0,2 %)",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:234",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_random_probability.py",
+    "claim": "Объявленный размер стандартного перебора 20 412 согласуется с объявленными границами стандартного перебора",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:285",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_search_count.py",
+    "claim": "стандартный поиск содержит 20 412 комбинаций",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:25",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_table_audit_20260813.py",
+    "claim": "Раздел Error Classification содержит 35 совпадений с ошибкой менее 0,01%",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:214",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_table_audit_20260813.py",
+    "claim": "Расширенный поиск содержит 123 201 комбинацию",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:26",
+    "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/transcendental_3phi_value.py",
+    "claim": "3^φ напечатано как 5,91559",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/transcendental-numbers.md:169",
+    "inputs_digest": "7df30c36cc64c8fc"
+  },
+  {
+    "case": "cases/transcendental_catalog_values.py",
+    "claim": "3^(1/φ) напечатано как 1,97186",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/transcendental-numbers.md:184",
+    "inputs_digest": "7df30c36cc64c8fc"
+  },
+  {
+    "case": "cases/transcendental_catalog_values.py",
+    "claim": "e^φ напечатано как 5,04317",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/transcendental-numbers.md:201",
+    "inputs_digest": "7df30c36cc64c8fc"
+  },
+  {
+    "case": "cases/transcendental_catalog_values.py",
+    "claim": "ln(3) напечатано как 1,09861",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/transcendental-numbers.md:215",
+    "inputs_digest": "7df30c36cc64c8fc"
+  },
+  {
+    "case": "cases/transcendental_catalog_values_2.py",
+    "claim": "3^(1/φ²) напечатано как 1,52140",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/transcendental-numbers.md:186",
+    "inputs_digest": "7df30c36cc64c8fc"
+  },
+  {
+    "case": "cases/transcendental_catalog_values_2.py",
+    "claim": "3^(φ²) напечатано как 17,74678",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/transcendental-numbers.md:185",
+    "inputs_digest": "7df30c36cc64c8fc"
+  },
+  {
+    "case": "cases/transcendental_catalog_values_2.py",
+    "claim": "3^√5 напечатано как 11,66475",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/transcendental-numbers.md:187",
+    "inputs_digest": "7df30c36cc64c8fc"
+  },
+  {
+    "case": "cases/transcendental_catalog_values_3.py",
+    "claim": "φ^(1/φ) напечатано как 1,34636",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/transcendental-numbers.md:189",
+    "inputs_digest": "7df30c36cc64c8fc"
+  },
+  {
+    "case": "cases/transcendental_catalog_values_3.py",
+    "claim": "φ^(φ²) напечатано как 3,52482",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/transcendental-numbers.md:190",
+    "inputs_digest": "7df30c36cc64c8fc"
+  },
+  {
+    "case": "cases/transcendental_catalog_values_3.py",
+    "claim": "φ^φ напечатано как 2,17846",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/math-foundations/transcendental-numbers.md:188",
+    "inputs_digest": "7df30c36cc64c8fc"
+  },
+  {
+    "case": "cases/trinity_external_targets_20260813.py",
+    "claim": "α = 4φ²/(9π²) воспроизводит тонкую структуру",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/FOR_SCIENTISTS.md:15",
+    "inputs_digest": "8c0c456a38e25ba6"
+  },
+  {
+    "case": "cases/trinity_external_targets_20260813.py",
+    "claim": "γ = φ⁻³ согласуется с каноническим параметром Барберо–Иммирци",
+    "verdict": "ПУСТО",
+    "source": "docs/FOR_SCIENTISTS.md:29",
+    "inputs_digest": "8c0c456a38e25ba6"
+  },
+  {
+    "case": "cases/zeta_chi2_independent_20260814.py",
+    "claim": "Сводка χ²/dof из таблицы совпадает с независимой реконструкцией по 100000 нулей",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "data/zeta/zeta_bin_analysis_update.md:10-40",
+    "inputs_digest": "74e70460f38ecc48"
+  },
+  {
+    "case": "cases/zeta_chi2_statistics_20260814.py",
+    "claim": "χ²/dof по десяти высотным корзинам = 2,67 ± 0,49",
+    "verdict": "ПУСТО",
+    "source": "data/zeta/zeta_bin_analysis_update.md:24-38",
+    "inputs_digest": "d32c98af192622e1"
+  },
+  {
+    "case": "cases/zeta_gue.py",
+    "claim": "surmise Вигнера годится как эталон на уровне 2%",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "src/sacred/zeta_spacing.zig",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/zeta_gue.py",
+    "claim": "колонка «GUE Expected» = 0.91 / 2.15 / 2.75",
+    "verdict": "ПУСТО",
+    "source": "data/zeta/zeta_gue_analysis_results.md",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/zeta_gue.py",
+    "claim": "наблюдённые расстояния совпадают с GUE в пределах 1%",
+    "verdict": "ВОПРОС",
+    "source": "data/zeta/zeros_odlyzko_100k.txt",
+    "inputs_digest": "8e0cc0c774a33542"
+  },
+  {
+    "case": "cases/zeta_shape.py",
+    "claim": "масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка out-of-sample по верхним полосам высот)",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "data/zeta/zeta_gue_analysis_results.md:конечновысотная поправка",
+    "inputs_digest": "3436c916a7878261"
+  },
+  {
+    "case": "cases/zeta_shape.py",
+    "claim": "форма распределения расстояний согласуется с точным законом GUE в пределах конечновыборочного разброса",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "data/zeta/zeta_gue_analysis_results.md:форма распределения",
+    "inputs_digest": "3436c916a7878261"
+  }
+]

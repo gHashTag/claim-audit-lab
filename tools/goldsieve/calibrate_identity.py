@@ -2,11 +2,13 @@
 
 Разметка не назначается на глаз: каждый кейс реестра загружается, из него
 берутся РЕАЛЬНЫЕ функции `observed` / `reference_alt` / `reference` объекта
-Claim, и детектор применяется к ним. Ожидание фиксируется заранее: помечен
-должен быть только кейс тика 37, где `_observed` возвращает `_reference()`.
+Claim, и детектор применяется к ним. Ожидание фиксируется заранее: помечены
+только намеренно вырожденные кейсы, включая прямую тавтологию тика 37 и
+отдельную межмодульную цепочку.
 Любое иное срабатывание — ложноположительное и требует разбора.
 """
 
+import ast
 import glob
 import re
 import importlib.util
@@ -24,6 +26,108 @@ from goldsieve.identity import derives_from  # noqa: E402
 # reference>` и записала как «ложное срабатывание» настоящее вырождение.
 # Ручная разметка проверяющего инструмента — сама источник ошибки.
 ASSIGN = re.compile(r"^\s*(observed|reference_alt|reference)\s*=\s*([A-Za-z_][\w.]*)\s*,?\s*$")
+
+
+def _cross_module_text_hits(path):
+    """Независимо по AST найти очевидную цепочку через helper-модуль."""
+    try:
+        src = open(path, encoding="utf-8").read()
+        tree = ast.parse(src)
+    except (OSError, SyntaxError):
+        return set()
+    imports = {}
+    for node in ast.walk(tree):
+        if isinstance(node, ast.ImportFrom) and node.module:
+            for alias in node.names:
+                imports[alias.asname or alias.name] = (node.module, alias.name)
+    helper_alias = next(
+        (name for name, (module, _) in imports.items()
+         if module == "goldsieve" and name == "helper"),
+        None)
+    if helper_alias is None:
+        return set()
+    case_funcs = {
+        node.name: node for node in ast.walk(tree)
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+    }
+    aliases = {}
+    for node in ast.walk(tree):
+        if (isinstance(node, ast.Assign) and len(node.targets) == 1
+                and isinstance(node.targets[0], ast.Name)
+                and isinstance(node.value, ast.Attribute)
+                and isinstance(node.value.value, ast.Name)
+                and node.value.value.id == helper_alias):
+            aliases[node.targets[0].id] = node.value.attr
+    module_name = imports[helper_alias][1]
+    helper_path = os.path.join(
+        os.path.dirname(os.path.dirname(path)), "goldsieve",
+        module_name + ".py")
+    try:
+        helper_tree = ast.parse(open(helper_path, encoding="utf-8").read())
+    except (OSError, SyntaxError):
+        return set()
+    helper_funcs = {
+        node.name: node for node in ast.walk(helper_tree)
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+    }
+
+    def calls(node):
+        out = []
+        for sub in ast.walk(node):
+            if not isinstance(sub, ast.Call):
+                continue
+            if isinstance(sub.func, ast.Name):
+                out.append(("name", sub.func.id))
+            elif (isinstance(sub.func, ast.Attribute)
+                  and isinstance(sub.func.value, ast.Name)):
+                out.append(("attr", sub.func.value.id, sub.func.attr))
+        return out
+
+    claim_specs = []
+    for block in re.findall(r"Claim\((.*?)\n\s*\)", src, flags=re.S):
+        fields = {}
+        for line in block.splitlines():
+            match = ASSIGN.match(line)
+            if match:
+                fields[match.group(1)] = match.group(2)
+        claim_specs.append((fields.get("observed"), fields.get("reference")))
+    for node in ast.walk(tree):
+        if (isinstance(node, ast.Call) and isinstance(node.func, ast.Name)
+                and node.func.id == "make_claim" and len(node.args) >= 3):
+            ref_node, obs_node = node.args[1], node.args[2]
+            if isinstance(ref_node, ast.Name) and isinstance(obs_node, ast.Name):
+                claim_specs.append((obs_node.id, ref_node.id))
+
+    hits = set()
+    for observed, reference in claim_specs:
+        if not observed or not reference or aliases.get(reference) != "reference":
+            continue
+        queue = [("case", observed)]
+        seen = set(queue)
+        found = False
+        while queue and not found:
+            kind, name = queue.pop(0)
+            fn = case_funcs.get(name) if kind == "case" else helper_funcs.get(name)
+            if fn is None:
+                continue
+            for call in calls(fn):
+                if kind == "case" and call[0] == "attr" \
+                        and call[1] == helper_alias:
+                    if call[2] == "reference":
+                        found = True
+                    elif ("helper", call[2]) not in seen:
+                        seen.add(("helper", call[2]))
+                        queue.append(("helper", call[2]))
+                elif kind == "helper" and call[0] == "name" \
+                        and call[1] in helper_funcs:
+                    if call[1] == "reference":
+                        found = True
+                    elif ("helper", call[1]) not in seen:
+                        seen.add(("helper", call[1]))
+                        queue.append(("helper", call[1]))
+        if found:
+            hits.add(("observed", observed))
+    return hits
 
 
 def marked_by_text(path):
@@ -95,6 +199,7 @@ def marked_by_text(path):
             fn = fields.get(field)
             if fn and fn != ref and resolves_to(fn, ref):
                 hits.add((field, fn))
+    hits.update(_cross_module_text_hits(path))
     return hits
 
 
