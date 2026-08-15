@@ -421,11 +421,6 @@ claims:
   claim: В таблице DELTA-001 две сильные φ-коинциденции с ошибкой менее 1%
   verdict: ПОДТВЕРЖДЕНО
   inputs_digest: 5e321473565ec35f
-- source: docs/docs/research/delta-001/phase4-consistency.md:32-41
-  case: cases/delta001_additional_claims_20260814.py
-  claim: В таблице DELTA-001 две слабые φ-коинциденции с ошибкой 1–5%
-  verdict: ОПРОВЕРГНУТО
-  inputs_digest: 5e321473565ec35f
 - source: deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:47-49
   case: cases/golden_chain_v240_statistics_20260814.py
   claim: Большой корпус увеличил покрытие триграмм в 1,9 раза
@@ -565,3 +560,128 @@ claims:
     delta_sigma_bonferroni_minus_sidak: 4.866e-3
     sidak_assumption: независимость испытаний (точное равенство)
     bonferroni_assumption: неравенство Буля, независимость не требуется
+- source: data/zeta/zeta_bin_analysis_update.md:12-16
+  case: cases/zeta_p95_summary_20260815.py
+  claim: Сводка p95 расстояний равна 1,7186 ± 0,0045
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: observation_mismatch
+  fingerprint: 2a2d2c39da7b26a0
+  novelty_key: zeta:p95_summary:v1
+  inputs_digest: d32c98af192622e1
+- source: docs/research/bundles/B006_GF16.md:50-54
+  case: cases/b006_gf16_delta_20260815.py
+  claim: Разность PPL GF16 и исходной модели равна +0,2
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: confirmed
+  fingerprint: 57da751dac5cf763
+  target: a31139c2b3a5dded
+  novelty_key: b006:gf16:ppl_delta:v1
+  inputs_digest: 6ca34545aa9e39eb
+- source: docs/research/bundles/B006_GF16.md:76-79
+  case: cases/b006_gf16_pvalue_20260815.py
+  claim: Двустороннее p-значение парного t-теста равно 0,87
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: confirmed
+  fingerprint: 6b11010b75af1352
+  target: da7094865aaaf08e
+  novelty_key: b006:gf16:paired_t_pvalue:v1
+  inputs_digest: 6ca34545aa9e39eb
+- source: docs/research/bundles/B007_VSA.md:39-46
+  case: cases/b007_vsa_speedup_20260815.py
+  claim: Табличное ускорение VSA равно 1,5×
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: confirmed
+  fingerprint: 6e157c1ab46d818b
+  target: 56604d64bcdee412
+  novelty_key: b007:vsa:bind_speedup:v1
+  inputs_digest: 9da22aa1b5738c96
+- source: docs/research/bundles/B004_Lotus.md:71
+  case: cases/b004_lotus_ttest_threshold_20260815.py
+  claim: "Статистическая значимость B004: двустороннее p меньше 0,001"
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: confirmed
+  fingerprint: 362c8e357e3b0bc3
+  target: 8f83c2ed45e0a8a1
+  novelty_key: b004:lotus:ttest_significance:v1
+  inputs_digest: d85e5dd63be5addc
+- source: docs/docs/research/delta-001/phase4-consistency.md:32-41
+  case: cases/delta001_additional_claims_20260814.py
+  claim: В таблице DELTA-001 две слабые φ-коинциденции с ошибкой 1–5%
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: observation_mismatch
+  fingerprint: ef331c4731951f7b
+  target: delta001:weak_coincidences:count:v1
+  novelty_key: delta001:weak_coincidences:count:v1
+  inputs_digest: 5e321473565ec35f
+- source: docs/papers/README_FOR_SCIENTISTS.md:31-43
+  case: cases/particle_physics_example_mean_error_20260815.py
+  claim: Средняя ошибка пяти явно приведённых отношений Particle Physics равна 0,012 %
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: observation_mismatch
+  fingerprint: 87cc26c1266c744b
+  target: 22a49a548397d4e1
+  novelty_key: trinity:particle_physics:example_mean_error:v1
+  inputs_digest: dec6ecc47e066f9a
+- source: docs/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:13,77
+  case: cases/golden_chain_v240_train_ppl_20260815.py
+  claim: Перплексия обучения большого корпуса равна 1,87
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: observation_mismatch
+  fingerprint: be98acb890f98742
+  target: d3fd03d71c7c71b9
+  novelty_key: golden_chain:v240:train_ppl_from_loss:v1
+  inputs_digest: 2635099cd9629f12
+- source: docs/research/bundles/B001_HSLM.md:127-130
+  case: cases/hslm_convergence_fraction_20260815.py
+  claim: Сходимость HSLM достигла 95,7 % полного расписания
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: confirmed
+  fingerprint: b8aef8b05a93ba35
+  target: 18bfb7a7e742569b
+  novelty_key: b001:hslm:convergence_fraction:v1
+  inputs_digest: 35938cf8a9418cbb
+- source: data/zeta/zeta_bin_analysis_update.md:124
+  case: cases/zeta_std_gue_20260815.py
+  claim: Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE
+  verdict: ОПРОВЕРГНУТО
+  inputs_digest: d32c98af192622e1
+- source: docs/docs/research/trinity-golden-chain-v2-48-interpolated-report.md:72-76
+  case: cases/golden_chain_v248_ppl_gain_20260815.py
+  claim: Выигрыш интерполяции по перплексии равен 3,9 %
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: confirmed
+  fingerprint: a932417c6db8dfc7
+  target: 0b37bf1b390eab81
+  novelty_key: golden_chain:v248:ppl_gain:v1
+  inputs_digest: c749bad8fa5fbfe9
+  scope_status: verified-in-scope
+  scope_statement: >-
+    Подтверждено в области охвата для класса арифметических сравнений
+    относительного выигрыша перплексии на указанных версиях CPython
+    (CPython 3.14.3 и CPython 3.14.4): вычисленный выигрыш по значениям
+    28,53 и 29,68 равен 3,8746630728 %, что согласуется с напечатанными
+    3,9 % в пределах допуска 0,1 процентного пункта. НЕ доказано, что
+    такой выигрыш обобщается на другие корпуса, модели, режимы обучения
+    или версии рантайма.
+- source: data/zeta/zeta_gue_analysis_results.md:34
+  case: cases/zeta_unfolding_std_recipe_20260815.py
+  claim: Напечатанная std 0,4009 получена из файла 100 000 нулей заявленной развёрткой
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: confirmed
+  fingerprint: ca42e009adaca3bf
+  target: 9e1b6776d16762e6
+  novelty_key: zeta:unfolding_recipe:raw_data_recompute:v1
+  inputs_digest: 3436c916a7878261
+  scope_status: verified-in-scope
+  scope_statement: >-
+    Подтверждено в области охвата для класса воспроизведения измеренной
+    статистики из сырых данных на указанных версиях CPython (CPython 3.14.3):
+    напечатанное 0,4009 воспроизводится из файла нулей Одлыжко (sha16
+    3436c916a7878261, 100 000 нулей, 99 999 зазоров, края не исключаются,
+    ddof=1) тремя разными путями — точная развёртка θ(γ)/π на scipy/numpy
+    (0,4009327315), развёртка корпуса по ведущему члену на чистом Python
+    (0,4009263778) и та же θ-развёртка на mpmath при 30 знаках; расхождение с
+    напечатанным числом лежит внутри его печатной точности 1,247e-4
+    относительных и внутри бутстрэп-шума (z = +0,0). НЕ доказано согласие
+    измерения с теорией случайных матриц: это отдельное утверждение, и по нему
+    отклонение остаётся открытым.
