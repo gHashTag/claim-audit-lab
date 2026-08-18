@@ -138,6 +138,10 @@ else
     # затем сам запрет на корпусе и артефактах. Молчание проверки — не покрытие.
     step "чувствительность запрета exact_gue" "$BASE_PY" gue_label_guard.py --selftest
     step "запрет метки exact_gue на 0,4220" "$BASE_PY" gue_label_guard.py
+    # Тик 91: скрипты шагов гейта обязаны входить в отпечаток снимка,
+    # иначе шаг можно ослабить, не тронув files_digest.
+    step "чувствительность охвата гейта" "$BASE_PY" baseline.py gate-coverage --selftest
+    step "охват скриптов гейта снимком" "$BASE_PY" baseline.py gate-coverage
     # Пункты 2-4 приказа 2026-08-18.
     step "классификатор токенов срыва"   "$BASE_PY" aborted_audit.py --selftest
     step "очередь межплатформенных прогонов" "$BASE_PY" replay_queue.py --selftest

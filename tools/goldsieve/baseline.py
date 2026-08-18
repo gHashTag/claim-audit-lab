@@ -29,6 +29,7 @@ import hashlib
 import json
 import os
 import platform
+import re
 import subprocess
 import sys
 
@@ -76,7 +77,80 @@ def _tool_files() -> list[str]:
         p = os.path.join(ROOT, name)
         if os.path.exists(p):
             out.append(name)
+    # Тик 91: дыра охвата. Реализации шагов гейта, лежащие в КОРНЕ
+    # (gue_label_guard.py, bblm_protocol.py, prefilter.py, aborted_audit.py,
+    # replay_queue.py и т.п.), в отпечаток НЕ входили: правка запрета
+    # (включая его ослабление) не меняла files_digest. Ставим весь корень
+    # под отпечаток, лишнего там нет: одноразовые patch_*/debug_* тоже
+    # влияют на состояние рабочей копии и должны быть видны в диффе.
+    for name in sorted(os.listdir(ROOT)):
+        if name.endswith(".py") and os.path.isfile(os.path.join(ROOT, name)):
+            out.append(name)
     return sorted(set(out))
+
+
+def _gate_missing(root: str, covered: set[str]) -> tuple[set[str], list[str]]:
+    with open(os.path.join(root, "ci_gate.sh"), encoding="utf-8") as fh:
+        text = fh.read()
+    refs = set(re.findall(r"[\w./-]+\.py", text))
+    missing = sorted(r for r in refs
+                     if os.path.exists(os.path.join(root, r)) and r not in covered)
+    return refs, missing
+
+
+def gate_coverage_selftest() -> int:
+    """Измеренная чувствительность проверки охвата: молчание ≠ покрытие.
+
+    Фикстуры: (1) скрипт шага вне отпечатка ОБЯЗАН быть найден;
+    (2) полный охват даёт пустой список; (3) ссылка на НЕСУЩЕСТВУЮЩИЙ файл
+    не считается пробелом охвата (иначе комментарий в гейте ломает проверку).
+    """
+    import tempfile
+    bad = 0
+    with tempfile.TemporaryDirectory() as td:
+        open(os.path.join(td, "covered.py"), "w").close()
+        open(os.path.join(td, "nocover.py"), "w").close()
+        with open(os.path.join(td, "ci_gate.sh"), "w", encoding="utf-8") as fh:
+            fh.write("step a python3 covered.py\nstep b python3 nocover.py\n"
+                     "# упоминание ghost.py в комментарии\n")
+        cases = [
+            ({"covered.py"}, ["nocover.py"], "неохваченный шаг находится"),
+            ({"covered.py", "nocover.py"}, [], "полный охват молчит"),
+        ]
+        for covered, want, label in cases:
+            _refs, missing = _gate_missing(td, covered)
+            ok = missing == want
+            bad += 0 if ok else 1
+            print("  %s %s: ожидалось %s, получено %s"
+                  % ("ok " if ok else "ПРОВАЛ", label, want, missing))
+        refs, missing = _gate_missing(td, {"covered.py", "nocover.py"})
+        ok = "ghost.py" in refs and "ghost.py" not in missing
+        bad += 0 if ok else 1
+        print("  %s ссылка на несуществующий файл не ломает проверку"
+              % ("ok " if ok else "ПРОВАЛ"))
+    print("самопроверка охвата гейта: провалов %d" % bad)
+    return 1 if bad else 0
+
+
+def gate_coverage() -> int:
+    """Тик 91: каждый скрипт, который ЗАПУСКАЕТ гейт, обязан быть в отпечатке.
+
+    Список берётся КОДОМ из ci_gate.sh, а не поддерживается руками: иначе
+    новый шаг гейта снова окажется вне отпечатка и его можно будет ослабить
+    незаметно для снимка. Код возврата 1 при любом неохваченном скрипте.
+    """
+    gate = os.path.join(ROOT, "ci_gate.sh")
+    if not os.path.exists(gate):
+        print("ОТКАЗ: ci_gate.sh не найден")
+        return 1
+    refs, missing = _gate_missing(ROOT, set(_tool_files()))
+    print("скриптов в гейте: %d, охвачено отпечатком: %d"
+          % (len(refs), len(refs) - len(missing)))
+    if missing:
+        print("НЕ ОХВАЧЕНО СНИМКОМ: " + ", ".join(missing))
+        return 1
+    print("охват соблюдён: все скрипты шагов гейта входят в files_digest")
+    return 0
 
 
 def _versions() -> dict:
@@ -412,7 +486,11 @@ def main(argv: list[str]) -> int:
         return freeze(force=True)
     if mode == "frozen":
         return frozen_delta()
-    print("режимы: snapshot | check | show | freeze | refreeze | frozen")
+    if mode == "gate-coverage":
+        if "--selftest" in argv:
+            return gate_coverage_selftest()
+        return gate_coverage()
+    print("режимы: snapshot | check | show | freeze | refreeze | frozen | gate-coverage")
     return 2
 
 

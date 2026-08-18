@@ -75,6 +75,43 @@ def strip_allowed(line: str) -> str:
     return line
 
 
+# --- Тик 91: роль файла вместо цитатной заплатки -----------------------------
+# Дефект, из-за которого гейт закрывался в тиках 89 и 90: журнал аудита сам
+# лежит внутри проверяемого дерева, поэтому ЗАПИСЬ О РАБОТЕ ЗАПРЕТА становилась
+# новым нарушением, а вывод запрета, скопированный в ведомость, - ещё одним.
+# Счёт нарушений рос сам собой: 1 -> 9 -> 26 без единой правки корпуса. Это
+# самоусиление, а не находка. Лечится не расширением списка разрешённых цитат
+# (он всегда будет отставать от свободного текста доклада), а РОЛЬЮ файла:
+#   corpus     - утверждение корпуса, строгий набор подписей;
+#   tool       - исходники и реестр инструмента, только явные метки точности;
+#   audit_log  - журнал/протокол/вывод прогонов: описывает САМ запрет и не
+#                является утверждением о GUE, проверке подписей не подлежит.
+# Исключение ОБЪЯВЛЕНО (список файлов и причина попадают в JSON), а его
+# чувствительность измерена фикстурами: подмена роли не должна прикрывать
+# нарушение в корпусе, а корневой каталог корпуса сильнее любого имени файла.
+AUDIT_LOG_NAMES = {
+    "audit-ledger.md", "tick-counters.json", "runs.jsonl", "current-state.md",
+    "cross-platform-replay.json", "prefilter-decisions.jsonl",
+    "gue_label_guard.json", "gue_label_audit.json", "gue_label_fix.json",
+}
+AUDIT_LOG_GLOBS = ("tick*_gate.txt", "tick*-findings.md", "*_gate.txt",
+                   "gate*.txt", "reg*.txt")
+
+
+def classify_role(path: Path) -> str:
+    try:
+        path.relative_to(CORPUS_ROOT)
+    except ValueError:
+        pass
+    else:
+        return "corpus"          # корень корпуса сильнее имени файла
+    if path.name in AUDIT_LOG_NAMES:
+        return "audit_log"
+    if any(path.match(g) for g in AUDIT_LOG_GLOBS):
+        return "audit_log"
+    return "tool"
+
+
 def scan_line(line: str, strict: bool) -> str | None:
     line = strip_allowed(line)
     if not NUM_RE.search(line):
@@ -106,18 +143,28 @@ def iter_files(root: Path):
         yield p
 
 
-def scan_tree(root: Path, strict: bool) -> list[dict]:
+def scan_tree(root: Path, strict: bool, exempt: list[dict] | None = None) -> list[dict]:
+    """strict=True оставлен для совместимости фикстур; реальная строгость — по роли."""
     out = []
     for p in iter_files(root):
+        role = classify_role(p)
+        if role == "audit_log":
+            if exempt is not None:
+                exempt.append({"file": str(p), "role": role,
+                               "reason": "журнал аудита: описывает сам запрет, "
+                                         "не является утверждением о GUE"})
+            continue
+        line_strict = strict if role != "corpus" else True
         try:
             text = p.read_text(encoding="utf-8", errors="replace")
         except OSError:
             continue
         for i, line in enumerate(text.splitlines(), 1):
-            kind = scan_line(line, strict)
+            kind = scan_line(line, line_strict)
             if kind:
-                out.append({"file": str(p), "line": i, "kind": kind,
-                            "text": line.strip()[:200], "area": "A" if strict else "B"})
+                out.append({"file": str(p), "line": i, "kind": kind, "role": role,
+                            "text": line.strip()[:200],
+                            "area": "A" if line_strict else "B"})
     return out
 
 
@@ -160,6 +207,70 @@ def selftest() -> int:
         ok = len(hits) == 1
         bad += 0 if ok else 1
         print(f"  {'ok ' if ok else 'ПРОВАЛ'} мутационная цель на обходе дерева: найдено {len(hits)}")
+    # --- тик 91: роль файла и неподвижная точка -------------------------------
+    VIOL = "| Std | 0.4009 | 0.4220 | exact GUE |\n"
+    role_cases = [
+        ("corpus/trinity/reports/zeta.md", "corpus"),
+        ("corpus/trinity/audit-ledger.md", "corpus"),   # корень сильнее имени
+        ("goldsieve/cases/zeta_std.py", "tool"),
+        ("cron_tracking/8dff7aa3/audit-ledger.md", "audit_log"),
+        ("cron_tracking/20fee222/tick90_gate.txt", "audit_log"),
+        ("cron_tracking/20fee222/tick89-findings.md", "audit_log"),
+        ("cron_tracking/8dff7aa3/tick-counters.json", "audit_log"),
+    ]
+    for rel, want in role_cases:
+        p = (CORPUS_ROOT.parent.parent / rel) if rel.startswith("corpus/") \
+            else (Path("/home/user/workspace") / rel)
+        got = classify_role(p)
+        ok = got == want
+        bad += 0 if ok else 1
+        print(f"  {'ok ' if ok else 'ПРОВАЛ'} роль {want:9s} получено {got:9s} :: {rel}")
+
+    # исключение по роли НЕ должно прикрывать нарушение в проверяемом файле:
+    # в одном дереве лежат журнал и обычный файл с ОДИНАКОВЫМ текстом.
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        (d / "audit-ledger.md").write_text(VIOL, encoding="utf-8")
+        (d / "claims.md").write_text(VIOL, encoding="utf-8")
+        hits = scan_tree(d, strict=False)
+        ok = len(hits) == 1 and hits[0]["file"].endswith("claims.md")
+        bad += 0 if ok else 1
+        print(f"  {'ok ' if ok else 'ПРОВАЛ'} роль не прикрывает нарушение рядом: найдено {len(hits)}")
+
+    # неподвижная точка: запись вывода запрета в журнал внутри того же
+    # дерева не должна менять число нарушений — именно это свойство
+    # отсутствовало в тиках 89-90 (1 -> 9 -> 26).
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        (d / "clean.md").write_text("| GUE Wigner surmise (computed) | 0.4220 |\n",
+                                    encoding="utf-8")
+        first = scan_tree(d, strict=False)
+        report = ("ЗАПРЕТ НАРУШЕН: 0 строк связывают 0,4220 с меткой точного GUE\n"
+                  "0,4220 нигде не подписано как точный GUE\n")
+        (d / "tick99_gate.txt").write_text(report, encoding="utf-8")
+        (d / "audit-ledger.md").write_text(report, encoding="utf-8")
+        second = scan_tree(d, strict=False)
+        ok = len(first) == 0 and len(second) == 0
+        bad += 0 if ok else 1
+        print(f"  {'ok ' if ok else 'ПРОВАЛ'} неподвижная точка после записи доклада: "
+              f"{len(first)} -> {len(second)}")
+
+    # мутационная цель на правило роли: если audit_log перестать исключать,
+    # неподвижная точка обязана сломаться — проверяем это явно.
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        (d / "audit-ledger.md").write_text(
+            "0,4220 нигде не подписано как точный GUE\n", encoding="utf-8")
+        saved = set(AUDIT_LOG_NAMES)
+        AUDIT_LOG_NAMES.clear()
+        mutated = scan_tree(d, strict=False)
+        AUDIT_LOG_NAMES.update(saved)
+        restored = scan_tree(d, strict=False)
+        ok = len(mutated) == 1 and len(restored) == 0
+        bad += 0 if ok else 1
+        print(f"  {'ok ' if ok else 'ПРОВАЛ'} мутация правила роли ловится: "
+              f"без правила {len(mutated)}, с правилом {len(restored)}")
+
     print(f"самопроверка запрета: провалов {bad}")
     return 1 if bad else 0
 
@@ -167,12 +278,16 @@ def selftest() -> int:
 def main(argv: list[str]) -> int:
     if "--selftest" in argv:
         return selftest()
-    violations = scan_tree(CORPUS_ROOT, strict=True)
+    exempt: list[dict] = []
+    violations = scan_tree(CORPUS_ROOT, strict=True, exempt=exempt)
     for r in TOOL_ROOTS:
-        violations += scan_tree(r, strict=False)
+        violations += scan_tree(r, strict=False, exempt=exempt)
     dest = Path("/home/user/workspace/goldsieve/gue_label_guard.json")
-    dest.write_text(json.dumps({"violations": violations, "count": len(violations)},
+    dest.write_text(json.dumps({"violations": violations, "count": len(violations),
+                                "exempt_files": exempt, "exempt_count": len(exempt),
+                                "roles": ["corpus", "tool", "audit_log"]},
                                ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"объявленное исключение по роли audit_log: файлов {len(exempt)}")
     if violations:
         print(f"ЗАПРЕТ НАРУШЕН: {len(violations)} строк связывают 0,4220 с меткой точного GUE")
         for v in violations[:40]:
