@@ -1,50 +1,20 @@
 {
  "counter_total": 52,
- "events_available": 47,
- "coverage_note": "файл счётчиков хранит последние 200 событий: разобрано 47 из 52 токенов, остальные утрачены ротацией и в аудит не входят",
+ "events_available": 42,
+ "coverage_note": "файл счётчиков хранит последние 200 событий: разобрано 42 из 52 токенов, остальные утрачены ротацией и в аудит не входят",
  "categories": {
-  "device_offline": 40,
-  "unclassified": 7
+  "device_offline": 36,
+  "unclassified": 6
  },
  "actions": {
-  "deferred": 40,
-  "abort": 7
+  "deferred": 36,
+  "abort": 6
  },
  "rationale": {
   "device_offline": "Недоступность чужого устройства не является срывом тика: работа ставится в очередь cross_platform_replay.",
   "unclassified": "Без примечания категорию доказать нельзя: считается срывом, чтобы не занижать статистику отказов."
  },
  "rows": [
-  {
-   "at": "2026-08-15T02:08:03Z",
-   "note": "pc bash не ответил за 120 секунд; macOS остаётся not-evaluated",
-   "category": "device_offline",
-   "action": "deferred"
-  },
-  {
-   "at": "2026-08-15T04:12:44Z",
-   "note": "тик 54: выбранное устройство MacBook Pro не в сети; матрица ОС не выполнена, macOS остаётся not-evaluated",
-   "category": "device_offline",
-   "action": "deferred"
-  },
-  {
-   "at": "2026-08-15T05:05:05Z",
-   "note": "тик 55: выбранный MacBook Pro не в сети; матрица ОС не выполнена, macOS и Windows остаются not-evaluated",
-   "category": "device_offline",
-   "action": "deferred"
-  },
-  {
-   "at": "2026-08-15T06:04:28Z",
-   "note": "",
-   "category": "unclassified",
-   "action": "abort"
-  },
-  {
-   "at": "2026-08-15T06:04:39Z",
-   "note": "pc devices list: выбранный MacBook Pro offline; macOS остаётся not-evaluated, Windows not-evaluated",
-   "category": "device_offline",
-   "action": "deferred"
-  },
   {
    "at": "2026-08-15T07:10:21Z",
    "note": "тик 57: выбранный MacBook Pro offline; матрица ОС не выполнена, macOS и Windows остаются not-evaluated",

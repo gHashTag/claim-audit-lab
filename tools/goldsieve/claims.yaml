@@ -1635,3 +1635,31 @@ claims:
     интерпретация формулы, универсальность модели и перенос на другие
     документы, источники, версии CPython и ОС.
   novelty_class: новый источник и новый внешний риск публичного утверждения
+- source: scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt; BBLM 2006
+  case: cases/zeta_bblm_finite_height_comparison_20260818.py
+  claim: Ведущая BBLM-поправка объясняет три статистики расстояний дзета на верхних корзинах
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: observation_mismatch
+  fingerprint: f26f25761582ae6f
+  target: 60bf630b0a331a69
+  novelty_key: zeta:bblm:finite_height_comparison:v1
+  claim_family: конечновысотное сравнение статистик расстояний дзета
+  observable: std, p50 и p95 по трём верхним высотным корзинам вне калибровки
+  measurement_source: сырые нули Одлыжко и тэта-развёртка
+  models: [точный GUE, Wigner–surmise approximation, ведущая BBLM alpha(L)]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На CPython 3.14.3 в Linux-песочнице семь нижних корзин объявлены
+    калибровкой, а три верхние — проверкой вне выборки. Ведущая модель
+    alpha(L)=1+1,4720/L расходится с наблюдаемыми std, p50 и p95 на верхних
+    корзинах; это опровержение именно масштабной модели, а не полной BBLM
+    конечновысотной теории.
+  inputs_digest: 3436c916a7878261
+  priority: 1
+  measurement_source: сырые нули Одлыжко и тэта-развёртка
+  uncertainty_type: finite_sample_bin
+  out_of_sample: true
+  notes: >-
+    Независимый эталон использует Wigner–surmise approximation как контроль,
+    не как точный GUE; отрицательные подставки 0,50 и 1,50 от предсказания
+    отвергнуты сквозным ситом.

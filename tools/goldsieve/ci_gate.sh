@@ -145,6 +145,9 @@ else
     # Пункты 2-4 приказа 2026-08-18.
     step "классификатор токенов срыва"   "$BASE_PY" aborted_audit.py --selftest
     step "очередь межплатформенных прогонов" "$BASE_PY" replay_queue.py --selftest
+    # Тик 97: согласованность САМОГО файла очереди: временная причина
+    # не имеет права лежать в failed, дублей по id быть не должно.
+    step "согласованность очереди повторов" "$BASE_PY" replay_queue.py audit
     step "протокол BBLM: перечень недостающего" "$BASE_PY" bblm_protocol.py --selftest
     step "параметры высоты BBLM"          "$BASE_PY" bblm_height.py --selftest
 fi

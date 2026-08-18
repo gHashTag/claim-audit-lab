@@ -966,6 +966,13 @@
     "inputs_digest": "759fee1903757b0c"
   },
   {
+    "case": "cases/zeta_bblm_finite_height_comparison_20260818.py",
+    "claim": "Ведущая BBLM-поправка объясняет три статистики расстояний дзета на верхних корзинах",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt; BBLM 2006",
+    "inputs_digest": "3436c916a7878261"
+  },
+  {
     "case": "cases/zeta_chi2_independent_20260814.py",
     "claim": "Сводка χ²/dof из таблицы совпадает с независимой реконструкцией по 100000 нулей",
     "verdict": "ОПРОВЕРГНУТО",

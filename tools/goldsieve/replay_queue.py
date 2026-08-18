@@ -69,7 +69,7 @@ def enqueue(platform: str, task: str, reason: str) -> int:
     data = _load()
     ident = _ident(platform, task)
     for it in data["items"]:
-        if it["id"] == ident and it["state"] in ("queued", "claimed"):
+        if it["id"] == ident:   # тик 97: dedup по id в ЛЮБОМ состоянии
             it["attempts"] = int(it.get("attempts", 0)) + 1
             it["last_seen"] = _now()
             _save(data)
@@ -101,18 +101,67 @@ def claim(platform: str) -> int:
     return 0
 
 
+# --- Тик 97: временная недоступность НЕ равна отказу по существу -------------
+# Дефект, найденный по расхождению доклада и машинного состояния: тик 92 писал
+# «macOS повтор возвращён в очередь», а complete --result fail ставил state
+# failed НАВСЕГДА. Задача выпадала из очереди и не могла быть взята снова, хотя
+# причина (runner не ответил в лимит) временная. Доклад говорил одно, файл —
+# другое. Различаем три исхода:
+#   ok       -> done   (прогон состоялся, вердикт есть)
+#   deferred -> queued (временная недоступность: attempts+1, задача жива)
+#   fail     -> failed (отказ по существу: каскад упал НА платформе)
 def complete(ident: str, result: str, note: str) -> int:
     data = _load()
     for it in data["items"]:
         if it["id"] == ident:
-            it["state"] = "done" if result == "ok" else "failed"
+            if result == "ok":
+                it["state"] = "done"
+            elif result == "deferred":
+                it["state"] = "queued"
+                it["attempts"] = int(it.get("attempts", 1)) + 1
+                it.pop("claimed_at", None)
+            else:
+                it["state"] = "failed"
             it["finished_at"] = _now()
             it["result_note"] = note
             _save(data)
-            print(f"закрыто: {ident} -> {it['state']}")
+            print(f"закрыто: {ident} -> {it['state']} "
+                  f"(попыток: {it.get('attempts', 1)})")
             return 0
     print(f"нет такой задачи: {ident}")
     return 2
+
+
+def audit() -> int:
+    """Тихая потеря задачи: временная причина в окончательном состоянии.
+
+    Задача с reason=device_offline не имеет права лежать в failed — это
+    означает, что временная недоступность записана как отказ по существу и
+    повтор больше не произойдёт. Код возврата 1 при любой такой записи.
+    """
+    items = _load()["items"]
+    lost = [it for it in items
+            if it.get("state") == "failed" and it.get("reason") == "device_offline"]
+    # Второй вид несогласованности (тик 97): дубль по одному id. Дедупликация
+    # enqueue смотрела только на queued/claimed, поэтому задача, побывавшая в
+    # failed, получала ВТОРУЮ запись с тем же id. После возврата в очередь их
+    # стало две, и claim брал бы одну и ту же работу дважды.
+    seen: dict[str, int] = {}
+    for it in items:
+        seen[it["id"]] = seen.get(it["id"], 0) + 1
+    dups = sorted(k for k, v in seen.items() if v > 1)
+    print(f"задач в очереди: {len(items)}, тихо потерянных: {len(lost)}, "
+          f"дублей по id: {len(dups)}")
+    for it in lost:
+        print(f"  ПОТЕРЯНА {it['id']} {it['platform']}: reason=device_offline "
+              f"в состоянии failed — повтор невозможен")
+    for k in dups:
+        print(f"  ДУБЛЬ {k}: записей {seen[k]} — claim взял бы работу дважды")
+    if lost or dups:
+        print("ОЧЕРЕДЬ НЕСОГЛАСОВАНА: deferred вместо fail, dedup при enqueue")
+        return 1
+    print("очередь согласована: временные причины живы, дублей нет")
+    return 0
 
 
 def show(as_status: bool) -> int:
@@ -179,6 +228,47 @@ def selftest() -> int:
             complete(mac, "ok", "прогон на macOS 15")
             check("complete закрывает задачу",
                   [i for i in _load()["items"] if i["id"] == mac][0]["state"] == "done")
+            # --- тик 97: deferred возвращает задачу в очередь, fail — нет ---
+            win_before = [i for i in _load()["items"] if i["id"] == win][0]
+            attempts_before = int(win_before.get("attempts", 1))
+            claim("windows")
+            complete(win, "deferred", "runner не ответил в лимит")
+            w = [i for i in _load()["items"] if i["id"] == win][0]
+            check("deferred возвращает задачу в queued", w["state"] == "queued")
+            check("deferred растит попытки",
+                  int(w["attempts"]) == attempts_before + 1)
+            check("deferred снимает claimed_at", "claimed_at" not in w)
+            check("после deferred задачу можно взять снова", claim("windows") == 0)
+            check("аудит согласованности молчит на живой очереди", audit() == 0)
+            complete(win, "fail", "каскад упал на платформе")
+            check("fail остаётся окончательным",
+                  [i for i in _load()["items"] if i["id"] == win][0]["state"] == "failed")
+            check("аудит ЛОВИТ временную причину в failed", audit() == 1)
+            # отказ по СУЩЕСТВУ (не device_offline) потерей не считается:
+            # проверяем адресно по id, а не по коду возврата аудита, иначе
+            # проверка прошла бы за счёт уже потерянной windows-задачи.
+            enqueue("linux-other", "полный каскад", "dependency_missing")
+            oth = _ident("linux-other", "полный каскад")
+            complete(oth, "fail", "нет numpy")
+            lost_ids = [i["id"] for i in _load()["items"]
+                        if i["state"] == "failed" and i["reason"] == "device_offline"]
+            check("отказ по существу НЕ считается потерей",
+                  oth not in lost_ids
+                  and [i for i in _load()["items"]
+                       if i["id"] == oth][0]["state"] == "failed")
+            # чувствительность второй ветки аудита: дубль по id обязан ловиться
+            data = _load()
+            data["items"].append(dict(data["items"][0]))
+            _save(data)
+            check("аудит ЛОВИТ дубль по id", audit() == 1)
+            data = _load()
+            data["items"] = data["items"][:-1]
+            _save(data)
+            # enqueue после failed НЕ создаёт вторую запись (дефект тика 92)
+            enqueue("macos", "полный каскад", "device_offline")
+            ids = [i["id"] for i in _load()["items"]]
+            check("enqueue не дублирует задачу в failed",
+                  len(ids) == len(set(ids)))
             # битый файл не должен ронять очередь
             QUEUE.write_text("{битый", encoding="utf-8")
             check("битый файл очереди не роняет разбор", _load()["items"] == [])
@@ -199,11 +289,12 @@ def main(argv: list[str]) -> int:
     e.add_argument("--reason", default="device_offline")
     sub.add_parser("list")
     sub.add_parser("status")
+    sub.add_parser("audit")
     c = sub.add_parser("claim")
     c.add_argument("--platform", required=True)
     d = sub.add_parser("complete")
     d.add_argument("--id", required=True)
-    d.add_argument("--result", choices=("ok", "fail"), required=True)
+    d.add_argument("--result", choices=("ok", "fail", "deferred"), required=True)
     d.add_argument("--note", default="")
     a = ap.parse_args(argv)
     if a.cmd == "enqueue":
@@ -212,6 +303,8 @@ def main(argv: list[str]) -> int:
         return show(False)
     if a.cmd == "status":
         return show(True)
+    if a.cmd == "audit":
+        return audit()
     if a.cmd == "claim":
         return claim(a.platform)
     return complete(a.id, a.result, a.note)
