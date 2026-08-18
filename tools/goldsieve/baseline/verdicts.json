@@ -1,5 +1,12 @@
 [
   {
+    "case": "cases/ann_brute_simd_benchmark_recipe_20260817.py",
+    "claim": "Отчёт ANN Brute+SIMD раскрывает воспроизводимый benchmark точности поиска",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/research/trinity-ann-benchmark-verdict-report.md:1-240",
+    "inputs_digest": "87e8518346350595"
+  },
+  {
     "case": "cases/appendix_external_targets_20260813.py",
     "claim": "Формула 1/α = 4π³ + π² + π согласуется с CODATA",
     "verdict": "ОПРОВЕРГНУТО",
@@ -40,6 +47,55 @@
     "verdict": "ПОДТВЕРЖДЕНО",
     "source": "docs/papers/README_FOR_SCIENTISTS.md:71",
     "inputs_digest": ""
+  },
+  {
+    "case": "cases/b004_lotus_ttest_threshold_20260815.py",
+    "claim": "Статистическая значимость B004: двустороннее p меньше 0,001",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/research/bundles/B004_Lotus.md:71",
+    "inputs_digest": "d85e5dd63be5addc"
+  },
+  {
+    "case": "cases/b006_gf16_delta_20260815.py",
+    "claim": "Разность PPL GF16 и исходной модели равна +0,2",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/research/bundles/B006_GF16.md:50-54",
+    "inputs_digest": "6ca34545aa9e39eb"
+  },
+  {
+    "case": "cases/b006_gf16_pvalue_20260815.py",
+    "claim": "Двустороннее p-значение парного t-теста равно 0,87",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/research/bundles/B006_GF16.md:76-79",
+    "inputs_digest": "6ca34545aa9e39eb"
+  },
+  {
+    "case": "cases/b007_vsa_speedup_20260815.py",
+    "claim": "Табличное ускорение VSA равно 1,5×",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/research/bundles/B007_VSA.md:39-46",
+    "inputs_digest": "9da22aa1b5738c96"
+  },
+  {
+    "case": "cases/bitnet_coherence_throughput_recipe_20260817.py",
+    "claim": "Отчёт BitNet отделяет связную генерацию от производительности теста ядра",
+    "verdict": "ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО",
+    "source": "docs/docs/research/bitnet-report.md:1-220",
+    "inputs_digest": "247c2ca5bedd72da"
+  },
+  {
+    "case": "cases/c20_empty_family_guard_20260815.py",
+    "claim": "Пустое семейство С20 сохраняет вопрос вместо подтверждения",
+    "verdict": "ВОПРОС",
+    "source": "goldsieve/sieve.py:1440",
+    "inputs_digest": ""
+  },
+  {
+    "case": "cases/cifar10_metric_recipe_20260816.py",
+    "claim": "Точность fp16 на CIFAR-10 равна 99,99 процента по воспроизводимому рецепту",
+    "verdict": "ВОПРОС",
+    "source": "data/results/cifar10_metrics.json; data/results/cifar10_summary.csv",
+    "inputs_digest": "a708af982fa12ee0"
   },
   {
     "case": "cases/ckm_lqg_external_20260813.py",
@@ -119,6 +175,34 @@
     "inputs_digest": ""
   },
   {
+    "case": "cases/cycle45_priority_queue_recipe_20260816.py",
+    "claim": "Отчёт Cycle 45 воспроизводимо подтверждает улучшение очереди приоритетных задач",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/cycle45-priority-queue-report.md:1-180",
+    "inputs_digest": "7defeee07c1f7539"
+  },
+  {
+    "case": "cases/cycle46_deadline_scheduling_recipe_20260816.py",
+    "claim": "Отчёт Cycle 46 воспроизводимо подтверждает планирование по ближайшему дедлайну",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/cycle46-deadline-scheduling-report.md:1-190",
+    "inputs_digest": "5bc0d4539fd913e3"
+  },
+  {
+    "case": "cases/cycle46_federated_privacy_recipe_20260816.py",
+    "claim": "Отчёт Cycle 46 о федеративном обучении раскрывает воспроизводимый рецепт приватности",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/cycle46-federated-learning-report.md:1-220",
+    "inputs_digest": "39544aaf806c5277"
+  },
+  {
+    "case": "cases/cycle50_adaptive_caching_recipe_20260816.py",
+    "claim": "Отчёт Cycle 50 воспроизводимо подтверждает адаптивное кэширование",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/cycle50-adaptive-caching-report.md:1-190",
+    "inputs_digest": "6eb38d2dd0ceb9b9"
+  },
+  {
     "case": "cases/dark_photon_x17_formula.py",
     "claim": "Формула тёмного фотона X17 даёт 17,0 МэВ",
     "verdict": "ПУСТО",
@@ -144,6 +228,27 @@
     "claim": "В таблице DELTA-001 две слабые φ-коинциденции с ошибкой 1–5%",
     "verdict": "ОПРОВЕРГНУТО",
     "source": "docs/docs/research/delta-001/phase4-consistency.md:32-41",
+    "inputs_digest": "5e321473565ec35f"
+  },
+  {
+    "case": "cases/delta001_alpha_inverse_source_20260817.py",
+    "claim": "Сводка DELTA-001 ошибочно заявляет воспроизведение обратной постоянной тонкой структуры",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": ".trinity/experience/DELTA-001.md:43-47",
+    "inputs_digest": "ca439b3f7dbe1077"
+  },
+  {
+    "case": "cases/delta001_gamma_entropy_comparison_20260818.py",
+    "claim": "Расхождение γ = φ⁻³ с кандидатом 0,274 равно 13,9 процента",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/research/delta-001/phase4-consistency.md:72-86",
+    "inputs_digest": "5e321473565ec35f"
+  },
+  {
+    "case": "cases/delta001_strong_coincidences_20260815.py",
+    "claim": "Сводка DELTA-001 содержит 2 сильных φ-совпадения с ошибкой менее 1 %",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/research/delta-001/phase4-consistency.md:22-29",
     "inputs_digest": "5e321473565ec35f"
   },
   {
@@ -245,6 +350,34 @@
     "inputs_digest": "3d1f62c417f680ea"
   },
   {
+    "case": "cases/gamma_bi_meissner_equation_20260817.py",
+    "claim": "Формула gamma_BI = φ⁻³ согласуется с уравнением Мейсснера",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "specs/physics/gamma_conjecture.t27:4-20",
+    "inputs_digest": "925172c39fe861f4"
+  },
+  {
+    "case": "cases/gf16_mnist_accuracy_recipe_20260816.py",
+    "claim": "GF16 сохраняет точность f32 на обученной MLP MNIST по воспроизводимому рецепту",
+    "verdict": "ВОПРОС",
+    "source": "docs/research/gf16_vs_literature.md:151-201",
+    "inputs_digest": "6c104135f24710a0"
+  },
+  {
+    "case": "cases/golden_chain_final_report_consistency_20260817.py",
+    "claim": "Агрегат прогресса Golden Chain согласован с детальной таблицей",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": ".trinity/ralph/golden_chain/GOLDEN_CHAIN_FINAL_REPORT.md:1-180",
+    "inputs_digest": "16fa51fc320678b9"
+  },
+  {
+    "case": "cases/golden_chain_v238_dim1024_quality_recipe_20260817.py",
+    "claim": "Отчёт Golden Chain v2.38 отделяет улучшение оценочных метрик от связной генерации",
+    "verdict": "ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО",
+    "source": "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-38-dim1024-report.md:1-260",
+    "inputs_digest": "8a7e8dbb2fcaf150"
+  },
+  {
     "case": "cases/golden_chain_v240_statistics_20260814.py",
     "claim": "Большой корпус увеличил покрытие триграмм в 1,9 раза",
     "verdict": "ПОДТВЕРЖДЕНО",
@@ -266,6 +399,20 @@
     "inputs_digest": "2635099cd9629f12"
   },
   {
+    "case": "cases/golden_chain_v240_train_ppl_20260815.py",
+    "claim": "Перплексия обучения большого корпуса равна 1,87",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:14,16,30-33,55-59,78-86",
+    "inputs_digest": "2635099cd9629f12"
+  },
+  {
+    "case": "cases/golden_chain_v240_trigram_coverage_recipe_20260816.py",
+    "claim": "Отчёт Golden Chain v2.40 воспроизводимо подтверждает рост покрытия триграмм",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:1-120",
+    "inputs_digest": "2635099cd9629f12"
+  },
+  {
     "case": "cases/golden_chain_v241_offsets_20260815.py",
     "claim": "Разность ошибки оценки при 500 и 50 смещениях равна 0,0007",
     "verdict": "ПОДТВЕРЖДЕНО",
@@ -273,11 +420,74 @@
     "inputs_digest": "14f8f3b1002b9732"
   },
   {
+    "case": "cases/golden_chain_v245_word_ppl_recipe_20260816.py",
+    "claim": "Word PPL eval 15,52 в Golden Chain v2.45 воспроизводим по полному рецепту",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-45-word-level-report.md:1-190",
+    "inputs_digest": "61c918d473059e3d"
+  },
+  {
+    "case": "cases/golden_chain_v246_phrase_memorization_recipe_20260817.py",
+    "claim": "Отчёт Golden Chain v2.46 отделяет запоминание фраз от связной генерации",
+    "verdict": "ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО",
+    "source": "docs/docs/research/trinity-golden-chain-v2-46-word-trigram-report.md:1-220",
+    "inputs_digest": "e0f1fbf13a01503f"
+  },
+  {
+    "case": "cases/golden_chain_v248_ppl_gain_20260815.py",
+    "claim": "Выигрыш интерполяции по перплексии равен 3,9 %",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/docs/research/trinity-golden-chain-v2-48-interpolated-report.md:72-76",
+    "inputs_digest": "c749bad8fa5fbfe9"
+  },
+  {
+    "case": "cases/golden_chain_v249_generation_quality_recipe_20260817.py",
+    "claim": "Генерационный штраф Golden Chain v2.49 улучшает разнообразие без улучшения качества модели",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/research/trinity-golden-chain-v2-49-penalty-report.md:1-220",
+    "inputs_digest": "4f15299a24f513d5"
+  },
+  {
+    "case": "cases/golden_chain_v250_kneser_ney_recipe_20260816.py",
+    "claim": "Оценочная KN-перплексия 4,84 в Golden Chain v2.50 воспроизводима по полному рецепту",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/research/trinity-golden-chain-v2-50-kneser-ney-report.md:1-232",
+    "inputs_digest": "ded5b962dede71d9"
+  },
+  {
+    "case": "cases/golden_chain_v251_4gram_ppl_recipe_20260816.py",
+    "claim": "4-граммная KN-перплексия eval 1,94 в Golden Chain v2.51 воспроизводима по полному рецепту",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-51-4gram-report.md:1-260",
+    "inputs_digest": "3305c2f210e45220"
+  },
+  {
+    "case": "cases/golden_chain_v252_held_out_recipe_20260816.py",
+    "claim": "Отчёт Golden Chain v2.52 подтверждает честное обобщение 4-граммной KN-модели на отложенной выборке",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-52-held-out-report.md:1-260",
+    "inputs_digest": "e7e8cc716e2cd677"
+  },
+  {
+    "case": "cases/golden_chain_v30_absolute_recipe_20260817.py",
+    "claim": "Golden Chain v3.0 воспроизводимо проходит 764 теста",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/research/trinity-golden-chain-v3-0-absolute-report.md:1-180",
+    "inputs_digest": "1c7ace52f744d9fe"
+  },
+  {
     "case": "cases/gravitational_constant_external_20260814.py",
     "claim": "Формула G = π³γ²/φ согласуется с CODATA",
     "verdict": "ВОПРОС",
     "source": "docs/docs/research/papers/gravitational-constants.md:10-15",
     "inputs_digest": "d5b3e20a0308f63e"
+  },
+  {
+    "case": "cases/hslm_convergence_fraction_20260815.py",
+    "claim": "Сходимость HSLM достигла 95,7 % полного расписания",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/research/bundles/B001_HSLM.md:127-130",
+    "inputs_digest": "35938cf8a9418cbb"
   },
   {
     "case": "cases/identity_cross_module_20260814.py",
@@ -329,11 +539,46 @@
     "inputs_digest": "7424155384454ccb"
   },
   {
+    "case": "cases/jepa_experiment_consistency_20260817.py",
+    "claim": "Сводка T-JEPA согласована с таблицей временного benchmark",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/research/JEPAT/experiments.md:10-33",
+    "inputs_digest": "de2136ec577dc4ce"
+  },
+  {
     "case": "cases/khinchin.py",
     "claim": "K по нулям дзеты = 2.620, систематически ниже 2.685",
     "verdict": "ВОПРОС",
     "source": "data/zeta/zeta_bin_analysis_update.md",
     "inputs_digest": "8e0cc0c774a33542"
+  },
+  {
+    "case": "cases/khinchin_estimator_recipe_20260816.py",
+    "claim": "Сводка Khinchin K по десяти корзинам равна 2,6201 ± 0,0293",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "data/zeta/zeta_bin_analysis_update.md:12-14,31-40",
+    "inputs_digest": "02b12e8636dfa325"
+  },
+  {
+    "case": "cases/level11_neurosymbolic_benchmark_recipe_20260817.py",
+    "claim": "Отчёт Level 11.31 воспроизводимо подтверждает нейросимвольный benchmark 162 из 166",
+    "verdict": "ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО",
+    "source": "docs/docs/research/trinity-level11-neuro-symbolic-bench-report.md:1-220",
+    "inputs_digest": "5e9d51764045c3f8"
+  },
+  {
+    "case": "cases/level11_planning_accuracy_recipe_20260816.py",
+    "claim": "190 запросов планирования из 190 имеют точность 100 процентов по воспроизводимому рецепту",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/trinity-level11-planning-sota-report.md:6-22,42-137",
+    "inputs_digest": "4d502cec08fc21f1"
+  },
+  {
+    "case": "cases/level11_rdf_multihop_recipe_20260817.py",
+    "claim": "Отчёт Level 11.2 раскрывает воспроизводимый рецепт RDF и многошагового вывода",
+    "verdict": "ВОПРОС",
+    "source": "deploy/trinity-nexus/docs/research/trinity-level11-rdf-multi-hop-report.md:1-260",
+    "inputs_digest": "f282bdd749166a46"
   },
   {
     "case": "cases/m_theory_dimension_formula.py",
@@ -383,6 +628,13 @@
     "verdict": "ПУСТО",
     "source": "docs/docs/math-foundations/sacred-formulas.md:194",
     "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/particle_physics_example_mean_error_20260815.py",
+    "claim": "Средняя ошибка пяти явно приведённых отношений Particle Physics равна 0,012 %",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:31-43",
+    "inputs_digest": "dec6ecc47e066f9a"
   },
   {
     "case": "cases/pellis_external_targets_20260814.py",
@@ -439,6 +691,13 @@
     "verdict": "ПУСТО",
     "source": "docs/docs/math-foundations/sacred-formulas.md:201",
     "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/readme_mp_me_external_20260818.py",
+    "claim": "Формула 6π⁵ в научном обзоре воспроизводит отношение масс протона и электрона",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:38-54",
+    "inputs_digest": "7424155384454ccb"
   },
   {
     "case": "cases/reionization_zre_prediction.py",
@@ -532,6 +791,13 @@
     "inputs_digest": "1f4d53ef6425f029"
   },
   {
+    "case": "cases/sacred_predictions_registry_recipe_20260817.py",
+    "claim": "Реестр Sacred Predictions v1.0 раскрывает воспроизводимый рецепт семи прогнозов",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/math-foundations/sacred-predictions.md:1-322",
+    "inputs_digest": "8dd446d1cf937945"
+  },
+  {
     "case": "cases/sacred_random_probability.py",
     "claim": "Вероятность случайного попадания в класс EXACT при расширенном переборе равна 1 из 35 (2,9 %)",
     "verdict": "ОПРОВЕРГНУТО",
@@ -572,6 +838,34 @@
     "verdict": "ПОДТВЕРЖДЕНО",
     "source": "docs/docs/math-foundations/sacred-formulas.md:26",
     "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/sacred_tsirelson_exact_external_20260817.py",
+    "claim": "Формула Tsirelson в рукописи Trinity воспроизводит точную квантовую границу",
+    "verdict": "ВОПРОС",
+    "source": "docs/papers/trinity-sacred-mathematics.tex:1499",
+    "inputs_digest": "be1390f05435298b"
+  },
+  {
+    "case": "cases/sacred_two_formula_composition_recipe_20260817.py",
+    "claim": "Составление двух священных формул воспроизводимо как метод ускорения",
+    "verdict": "ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:273-283",
+    "inputs_digest": "e969471db87977c8"
+  },
+  {
+    "case": "cases/sidak_applicability_20260816.py",
+    "claim": "Порог Шидака 5,06σ применим к зависимому семейству формул",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:257-259",
+    "inputs_digest": "e969471db87977c8"
+  },
+  {
+    "case": "cases/sidak_threshold_20260815.py",
+    "claim": "При 123 201 испытании и семейной ошибке 0,05 порог Шидака равен 5,06σ",
+    "verdict": "ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:257-259",
+    "inputs_digest": "e969471db87977c8"
   },
   {
     "case": "cases/transcendental_3phi_value.py",
@@ -658,6 +952,20 @@
     "inputs_digest": "8c0c456a38e25ba6"
   },
   {
+    "case": "cases/vsa_simd_benchmark_recipe_20260818.py",
+    "claim": "Отчёт VSA SIMD отделяет замер dot product от полноценной воспроизводимости производительности",
+    "verdict": "ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО",
+    "source": "deploy/trinity-nexus/benchmarks/BENCHMARK_REPORT.md:1-63",
+    "inputs_digest": "673cbbcc54ea5c5e"
+  },
+  {
+    "case": "cases/wilcoxon_v20_pvalue_20260815.py",
+    "claim": "Точное двустороннее p-значение критерия Вилкоксона равно 0,0625",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "docs/research/ZENODO_V20_STATISTICAL_SIGNIFICANCE.md:156-163",
+    "inputs_digest": "759fee1903757b0c"
+  },
+  {
     "case": "cases/zeta_chi2_independent_20260814.py",
     "claim": "Сводка χ²/dof из таблицы совпадает с независимой реконструкцией по 100000 нулей",
     "verdict": "ОПРОВЕРГНУТО",
@@ -670,6 +978,13 @@
     "verdict": "ПУСТО",
     "source": "data/zeta/zeta_bin_analysis_update.md:24-38",
     "inputs_digest": "d32c98af192622e1"
+  },
+  {
+    "case": "cases/zeta_finite_height_extrapolation_20260816.py",
+    "claim": "Линейная экстраполяция по 1/L объясняет дефицит std нулей дзета точным GUE",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "scripts/height_extrapolation.py:1-15,139-151",
+    "inputs_digest": "1114eedaa62471e3"
   },
   {
     "case": "cases/zeta_gue.py",
@@ -690,13 +1005,27 @@
     "claim": "наблюдённые расстояния совпадают с GUE в пределах 1%",
     "verdict": "ВОПРОС",
     "source": "data/zeta/zeros_odlyzko_100k.txt",
-    "inputs_digest": "8e0cc0c774a33542"
+    "inputs_digest": "3436c916a7878261"
+  },
+  {
+    "case": "cases/zeta_p95_summary_20260815.py",
+    "claim": "Сводка p95 расстояний равна 1,7186 ± 0,0045",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "data/zeta/zeta_bin_analysis_update.md:12-16",
+    "inputs_digest": "d32c98af192622e1"
+  },
+  {
+    "case": "cases/zeta_p99_gue_20260815.py",
+    "claim": "99-й процентиль расстояний дзета равен 2,0680",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "data/zeta/zeta_gue_analysis_results.md:34",
+    "inputs_digest": "fdcdd26763d39113"
   },
   {
     "case": "cases/zeta_shape.py",
     "claim": "масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка out-of-sample по верхним полосам высот)",
     "verdict": "ОПРОВЕРГНУТО",
-    "source": "data/zeta/zeta_gue_analysis_results.md:конечновысотная поправка",
+    "source": "data/zeta/zeros_odlyzko_100k.txt, 4 полосы высот; BBLM 2006",
     "inputs_digest": "3436c916a7878261"
   },
   {
@@ -704,6 +1033,27 @@
     "claim": "форма распределения расстояний согласуется с точным законом GUE в пределах конечновыборочного разброса",
     "verdict": "ОПРОВЕРГНУТО",
     "source": "data/zeta/zeta_gue_analysis_results.md:форма распределения",
+    "inputs_digest": "3436c916a7878261"
+  },
+  {
+    "case": "cases/zeta_std_gue_20260815.py",
+    "claim": "Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "data/zeta/zeta_bin_analysis_update.md:124",
+    "inputs_digest": "d32c98af192622e1"
+  },
+  {
+    "case": "cases/zeta_std_unfolding_passport_20260815.py",
+    "claim": "Паспорт развёртки дзета воспроизводит std 0,42201569295012265 и объясняет 0,4009",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "data/zeta/zeta_gue_analysis_results.md:34",
+    "inputs_digest": "fdcdd26763d39113"
+  },
+  {
+    "case": "cases/zeta_unfolding_std_recipe_20260815.py",
+    "claim": "Напечатанная std 0,4009 получена из файла 100 000 нулей заявленной развёрткой",
+    "verdict": "ПОДТВЕРЖДЕНО",
+    "source": "data/zeta/zeta_gue_analysis_results.md:34",
     "inputs_digest": "3436c916a7878261"
   }
 ]

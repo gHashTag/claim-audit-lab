@@ -1,0 +1,64 @@
+{
+ "protocol": "BBLM finite-height correction",
+ "verdict": "ВОПРОС",
+ "verdict_basis": "вердикт ВОПРОС вынесен кодом по числу отсутствующих обязательных элементов; это НЕ находка и НЕ опровержение",
+ "required_total": 8,
+ "present_count": 3,
+ "missing_count": 5,
+ "elements": [
+  {
+   "element": "formula",
+   "title": "формула поправки с явными выражениями",
+   "present": true,
+   "declared_present": true
+  },
+  {
+   "element": "coefficient_rederivation",
+   "title": "независимый вывод численных коэффициентов",
+   "present": false,
+   "declared_present": false,
+   "needed": "Независимый вывод коэффициентов 0.230158 и 1.4720 из формул статьи, а не перенос чисел из корпуса. Без этого сравнение опирается на цитату."
+  },
+  {
+   "element": "height_parameters",
+   "title": "параметры высоты выборки нулей",
+   "present": true,
+   "declared_present": true
+  },
+  {
+   "element": "per_bin_heights",
+   "title": "L по каждой корзине бинного анализа",
+   "present": false,
+   "declared_present": false,
+   "needed": "L, посчитанное для КАЖДОЙ корзины корпусного бинного анализа (zeta_bin_analysis_update.md), а не одно число на весь набор: поправка зависит от L, поэтому сравнение по корзинам требует L корзины."
+  },
+  {
+   "element": "unfolding_mode",
+   "title": "режим развёртки с проверяемым паспортом",
+   "present": true,
+   "declared_present": true
+  },
+  {
+   "element": "error_estimate_method",
+   "title": "метод оценки погрешности предсказания",
+   "present": false,
+   "declared_present": false,
+   "needed": "Способ оценки погрешности предсказанной поправки: бутстрэп по нулям либо аналитическая дисперсия статистики. Без него отклонение нельзя выразить в сигмах, а значит сито С15 не имеет знаменателя."
+  },
+  {
+   "element": "out_of_sample_check",
+   "title": "проверка вне выборки",
+   "present": false,
+   "declared_present": false,
+   "needed": "Проверка вне выборки: коэффициенты фиксируются на одном диапазоне высот, предсказание проверяется на ДРУГОМ (более высоком) диапазоне. Без этого согласие внутри одного набора нулей не отличимо от подгонки."
+  },
+  {
+   "element": "shape_vs_scale_discrimination",
+   "title": "разделение масштаба и формы",
+   "present": false,
+   "declared_present": false,
+   "needed": "Машинная проверка того, что поправка меняет ФОРМУ распределения, а не только масштаб. Корпусные наблюдения (std -5.50 %, p95 -2.17 %, p50 +0.29 %) чистым масштабированием s -> alpha*s не объясняются, поэтому протокол обязан предъявить разложение на масштабную и формообразующую части."
+  }
+ ],
+ "status_class": "not-evaluated"
+}

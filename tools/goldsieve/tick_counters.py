@@ -35,11 +35,20 @@ KNOWN = (
     "tick_completed",          # тик дошёл до записи в ведомость
     "tick_aborted_timeout",    # срыв по таймауту bash или load_skill
     "tick_aborted_other",      # срыв по иной причине
+    # Пункт 3 приказа 2026-08-18: недоступность чужого устройства — НЕ срыв
+    # тика. Такое событие считается отдельно и НЕ входит в долю деградации.
+    "deferred_device_offline",  # runner недоступен, задача ушла в очередь
+    "cross_platform_replay_run",  # очередь была разобрана на живом runner
+    "note_missing",            # bump без примечания там, где оно обязательно
     "gate_closed",             # ci_gate.sh вернул 1
     "verdict_flips",           # переворот вердикта против baseline
     "manifest_mismatch",       # coverage manifest разошёлся с фактом
     "frozen_integrity_fail",   # нарушена целостность заморозки
 )
+# Счётчики, для которых примечание обязательно: без него событие нельзя
+# отнести ни к одной категории аудита (aborted_audit.py).
+REQUIRE_NOTE = ("tick_aborted_other", "tick_aborted_timeout",
+                "deferred_device_offline", "gate_closed")
 MAX_EVENTS = 200
 
 
@@ -71,8 +80,17 @@ def bump(name: str, note: str = "", amount: int = 1) -> int:
     data["counters"][name] = int(data["counters"].get(name, 0)) + amount
     ev = {"at": dt.datetime.now(dt.timezone.utc)
                   .strftime("%Y-%m-%dT%H:%M:%SZ"), "counter": name}
+    # Пункт 4 приказа 2026-08-18: аудит показал, что часть токенов срыва
+    # записана БЕЗ примечания и классификации не поддаётся. Тик не ломаем
+    # (счётчик подсобный), но пропуск становится видимым и считаемым.
     if note:
         ev["note"] = note
+    elif name in REQUIRE_NOTE:
+        ev["note"] = "ПРИМЕЧАНИЕ НЕ УКАЗАНО (нарушение контракта наблюдаемости)"
+        ev["note_missing"] = True
+        data["counters"]["note_missing"] = int(
+            data["counters"].get("note_missing", 0)) + 1
+        print("ПРЕДУПРЕЖДЕНИЕ: %s без --note; причина срыва не разбирается" % name)
     data.setdefault("events", []).append(ev)
     data["events"] = data["events"][-MAX_EVENTS:]
     _save(data)
@@ -114,6 +132,8 @@ def health(max_share: float = 0.34, min_observed: int = MIN_OBSERVED) -> int:
     """
     cnt = _load().get("counters", {})
     started = int(cnt.get("tick_started", 0))
+    # deferred_device_offline СОЗНАТЕЛЬНО не входит в числитель: недоступность
+    # чужого ноутбука не есть деградация нашей инфраструктуры (пункт 3).
     aborted = (int(cnt.get("tick_aborted_timeout", 0))
                + int(cnt.get("tick_aborted_other", 0)))
     if started == 0:

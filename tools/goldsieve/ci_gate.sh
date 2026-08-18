@@ -11,7 +11,9 @@
 #   * расхождение coverage manifest с фактическим составом корпуса (тик 41);
 #   * провал самопроверки трёхуровневых статусов и линтера «подтверждено» (тик 41);
 #   * провал самопроверки pre-filter (тик 41);
-#   * нарушение целостности заморозки v12 (тик 41).
+#   * нарушение целостности заморозки v12 (тик 41);
+#   * подпись «exact GUE» на числе 0,4220 — это std Wigner surmise (пункт 1
+#     приказа 2026-08-18), вместе с измеренной чувствительностью этого запрета.
 #
 # Матрица интерпретаторов задаётся переменной GOLDSIEVE_PYTHONS.
 set -u
@@ -65,6 +67,7 @@ for PY in $PYTHONS; do
     step "независимость разметки"   "$PY" independence.py
     step "счётчики тика"             "$PY" tick_counters.py selftest
     [ "$FULL" = 1 ] && step "калибровка на реестре" "$PY" calibrate_identity.py
+    [ "$FULL" = 1 ] && step "калибровка сит С4 С5 С16" "$PY" calibrate_sieves.py
 done
 
 echo "--- сверка с baseline"
@@ -84,6 +87,11 @@ else
     # ЦЕЛОСТНОСТИ самой записи: переписать историю задним числом нельзя.
     step "целостность заморозки v12" "$BASE_PY" baseline.py frozen
     step "coverage manifest"          "$BASE_PY" coverage_manifest.py
+    step "чанкинг cover"              "$BASE_PY" -m goldsieve.cover_chunks
+    # Пункт 3 приказа: два последовательных not-evaluated обязаны
+    # машинно дать очередь или platform-unverified; verified-in-scope после
+    # такого порога запрещён до успешного прогона.
+    step "SLA матрицы ОС"             "$BASE_PY" -m goldsieve.platform_sla pending/os-matrix.yaml
     step "pre-filter Golden Chain"    "$BASE_PY" -m goldsieve.prefilter
     # Execution-proof: пустой граф при непустом кейсе — авария, а не тихое
     # отрицательное заключение. Маршрут реальный (подпроцесс CLI), поэтому
@@ -125,6 +133,16 @@ else
     # журнала, tick abort. Самопроверка tri зовёт функции напрямую и
     # этих сценариев не видит вовсе.
     step "интеграционные тесты оболочки" "$BASE_PY" tri_integration_test.py
+    # Пункт 1 приказа 2026-08-18. Запрет метки exact_gue на числе 0,4220:
+    # сначала ИЗМЕРЕННАЯ чувствительность на фикстурах (включая мутанта),
+    # затем сам запрет на корпусе и артефактах. Молчание проверки — не покрытие.
+    step "чувствительность запрета exact_gue" "$BASE_PY" gue_label_guard.py --selftest
+    step "запрет метки exact_gue на 0,4220" "$BASE_PY" gue_label_guard.py
+    # Пункты 2-4 приказа 2026-08-18.
+    step "классификатор токенов срыва"   "$BASE_PY" aborted_audit.py --selftest
+    step "очередь межплатформенных прогонов" "$BASE_PY" replay_queue.py --selftest
+    step "протокол BBLM: перечень недостающего" "$BASE_PY" bblm_protocol.py --selftest
+    step "параметры высоты BBLM"          "$BASE_PY" bblm_height.py --selftest
 fi
 
 echo

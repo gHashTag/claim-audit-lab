@@ -11,7 +11,21 @@ claims:
   case: cases/zeta_gue.py
   claim: наблюдённые расстояния совпадают с GUE в пределах 1%
   verdict: ВОПРОС
-  inputs_digest: 8e0cc0c774a33542
+  reason_subtype: estimator_dependent
+  fingerprint: 5d879191a67b7b3a
+  target: 6666f978c3f37239
+  novelty_key: zeta:gap_quantiles:v1
+  inputs_digest: 3436c916a7878261
+  scope_status: not-evaluated
+  scope_statement: >-
+    В области охвата для класса сравнения трёх квантилей расстояний с точным
+    законом GUE на CPython 3.14.3: точный Fredholm-GUE эталон вычислен,
+    развёртка тэта и ведущий член дают одинаковое расхождение; С2, С3 и С10
+    не проходят, а С9 оставляет зависимость от конечного размера. Итог
+    машинного сита — ВОПРОС с reason_subtype estimator_dependent, а не
+    подтверждение и не окончательное опровержение. Не доказано, какая
+    конечновысотная поправка формы является полной, и не проверены другие
+    выборки нулей и версии рантайма.
 - source: data/zeta/zeta_bin_analysis_update.md
   case: cases/khinchin.py
   claim: K по нулям дзеты = 2.620, систематически ниже 2.685
@@ -460,15 +474,30 @@ claims:
   target: 79e4ed3c2403facc
   novelty_key: zeta:gap_shape:v1
   inputs_digest: 3436c916a7878261
-- source: data/zeta/zeta_gue_analysis_results.md:конечновысотная поправка
+- source: data/zeta/zeros_odlyzko_100k.txt, 4 полосы высот; BBLM 2006
   case: cases/zeta_shape.py
-  claim: масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка
-    out-of-sample по верхним полосам высот)
+  claim: масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка out-of-sample по верхним полосам высот)
   verdict: ОПРОВЕРГНУТО
+  reason_subtype: observation_mismatch
   fingerprint: 9369cd12cf451750
-  target: 372305cfe9ea9799
+  target: bfe701fcf2dbe26b
   novelty_key: zeta:gap_shape_correction:v1
+  claim_family: zeta_spacing_shape
+  observable: gap_shape_finite_height_correction
+  measurement_source: odlyzko_100k
+  models: [exact_GUE, Wigner_surmise, BBLM_scaled]
   inputs_digest: 3436c916a7878261
+  scope_status: verified-in-scope
+  scope_statement: >-
+    Опровергнуто в области охвата для класса заранее заданной масштабной
+    деформации с коэффициентом BBLM на верхней половине четырёх полос высот
+    выборки Одлыжко, на CPython 3.14.3: среднее абсолютное отклонение
+    масштабной модели от эталона точного закона GUE получено out-of-sample и
+    отличается на 5111,84 %, поэтому масштабная деформация не объясняет
+    расхождение формы. Сито С1–С4 и С13–С14 прошло по заявленному маршруту.
+    Это не проверка полной конечновысотной поправки BBLM и не доказательство
+    причины расхождения для других выборок, развёрток, диапазонов высот или
+    версий рантайма.
 - source: data/zeta/zeta_bin_analysis_update.md:24-38
   case: cases/zeta_chi2_statistics_20260814.py
   claim: χ²/dof по десяти высотным корзинам = 2,67 ± 0,49
@@ -622,15 +651,21 @@ claims:
   target: 22a49a548397d4e1
   novelty_key: trinity:particle_physics:example_mean_error:v1
   inputs_digest: dec6ecc47e066f9a
-- source: docs/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:13,77
+- source: docs/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:14,16,30-33,55-59,78-86
   case: cases/golden_chain_v240_train_ppl_20260815.py
   claim: Перплексия обучения большого корпуса равна 1,87
-  verdict: ОПРОВЕРГНУТО
-  reason_subtype: observation_mismatch
-  fingerprint: be98acb890f98742
-  target: d3fd03d71c7c71b9
-  novelty_key: golden_chain:v240:train_ppl_from_loss:v1
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 4aee6426f344bf05
+  target: f5e70829517d91df
+  novelty_key: golden_chain:v240:metrics_recipe_comparability:v1
   inputs_digest: 2635099cd9629f12
+  scope_status: not-evaluated
+  scope_statement: >-
+    Рецепт сопоставления train loss=0,8066 и train PPL=1,87 не оценён:
+    отчёт не фиксирует общую шкалу (нат/бит), токенизацию, усреднение и
+    стадию обучения. Арифметическая проверка exp(loss) поэтому не является
+    доказательством ошибки числа; требуется единый воспроизводимый рецепт.
 - source: docs/research/bundles/B001_HSLM.md:127-130
   case: cases/hslm_convergence_fraction_20260815.py
   claim: Сходимость HSLM достигла 95,7 % полного расписания
@@ -685,3 +720,918 @@ claims:
     относительных и внутри бутстрэп-шума (z = +0,0). НЕ доказано согласие
     измерения с теорией случайных матриц: это отдельное утверждение, и по нему
     отклонение остаётся открытым.
+- source: data/zeta/zeta_gue_analysis_results.md:34
+  case: cases/zeta_p99_gue_20260815.py
+  claim: 99-й процентиль расстояний дзета равен 2,0680
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: observation_mismatch
+  fingerprint: d56633fff8a8d298
+  target: d0dbcf24ab86a2d8
+  novelty_key: zeta:p99_exact_gue:v1
+  inputs_digest: fdcdd26763d39113
+  scope_status: verified-in-scope
+  scope_statement: >-
+    Опровергнуто в области охвата для класса 99-х процентилей нормированных
+    расстояний дзета на указанных версиях CPython (CPython 3.14.3 и CPython
+    3.14.4): строка корпуса сообщает 2,0680, а вычислимый точный GUE-эталон
+    через детерминант Fredholm даёт 2,1204063157; относительное расхождение
+    −2,47 %, при этом альтернативная формула Вигнера—сюрмиса даёт 2,1107152217.
+    НЕ доказано, что это расхождение обобщается на другие выборки нулей,
+    развёртки, законы зазоров или версии рантайма.
+- source: data/zeta/zeta_gue_analysis_results.md:34
+  case: cases/zeta_std_unfolding_passport_20260815.py
+  claim: Паспорт развёртки дзета воспроизводит std 0,42201569295012265 и объясняет 0,4009
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: recipe_reproduction
+  fingerprint: 5d06d00437f88407
+  target: 530ad37b59acf1cd
+  novelty_key: zeta:unfolding_std_passport:v1
+  inputs_digest: fdcdd26763d39113
+  scope_status: verified-in-scope
+  scope_statement: >-
+    В области охвата для класса воспроизводимых рецептов развёртки дзета на
+    указанных версиях CPython (CPython 3.14.3 и CPython 3.14.4): два
+    независимых пути воспроизводят std Wigner—surmise
+    0,42201569295012265; паспорт фиксирует 100 000 нулей, индексы 1..100 000,
+    99 999 зазоров, формулу θ Римана—Зигеля, отсутствие исключения краёв и
+    выборочную std с ddof=1. Точная θ-развёртка и развёртка ведущим членом
+    воспроизводят корпусное 0,4009 из того же файла, а Fredholm-GUE даёт около
+    0,424258, поэтому 0,4220 относится к Wigner—surmise, а не к точному GUE.
+    НЕ доказано обобщение на другие выборки нулей, нормировки, диапазоны высот
+    или версии рантайма.
+- source: goldsieve/sieve.py:1440
+  case: cases/c20_empty_family_guard_20260815.py
+  claim: Пустое семейство С20 сохраняет вопрос вместо подтверждения
+  verdict: ВОПРОС
+  reason_subtype: meff_unstable
+  fingerprint: 0fad379bc58b42d1
+  novelty_key: tool:c20:empty-family-guard:v1
+  scope_status: not-evaluated
+  scope_statement: >-
+    Инженерный guard проверен на Linux/CPython 3.14.3 для класса пустых и
+    непустых входов С20: пустое семейство получает OPEN внутри сита и итоговый
+    ВОПРОС с reason_code meff_unstable; мутация, подменяющая долю независимых
+    единицей, поймана. Это не утверждение о корпусной статистике и не доказано
+    для других версий CPython, реализаций численных библиотек или иных
+    повреждённых спецификаций семейства.
+- source: docs/docs/math-foundations/sacred-formulas.md:257-259
+  case: cases/sidak_applicability_20260816.py
+  claim: Порог Шидака 5,06σ применим к зависимому семейству формул
+  verdict: ВОПРОС
+  reason_subtype: meff_unstable
+  fingerprint: a86906583790049f
+  target: 3f55592d58d24093
+  novelty_key: sacred:statistics:sidak_applicability:v1
+  inputs_digest: e969471db87977c8
+  scope_status: not-evaluated
+  scope_statement: >-
+    В области охвата на CPython 3.14.3 вычислимый порог при M=123 201
+    воспроизводится по Шидаку (5,0613 сигма), а второй путь с поправкой
+    Бонферрони даёт 5,0662 сигма; фактическое семейство ACTUAL_RANGES содержит
+    ровно 123 201 членов. С20 машинно измеряет M_eff кластерным и собственным
+    путём и показывает, что сравнение порога меняет вывод: при полном M
+    5,06 сигма не превышает 5,0613, а при M_eff порог ниже. Поэтому итог —
+    ВОПРОС с reason_subtype meff_unstable, а не подтверждение применимости.
+    НЕ доказан единственный истинный M_eff для другой выборки, степень
+    зависимости вне заданной полосы 0,0056/0,6889, перенос результата на
+    другие диапазоны и межплатформенная воспроизводимость.
+- source: data/results/cifar10_metrics.json; data/results/cifar10_summary.csv
+  case: cases/cifar10_metric_recipe_20260816.py
+  claim: "Точность fp16 на CIFAR-10 равна 99,99 процента по воспроизводимому рецепту"
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 24ef74fa65fba288
+  target: 3d7ebb582bdb87b5
+  novelty_key: trinity:cifar10:metric_recipe:v1
+  inputs_digest: a708af982fa12ee0
+  priority: 1
+  measurement_source: пакет результатов CIFAR-10
+  observable: точность fp16 на CIFAR-10
+  models: [заявленная оценка, воспроизводимая оценка]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 JSON и CSV дают одно значение 99,99 процента для
+    fp16, но это согласие двух представлений не является независимой
+    воспроизводимостью. В обоих входах не заданы разбиение, предобработка,
+    контрольная сумма модели, начальное состояние, определение точности,
+    агрегация потерь и выходы logits. Поэтому машинный итог — ВОПРОС с
+    reason_subtype metrics_incommensurable; не доказано ни опровержение
+    точности, ни её перенос на другие запуски и версии рантайма.
+- source: deploy/trinity-nexus/docs/research/trinity-level11-planning-sota-report.md:6-22,42-137
+  case: cases/level11_planning_accuracy_recipe_20260816.py
+  claim: "190 запросов планирования из 190 имеют точность 100 процентов по воспроизводимому рецепту"
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 29361e0c0bd07083
+  target: 41063fc8eee462e8
+  novelty_key: trinity:level11.30:planning_accuracy_recipe:v1
+  inputs_digest: 4d502cec08fc21f1
+  priority: 1
+  measurement_source: отчёт Level 11.30 Planning SOTA
+  observable: доля правильных ответов на bAbI-style и CLUTRR-подобных запросах
+  models: [заявленная доля правильных ответов, воспроизводимая доля правильных ответов]
+  scope_status: not-evaluated
+  scope_statement: >-
+    В области охвата на CPython 3.14.3 проверена только воспроизводимость
+    агрегата 190/190 из отчёта Level 11.30. Отчёт не содержит сырых запросов,
+    эталонных ответов, правила оценки, разбиения, seed, версии реализации и
+    независимого повтора; отношение 190/190 намеренно не использовано как
+    дешёвый вычисляемый эталон. Поэтому статус — not-evaluated с
+    reason_subtype metrics_incommensurable. Не доказаны сама точность на
+    независимой выборке, перенос на другие реализации и заявка SOTA.
+- source: docs/research/gf16_vs_literature.md:151-201
+  case: cases/gf16_mnist_accuracy_recipe_20260816.py
+  claim: GF16 сохраняет точность f32 на обученной MLP MNIST по воспроизводимому рецепту
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 0591f4dc2a3b2f75
+  target: e0c6cd342110c1bc
+  novelty_key: trinity:gf16:mnist_accuracy_recipe:v1
+  inputs_digest: 6c104135f24710a0
+  priority: 1
+  measurement_source: отчёт GF16 vs Literature BENCH-004b
+  observable: точность обученной MLP MNIST после представления в GF16
+  models: [заявленная точность f32, воспроизводимая точность GF16]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 отчёт сообщает 97,67 процента для f32 и GF16 в таблице
+    BENCH-004b, но не содержит контрольную сумму модели, seed, полный набор
+    входов, точное определение accuracy, разбиение и версию кода. Поэтому
+    машинный итог — ВОПРОС с reason_subtype metrics_incommensurable; совпадение
+    строк не считается независимым воспроизведением. Не доказаны точность при
+    независимом запуске, перенос на другие модели, выборки и рантаймы.
+- source: deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-45-word-level-report.md:1-190
+  case: cases/golden_chain_v245_word_ppl_recipe_20260816.py
+  claim: "Word PPL eval 15,52 в Golden Chain v2.45 воспроизводим по полному рецепту"
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 0570064c286f7c8f
+  target: b9ef0cd66eaa86c9
+  novelty_key: golden_chain:v245:word_ppl_recipe:v1
+  inputs_digest: 61c918d473059e3d
+  priority: 1
+  measurement_source: отчёт Golden Chain v2.45 Word-Level Statistics
+  observable: word-level perplexity eval на 5014-символьном корпусе Shakespeare
+  models: [заявленный word-level PPL, воспроизводимый word-level PPL]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На указанных версиях CPython отчёт v2.45 воспроизводимо сообщает строку
+    Word PPL train=23,38, eval=15,52, gap=-7,86 и отдельный char raw freq
+    eval=5,59. Это не является независимым воспроизведением: исходный корпус
+    или его контрольная сумма, commit реализации и независимый replay не
+    предоставлены. Word-level и char-level PPL имеют разные пространства
+    токенов, поэтому контроль 5,59 не является эталоном 15,52. Машинный
+    итог — ВОПРОС с reason_subtype metrics_incommensurable; не доказаны
+    воспроизводимость 15,52, перенос на иные split/seed/реализации и
+    сопоставимость с char-level PPL.
+  novelty_class: новый источник и новый риск рецепта word-level метрики
+- source: deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-51-4gram-report.md:1-260
+  case: cases/golden_chain_v251_4gram_ppl_recipe_20260816.py
+  claim: 4-граммная KN-перплексия eval 1,94 в Golden Chain v2.51 воспроизводима по полному рецепту
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 63ddd04162fd1c16
+  target: 8b42d876961e0d92
+  novelty_key: golden_chain:v251:4gram_kn_recipe:v1
+  inputs_digest: 3305c2f210e45220
+  priority: 1
+  measurement_source: отчёт Golden Chain v2.51 4-Gram KN Extension
+  observable: 4-граммная KN perplexity eval на корпусе Shakespeare
+  models: [заявленный 4-граммный KN PPL, воспроизводимый 4-граммный KN PPL]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 отчёт сообщает 4-граммную KN perplexity eval 1,94,
+    конфигурацию D=0,25 и lambda=1,0, но не предоставляет исходный корпус
+    или его контрольную сумму, точные границы train/eval, seed, commit
+    реализации и независимый повтор. Контроль KN-trigram PPL 4,84 имеет
+    другую глубину контекста и не является эталоном для 4-граммного значения.
+    Поэтому машинный итог — ВОПРОС с reason_subtype metrics_incommensurable;
+    не доказаны воспроизводимость 1,94, перенос на другие разбиения и
+    независимые реализации, а также отличие меморизации от обобщения.
+  novelty_class: новый источник и новый риск рецепта 4-граммной KN-метрики
+- source: deploy/trinity-nexus/docs/research/cycle45-priority-queue-report.md:1-180
+  case: cases/cycle45_priority_queue_recipe_20260816.py
+  claim: Отчёт Cycle 45 воспроизводимо подтверждает улучшение очереди приоритетных задач
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: a2d031272d849021
+  target: b51f418aee1ff0d5
+  novelty_key: trinity:cycle45:priority_queue_recipe:v1
+  inputs_digest: 7defeee07c1f7539
+  priority: 1
+  measurement_source: отчёт Cycle 45 Priority Queue Integration Report
+  observable: коэффициент улучшения benchmark и порядок выполнения очереди
+  models: [заявленный benchmark очереди, воспроизводимый benchmark очереди]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 машинный прогон извлекает из отдельного отчёта коэффициент
+    улучшения 0,667 и контроль порядка critical-first 100,0 процента, но отчёт
+    не предоставляет список исходных заданий, точную версию реализации,
+    среду выполнения, контрольную сумму входа, seed и независимый повтор.
+    Поэтому итог сита — ВОПРОС с reason_subtype metrics_incommensurable, а не
+    дешёвое подтверждение сравнением 0,667 с phi^-1. Не доказаны
+    воспроизводимость benchmark, перенос на другие нагрузки и реализацию,
+    либо заявка о качестве планировщика. Статус области не расширяется за
+    пределы not-evaluated.
+  novelty_class: новый источник и новый риск воспроизводимости benchmark-рецепта планировщика
+- source: deploy/trinity-nexus/docs/research/cycle46-deadline-scheduling-report.md:1-190
+  case: cases/cycle46_deadline_scheduling_recipe_20260816.py
+  claim: Отчёт Cycle 46 воспроизводимо подтверждает планирование по ближайшему дедлайну
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 5907ab0f71d0dfda
+  target: 25ce0cef7fc0c48b
+  novelty_key: trinity:cycle46:deadline_scheduling_recipe:v1
+  inputs_digest: 5bc0d4539fd913e3
+  priority: 1
+  measurement_source: отчёт Cycle 46 Deadline Scheduling
+  observable: коэффициент улучшения 1,0, порядок EDF и счётчики пропущенных дедлайнов
+  models: [заявленный benchmark EDF, воспроизводимый benchmark EDF]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 машинный прогон извлекает из отчёта коэффициент
+    улучшения 1,0 и отдельный контроль 276/276 тестов. Отчёт описывает EDF и
+    пять уровней срочности, но не предоставляет сырые задания, точную версию
+    реализации, контрольную сумму входов, источник часов, границы времени,
+    seed и независимый повтор. Вычисляемый эталон контроля проверен отдельно,
+    а сравнение 1,0 с phi^-1 намеренно не используется как подтверждение.
+    Поэтому итог сита — ВОПРОС с reason_subtype metrics_incommensurable;
+    не доказаны воспроизводимость benchmark, порядок на независимых дедлайнах,
+    перенос на другие часы и реализации либо заявка о качестве планировщика.
+    Статус области не расширяется за пределы not-evaluated.
+  novelty_class: новый источник и новый риск воспроизводимости временного benchmark EDF
+- source: deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-52-held-out-report.md:1-260
+  case: cases/golden_chain_v252_held_out_recipe_20260816.py
+  claim: Отчёт Golden Chain v2.52 подтверждает честное обобщение 4-граммной KN-модели на отложенной выборке
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 4d91f60916ac7f7c
+  target: 188ac1e9bd3df091
+  novelty_key: golden_chain:v252:held_out_recipe:v1
+  inputs_digest: e7e8cc716e2cd677
+  priority: 1
+  measurement_source: отчёт Golden Chain v2.52 Held-Out Evaluation
+  observable: PPL 1,85 на чётных чанках и доля пересечения контекстов
+  models: [заявленная оценка на отложенной выборке v2.52, воспроизводимая оценка на отложенной выборке с раздельными корпусами]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 отчёт сообщает KN 4-gram PPL 1,85 на чётных чанках,
+    99,0 процента пересечения контекстов и отдельные показатели видимых и
+    невидимых контекстов. Отчёт не предоставляет полного исходного кода
+    запуска, контрольной суммы входов и независимого повтора; 99,0 процента
+    вычислены только как отдельный контроль из напечатанных счётчиков и не
+    являются эталоном PPL. Поэтому итог сита — ВОПРОС с
+    reason_subtype metrics_incommensurable, а не подтверждение обобщаемости.
+    Не доказаны воспроизводимость 1,85, честность interleaved held-out
+    разбиения, перенос на раздельные корпуса и отличие меморизации от
+    обобщения. Статус области не расширяется за пределы not-evaluated.
+  novelty_class: новый источник и новый риск недействительной оценки на отложенной выборке из-за пересечения контекстов
+- source: scripts/height_extrapolation.py:1-15,139-151
+  case: cases/zeta_finite_height_extrapolation_20260816.py
+  claim: Линейная экстраполяция по 1/L объясняет дефицит std нулей дзета точным GUE
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: observation_mismatch
+  fingerprint: 7e1cd61dcc7ecb32
+  target: bce9d103377ede77
+  novelty_key: zeta:finite_height_extrapolation:v1
+  inputs_digest: 1114eedaa62471e3
+  priority: 1
+  measurement_source: скрипт корпуса и сырые нули Одлыжко
+  observable: свободный член линейной экстраполяции std по 1/L
+  models: [точный GUE Фредгольма, Монте-Карло GUE-матриц, линейная поправка 1/L]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На CPython 3.14.3 в Linux-песочнице кейс заново считает десять полос
+    нулей и получает свободный член 0,4289004235242542, тогда как точный
+    эталон GUE через детерминант Фредгольма даёт 0,4242576222440628.
+    Отклонение +1,09 процента превышает заранее заданную терпимость 1,00
+    процента; независимый матричный контроль отличается от эталона на
+    0,59 процента. Поэтому сито машинно выдало ОПРОВЕРГНУТО с
+    reason_subtype observation_mismatch. Вывод относится только к заявлению
+    линейной экстраполяции по 1/L на файле zeros_odlyzko_100k.txt и не
+    доказывает отсутствие или наличие полной конечновысотной поправки BBLM,
+    другие наборы нулей, диапазоны, развёртки или версии рантайма.
+  novelty_class: новый observable и новая модель конечновысотной поправки
+- source: deploy/trinity-nexus/docs/research/cycle46-federated-learning-report.md:1-220
+  case: cases/cycle46_federated_privacy_recipe_20260816.py
+  claim: Отчёт Cycle 46 о федеративном обучении раскрывает воспроизводимый рецепт приватности
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 316081a01eedbe4d
+  target: bb4fc0bfa2893d8c
+  novelty_key: trinity:cycle46:federated_privacy_recipe:v1
+  inputs_digest: 39544aaf806c5277
+  priority: 1
+  measurement_source: отчёт Cycle 46 Federated Learning Protocol
+  observable: epsilon=1,0, delta=1e-5, множитель шума=1,1 и средняя точность=0,93
+  models: [заявленный федеративный протокол Cycle 46, воспроизводимый протокол с независимым privacy accounting]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На указанных версиях CPython отчёт машинно содержит epsilon 1,0, delta 1e-5,
+    множитель шума 1,1, пять стратегий агрегации, среднюю точность 0,93 и
+    контроль 18/18 тестов. Однако не предоставлены сырые клиентские выборки,
+    точные границы разбиений, уравнение privacy accountant, детерминированный
+    генератор шума, seed, контрольная сумма реализации и независимый повтор.
+    Поэтому сито выдало ВОПРОС с reason_subtype metrics_incommensurable;
+    контроль 18/18 не является эталоном приватности. Не доказаны
+    воспроизводимость epsilon/delta, корректность накопления бюджета, защита
+    от отравления и перенос на другие данные, реализации и ОС.
+  novelty_class: новый источник и новый риск воспроизводимости privacy budget и федеративной агрегации
+- source: docs/docs/research/trinity-golden-chain-v2-50-kneser-ney-report.md:1-232
+  case: cases/golden_chain_v250_kneser_ney_recipe_20260816.py
+  claim: Оценочная KN-перплексия 4,84 в Golden Chain v2.50 воспроизводима по полному рецепту
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 109f3101a38e48d2
+  target: 3e843747620be3de
+  novelty_key: golden_chain:v250:kneser_ney_recipe:v1
+  inputs_digest: ded5b962dede71d9
+  priority: 1
+  measurement_source: отчёт Golden Chain v2.50 о сглаживании Kneser–Ney
+  observable: оценочная перплексия Kneser–Ney на корпусе Shakespeare
+  models: [заявленная KN-перплексия, воспроизводимая KN-перплексия по независимому рецепту]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На указанных версиях CPython отчёт машинно содержит оценочную KN-перплексию
+    4,84, базовую Laplace-перплексию 28,50 и контроль 47/47 интеграционных
+    тестов; наблюдение и контроль извлечены разными путями. Полный рецепт
+    независимого воспроизведения отсутствует: не заданы сырой корпус, точные
+    границы train/eval, точная токенизация, seed, commit реализации,
+    контрольная сумма входа и независимый повтор. Поэтому сито выдало
+    ВОПРОС с reason_subtype metrics_incommensurable. Не доказаны
+    воспроизводимость 4,84, перенос на независимые разбиения и отличие
+    меморизации от обобщения; статус области не расширяется за пределы
+    not-evaluated.
+  novelty_class: новый источник и новая категория риска рецепта сглаживания и утечки контекста
+- source: deploy/trinity-nexus/docs/research/cycle50-adaptive-caching-report.md:1-190
+  case: cases/cycle50_adaptive_caching_recipe_20260816.py
+  claim: Отчёт Cycle 50 воспроизводимо подтверждает адаптивное кэширование
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 9c8e71eb340f1ca9
+  target: 04ca9fd311037b5e
+  novelty_key: trinity:cycle50:adaptive_caching_recipe:v1
+  inputs_digest: 6eb38d2dd0ceb9b9
+  priority: 1
+  measurement_source: отчёт Cycle 50 Adaptive Caching & Memoization
+  observable: Improvement Rate 1,000, контроль 18/18 и сводные показатели кэширования
+  scope_status: not-evaluated
+  scope_statement: >-
+    На указанных версиях CPython отчёт машинно содержит Improvement Rate 1,000,
+    контроль 18/18, шесть политик вытеснения, VSA-поиск, MESI-согласованность
+    и параметры мемоизации. Наблюдение и контроль извлечены разными путями.
+    Не предоставлены сырая нагрузка, точная реализация, среда выполнения,
+    контрольная сумма входа, seed и независимый повтор. Поэтому сито выдало
+    ВОПРОС с reason_subtype metrics_incommensurable; контроль 18/18 не является
+    эталоном benchmark кэширования. Не доказаны воспроизводимость Improvement
+    Rate, корректность адаптивного выбора политики, свойства VSA/MESI и перенос
+    на другие нагрузки, реализации и ОС.
+  novelty_class: новый источник и новый риск воспроизводимости benchmark кэширования и мемоизации
+- source: deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:1-120
+  case: cases/golden_chain_v240_trigram_coverage_recipe_20260816.py
+  claim: Отчёт Golden Chain v2.40 воспроизводимо подтверждает рост покрытия триграмм
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 2a1554b4d9a39cbb
+  target: c9834bd0c725571a
+  novelty_key: golden_chain:v240:trigram_coverage_recipe:v1
+  inputs_digest: 2635099cd9629f12
+  priority: 1
+  measurement_source: отчёт Golden Chain v2.40 Large Corpus
+  observable: покрытие триграмм большого корпуса 3,4 процента против 1,8 процента
+  models: [заявленная статистика покрытия v2.40, воспроизводимая статистика на сыром корпусе и точной реализации]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На указанных версиях CPython отчёт машинно содержит покрытие триграмм
+    3,4 процента, 311 ключей против 161 и отдельный контроль 27/27
+    интеграционных тестов. Однако сырой корпус, точная реализация, границы
+    train/eval, токенизация, seed, контрольная сумма входов и независимый
+    повтор не предоставлены. Поэтому сито выдало ВОПРОС с
+    reason_subtype metrics_incommensurable; отношение 311/161 и округление
+    1,9x не использовались как дешёвое подтверждение. Не доказаны
+    воспроизводимость покрытия, перенос на другие корпуса и реализации,
+    либо связь покрытия с обобщением модели. Статус области не расширяется
+    за пределы not-evaluated.
+  novelty_class: новый observable покрытия и новый риск воспроизводимости статистики корпуса
+- source: docs/docs/research/trinity-ann-benchmark-verdict-report.md:1-240
+  case: cases/ann_brute_simd_benchmark_recipe_20260817.py
+  claim: Отчёт ANN Brute+SIMD раскрывает воспроизводимый benchmark точности поиска
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 7b46977a53046e55
+  target: 40004953629ae961
+  novelty_key: trinity:ann:brute_simd_benchmark_recipe:v1
+  inputs_digest: 87e8518346350595
+  priority: 1
+  measurement_source: отчёт ANN Benchmark Verdict
+  observable: полнота поиска Brute+SIMD 100 процентов на наборах 1000 и 5000 символов
+  models: [заявленный benchmark Brute+SIMD, независимый benchmark на исходных векторах и запросах]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На указанных версиях CPython отчёт машинно содержит строку о полноте
+    поиска Brute+SIMD 100 процентов, отдельный контроль HNSW около 95 процентов
+    и отдельный контроль девяти тестов BruteIndex. Наблюдение и контроли
+    извлечены разными шаблонами. Отчёт не предоставляет исходные векторы,
+    запросы, разметку истинных соседей, точное определение полноты, модель
+    эмбеддингов, контрольные суммы входов, компилятор, аппаратную среду, seed
+    или независимый повтор. Поэтому сито выдало ВОПРОС с
+    reason_subtype metrics_incommensurable, а не подтверждение числа.
+    Не доказаны воспроизводимость полноты на указанных размерах, перенос на
+    другие запросы и эмбеддинги, а также заявленные задержки и расход памяти;
+    статус области не расширяется за пределы not-evaluated.
+  novelty_class: новый источник и новый риск воспроизводимости benchmark точности ANN
+- source: docs/docs/research/trinity-golden-chain-v2-49-penalty-report.md:1-220
+  case: cases/golden_chain_v249_generation_quality_recipe_20260817.py
+  claim: Генерационный штраф Golden Chain v2.49 улучшает разнообразие без улучшения качества модели
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 2832576e54e9decd
+  target: fa72892887a2dc11
+  novelty_key: golden_chain:v249:generation_quality_recipe:v1
+  inputs_digest: 4f15299a24f513d5
+  priority: 1
+  measurement_source: отчёт Golden Chain v2.49
+  observable: уникальные слова при penalty+blocking и CE/PPL интерполированной модели
+  models: [распределение модели без генерационного штрафа, распределение после penalty+blocking]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 машинный прогон извлекает из сводной таблицы 30 из 32
+    уникальных слов при alpha=3,0 и PPL 28,50, а отдельный блок Test 44 даёт
+    базовый контроль 2 из 32; контроль интеграционных тестов равен 45 из 45.
+    Эти пути независимы как разбор отчёта, но не образуют вычислимого эталона
+    генерации: отсутствуют исходный корпус, полный код запуска, seed, состояние
+    генератора, точные границы оценки, контрольная сумма входов и независимый
+    повтор. Поэтому итог сита — ВОПРОС с reason_subtype
+    metrics_incommensurable, а не подтверждение улучшения качества модели.
+    Не доказано, что рост разнообразия означает улучшение языковой компетентности
+    или переносится на другие температуры, alpha, корпуса, реализации и ОС.
+  novelty_class: новый источник и новый риск смешения генерационной эвристики с качеством модели
+- source: docs/docs/research/trinity-golden-chain-v3-0-absolute-report.md:1-180
+  case: cases/golden_chain_v30_absolute_recipe_20260817.py
+  claim: Golden Chain v3.0 воспроизводимо проходит 764 теста
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 01ba6fbb1abf1555
+  target: 830d789647c5ee93
+  novelty_key: golden_chain:v30:test_count_recipe:v1
+  inputs_digest: 1c7ace52f744d9fe
+  priority: 1
+  measurement_source: отчёт Golden Chain v3.0
+  observable: число тестов v3.0 и заявленный статус прохождения
+  models: [заявленный прогон тестов Golden Chain v3.0, воспроизводимый прогон из исходного дерева с журналом]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 машинный прогон извлекает из таблицы метрик число 764
+    и отдельный статус прохождения из заключения отчёта. Однако отчёт не
+    предоставляет сырой журнал тестов, исходный commit, версию компилятора,
+    контрольную сумму входов, команду запуска и независимый повтор. Поэтому
+    сито выдало ВОПРОС с reason_subtype metrics_incommensurable, а не
+    подтверждение публичного заявления о полном прохождении. Не доказаны
+    воспроизводимость счётчика, состав пропусков, перенос на другие деревья,
+    компиляторы, версии рантайма и ОС.
+  novelty_class: новый источник и новый риск неподтверждённого публичного заявления о полном прохождении тестов
+
+- source: docs/docs/math-foundations/sacred-predictions.md:1-322
+  case: cases/sacred_predictions_registry_recipe_20260817.py
+  claim: Реестр Sacred Predictions v1.0 раскрывает воспроизводимый рецепт семи прогнозов
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 908b34880ebb6c7b
+  target: 17db471a95c67542
+  novelty_key: sacred:predictions:registry_recipe:v1
+  inputs_digest: 8dd446d1cf937945
+  priority: 1
+  measurement_source: реестр Sacred Predictions v1.0
+  observable: семь идентифицированных прогнозов, их статусы и карточки формул
+  models: [публичная таблица реестра, подробные карточки с независимым журналом проверки]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На указанных версиях CPython таблица и подробные карточки машинно дают
+    согласованный структурный счёт семи идентификаторов и семи ожидающих
+    прогнозов; подстановка и положительный контроль различены, а второй путь
+    видит семь формульных карточек, но не подтверждает статусы публикации.
+    Сам документ не содержит криптографического отпечатка, сырого журнала
+    проверки, независимого повтора и внешней ссылки на каждую цель. Поэтому
+    сито выдало ВОПРОС с reason_subtype metrics_incommensurable, а не дешёвое
+    подтверждение счётчика. Не доказаны неизменность реестра, подлинность
+    временной метки, экспериментальная проверка семи прогнозов и перенос
+    статусов на независимые источники, версии рантайма и ОС.
+  novelty_class: новый источник и новый риск неподтверждённой неизменности реестра внешних прогнозов
+
+- source: .trinity/ralph/golden_chain/GOLDEN_CHAIN_FINAL_REPORT.md:1-180
+  case: cases/golden_chain_final_report_consistency_20260817.py
+  claim: Агрегат прогресса Golden Chain согласован с детальной таблицей
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: observation_mismatch
+  fingerprint: 47f40e3b6629cc9c
+  target: ca3db9da7ff7e33f
+  novelty_key: golden_chain:final_report:aggregate_consistency:v1
+  inputs_digest: 16fa51fc320678b9
+  priority: 1
+  measurement_source: "корпус Trinity: Golden Chain Final Report"
+  observable: напечатанная доля Overall против суммы детальных строк
+  models: [напечатанный агрегат отчёта, агрегат, выведенный из детальных строк]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На CPython 3.14.3 сито извлекает из строки Overall значение 78 процентов
+    и 42 из 54, а из семи строк Tech Tree Progress вычисляет 39 из 42 и
+    92,8571428571 процента. Разность является машинным
+    observation_mismatch: агрегат отчёта не согласован с собственной
+    детализацией; альтернативный эталон на Decimal и CSV-разборе согласован.
+    Вывод относится только к внутренней согласованности этого файла и не
+    доказывает фактический прогресс проекта, независимый повтор, перенос на
+    другие отчёты, версии рантайма или ОС.
+  novelty_class: новый источник и новая категория риска внутренней несогласованности агрегированной статистики
+- source: docs/docs/research/trinity-level11-neuro-symbolic-bench-report.md:1-220
+  case: cases/level11_neurosymbolic_benchmark_recipe_20260817.py
+  claim: Отчёт Level 11.31 воспроизводимо подтверждает нейросимвольный benchmark 162 из 166
+  verdict: ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО
+  reason_subtype: independence_unknown
+  fingerprint: 64fb49f26b53ac20
+  target: cbe109fa080ec301
+  novelty_key: trinity:level11.31:neurosymbolic_benchmark_recipe:v1
+  inputs_digest: 5e9d51764045c3f8
+  priority: 1
+  measurement_source: отчёт Level 11.31 Neuro-Symbolic Bench Completion
+  observable: агрегат 162 из 166, разбиение Test 145/146/147 и условия bAbI/CLUTRR
+  models: [заявленный агрегат нейросимвольного benchmark, воспроизводимый прогон сырых запросов bAbI/CLUTRR]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 сито извлекает из сводки 162 правильных ответа из 166
+    и из таблицы Key Metrics независимо вычисляет 66/70, 70/70 и 26/26,
+    что даёт тот же агрегат; отдельный CSV-разбор согласован. Однако отчёт не
+    предоставляет сырые запросы, эталонные ответы, полный рецепт разбиения,
+    контрольную сумму реализации, seed и независимый повтор. Поэтому
+    машинный итог — ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО с reason_subtype
+    independence_unknown и scope_status not-evaluated; согласованная сумма
+    компонент не является доказательством качества benchmark или заявки SOTA.
+    Не доказаны воспроизводимость на независимых данных, перенос на другие
+    задачи, реализации, версии рантайма и ОС.
+  novelty_class: новый источник и новый риск несопоставимости benchmark с заявленным SOTA
+
+- source: deploy/trinity-nexus/docs/research/trinity-level11-rdf-multi-hop-report.md:1-260
+  case: cases/level11_rdf_multihop_recipe_20260817.py
+  claim: Отчёт Level 11.2 раскрывает воспроизводимый рецепт RDF и многошагового вывода
+  verdict: ВОПРОС
+  reason_subtype: metrics_incommensurable
+  fingerprint: 6d643de064bfa74d
+  target: dad5a0caabfde103
+  novelty_key: trinity:level11.2:rdf_multihop_recipe:v1
+  inputs_digest: f282bdd749166a46
+  priority: 1
+  measurement_source: отчёт Level 11.2 RDF Triple Reasoning + Bipolar Multi-Hop Inference
+  observable: три агрегата RDF, многошагового вывода и суперпозиции вместе с полнотой воспроизводимого рецепта
+  models: [заявленный RDF benchmark, воспроизводимый запуск на исходных векторах, запросах и разметке]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 машинный прогон извлекает из сводной таблицы 24/24,
+    4/4 и 6/6, а отдельные подробные строки согласуются с этими агрегатами.
+    Кейс имеет guard module_from_spec без регистрации в sys.modules и
+    отрицательный контроль с той же формой метрик. Однако отчёт не содержит
+    исходных векторов, полного набора запросов, истинной разметки, контрольной
+    суммы входов и реализации, начального состояния, версии реализации или
+    независимого повтора. Функция полного эталона намеренно не подключена к
+    claim: при отсутствии обязательных входов С1 машинно даёт OPEN. Поэтому
+    итог сита — ВОПРОС с reason_subtype metrics_incommensurable, а не дешёвое
+    подтверждение счётчиков. Не доказаны воспроизводимость benchmark,
+    перенос на другие графы и запросы, заявленная глубина вывода и полная
+    независимость испытаний; статус области остаётся not-evaluated.
+  novelty_class: новый источник и новый риск невоспроизводимости RDF и многошагового benchmark
+
+- source: .trinity/experience/DELTA-001.md:43-47
+  case: cases/delta001_alpha_inverse_source_20260817.py
+  claim: Сводка DELTA-001 ошибочно заявляет воспроизведение обратной постоянной тонкой структуры
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: external_mismatch
+  fingerprint: 79122fa91af6aa9a
+  target: 7133bd218d0f6254
+  novelty_key: trinity:delta001:alpha_inverse:independent_source:v1
+  inputs_digest: ca439b3f7dbe1077
+  priority: 2
+  measurement_source: сводка DELTA-001 и CODATA 2022
+  observable: напечатанное α⁻¹ и формула α = 4φ²/(9π²)
+  models: [формула и α⁻¹ из сводки DELTA-001, независимый пересчёт обратной величины]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    В области охвата для класса внешних высокоточных формул на указанных
+    версиях CPython (CPython 3.14.3 и CPython 3.14.4) машинный прогон
+    извлекает α⁻¹=137,036000, а вычисляет из напечатанной формулы α эталон
+    8,482170207826316. Независимая логарифмическая сборка совпадает с эталоном,
+    положительный контроль жив, С4 и С14 отклоняют подстановки. С2 и С3 дают
+    расхождение +1515,58 процента, а С15 — -6,12×10^9 сигм относительно
+    CODATA 137,035999084 ± 0,000000021; поэтому вердикт сита
+    ОПРОВЕРГНУТО с reason_subtype external_mismatch. Вывод относится к
+    внутренней несогласованности записи DELTA-001 и не доказывает физическую
+    ложность самой постоянной, корректность других формул, независимость
+    источника, перенос на другие рантаймы или ОС.
+  novelty_class: новый источник и новая категория ошибки инвертирования величины
+
+- source: docs/papers/trinity-sacred-mathematics.tex:1499
+  case: cases/sacred_tsirelson_exact_external_20260817.py
+  claim: Формула Tsirelson в рукописи Trinity воспроизводит точную квантовую границу
+  verdict: ВОПРОС
+  reason_subtype: external_mismatch
+  fingerprint: 6874ede904d87a70
+  target: 2737a92d64757927
+  novelty_key: trinity:sacred_math:tsirelson_exact_external:v1
+  inputs_digest: be1390f05435298b
+  priority: 1
+  measurement_source: точная граница Tsirelson и рукопись Trinity
+  observable: вычисленная величина Tsirelson из параметров (8,4,-3,0,-2)
+  models: [формула n·3^k·π^m·φ^p·e^q из рукописи, точная граница 2√2]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 машинный прогон извлекает из отдельной строки таблицы
+    Computed значение 2,82837 и независимо вычисляет из параметров (8,4,-3,0,-2)
+    эталон 2,828371314671409; второй логарифмический маршрут согласуется с
+    эталоном, а положительный контроль и три подстановки различаются. Внешняя
+    точная цель 2√2 = 2,8284271247461903 с неопределённостью 1e-15 взята из
+    публикации Tsirelson (https://doi.org/10.1007/BF01646019). С2, С3, С4,
+    С5, С8, С12, С16, С17, С18 и С20 прошли; С15 измерило расхождение
+    формулы около -5,58×10^10 сигм, но С19 и С21 не дали закрыть вывод как
+    строгое опровержение. Поэтому итог сита — ВОПРОС с reason_subtype
+    external_mismatch и scope_status not-evaluated, а не дешёвое подтверждение
+    округлённой строки. Не доказаны перенос на другие формулы, рантаймы и ОС,
+    а также окончательная физическая интерпретация записи.
+  novelty_class: новый источник и новая категория ошибки точного внешнего эталона
+
+- source: docs/docs/research/bitnet-report.md:1-220
+  case: cases/bitnet_coherence_throughput_recipe_20260817.py
+  claim: Отчёт BitNet отделяет связную генерацию от производительности теста ядра
+  verdict: ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО
+  reason_subtype: independence_unknown
+  fingerprint: 542231fe00d3bc0b
+  target: 446dcd3a3acdaf8a
+  novelty_key: trinity:bitnet:coherence_throughput_recipe:v1
+  inputs_digest: 247c2ca5bedd72da
+  priority: 1
+  measurement_source: отчёт BitNet b1.58 Coherence Report
+  observable: разделение связных примеров, предупреждения токенизатора и режима измерения скорости от полной генерации
+  models: [режим ЦП, тест ядра I2_S, генерация на этапе ГП]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 сито извлекает из отчёта три структурных свидетельства:
+    второй этап содержит связные примеры генерации, загрузка содержит
+    предупреждение о pre-tokenizer, а блок производительности прямо отделяет
+    скорость ядра I2_S от полной генерации от начала до конца. Наблюдение,
+    вычисляемый эталон по разделам и альтернативный построчный эталон
+    согласованы; подстановка и отрицательный контроль различаются.
+    Это подтверждает только внутреннюю структуру раскрытия отчёта. Поскольку
+    два эталонных маршрута используют один документ и независимость испытаний
+    не установлена, итог сита — ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО с
+    reason_subtype independence_unknown и scope_status not-evaluated.
+    Не доказаны достоверность скорости, качество модели, исправность
+    токенизатора, причинность различия ЦП и ГП, воспроизводимость на
+    независимом запуске, перенос на другие версии рантайма и ОС.
+  novelty_class: новый источник и новый риск смешения качества генерации с производительностью теста ядра
+
+- source: docs/research/JEPAT/experiments.md:10-33
+  case: cases/jepa_experiment_consistency_20260817.py
+  claim: Сводка T-JEPA согласована с таблицей временного benchmark
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: observation_mismatch
+  fingerprint: ddd4982c2a0f2322
+  target: 28ab7f7ef8043ed2
+  novelty_key: trinity:jepa:time_series_consistency:v1
+  inputs_digest: de2136ec577dc4ce
+  priority: 1
+  measurement_source: "корпус Trinity: T-JEPA Experimental Results"
+  observable: сводные начальный и конечный MSE и шаг минимума против таблицы Results
+  models: [сводка Key Findings, временной ряд таблицы Results]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 машинный прогон отдельно извлекает сводку Key Findings
+    (MSE 1,95 → 0,30, лучший шаг 3965) и вычисляет эталон из двенадцати
+    строк Results (начало 1,812, минимум 0,302 на шаге 3965). Второй путь
+    CSV-разбора совпадает с эталоном, подстановка и контроль различаются.
+    Сито даёт ОПРОВЕРГНУТО с reason_subtype observation_mismatch: начальный
+    MSE сводки отличается от первой строки таблицы на 7,62 процента, а
+    конечный — на 0,66 процента. Вывод относится только к внутренней
+    согласованности этого отчёта; не доказаны качество JEPA, отсутствие
+    утечки выбора лучшего шага, воспроизводимость обучения, перенос на
+    другие конфигурации, версии CPython и ОС.
+  novelty_class: новый источник и новый риск несогласованности лучшего шага и сводной метрики
+- source: specs/physics/gamma_conjecture.t27:4-20
+  case: cases/gamma_bi_meissner_equation_20260817.py
+  claim: Формула gamma_BI = φ⁻³ согласуется с уравнением Мейсснера
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: external_mismatch
+  fingerprint: 9e85cef8432e841d
+  target: 2eef649277463cd1
+  novelty_key: trinity:gamma_bi:meissner_equation:v1
+  inputs_digest: 925172c39fe861f4
+  priority: 1
+  measurement_source: спецификация Trinity и независимое уравнение Мейсснера
+  observable: GAMMA_PHI из спецификации и корень уравнения Мейсснера
+  models: [формула φ⁻³, уравнение Мейсснера с суммой по k]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    В области охвата для класса внешних проверок рецепта параметра
+    Барберо–Иммирци на CPython 3.14.3 машинный прогон извлекает GAMMA_PHI
+    0,23606797749978967 и независимо вычисляет внешний корень уравнения
+    Мейсснера sum_k exp(-πγ√(k(k+2))) = 1/2: 0,23753295796592067 ± 1e-12.
+    Два вычисляемых маршрута эталона φ⁻³ согласованы, подстановки,
+    положительный контроль, остаток ряда, множественность и эффективное число
+    попыток прошли. С15 фиксирует 1,464980466e+09 сигма между формулой и
+    внешней целью, поэтому сито выдало ОПРОВЕРГНУТО с reason_subtype
+    external_mismatch. Вывод ограничен этой формулой, источником и рецептом;
+    не доказаны другие значения параметра, альтернативные варианты LQG,
+    независимость публикационной интерпретации и перенос на другие ОС или
+    версии рантайма.
+  novelty_class: новый источник и новая категория ошибки рецепта внешнего эталона
+
+- source: docs/docs/research/trinity-golden-chain-v2-46-word-trigram-report.md:1-220
+  case: cases/golden_chain_v246_phrase_memorization_recipe_20260817.py
+  claim: Отчёт Golden Chain v2.46 отделяет запоминание фраз от связной генерации
+  verdict: ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО
+  reason_subtype: independence_unknown
+  fingerprint: 55df6f5f7ff32ea1
+  target: 3b44950ac21c05f5
+  novelty_key: golden_chain:v246:phrase_memorization_recipe:v1
+  inputs_digest: e0f1fbf13a01503f
+  priority: 1
+  measurement_source: отчёт Golden Chain v2.46 о word-trigram и генерации
+  observable: структурные свидетельства фразового воспроизведения при T=0,3, признание отсутствия связных предложений и PPL eval
+  models: [заявленное фразовое воспроизведение, связная генерация новых предложений]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 машинный прогон извлекает из отчёта v2.46 фразовое
+    воспроизведение, низкотемпературный режим T=0,3, признание «Not coherent
+    English sentences» и Word Trigram PPL Eval 21,16. Наблюдение, вычисляемый
+    эталон по разделам, альтернативный построчный эталон, подстановка и
+    отрицательный контроль прошли соответствующие применимые сита; это
+    структурный аудит одного документа, а не оценка качества модели.
+    Независимость испытаний и независимость двух маршрутов от исходного отчёта
+    не установлены, поэтому итог сита — ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО с
+    reason_subtype independence_unknown и scope_status not-evaluated. Не
+    доказаны воспроизводимость генерации, обобщение, качество связных
+    предложений, перенос на другие корпуса, модели, версии CPython и ОС.
+  novelty_class: новый источник и новая категория риска смешения запоминания фраз с качеством генерации
+- source: deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-38-dim1024-report.md:1-260
+  case: cases/golden_chain_v238_dim1024_quality_recipe_20260817.py
+  claim: Отчёт Golden Chain v2.38 отделяет улучшение оценочных метрик от связной генерации
+  verdict: ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО
+  reason_subtype: independence_unknown
+  fingerprint: 47db2184f89bf481
+  target: 8fa256ac238a915c
+  novelty_key: golden_chain:v238:dim1024_quality_recipe:v1
+  inputs_digest: 8a7e8dbb2fcaf150
+  priority: 1
+  measurement_source: отдельный отчёт Golden Chain v2.38 о размерности HV
+  observable: сопоставление dim=1024 loss/PPL с явным признанием случайной генерации
+  models: [оценка loss/PPL на корпусе Shakespeare, качественная оценка связности генерации]
+  scope_status: not-evaluated
+  scope_statement: >-
+    В области охвата на CPython 3.14.3 машинный прогон извлекает из отчёта
+    dim=1024 SR Eval Loss 0,7552, MR Eval Loss 0,7730, Test PPL 1,8 и
+    диапазон косинусного сигнала 0,7388, а отдельный раздел прямо указывает,
+    что генерация остаётся не связным английским текстом. Эталон из Test 22,
+    Test 23 и раздела ограничений и альтернативный построчный эталон
+    согласованы; подстановка и отрицательный контроль различаются. Это
+    проверяет только внутреннюю структуру одного документа, а не качество
+    модели. Независимость испытаний и источника не установлена, поэтому
+    итог сита — ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО с reason_subtype
+    independence_unknown и scope_status not-evaluated. Не доказаны
+    воспроизводимость обучения, причинность улучшения от размерности,
+    перенос на другие корпуса, версии CPython и ОС.
+  novelty_class: новый источник и новая категория риска смешения оценочных метрик с качеством генерации
+
+- source: data/zeta/zeta_bin_analysis_update.md:12-14,31-40
+  case: cases/khinchin_estimator_recipe_20260816.py
+  claim: Сводка Khinchin K по десяти корзинам равна 2,6201 ± 0,0293
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: recipe_reproduction
+  fingerprint: 73f0ab80da4198f7
+  target: 0de15445d58792a6
+  novelty_key: zeta:khinchin_estimator_recipe:v1
+  inputs_digest: 02b12e8636dfa325
+  priority: 1
+  measurement_source: CSV zeta_figure1_K и таблица zeta_bin_analysis_update
+  observable: среднее и популяционный разброс K по десяти высотным корзинам
+  models: [среднее и pstdev по CSV, среднее и pstdev по таблице Markdown]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    В области охвата для класса воспроизводимых рецептов сводной статистики
+    Khinchin на CPython 3.14.3 машинный прогон извлекает заявленное
+    2,6201 ± 0,0293 из Markdown, вычисляет среднее 2,62011 и популяционный
+    разброс 0,029261252536417506 по десяти значениям CSV через Decimal,
+    а reference_alt получает те же значения из таблицы Markdown через
+    стандартную библиотеку. С1, С2, С3, С4, С5, С12, С13 и С14 прошли;
+    подстановка и отрицательный контроль различаются. Сито выдало
+    ПОДТВЕРЖДЕНО с reason_subtype recipe_reproduction. Это фиксирует
+    воспроизводимость данного рецепта и внутреннюю согласованность двух
+    представлений, но не доказывает универсальность константы Khinchin,
+    правильность выбора оценивания, независимость исходных данных,
+    воспроизводимость сырых разложений, перенос на другие корпуса, ОС или
+    версии рантайма.
+  novelty_class: новый рецепт агрегирования и новая категория риска неоднозначности оценивания
+- source: docs/docs/research/delta-001/phase4-consistency.md:72-86
+  case: cases/delta001_gamma_entropy_comparison_20260818.py
+  claim: Расхождение γ = φ⁻³ с кандидатом 0,274 равно 13,9 процента
+  verdict: ПОДТВЕРЖДЕНО
+  reason_subtype: confirmed
+  fingerprint: 1f8752f2e0017dd6
+  target: af73be4dfcfc057f
+  novelty_key: trinity:delta001:gamma_entropy_comparison:v1
+  inputs_digest: 5e321473565ec35f
+  priority: 2
+  measurement_source: таблица сравнения кандидатов в DELTA-001 Phase 4
+  observable: относительное расхождение φ⁻³ и кандидата 0,274
+  models: [расчёт φ⁻³ двойной точностью, расчёт φ⁻³ Decimal]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    Для указанной строки отчёта DELTA-001 на CPython 3.14.3 машинный прогон
+    извлекает 13,9 процента, вычисляет φ⁻³ = 0,23606797749978967 и
+    относительное расхождение с кандидатом 0,274 равным 13,84380383219356
+    процента; округлённое утверждение проходит с допуском 1 процента.
+    Второй маршрут через Decimal.sqrt и Decimal-степень совпадает с эталоном,
+    положительный контроль и две подстановки прошли. Вердикт относится только
+    к числовой согласованности этой строки и не доказывает физическую
+    предпочтительность кандидата, корректность модели LQG или перенос на
+    другие рантаймы и ОС. Проверено на указанной версии CPython.
+  novelty_class: новый источник и новая категория сравнения альтернативных параметров
+
+- source: docs/docs/math-foundations/sacred-formulas.md:273-283
+  case: cases/sacred_two_formula_composition_recipe_20260817.py
+  claim: Составление двух священных формул воспроизводимо как метод ускорения
+  verdict: ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО
+  reason_subtype: independence_unknown
+  fingerprint: df8089533b810fb6
+  target: f3db66732fe725e9
+  novelty_key: sacred:two_formula_composition:recipe:v1
+  inputs_digest: e969471db87977c8
+  priority: 1
+  measurement_source: раздел Two-Formula Composition в Sacred Formulas
+  observable: наличие воспроизводимого рецепта для трёх коэффициентов ускорения после сложения двух формул
+  models: [одиночная формула, сумма двух формул]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 машинный прогон извлекает три строки таблицы с
+    коэффициентами 3905 раз, 1610 раз и 121 раз отдельным маршрутом, а вычисляемый
+    эталон проверяет обязательные поля рецепта. Альтернативный построчный
+    эталон согласован; подстановка полного рецепта и отрицательный контроль
+    различены. С1, С2, С3, С4, С5, С12, С13 и С14 прошли. Исходные два
+    выражения для каждой цели, правило сложения, единицы, нормировка,
+    исходные данные и независимый повтор в источнике не заданы, поэтому
+    машинный итог — ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО с reason_subtype
+    independence_unknown и scope_status not-evaluated. Не доказаны сами
+    коэффициенты ускорения как воспроизводимый результат, применимость метода,
+    причинность улучшения, независимость испытаний, перенос на другие корпуса,
+    версии CPython и ОС.
+  novelty_class: новый риск смешения таблицы улучшений с воспроизводимым составным рецептом
+- source: deploy/trinity-nexus/benchmarks/BENCHMARK_REPORT.md:1-63
+  case: cases/vsa_simd_benchmark_recipe_20260818.py
+  claim: Отчёт VSA SIMD отделяет замер dot product от полноценной воспроизводимости производительности
+  verdict: ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО
+  reason_subtype: independence_unknown
+  fingerprint: 569d18f203b780fa
+  target: 7d11ed01fc624a65
+  novelty_key: trinity:vsa_simd:benchmark_recipe:v1
+  inputs_digest: 673cbbcc54ea5c5e
+  priority: 1
+  measurement_source: "корпус Trinity: VSA SIMD Benchmark Report"
+  observable: разделение параметров dot product, среды замера и отсутствующих частей рецепта
+  models: [заявленный замер VSA SIMD, воспроизводимый benchmark на исходных векторах и реализации]
+  scope_status: not-evaluated
+  scope_statement: >-
+    На CPython 3.14.3 машинный прогон извлекает карту отчёта с размерностью
+    256, режимом измерения времени операции, строкой dot product и явным
+    отсутствием commit, сырых входов, повторов и контрольной суммы. Эталон
+    строится по раздельным блокам отчёта, альтернативный эталон — отдельным
+    табличным разбором; подмена задержки и неполная нулевая карта различены.
+    С1, С2, С3, С4, С5, С12, С13 и С14 прошли. Отчёт не предоставляет
+    независимый повтор, поэтому итог — ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО с
+    reason_subtype independence_unknown и scope_status not-evaluated. Не
+    доказаны абсолютная скорость, перенос на другие аппаратные среды,
+    воспроизводимость исходных измерений и полноценная производительность
+    архитектуры.
+  novelty_class: новый источник и новый риск смешения замера ядра с полной производительностью
+- source: docs/papers/README_FOR_SCIENTISTS.md:38-54
+  case: cases/readme_mp_me_external_20260818.py
+  claim: Формула 6π⁵ в научном обзоре воспроизводит отношение масс протона и электрона
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: external_mismatch
+  fingerprint: cfc0e64af34b9390
+  target: c80fe0d46852254e
+  novelty_key: trinity:readme:mp_me_external:v1
+  inputs_digest: 7424155384454ccb
+  priority: 2
+  measurement_source: научный обзор Trinity и внешний эталон CODATA/NIST
+  observable: отношение масс протона и электрона
+  models: [формула 6π⁵, измерение CODATA/NIST]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    Опровергнуто в области охвата для класса внешних проверок физических
+    формул на CPython 3.14.3: отдельный научный обзор сообщает формулу 6π⁵ и
+    число 1836,15267343, тогда как вычисление эталона даёт 1836,1181087116884.
+    Внешняя цель CODATA 2022 задаёт 1836,152673426 ± 0,000000032
+    (https://physics.nist.gov/cuu/pdf/wall_2022.pdf); отклонение эталона
+    составляет −1 080 147 сигма, а числа источника и эталона различаются.
+    С1, С4, С5, С12, С16, С17, С18, С19 и С20 прошли; С2, С3 и С15
+    зафиксировали несоответствие, С10 имеет объявленный автоматический
+    пропуск для детерминированной выборки, С21 оставил открытым вопрос о
+    алгебраической форме. Новый источник и внешний риск не являются дешёвой
+    проверкой отношения двух напечатанных чисел. Не доказаны физическая
+    интерпретация формулы, универсальность модели и перенос на другие
+    документы, источники, версии CPython и ОС.
+  novelty_class: новый источник и новый внешний риск публичного утверждения

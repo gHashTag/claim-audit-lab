@@ -23,6 +23,9 @@
 * **unsupported** — заявлено, что конструкция НЕ разбирается, с причиной. Это
   сильнее, чем not-evaluated: здесь есть фикстура, которая обязана давать
   отрицательный ответ, и её внезапный положительный ответ — расхождение.
+* **platform-unverified** — после двух последовательных пропусков на одной
+  платформе охват запрещён к расширению до verified-in-scope, пока не
+  появится успешный прогон на доступном runner.
 
 Линтер `lint_text` требует, чтобы рядом со словом «подтверждено» стояли и класс
 конструкций, и версия рантайма вида 3.14.3. Ограничение линтера: он проверяет
@@ -39,7 +42,8 @@ import sys
 VERIFIED = "verified-in-scope"
 NOT_EVALUATED = "not-evaluated"
 UNSUPPORTED = "unsupported"
-LEVELS = (VERIFIED, NOT_EVALUATED, UNSUPPORTED)
+PLATFORM_UNVERIFIED = "platform-unverified"
+LEVELS = (VERIFIED, NOT_EVALUATED, UNSUPPORTED, PLATFORM_UNVERIFIED)
 
 # Версия рантайма: ровно три числа через точку. «CPython 3.14» не годится —
 # патч-версия влияет на поведение разбора AST, что и надо фиксировать.
@@ -152,6 +156,10 @@ def selftest() -> int:
     check("unsupported с причиной собирается",
           status(UNSUPPORTED, reason="имя поля известно только в рантайме")
           ["level"] == UNSUPPORTED)
+    check("platform-unverified с причиной собирается",
+          status(PLATFORM_UNVERIFIED,
+                 reason="два последовательных пропуска на платформе")
+          ["level"] == PLATFORM_UNVERIFIED)
 
     # --- линтер: исторический текст тика 39 обязан быть поймай --------------
     t39 = ("- Три честных формы наблюдения (глобальное изменяемое состояние, "

@@ -1,0 +1,223 @@
+[
+ {
+  "claim": "Табличное ускорение VSA равно 1,5×",
+  "source": "docs/research/bundles/B007_VSA.md:39-46",
+  "verdict": "ПОДТВЕРЖДЕНО",
+  "notes": "Наблюдение извлекается из строки Speedup. Основной эталон вычисляет отношение 1,2 мкс к 0,8 мкс из строки bind; reference_alt использует Decimal. Значение Speedup в эталон не передаётся.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/research/bundles/B007_VSA.md": "9da22aa1b5738c96",
+    "/home/user/workspace/corpus/trinity/docs/research/bundles/B007_VSA.md @commit": "04430c0"
+   },
+   "отпечаток рецепта": "6e157c1ab46d818b",
+   "alpha": 0.05,
+   "tolerance": 0.01,
+   "паспорт цели": "56604d64bcdee412",
+   "ключ новизны": "b007:vsa:bind_speedup:v1",
+   "предпосылка независимости": "not-declared",
+   "статус предпосылки": "irrelevant"
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 1.4999999999999998
+    },
+    "seconds": 3.9577484130859375e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 1.4802973661668756e-16
+    },
+    "seconds": 5.9604644775390625e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "value +0.00% | порог поднят до печатной точности заявленного числа 0.0333",
+    "numbers": {
+     "value": 1.4802973661668756e-16
+    },
+    "seconds": 0.006371021270751953,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +33.33%",
+    "numbers": {},
+    "seconds": 7.677078247070312e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "негативный контроль отличается от эталона: value +33.33%",
+    "numbers": {},
+    "seconds": 4.57763671875e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 1.4802973661668756e-16
+    },
+    "seconds": 0.005158662796020508,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 2.1457672119140625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С20 эффективное число попыток",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С21 алгебраическая объяснимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 13 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подставка 1: ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.056227922439575195,
+    "reason_code": "",
+    "auto_skip": false
+   }
+  ]
+ }
+]

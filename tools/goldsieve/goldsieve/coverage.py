@@ -178,7 +178,31 @@ def budget_from_registry(registry_path: str, root: str):
     """
     from .gate import FamilyBudget
     spent = {}
+
+    def field_list(value):
+        """Извлечь короткий список моделей из строкового разбора реестра."""
+        value = (value or "").strip()
+        if not (value.startswith("[") and value.endswith("]")):
+            return []
+        return [item.strip().strip("\"'") for item in value[1:-1].split(",")
+                if item.strip()]
+
     for e in registry_entries(registry_path):
+        # Явно паспортизированный класс тратится независимо от вердикта:
+        # повторное ОПРОВЕРГНУТО не даёт новой информации само по себе.
+        # Исключение возможно только через новый источник, observable,
+        # различающий механизм или объявленный прирост точности в Target.
+        key = e.get("novelty_key", "")
+        source = e.get("measurement_source", "")
+        observable = e.get("observable", "")
+        if key and source and observable:
+            spent.setdefault(key, {
+                "case": e.get("case", e.get("name", "?")),
+                "source": source,
+                "observable": observable,
+                "models": field_list(e.get("models", "")),
+            })
+            continue
         if e.get("verdict") not in VOID_VERDICTS:
             continue
         src = e.get("source", "")
@@ -257,8 +281,9 @@ def gate_report(root: str, registry_path: str, top: int = 12,
     return "\n".join(lines)
 
 
-def report(root: str, registry_path: str, top: int = 12) -> str:
-    per_file = scan_tree(root)
+def report(root: str, registry_path: str, top: int = 12,
+           per_file=None) -> str:
+    per_file = scan_tree(root) if per_file is None else per_file
     reg = registry(registry_path)
     total = sum(len(v) for v in per_file.values())
     bare = sum(1 for v in per_file.values() for h in v if not h[2])

@@ -31,15 +31,15 @@ runtimes:
     verified:
       - Linux (песочница)
     not_evaluated:
-      - id: macOS
-        reason: >-
-          локальное устройство не ответило в трёх попытках тика 41 (120 с,
-          120 с, 630 с); брутфорс запрещён, поэтому статус not-evaluated,
-          а не «работает»; задача выведена в pending/os-matrix.yaml
-          с владельцем и бюджетом повторов
-        pending: pending/os-matrix.yaml
       - id: Windows
         reason: устройство недоступно
+    platform_unverified:
+      - id: macOS
+        reason: >-
+          после двух последовательных not-evaluated (тики 57 и 60) без
+          доступного runner SLA запретил расширение до verified-in-scope;
+          задача остаётся в очереди pending/os-matrix.yaml
+        pending: pending/os-matrix.yaml
 
 constructs:
   прямые формы:
@@ -328,10 +328,89 @@ shell_checks:
   tri_integration_test.py:
     gate_step: интеграционные тесты оболочки
     selftest_cmd: null
-    selftest_checks: 14
+    selftest_checks: 15
     skip_run_reason: >-
       сам файл И ЕСТЬ прогон (запускает tri подпроцессом, спит и убивает
       процессы, около двенадцати секунд); повторный запуск внутри манифеста
       удвоил бы время гейта без нового знания. Число утверждений проверяется
       шагом гейта.
     role: фон, одновременный watch, crash, обрыв журнала, lock collision, abort
+  goldsieve/cover_chunks.py:
+    gate_step: чанкинг cover
+    selftest_cmd: [-m, goldsieve.cover_chunks]
+    selftest_checks: 6
+    role: >-
+      разведка корпуса чанками с коротким тайм-аутом, атомарным JSON-чекпоинтом
+      и продолжением с последнего успешно обработанного файла; тайм-аут
+      чанка возвращает частичный триаж и не срывает тик
+    mutation_target: >-
+      сдвиг next_index в конец при пропущенном результате обязан быть замечен
+      guard-ом целостности чекпоинта
+    sensitivity_fixture: пять файлов фикстурного корпуса, два файла в первом
+      чанке и все пять после продолжения
+    limits: тайм-аут проверяется между файлами; один уже начатый файл завершается
+  calibrate_sieves.py:
+    gate_step: калибровка сит С4 С5 С16
+    selftest_cmd: [calibrate_sieves.py]
+    selftest_checks: 15
+    role: >-
+      измеряет чувствительность С4, С5 и С16 на положительных, отрицательных
+      и мутированных фикстурах; отдельный guard проверяет реальную загрузку
+      кейса через module_from_spec без регистрации в sys.modules
+    mutation_target: >-
+      точное совпадение для С4, signal-like negative для С5 и ожидаемое
+      попадание либо p_global выше alpha для С16 обязаны менять статус
+    sensitivity_fixture: 15 проверок, из них 7 мутационных и 3 маршрута
+      реального кейса
+    limits: синтетическая калибровка не является вердиктом корпуса
+
+# --- новые классы решений аудита --------------------------------------------
+# Это не новый синтаксический конструкт, поэтому он не смешивается с таблицей
+# constructs. Guard проверяется самопроверкой и реальным кейсом через CLI:
+# отсутствие любого обязательного поля рецепта должно давать отдельный
+# reason-code, а удаление подсказки не должно тихо создавать этот код.
+decision_guards:
+  metrics_incommensurable:
+    role: >-
+      несопоставимые метрики при отсутствии общей шкалы, токенизации,
+      усреднения или стадии обучения; это ВОПРОС, а не опровержение
+    selftest_checks: 2
+    mutation_target: очистка reason_code_hint не должна выдавать этот подтип
+    fixture: cases/golden_chain_v240_train_ppl_20260815.py
+
+tooling_guards:
+  c20_empty_family:
+    role: >-
+      пустое семейство получает OPEN внутри С20 и итоговый ВОПРОС с
+      reason_code meff_unstable; OPEN не может молча стать подтверждением
+    fixture: cases/c20_empty_family_guard_20260815.py
+    positive_sensitivity: 1/1
+    negative_specificity: 1/1
+    mutation_score: 1/1
+    loader_guard: module_from_spec без регистрации в sys.modules
+    mutation_target: подмена доли независимых единицей для пустого семейства
+
+# Кейсные проверки корпуса (не синтаксические конструкции детектора).
+# Здесь явно фиксируется измеренная чувствительность нового риска, чтобы
+# молчание проверки не читалось как покрытие.
+case_audits:
+  jepa_experiment_consistency_20260817:
+    fixture: cases/jepa_experiment_consistency_20260817.py
+    mutation_target: замена лучшего шага и рассогласование сводного начального MSE
+    sensitivity: 1/1 (С2 обнаруживает рассогласование сводки и таблицы)
+    negative_control: 1/1 (С5 отличает минимум AvgMSE10 от минимума MSE)
+    loader_guard: module_from_spec без регистрации в sys.modules
+  sacred_two_formula_composition_recipe_20260817:
+    fixture: cases/sacred_two_formula_composition_recipe_20260817.py
+    mutation_target: замена неполного инвентаря полным рецептом и подмена нулевого состояния единицей
+    sensitivity: 1/1 (С4 ловит подстановку полного рецепта)
+    negative_control: 1/1 (С5 отличает контроль единицы от неполного рецепта)
+    mutation_score: 1/1 (С14 сохраняет ОПРОВЕРГНУТО для подстановки)
+    loader_guard: module_from_spec без регистрации в sys.modules
+  vsa_simd_benchmark_recipe_20260818:
+    fixture: cases/vsa_simd_benchmark_recipe_20260818.py
+    mutation_target: подмена задержки dot product и удаление аппаратной среды из структурной карты
+    sensitivity: 1/1 (С4 ловит подмену задержки)
+    negative_control: 1/1 (С5 отличает неполную нулевую карту)
+    mutation_score: 1/1 (С14 сохраняет ОПРОВЕРГНУТО для подстановки)
+    loader_guard: module_from_spec без регистрации в sys.modules

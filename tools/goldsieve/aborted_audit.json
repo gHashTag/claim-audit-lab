@@ -1,0 +1,301 @@
+{
+ "counter_total": 52,
+ "events_available": 47,
+ "coverage_note": "файл счётчиков хранит последние 200 событий: разобрано 47 из 52 токенов, остальные утрачены ротацией и в аудит не входят",
+ "categories": {
+  "device_offline": 40,
+  "unclassified": 7
+ },
+ "actions": {
+  "deferred": 40,
+  "abort": 7
+ },
+ "rationale": {
+  "device_offline": "Недоступность чужого устройства не является срывом тика: работа ставится в очередь cross_platform_replay.",
+  "unclassified": "Без примечания категорию доказать нельзя: считается срывом, чтобы не занижать статистику отказов."
+ },
+ "rows": [
+  {
+   "at": "2026-08-15T02:08:03Z",
+   "note": "pc bash не ответил за 120 секунд; macOS остаётся not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-15T04:12:44Z",
+   "note": "тик 54: выбранное устройство MacBook Pro не в сети; матрица ОС не выполнена, macOS остаётся not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-15T05:05:05Z",
+   "note": "тик 55: выбранный MacBook Pro не в сети; матрица ОС не выполнена, macOS и Windows остаются not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-15T06:04:28Z",
+   "note": "",
+   "category": "unclassified",
+   "action": "abort"
+  },
+  {
+   "at": "2026-08-15T06:04:39Z",
+   "note": "pc devices list: выбранный MacBook Pro offline; macOS остаётся not-evaluated, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-15T07:10:21Z",
+   "note": "тик 57: выбранный MacBook Pro offline; матрица ОС не выполнена, macOS и Windows остаются not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-15T10:42:30Z",
+   "note": "тик 24: выбранный MacBook Pro offline; ОС-матрица не выполнена, SLA сохраняет macOS platform-unverified и очередь runner",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-15T12:33:57Z",
+   "note": "",
+   "category": "unclassified",
+   "action": "abort"
+  },
+  {
+   "at": "2026-08-15T14:44:26Z",
+   "note": "тик 28: выбранные MacBook Pro offline; pc bash не запустился, macOS остаётся platform-unverified по SLA, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-15T15:31:49Z",
+   "note": "тик 29: pc bash python3 --version ответил (CPython 3.14.3), расширенный отпечаток platform/machine не завершился; SLA сохраняет macOS platform-unverified, повторов нет",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-15T17:56:25Z",
+   "note": "",
+   "category": "unclassified",
+   "action": "abort"
+  },
+  {
+   "at": "2026-08-15T18:50:40Z",
+   "note": "тик 32: выбранное устройство offline; pc bash вызван с недопустимым timeout=120 (допустимо до 95), повтор ОС-матрицы запрещён; macOS остаётся platform-unverified",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-15T19:37:57Z",
+   "note": "тик 33: выбранные MacBook Pro offline; ОС-матрица не выполнена, применён SLA platform-unverified, повтор запрещён",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-16T04:55:34Z",
+   "note": "",
+   "category": "unclassified",
+   "action": "abort"
+  },
+  {
+   "at": "2026-08-16T06:05:51Z",
+   "note": "",
+   "category": "unclassified",
+   "action": "abort"
+  },
+  {
+   "at": "2026-08-16T10:32:38Z",
+   "note": "ОС-матрица: runner недоступен, остаток попыток 0; повтор запрещён",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-16T12:22:06Z",
+   "note": "тик 48: runner macOS недоступен, total_attempts_left=0; повтор pc bash запрещён, SLA сохраняет platform-unverified",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-16T13:47:20Z",
+   "note": "тик 49: выбранный MacBook Pro offline; ОС-матрица не выполнена, SLA применяется без повтора",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-16T14:45:29Z",
+   "note": "тик 50: runner ОС недоступен, остаток попыток 0; macOS сохраняет platform-unverified, Windows остаётся not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-16T16:26:42Z",
+   "note": "тик 52: runner macOS недоступен, total_attempts_left=0; pc bash не выполнялся, SLA сохраняет platform-unverified, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-16T18:51:59Z",
+   "note": "тик 54: runner ОС недоступен, остаток попыток 0; pc bash не повторялся, macOS переведена в platform-unverified по SLA",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-16T19:44:08Z",
+   "note": "тик 55: локальный Mac runner offline; SLA сохранил macOS platform-unverified",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-16T20:34:36Z",
+   "note": "тик 56: runner ОС недоступен, total_attempts_left=0; pc bash не повторялся, macOS остаётся platform-unverified по SLA",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-16T21:50:54Z",
+   "note": "тик 55: runner ОС недоступен, total_attempts_left=0; pc bash не повторялся, macOS platform-unverified по SLA, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-16T22:34:57Z",
+   "note": "текущий тик: runner ОС недоступен, бюджет попыток исчерпан; pc bash не повторялся, macOS platform-unverified по SLA, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-16T23:27:16Z",
+   "note": "тик: локальный Mac runner offline; pc bash не запускался, macOS остаётся platform-unverified по SLA, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T01:41:04Z",
+   "note": "",
+   "category": "unclassified",
+   "action": "abort"
+  },
+  {
+   "at": "2026-08-17T03:51:50Z",
+   "note": "тик 63: runner macOS недоступен, total_attempts_left=0; pc bash не выполнялся, SLA сохраняет platform-unverified",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T05:43:01Z",
+   "note": "тик 65: runner ОС недоступен, total_attempts_left=0; pc bash запрещён очередью, macOS platform-unverified, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T12:41:00Z",
+   "note": "тик 72: pc devices list показал выбранный MacBook Pro offline; ОС-матрица не выполнена, macOS сохраняет platform-unverified, Windows not-evaluated по SLA",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T13:40:55Z",
+   "note": "тик 73: pc devices list показал оба MacBook Pro offline; macOS platform-unverified по двум последовательным not-evaluated, Windows not-evaluated, повтор запрещён",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T14:35:14Z",
+   "note": "тик 74: выбранный MacBook Pro offline; runner недоступен, SLA оставил macOS platform-unverified, Windows not-evaluated; повтор pc запрещён",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T16:25:05Z",
+   "note": "тик 76: runner macOS недоступен, total_attempts_left=0; pc bash не выполнялся, SLA сохраняет macOS platform-unverified, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T17:18:50Z",
+   "note": "тик 77: runner macOS offline, SLA сохраняет macOS platform-unverified; Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T18:26:55Z",
+   "note": "",
+   "category": "unclassified",
+   "action": "abort"
+  },
+  {
+   "at": "2026-08-17T19:33:44Z",
+   "note": "локальный runner недоступен: оба выбранных MacBook Pro offline; SLA platform-unverified",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T20:30:35Z",
+   "note": "тик 80: выбранный MacBook Pro offline; доступного runner нет, матрица ОС не выполнена",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T21:36:56Z",
+   "note": "тик 81: pc devices list показал выбранный MacBook Pro offline; матрица ОС не выполнена, macOS platform-unverified по двум последовательным not-evaluated, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T22:37:51Z",
+   "note": "тик 82: доступного runner ОС нет; macOS platform-unverified после двух последовательных not-evaluated, Windows not-evaluated; новый pc bash запрещён",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-17T23:57:13Z",
+   "note": "тик 83: pc devices list показал выбранный MacBook Pro offline; pc bash не запускался, доступного runner нет; SLA сохраняет macOS platform-unverified после двух последовательных not-evaluated, Windows остаётся not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-18T00:50:11Z",
+   "note": "тик 84: pc devices list показал выбранный MacBook Pro offline; runner недоступен, macOS остаётся platform-unverified по SLA, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-18T02:24:37Z",
+   "note": "тик 83: выбранный MacBook Pro offline; доступного runner нет, macOS platform-unverified по SLA, Windows not-evaluated; повтор pc bash запрещён",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-18T03:26:38Z",
+   "note": "тик 84: pc devices list показал выбранный MacBook Pro offline; runner недоступен, новый pc bash не запускался; применить SLA macOS platform-unverified, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-18T04:38:22Z",
+   "note": "pc devices list: оба runner MacBook offline; pc bash не запускался; macOS сохраняет platform-unverified после двух not-evaluated, Windows остаётся not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-18T05:20:12Z",
+   "note": "тик 86: оба MacBook Pro offline; pc devices list подтвердил отсутствие доступного runner, pc bash не запускался при исчерпанном бюджете попыток",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-18T06:43:27Z",
+   "note": "тик 87: оба MacBook Pro offline; доступного runner нет, macOS platform-unverified по SLA, Windows not-evaluated",
+   "category": "device_offline",
+   "action": "deferred"
+  },
+  {
+   "at": "2026-08-18T07:31:04Z",
+   "note": "тик 88: runner отсутствует, total_attempts_left=0; pc bash запрещён, SLA применён кодом",
+   "category": "device_offline",
+   "action": "deferred"
+  }
+ ]
+}

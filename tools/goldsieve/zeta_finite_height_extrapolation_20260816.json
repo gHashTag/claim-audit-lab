@@ -1,0 +1,225 @@
+[
+ {
+  "claim": "Линейная экстраполяция по 1/L объясняет дефицит std нулей дзета точным GUE",
+  "source": "scripts/height_extrapolation.py:1-15,139-151",
+  "verdict": "ОПРОВЕРГНУТО",
+  "notes": "Наблюдение пересчитывает десять полос сырых нулей и берёт свободный член y=a/L+b через numpy.polyfit; альтернативная арифметика центрированных сумм даёт тот же b. Эталон b сравнивается с точным законом GUE через детерминант Фредгольма; С12 использует другой метод — диагонализацию случайных эрмитовых GUE-матриц. Корпусный скрипт сообщает 0,424258 лишь как заявленное EXACT.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py": "18c244c32e9d0f42",
+    "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py @commit": "04430c0",
+    "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt": "3436c916a7878261",
+    "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt @commit": "04430c0"
+   },
+   "отпечаток рецепта": "7e1cd61dcc7ecb32",
+   "alpha": 0.05,
+   "tolerance": 0.01,
+   "паспорт цели": "bce9d103377ede77",
+   "ключ новизны": "zeta:finite_height_extrapolation:v1",
+   "предпосылка независимости": "not-declared",
+   "статус предпосылки": "irrelevant"
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "std": 0.4242576222440628
+    },
+    "seconds": 2.9325485229492188e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "std +0.00%",
+    "numbers": {
+     "std": 8.903928118002443e-07
+    },
+    "seconds": 3.504753112792969e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "FAIL",
+    "detail": "std +1.09%",
+    "numbers": {
+     "std": 0.01094335384154992
+    },
+    "seconds": 0.022023916244506836,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: std +135.71%",
+    "numbers": {},
+    "seconds": 1.7404556274414062e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "позитивный контроль даёт эталон: std +0.00%",
+    "numbers": {},
+    "seconds": 1.9788742065429688e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.9073486328125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 3.0994415283203125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "std -0.59% (порог 5.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "std": -0.005906376062286946
+    },
+    "seconds": 0.3911168575286865,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 2.384185791015625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 3.337860107421875e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С20 эффективное число попыток",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.86102294921875e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С21 алгебраическая объяснимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 13 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подставка 1: ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.06330418586730957,
+    "reason_code": "",
+    "auto_skip": false
+   }
+  ]
+ }
+]

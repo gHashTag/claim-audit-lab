@@ -1,0 +1,231 @@
+[
+ {
+  "claim": "Отчёт Level 11.31 воспроизводимо подтверждает нейросимвольный benchmark 162 из 166",
+  "source": "docs/docs/research/trinity-level11-neuro-symbolic-bench-report.md:1-220",
+  "verdict": "ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО",
+  "notes": "Отчёт содержит 162 из 166 и компонентное разбиение, но не содержит сырых запросов, эталонных ответов, контрольной суммы реализации, полного разбиения, seed или независимого повтора. Компонентная сумма не подменяет независимый benchmark и не используется как дешёвое подтверждение качества либо SOTA.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-level11-neuro-symbolic-bench-report.md": "5e9d51764045c3f8",
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-level11-neuro-symbolic-bench-report.md @commit": "04430c0"
+   },
+   "отпечаток рецепта": "64fb49f26b53ac20",
+   "alpha": 0.05,
+   "tolerance": 0.0005,
+   "паспорт цели": "cbe109fa080ec301",
+   "ключ новизны": "trinity:level11.31:neurosymbolic_benchmark_recipe:v1",
+   "предпосылка независимости": "unknown",
+   "статус предпосылки": "assumption-unverified"
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "правильные": 162.0,
+     "запросы": 166.0,
+     "процент": 97.59036144578313
+    },
+    "seconds": 7.200241088867188e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "правильные +0.00%, запросы +0.00%, процент +0.01%",
+    "numbers": {
+     "правильные": 0.0,
+     "запросы": 0.0,
+     "процент": 9.876543209872298e-05
+    },
+    "seconds": 0.00010228157043457031,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "правильные +0.00%, запросы +0.00%, процент +0.01% | порог поднят до печатной точности заявленного числа 0.000512",
+    "numbers": {
+     "правильные": 0.0,
+     "запросы": 0.0,
+     "процент": 9.876543209872298e-05
+    },
+    "seconds": 0.028641223907470703,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: процент -0.62%",
+    "numbers": {},
+    "seconds": 0.0001347064971923828,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "негативный контроль отличается от эталона: правильные +156.17%",
+    "numbers": {},
+    "seconds": 8.249282836914062e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 3.5762786865234375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "правильные +0.00%, запросы +0.00%, процент +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "правильные": 0.0,
+     "запросы": 0.0,
+     "процент": 0.0
+    },
+    "seconds": 0.016202688217163086,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 2.1457672119140625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С20 эффективное число попыток",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С21 алгебраическая объяснимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 13 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подставка 1: ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.07877850532531738,
+    "reason_code": "",
+    "auto_skip": false
+   }
+  ]
+ }
+]

@@ -343,9 +343,9 @@ def _reason_subtypes() -> int:
     С8 сравнивал ноль с погрешностью 1e-9), а не дефект утверждения. Без
     отдельного подтипа такой случай попадал в 'unclassified' и терялся.
     """
-    from .sieve import (Result, reason_of, ACTION, NON_AGGREGATABLE,
+    from .sieve import (Result, Claim, reason_of, ACTION, NON_AGGREGATABLE,
                         EMPTY, FAIL as _F, VOID as _V, PASS as _P2,
-                        SKIP as _S2)
+                        SKIP as _S2, OPEN as _O2)
     fail = 0
 
     def check(name, ok):
@@ -399,9 +399,33 @@ def _reason_subtypes() -> int:
     check("опровержение по внешней цели не понижается",
           verdict_of(ext) == _R)
 
+    # С20 может честно вернуть OPEN, когда семейство пусто. Это состояние
+    # нельзя трактовать как PASS: до ремонта такой OPEN выпадал из свода, и
+    # отсутствие оценки эффективной кратности превращалось в подтверждение.
+    empty_meff = [Result("С20 эффективное число попыток", _O2,
+                         "пустое семейство")]
+    check("OPEN С20 понижает свод до вопроса",
+          verdict_of(empty_meff) == _Q)
+    check("OPEN С20 получает причину meff_unstable",
+          reason_of(empty_meff, _Q) == "meff_unstable")
+
     check("оба подтипа исключены из агрегирования",
           "control_broken" in NON_AGGREGATABLE and
           "input_precision_limited" in NON_AGGREGATABLE)
+
+    # Отсутствие общего рецепта метрик — отдельный класс риска, а не
+    # арифметическое опровержение: машинная подсказка кейса обязана сохранять
+    # вердикт ВОПРОС и отдельный reason-code.
+    incomparable = Claim(name="несопоставимые метрики",
+                         reason_code_hint="metrics_incommensurable")
+    check("несопоставимость метрик получает отдельный reason-code",
+          reason_of([], _Q, incomparable) == "metrics_incommensurable")
+    check("несопоставимость метрик не агрегируется",
+          "metrics_incommensurable" in NON_AGGREGATABLE and
+          "metrics_incommensurable" in ACTION)
+    check("очистка подсказки не маскирует несопоставимость метрик",
+          reason_of([], _Q, Claim(name="без подсказки")) !=
+          "metrics_incommensurable")
     return fail
 
 

@@ -9,14 +9,15 @@
 task: проверить каскад и детектор на macOS
 id: os-matrix-macos
 status: pending   # закрытый словарь статусов: runlog.STATUSES
+scope_status: platform-unverified
 owner: Dmitrii Vasilev (gHashTag) — только у него есть доступ к устройству
 blocked_by: |
-  MacBook Pro AE943F77-18DF-5F84-8883-AE8B9763D1BD offline; pc bash не ответил
-  в тике 41 трижды (120 с, 120 с, 630 с) и в тике 42 не пробовался.
+  pc bash подтвердил CPython 3.14.3, но расширенный отпечаток platform/machine
+  в тике 29 не завершился; полный каскад на рабочей копии не запускался.
 retry_budget:
   attempts_per_tick: 1
   timeout_seconds: 120
-  total_attempts_left: 3
+  total_attempts_left: 0
   rule: |
     Одна попытка на тик, не более. Исчерпание бюджета не даёт права
     объявлять платформу проверенной: задача переходит в status: abandoned
@@ -30,3 +31,38 @@ notes:
   - >-
     формулировка результата — «проверено на указанных версиях CPython на
     macOS», не «платформонезависимо»
+sla:
+  threshold: 2
+  runner_available: false
+  decision: platform-unverified
+  history:
+    - tick: 62
+      scope_status: not-evaluated
+      reason: pc bash ответил короткой проверкой оболочки, но полный каскад на локальной рабочей копии не запускался; total_attempts_left=0; SLA сохраняет platform-unverified
+    - tick: 56
+      scope_status: not-evaluated
+      reason: доступного runner нет, остаток попыток равен нулю; повтор pc bash запрещён, SLA сохраняет platform-unverified
+    - tick: 57
+      scope_status: not-evaluated
+      reason: выбранное устройство было недоступно
+    - tick: 60
+      scope_status: not-evaluated
+      reason: локальный shell ответил, но полный каскад на рабочей копии не запускался
+    - tick: 29
+      scope_status: not-evaluated
+      reason: python3 --version ответил CPython 3.14.3, расширенный pc bash превысил лимит; SLA сохраняет platform-unverified
+    - tick: 30
+      scope_status: not-evaluated
+      reason: pc bash ответил только CPython 3.14.3; полный каскад на рабочей копии не запускался; SLA сохраняет platform-unverified
+    - tick: 32
+      scope_status: not-evaluated
+      reason: выбранное устройство offline; pc bash получил недопустимый timeout 120 при допустимом максимуме 95; повтор запрещён
+    - tick: 33
+      scope_status: not-evaluated
+      reason: выбранные MacBook Pro offline; ОС-матрица не выполнена, повтор запрещён
+    - tick: 34
+      scope_status: not-evaluated
+      reason: доступного runner нет, total_attempts_left=0; повтор pc bash не выполнялся, SLA сохраняет platform-unverified
+    - tick: 63
+      scope_status: not-evaluated
+      reason: runner недоступен, total_attempts_left=0; новый pc bash запрещён; кодовый SLA сохраняет platform-unverified

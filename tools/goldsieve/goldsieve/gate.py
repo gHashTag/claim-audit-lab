@@ -229,7 +229,7 @@ def independence_axis(t: Target) -> tuple:
 
 def evaluate(t: Target, budget: Optional[FamilyBudget] = None,
              u_min: float = DEFAULT_U_MIN) -> Decision:
-    """Решение гейта. Достаточно ЛЮБОЙ одной оси, дающей U >= u_min."""
+    """Решение гейта с обязательным бюджетом повторяющегося класса."""
     budget = budget or FamilyBudget()
     if t.purpose in EXEMPT_PURPOSES:
         return Decision(ADMIT, float("inf"),
@@ -245,6 +245,13 @@ def evaluate(t: Target, budget: Optional[FamilyBudget] = None,
             "independence": ui}
     u = max(axes.values())
     reasons = [rp, rn, rd, ri]
+    # Для уже потраченного паспортизированного класса другие сильные оси не
+    # превращают повтор в новую информацию. Разрешение возможно только если
+    # сама ось новизны дала основание: иной источник, observable, механизм или
+    # объявленный прирост точности.
+    if t.novelty_key and un < u_min and up < u_min:
+        return Decision(SKIPPED, u, axes, reasons, t.hash(),
+                        budget.representative(t))
     if u >= u_min:
         return Decision(ADMIT, u, axes, reasons, t.hash(),
                         budget.representative(t))

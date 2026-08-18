@@ -129,11 +129,14 @@ def check() -> int:
     if not rt.get("verified"):
         problems.append("не заявлено ни одной проверенной версии рантайма")
     plat = (rt.get("platforms") or {})
-    for row in plat.get("not_evaluated") or []:
-        print("  not-evaluated: %-8s %s" % (row.get("id"), row.get("reason")))
+    from goldsieve import platform_sla as _platform_sla
+    for level in ("not_evaluated", "platform_unverified"):
+      for row in plat.get(level) or []:
+        print("  %-19s %-8s %s" %
+              (level, row.get("id"), row.get("reason")))
         if not row.get("reason"):
-            problems.append("платформа not-evaluated без причины: %s"
-                            % row.get("id"))
+            problems.append("платформа %s без причины: %s" %
+                            (level, row.get("id")))
         # Ссылка на ожидающую задачу обязана вести на файл с владельцем
         # и бюджетом повторов: иначе «выведено в очередь» — только слова.
         ref = row.get("pending")
@@ -153,6 +156,11 @@ def check() -> int:
             if not isinstance(rb.get("total_attempts_left"), int):
                 problems.append("ожидающая задача %s: бюджет повторов не "
                                 "число" % ref)
+            if level == "platform_unverified":
+                good, message = _platform_sla.validate_task(task)
+                if not good:
+                    problems.append("SLA %s: %s" % (ref, message))
+                print("  SLA: %s — %s" % (ref, message))
             print("  ожидает: %s — %s, попыток осталось %s"
                   % (ref, task.get("status"), rb.get("total_attempts_left")))
 

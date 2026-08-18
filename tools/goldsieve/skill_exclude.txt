@@ -15,16 +15,99 @@
 # Исключённые файлы остаются в репозитории gHashTag/claim-audit-lab, ветка
 # tools/goldsieve-v3-2026-08-13.
 
-# Класс «формула против внешней цели» представлен в архиве кейсами
-# sacred_external_targets.py и sacred_formula_full_external_20260814.py.
+# Тик 89. Предел архива — 100 записей, а рабочая копия выросла до 176 файлов.
+# ПРАВИЛО ОТБОРА уточнено: в архиве остаются пакет goldsieve/, реестр, гейт,
+# контракты и РОВНО по одному-двум кейсам на класс проверки (дзета/GUE,
+# Хинчин, множественность, внешняя цель, порог Шидака, тождество наблюдения,
+# шаблон). Остальные кейсы — однотипные представители уже покрытых классов,
+# их вердикты зафиксированы в claims.yaml, а сами файлы остаются в ветке
+# tools/goldsieve-v3-2026-08-13 репозитория gHashTag/claim-audit-lab.
+# Одноразовые скрипты правки корпуса и отладочные пробники в архив не идут:
+# они не проверяют ничего и съедают предел записей.
+
+scripts/patch_corpus_t41.py
+scripts/patch_freeze.py
+scripts/patch_t41.py
+scripts/patch_t41b.py
+scripts/patch_t41c.py
+scripts/debug_sacred_table.py
+scripts/probe_descriptors.py
+scripts/sieve-run-2026-08-13.txt
+scripts/calibrate_sieves.py
+scripts/calibrate_identity.py
+scripts/cases/ann_brute_simd_benchmark_recipe_20260817.py
+scripts/cases/appendix_external_targets_20260813.py
+scripts/cases/axes_omega_lambda.py
+scripts/cases/b004_lotus_ttest_threshold_20260815.py
+scripts/cases/b006_gf16_delta_20260815.py
+scripts/cases/b006_gf16_pvalue_20260815.py
+scripts/cases/b007_vsa_speedup_20260815.py
+scripts/cases/bitnet_coherence_throughput_recipe_20260817.py
+scripts/cases/cifar10_metric_recipe_20260816.py
+scripts/cases/ckm_lqg_external_20260813.py
+scripts/cases/ckm_vtd_vts_vub_external_20260814.py
+scripts/cases/cosmology_columns.py
+scripts/cases/cycle45_priority_queue_recipe_20260816.py
+scripts/cases/cycle46_deadline_scheduling_recipe_20260816.py
+scripts/cases/cycle46_federated_privacy_recipe_20260816.py
+scripts/cases/cycle50_adaptive_caching_recipe_20260816.py
 scripts/cases/dark_photon_x17_formula.py
+scripts/cases/delta001_additional_claims_20260814.py
+scripts/cases/delta001_alpha_inverse_source_20260817.py
+scripts/cases/delta001_gamma_entropy_comparison_20260818.py
+scripts/cases/delta001_strong_coincidences_20260815.py
+scripts/cases/delta001_variance_claims_20260814.py
+scripts/cases/dirac_cp_phase_formula.py
+scripts/cases/formulas_deploy_external_20260814.py
+scripts/cases/formulas_external_targets_20260813.py
+scripts/cases/formulas_precision_external_20260814.py
+scripts/cases/formulas_summary_external_20260814.py
+scripts/cases/gamma_bi_meissner_equation_20260817.py
+scripts/cases/gf16_mnist_accuracy_recipe_20260816.py
+scripts/cases/golden_chain_final_report_consistency_20260817.py
+scripts/cases/golden_chain_v238_dim1024_quality_recipe_20260817.py
+scripts/cases/golden_chain_v240_statistics_20260814.py
+scripts/cases/golden_chain_v240_train_ppl_20260815.py
+scripts/cases/golden_chain_v240_trigram_coverage_recipe_20260816.py
+scripts/cases/golden_chain_v241_offsets_20260815.py
+scripts/cases/golden_chain_v245_word_ppl_recipe_20260816.py
+scripts/cases/golden_chain_v246_phrase_memorization_recipe_20260817.py
+scripts/cases/golden_chain_v248_ppl_gain_20260815.py
+scripts/cases/golden_chain_v249_generation_quality_recipe_20260817.py
+scripts/cases/golden_chain_v250_kneser_ney_recipe_20260816.py
+scripts/cases/golden_chain_v251_4gram_ppl_recipe_20260816.py
+scripts/cases/golden_chain_v252_held_out_recipe_20260816.py
+scripts/cases/golden_chain_v30_absolute_recipe_20260817.py
+scripts/cases/gravitational_constant_external_20260814.py
+scripts/cases/hslm_convergence_fraction_20260815.py
+scripts/cases/jarlskog_theta13_external_20260814.py
+scripts/cases/jepa_experiment_consistency_20260817.py
+scripts/cases/level11_neurosymbolic_benchmark_recipe_20260817.py
+scripts/cases/level11_planning_accuracy_recipe_20260816.py
+scripts/cases/level11_rdf_multihop_recipe_20260817.py
+scripts/cases/m_theory_dimension_formula.py
+scripts/cases/master_catalog_lucas_l10.py
+scripts/cases/master_catalog_msme_error.py
+scripts/cases/neutrino_mixing_external_20260814.py
 scripts/cases/neutron_lifetime_formula.py
+scripts/cases/particle_physics_example_mean_error_20260815.py
+scripts/cases/pellis_external_targets_20260814.py
+scripts/cases/pointer_architecture_external_20260814.py
+scripts/cases/proton_mass_ratio_error.py
+scripts/cases/pvalue_leq69_lambda286.py
 scripts/cases/qcd_phase_tc_formula.py
 scripts/cases/reionization_zre_prediction.py
-scripts/cases/m_theory_dimension_formula.py
-scripts/cases/dirac_cp_phase_formula.py
-
-# Тик 48: список исключений и сборщик сами стали записями архива, поэтому
-# пришлось исключить ещё два кейса того же класса.
-scripts/cases/ckm_lqg_external_20260813.py
-scripts/cases/jarlskog_theta13_external_20260814.py
+scripts/cases/sacred_formula_complete_v2_external_20260814.py
+scripts/cases/sacred_predictions_registry_recipe_20260817.py
+scripts/cases/sacred_table_audit_20260813.py
+scripts/cases/sacred_tsirelson_exact_external_20260817.py
+scripts/cases/sacred_two_formula_composition_recipe_20260817.py
+scripts/cases/transcendental_catalog_values.py
+scripts/cases/transcendental_catalog_values_2.py
+scripts/cases/transcendental_catalog_values_3.py
+scripts/cases/trinity_external_targets_20260813.py
+scripts/cases/vsa_simd_benchmark_recipe_20260818.py
+scripts/cases/wilcoxon_v20_pvalue_20260815.py
+scripts/cases/zeta_chi2_independent_20260814.py
+scripts/cases/zeta_chi2_statistics_20260814.py
+scripts/cases/zeta_p95_summary_20260815.py

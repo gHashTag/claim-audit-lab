@@ -196,7 +196,17 @@ def cmd_power(args):
 
 def cmd_cover(args):
     from .coverage import report
-    print(report(args.root, args.registry))
+    from .cover_chunks import scan_tree_chunked
+    per_file, state = scan_tree_chunked(
+        args.root,
+        checkpoint=args.checkpoint,
+        chunk_size=args.chunk_size,
+        timeout_seconds=args.chunk_timeout,
+    )
+    print(report(args.root, args.registry, per_file=per_file))
+    if not state["complete"]:
+        print("  разведка прервана лимитом чанка; продолжение с %s" %
+              (state.get("last_successful_file") or "начала"))
     return 0
 
 
@@ -363,6 +373,10 @@ def main(argv=None):
     cv = sub.add_parser("cover", help="триаж: покрытие корпуса утверждениями")
     cv.add_argument("root")
     cv.add_argument("--registry", default="claims.yaml")
+    cv.add_argument("--checkpoint", default=None,
+                    help="JSON-чекпоинт продолжения разведки")
+    cv.add_argument("--chunk-size", type=int, default=64)
+    cv.add_argument("--chunk-timeout", type=float, default=20.0)
     cv.set_defaults(fn=cmd_cover)
 
     rg = sub.add_parser("regress", help="перепрогон реестра: искать изменения вердиктов")

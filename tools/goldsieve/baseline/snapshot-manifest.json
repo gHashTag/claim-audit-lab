@@ -1,32 +1,32 @@
 {
   "counts": {
-    "docs": 18,
-    "logs": 10,
-    "tool": 93
+    "docs": 20,
+    "logs": 15,
+    "tool": 148
   },
-  "created": "2026-08-14T19:34:54",
-  "digest": "fc9d594bcf283bb5",
+  "created": "2026-08-18T08:56:55",
+  "digest": "506c84349c198754",
   "groups": {
     "docs": {
       "cron_tracking/8dff7aa3/audit-ledger.md": {
-        "sha256": "4c03296ffdb249ff8fbf69baf2f1581c331cba9b72e55825e3ef53ac81fab03a",
-        "size": 208328
+        "sha256": "f943896b76f94f01c8a6e85c071fb5978c9b3698c6e95f0d5a2923739f53523b",
+        "size": 974708
       },
       "goldsieve/claims.yaml": {
-        "sha256": "a43e41a489eaf845bc19ecf5be2ec3f7cf3d75ed63598e8ed0510f66f6ebee4f",
-        "size": 28391
+        "sha256": "85db5a85376cb8c1fe7ea64c33884aa672f8d3d15317c13db91d19fec945bfe2",
+        "size": 117433
       },
       "goldsieve/coverage_manifest.yaml": {
-        "sha256": "293faa8b45c052425643a1b924184d507af7fe39fe2ccb324e1cd3d1f8cb33a6",
-        "size": 18008
+        "sha256": "c076827904249e3a98d148ea39615ec8df1f36da5f582e283e194da4c734d8cb",
+        "size": 23886
       },
       "goldsieve/docs/rfc-tri-zig-external-commands.md": {
         "sha256": "c1fb30c369c16d231b78ba0f25da78fc43c2521cb2d3c927cfecbaf03fe20d48",
         "size": 10598
       },
       "goldsieve/pending/os-matrix.yaml": {
-        "sha256": "5397f9da5c575d5e487700f3d12032fd6d7b93656ada7668d8237363f12f1855",
-        "size": 2145
+        "sha256": "0ad24f7224594ed637117d118af028187cff3f422c837fe34fbc9584d27914ec",
+        "size": 4501
       },
       "loop10/report.md": {
         "sha256": "8bd18a6b62cb0f40c703ae83a70c182f25465c1a42118e6df0a4833e33ea9e4f",
@@ -55,6 +55,14 @@
       "loop16/report.md": {
         "sha256": "c1e9ac74eb4404473df46766d3467fcb56f24ba5f8f48befb21ef5f8e39a5ce2",
         "size": 12387
+      },
+      "loop17/report.md": {
+        "sha256": "744c16a8deee1a542d756be3a2a7e25f3aefa75e9b9522cd66b36d93d87f086f",
+        "size": 11266
+      },
+      "loop18/report.md": {
+        "sha256": "60150584884f1918fad90ce0447fa3bd4d58930c553f45f7afd4560159ac9340",
+        "size": 14020
       },
       "loop3/report.md": {
         "sha256": "48c903be9120ff383638f99bad9049ea777d08befab9ccbffa3be9a5d5f215b9",
@@ -102,6 +110,18 @@
         "sha256": "e722d8af4ac3a9633367d524078988728de77f904b6db5c02a35689a29fd53a3",
         "size": 5184
       },
+      "../../../tmp/g48.txt": {
+        "sha256": "97f12720e9c387b47b94d424baecffd376b75f42dc998c19837357514e0d557b",
+        "size": 3062
+      },
+      "../../../tmp/g48b.txt": {
+        "sha256": "781e3f499e04ec9856fafa8bbe2e603a4b8a90bf6718c657db866cc7cca1a440",
+        "size": 3225
+      },
+      "../../../tmp/g48c.txt": {
+        "sha256": "a1a17514bd4b575d6c2e37054b63cb304518d0110f0dabee2d88e939f7ff4db8",
+        "size": 3317
+      },
       "../../../tmp/r42.txt": {
         "sha256": "287739d73fad6f40e8e987d4bb6f3e8e6550e27daf6fd78d25ef34e8b7e7c2bd",
         "size": 1002
@@ -118,13 +138,21 @@
         "sha256": "86e1e025a5acaed3dccdc3e92fc6f7ad0e52888285a67d9f572ec0baea23a150",
         "size": 1002
       },
+      "../../../tmp/r48.txt": {
+        "sha256": "beb9f2966cb76c92804236b756038a7d888e2badb379ae7a24fef8b0f6975a2e",
+        "size": 1010
+      },
+      "../../../tmp/r48b.txt": {
+        "sha256": "beb9f2966cb76c92804236b756038a7d888e2badb379ae7a24fef8b0f6975a2e",
+        "size": 1010
+      },
       "cron_tracking/8dff7aa3/runs.jsonl": {
         "append_only": true,
-        "head_hash": "5401770e85d495b7c8b7aca9fcb53ee3235604e8af66172f0d184261e25be332",
-        "last_seq": 13,
-        "prefix_bytes": 8077,
-        "prefix_sha256": "a7c5da755425ad5eb54b48da76657cae2ec973f9ff86ee32d05c7e16f7bb8f5f",
-        "size": 8077
+        "head_hash": "0bd723a53e824dc245de51273d4fc583d6a96259f6524ddf51e06da5ce5d1dd2",
+        "last_seq": 933,
+        "prefix_bytes": 444392,
+        "prefix_sha256": "6152c111de94007ddccd005478a65f84afc0eb630601ac36fef14a8595825952",
+        "size": 444392
       }
     },
     "tool": {
@@ -133,8 +161,8 @@
         "size": 11095
       },
       "goldsieve/baseline.py": {
-        "sha256": "d3e6936fa965c09f8912a877ed7e49a8ebe98e71f6136670a120bb2b11bd97d1",
-        "size": 19477
+        "sha256": "c1ecc90b4f7c17f63bb9a3b5f99abd1bea6730c093f92ea4c92e679a5e2cf55d",
+        "size": 19517
       },
       "goldsieve/bench.py": {
         "sha256": "638205d3d621ec5ea9af62c951ccd464d1dea2af8b6eab71d8982400f30dc7b9",
@@ -144,9 +172,17 @@
         "sha256": "16e57d1ffd25c329a96c04fb32767725b9154d317b5ac4c0abd93c2831cd75fe",
         "size": 12379
       },
+      "goldsieve/calibrate_sieves.py": {
+        "sha256": "d2db6415cbabceb2df63dd4eb4475ca71c16aaefb691e85af3ce5e45edb02027",
+        "size": 6128
+      },
       "goldsieve/cases/_template_probe.py": {
         "sha256": "f3564a9f35bfc1d3c0ba96de0788f3c128289581f2e03458b365037a0ee8f639",
         "size": 1036
+      },
+      "goldsieve/cases/ann_brute_simd_benchmark_recipe_20260817.py": {
+        "sha256": "f1cba3e5fecbafbd106dc60bf5449aa090e7e6a7a1af18386f8a6972f75b1eb6",
+        "size": 9053
       },
       "goldsieve/cases/appendix_external_targets_20260813.py": {
         "sha256": "0f1299772765d1851a93985ec2ad29757d2b70764f5b71e7b73983084a1f1819",
@@ -155,6 +191,34 @@
       "goldsieve/cases/axes_omega_lambda.py": {
         "sha256": "f34a5fff20c0e4ab599a176dacf012c0e2b63661807426dd552863e778088922",
         "size": 13089
+      },
+      "goldsieve/cases/b004_lotus_ttest_threshold_20260815.py": {
+        "sha256": "db9e8e9d49ec7e9ee909d95cb309166f0d033ca851ec5db8d6297226b2d1f144",
+        "size": 9636
+      },
+      "goldsieve/cases/b006_gf16_delta_20260815.py": {
+        "sha256": "a491f73ee3416d7907e00e6ad2fefd113e532c0e37e2d017372d6f24aafaec60",
+        "size": 5138
+      },
+      "goldsieve/cases/b006_gf16_pvalue_20260815.py": {
+        "sha256": "9b742b70dd2c68e54f18cd349e19964dbe078c2b6574b24dfe69cc8147d8d6a5",
+        "size": 8622
+      },
+      "goldsieve/cases/b007_vsa_speedup_20260815.py": {
+        "sha256": "b356b633cc625964b4cac8845c51e744cb14a7d3c4158aafec0e0a221e1456b9",
+        "size": 5167
+      },
+      "goldsieve/cases/bitnet_coherence_throughput_recipe_20260817.py": {
+        "sha256": "8a8854b0630fc43af25ac01a2659df11dde21cb0ca1118438d4b6cafad2d4204",
+        "size": 12535
+      },
+      "goldsieve/cases/c20_empty_family_guard_20260815.py": {
+        "sha256": "31aa763a0c2ad6e5933b1ff8b6c2c597bec3ed207b6a2da2652490f942798a61",
+        "size": 3671
+      },
+      "goldsieve/cases/cifar10_metric_recipe_20260816.py": {
+        "sha256": "59153ef1ff8ec01f14ce41afec8745c2870e89247dfbf319fbc1ac21d07d86aa",
+        "size": 8742
       },
       "goldsieve/cases/ckm_lqg_external_20260813.py": {
         "sha256": "d12646fd9695852a18e698938d229819de34b84260b47dcee06c89507a4c95b5",
@@ -168,6 +232,22 @@
         "sha256": "d24c1153cb57797c21a5592d38a2edaaa2f0d8d97e0ba03973263fcbd8a162e6",
         "size": 17256
       },
+      "goldsieve/cases/cycle45_priority_queue_recipe_20260816.py": {
+        "sha256": "ff825dadab21528faa8fe4da1b87736c44893cfc1788b413a629a4969c4cdebc",
+        "size": 8871
+      },
+      "goldsieve/cases/cycle46_deadline_scheduling_recipe_20260816.py": {
+        "sha256": "347d18e800fa74dfe48e74555df0c84d9669b3a2f6195caac93781041e574383",
+        "size": 10276
+      },
+      "goldsieve/cases/cycle46_federated_privacy_recipe_20260816.py": {
+        "sha256": "121535e86fce2456f06962e91aa434f73d7e82b583f9a42b118d8e210bd0e609",
+        "size": 10414
+      },
+      "goldsieve/cases/cycle50_adaptive_caching_recipe_20260816.py": {
+        "sha256": "37a763f48f7f02340d7b6bb0b15c63f6a23fad8ae9644191caa613d90fb82ac0",
+        "size": 8310
+      },
       "goldsieve/cases/dark_photon_x17_formula.py": {
         "sha256": "1eb79592e69c54e9b532027afbdd17e339ad38fdb4e3bf874b50b993c7a4c2a4",
         "size": 9316
@@ -175,6 +255,18 @@
       "goldsieve/cases/delta001_additional_claims_20260814.py": {
         "sha256": "375531d7c3182f0cc5f10f1a2686a6d999b4a4f40404b4958fdbe682b8174f3f",
         "size": 10406
+      },
+      "goldsieve/cases/delta001_alpha_inverse_source_20260817.py": {
+        "sha256": "3074ac7771b7d47d56ad03367b13ace462540d0a1477033ac1de4dbdff0a55c9",
+        "size": 8844
+      },
+      "goldsieve/cases/delta001_gamma_entropy_comparison_20260818.py": {
+        "sha256": "cbc3592dd98476807113623027eb602b5918c866ed1e0e43fae84a9b1e7c506d",
+        "size": 5893
+      },
+      "goldsieve/cases/delta001_strong_coincidences_20260815.py": {
+        "sha256": "e850de35bf5deb4b08e7e88124ab0f8c2d3fda7d5a9d5034c4ac61a3d252f058",
+        "size": 8330
       },
       "goldsieve/cases/delta001_variance_claims_20260814.py": {
         "sha256": "7c94880b4be75033e1e3a5ea7209e34421930e0e55db423e323f680949c78a2d",
@@ -204,17 +296,77 @@
         "sha256": "2ac50b5307633416429552f831346b938dc6d332684141d0fb58a0eaff50dd19",
         "size": 9752
       },
+      "goldsieve/cases/gamma_bi_meissner_equation_20260817.py": {
+        "sha256": "9c58f06226b702eb374893b672eca75ee9e48a6c5257d8cd9cec6ede3cf1ab02",
+        "size": 10507
+      },
+      "goldsieve/cases/gf16_mnist_accuracy_recipe_20260816.py": {
+        "sha256": "ce45e4f0b9a5ea35f73be21635c891d70a8885b49c975c7a590255bc48d8f29d",
+        "size": 8314
+      },
+      "goldsieve/cases/golden_chain_final_report_consistency_20260817.py": {
+        "sha256": "abb5d745d44b59e5982fbfa9955030709ce234d3a36a4c7d53af6f7333d586a2",
+        "size": 9914
+      },
+      "goldsieve/cases/golden_chain_v238_dim1024_quality_recipe_20260817.py": {
+        "sha256": "0ce4580737bafbde30ba1f2b93be6c1ada43ca689c18dccf6fd6713c56317388",
+        "size": 11535
+      },
       "goldsieve/cases/golden_chain_v240_statistics_20260814.py": {
         "sha256": "925dcad4316c03d1a5866b99929afdf7bcd45f9dbe0a342a1ee4f8de35104ee4",
         "size": 9620
+      },
+      "goldsieve/cases/golden_chain_v240_train_ppl_20260815.py": {
+        "sha256": "11e2e2f367747afd6e71ea299b1f255da2461c877b883b685b93245242b4c120",
+        "size": 8717
+      },
+      "goldsieve/cases/golden_chain_v240_trigram_coverage_recipe_20260816.py": {
+        "sha256": "b63af9b8d5de8e7beab750c9f6b8f7089769ff7b2c7d91e4971acac4de847629",
+        "size": 7664
       },
       "goldsieve/cases/golden_chain_v241_offsets_20260815.py": {
         "sha256": "0b5244b80a10ec0b4363a8ac374040219b2a451225e29b1ad9b4b1c3e9f921c3",
         "size": 7605
       },
+      "goldsieve/cases/golden_chain_v245_word_ppl_recipe_20260816.py": {
+        "sha256": "be349aea139f8a9b5ad5a92764afa25d0a948922caae7a3eaf04a9e9bb049f82",
+        "size": 8812
+      },
+      "goldsieve/cases/golden_chain_v246_phrase_memorization_recipe_20260817.py": {
+        "sha256": "be56f499c6a17d97e48aa7956a5090a68d2122d8ecd080e93e8595f099a94097",
+        "size": 12845
+      },
+      "goldsieve/cases/golden_chain_v248_ppl_gain_20260815.py": {
+        "sha256": "180715af39c5d013fef3e3ace1998b2ec99868dd57d1ef4ebc7b5063fb3f4ae7",
+        "size": 8149
+      },
+      "goldsieve/cases/golden_chain_v249_generation_quality_recipe_20260817.py": {
+        "sha256": "4203a12d558434f73f4d748489d0a28af25fb2e051104f70f2e21cd4f62d520e",
+        "size": 10409
+      },
+      "goldsieve/cases/golden_chain_v250_kneser_ney_recipe_20260816.py": {
+        "sha256": "1b914baa2f793594c6c0e49bcb3f357c6088292f803efe16e377f7d66a5d67bd",
+        "size": 9739
+      },
+      "goldsieve/cases/golden_chain_v251_4gram_ppl_recipe_20260816.py": {
+        "sha256": "47abba1d5c4f4476ac4c86fc160bc572702317ff86f22eaf05c3e32d11fe6b96",
+        "size": 8618
+      },
+      "goldsieve/cases/golden_chain_v252_held_out_recipe_20260816.py": {
+        "sha256": "bdc3f655f6a954a6e2f2343c76ce57e04b6b2365b03cda472d9777c065b697d7",
+        "size": 10273
+      },
+      "goldsieve/cases/golden_chain_v30_absolute_recipe_20260817.py": {
+        "sha256": "74b595c04aace5d912b848429d9d97fdadcfc78d24d37d882ff4e88409ee056c",
+        "size": 9252
+      },
       "goldsieve/cases/gravitational_constant_external_20260814.py": {
         "sha256": "5d28a0ca7ac91fff7d6581565705604f2cc350365980d9593cda2f130ce8103a",
         "size": 6180
+      },
+      "goldsieve/cases/hslm_convergence_fraction_20260815.py": {
+        "sha256": "7dfc8c31b21ab475b37aaacfcb434ef614c199b22adb11f9b7ee1ff8006387d5",
+        "size": 5732
       },
       "goldsieve/cases/identity_cross_module_20260814.py": {
         "sha256": "d608859014a85856cb7f60d005ed1a7bad1bfecf10919a3b48c1d43cf06bd853",
@@ -228,9 +380,29 @@
         "sha256": "930ae4fc601c9bb37564568ef501efdd80b9b98099616ee7a7d5ed4f4e0ddecd",
         "size": 9154
       },
+      "goldsieve/cases/jepa_experiment_consistency_20260817.py": {
+        "sha256": "3190c4b8b2ccd7bf0f6f6b7a7aaa369c5a990b084a90d4a0df32ec2090899f9f",
+        "size": 9362
+      },
       "goldsieve/cases/khinchin.py": {
         "sha256": "7e303b555966820d216730ec9605a20ada7af8d6416c8f3bf03d317d65e6d6ed",
         "size": 5974
+      },
+      "goldsieve/cases/khinchin_estimator_recipe_20260816.py": {
+        "sha256": "70e76ef409e3d1ca669c03dc7c19e43e7185c6d8aaa54c017b4306efba496200",
+        "size": 6569
+      },
+      "goldsieve/cases/level11_neurosymbolic_benchmark_recipe_20260817.py": {
+        "sha256": "ba896082a857a599abf03e0e28329e0f85763d81265d763eb79a62c4118e5753",
+        "size": 12259
+      },
+      "goldsieve/cases/level11_planning_accuracy_recipe_20260816.py": {
+        "sha256": "f594648e20ddf528ca53a1e436f2968e6ac3f8283609cd77b3b05fc8d96e6cc4",
+        "size": 9239
+      },
+      "goldsieve/cases/level11_rdf_multihop_recipe_20260817.py": {
+        "sha256": "d79b4a83b97a58a99482cb86ce7dff7756464775736122ab76d5e6f4f73c3444",
+        "size": 16758
       },
       "goldsieve/cases/m_theory_dimension_formula.py": {
         "sha256": "b20d95407b14c532861468f55526a9048caf5264b6825c8f288c58bc31a13bba",
@@ -252,6 +424,10 @@
         "sha256": "97de857c69db0319de0e7aa5afbaa2f2dac4992d0a0ae9ef2ae5ea5c6b0c293b",
         "size": 8859
       },
+      "goldsieve/cases/particle_physics_example_mean_error_20260815.py": {
+        "sha256": "d57637389e98601498a1169884de4b68a803e2d500826cbadf0c7be5df1577a7",
+        "size": 6911
+      },
       "goldsieve/cases/pellis_external_targets_20260814.py": {
         "sha256": "b70be1e22d1ba72d662da749c123e6851b03963609cad86e74384cac0d727b53",
         "size": 10215
@@ -271,6 +447,10 @@
       "goldsieve/cases/qcd_phase_tc_formula.py": {
         "sha256": "e268b572b77dac81b8163325bcab94510f8bd9cfa4fb8906f1c40d3366aa8eae",
         "size": 8826
+      },
+      "goldsieve/cases/readme_mp_me_external_20260818.py": {
+        "sha256": "426b95836fe43b22d5f300d8b2a506eeff7277230469a33f7bfdad14062f5a0e",
+        "size": 7903
       },
       "goldsieve/cases/reionization_zre_prediction.py": {
         "sha256": "ecc5cab214e757297ddce26be99645a124f876b9114f3ef9c49a3fc1bc6dfb54",
@@ -292,6 +472,10 @@
         "sha256": "8e8a0611c755241c9df36eb9192de5a4d325b4d60d587c5edea8fbdcd814b232",
         "size": 9917
       },
+      "goldsieve/cases/sacred_predictions_registry_recipe_20260817.py": {
+        "sha256": "a045faf245e9bc74edf2b233b1b395123ae67f33e65cf2d63500b777c14dae7c",
+        "size": 11717
+      },
       "goldsieve/cases/sacred_random_probability.py": {
         "sha256": "a86c09a365f56a6a0a10aa560709ee751ed9e17a056bcea3752c21d6e9a774fe",
         "size": 13477
@@ -303,6 +487,22 @@
       "goldsieve/cases/sacred_table_audit_20260813.py": {
         "sha256": "0aed104264b09dc4d1bb14ca1bacd9de90ff7de0c2d87c053b35694b92e70fb0",
         "size": 9794
+      },
+      "goldsieve/cases/sacred_tsirelson_exact_external_20260817.py": {
+        "sha256": "88ac9f6e32b7fc756b7eb8688dd257f449745b5bdec11e03987683b6b87a64c2",
+        "size": 10501
+      },
+      "goldsieve/cases/sacred_two_formula_composition_recipe_20260817.py": {
+        "sha256": "2492795083b7facf876e880e9c6c2f60cd6ed18aa66b169fc00a727dcb9a3305",
+        "size": 10950
+      },
+      "goldsieve/cases/sidak_applicability_20260816.py": {
+        "sha256": "268284f8dcb99066dc04e0f17641be2a9d4aa2063052f22afd76966fb3ffab55",
+        "size": 8672
+      },
+      "goldsieve/cases/sidak_threshold_20260815.py": {
+        "sha256": "059a2c840e70b1d84888b33c7cfd921f04739e3451b505e6820c4c8dec9adb67",
+        "size": 11189
       },
       "goldsieve/cases/transcendental_3phi_value.py": {
         "sha256": "3e7432850bb7dc15d156dca80dc90a67001d2840fc93b528d513a31a1006ed2c",
@@ -324,6 +524,14 @@
         "sha256": "a6477e68872778cfaf514d534a5e84fd1984400dbe412ea72a5754d1e24d4911",
         "size": 12162
       },
+      "goldsieve/cases/vsa_simd_benchmark_recipe_20260818.py": {
+        "sha256": "71e5453391fcf6a948bb59ee4cfe68c7de3a336d6733f21bcf47ac7552177428",
+        "size": 14590
+      },
+      "goldsieve/cases/wilcoxon_v20_pvalue_20260815.py": {
+        "sha256": "bf3f311ab2abdd409ef171db70f770625797cbbdd7d14716803450f833785816",
+        "size": 9177
+      },
       "goldsieve/cases/zeta_chi2_independent_20260814.py": {
         "sha256": "9e5397c1d6471ee88764006e28c116a7a5091d00065a03ed08421d7e168d4752",
         "size": 9977
@@ -332,33 +540,57 @@
         "sha256": "b934339ef0ca44b1dfd48d5541dcc2a1d86cc88abb8e7658089a6cb4e95106fa",
         "size": 5728
       },
+      "goldsieve/cases/zeta_finite_height_extrapolation_20260816.py": {
+        "sha256": "ad8721f573b04ca82b503fe87af2b5096a91c6702395713ee9bfe01ebbc91d2e",
+        "size": 9980
+      },
       "goldsieve/cases/zeta_gue.py": {
-        "sha256": "4c5000a3eb79708d1c8dea49d549bcfd4a8c953e6bcce92b0493439f06ee175e",
-        "size": 11239
+        "sha256": "bee110d82e7adbacfcfe043eea486b6a84dc8fb222158ef1654a93124a280c47",
+        "size": 12240
+      },
+      "goldsieve/cases/zeta_p95_summary_20260815.py": {
+        "sha256": "6abbf203b3a7b1a5bd72787e414e5c709720ac58d6f853e9bfc10bc322930639",
+        "size": 6254
+      },
+      "goldsieve/cases/zeta_p99_gue_20260815.py": {
+        "sha256": "aa87e07f29d4ee189ca5b9f0c6822ea67c7fae9f1801fe3daec11a200750026f",
+        "size": 5511
       },
       "goldsieve/cases/zeta_shape.py": {
-        "sha256": "c02094c5109c899f4cb9d93d6f4b0cb4fa2dffea5b9e8910b5b372f125e273f8",
-        "size": 19681
+        "sha256": "ca7b4439f17d0ce50529e77b37fbacda6f8e17b0f297ccbdcd69bfbcb0cf71c6",
+        "size": 19904
+      },
+      "goldsieve/cases/zeta_std_gue_20260815.py": {
+        "sha256": "977a98ff5d83dc045b721208cacceb33bd6e4d53998534b94dd64687abe91415",
+        "size": 6089
+      },
+      "goldsieve/cases/zeta_std_unfolding_passport_20260815.py": {
+        "sha256": "7bf8c7f9d3079e29bbff6e64ca7dedd9074d6d612a871f85611fc48feef6787d",
+        "size": 9596
+      },
+      "goldsieve/cases/zeta_unfolding_std_recipe_20260815.py": {
+        "sha256": "624b30387ce5f9829fed2c926d7cb4fdbcef4a20353240fb088cacb92ab08300",
+        "size": 11183
       },
       "goldsieve/chain_overhead.py": {
         "sha256": "9396ef1cfaee2e5e5a9e22e0f4223f9d285fe98fa826b7e7c69cf793e92505f3",
         "size": 9564
       },
       "goldsieve/ci_gate.sh": {
-        "sha256": "676a1f5764208708bc6d1120871aaba8abdb8e0ff19f11ea3ffacf75fa071eb0",
-        "size": 8739
+        "sha256": "9569568ba709da998e7afa44d2fa101f916c3299a54d36aad348b8a6cc826160",
+        "size": 11462
       },
       "goldsieve/claims.yaml": {
-        "sha256": "a43e41a489eaf845bc19ecf5be2ec3f7cf3d75ed63598e8ed0510f66f6ebee4f",
-        "size": 28391
+        "sha256": "85db5a85376cb8c1fe7ea64c33884aa672f8d3d15317c13db91d19fec945bfe2",
+        "size": 117433
       },
       "goldsieve/coverage_manifest.py": {
-        "sha256": "bd76a02968cac4f08448513d2f49856a8d827896697f1e0cbc9a4d07cd5f4167",
-        "size": 17032
+        "sha256": "5f0b1267f2e2d401e083b2ce33ca2f19d2db9a8dcf6398bb64b96f486490c278",
+        "size": 17417
       },
       "goldsieve/coverage_manifest.yaml": {
-        "sha256": "293faa8b45c052425643a1b924184d507af7fe39fe2ccb324e1cd3d1f8cb33a6",
-        "size": 18008
+        "sha256": "c076827904249e3a98d148ea39615ec8df1f36da5f582e283e194da4c734d8cb",
+        "size": 23886
       },
       "goldsieve/goldsieve/__init__.py": {
         "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -377,12 +609,16 @@
         "size": 30221
       },
       "goldsieve/goldsieve/cli.py": {
-        "sha256": "afdca39868943d93a1f7f2a86ee215beb9046a5225fb6a330060955530952dce",
-        "size": 20239
+        "sha256": "9a0842fdaaff486eaf7f125553b62c1d3b1f8504bda1904638637ab9be4f75c9",
+        "size": 21279
+      },
+      "goldsieve/goldsieve/cover_chunks.py": {
+        "sha256": "46ef502cf701a0bbd836c6ef96c5614c320547bb5ad244e2fb5a49478dd44044",
+        "size": 11098
       },
       "goldsieve/goldsieve/coverage.py": {
-        "sha256": "ca16d239ee7c0423189cfa8873a218fc278ea22328daa0f547765449dec83ea4",
-        "size": 22707
+        "sha256": "2932e08e452317228990d3564a64c1c16255e114ea676aa487206e082d26a9d1",
+        "size": 24090
       },
       "goldsieve/goldsieve/exact.py": {
         "sha256": "9596e75b063cbd3094df48abd1da16baffc680fe66263ab66e5e2e2b060a47c3",
@@ -393,8 +629,8 @@
         "size": 14083
       },
       "goldsieve/goldsieve/gate.py": {
-        "sha256": "226a9e1855c9f214c3dbaf8796e7e0bfc06e3563a7e58d6e01c5a77b9da39450",
-        "size": 23311
+        "sha256": "5f5dca2963494507de9cacbd9876aaf687381b8cb0440512a4b56cefaaa14f0b",
+        "size": 24444
       },
       "goldsieve/goldsieve/identity.py": {
         "sha256": "06440aa0413552ed319834462782ff354373537da0f01b2d7a1bdd61126b4081",
@@ -420,9 +656,17 @@
         "sha256": "08f1cc2dcf6ef4c55ff53b9be97071f52838bf897b0918d957b50024041b3b34",
         "size": 18797
       },
+      "goldsieve/goldsieve/platform_sla.py": {
+        "sha256": "15ad4ea6da46e0fd21a9f9a47980c69085d06647db56fbaa9cb8ed857d568e45",
+        "size": 5740
+      },
+      "goldsieve/goldsieve/preconditions.py": {
+        "sha256": "cba0ffe696eb498eb4557c5fa55b08fca71cd613311b1d38e4f7d0b5e53b4d5e",
+        "size": 13675
+      },
       "goldsieve/goldsieve/prefilter.py": {
-        "sha256": "402c46afea160106451e2187e86957800ee7403b6927395f08a635a5042cfe61",
-        "size": 12882
+        "sha256": "983ee827d2674850d3131f3da54b07b45eeb8a0255fa6741ac90be81f5050770",
+        "size": 20883
       },
       "goldsieve/goldsieve/proof.py": {
         "sha256": "fe86bd0f3597cff34d619aa23d5c20d149875e690d089ba649e4adc4af4901b5",
@@ -457,16 +701,20 @@
         "size": 25464
       },
       "goldsieve/goldsieve/scope.py": {
-        "sha256": "b669b61a09a3a0ec8170cd662c7e74b980ea8eb926ddb9e55fa9625e1f824067",
-        "size": 10357
+        "sha256": "d3a47c8b3940d68c54bbe702936a15f5c3b9900f479c4c297027702f24724956",
+        "size": 10996
       },
       "goldsieve/goldsieve/selftest.py": {
-        "sha256": "1b123eb05f7f336b12ef5450580eec3ad8280e13b7b8e13757059482fdf28b13",
-        "size": 50899
+        "sha256": "b5ac4b88ba0410463005293b568e470041596200a68708b5710420399c72a723",
+        "size": 53176
+      },
+      "goldsieve/goldsieve/sidak.py": {
+        "sha256": "826bdc96402bd386f23ff3e60d46440b3d8814f2bc7a0e7291662997139576a5",
+        "size": 16835
       },
       "goldsieve/goldsieve/sieve.py": {
-        "sha256": "55ebf918dd87bf2e3dc81056ba83574d70ccd13a50191456bf46c08e80ebbd3d",
-        "size": 91250
+        "sha256": "57bab50eabab48500cdf0e70d8a9e58532f7b4f9b896958dc34b367de0aa0a2d",
+        "size": 95332
       },
       "goldsieve/goldsieve/stats.py": {
         "sha256": "aafab1e86a6b1139298ca34a57b32c406b8a7619dc241ab60e0ae048adf5f1cd",
@@ -489,8 +737,8 @@
         "size": 20732
       },
       "goldsieve/tick_counters.py": {
-        "sha256": "840bc3f432364309a9160795629f6ca9a0ceb99c77f19850fbdc8b48ab548384",
-        "size": 9317
+        "sha256": "fe1026c12e65b830f75c9fe1809993eab7930a617ea22513489b890612e2ae68",
+        "size": 11275
       },
       "goldsieve/tri": {
         "sha256": "7a8c087a42b79c1f990b2051d90c356b5a10dd22ba3388dbf28383d03b817d09",
@@ -509,8 +757,8 @@
     "между двумя соседними checkpoint последовательность защищена только цепочкой в самом журнале"
   ],
   "log_checkpoint": {
-    "head_hash": "5401770e85d495b7c8b7aca9fcb53ee3235604e8af66172f0d184261e25be332",
-    "last_seq": 13,
+    "head_hash": "0bd723a53e824dc245de51273d4fc583d6a96259f6524ddf51e06da5ce5d1dd2",
+    "last_seq": 933,
     "log_name": "runs.jsonl",
     "note": "цепочка обнаруживает правку копии; авторство и полная подмена вместе с checkpoint не покрыты",
     "snapshot_manifest": "goldsieve/baseline/snapshot-manifest.json"

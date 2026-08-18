@@ -1,0 +1,25 @@
+{
+ "apply": true,
+ "files": {
+  "zeta_gue_analysis_results.md": {
+   "sha256_before": "1fa0b57f9c1cbd3713f9b87ef1c4e12a710fc3a39cbb09910d52fcd864369b17",
+   "applied": [],
+   "already_correct": [
+    "| Metric | Value | GUE (computed) | Deviation | Status |",
+    "3. ⚠️ **Std deviation = 0.401** vs GUE 0.4220 = √(3π/8 − 1) → −5.0%"
+   ],
+   "changed": false
+  },
+  "zeta_bin_analysis_update.md": {
+   "sha256_before": "d631801a5276665023fc0538804086976ac4d9aa731970c225255b43b8afb53d",
+   "applied": [],
+   "already_correct": [
+    "| p95 vs GUE | 1.7186 vs 1.7518 (−1.9%)",
+    "| Std vs GUE | 0.4009 vs 0.4220 (−5.0%)"
+   ],
+   "changed": false
+  }
+ },
+ "missing": [],
+ "already": []
+}

@@ -154,6 +154,10 @@ class Claim:
     # получить безусловное ПОДТВЕРЖДЕНО, пока предпосылка молчит: см.
     # goldsieve.preconditions.
     tests_independent: Optional[str] = None
+    # Машинная причина для ВОПРОСА, когда проверка обнаружила отсутствие
+    # обязательного рецепта сравнения. Значение вычисляется кейсом, а не
+    # назначается по впечатлению после прогона.
+    reason_code_hint: str = ""
     notes: str = ""
 
     def target(self):
@@ -1289,6 +1293,9 @@ ACTION = {
         "участвовавших в калибровке",
     "no_computable_reference":
         "восстановить рецепт эталона: сравнивать пока не с чем",
+    "metrics_incommensurable":
+        "зафиксировать общую шкалу, токенизацию, усреднение и стадию: "
+        "текущие метрики несопоставимы",
     "estimator_dependent":
         "зафиксировать выбор оценки или сетки до прогона",
     "arithmetic_insufficient":
@@ -1339,6 +1346,7 @@ NON_AGGREGATABLE = (
     "unclassified",
     "control_broken",
     "input_precision_limited",
+    "metrics_incommensurable",
 )
 
 
@@ -1384,6 +1392,8 @@ def reason_of(results: list, verdict: str, claim: Optional[Claim] = None) -> str
         return "observation_mismatch"
 
     if verdict == QUESTION:
+        if claim is not None and claim.reason_code_hint in ACTION:
+            return claim.reason_code_hint
         if st.get("С1 регенерируемость") in (OPEN, FAIL):
             return "no_computable_reference"
         if st.get("С5 контроль") == FAIL:
@@ -1393,6 +1403,8 @@ def reason_of(results: list, verdict: str, claim: Optional[Claim] = None) -> str
         if st.get("С17 описание короче данных") == FAIL:
             return "no_compression"
         if st.get("С20 эффективное число попыток") == FAIL:
+            return "meff_unstable"
+        if st.get("С20 эффективное число попыток") == OPEN:
             return "meff_unstable"
         if st.get("С12 независимый метод") == FAIL:
             return "no_second_method"
@@ -1467,6 +1479,13 @@ def verdict_of(results: list) -> str:
     # близость упирается в теоретический потолок: и то и другое означает, что
     # вердикт держится на допущении, а не на данных. Вопрос, не опровержение.
     if st.get("С20 эффективное число попыток") == FAIL:
+        return QUESTION
+    # OPEN у С20 означает, что семейство пусто или иначе не позволяет оценить
+    # эффективную кратность. Это не PASS: без оценки множественности нельзя
+    # читать итог как подтверждение. Ранее такой OPEN выпадал из свода и
+    # инженерный кейс пустого семейства получал ПОДТВЕРЖДЕНО до того, как С14
+    # случайно обнаруживала вырождение.
+    if st.get("С20 эффективное число попыток") == OPEN:
         return QUESTION
     if st.get("С21 алгебраическая объяснимость") == FAIL:
         return QUESTION

@@ -1,0 +1,1510 @@
+{
+ "scanned_files": 7235,
+ "hits": 214,
+ "counts": {
+  "OK_SURMISE": 26,
+  "AMBIGUOUS_BOTH": 17,
+  "MISLABEL_EXACT": 16,
+  "UNLABELED": 155
+ },
+ "findings": [
+  {
+   "file": "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md",
+   "line": 124,
+   "value": "0.4220",
+   "class": "OK_SURMISE",
+   "context": "e ⏎  ⏎ | Finding | This Work | Literature | Status | ⏎ |---------|-----------|------------|--------| ⏎ | p95 vs GUE Wigner surmise | 1.7186 vs 1.7518 (−1.9%) | — | ⚠️ Within surmise accuracy; not a finding | ⏎ | Std vs GUE Wigner surmise | 0.4009 vs 0.4220 (−5.0%) | — | ⚠️ Open — the one real deviation | ⏎ | K < 2.685 | 2.62 ± 0.03 | Wolf (2010) | ⚠️ New observation, sample-size limited | ⏎ | Finite-size corrections | no height trend in p95 | Forrester-Mays (2015) | ❌ Not tested here (was: \"✅ Co"
+  },
+  {
+   "file": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
+   "line": 16,
+   "value": "0.4220",
+   "class": "OK_SURMISE",
+   "context": "l Riemann zeta function zeros reveals: ⏎  ⏎ 1. ✅ **Local mean spacing** perfectly matches theoretical formula `2π/ln(T)` ⏎ 2. ✅ **Khinchin's constant K = 2.669** ≈ 2.685 (generic CF behavior) ⏎ 3. ⚠️ **Std deviation = 0.401** vs GUE Wigner surmise 0.4220 = √(3π/8 − 1) (exact Fredholm GUE gives 0.4242576222440628) → −5.0% (the one surviving deviation) ⏎ 4. ✅ **95th percentile = 1.719** vs GUE **1.7518** → −1.9% (the former \"2.15\" reference was wrong) ⏎ 5. ✅ **Tails agree with the Wigner surmise"
+  },
+  {
+   "file": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
+   "line": 34,
+   "value": "0.4220",
+   "class": "OK_SURMISE",
+   "context": "zeta/zeros_odlyzko_100k.txt`. ⏎  ⏎ | Metric | Value | GUE Wigner surmise (computed) | Deviation | Status | ⏎ |--------|-------|----------------|-----------|--------| ⏎ | Mean spacing | 1.0000 | 1.0 (exact) | −0.00% | ✅ | ⏎ | Std deviation | 0.4009 | 0.4220 | −5.00% | ⚠️ real deviation | ⏎ | Median | 0.9655 | 0.9639 | +0.17% | ✅ | ⏎ | 95th percentile | 1.7189 | 1.7518 | −1.88% | ✅ | ⏎ | 99th percentile | 2.0680 | 2.1107 | −2.02% | ✅ | ⏎  ⏎ **Correction 2026-08-13.** The previous version of this table u"
+  },
+  {
+   "file": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
+   "line": 97,
+   "value": "0.4220",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "he earlier conclusion in this ⏎ document — \"the law is only an approximation, tails are significantly ⏎ lighter\" — rested entirely on the wrong reference column and does not survive ⏎ its correction. What remains: ⏎ - **Variance −5.0%** (0.4009 vs 0.4220): the one deviation larger than the ⏎   surmise-vs-exact-GUE gap, and the only one worth pursuing. ⏎ - **p99 is not lighter but slightly heavier than the naive reading suggested**: ⏎   2.068 vs 2.111 is −2%, i.e. within the accuracy of the surmi"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/zeta_std_gue_20260815.json",
+   "line": 3,
+   "value": "0,4220",
+   "class": "MISLABEL_EXACT",
+   "context": "[ ⏎  { ⏎   \"claim\": \"Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE\", ⏎   \"source\": \"data/zeta/zeta_bin_analysis_update.md:124\", ⏎   \"verdict\": \"ОПРОВЕРГНУТО\", ⏎   \"notes\": \"0,4009 извлекается из строки корпуса. 0,4220 не используется как эталон: reference получает его через интеграл, а reference_alt — че"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/zeta_std_gue_20260815.json",
+   "line": 6,
+   "value": "0,4220",
+   "class": "MISLABEL_EXACT",
+   "context": "[ ⏎  { ⏎   \"claim\": \"Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE\", ⏎   \"source\": \"data/zeta/zeta_bin_analysis_update.md:124\", ⏎   \"verdict\": \"ОПРОВЕРГНУТО\", ⏎   \"notes\": \"0,4009 извлекается из строки корпуса. 0,4220 не используется как эталон: reference получает его через интеграл, а reference_alt — через формулу второго момента. Подставка 0,5 и контроль 1,0 различаются ситом.\", ⏎   \"provenance\": { ⏎    \"python\": \"3.14.3\", ⏎    \"numpy\": \"2.5.2\", ⏎    \"scipy\":"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/zeta_std_gue_20260815.json",
+   "line": 29,
+   "value": "0.42201569295012265",
+   "class": "UNLABELED",
+   "context": "v1\", ⏎    \"предпосылка независимости\": \"not-declared\", ⏎    \"статус предпосылки\": \"irrelevant\" ⏎   }, ⏎   \"results\": [ ⏎    { ⏎     \"sieve\": \"С1 регенерируемость\", ⏎     \"status\": \"PASS\", ⏎     \"detail\": \"эталон пересчитан\", ⏎     \"numbers\": { ⏎      \"value\": 0.42201569295012265 ⏎     }, ⏎     \"seconds\": 0.00755000114440918, ⏎     \"reason_code\": \"\", ⏎     \"auto_skip\": false ⏎    }, ⏎    { ⏎     \"sieve\": \"С2 заявленное=эталон\", ⏎     \"status\": \"FAIL\", ⏎     \"detail\": \"value -5.00%\", ⏎     \"numbers\": { ⏎      \"value\": -0.0500353264176322"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/gue_label_fix.py",
+   "line": 2,
+   "value": "0,4220",
+   "class": "OK_SURMISE",
+   "context": "#!/usr/bin/env python3 ⏎ \"\"\"Пункт 1 приказа 2026-08-18: точная правка подписей числа 0,4220 в корпусе. ⏎  ⏎ Число 0,4220156929501229 = sqrt(3*pi/8 - 1) — стандартное отклонение WIGNER ⏎ SURMISE, а не точного (Fredholm) закона GUE, который даёт 0,4242576222440628. ⏎ Правка НЕ меняет ни одного числа: меняются ТОЛЬКО подписи столбцов и стро"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/gue_label_fix.py",
+   "line": 4,
+   "value": "0,4220156929501229",
+   "class": "OK_SURMISE",
+   "context": "#!/usr/bin/env python3 ⏎ \"\"\"Пункт 1 приказа 2026-08-18: точная правка подписей числа 0,4220 в корпусе. ⏎  ⏎ Число 0,4220156929501229 = sqrt(3*pi/8 - 1) — стандартное отклонение WIGNER ⏎ SURMISE, а не точного (Fredholm) закона GUE, который даёт 0,4242576222440628. ⏎ Правка НЕ меняет ни одного числа: меняются ТОЛЬКО подписи столбцов и строк, ⏎ где стоит «GUE» без указания, что "
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/gue_label_fix.py",
+   "line": 31,
+   "value": "0.4220",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "etric | Value | GUE (computed) | Deviation | Status |\", ⏎         \"| Metric | Value | GUE Wigner surmise (computed) | Deviation | Status |\", ⏎     ), ⏎     ( ⏎         \"zeta_gue_analysis_results.md\", ⏎         \"3. ⚠️ **Std deviation = 0.401** vs GUE 0.4220 = √(3π/8 − 1) → −5.0%\", ⏎         \"3. ⚠️ **Std deviation = 0.401** vs GUE Wigner surmise 0.4220 = √(3π/8 − 1) \" ⏎         \"(exact Fredholm GUE gives 0.4242576222440628) → −5.0%\", ⏎     ), ⏎     ( ⏎         \"zeta_bin_analysis_update.md\", ⏎         \"| p"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/gue_label_fix.py",
+   "line": 32,
+   "value": "0.4220",
+   "class": "OK_SURMISE",
+   "context": " surmise (computed) | Deviation | Status |\", ⏎     ), ⏎     ( ⏎         \"zeta_gue_analysis_results.md\", ⏎         \"3. ⚠️ **Std deviation = 0.401** vs GUE 0.4220 = √(3π/8 − 1) → −5.0%\", ⏎         \"3. ⚠️ **Std deviation = 0.401** vs GUE Wigner surmise 0.4220 = √(3π/8 − 1) \" ⏎         \"(exact Fredholm GUE gives 0.4242576222440628) → −5.0%\", ⏎     ), ⏎     ( ⏎         \"zeta_bin_analysis_update.md\", ⏎         \"| p95 vs GUE | 1.7186 vs 1.7518 (−1.9%)\", ⏎         \"| p95 vs GUE Wigner surmise | 1.7186 vs 1.7518"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/gue_label_fix.py",
+   "line": 42,
+   "value": "0.4220",
+   "class": "OK_SURMISE",
+   "context": "      \"zeta_bin_analysis_update.md\", ⏎         \"| p95 vs GUE | 1.7186 vs 1.7518 (−1.9%)\", ⏎         \"| p95 vs GUE Wigner surmise | 1.7186 vs 1.7518 (−1.9%)\", ⏎     ), ⏎     ( ⏎         \"zeta_bin_analysis_update.md\", ⏎         \"| Std vs GUE | 0.4009 vs 0.4220 (−5.0%)\", ⏎         \"| Std vs GUE Wigner surmise | 0.4009 vs 0.4220 (−5.0%)\", ⏎     ), ⏎ ] ⏎  ⏎  ⏎ def sha256(p: Path) -> str: ⏎     return hashlib.sha256(p.read_bytes()).hexdigest() ⏎  ⏎  ⏎ def main(apply: bool) -> int: ⏎     report: dict[str, object] = {\"appl"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/gue_label_fix.py",
+   "line": 43,
+   "value": "0.4220",
+   "class": "OK_SURMISE",
+   "context": "6 vs 1.7518 (−1.9%)\", ⏎         \"| p95 vs GUE Wigner surmise | 1.7186 vs 1.7518 (−1.9%)\", ⏎     ), ⏎     ( ⏎         \"zeta_bin_analysis_update.md\", ⏎         \"| Std vs GUE | 0.4009 vs 0.4220 (−5.0%)\", ⏎         \"| Std vs GUE Wigner surmise | 0.4009 vs 0.4220 (−5.0%)\", ⏎     ), ⏎ ] ⏎  ⏎  ⏎ def sha256(p: Path) -> str: ⏎     return hashlib.sha256(p.read_bytes()).hexdigest() ⏎  ⏎  ⏎ def main(apply: bool) -> int: ⏎     report: dict[str, object] = {\"apply\": apply, \"files\": {}, \"missing\": [], \"already\": []} ⏎     per_file"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/claims.yaml",
+   "line": 680,
+   "value": "0,4220",
+   "class": "MISLABEL_EXACT",
+   "context": "ovelty_key: b001:hslm:convergence_fraction:v1 ⏎   inputs_digest: 35938cf8a9418cbb ⏎ - source: data/zeta/zeta_bin_analysis_update.md:124 ⏎   case: cases/zeta_std_gue_20260815.py ⏎   claim: Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE ⏎   verdict: ОПРОВЕРГНУТО ⏎   inputs_digest: d32c98af192622e1 ⏎ - source: docs/docs/research/trinity-golden-chain-v2-48-interpolated-report.md:72-76 ⏎   case: cases/golden_chain_v248_ppl_gain_20260815.py ⏎   claim: Выигрыш интерполяции по пер"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/claims.yaml",
+   "line": 743,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "щается на другие выборки нулей, ⏎     развёртки, законы зазоров или версии рантайма. ⏎ - source: data/zeta/zeta_gue_analysis_results.md:34 ⏎   case: cases/zeta_std_unfolding_passport_20260815.py ⏎   claim: Паспорт развёртки дзета воспроизводит std 0,42201569295012265 и объясняет 0,4009 ⏎   verdict: ПОДТВЕРЖДЕНО ⏎   reason_subtype: recipe_reproduction ⏎   fingerprint: 5d06d00437f88407 ⏎   target: 530ad37b59acf1cd ⏎   novelty_key: zeta:unfolding_std_passport:v1 ⏎   inputs_digest: fdcdd26763d39113 ⏎   scope_status: ver"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/claims.yaml",
+   "line": 755,
+   "value": "0,42201569295012265",
+   "class": "OK_SURMISE",
+   "context": "ified-in-scope ⏎   scope_statement: >- ⏎     В области охвата для класса воспроизводимых рецептов развёртки дзета на ⏎     указанных версиях CPython (CPython 3.14.3 и CPython 3.14.4): два ⏎     независимых пути воспроизводят std Wigner—surmise ⏎     0,42201569295012265; паспорт фиксирует 100 000 нулей, индексы 1..100 000, ⏎     99 999 зазоров, формулу θ Римана—Зигеля, отсутствие исключения краёв и ⏎     выборочную std с ddof=1. Точная θ-развёртка и развёртка ведущим членом ⏎     воспроизводят корпусное 0,4009 "
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/claims.yaml",
+   "line": 759,
+   "value": "0,4220",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "зазоров, формулу θ Римана—Зигеля, отсутствие исключения краёв и ⏎     выборочную std с ddof=1. Точная θ-развёртка и развёртка ведущим членом ⏎     воспроизводят корпусное 0,4009 из того же файла, а Fredholm-GUE даёт около ⏎     0,424258, поэтому 0,4220 относится к Wigner—surmise, а не к точному GUE. ⏎     НЕ доказано обобщение на другие выборки нулей, нормировки, диапазоны высот ⏎     или версии рантайма. ⏎ - source: goldsieve/sieve.py:1440 ⏎   case: cases/c20_empty_family_guard_20260815.py ⏎   cl"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/gue_label_fix.json",
+   "line": 9,
+   "value": "0.4220",
+   "class": "MISLABEL_EXACT",
+   "context": "{ ⏎    \"sha256_before\": \"1fa0b57f9c1cbd3713f9b87ef1c4e12a710fc3a39cbb09910d52fcd864369b17\", ⏎    \"applied\": [], ⏎    \"already_correct\": [ ⏎     \"| Metric | Value | GUE (computed) | Deviation | Status |\", ⏎     \"3. ⚠️ **Std deviation = 0.401** vs GUE 0.4220 = √(3π/8 − 1) → −5.0%\" ⏎    ], ⏎    \"changed\": false ⏎   }, ⏎   \"zeta_bin_analysis_update.md\": { ⏎    \"sha256_before\": \"d631801a5276665023fc0538804086976ac4d9aa731970c225255b43b8afb53d\", ⏎    \"applied\": [], ⏎    \"already_correct\": [ ⏎     \"| p95 vs GUE | "
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/gue_label_fix.json",
+   "line": 18,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "\"zeta_bin_analysis_update.md\": { ⏎    \"sha256_before\": \"d631801a5276665023fc0538804086976ac4d9aa731970c225255b43b8afb53d\", ⏎    \"applied\": [], ⏎    \"already_correct\": [ ⏎     \"| p95 vs GUE | 1.7186 vs 1.7518 (−1.9%)\", ⏎     \"| Std vs GUE | 0.4009 vs 0.4220 (−5.0%)\" ⏎    ], ⏎    \"changed\": false ⏎   } ⏎  }, ⏎  \"missing\": [], ⏎  \"already\": [] ⏎ }"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/zeta_passport.py",
+   "line": 2,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "#!/usr/bin/env python3 ⏎ \"\"\"Паспорт рецепта развёртки нулей дзеты и происхождение чисел 0,4009 / 0,42201569295012265. ⏎  ⏎ Задача (приказ пользователя, пункт 1): ⏎   1) зафиксировать МАШИННО точный рецепт развёртки: набор нулей, sha256, диапазон ⏎      индексов, формулу theta, правило исключения краёв; ⏎   2) воспроизвести 0,42201569295012265 НЕЗАВИСИМЫМИ путями ("
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/zeta_passport.py",
+   "line": 7,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "ждение чисел 0,4009 / 0,42201569295012265. ⏎  ⏎ Задача (приказ пользователя, пункт 1): ⏎   1) зафиксировать МАШИННО точный рецепт развёртки: набор нулей, sha256, диапазон ⏎      индексов, формулу theta, правило исключения краёв; ⏎   2) воспроизвести 0,42201569295012265 НЕЗАВИСИМЫМИ путями (замкнутая форма, ⏎      квадратура высокой точности по плотности, квадратура по функции выживания, ⏎      Монте-Карло по обратной CDF); ⏎   3) объяснить происхождение корпусного 0,4009 перебором ЗАКОННЫХ вариантов ⏎      рецеп"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/zeta_passport.py",
+   "line": 32,
+   "value": "0.42201569295012265",
+   "class": "MISLABEL_EXACT",
+   "context": "corpus/trinity\" ⏎ ZEROS = os.path.join(CORPUS, \"data/zeta/zeros_odlyzko_100k.txt\") ⏎ DOC_GUE = os.path.join(CORPUS, \"data/zeta/zeta_gue_analysis_results.md\") ⏎ DOC_BIN = os.path.join(CORPUS, \"data/zeta/zeta_bin_analysis_update.md\") ⏎  ⏎ TARGET_REF = 0.42201569295012265      # число, которое требуется воспроизвести ⏎ TARGET_OBS = 0.4009                   # число из корпуса ⏎ EXACT_GUE_STD = 0.424258              # точный закон зазоров GUE (refs/gue_exact_gap.py) ⏎  ⏎  ⏎ # -------------------------------------------"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/zeta_passport.py",
+   "line": 82,
+   "value": "0,4220156929",
+   "class": "OK_SURMISE",
+   "context": "fold_leading_mid(g): ⏎     \"\"\"Тот же ведущий член в середине интервала.\"\"\" ⏎     mid = 0.5 * (g[:-1] + g[1:]) ⏎     return np.diff(g) * np.log(mid / (2.0 * math.pi)) / (2.0 * math.pi) ⏎  ⏎  ⏎ # ------------------------------- четыре независимых пути к 0,4220156929... ⏎  ⏎ def std_closed_form(): ⏎     \"\"\"Путь A: замкнутая форма второго момента surmise Вигнера, sqrt(3π/8 − 1).\"\"\" ⏎     return math.sqrt(3.0 * math.pi / 8.0 - 1.0) ⏎  ⏎  ⏎ def std_mpmath_density(): ⏎     \"\"\"Путь B: квадратура ∫ s²p(s)ds на 50 знаках (mp"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/zeta_std_unfolding_passport_20260815.json",
+   "line": 3,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "[ ⏎  { ⏎   \"claim\": \"Паспорт развёртки дзета воспроизводит std 0,42201569295012265 и объясняет 0,4009\", ⏎   \"source\": \"data/zeta/zeta_gue_analysis_results.md:34\", ⏎   \"verdict\": \"ПОДТВЕРЖДЕНО\", ⏎   \"notes\": \"Машинный паспорт: 100000 нулей, индексы 1..100000, 99999 зазоров; θ(t)=Im logΓ(1/4+i t/2)−(t/2)lnπ, s_i=(θ(γ_{i+1})−θ(γ_"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/zeta_std_unfolding_passport_20260815.json",
+   "line": 6,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": ", ⏎   \"verdict\": \"ПОДТВЕРЖДЕНО\", ⏎   \"notes\": \"Машинный паспорт: 100000 нулей, индексы 1..100000, 99999 зазоров; θ(t)=Im logΓ(1/4+i t/2)−(t/2)lnπ, s_i=(θ(γ_{i+1})−θ(γ_i))/π, края не исключаются, std выборочная ddof=1. Два независимых пути дают 0,42201569295012265. Для 0,4009 точная θ-развёртка даёт 0,4009327315, а ведущий член плотности с множителем по нижнему нулю — 0,4009263778: это иная измерительная развёртка того же файла, не табличная арифметика. Точный Fredholm-GUE даёт около 0,424258, поэто"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/zeta_std_unfolding_passport_20260815.json",
+   "line": 6,
+   "value": "0,4220",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "ля 0,4009 точная θ-развёртка даёт 0,4009327315, а ведущий член плотности с множителем по нижнему нулю — 0,4009263778: это иная измерительная развёртка того же файла, не табличная арифметика. Точный Fredholm-GUE даёт около 0,424258, поэтому 0,4220 — Wigner surmise, а не точный GUE; причина расхождения зафиксирована кодом.\", ⏎   \"provenance\": { ⏎    \"python\": \"3.14.3\", ⏎    \"numpy\": \"2.5.2\", ⏎    \"scipy\": \"1.18.0\", ⏎    \"inputs\": { ⏎     \"/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyz"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/zeta_std_unfolding_passport_20260815.json",
+   "line": 31,
+   "value": "0.422015692950123",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "   \"предпосылка независимости\": \"not-declared\", ⏎    \"статус предпосылки\": \"irrelevant\" ⏎   }, ⏎   \"results\": [ ⏎    { ⏎     \"sieve\": \"С1 регенерируемость\", ⏎     \"status\": \"PASS\", ⏎     \"detail\": \"эталон пересчитан\", ⏎     \"numbers\": { ⏎      \"wigner_std\": 0.422015692950123, ⏎      \"corpus_std\": 0.40093273147232356, ⏎      \"exact_gue_std\": 0.4242576222440628 ⏎     }, ⏎     \"seconds\": 0.15940093994140625, ⏎     \"reason_code\": \"\", ⏎     \"auto_skip\": false ⏎    }, ⏎    { ⏎     \"sieve\": \"С2 заявленное=эталон\", ⏎     \"status\": \"PASS\""
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_unfolding_std_recipe_20260815.py",
+   "line": 20,
+   "value": "0,4220156929501",
+   "class": "UNLABELED",
+   "context": "з math.fsum; ⏎   reference_alt — та же θ-развёртка, но loggamma из mpmath на 30 знаках и ⏎                   накопление моментов в Python (другая библиотека спецфункций, ⏎                   другая арифметика). ⏎  ⏎ Подставка — теоретическое значение 0,4220156929501: неверный ответ той же ⏎ формы, поставленный там, где он отличается от измерения на 5 %. ⏎ Отрицательный контроль — пуассоновская последовательность через тот же ⏎ конвейер: она обязана давать std около 1, а не эталон. ⏎ \"\"\" ⏎  ⏎ import math ⏎ import re"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_unfolding_std_recipe_20260815.py",
+   "line": 39,
+   "value": "0,42201569295012265",
+   "class": "OK_SURMISE",
+   "context": "OS = (\"/home/user/workspace/corpus/trinity/data/zeta/\" ⏎          \"zeros_odlyzko_100k.txt\") ⏎ DOC = (\"/home/user/workspace/corpus/trinity/data/zeta/\" ⏎        \"zeta_gue_analysis_results.md\") ⏎  ⏎ WIGNER_STD = math.sqrt(3.0 * math.pi / 8.0 - 1.0)   # 0,42201569295012265 ⏎  ⏎  ⏎ # ------------------------------------------------------------- заявленное ⏎  ⏎ def _stated(): ⏎     \"\"\"Напечатанное значение std из таблицы Global Statistics.\"\"\" ⏎     with open(DOC, encoding=\"utf-8\") as fh: ⏎         text = fh.read() ⏎     match ="
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_unfolding_std_recipe_20260815.py",
+   "line": 202,
+   "value": "0,4220156929501",
+   "class": "OK_SURMISE",
+   "context": "а на mpmath, 30 знаков\"], ⏎         independent_of={}, ⏎         notes=( ⏎             \"Правило исключения краёв: корпус края НЕ исключает, используются все \" ⏎             \"99 999 зазоров; оценка разброса — выборочная std с ddof=1. \" ⏎             \"0,4220156929501 в кейсе выступает ПОДСТАВКОЙ, а не эталоном: это \" ⏎             \"std surmise Вигнера, и от точного закона зазоров GUE (0,424258) она \" ⏎             \"сама отличается на +0,53 %.\" ⏎         ), ⏎         skip_reasons={ ⏎             \"С6\": \"сетки в ре"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_std_unfolding_passport_20260815.py",
+   "line": 1,
+   "value": "0,42201569295012265",
+   "class": "OK_SURMISE",
+   "context": "\"\"\"Паспорт развёртки дзета: независимое воспроизведение 0,42201569295012265. ⏎  ⏎ Наблюдение берётся из строки отчёта, а не из эталона. Эталон Wigner—surmise ⏎ получается двумя разными интегральными путями. Отдельно тем же паспортом ⏎ вычисляются точная развёртка θ и развёртка по ведущей плотности для файла ⏎ нулей: обе даю"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_std_unfolding_passport_20260815.py",
+   "line": 7,
+   "value": "0,4220",
+   "class": "AMBIGUOUS_BOTH",
+   "context": " двумя разными интегральными путями. Отдельно тем же паспортом ⏎ вычисляются точная развёртка θ и развёртка по ведущей плотности для файла ⏎ нулей: обе дают 0,4009. Точный закон GUE считается третьим, более строгим ⏎ ориентиром и показывает, что 0,4220 — именно Wigner—surmise, а не точный GUE. ⏎ \"\"\" ⏎  ⏎ import math ⏎ import re ⏎ import statistics ⏎  ⏎ import numpy as np ⏎ from scipy.special import loggamma ⏎  ⏎ from goldsieve.refs.gue_exact_gap import GapLaw ⏎ from goldsieve.sieve import Claim ⏎  ⏎  ⏎ ZEROS = ( ⏎   "
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_std_unfolding_passport_20260815.py",
+   "line": 164,
+   "value": "0.4220",
+   "class": "OK_SURMISE",
+   "context": " из его результата.\"\"\" ⏎     return 5.0e-5 / 0.4009 ⏎  ⏎  ⏎ def _selfcheck(): ⏎     stated = _stated() ⏎     observed = _observed() ⏎     reference = _reference() ⏎     alternate = _reference_alt() ⏎     assert stated == {\"corpus_std\": 0.4009, \"wigner_std\": 0.4220} ⏎     assert observed == stated ⏎     assert abs(reference[\"wigner_std\"] - 0.42201569295012265) < 1e-12 ⏎     assert abs(alternate[\"wigner_std\"] - reference[\"wigner_std\"]) < 1e-9 ⏎     assert abs(reference[\"corpus_std\"] - 0.4009) < 5e-5 ⏎     asser"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_std_unfolding_passport_20260815.py",
+   "line": 166,
+   "value": "0.42201569295012265",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "d = _stated() ⏎     observed = _observed() ⏎     reference = _reference() ⏎     alternate = _reference_alt() ⏎     assert stated == {\"corpus_std\": 0.4009, \"wigner_std\": 0.4220} ⏎     assert observed == stated ⏎     assert abs(reference[\"wigner_std\"] - 0.42201569295012265) < 1e-12 ⏎     assert abs(alternate[\"wigner_std\"] - reference[\"wigner_std\"]) < 1e-9 ⏎     assert abs(reference[\"corpus_std\"] - 0.4009) < 5e-5 ⏎     assert abs(alternate[\"corpus_std\"] - 0.4009) < 5e-5 ⏎     assert reference[\"exact_gue_std\"] - refer"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_std_unfolding_passport_20260815.py",
+   "line": 182,
+   "value": "0,42201569295012265",
+   "class": "OK_SURMISE",
+   "context": "std\"] - reference[\"wigner_std\"] > 1e-3 ⏎     assert _wrong() != reference ⏎     assert _negative_control() != reference ⏎  ⏎  ⏎ _selfcheck() ⏎  ⏎  ⏎ CLAIMS = [ ⏎     Claim( ⏎         name=( ⏎             \"Паспорт развёртки дзета воспроизводит std \" ⏎             \"0,42201569295012265 и объясняет 0,4009\" ⏎         ), ⏎         source=\"data/zeta/zeta_gue_analysis_results.md:34\", ⏎         stated=_stated(), ⏎         reference=_reference, ⏎         observed=_observed, ⏎         wrong=_wrong, ⏎         null_model=_negative_control, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_std_unfolding_passport_20260815.py",
+   "line": 211,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "шинный паспорт: 100000 нулей, индексы 1..100000, 99999 зазоров; \" ⏎             \"θ(t)=Im logΓ(1/4+i t/2)−(t/2)lnπ, s_i=(θ(γ_{i+1})−θ(γ_i))/π, \" ⏎             \"края не исключаются, std выборочная ddof=1. \" ⏎             \"Два независимых пути дают 0,42201569295012265. \" ⏎             \"Для 0,4009 точная θ-развёртка даёт 0,4009327315, а ведущий член \" ⏎             \"плотности с множителем по нижнему нулю — 0,4009263778: это иная \" ⏎             \"измерительная развёртка того же файла, не табличная арифметика. \""
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_std_unfolding_passport_20260815.py",
+   "line": 215,
+   "value": "0,4220",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "5, а ведущий член \" ⏎             \"плотности с множителем по нижнему нулю — 0,4009263778: это иная \" ⏎             \"измерительная развёртка того же файла, не табличная арифметика. \" ⏎             \"Точный Fredholm-GUE даёт около 0,424258, поэтому 0,4220 — Wigner \" ⏎             \"surmise, а не точный GUE; причина расхождения зафиксирована кодом.\" ⏎         ), ⏎         skip_reasons={ ⏎             \"С6\": \"рецепт не содержит дискретной сетки сходимости\", ⏎             \"С7\": \"проверяется одна статистик"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_std_gue_20260815.py",
+   "line": 4,
+   "value": "0,4220",
+   "class": "OK_SURMISE",
+   "context": "\"\"\"Аудит строки о стандартном отклонении расстояний дзета. ⏎  ⏎ Наблюдение читается из строки Comparison with Literature. Эталон не берётся ⏎ из напечатанного 0,4220: он вычисляется из плотности Вигнера численным ⏎ интегрированием. Второй путь использует замкнутую формулу для второго момента. ⏎ \"\"\" ⏎  ⏎ import math ⏎ import re ⏎  ⏎ from goldsieve.sieve import Claim ⏎  ⏎  ⏎ SOURCE = ( ⏎     \"/home/user/workspace/corpus/trini"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_std_gue_20260815.py",
+   "line": 84,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "n sum(values) / len(values) ⏎  ⏎  ⏎ def _alt_tolerance(): ⏎     delta = abs(_reference() - _reference_alt()) ⏎     return max(1.0e-10, 10.0 * delta) ⏎  ⏎  ⏎ def _selfcheck(): ⏎     assert abs(_observed() - 0.4009) < 1.0e-12 ⏎     assert abs(_reference_alt() - 0.4220) < 2.0e-5 ⏎     assert abs(_reference() - _reference_alt()) < 1.0e-8 ⏎     assert abs(_wrong() - _reference()) > 0.05 ⏎     assert abs(_negative_control() - _reference()) > 0.5 ⏎  ⏎  ⏎ _selfcheck() ⏎  ⏎  ⏎ CLAIMS = [ ⏎     Claim( ⏎         name=\"Стандартное отк"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_std_gue_20260815.py",
+   "line": 95,
+   "value": "0,4220",
+   "class": "MISLABEL_EXACT",
+   "context": "erence_alt()) < 1.0e-8 ⏎     assert abs(_wrong() - _reference()) > 0.05 ⏎     assert abs(_negative_control() - _reference()) > 0.5 ⏎  ⏎  ⏎ _selfcheck() ⏎  ⏎  ⏎ CLAIMS = [ ⏎     Claim( ⏎         name=\"Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE\", ⏎         source=\"data/zeta/zeta_bin_analysis_update.md:124\", ⏎         stated=_observed(), ⏎         reference=_reference, ⏎         observed=_observed, ⏎         wrong=_wrong, ⏎         null_model=_negative_control, ⏎         null_expect=1.0,"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/cases/zeta_std_gue_20260815.py",
+   "line": 121,
+   "value": "0,4220",
+   "class": "OK_SURMISE",
+   "context": " purpose=\"audit\", ⏎         models=[\"численное интегрирование плотности Вигнера\", ⏎                 \"аналитический второй момент плотности Вигнера\"], ⏎         independent_of={}, ⏎         notes=( ⏎             \"0,4009 извлекается из строки корпуса. 0,4220 не используется \" ⏎             \"как эталон: reference получает его через интеграл, а \" ⏎             \"reference_alt — через формулу второго момента. Подставка \" ⏎             \"0,5 и контроль 1,0 различаются ситом.\" ⏎         ), ⏎         skip_reaso"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/baseline/verdicts.json",
+   "line": 1040,
+   "value": "0,4220",
+   "class": "MISLABEL_EXACT",
+   "context": "source\": \"data/zeta/zeta_gue_analysis_results.md:форма распределения\", ⏎     \"inputs_digest\": \"3436c916a7878261\" ⏎   }, ⏎   { ⏎     \"case\": \"cases/zeta_std_gue_20260815.py\", ⏎     \"claim\": \"Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE\", ⏎     \"verdict\": \"ОПРОВЕРГНУТО\", ⏎     \"source\": \"data/zeta/zeta_bin_analysis_update.md:124\", ⏎     \"inputs_digest\": \"d32c98af192622e1\" ⏎   }, ⏎   { ⏎     \"case\": \"cases/zeta_std_unfolding_passport_20260815.py\", ⏎     \"claim\": \"Паспорт развёртк"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/baseline/verdicts.json",
+   "line": 1047,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "ОПРОВЕРГНУТО\", ⏎     \"source\": \"data/zeta/zeta_bin_analysis_update.md:124\", ⏎     \"inputs_digest\": \"d32c98af192622e1\" ⏎   }, ⏎   { ⏎     \"case\": \"cases/zeta_std_unfolding_passport_20260815.py\", ⏎     \"claim\": \"Паспорт развёртки дзета воспроизводит std 0,42201569295012265 и объясняет 0,4009\", ⏎     \"verdict\": \"ПОДТВЕРЖДЕНО\", ⏎     \"source\": \"data/zeta/zeta_gue_analysis_results.md:34\", ⏎     \"inputs_digest\": \"fdcdd26763d39113\" ⏎   }, ⏎   { ⏎     \"case\": \"cases/zeta_unfolding_std_recipe_20260815.py\", ⏎     \"claim\": \"Напеча"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/baseline/verdicts.csv",
+   "line": 150,
+   "value": "0,4220",
+   "class": "MISLABEL_EXACT",
+   "context": " точным законом GUE в пределах конечновыборочного разброса,ОПРОВЕРГНУТО,data/zeta/zeta_gue_analysis_results.md:форма распределения,3436c916a7878261 ⏎ cases/zeta_std_gue_20260815.py,\"Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE\",ОПРОВЕРГНУТО,data/zeta/zeta_bin_analysis_update.md:124,d32c98af192622e1 ⏎ cases/zeta_std_unfolding_passport_20260815.py,\"Паспорт развёртки дзета воспроизводит std 0,42201569295012265 и объясняет 0,4009\",ПОДТВЕРЖДЕНО,data/zeta/zeta_gu"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/baseline/verdicts.csv",
+   "line": 151,
+   "value": "0,42201569295012265",
+   "class": "MISLABEL_EXACT",
+   "context": "py,\"Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE\",ОПРОВЕРГНУТО,data/zeta/zeta_bin_analysis_update.md:124,d32c98af192622e1 ⏎ cases/zeta_std_unfolding_passport_20260815.py,\"Паспорт развёртки дзета воспроизводит std 0,42201569295012265 и объясняет 0,4009\",ПОДТВЕРЖДЕНО,data/zeta/zeta_gue_analysis_results.md:34,fdcdd26763d39113 ⏎ cases/zeta_unfolding_std_recipe_20260815.py,\"Напечатанная std 0,4009 получена из файла 100 000 нулей заявленной развёрткой\",ПОДТВЕРЖДЕНО,data/zeta/"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/loop19/report.md",
+   "line": 9,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "6-08-15. Инструмент: золотое сито (рабочая копия `/home/user/workspace/goldsieve`). ⏎ Пункт 1 приказа пользователя от 2026-08-15. ⏎  ⏎ ## Контракт тика ⏎  ⏎ - **Цель**: зафиксировать паспорт рецепта развёртки (unfolding), независимо ⏎   воспроизвести `0,42201569295012265` и машинно объяснить происхождение ⏎   корпусного `0,4009`. ⏎ - **Входы**: `data/zeta/zeros_odlyzko_100k.txt` (sha16 `3436c916a7878261`, ⏎   100 000 нулей, коммит корпуса `04430c0`), ⏎   `data/zeta/zeta_gue_analysis_results.md` (sha16 `cd1675530b6"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/loop19/report.md",
+   "line": 41,
+   "value": "0,42201569295012265",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "уса | `04430c0dc154ed3ec987704fe9b74bbcb40a3e9b` | ⏎  ⏎ Контроли паспорта: θ восстанавливает номер нуля `N = 99 999,405` против ⏎ 100 000; среднее развёрнутых зазоров равно `1,000000` (θ) и `0,999986` ⏎ (ведущий член). ⏎  ⏎ ## Что ДОКАЗАНО ⏎  ⏎ **1. Число 0,42201569295012265 — это std surmise Вигнера, а не точного закона ⏎ GUE.** Оно равно `sqrt(3π/8 − 1)` и воспроизведено четырьмя независимыми ⏎ путями: ⏎  ⏎ | путь | значение | отличие от цели | ⏎ |---|---|---| ⏎ | A — замкнутая форма | `0,4220156929501229` | `5,6e-17` |"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/loop19/report.md",
+   "line": 47,
+   "value": "0,4220156929501229",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "О ⏎  ⏎ **1. Число 0,42201569295012265 — это std surmise Вигнера, а не точного закона ⏎ GUE.** Оно равно `sqrt(3π/8 − 1)` и воспроизведено четырьмя независимыми ⏎ путями: ⏎  ⏎ | путь | значение | отличие от цели | ⏎ |---|---|---| ⏎ | A — замкнутая форма | `0,4220156929501229` | `5,6e-17` | ⏎ | B — mpmath, 50 знаков, квадратура по плотности | `0,422015692950123` | согласуется с A | ⏎ | C — Гаусс–Лежандр по функции ВЫЖИВАНИЯ, `E[s²]=∫2s(1−F)ds` (иной объект — CDF) | `0,42201569293918684` | `1,09e-11` | ⏎ | D — Монте-К"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/loop19/report.md",
+   "line": 48,
+   "value": "0,422015692950123",
+   "class": "UNLABELED",
+   "context": "* Оно равно `sqrt(3π/8 − 1)` и воспроизведено четырьмя независимыми ⏎ путями: ⏎  ⏎ | путь | значение | отличие от цели | ⏎ |---|---|---| ⏎ | A — замкнутая форма | `0,4220156929501229` | `5,6e-17` | ⏎ | B — mpmath, 50 знаков, квадратура по плотности | `0,422015692950123` | согласуется с A | ⏎ | C — Гаусс–Лежандр по функции ВЫЖИВАНИЯ, `E[s²]=∫2s(1−F)ds` (иной объект — CDF) | `0,42201569293918684` | `1,09e-11` | ⏎ | D — Монте-Карло 4·10⁶ по обратной CDF, seed 20260815 | `0,4220255909610701` ± `1,49e-4` | `|Δ| ="
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/loop19/report.md",
+   "line": 49,
+   "value": "0,42201569293918684",
+   "class": "MISLABEL_EXACT",
+   "context": "|---| ⏎ | A — замкнутая форма | `0,4220156929501229` | `5,6e-17` | ⏎ | B — mpmath, 50 знаков, квадратура по плотности | `0,422015692950123` | согласуется с A | ⏎ | C — Гаусс–Лежандр по функции ВЫЖИВАНИЯ, `E[s²]=∫2s(1−F)ds` (иной объект — CDF) | `0,42201569293918684` | `1,09e-11` | ⏎ | D — Монте-Карло 4·10⁶ по обратной CDF, seed 20260815 | `0,4220255909610701` ± `1,49e-4` | `|Δ| = 9,9e-6 < 4·SE` | ⏎  ⏎ Точный закон зазоров GUE даёт `0,424258`, то есть колонка корпуса «GUE ⏎ (computed)» отличается от точного з"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/loop19/report.md",
+   "line": 50,
+   "value": "0,4220255909610701",
+   "class": "MISLABEL_EXACT",
+   "context": "ратура по плотности | `0,422015692950123` | согласуется с A | ⏎ | C — Гаусс–Лежандр по функции ВЫЖИВАНИЯ, `E[s²]=∫2s(1−F)ds` (иной объект — CDF) | `0,42201569293918684` | `1,09e-11` | ⏎ | D — Монте-Карло 4·10⁶ по обратной CDF, seed 20260815 | `0,4220255909610701` ± `1,49e-4` | `|Δ| = 9,9e-6 < 4·SE` | ⏎  ⏎ Точный закон зазоров GUE даёт `0,424258`, то есть колонка корпуса «GUE ⏎ (computed)» отличается от точного закона на `+0,531 %`. ⏎  ⏎ **2. Корпусное 0,4009 — настоящее измерение из сырых нулей, а не артефа"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/loop19/report.md",
+   "line": 71,
+   "value": "0,4220156929501",
+   "class": "UNLABELED",
+   "context": "ром файла и `math.fsum` (`0,4009263778`); второй ⏎ эталон — та же θ-развёртка на mpmath при 30 знаках со накоплением моментов в ⏎ Python. Сита: С2 `−0,01 %` при выведенной из печатной точности терпимости ⏎ `1,247e-4`; С3 `−0,00 %`; С4 подставка `0,4220156929501` отклонена (`+5,26 %`); ⏎ С5 пуассоновский контроль через тот же конвейер даёт `1,0148` и отвергнут ⏎ (`+153 %`); С10 `z = +0,0` (полуширина `0,46 %`); С12 согласие со вторым ⏎ методом в пределах измеренного разброса; С13 все 12 пропусков объявл"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/loop19/report.md",
+   "line": 80,
+   "value": "0,4220156930",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "квозная подставка получила ОПРОВЕРГНУТО. ⏎ Отпечаток рецепта `ca42e009adaca3bf`, паспорт цели `9e1b6776d16762e6`, ⏎ sha16 входов `3436c916a7878261`. ⏎  ⏎ **4. Отклонение, о котором сообщает корпус, посчитано относительно surmise.** ⏎ `0,4009327315 / 0,4220156930 − 1 = −5,00 %` — совпадает с напечатанным ⏎ `−5,00 %`. Относительно ТОЧНОГО закона GUE то же измерение даёт `−5,50 %`, ⏎ то есть выбранный корпусом эталон занижает собственное отклонение корпуса. ⏎  ⏎ **5. Инструмент не деградировал.** Регресс: `1"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/loop19/report.md",
+   "line": 92,
+   "value": "0,4220",
+   "class": "OK_SURMISE",
+   "context": "7/17`. Отпечаток ⏎ вердиктов `bc502fd7cfdb4d0b`, снимок `4b87d31a21e6cbf2`, checkpoint журнала ⏎ `seq 213`, голова `f689345b733a5862`. ⏎  ⏎ **6. Бюджет информационной новизны сработал как решение о запуске.** Вторая ⏎ возможная цель тика — «колонка `0,4220` подписана как GUE, хотя это surmise» — ⏎ НЕ бралась: этот класс уже закрыт зарегистрированным утверждением «surmise ⏎ Вигнера годится как эталон на уровне 2 % → ОПРОВЕРГНУТО». Отказ бюджета ⏎ записан как решение о выборе цели, а не как вердикт."
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2018,
+   "value": "0,4220",
+   "class": "MISLABEL_EXACT",
+   "context": "е инструмента нет. ⏎  ⏎ ## Тик 57 — 2026-08-15: стандартное отклонение расстояний дзета ⏎  ⏎ ### Контракт тика ⏎  ⏎ - **Цель:** проверить строку `data/zeta/zeta_bin_analysis_update.md:124` — «Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE» — вычисляемым эталоном и независимым вторым методом. ⏎ - **Входы:** корпус Trinity, файл `data/zeta/zeta_bin_analysis_update.md`; кейс `cases/zeta_std_gue_20260815.py`; однородная пара `STANDARD_RANGES` и `M=20 412` только для обязат"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2028,
+   "value": "0,42201569295012265",
+   "class": "OK_SURMISE",
+   "context": "274`, ожидаемых попаданий `0,162`, погрешность неизвестна; решение **RUN**. ⏎ 3. **Исполнение.** Создан `cases/zeta_std_gue_20260815.py`. Наблюдение читает `0,4009` из строки `Std vs GUE`. Эталон численно интегрирует плотность Вигнера и дал `0,42201569295012265`; `reference_alt` по аналитическому второму моменту совпал в пределах измеренного разброса. Подставка `0,5` и отрицательный контроль `1,0` различены. Сито запущено через реальный CLI-маршрут с загрузкой кейса через `module_from_spec` без р"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2034,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "24fe8cd66b4`; SHA16 входа `d32c98af192622e1`. Матрица ОС: выбранный MacBook Pro offline; `tick_aborted_other=11`; macOS и Windows остаются `not-evaluated`. ⏎  ⏎ #### что ДОКАЗАНО ⏎  ⏎ - Строка корпуса `0,4009` не совпадает с вычисляемым значением `0,42201569295012265`: машинное сито зафиксировало расхождение `−5,00 %` и вердикт **ОПРОВЕРГНУТО** для указанного класса конструкций на указанных версиях CPython. ⏎ - Два принципиально разных пути эталона согласуются; подставка `0,5` и отрицательный контроль `1"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2101,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "6-08-15. Инструмент: золотое сито (рабочая копия `/home/user/workspace/goldsieve`). ⏎ Пункт 1 приказа пользователя от 2026-08-15. ⏎  ⏎ ## Контракт тика ⏎  ⏎ - **Цель**: зафиксировать паспорт рецепта развёртки (unfolding), независимо ⏎   воспроизвести `0,42201569295012265` и машинно объяснить происхождение ⏎   корпусного `0,4009`. ⏎ - **Входы**: `data/zeta/zeros_odlyzko_100k.txt` (sha16 `3436c916a7878261`, ⏎   100 000 нулей, коммит корпуса `04430c0`), ⏎   `data/zeta/zeta_gue_analysis_results.md` (sha16 `cd1675530b6"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2133,
+   "value": "0,42201569295012265",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "уса | `04430c0dc154ed3ec987704fe9b74bbcb40a3e9b` | ⏎  ⏎ Контроли паспорта: θ восстанавливает номер нуля `N = 99 999,405` против ⏎ 100 000; среднее развёрнутых зазоров равно `1,000000` (θ) и `0,999986` ⏎ (ведущий член). ⏎  ⏎ ## Что ДОКАЗАНО ⏎  ⏎ **1. Число 0,42201569295012265 — это std surmise Вигнера, а не точного закона ⏎ GUE.** Оно равно `sqrt(3π/8 − 1)` и воспроизведено четырьмя независимыми ⏎ путями: ⏎  ⏎ | путь | значение | отличие от цели | ⏎ |---|---|---| ⏎ | A — замкнутая форма | `0,4220156929501229` | `5,6e-17` |"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2139,
+   "value": "0,4220156929501229",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "О ⏎  ⏎ **1. Число 0,42201569295012265 — это std surmise Вигнера, а не точного закона ⏎ GUE.** Оно равно `sqrt(3π/8 − 1)` и воспроизведено четырьмя независимыми ⏎ путями: ⏎  ⏎ | путь | значение | отличие от цели | ⏎ |---|---|---| ⏎ | A — замкнутая форма | `0,4220156929501229` | `5,6e-17` | ⏎ | B — mpmath, 50 знаков, квадратура по плотности | `0,422015692950123` | согласуется с A | ⏎ | C — Гаусс–Лежандр по функции ВЫЖИВАНИЯ, `E[s²]=∫2s(1−F)ds` (иной объект — CDF) | `0,42201569293918684` | `1,09e-11` | ⏎ | D — Монте-К"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2140,
+   "value": "0,422015692950123",
+   "class": "UNLABELED",
+   "context": "* Оно равно `sqrt(3π/8 − 1)` и воспроизведено четырьмя независимыми ⏎ путями: ⏎  ⏎ | путь | значение | отличие от цели | ⏎ |---|---|---| ⏎ | A — замкнутая форма | `0,4220156929501229` | `5,6e-17` | ⏎ | B — mpmath, 50 знаков, квадратура по плотности | `0,422015692950123` | согласуется с A | ⏎ | C — Гаусс–Лежандр по функции ВЫЖИВАНИЯ, `E[s²]=∫2s(1−F)ds` (иной объект — CDF) | `0,42201569293918684` | `1,09e-11` | ⏎ | D — Монте-Карло 4·10⁶ по обратной CDF, seed 20260815 | `0,4220255909610701` ± `1,49e-4` | `|Δ| ="
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2141,
+   "value": "0,42201569293918684",
+   "class": "MISLABEL_EXACT",
+   "context": "|---| ⏎ | A — замкнутая форма | `0,4220156929501229` | `5,6e-17` | ⏎ | B — mpmath, 50 знаков, квадратура по плотности | `0,422015692950123` | согласуется с A | ⏎ | C — Гаусс–Лежандр по функции ВЫЖИВАНИЯ, `E[s²]=∫2s(1−F)ds` (иной объект — CDF) | `0,42201569293918684` | `1,09e-11` | ⏎ | D — Монте-Карло 4·10⁶ по обратной CDF, seed 20260815 | `0,4220255909610701` ± `1,49e-4` | `|Δ| = 9,9e-6 < 4·SE` | ⏎  ⏎ Точный закон зазоров GUE даёт `0,424258`, то есть колонка корпуса «GUE ⏎ (computed)» отличается от точного з"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2142,
+   "value": "0,4220255909610701",
+   "class": "MISLABEL_EXACT",
+   "context": "ратура по плотности | `0,422015692950123` | согласуется с A | ⏎ | C — Гаусс–Лежандр по функции ВЫЖИВАНИЯ, `E[s²]=∫2s(1−F)ds` (иной объект — CDF) | `0,42201569293918684` | `1,09e-11` | ⏎ | D — Монте-Карло 4·10⁶ по обратной CDF, seed 20260815 | `0,4220255909610701` ± `1,49e-4` | `|Δ| = 9,9e-6 < 4·SE` | ⏎  ⏎ Точный закон зазоров GUE даёт `0,424258`, то есть колонка корпуса «GUE ⏎ (computed)» отличается от точного закона на `+0,531 %`. ⏎  ⏎ **2. Корпусное 0,4009 — настоящее измерение из сырых нулей, а не артефа"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2163,
+   "value": "0,4220156929501",
+   "class": "UNLABELED",
+   "context": "ром файла и `math.fsum` (`0,4009263778`); второй ⏎ эталон — та же θ-развёртка на mpmath при 30 знаках со накоплением моментов в ⏎ Python. Сита: С2 `−0,01 %` при выведенной из печатной точности терпимости ⏎ `1,247e-4`; С3 `−0,00 %`; С4 подставка `0,4220156929501` отклонена (`+5,26 %`); ⏎ С5 пуассоновский контроль через тот же конвейер даёт `1,0148` и отвергнут ⏎ (`+153 %`); С10 `z = +0,0` (полуширина `0,46 %`); С12 согласие со вторым ⏎ методом в пределах измеренного разброса; С13 все 12 пропусков объявл"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2172,
+   "value": "0,4220156930",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "квозная подставка получила ОПРОВЕРГНУТО. ⏎ Отпечаток рецепта `ca42e009adaca3bf`, паспорт цели `9e1b6776d16762e6`, ⏎ sha16 входов `3436c916a7878261`. ⏎  ⏎ **4. Отклонение, о котором сообщает корпус, посчитано относительно surmise.** ⏎ `0,4009327315 / 0,4220156930 − 1 = −5,00 %` — совпадает с напечатанным ⏎ `−5,00 %`. Относительно ТОЧНОГО закона GUE то же измерение даёт `−5,50 %`, ⏎ то есть выбранный корпусом эталон занижает собственное отклонение корпуса. ⏎  ⏎ **5. Инструмент не деградировал.** Регресс: `1"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2184,
+   "value": "0,4220",
+   "class": "OK_SURMISE",
+   "context": "7/17`. Отпечаток ⏎ вердиктов `bc502fd7cfdb4d0b`, снимок `4b87d31a21e6cbf2`, checkpoint журнала ⏎ `seq 213`, голова `f689345b733a5862`. ⏎  ⏎ **6. Бюджет информационной новизны сработал как решение о запуске.** Вторая ⏎ возможная цель тика — «колонка `0,4220` подписана как GUE, хотя это surmise» — ⏎ НЕ бралась: этот класс уже закрыт зарегистрированным утверждением «surmise ⏎ Вигнера годится как эталон на уровне 2 % → ОПРОВЕРГНУТО». Отказ бюджета ⏎ записан как решение о выборе цели, а не как вердикт."
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2456,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "лировок на новой записи молчит. ⏎  ⏎ ## Тик 28 — 2026-08-15 — закрытие ZETA-кейса паспортом развёртки ⏎  ⏎ ### Контракт тика ⏎  ⏎ - **Цель:** закрыть пункт 1 приказа: зафиксировать воспроизводимый паспорт развёртки, двумя независимыми путями получить `0,42201569295012265` и кодом объяснить происхождение корпусного `0,4009`. ⏎ - **Входы:** `/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt`, `/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md`, кейс `cases/zeta_std_u"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2464,
+   "value": "0,42201569295012265",
+   "class": "OK_SURMISE",
+   "context": "л и не округление. ⏎  ⏎ ### Разведка → план → исполнение → верификация → доклад ⏎  ⏎ 1. **Разведка.** Предыдущая проверка уже воспроизводила `0,4009`, но отдельный zeta-кейс сравнивал его с Wigner—surmise и не фиксировал полный паспорт требуемого `0,42201569295012265`. Запуск `zeta_passport.py` показал: закрытая форма, квадратура плотности, квадратура функции выживания и Монте-Карло дают требуемый std; варианты на сырых нулях позволяют разделить рецепты. ⏎ 2. **План.** Бюджет новизны допущен кодом (`ADMI"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2467,
+   "value": "0,422015692950123",
+   "class": "OK_SURMISE",
+   "context": "зазоров и `ddof=1`. Подставка `0,5` и отрицательный контроль `1,0` различены. ⏎ 4. **Верификация.** Машинный вердикт из JSON — **ПОДТВЕРЖДЕНО**, подтип `confirmed`; С1–С5, С12–С14 прошли, пропуски С6–С11 и С15–С21 объявлены. Получены `Wigner=0,422015692950123`, `θ-нули=0,40093273147232356`, ведущий член `0,4009263777707385`, точный Fredholm-GUE `0,4242576222440628`. Рецепт `5d06d00437f88407`, паспорт `530ad37b59acf1cd`, SHA16 входов `fdcdd26763d39113`; гейт после регистрации открыт. ⏎ 5. **Доклад"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2476,
+   "value": "0,42201569295012265",
+   "class": "OK_SURMISE",
+   "context": "- Происхождение `0,4009`: из того же файла точная θ-развёртка даёт `0,40093273147232356`, а ведущий член `s_i=(γ_{i+1}−γ_i)ln(γ_i/2π)/(2π)` даёт `0,4009263777707385`; оба значения попадают в напечатанную точность `0,4009`. ⏎ - Происхождение `0,42201569295012265`: это Wigner—surmise `sqrt(3π/8−1)`, воспроизведённая mpmath-квадратурой плотности и независимой квадратурой функции выживания. ⏎ - Сопоставление эталонов: вычисленный точный Fredholm-GUE даёт `0,4242576222440628`; следовательно, `0,4220` — "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2477,
+   "value": "0,4220",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "9295012265`: это Wigner—surmise `sqrt(3π/8−1)`, воспроизведённая mpmath-квадратурой плотности и независимой квадратурой функции выживания. ⏎ - Сопоставление эталонов: вычисленный точный Fredholm-GUE даёт `0,4242576222440628`; следовательно, `0,4220` — Wigner—surmise, а не точный GUE. Кодовая развилка рецептов объясняет `0,4009` иной нормировкой/рецептом развёртки и выборкой сырых нулей: два независимых пересчёта сырых данных согласуются с печатной строкой, поэтому проверенная причина"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2481,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "ясняет `0,4009` иной нормировкой/рецептом развёртки и выборкой сырых нулей: два независимых пересчёта сырых данных согласуются с печатной строкой, поэтому проверенная причина — не ошибка корпуса. ⏎  ⏎ ## Что ДОКАЗАНО ⏎  ⏎ - Машинно воспроизведено `0,42201569295012265` двумя различными интегральными методами; эталон не берётся из напечатанного `0,4220`. ⏎ - Зафиксированы источник, SHA-256, диапазон индексов, формула θ Римана–Зигеля, правило краёв и `ddof=1`. ⏎ - Машинно показано, что `0,4009` получается из "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2481,
+   "value": "0,4220",
+   "class": "UNLABELED",
+   "context": "ёта сырых данных согласуются с печатной строкой, поэтому проверенная причина — не ошибка корпуса. ⏎  ⏎ ## Что ДОКАЗАНО ⏎  ⏎ - Машинно воспроизведено `0,42201569295012265` двумя различными интегральными методами; эталон не берётся из напечатанного `0,4220`. ⏎ - Зафиксированы источник, SHA-256, диапазон индексов, формула θ Римана–Зигеля, правило краёв и `ddof=1`. ⏎ - Машинно показано, что `0,4009` получается из этого файла нулей при точной θ-развёртке и при ведущем локальном члене; это объясняет"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/audit-ledger.md",
+   "line": 2484,
+   "value": "0,422015692950123",
+   "class": "OK_SURMISE",
+   "context": "ло краёв и `ddof=1`. ⏎ - Машинно показано, что `0,4009` получается из этого файла нулей при точной θ-развёртке и при ведущем локальном члене; это объясняет число через код, а не через впечатление. ⏎ - Машинно показано различие Wigner—surmise (`0,422015692950123`) и точного Fredholm-GUE (`0,4242576222440628`), поэтому эти два эталона нельзя смешивать. ⏎ - Подставка `0,5`, отрицательный контроль `1,0`, независимый метод и гигиена пропусков прошли каскад; утверждение получило класс и версии рантайма в"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/priority1-unregistered.txt",
+   "line": 5086,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "ata/zeta/zeta_bin_analysis_update.md:76: 0.005 ⏎ data/zeta/zeta_bin_analysis_update.md:123: 1.7186 ⏎ data/zeta/zeta_bin_analysis_update.md:123: 1.7518 ⏎ data/zeta/zeta_bin_analysis_update.md:124: 0.4009 ⏎ data/zeta/zeta_bin_analysis_update.md:124: 0.4220 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 0.424258 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 0.962807 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 1.570136 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 1.757099 ⏎ data/zeta/zeta_bin_analysis_upd"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/priority1-unregistered.txt",
+   "line": 5095,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "/zeta/zeta_bin_analysis_update.md:150: 2.120406 ⏎ data/zeta/zeta_bin_analysis_update.md:161: 0.107 ⏎ data/zeta/zeta_gue_analysis_results.md:33: 1.0000 ⏎ data/zeta/zeta_gue_analysis_results.md:34: 0.4009 ⏎ data/zeta/zeta_gue_analysis_results.md:34: 0.4220 ⏎ data/zeta/zeta_gue_analysis_results.md:35: 0.9655 ⏎ data/zeta/zeta_gue_analysis_results.md:35: 0.9639 ⏎ data/zeta/zeta_gue_analysis_results.md:36: 1.7189 ⏎ data/zeta/zeta_gue_analysis_results.md:36: 1.7518 ⏎ data/zeta/zeta_gue_analysis_results.md:"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/priority1-unregistered.txt",
+   "line": 5133,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "ata/zeta/zeta_gue_analysis_results.md:82: 0.694 ⏎ data/zeta/zeta_gue_analysis_results.md:82: 0.700 ⏎ data/zeta/zeta_gue_analysis_results.md:82: 0.9921 ⏎ data/zeta/zeta_gue_analysis_results.md:97: 0.4009 ⏎ data/zeta/zeta_gue_analysis_results.md:97: 0.4220 ⏎ data/zeta/zeta_gue_analysis_results.md:100: 2.068 ⏎ data/zeta/zeta_gue_analysis_results.md:100: 2.111 ⏎ data/zeta/zeta_gue_analysis_results.md:154: 0.424258 ⏎ data/zeta/zeta_gue_analysis_results.md:154: 0.962807 ⏎ data/zeta/zeta_gue_analysis_resul"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick35.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick35.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick35.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick35.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40-result.json",
+   "line": 1633,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "    false, ⏎           1 ⏎         ], ⏎         [ ⏎           123, ⏎           \"1.7518\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           125, ⏎           \"2.685\", ⏎           false, ⏎           2 ⏎         ], ⏎         [ ⏎           150, ⏎           \"0.424258\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           150, ⏎  "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40-result.json",
+   "line": 1707,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           15, ⏎           \"2.685\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.401\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.4220\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.719\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.7518\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎          "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40-result.json",
+   "line": 1737,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "        true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎           \"1.0000\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9655\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9639\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           36, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40-result.json",
+   "line": 1971,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       false, ⏎           1 ⏎         ], ⏎         [ ⏎           82, ⏎           \"0.9921\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.068\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.111\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           111, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick38.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick38.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick38.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick38.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick37.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick37.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick37.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick37.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick61-result.json",
+   "line": 1629,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "    false, ⏎           1 ⏎         ], ⏎         [ ⏎           123, ⏎           \"1.7518\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           125, ⏎           \"2.685\", ⏎           false, ⏎           2 ⏎         ], ⏎         [ ⏎           150, ⏎           \"0.424258\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           150, ⏎  "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick61-result.json",
+   "line": 1703,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           15, ⏎           \"2.685\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.401\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.4220\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.719\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.7518\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎          "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick61-result.json",
+   "line": 1733,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "        true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎           \"1.0000\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9655\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9639\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           36, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick61-result.json",
+   "line": 1967,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       false, ⏎           1 ⏎         ], ⏎         [ ⏎           82, ⏎           \"0.9921\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.068\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.111\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           111, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick38-result.json",
+   "line": 1633,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "    false, ⏎           1 ⏎         ], ⏎         [ ⏎           123, ⏎           \"1.7518\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           125, ⏎           \"2.685\", ⏎           false, ⏎           2 ⏎         ], ⏎         [ ⏎           150, ⏎           \"0.424258\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           150, ⏎  "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick38-result.json",
+   "line": 1707,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           15, ⏎           \"2.685\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.401\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.4220\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.719\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.7518\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎          "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick38-result.json",
+   "line": 1737,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "        true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎           \"1.0000\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9655\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9639\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           36, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick38-result.json",
+   "line": 1971,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       false, ⏎           1 ⏎         ], ⏎         [ ⏎           82, ⏎           \"0.9921\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.068\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.111\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           111, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40.txt",
+   "line": 1,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", [74, \"1.7518\", true, 2], [76, \"1.713\", false, 1], [76, \"1.725\", false, 1], [76, \"0.005\", false, 1], [113, \"2.685\", true, 1], [113, \"2.685\", true, 1], [123, \"1.7186\", false, 1], [123, \"1.7518\", false, 1], [124, \"0.4009\", false, 1], [124, \"0.4220\", false, 1], [125, \"2.685\", false, 2], [150, \"0.424258\", false, 1], [150, \"0.962807\", false, 1], [150, \"1.570136\", false, 1], [150, \"1.757099\", false, 1], [150, \"2.120406\", false, 1], [161, \"0.107\", false, 1], [163, \"0.153\", true, 1]], \"/h"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40.txt",
+   "line": 1,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", [150, \"2.120406\", false, 1], [161, \"0.107\", false, 1], [163, \"0.153\", true, 1]], \"/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md\": [[15, \"2.669\", true, 1], [15, \"2.685\", true, 1], [16, \"0.401\", true, 1], [16, \"0.4220\", true, 1], [17, \"1.719\", true, 1], [17, \"1.7518\", true, 1], [33, \"1.0000\", false, 1], [34, \"0.4009\", false, 1], [34, \"0.4220\", false, 1], [35, \"0.9655\", false, 1], [35, \"0.9639\", false, 1], [36, \"1.7189\", false, 1], [36, \"1.7518\", false, "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40.txt",
+   "line": 1,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "eta/zeta_gue_analysis_results.md\": [[15, \"2.669\", true, 1], [15, \"2.685\", true, 1], [16, \"0.401\", true, 1], [16, \"0.4220\", true, 1], [17, \"1.719\", true, 1], [17, \"1.7518\", true, 1], [33, \"1.0000\", false, 1], [34, \"0.4009\", false, 1], [34, \"0.4220\", false, 1], [35, \"0.9655\", false, 1], [35, \"0.9639\", false, 1], [36, \"1.7189\", false, 1], [36, \"1.7518\", false, 1], [37, \"2.0680\", false, 1], [37, \"2.1107\", false, 1], [42, \"0.939\", false, 1], [42, \"1.953\", false, 1], [42, \"2.422\", false,"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40.txt",
+   "line": 1,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " 1], [80, \"0.852\", false, 1], [80, \"0.9968\", false, 1], [81, \"0.784\", false, 1], [81, \"0.779\", false, 1], [81, \"1.0067\", false, 1], [82, \"0.694\", false, 1], [82, \"0.700\", false, 1], [82, \"0.9921\", false, 1], [97, \"0.4009\", false, 1], [97, \"0.4220\", false, 1], [100, \"2.068\", false, 1], [100, \"2.111\", false, 1], [111, \"1.7186\", false, 2], [111, \"0.0045\", false, 2], [122, \"2.669\", true, 1], [122, \"2.685\", true, 1], [154, \"0.424258\", false, 1], [154, \"0.962807\", false, 1], [154, \"1.570"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick57-findings.md",
+   "line": 5,
+   "value": "0,4220",
+   "class": "MISLABEL_EXACT",
+   "context": "`45/45`, `28/28`, `17/17`. ⏎ - Регресс: `110 совпало, 0 изменений ситом, 3 изменения корпуса, 0 не сопоставлено`; три reason-code для изменений корпуса уже существовали. ⏎ - Цель: строка о стандартном отклонении расстояний дзета `0,4009 против 0,4220 по GUE` из `data/zeta/zeta_bin_analysis_update.md:124`. ⏎ - Pre-filter: `RUN`, `STANDARD_RANGES`, `M=20412`, `eps_loc=0,000274`, ожидаемых попаданий `0,162`, погрешность неизвестна. ⏎ - Кейс: `cases/zeta_std_gue_20260815.py`; JSON: `zeta_std_g"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick57-findings.md",
+   "line": 8,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "d_gue_20260815.json`. ⏎ - Машинный вердикт: **ОПРОВЕРГНУТО** для класса сравнений стандартного отклонения нормированных расстояний с GUE на указанных версиях CPython; подтип `observation_mismatch`; статус области `verified-in-scope`. Эталон `0,42201569295012265`, наблюдение `0,4009`, расхождение `−5,00 %`; С2/С3 FAIL, С4/С5/С12–С14 PASS, остальные сита объявленно пропущены. ⏎ - Рецепт `f8d4cdfb1ea972e5`; паспорт цели `5dc7524fe8cd66b4`; SHA16 входа `d32c98af192622e1`; ключ новизны `zeta:std_gue_com"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick33.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick33.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick33.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick33.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick42.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick42.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick42.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick42.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick40.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick28_preflight.json",
+   "line": 11,
+   "value": "0.42201569295",
+   "class": "UNLABELED",
+   "context": " не измеряется внешней погрешностью\", ⏎   \"budget_fingerprint\": \"42408bc8f9c41052\", ⏎   \"prefilter\": { ⏎     \"verdict\": \"RUN\", ⏎     \"reasons\": [ ⏎       \"различающий результат возможен: дорогое сито оправдано\" ⏎     ], ⏎     \"numbers\": { ⏎       \"цель\": \"0.42201569295\", ⏎       \"членов семейства\": 20412, ⏎       \"локальный порог eps_loc\": \"0.000273\", ⏎       \"отн. погрешность цели\": \"неизвестна\", ⏎       \"размер перебора M\": 20412, ⏎       \"порог по Шидаку\": \"4.71 сигма\", ⏎       \"ожидаемых попаданий\": \"0.161\" ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick28_preflight.json",
+   "line": 21,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "73\", ⏎       \"отн. погрешность цели\": \"неизвестна\", ⏎       \"размер перебора M\": 20412, ⏎       \"порог по Шидаку\": \"4.71 сигма\", ⏎       \"ожидаемых попаданий\": \"0.161\" ⏎     } ⏎   }, ⏎   \"target\": { ⏎     \"name\": \"Паспорт развёртки дзета воспроизводит std 0,42201569295012265\", ⏎     \"novelty_key\": \"zeta:unfolding_std_passport:v1\" ⏎   } ⏎ } ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick37-result.json",
+   "line": 1633,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "    false, ⏎           1 ⏎         ], ⏎         [ ⏎           123, ⏎           \"1.7518\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           125, ⏎           \"2.685\", ⏎           false, ⏎           2 ⏎         ], ⏎         [ ⏎           150, ⏎           \"0.424258\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           150, ⏎  "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick37-result.json",
+   "line": 1707,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           15, ⏎           \"2.685\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.401\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.4220\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.719\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.7518\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎          "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick37-result.json",
+   "line": 1737,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "        true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎           \"1.0000\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9655\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9639\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           36, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick37-result.json",
+   "line": 1971,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       false, ⏎           1 ⏎         ], ⏎         [ ⏎           82, ⏎           \"0.9921\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.068\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.111\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           111, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/priority1-tick40.txt",
+   "line": 5086,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "ata/zeta/zeta_bin_analysis_update.md:76: 0.005 ⏎ data/zeta/zeta_bin_analysis_update.md:123: 1.7186 ⏎ data/zeta/zeta_bin_analysis_update.md:123: 1.7518 ⏎ data/zeta/zeta_bin_analysis_update.md:124: 0.4009 ⏎ data/zeta/zeta_bin_analysis_update.md:124: 0.4220 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 0.424258 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 0.962807 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 1.570136 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 1.757099 ⏎ data/zeta/zeta_bin_analysis_upd"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/priority1-tick40.txt",
+   "line": 5095,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "/zeta/zeta_bin_analysis_update.md:150: 2.120406 ⏎ data/zeta/zeta_bin_analysis_update.md:161: 0.107 ⏎ data/zeta/zeta_gue_analysis_results.md:33: 1.0000 ⏎ data/zeta/zeta_gue_analysis_results.md:34: 0.4009 ⏎ data/zeta/zeta_gue_analysis_results.md:34: 0.4220 ⏎ data/zeta/zeta_gue_analysis_results.md:35: 0.9655 ⏎ data/zeta/zeta_gue_analysis_results.md:35: 0.9639 ⏎ data/zeta/zeta_gue_analysis_results.md:36: 1.7189 ⏎ data/zeta/zeta_gue_analysis_results.md:36: 1.7518 ⏎ data/zeta/zeta_gue_analysis_results.md:"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/priority1-tick40.txt",
+   "line": 5133,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "ata/zeta/zeta_gue_analysis_results.md:82: 0.694 ⏎ data/zeta/zeta_gue_analysis_results.md:82: 0.700 ⏎ data/zeta/zeta_gue_analysis_results.md:82: 0.9921 ⏎ data/zeta/zeta_gue_analysis_results.md:97: 0.4009 ⏎ data/zeta/zeta_gue_analysis_results.md:97: 0.4220 ⏎ data/zeta/zeta_gue_analysis_results.md:100: 2.068 ⏎ data/zeta/zeta_gue_analysis_results.md:100: 2.111 ⏎ data/zeta/zeta_gue_analysis_results.md:154: 0.424258 ⏎ data/zeta/zeta_gue_analysis_results.md:154: 0.962807 ⏎ data/zeta/zeta_gue_analysis_resul"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick28_preflight.py",
+   "line": 14,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "workspace/goldsieve\") ⏎  ⏎ from goldsieve.gate import FamilyBudget, Target, evaluate ⏎ from goldsieve.prefilter import decide ⏎ from goldsieve import family ⏎  ⏎  ⏎ def main(): ⏎     target = Target( ⏎         name=\"Паспорт развёртки дзета воспроизводит std 0,42201569295012265\", ⏎         claim_family=\"zeta_unfolding_recipe\", ⏎         observable=\"std и происхождение нормировки\", ⏎         measurement_source=\"Odlyzko zeros1 и отчёт Trinity\", ⏎         uncertainty_type=\"none\", ⏎         novelty_key=\"zeta:unfolding_std_pass"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick28_preflight.py",
+   "line": 29,
+   "value": "0.42201569295012265",
+   "class": "UNLABELED",
+   "context": "ource\": \"сырой файл нулей\", \"observable\": \"рецепт развёртки\"}, ⏎     ) ⏎     budget = FamilyBudget() ⏎     gate = evaluate(target, budget) ⏎     vals = [v for v in family.enumerate_family(family.STANDARD_RANGES) if v > 0] ⏎     pre = decide( ⏎         0.42201569295012265, ⏎         uncertainty=None, ⏎         search_size=len(vals), ⏎         ranges=family.STANDARD_RANGES, ⏎         values=vals, ⏎     ) ⏎     out = { ⏎         \"budget_status\": gate.status, ⏎         \"budget_line\": gate.line(), ⏎         \"budget_fingerprint\":"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick28-findings.md",
+   "line": 8,
+   "value": "0,422015692950123",
+   "class": "OK_SURMISE",
+   "context": "a4736b8bbccf1356874a6ce1788541632`, 100 000 нулей, индексы `1..100 000`, 99 999 зазоров, края не исключаются, `ddof=1`. ⏎ - Формула: `θ(t)=Im logΓ(1/4+i t/2)−(t/2)lnπ`, `s_i=(θ(γ_{i+1})−θ(γ_i))/π`. ⏎ - Два независимых Wigner-пути воспроизвели `0,422015692950123`; точный Fredholm-GUE дал `0,4242576222440628`. ⏎ - Происхождение `0,4009` вычислено из сырых нулей: θ-развёртка `0,40093273147232356`, ведущий член локальной плотности `0,4009263777707385`; оба в печатной точности `0,4009`. Кодовая развилка"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick28-findings.md",
+   "line": 9,
+   "value": "0,4220",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "-GUE дал `0,4242576222440628`. ⏎ - Происхождение `0,4009` вычислено из сырых нулей: θ-развёртка `0,40093273147232356`, ведущий член локальной плотности `0,4009263777707385`; оба в печатной точности `0,4009`. Кодовая развилка показывает, что `0,4220` — Wigner—surmise, а не точный GUE. ⏎ - Вердикт JSON: `ПОДТВЕРЖДЕНО`, подтип `confirmed`, статус охвата `verified-in-scope` для класса рецептов развёртки на CPython 3.14.3/3.14.4. ⏎ - Рецепт `5d06d00437f88407`, паспорт `530ad37b59acf1cd`, SHA1"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick52-result.json",
+   "line": 1629,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "    false, ⏎           1 ⏎         ], ⏎         [ ⏎           123, ⏎           \"1.7518\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           125, ⏎           \"2.685\", ⏎           false, ⏎           2 ⏎         ], ⏎         [ ⏎           150, ⏎           \"0.424258\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           150, ⏎  "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick52-result.json",
+   "line": 1703,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           15, ⏎           \"2.685\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.401\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.4220\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.719\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.7518\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎          "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick52-result.json",
+   "line": 1733,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "        true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎           \"1.0000\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9655\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9639\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           36, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick52-result.json",
+   "line": 1967,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       false, ⏎           1 ⏎         ], ⏎         [ ⏎           82, ⏎           \"0.9921\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.068\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.111\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           111, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick54.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick54.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick54.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick54.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick49.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick49.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick49.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick49.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick39-result.json",
+   "line": 1633,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "    false, ⏎           1 ⏎         ], ⏎         [ ⏎           123, ⏎           \"1.7518\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           125, ⏎           \"2.685\", ⏎           false, ⏎           2 ⏎         ], ⏎         [ ⏎           150, ⏎           \"0.424258\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           150, ⏎  "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick39-result.json",
+   "line": 1707,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           15, ⏎           \"2.685\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.401\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.4220\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.719\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.7518\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎          "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick39-result.json",
+   "line": 1737,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "        true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎           \"1.0000\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9655\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9639\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           36, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick39-result.json",
+   "line": 1971,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       false, ⏎           1 ⏎         ], ⏎         [ ⏎           82, ⏎           \"0.9921\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.068\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.111\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           111, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick34.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick34.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick34.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick34.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick36.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick36.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick36.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick36.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick39.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick39.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick39.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick39.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/priority1-current.txt",
+   "line": 5086,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "ata/zeta/zeta_bin_analysis_update.md:76: 0.005 ⏎ data/zeta/zeta_bin_analysis_update.md:123: 1.7186 ⏎ data/zeta/zeta_bin_analysis_update.md:123: 1.7518 ⏎ data/zeta/zeta_bin_analysis_update.md:124: 0.4009 ⏎ data/zeta/zeta_bin_analysis_update.md:124: 0.4220 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 0.424258 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 0.962807 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 1.570136 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 1.757099 ⏎ data/zeta/zeta_bin_analysis_upd"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/priority1-current.txt",
+   "line": 5095,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "/zeta/zeta_bin_analysis_update.md:150: 2.120406 ⏎ data/zeta/zeta_bin_analysis_update.md:161: 0.107 ⏎ data/zeta/zeta_gue_analysis_results.md:33: 1.0000 ⏎ data/zeta/zeta_gue_analysis_results.md:34: 0.4009 ⏎ data/zeta/zeta_gue_analysis_results.md:34: 0.4220 ⏎ data/zeta/zeta_gue_analysis_results.md:35: 0.9655 ⏎ data/zeta/zeta_gue_analysis_results.md:35: 0.9639 ⏎ data/zeta/zeta_gue_analysis_results.md:36: 1.7189 ⏎ data/zeta/zeta_gue_analysis_results.md:36: 1.7518 ⏎ data/zeta/zeta_gue_analysis_results.md:"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/priority1-current.txt",
+   "line": 5133,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "ata/zeta/zeta_gue_analysis_results.md:82: 0.694 ⏎ data/zeta/zeta_gue_analysis_results.md:82: 0.700 ⏎ data/zeta/zeta_gue_analysis_results.md:82: 0.9921 ⏎ data/zeta/zeta_gue_analysis_results.md:97: 0.4009 ⏎ data/zeta/zeta_gue_analysis_results.md:97: 0.4220 ⏎ data/zeta/zeta_gue_analysis_results.md:100: 2.068 ⏎ data/zeta/zeta_gue_analysis_results.md:100: 2.111 ⏎ data/zeta/zeta_gue_analysis_results.md:154: 0.424258 ⏎ data/zeta/zeta_gue_analysis_results.md:154: 0.962807 ⏎ data/zeta/zeta_gue_analysis_resul"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick42-result.json",
+   "line": 1633,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "    false, ⏎           1 ⏎         ], ⏎         [ ⏎           123, ⏎           \"1.7518\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           125, ⏎           \"2.685\", ⏎           false, ⏎           2 ⏎         ], ⏎         [ ⏎           150, ⏎           \"0.424258\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           150, ⏎  "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick42-result.json",
+   "line": 1707,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           15, ⏎           \"2.685\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.401\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.4220\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.719\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.7518\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎          "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick42-result.json",
+   "line": 1737,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "        true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎           \"1.0000\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9655\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9639\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           36, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick42-result.json",
+   "line": 1971,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       false, ⏎           1 ⏎         ], ⏎         [ ⏎           82, ⏎           \"0.9921\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.068\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.111\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           111, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick52-cover-run.txt",
+   "line": 1629,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "    false, ⏎           1 ⏎         ], ⏎         [ ⏎           123, ⏎           \"1.7518\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           125, ⏎           \"2.685\", ⏎           false, ⏎           2 ⏎         ], ⏎         [ ⏎           150, ⏎           \"0.424258\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           150, ⏎  "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick52-cover-run.txt",
+   "line": 1703,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           15, ⏎           \"2.685\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.401\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.4220\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.719\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.7518\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎          "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick52-cover-run.txt",
+   "line": 1733,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "        true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎           \"1.0000\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9655\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9639\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           36, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick52-cover-run.txt",
+   "line": 1967,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       false, ⏎           1 ⏎         ], ⏎         [ ⏎           82, ⏎           \"0.9921\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.068\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.111\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           111, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick43-result.json",
+   "line": 1633,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "    false, ⏎           1 ⏎         ], ⏎         [ ⏎           123, ⏎           \"1.7518\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           125, ⏎           \"2.685\", ⏎           false, ⏎           2 ⏎         ], ⏎         [ ⏎           150, ⏎           \"0.424258\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           150, ⏎  "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick43-result.json",
+   "line": 1707,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           15, ⏎           \"2.685\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.401\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.4220\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.719\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.7518\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎          "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick43-result.json",
+   "line": 1737,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "        true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎           \"1.0000\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9655\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9639\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           36, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick43-result.json",
+   "line": 1971,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       false, ⏎           1 ⏎         ], ⏎         [ ⏎           82, ⏎           \"0.9921\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.068\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.111\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           111, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick41.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick41.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick41.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick41.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick55.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick55.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick55.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick55.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick49-result.json",
+   "line": 1629,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "    false, ⏎           1 ⏎         ], ⏎         [ ⏎           123, ⏎           \"1.7518\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           125, ⏎           \"2.685\", ⏎           false, ⏎           2 ⏎         ], ⏎         [ ⏎           150, ⏎           \"0.424258\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           150, ⏎  "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick49-result.json",
+   "line": 1703,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           15, ⏎           \"2.685\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.401\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.4220\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.719\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.7518\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎          "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick49-result.json",
+   "line": 1733,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "        true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎           \"1.0000\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9655\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9639\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           36, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick49-result.json",
+   "line": 1967,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       false, ⏎           1 ⏎         ], ⏎         [ ⏎           82, ⏎           \"0.9921\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.068\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.111\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           111, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick41-result.json",
+   "line": 1633,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "    false, ⏎           1 ⏎         ], ⏎         [ ⏎           123, ⏎           \"1.7518\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           124, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           125, ⏎           \"2.685\", ⏎           false, ⏎           2 ⏎         ], ⏎         [ ⏎           150, ⏎           \"0.424258\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           150, ⏎  "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick41-result.json",
+   "line": 1707,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": ", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           15, ⏎           \"2.685\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.401\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           16, ⏎           \"0.4220\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.719\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           17, ⏎           \"1.7518\", ⏎           true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎          "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick41-result.json",
+   "line": 1737,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "        true, ⏎           1 ⏎         ], ⏎         [ ⏎           33, ⏎           \"1.0000\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           34, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9655\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           35, ⏎           \"0.9639\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           36, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick41-result.json",
+   "line": 1971,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       false, ⏎           1 ⏎         ], ⏎         [ ⏎           82, ⏎           \"0.9921\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4009\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           97, ⏎           \"0.4220\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.068\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           100, ⏎           \"2.111\", ⏎           false, ⏎           1 ⏎         ], ⏎         [ ⏎           111, ⏎     "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/priority1-tick61.txt",
+   "line": 5086,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "ata/zeta/zeta_bin_analysis_update.md:76: 0.005 ⏎ data/zeta/zeta_bin_analysis_update.md:123: 1.7186 ⏎ data/zeta/zeta_bin_analysis_update.md:123: 1.7518 ⏎ data/zeta/zeta_bin_analysis_update.md:124: 0.4009 ⏎ data/zeta/zeta_bin_analysis_update.md:124: 0.4220 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 0.424258 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 0.962807 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 1.570136 ⏎ data/zeta/zeta_bin_analysis_update.md:150: 1.757099 ⏎ data/zeta/zeta_bin_analysis_upd"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/priority1-tick61.txt",
+   "line": 5095,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "/zeta/zeta_bin_analysis_update.md:150: 2.120406 ⏎ data/zeta/zeta_bin_analysis_update.md:161: 0.107 ⏎ data/zeta/zeta_gue_analysis_results.md:33: 1.0000 ⏎ data/zeta/zeta_gue_analysis_results.md:34: 0.4009 ⏎ data/zeta/zeta_gue_analysis_results.md:34: 0.4220 ⏎ data/zeta/zeta_gue_analysis_results.md:35: 0.9655 ⏎ data/zeta/zeta_gue_analysis_results.md:35: 0.9639 ⏎ data/zeta/zeta_gue_analysis_results.md:36: 1.7189 ⏎ data/zeta/zeta_gue_analysis_results.md:36: 1.7518 ⏎ data/zeta/zeta_gue_analysis_results.md:"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/priority1-tick61.txt",
+   "line": 5133,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "ata/zeta/zeta_gue_analysis_results.md:82: 0.694 ⏎ data/zeta/zeta_gue_analysis_results.md:82: 0.700 ⏎ data/zeta/zeta_gue_analysis_results.md:82: 0.9921 ⏎ data/zeta/zeta_gue_analysis_results.md:97: 0.4009 ⏎ data/zeta/zeta_gue_analysis_results.md:97: 0.4220 ⏎ data/zeta/zeta_gue_analysis_results.md:100: 2.068 ⏎ data/zeta/zeta_gue_analysis_results.md:100: 2.111 ⏎ data/zeta/zeta_gue_analysis_results.md:154: 0.424258 ⏎ data/zeta/zeta_gue_analysis_results.md:154: 0.962807 ⏎ data/zeta/zeta_gue_analysis_resul"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick63.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick63.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick63.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick63.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-checkpoint.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-checkpoint.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-checkpoint.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-checkpoint.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick43.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick43.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick43.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick43.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick82_registry_preclaim.yaml",
+   "line": 680,
+   "value": "0,4220",
+   "class": "MISLABEL_EXACT",
+   "context": "ovelty_key: b001:hslm:convergence_fraction:v1 ⏎   inputs_digest: 35938cf8a9418cbb ⏎ - source: data/zeta/zeta_bin_analysis_update.md:124 ⏎   case: cases/zeta_std_gue_20260815.py ⏎   claim: Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE ⏎   verdict: ОПРОВЕРГНУТО ⏎   inputs_digest: d32c98af192622e1 ⏎ - source: docs/docs/research/trinity-golden-chain-v2-48-interpolated-report.md:72-76 ⏎   case: cases/golden_chain_v248_ppl_gain_20260815.py ⏎   claim: Выигрыш интерполяции по пер"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick82_registry_preclaim.yaml",
+   "line": 743,
+   "value": "0,42201569295012265",
+   "class": "UNLABELED",
+   "context": "щается на другие выборки нулей, ⏎     развёртки, законы зазоров или версии рантайма. ⏎ - source: data/zeta/zeta_gue_analysis_results.md:34 ⏎   case: cases/zeta_std_unfolding_passport_20260815.py ⏎   claim: Паспорт развёртки дзета воспроизводит std 0,42201569295012265 и объясняет 0,4009 ⏎   verdict: ПОДТВЕРЖДЕНО ⏎   reason_subtype: recipe_reproduction ⏎   fingerprint: 5d06d00437f88407 ⏎   target: 530ad37b59acf1cd ⏎   novelty_key: zeta:unfolding_std_passport:v1 ⏎   inputs_digest: fdcdd26763d39113 ⏎   scope_status: ver"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick82_registry_preclaim.yaml",
+   "line": 755,
+   "value": "0,42201569295012265",
+   "class": "OK_SURMISE",
+   "context": "ified-in-scope ⏎   scope_statement: >- ⏎     В области охвата для класса воспроизводимых рецептов развёртки дзета на ⏎     указанных версиях CPython (CPython 3.14.3 и CPython 3.14.4): два ⏎     независимых пути воспроизводят std Wigner—surmise ⏎     0,42201569295012265; паспорт фиксирует 100 000 нулей, индексы 1..100 000, ⏎     99 999 зазоров, формулу θ Римана—Зигеля, отсутствие исключения краёв и ⏎     выборочную std с ddof=1. Точная θ-развёртка и развёртка ведущим членом ⏎     воспроизводят корпусное 0,4009 "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick82_registry_preclaim.yaml",
+   "line": 759,
+   "value": "0,4220",
+   "class": "AMBIGUOUS_BOTH",
+   "context": "зазоров, формулу θ Римана—Зигеля, отсутствие исключения краёв и ⏎     выборочную std с ddof=1. Точная θ-развёртка и развёртка ведущим членом ⏎     воспроизводят корпусное 0,4009 из того же файла, а Fredholm-GUE даёт около ⏎     0,424258, поэтому 0,4220 относится к Wigner—surmise, а не к точному GUE. ⏎     НЕ доказано обобщение на другие выборки нулей, нормировки, диапазоны высот ⏎     или версии рантайма. ⏎ - source: goldsieve/sieve.py:1440 ⏎   case: cases/c20_empty_family_guard_20260815.py ⏎   cl"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick30.json",
+   "line": 1628,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "       123, ⏎         \"1.7186\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         123, ⏎         \"1.7518\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         124, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         125, ⏎         \"2.685\", ⏎         false, ⏎         2 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.424258\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         150, ⏎         \"0.962807\", ⏎         false, ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick30.json",
+   "line": 1702,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": " ⏎       [ ⏎         15, ⏎         \"2.669\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         15, ⏎         \"2.685\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.401\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         16, ⏎         \"0.4220\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.719\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎ "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick30.json",
+   "line": 1732,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         17, ⏎         \"1.7518\", ⏎         true, ⏎         1 ⏎       ], ⏎       [ ⏎         33, ⏎         \"1.0000\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         34, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9655\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         35, ⏎         \"0.9639\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         36, ⏎         \"1.7189\", ⏎         false, ⏎       "
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/cover-tick30.json",
+   "line": 1966,
+   "value": "0.4220",
+   "class": "UNLABELED",
+   "context": "  [ ⏎         82, ⏎         \"0.700\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         82, ⏎         \"0.9921\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4009\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         97, ⏎         \"0.4220\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.068\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         100, ⏎         \"2.111\", ⏎         false, ⏎         1 ⏎       ], ⏎       [ ⏎         111, ⏎         \"1.7186\", ⏎         false, ⏎      "
+  }
+ ]
+}
