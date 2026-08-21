@@ -3,9 +3,9 @@
  "events_available": 3,
  "events_source": {
   "rotating_window": 200,
-  "append_log": 200,
+  "append_log": 297,
   "append_log_path": "/home/user/workspace/cron_tracking/8dff7aa3/counter-events.jsonl",
-  "merged_unique": 200
+  "merged_unique": 219
  },
  "accounting": {
   "counter_total": 52,

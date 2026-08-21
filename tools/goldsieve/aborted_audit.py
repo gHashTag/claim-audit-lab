@@ -79,7 +79,37 @@ def classify(note: str) -> str:
     return "unclassified"
 
 
+def selftest() -> int:
+    """Самопроверка КЛАССИФИКАТОРА: не имеет права зависеть от локальных путей.
+
+    Тик 171: размещённые исполнители macOS/Windows показали настоящий дефект
+    переносимости — самопроверка стояла в ХВОСТЕ main, после чтения файла
+    счётчиков по абсолютному пути песочницы, поэтому на любой другой машине
+    падала до первой проверки. Классификатор — чистая функция, и его проверка
+    обязана быть чистой.
+    """
+    assert set(MACHINE_CATEGORIES) == {
+        "device_offline", "dependency_missing", "timeout",
+        "agent_error", "policy_skip",
+    }
+    assert {ACTION[name] for name in MACHINE_CATEGORIES} == {
+        "deferred", "abort", "skip",
+    }
+    assert classify("pc bash не ответил за 120 секунд") == "device_offline"
+    assert classify("нет numpy/pyyaml в интерпретаторе") == "dependency_missing"
+    assert classify("тайм-аут регресса 3000 с") == "timeout"
+    assert classify("бюджет дал SKIPPED_LOW_INFORMATION") == "policy_skip"
+    assert classify("traceback в кейсе") == "agent_error"
+    assert classify("") == "unclassified"
+    # порядок правил: примечание про offline устройство НЕ должно уходить в timeout
+    assert classify("оба MacBook Pro offline, тайм-аут ожидания") == "device_offline"
+    print("самопроверка классификатора: 7/7")
+    return 0
+
+
 def main(argv: list[str]) -> int:
+    if "--selftest" in argv:
+        return selftest()
     data = json.loads(PATH.read_text(encoding="utf-8"))
     counters = data.get("counters", {})
     events = data.get("events", [])
@@ -173,23 +203,6 @@ def main(argv: list[str]) -> int:
         share = by_action.get("abort", 0) / covered
         print(f"\nдоля настоящих срывов среди разобранных: {share:.1%}")
     print(f"отчёт: {dest}")
-    if "--selftest" in argv:
-        assert set(MACHINE_CATEGORIES) == {
-            "device_offline", "dependency_missing", "timeout",
-            "agent_error", "policy_skip",
-        }
-        assert {ACTION[name] for name in MACHINE_CATEGORIES} == {
-            "deferred", "abort", "skip",
-        }
-        assert classify("pc bash не ответил за 120 секунд") == "device_offline"
-        assert classify("нет numpy/pyyaml в интерпретаторе") == "dependency_missing"
-        assert classify("тайм-аут регресса 3000 с") == "timeout"
-        assert classify("бюджет дал SKIPPED_LOW_INFORMATION") == "policy_skip"
-        assert classify("traceback в кейсе") == "agent_error"
-        assert classify("") == "unclassified"
-        # порядок правил: примечание про offline устройство НЕ должно уходить в timeout
-        assert classify("оба MacBook Pro offline, тайм-аут ожидания") == "device_offline"
-        print("самопроверка классификатора: 7/7")
     return 0
 
 
