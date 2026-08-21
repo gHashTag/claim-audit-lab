@@ -38,7 +38,7 @@ class Env:
 
     def run(self, *args: str, timeout: float = 60) -> subprocess.CompletedProcess:
         return subprocess.run([TRI, *args], cwd=ROOT, env=self.env,
-                              capture_output=True, text=True, timeout=timeout)
+                              capture_output=True, text=True, encoding="utf-8", errors="backslashreplace", timeout=timeout)
 
     def spawn(self, *args: str) -> subprocess.Popen:
         return subprocess.Popen([TRI, *args], cwd=ROOT, env=self.env,

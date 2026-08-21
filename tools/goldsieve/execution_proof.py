@@ -83,7 +83,7 @@ def main() -> int:
         env = dict(os.environ, GOLDSIEVE_PROOF=dst)
         proc = subprocess.run(
             [sys.executable, "-m", "goldsieve", "run", CASE],
-            cwd=ROOT, env=env, capture_output=True, text=True, timeout=900)
+            cwd=ROOT, env=env, capture_output=True, text=True, encoding="utf-8", errors="backslashreplace", timeout=900)
         records = _load(dst)
         check("маршрут CLI завершился", proc.returncode in (0, 1, 2),
               "код %s" % proc.returncode)

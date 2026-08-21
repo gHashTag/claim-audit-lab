@@ -679,15 +679,16 @@ def main() -> int:
         print("  FAIL %-45s %s" % ("С18 без ложных срабатываний", st18))
 
     print("\n  калибровка прогона мощности:")
-    import subprocess as _sp, os as _os
+    import subprocess as _sp, os as _os, sys as _sys
     _root = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
     # Прогон мощности на ОПРОВЕРГНУТОМ утверждении обязан сказать, что мощность
     # не определена, а НЕ жаловаться на калибровку: мутация сама устраняет
     # расхождение, поэтому претензия была бы не по адресу.
     _case = _os.path.join(_root, "cases", "master_catalog_msme_error.py")
     if _os.path.exists(_case):
-        _out = _sp.run(["python3", "-m", "goldsieve", "power", _case],
+        _out = _sp.run([_sys.executable, "-m", "goldsieve", "power", _case],
                        cwd=_root, capture_output=True, text=True,
+                       encoding="utf-8", errors="backslashreplace",
                        timeout=600).stdout
         if "мощность в этой постановке не определена" in _out and \
                 "КАЛИБРОВКА НЕ ПРОШЛА" not in _out:

@@ -1176,7 +1176,7 @@ def provenance(claim: Claim) -> dict:
             try:
                 out = subprocess.run(["git", "-C", os.path.dirname(path) or ".",
                                       "rev-parse", "--short", "HEAD"],
-                                     capture_output=True, text=True, timeout=10)
+                                     capture_output=True, text=True, encoding="utf-8", errors="backslashreplace", timeout=10)
                 if out.returncode == 0:
                     files[path + " @commit"] = out.stdout.strip()
             except Exception:  # noqa: BLE001

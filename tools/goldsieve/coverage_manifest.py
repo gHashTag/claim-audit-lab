@@ -229,7 +229,7 @@ def check() -> int:
                   "причине" % name)
             continue
         res = subprocess.run([sys.executable, *cmd], cwd=ROOT,
-                             capture_output=True, text=True, timeout=300)
+                             capture_output=True, text=True, encoding="utf-8", errors="backslashreplace", timeout=300)
         got = res.stdout.count("  ок  ")
         print("  %-26s самопроверка %d (объявлено %d)" % (name, got, want))
         if res.returncode != 0:

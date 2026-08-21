@@ -166,7 +166,7 @@ def _versions() -> dict:
 
 
 def _run(cmd: list[str]) -> tuple[int, str]:
-    p = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True,
+    p = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="backslashreplace",
                        timeout=3600)
     return p.returncode, (p.stdout or "") + (p.stderr or "")
 
@@ -214,7 +214,7 @@ def _corpus_head() -> str:
     try:
         p = subprocess.run(["git", "rev-parse", "HEAD"],
                            cwd="/home/user/workspace/corpus/trinity",
-                           capture_output=True, text=True, timeout=60)
+                           capture_output=True, text=True, encoding="utf-8", errors="backslashreplace", timeout=60)
         return p.stdout.strip() or "?"
     except Exception:
         return "?"

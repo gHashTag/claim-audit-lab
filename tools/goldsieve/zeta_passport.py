@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Паспорт рецепта развёртки нулей дзеты и происхождение чисел 0,4009 / 0,42201569295012265.
+"""Паспорт рецепта развёртки нулей дзеты и происхождение чисел 0,4009 / Wigner–surmise approximation 0,42201569295012265.
 
 Задача (приказ пользователя, пункт 1):
   1) зафиксировать МАШИННО точный рецепт развёртки: набор нулей, sha256, диапазон
@@ -29,7 +29,7 @@ ZEROS = os.path.join(CORPUS, "data/zeta/zeros_odlyzko_100k.txt")
 DOC_GUE = os.path.join(CORPUS, "data/zeta/zeta_gue_analysis_results.md")
 DOC_BIN = os.path.join(CORPUS, "data/zeta/zeta_bin_analysis_update.md")
 
-TARGET_REF = 0.42201569295012265      # число, которое требуется воспроизвести
+TARGET_REF = 0.42201569295012265      # число Wigner–surmise approximation, которое требуется воспроизвести
 TARGET_OBS = 0.4009                   # число из корпуса
 EXACT_GUE_STD = 0.424258              # точный закон зазоров GUE (refs/gue_exact_gap.py)
 
@@ -46,7 +46,7 @@ def sha256(path):
 
 def corpus_head():
     out = subprocess.run(["git", "-C", CORPUS, "log", "-1", "--format=%H"],
-                         capture_output=True, text=True, check=True)
+                         capture_output=True, text=True, encoding="utf-8", errors="backslashreplace", check=True)
     return out.stdout.strip()
 
 

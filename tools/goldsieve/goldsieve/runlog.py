@@ -64,7 +64,7 @@ def new_run_id() -> str:
 def corpus_commit(corpus: str = "/home/user/workspace/corpus/trinity") -> str:
     try:
         out = subprocess.run(["git", "-C", corpus, "rev-parse", "--short",
-                              "HEAD"], capture_output=True, text=True,
+                              "HEAD"], capture_output=True, text=True, encoding="utf-8", errors="backslashreplace",
                              timeout=30)
         return out.stdout.strip() or "неизвестен"
     except Exception:
