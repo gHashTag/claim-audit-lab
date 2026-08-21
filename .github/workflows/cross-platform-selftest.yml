@@ -1,0 +1,56 @@
+# Тик 171, пункт 3 приказа: межплатформенная верификация без локального устройства.
+# До тика 171 задачи macOS/Windows складывались в очередь cross_platform_replay и
+# каждый тик получали тихий deferred_device_offline (28 раз). Проверка показала,
+# что размещённые исполнители GitHub для этого ПУБЛИЧНОГО репозитория доступны и
+# рабочие процессы уже запускаются на ветке tools/goldsieve-v3-2026-08-13,
+# то есть «постоянное ограничение инфраструктуры» было ложным допущением.
+#
+# Область: только самопроверка пакета (детерминированная, без корпуса —
+# каталог corpus/ в репозиторий не входит). Полный ci_gate.sh требует корпуса и
+# остаётся Linux-задачей.
+name: cross-platform selftest
+
+on:
+  push:
+    branches: [tools/goldsieve-v3-2026-08-13]
+    paths:
+      - 'tools/goldsieve/**'
+      - '.github/workflows/cross-platform-selftest.yml'
+  workflow_dispatch:
+
+jobs:
+  selftest:
+    name: ${{ matrix.os }} / py${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        python: ['3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: runtime fingerprint
+        shell: bash
+        run: python -c "import sys,platform;print(sys.version);print(platform.platform())"
+      - name: dependencies
+        shell: bash
+        run: python -m pip install --quiet numpy scipy mpmath pyyaml
+      - name: goldsieve selftest
+        shell: bash
+        working-directory: tools/goldsieve
+        run: python -m goldsieve.selftest
+      - name: gue label guard selftest
+        shell: bash
+        working-directory: tools/goldsieve
+        run: python gue_label_guard.py --selftest
+      - name: aborted audit selftest
+        shell: bash
+        working-directory: tools/goldsieve
+        run: python aborted_audit.py --selftest
+      - name: replay queue selftest
+        shell: bash
+        working-directory: tools/goldsieve
+        run: python replay_queue.py --selftest

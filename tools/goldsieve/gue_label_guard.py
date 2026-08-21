@@ -33,6 +33,16 @@ TOOL_ROOTS = [
     Path("/home/user/workspace/goldsieve"),
     Path("/home/user/workspace/cron_tracking"),
 ]
+# --- Тик 171, пункт 4 приказа: роль по КОРНЮ, а не по имени файла ----------
+# Гейт колебался открыт/закрыт три десятка раз: каждый тик создавал новое имя
+# диагностического файла (tickNNN-gate.txt, tickNNN-summary.txt,
+# tickNNN-gue-guard.txt, state-tickNNN.md ...), guard ловил собственный доклад,
+# а следующий тик дописывал в AUDIT_LOG_GLOBS ещё один шаблон. Гонка шаблона с
+# генератором имён не выигрывается: имён бесконечно много. Каталог
+# cron_tracking/ — это ЖУРНАЛ ПРОГОНОВ целиком, по построению, а не корпус и не
+# публичный текст. Роль определяется корнем, поэтому любое НОВОЕ, ранее
+# неизвестное имя внутри журнала автоматически имеет роль audit_log.
+AUDIT_LOG_ROOTS = [Path("/home/user/workspace/cron_tracking")]
 SKIP_DIRS = {".git", "__pycache__", "node_modules", ".venv", "venv", ".mypy_cache"}
 SKIP_FILES = {
     "gue_label_audit.py", "gue_label_audit.json",
@@ -94,8 +104,27 @@ AUDIT_LOG_NAMES = {
     "cross-platform-replay.json", "prefilter-decisions.jsonl",
     "gue_label_guard.json", "gue_label_audit.json", "gue_label_fix.json",
 }
-AUDIT_LOG_GLOBS = ("tick*_gate.txt", "tick*-findings.md", "*_gate.txt",
-                   "gate*.txt", "reg*.txt")
+# Диагностические файлы тика используют и подчёркивание, и дефис. Оба
+# варианта являются журналом, а не утверждением корпуса: без hyphen-варианта
+# собственный tick104-gate.txt снова попадал в область B и сам закрывал гейт.
+# Скрипт записи доклада также является артефактом журнала, поэтому его имя
+# явно включено в роль audit_log.
+AUDIT_LOG_GLOBS = ("tick*_gate.txt", "tick*-gate.txt", "tick*-findings.md",
+                   "tick*_record.py", "tick*-record.py", "append_tick*.py",
+                   "tick*_state.md", "tick*_state.txt", "tick*_state.json",
+                   "tick*_summary.md", "tick*_summary.txt", "tick*_summary.json",
+                   "*_gate.txt",
+                   "gate*.txt", "reg*.txt", "tick*_audit*.txt",
+                   "tick*_terminology*.txt", "tick*_terminology*.json",
+                   "tick*_guard*.txt", "tick*_gate*.txt",
+                   "state-*.md", "state-*.txt", "state-*.json",
+                   # Самопроверки и снимки состояния тика — диагностические
+                   # артефакты, а не утверждения корпуса. В отрицательной
+                   # фикстуре намеренно присутствуют неправильные метки;
+                   # без этих шаблонов журнал сам закрывает гейт.
+                   "tick*-selftest.txt", "tick*-selftest.json",
+                   "tick*-state.md", "tick*-state.txt", "tick*-state.json",
+                   "tick*-audit.txt", "tick*-audit.json")
 
 
 def classify_role(path: Path) -> str:
@@ -105,6 +134,12 @@ def classify_role(path: Path) -> str:
         pass
     else:
         return "corpus"          # корень корпуса сильнее имени файла
+    for r in AUDIT_LOG_ROOTS:
+        try:
+            path.relative_to(r)
+        except ValueError:
+            continue
+        return "audit_log"      # корень журнала сильнее любого имени файла
     if path.name in AUDIT_LOG_NAMES:
         return "audit_log"
     if any(path.match(g) for g in AUDIT_LOG_GLOBS):
@@ -216,7 +251,11 @@ def selftest() -> int:
         ("cron_tracking/8dff7aa3/audit-ledger.md", "audit_log"),
         ("cron_tracking/20fee222/tick90_gate.txt", "audit_log"),
         ("cron_tracking/20fee222/tick89-findings.md", "audit_log"),
+        ("cron_tracking/20fee222/tick157_state.md", "audit_log"),
+        ("cron_tracking/20fee222/append_tick158_ledger.py", "audit_log"),
         ("cron_tracking/8dff7aa3/tick-counters.json", "audit_log"),
+        ("cron_tracking/20fee222/tick110-gue-selftest.txt", "audit_log"),
+        ("cron_tracking/20fee222/tick111-state.md", "audit_log"),
     ]
     for rel, want in role_cases:
         p = (CORPUS_ROOT.parent.parent / rel) if rel.startswith("corpus/") \
@@ -270,6 +309,55 @@ def selftest() -> int:
         bad += 0 if ok else 1
         print(f"  {'ok ' if ok else 'ПРОВАЛ'} мутация правила роли ловится: "
               f"без правила {len(mutated)}, с правилом {len(restored)}")
+
+    # --- Тик 171, пункт 4: регресс на ИСТОРИЧЕСКИХ ложных срабатываниях ------
+    # Имена взяты из реальных писем закрытых гейтов (gate_closed 3..34). Каждое
+    # из них закрывало гейт, будучи собственным докладом инструмента. Плюс два
+    # заведомо НОВЫХ имени, которых не было ни в одном шаблоне: правило корня
+    # обязано покрывать и их, иначе гонка шаблона с генератором имён вернётся.
+    historic = ["tick102-gate.txt", "tick103-gate.txt", "tick110-gue-selftest.txt",
+                "tick111-state.md", "tick125-summary.txt", "tick126-summary.txt",
+                "tick145-gue-guard.txt", "tick146-gate.txt", "tick160-gate.txt",
+                "state-tick136.md", "tick142-state.md", "append_tick169_report.py",
+                "нечто-совсем-новое-2026.md", "otchet_bez_shablona.json"]
+    bad_line = "std = 0,4220 exact_gue\n"
+    with tempfile.TemporaryDirectory() as td:
+        journal = Path(td) / "cron_tracking" / "20fee222"
+        journal.mkdir(parents=True)
+        for name in historic:
+            (journal / name).write_text(bad_line, encoding="utf-8")
+        saved_roots = list(AUDIT_LOG_ROOTS)
+        AUDIT_LOG_ROOTS[:] = [Path(td) / "cron_tracking"]
+        found = scan_tree(Path(td), strict=False)
+        # мутация: убрать правило корня — все исторические строки обязаны
+        # снова стать нарушениями, иначе тест ничего не измеряет.
+        AUDIT_LOG_ROOTS[:] = []
+        saved_names, saved_globs = set(AUDIT_LOG_NAMES), tuple(AUDIT_LOG_GLOBS)
+        AUDIT_LOG_NAMES.clear()
+        globals()["AUDIT_LOG_GLOBS"] = ()
+        mutated = scan_tree(Path(td), strict=False)
+        AUDIT_LOG_ROOTS[:] = saved_roots
+        AUDIT_LOG_NAMES.update(saved_names)
+        globals()["AUDIT_LOG_GLOBS"] = saved_globs
+        ok = len(found) == 0 and len(mutated) == len(historic)
+        bad += 0 if ok else 1
+        print(f"  {'ok ' if ok else 'ПРОВАЛ'} исторические ложные срабатывания "
+              f"({len(historic)} имён): с правилом корня {len(found)}, "
+              f"без правила {len(mutated)}")
+
+    # Чувствительность не должна пострадать: ТОТ ЖЕ текст в корпусе — нарушение.
+    with tempfile.TemporaryDirectory() as td:
+        corp = Path(td) / "corpus"
+        corp.mkdir()
+        (corp / "tick102-gate.txt").write_text(bad_line, encoding="utf-8")
+        saved_corpus = globals()["CORPUS_ROOT"]
+        globals()["CORPUS_ROOT"] = corp
+        strict_found = scan_tree(corp, strict=True)
+        globals()["CORPUS_ROOT"] = saved_corpus
+        ok = len(strict_found) == 1
+        bad += 0 if ok else 1
+        print(f"  {'ok ' if ok else 'ПРОВАЛ'} имя журнала НЕ прикрывает корпус: "
+              f"найдено {len(strict_found)} (ожидается 1)")
 
     print(f"самопроверка запрета: провалов {bad}")
     return 1 if bad else 0

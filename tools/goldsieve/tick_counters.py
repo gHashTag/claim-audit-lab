@@ -50,6 +50,22 @@ KNOWN = (
 REQUIRE_NOTE = ("tick_aborted_other", "tick_aborted_timeout",
                 "deferred_device_offline", "gate_closed")
 MAX_EVENTS = 200
+# --- Тик 171, пункт 2 приказа: ротация была причиной потери истории ---------
+# Аудит токенов срыва деградировал со временем: журнал в файле счётчиков хранит
+# последние MAX_EVENTS событий, а тиков уже 170+, поэтому охват разбора упал с
+# 47 до 3 из 52 — не потому, что аудит стал хуже, а потому, что данные
+# вытеснялись. Параллельно ведём НЕРОТИРУЕМЫЙ append-only журнал: он не
+# восстанавливает уже утраченное, но останавливает дальнейшую потерю.
+APPEND_LOG = os.path.join(os.path.dirname(PATH), "counter-events.jsonl")
+
+
+def _append_event(ev: dict) -> None:
+    try:
+        os.makedirs(os.path.dirname(APPEND_LOG), exist_ok=True)
+        with open(APPEND_LOG, "a", encoding="utf-8") as fh:
+            fh.write(json.dumps(ev, ensure_ascii=False, sort_keys=True) + "\n")
+    except OSError:
+        pass   # журнал подсобный: сбой записи не имеет права ронять тик
 
 
 def _load() -> dict:
@@ -93,6 +109,7 @@ def bump(name: str, note: str = "", amount: int = 1) -> int:
         print("ПРЕДУПРЕЖДЕНИЕ: %s без --note; причина срыва не разбирается" % name)
     data.setdefault("events", []).append(ev)
     data["events"] = data["events"][-MAX_EVENTS:]
+    _append_event(ev)          # до ротации: append-журнал полнее events
     _save(data)
     print("%s = %d" % (name, data["counters"][name]))
     return 0

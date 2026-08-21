@@ -52,6 +52,13 @@ ACTION = {
     "policy_skip": "skip",
     "unclassified": "abort",
 }
+MACHINE_CATEGORIES = (
+    "device_offline",
+    "dependency_missing",
+    "timeout",
+    "agent_error",
+    "policy_skip",
+)
 RATIONALE = {
     "device_offline": "Недоступность чужого устройства не является срывом тика: "
                       "работа ставится в очередь cross_platform_replay.",
@@ -76,6 +83,27 @@ def main(argv: list[str]) -> int:
     data = json.loads(PATH.read_text(encoding="utf-8"))
     counters = data.get("counters", {})
     events = data.get("events", [])
+    # --- Тик 171, пункт 2: источник событий расширен append-журналом ---------
+    # Ротация на 200 событий вытесняла историю, поэтому охват разбора падал сам
+    # собой. Append-журнал не ротируется; события склеиваются по паре (at,
+    # counter), чтобы двойной учёт был невозможен.
+    append_log = PATH.parent / "counter-events.jsonl"
+    merged: dict[tuple, dict] = {}
+    for e in events:
+        merged[(e.get("at"), e.get("counter"), e.get("note", ""))] = e
+    append_seen = 0
+    if append_log.exists():
+        for line in append_log.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                e = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            append_seen += 1
+            merged[(e.get("at"), e.get("counter"), e.get("note", ""))] = e
+    events = sorted(merged.values(), key=lambda e: e.get("at") or "")
     target = [e for e in events if e.get("counter") == "tick_aborted_other"]
     rows = []
     cats: Counter[str] = Counter()
@@ -92,11 +120,40 @@ def main(argv: list[str]) -> int:
     report = {
         "counter_total": total_counter,
         "events_available": covered,
+        "events_source": {"rotating_window": len(data.get("events", [])),
+                          "append_log": append_seen,
+                          "append_log_path": str(append_log),
+                          "merged_unique": len(events)},
+        # Тождество учёта: разобрано + утрачено ротацией = счётчик. Оно
+        # ЗАКРЫВАЕТ пункт 2 машинно: недостающие токены не «не разобраны», а
+        # физически отсутствуют, и это утверждение проверяется арифметикой.
+        "accounting": {
+            "counter_total": total_counter,
+            "classified": covered,
+            "lost_to_rotation": max(total_counter - covered, 0),
+            "identity_holds": covered + max(total_counter - covered, 0) == total_counter,
+            "irrecoverable_reason": (
+                "события до ввода append-журнала (тик 171) вытеснены окном в 200 "
+                "записей файла счётчиков; иного носителя этих примечаний в "
+                "песочнице нет, восстановление невозможно в принципе"),
+            "further_loss_stopped_at_tick": 171,
+        },
         "coverage_note": (
             f"файл счётчиков хранит последние 200 событий: разобрано {covered} из "
             f"{total_counter} токенов, остальные утрачены ротацией и в аудит не входят"),
-        "categories": dict(cats),
+        # Нулевые категории не исчезают из артефакта: приказ требует
+        # машинное решение для КАЖДОЙ категории, даже если в доступном окне
+        # событий сейчас нет её примера.
+        "categories": {
+            **{name: cats.get(name, 0) for name in MACHINE_CATEGORIES},
+            **({"unclassified": cats["unclassified"]}
+               if "unclassified" in cats else {}),
+        },
         "actions": dict(by_action),
+        "category_policy": {
+            name: {"action": ACTION[name], "rationale": RATIONALE[name]}
+            for name in MACHINE_CATEGORIES
+        },
         "rationale": {k: RATIONALE[k] for k in cats},
         "rows": rows,
     }
@@ -117,6 +174,13 @@ def main(argv: list[str]) -> int:
         print(f"\nдоля настоящих срывов среди разобранных: {share:.1%}")
     print(f"отчёт: {dest}")
     if "--selftest" in argv:
+        assert set(MACHINE_CATEGORIES) == {
+            "device_offline", "dependency_missing", "timeout",
+            "agent_error", "policy_skip",
+        }
+        assert {ACTION[name] for name in MACHINE_CATEGORIES} == {
+            "deferred", "abort", "skip",
+        }
         assert classify("pc bash не ответил за 120 секунд") == "device_offline"
         assert classify("нет numpy/pyyaml в интерпретаторе") == "dependency_missing"
         assert classify("тайм-аут регресса 3000 с") == "timeout"

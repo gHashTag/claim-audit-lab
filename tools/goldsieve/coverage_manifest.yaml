@@ -41,6 +41,33 @@ runtimes:
           задача остаётся в очереди pending/os-matrix.yaml
         pending: pending/os-matrix.yaml
 
+# Регрессионные guards, добавленные для режима «закрытие научного долга».
+# Это машинное объявление охвата, а не ручное утверждение результата:
+# gue_label_guard.py запускается ci_gate.sh, имеет отрицательную фикстуру и
+# мутационную цель; диагностические tick*-selftest/state-файлы относятся к
+# audit_log и не являются утверждениями корпуса.
+audit_guards:
+  gue_label_guard:
+    script: gue_label_guard.py
+    gate_step: запрет метки exact_gue на 0,4220
+    negative_fixture: отрицательная фикстура в selftest
+    mutation_target: обход дерева с exact GUE
+    audit_log_globs:
+      - append_tick*.py
+      - tick*_state.md
+      - tick*_state.txt
+      - tick*_state.json
+      - tick*_summary.md
+      - tick*_summary.txt
+      - tick*_summary.json
+      - tick*-selftest.txt
+      - tick*-selftest.json
+      - tick*-state.md
+      - tick*-state.txt
+      - tick*-state.json
+      - tick*-audit.txt
+      - tick*-audit.json
+
 constructs:
   прямые формы:
     supported: true
@@ -363,6 +390,17 @@ shell_checks:
     sensitivity_fixture: 15 проверок, из них 7 мутационных и 3 маршрута
       реального кейса
     limits: синтетическая калибровка не является вердиктом корпуса
+  fixed_point_audit.py:
+    gate_step: неподвижная точка проверок
+    selftest_cmd: [fixed_point_audit.py]
+    selftest_checks: 9
+    role: >-
+      проверяет, что машинный отчёт не меняет решение входной проверки;
+      фикстура с module_from_spec без регистрации в sys.modules; мутация
+      исключения audit_log обязана обнаруживаться
+    mutation_target: удаление роли audit_log для файла с нарушением
+    sensitivity_fixture: 1/1 мутация роли поймана; 3/3 отчётных вставки
+      не изменили решение
 
 # --- новые классы решений аудита --------------------------------------------
 # Это не новый синтаксический конструкт, поэтому он не смешивается с таблицей
@@ -414,3 +452,26 @@ case_audits:
     negative_control: 1/1 (С5 отличает неполную нулевую карту)
     mutation_score: 1/1 (С14 сохраняет ОПРОВЕРГНУТО для подстановки)
     loader_guard: module_from_spec без регистрации в sys.modules
+
+# --- терминологический guard 0,4220 -----------------------------------------
+# Все активные подписи числа 0,4220… обязаны явно называть Wigner–surmise
+# approximation; отрицательная фикстура с exact_gue обязана падать.
+terminology_guards:
+  gue_04220:
+    required_label: Wigner–surmise approximation
+    covered_records:
+      - corpus/trinity/data/zeta/zeta_gue_analysis_results.md
+      - corpus/trinity/data/zeta/zeta_bin_analysis_update.md
+      - claims.yaml
+      - zeta_std_gue_20260815.json
+      - zeta_std_unfolding_passport_20260815.json
+    mutation_target: замена подписи Wigner–surmise approximation на exact_gue
+    sensitivity: 1/1 отрицательная фикстура; 1/1 положительная фикстура
+    scope: активные записи корпуса, реестра и машинных паспортов
+    diagnostic_log_patterns:
+      - tick*-gate.txt
+      - tick*-record.py
+      - state-*.md
+    diagnostic_log_reason: >-
+      диагностические записи самого гейта не являются утверждениями о GUE;
+      их роль объявляется кодом и покрывается мутационной проверкой
