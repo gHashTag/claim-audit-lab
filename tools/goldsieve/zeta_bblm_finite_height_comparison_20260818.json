@@ -37,7 +37,7 @@
      "корзина_9_p50": 1.114546775671729,
      "корзина_9_p95": 2.034030139913581
     },
-    "seconds": 2.956390380859375e-05,
+    "seconds": 2.2411346435546875e-05,
     "reason_code": "",
     "auto_skip": false
    },
@@ -56,7 +56,7 @@
      "корзина_9_p50": 0.0,
      "корзина_9_p95": 0.0
     },
-    "seconds": 4.506111145019531e-05,
+    "seconds": 4.363059997558594e-05,
     "reason_code": "",
     "auto_skip": false
    },
@@ -75,7 +75,7 @@
      "корзина_9_p50": -0.13527279333225029,
      "корзина_9_p95": -0.15875773070980606
     },
-    "seconds": 0.02599024772644043,
+    "seconds": 0.025716304779052734,
     "reason_code": "",
     "auto_skip": false
    },
@@ -84,7 +84,7 @@
     "status": "PASS",
     "detail": "подставка 1 отклонена: корзина_7_p50 +50.00%; подставка 2 отклонена: корзина_7_std -50.00%",
     "numbers": {},
-    "seconds": 4.076957702636719e-05,
+    "seconds": 3.6716461181640625e-05,
     "reason_code": "",
     "auto_skip": false
    },
@@ -93,7 +93,7 @@
     "status": "PASS",
     "detail": "позитивный контроль даёт эталон: корзина_7_std +0.00%",
     "numbers": {},
-    "seconds": 1.9788742065429688e-05,
+    "seconds": 2.0742416381835938e-05,
     "reason_code": "",
     "auto_skip": false
    },
@@ -102,7 +102,7 @@
     "status": "SKIP",
     "detail": "",
     "numbers": {},
-    "seconds": 1.6689300537109375e-06,
+    "seconds": 2.1457672119140625e-06,
     "reason_code": "",
     "auto_skip": false
    },
@@ -111,7 +111,7 @@
     "status": "SKIP",
     "detail": "",
     "numbers": {},
-    "seconds": 1.430511474609375e-06,
+    "seconds": 7.152557373046875e-07,
     "reason_code": "",
     "auto_skip": false
    },
@@ -120,7 +120,7 @@
     "status": "SKIP",
     "detail": "",
     "numbers": {},
-    "seconds": 1.1920928955078125e-06,
+    "seconds": 9.5367431640625e-07,
     "reason_code": "",
     "auto_skip": false
    },
@@ -129,7 +129,7 @@
     "status": "SKIP",
     "detail": "",
     "numbers": {},
-    "seconds": 9.5367431640625e-07,
+    "seconds": 1.430511474609375e-06,
     "reason_code": "",
     "auto_skip": false
    },
@@ -147,7 +147,7 @@
     "status": "SKIP",
     "detail": "",
     "numbers": {},
-    "seconds": 1.1920928955078125e-06,
+    "seconds": 1.6689300537109375e-06,
     "reason_code": "",
     "auto_skip": false
    },
@@ -166,7 +166,7 @@
      "корзина_9_p50": 0.0011409465322899746,
      "корзина_9_p95": -0.003016209228800721
     },
-    "seconds": 0.015371322631835938,
+    "seconds": 0.019350051879882812,
     "reason_code": "",
     "auto_skip": false
    },
@@ -175,7 +175,7 @@
     "status": "SKIP",
     "detail": "утверждение о самом числе, не о внешней величине",
     "numbers": {},
-    "seconds": 2.1457672119140625e-06,
+    "seconds": 2.384185791015625e-06,
     "reason_code": "",
     "auto_skip": false
    },
@@ -193,7 +193,7 @@
     "status": "SKIP",
     "detail": "",
     "numbers": {},
-    "seconds": 1.9073486328125e-06,
+    "seconds": 1.1920928955078125e-06,
     "reason_code": "",
     "auto_skip": false
    },
@@ -229,7 +229,7 @@
     "status": "SKIP",
     "detail": "",
     "numbers": {},
-    "seconds": 9.5367431640625e-07,
+    "seconds": 7.152557373046875e-07,
     "reason_code": "",
     "auto_skip": false
    },
@@ -247,7 +247,7 @@
     "status": "PASS",
     "detail": "подставка 1: ОПРОВЕРГНУТО; подставка 2: ОПРОВЕРГНУТО",
     "numbers": {},
-    "seconds": 0.13431072235107422,
+    "seconds": 0.12787723541259766,
     "reason_code": "",
     "auto_skip": false
    }

@@ -1,0 +1,57 @@
+{
+ "title": "Аудит неподвижной точки проверок",
+ "verdict": "PASS",
+ "checks": [
+  {
+   "name": "guard GUE загружен без регистрации",
+   "passed": true,
+   "detail": "module_from_spec"
+  },
+  {
+   "name": "GUE: отчёт не меняет решение",
+   "passed": true,
+   "detail": "0 -> 0"
+  },
+  {
+   "name": "GUE: роль не прикрывает соседний мутант",
+   "passed": true,
+   "detail": "обнаружен 1 мутант"
+  },
+  {
+   "name": "GUE: мутация роли измеренно ловится",
+   "passed": true,
+   "detail": "1 -> 0"
+  },
+  {
+   "name": "BBLM загружен без регистрации",
+   "passed": true,
+   "detail": "module_from_spec"
+  },
+  {
+   "name": "BBLM: машинный отчёт не меняет протокол",
+   "passed": true,
+   "detail": "одинаковый результат до/после отчёта"
+  },
+  {
+   "name": "аудит срывов загружен без регистрации",
+   "passed": true,
+   "detail": "module_from_spec"
+  },
+  {
+   "name": "аудит срывов: отчёт не меняет классификацию",
+   "passed": true,
+   "detail": "классификация стабильна"
+  },
+  {
+   "name": "pre-filter: вызов без причины M отвергнут",
+   "passed": true,
+   "detail": "VariantChoiceError"
+  }
+ ],
+ "scope": [
+  "проверки, читающие дерево и машинные входы",
+  "реальный loader через module_from_spec без регистрации"
+ ],
+ "mutation_target": "исключение audit_log для файла с нарушением",
+ "sensitivity": "мутация поймана 1/1; отчётные вставки не изменили решения"
+}
