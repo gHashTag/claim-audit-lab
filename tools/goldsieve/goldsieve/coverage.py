@@ -66,7 +66,7 @@ def priority(line: str) -> int:
 def scan_file(path: str) -> list:
     out = []
     try:
-        with open(path, "r", errors="replace") as f:
+        with open(path, "r", errors="replace", encoding="utf-8") as f:
             for i, line in enumerate(f, 1):
                 for m in NUM.finditer(line):
                     out.append((i, m.group(1), bool(FORMULA_HINT.search(line)),
@@ -97,7 +97,7 @@ def registry(path: str) -> set:
     srcs = set()
     if not os.path.exists(path):
         return srcs
-    with open(path, "r", errors="replace") as f:
+    with open(path, "r", errors="replace", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if line.startswith("- source:") or line.startswith("source:"):
@@ -121,7 +121,7 @@ def registry_entries(path: str) -> list:
     entries, cur = [], None
     if not os.path.exists(path):
         return entries
-    with open(path, "r", errors="replace") as f:
+    with open(path, "r", errors="replace", encoding="utf-8") as f:
         for line in f:
             t = line.strip()
             if t.startswith("- "):
@@ -352,10 +352,10 @@ def _selftest_gate_integration() -> int:
         root = os.path.join(d, "corpus")
         os.makedirs(root)
         for nm in ("a.md", "b.md"):
-            with open(os.path.join(root, nm), "w") as f:
+            with open(os.path.join(root, nm), "w", encoding="utf-8") as f:
                 f.write("измеренное значение 1.23456 +- 0.00002 sigma\n")
         reg = os.path.join(d, "claims.yaml")
-        with open(reg, "w") as f:
+        with open(reg, "w", encoding="utf-8") as f:
             f.write('- name: "утв"\n  source: "a.md:1"\n  verdict: "ПУСТО"\n')
         out = gate_report(root, reg, top=10)
         check("исчерпанный класс получает отказ", "ОТКАЗ" in out)
@@ -368,9 +368,9 @@ def selftest() -> int:
     import tempfile
     fail = 0
     with tempfile.TemporaryDirectory() as d:
-        with open(os.path.join(d, "a.md"), "w") as f:
+        with open(os.path.join(d, "a.md"), "w", encoding="utf-8") as f:
             f.write("std = 0.424258 по формуле det(I-K)\nзначение 2.6854520 без вывода\n")
-        with open(os.path.join(d, "claims.yaml"), "w") as f:
+        with open(os.path.join(d, "claims.yaml"), "w", encoding="utf-8") as f:
             f.write("- source: a.md\n")
         per = scan_tree(d)
         hits = per[os.path.join(d, "a.md")]
@@ -383,7 +383,7 @@ def selftest() -> int:
         print("  %s реестр учтён и вывод помечен как триаж" % ("ok  " if ok else "FAIL"))
         fail += 0 if ok else 1
         # подставка: число в строке без десятичных знаков не должно ловиться
-        with open(os.path.join(d, "b.md"), "w") as f:
+        with open(os.path.join(d, "b.md"), "w", encoding="utf-8") as f:
             f.write("версия 3.14 и год 2026 и 1.5\n")
         per = scan_tree(d)
         ok = os.path.join(d, "b.md") not in per

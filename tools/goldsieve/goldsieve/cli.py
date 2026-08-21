@@ -77,7 +77,7 @@ def cmd_run(args):
         tally[r.verdict] = tally.get(r.verdict, 0) + 1
     print("свод: " + ", ".join("%s %d" % (k, v) for k, v in tally.items() if v))
     if args.json:
-        with open(args.json, "w") as f:
+        with open(args.json, "w", encoding="utf-8") as f:
             json.dump([json.loads(r.to_json()) for r in reports], f,
                       ensure_ascii=False, indent=1)
         print("json: %s" % args.json)
@@ -234,7 +234,7 @@ def cmd_regress(args):
     расхождении.
     """
     import yaml
-    with open(args.registry) as f:
+    with open(args.registry, encoding="utf-8") as f:
         reg = yaml.safe_load(f) or {}
     entries = reg.get("claims", [])
     recorded = {}
@@ -333,7 +333,7 @@ def cmd_regress(args):
                 if e.get("case") == case and e.get("claim") == claim_text:
                     e["verdict"] = new
                     e["verdict_was"] = old
-        with open(args.registry, "w") as f:
+        with open(args.registry, "w", encoding="utf-8") as f:
             yaml.safe_dump(reg, f, allow_unicode=True, sort_keys=False)
         print("реестр обновлён: %s" % args.registry)
     return 1 if (changed or missing) else 0
@@ -348,7 +348,7 @@ def cmd_new(args):
     if os.path.exists(args.path):
         raise SystemExit("файл уже есть: %s" % args.path)
     os.makedirs(os.path.dirname(os.path.abspath(args.path)), exist_ok=True)
-    with open(args.path, "w") as f:
+    with open(args.path, "w", encoding="utf-8") as f:
         f.write(TEMPLATE)
     print("создано: %s" % args.path)
     return 0

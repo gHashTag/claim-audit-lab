@@ -210,7 +210,7 @@ def selftest() -> int:
                 bump("tick_aborted_timeout")
             # 10 начатых, 5 срывов = 0,50 — выше порога
             check("здоровье: 5 из 10 выше порога", health() == 1)
-            open(PATH, "w").write("{битый")
+            open(PATH, "w", encoding="utf-8").write("{битый")
             check("битый файл не роняет", bump("tick_started") == 0)
         finally:
             PATH = saved

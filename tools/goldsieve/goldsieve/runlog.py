@@ -354,7 +354,7 @@ class Lock:
                 return self
             except FileExistsError:
                 try:
-                    holder = int(open(self.path).read().strip() or 0)
+                    holder = int(open(self.path, encoding="utf-8").read().strip() or 0)
                 except Exception:
                     holder = 0
                 if alive(holder) and holder != os.getpid():
@@ -498,7 +498,7 @@ def selftest() -> tuple[int, int]:
             except LockBusy:
                 check("замок не берётся дважды", True)
         check("замок освобождается", not os.path.exists(lp))
-        open(lp, "w").write("999000002")
+        open(lp, "w", encoding="utf-8").write("999000002")
         got = Lock(lp).acquire()
         check("замок мёртвого процесса подбирается", got.taken)
         got.release()

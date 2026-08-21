@@ -241,8 +241,8 @@ def selftest() -> tuple[int, int]:
         # Снимок на игрушечном составе: проверяется механика, а не корпус.
         f1 = os.path.join(tmp, "a.txt")
         f2 = os.path.join(tmp, "b.log")
-        open(f1, "w").write("раз")
-        open(f2, "w").write("два")
+        open(f1, "w", encoding="utf-8").write("раз")
+        open(f2, "w", encoding="utf-8").write("два")
         body = {"groups": {"tool": {}, "docs": {}, "logs": {}}}
         for grp, p in (("tool", f1), ("logs", f2)):
             body["groups"][grp][os.path.relpath(p, WORK)] = {
@@ -254,11 +254,11 @@ def selftest() -> tuple[int, int]:
         json.dump(body, open(man, "w", encoding="utf-8"), ensure_ascii=False)
         rc, probs = verify(man)
         check("нетронутый снимок сходится", rc == 0 and not probs)
-        open(f1, "w").write("раз-два")
+        open(f1, "w", encoding="utf-8").write("раз-два")
         rc, probs = verify(man)
         check("подмена файла инструмента ловится",
               rc == 1 and any("изменился" in p for p in probs))
-        open(f1, "w").write("раз")
+        open(f1, "w", encoding="utf-8").write("раз")
         os.unlink(f2)
         rc, probs = verify(man)
         check("пропавший журнал не считается расхождением",

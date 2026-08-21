@@ -120,11 +120,11 @@ def selftest() -> int:
         os.makedirs(os.path.join(src, "scripts", "cases"))
         for rel in ("SKILL.md", "scripts/goldsieve/sieve.py",
                     "scripts/cases/a.py", "scripts/cases/b.py"):
-            with open(os.path.join(src, rel), "w") as fh:
+            with open(os.path.join(src, rel), "w", encoding="utf-8") as fh:
                 fh.write("x\n")
 
         exc = os.path.join(tmp, "exc.txt")
-        with open(exc, "w") as fh:
+        with open(exc, "w", encoding="utf-8") as fh:
             fh.write("# комментарий\n\nscripts/cases/b.py\n")
         check("комментарии и пустые строки не попадают в список",
               read_exclude(exc) == ["scripts/cases/b.py"])

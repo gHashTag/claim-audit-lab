@@ -34,7 +34,7 @@ class Env:
             "TRI_LEDGER": os.path.join(tmp, "ledger.md"),
             "TRI_LOCK": os.path.join(tmp, "tick.lock"),
         })
-        open(self.env["TRI_LEDGER"], "w").write("# временная ведомость\n")
+        open(self.env["TRI_LEDGER"], "w", encoding="utf-8").write("# временная ведомость\n")
 
     def run(self, *args: str, timeout: float = 60) -> subprocess.CompletedProcess:
         return subprocess.run([TRI, *args], cwd=ROOT, env=self.env,
@@ -157,7 +157,7 @@ def main() -> int:
 
         # 10. Завершение тика по abort: счётчик растёт, код 0, замок свободен.
         r = e.run("tick", "abort", "проверочный срыв")
-        counters = json.load(open(e.env["GOLDSIEVE_COUNTERS"]))
+        counters = json.load(open(e.env["GOLDSIEVE_COUNTERS"], encoding="utf-8"))
         agg = counters.get("counters", counters)
         chk("tick abort учтён счётчиком и не оставил замка",
             r.returncode == 0 and agg.get("tick_aborted_other", 0) >= 1

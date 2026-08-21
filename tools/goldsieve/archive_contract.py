@@ -126,8 +126,8 @@ def selftest() -> tuple[int, int]:
         os.makedirs(os.path.join(src, "scripts", "cases"))
         for i in range(5):
             open(os.path.join(src, "scripts", "cases", "c%d.py" % i),
-                 "w").write("# %d\n" % i)
-        open(os.path.join(src, "SKILL.md"), "w").write("---\nname: x\n---\n")
+                 "w", encoding="utf-8").write("# %d\n" % i)
+        open(os.path.join(src, "SKILL.md"), "w", encoding="utf-8").write("---\nname: x\n---\n")
         z = os.path.join(tmp, "pkg.zip")
         build(src, z)
         rc, probs = check(z)
@@ -140,7 +140,7 @@ def selftest() -> tuple[int, int]:
         h3 = build(src, os.path.join(tmp, "c.zip"))
         chk("изменение времени файла не меняет архив", h3 == h1)
         # А изменение СОДЕРЖИМОГО обязано менять.
-        open(os.path.join(src, "SKILL.md"), "a").write("\n# правка\n")
+        open(os.path.join(src, "SKILL.md"), "a", encoding="utf-8").write("\n# правка\n")
         h4 = build(src, os.path.join(tmp, "d.zip"))
         chk("изменение содержимого меняет архив", h4 != h1)
         # ПОДСТАВКИ: архив, собранный обычным zip с каталогами и предельным

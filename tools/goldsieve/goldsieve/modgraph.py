@@ -395,7 +395,7 @@ def selftest() -> tuple[int, int]:
         # ПОДСТАВКА 4: у пустого файла граф — одна вершина, ноль рёбер, и это
         # НЕ должно выглядеть как успешный межмодульный разбор.
         empty = os.path.join(d, "mg_empty.py")
-        open(empty, "w").close()
+        open(empty, "w", encoding="utf-8").close()
         _parse.cache_clear()
         ge = build(empty)
         check("пустой файл даёт ноль рёбер", not ge.edges)

@@ -108,8 +108,8 @@ def gate_coverage_selftest() -> int:
     import tempfile
     bad = 0
     with tempfile.TemporaryDirectory() as td:
-        open(os.path.join(td, "covered.py"), "w").close()
-        open(os.path.join(td, "nocover.py"), "w").close()
+        open(os.path.join(td, "covered.py"), "w", encoding="utf-8").close()
+        open(os.path.join(td, "nocover.py"), "w", encoding="utf-8").close()
         with open(os.path.join(td, "ci_gate.sh"), "w", encoding="utf-8") as fh:
             fh.write("step a python3 covered.py\nstep b python3 nocover.py\n"
                      "# упоминание ghost.py в комментарии\n")

@@ -151,6 +151,8 @@ else
     step "протокол BBLM: перечень недостающего" "$BASE_PY" bblm_protocol.py --selftest
     step "параметры высоты BBLM"          "$BASE_PY" bblm_height.py --selftest
     step "элементы протокола BBLM"        "$BASE_PY" bblm_elements.py --selftest
+    step "чувствительность линтера переносимости" "$BASE_PY" portability_lint.py --selftest
+    step "переносимость: кодировки и python3" "$BASE_PY" portability_lint.py
     # Ранее неподвижная точка была измерена только для GUE-guard. Эта
     # матрица проверяет, что отчёт не меняет решение остальных проверок, а
     # мутация роли audit_log обнаруживается.
