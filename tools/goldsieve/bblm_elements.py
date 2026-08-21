@@ -23,6 +23,12 @@ from pathlib import Path
 
 import numpy as np
 from scipy.special import loggamma
+# Кодировка потоков: импорт пакета задаёт utf-8 (тик 171, дефект Windows cp1252).
+try:
+    import goldsieve as _gs  # noqa: F401
+except Exception:
+    pass
+
 
 ZEROS = Path("/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt")
 DEST = Path("/home/user/workspace/goldsieve/bblm_elements.json")

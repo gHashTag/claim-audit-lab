@@ -27,6 +27,12 @@ import re
 import sys
 import tempfile
 from pathlib import Path
+# Кодировка потоков: импорт пакета задаёт utf-8 (тик 171, дефект Windows cp1252).
+try:
+    import goldsieve as _gs  # noqa: F401
+except Exception:
+    pass
+
 
 CORPUS_ROOT = Path("/home/user/workspace/corpus/trinity")
 TOOL_ROOTS = [

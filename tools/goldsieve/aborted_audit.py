@@ -25,6 +25,12 @@ import re
 import sys
 from collections import Counter
 from pathlib import Path
+# Кодировка потоков: импорт пакета задаёт utf-8 (тик 171, дефект Windows cp1252).
+try:
+    import goldsieve as _gs  # noqa: F401
+except Exception:
+    pass
+
 
 PATH = Path(os.environ.get(
     "GOLDSIEVE_COUNTERS",
