@@ -1,5 +1,4 @@
-# Список пересобран машинно (тик 205). Оставлены пакет goldsieve/, контракты,
-# модули проверок и references/; кейсы-примеры и артефакты прогонов исключены.
+# Список пересобран машинно (тик 215).
 scripts/aborted_audit.json
 scripts/appendix_external_targets_20260813.json
 scripts/axes_omega_lambda.json
@@ -133,9 +132,11 @@ scripts/delta001_additional_claims_20260815.json
 scripts/delta001_strong_coincidences_20260815.json
 scripts/delta001_variance_claims_20260814.json
 scripts/dirac_cp_phase_formula.json
+scripts/disk_guard.json
 scripts/docs/rfc-tri-zig-external-commands.md
 scripts/established_constants_fit_count.json
 scripts/execution_proof.py
+scripts/external_target_guard.json
 scripts/fixed_point_audit.json
 scripts/formulas_deploy_external_20260814.json
 scripts/formulas_external_targets_20260813.json
@@ -173,6 +174,7 @@ scripts/measure_identity.py
 scripts/mutation_identity.py
 scripts/neutrino_mixing_external_20260814.json
 scripts/neutron_lifetime_formula.json
+scripts/os_matrix_audit.py
 scripts/particle_physics_example_mean_error_20260815.json
 scripts/patch_corpus_t41.py
 scripts/patch_freeze.py
