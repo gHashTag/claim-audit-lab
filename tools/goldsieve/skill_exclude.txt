@@ -1,5 +1,4 @@
-# Список машинно пересобран в тике 171: зеркало scripts/ обновлено, прежний
-# список разошёлся с источником. Оставлены пакет goldsieve/, контракты,
+# Список пересобран машинно (тик 205). Оставлены пакет goldsieve/, контракты,
 # модули проверок и references/; кейсы-примеры и артефакты прогонов исключены.
 scripts/aborted_audit.json
 scripts/appendix_external_targets_20260813.json
@@ -15,10 +14,10 @@ scripts/baseline/reasons.yaml
 scripts/baseline/snapshot-manifest.json
 scripts/baseline/verdicts.csv
 scripts/baseline/verdicts.json
+scripts/bblm_accounting.json
 scripts/bblm_elements.json
 scripts/bblm_height.json
 scripts/bblm_protocol.json
-scripts/bblm_spec.yaml
 scripts/bench.py
 scripts/bitnet_coherence_throughput_recipe_20260817.json
 scripts/calibrate_identity.py
