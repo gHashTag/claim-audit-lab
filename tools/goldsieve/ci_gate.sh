@@ -151,6 +151,8 @@ else
     step "протокол BBLM: перечень недостающего" "$BASE_PY" bblm_protocol.py --selftest
     step "параметры высоты BBLM"          "$BASE_PY" bblm_height.py --selftest
     step "элементы протокола BBLM"        "$BASE_PY" bblm_elements.py --selftest
+    step "чувствительность учёта элементов BBLM" "$BASE_PY" bblm_accounting.py --selftest
+    step "учёт BBLM: один источник истины"  "$BASE_PY" bblm_accounting.py
     step "чувствительность линтера переносимости" "$BASE_PY" portability_lint.py --selftest
     step "переносимость: кодировки и python3" "$BASE_PY" portability_lint.py
     # Ранее неподвижная точка была измерена только для GUE-guard. Эта
