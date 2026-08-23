@@ -24,8 +24,10 @@ CLI, и именно в этих условиях версия детектор�
 
 from __future__ import annotations
 
+import atexit
 import importlib.util
 import os
+import shutil
 import tempfile
 
 # Общая «данные корпуса» подкладка: фикстуре, которой нужен свой источник,
@@ -886,10 +888,27 @@ def _observed():
 _TMP: str | None = None
 
 
+def _cleanup_workdir() -> None:
+    """Убрать рабочий каталог фикстур при выходе процесса.
+
+    Тик 215: без этой уборки каждый ПРОЦЕСС, тронувший фикстуры, оставлял
+    каталог с исходниками и байткодом. За время работы крона накопилось 5140
+    таких каталогов на 3,0 ГБ, диск песочницы заполнился на 100 %, и тик 214
+    умер строкой «No space left on device» ещё до гейта — то есть утечка
+    ресурса останавливает аудит целиком. Уборка обязана быть в самом модуле:
+    внешний уборщик чинит следствие, а не причину.
+    """
+    global _TMP
+    if _TMP:
+        shutil.rmtree(_TMP, ignore_errors=True)
+        _TMP = None
+
+
 def _workdir() -> str:
     global _TMP
     if _TMP is None:
         _TMP = tempfile.mkdtemp(prefix="goldsieve-fixtures-")
+        atexit.register(_cleanup_workdir)
         with open(os.path.join(_TMP, "data.txt"), "w", encoding="utf-8") as fh:
             fh.write(DATA_TEXT)
     return _TMP

@@ -151,10 +151,17 @@ else
     step "протокол BBLM: перечень недостающего" "$BASE_PY" bblm_protocol.py --selftest
     step "параметры высоты BBLM"          "$BASE_PY" bblm_height.py --selftest
     step "элементы протокола BBLM"        "$BASE_PY" bblm_elements.py --selftest
+    step "чувствительность сторожа внешних целей" "$BASE_PY" external_target_guard.py --selftest
+    step "разметка внешних сверок"        "$BASE_PY" external_target_guard.py
+    step "чувствительность сторожа диска" "$BASE_PY" disk_guard.py --selftest
+    step "ресурс песочницы и утечка фикстур" "$BASE_PY" disk_guard.py --clean
     step "чувствительность учёта элементов BBLM" "$BASE_PY" bblm_accounting.py --selftest
     step "учёт BBLM: один источник истины"  "$BASE_PY" bblm_accounting.py
     step "чувствительность линтера переносимости" "$BASE_PY" portability_lint.py --selftest
     step "переносимость: кодировки и python3" "$BASE_PY" portability_lint.py
+    # Проверка нового риска: успешный общий run не должен скрывать удалённое,
+    # незавершённое, дублированное или подменённое задание матрицы.
+    step "полнота ОС-матрицы"           "$BASE_PY" os_matrix_audit.py --selftest
     # Ранее неподвижная точка была измерена только для GUE-guard. Эта
     # матрица проверяет, что отчёт не меняет решение остальных проверок, а
     # мутация роли audit_log обнаруживается.

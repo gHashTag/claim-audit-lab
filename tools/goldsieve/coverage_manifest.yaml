@@ -427,6 +427,26 @@ tooling_guards:
     mutation_score: 1/1
     loader_guard: module_from_spec без регистрации в sys.modules
     mutation_target: подмена доли независимых единицей для пустого семейства
+  os_matrix_completeness:
+    role: >-
+      общий успех GitHub Actions не должен скрывать отсутствие, незавершённость,
+      дублирование или подмену одного из шести заданий матрицы ОС и CPython;
+      проверка читает сохранённый ответ API и не подменяет область гейта корпуса
+    fixture: os_matrix_audit.py --selftest
+    positive_sensitivity: 1/1
+    mutation_score: 4/4
+    mutation_target: >-
+      удаление, незавершённость, дублирование или подмена задания матрицы
+    sensitivity: 4/4 мутаций пойманы; положительный контроль 1/1
+    status_class: verified-in-scope
+  external_target_integrity:
+    role: >-
+      нечисловая, нефинитная или лишённая URL внешняя цель не должна
+      превращаться в обычное согласие С15
+    fixture: goldsieve/selftest.py
+    mutation_target: удаление проверки конечности внешней цели
+    sensitivity: 2/2 отрицательные фикстуры; 1/1 мутация поймана
+    status_class: verified-in-scope
 
 # Кейсные проверки корпуса (не синтаксические конструкции детектора).
 # Здесь явно фиксируется измеренная чувствительность нового риска, чтобы
