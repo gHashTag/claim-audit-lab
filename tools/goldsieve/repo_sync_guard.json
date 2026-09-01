@@ -1,8 +1,8 @@
 {
  "ветвь": "tools/goldsieve-v3-2026-08-13",
- "коммит_ветви": "052935f",
+ "коммит_ветви": "9c0b70a",
  "файлов_в_песочнице": 43,
- "файлов_в_ветви": 183,
+ "файлов_в_ветви": 184,
  "почему_проверка_существует": "тики 216-260 девять суток отчитывались об исправлениях, не отправив ни одного коммита; os_matrix_audit.py не существовал в репозитории вовсе",
  "отсутствует_в_ветви": [],
  "нет_в_песочнице": [
@@ -37,6 +37,7 @@
   "delta001_gamma_entropy_comparison_20260818.py",
   "delta001_strong_coincidences_20260815.py",
   "delta001_variance_claims_20260814.py",
+  "dirac_cp_external_20260902.py",
   "dirac_cp_phase_formula.py",
   "established_constants_fit_count.py",
   "exact.py",
@@ -147,8 +148,6 @@
   "zeta_std_unfolding_passport_20260815.py",
   "zeta_unfolding_std_recipe_20260815.py"
  ],
- "различается": [
-  "claims.yaml"
- ],
- "расхождений": 1
+ "различается": [],
+ "расхождений": 0
 }
