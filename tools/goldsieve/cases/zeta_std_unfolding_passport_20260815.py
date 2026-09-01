@@ -1,10 +1,10 @@
-"""Паспорт развёртки дзета: независимое воспроизведение 0,42201569295012265.
+"""Паспорт развёртки дзета: независимое воспроизведение Wigner–surmise approximation 0,42201569295012265.
 
-Наблюдение берётся из строки отчёта, а не из эталона. Эталон Wigner—surmise
+Наблюдение берётся из строки отчёта, а не из эталона. Эталон Wigner–surmise approximation
 получается двумя разными интегральными путями. Отдельно тем же паспортом
 вычисляются точная развёртка θ и развёртка по ведущей плотности для файла
 нулей: обе дают 0,4009. Точный закон GUE считается третьим, более строгим
-ориентиром и показывает, что 0,4220 — именно Wigner—surmise, а не точный GUE.
+ориентиром и показывает, что 0,4220 — именно Wigner–surmise approximation, а не точный GUE.
 """
 
 import math
@@ -54,7 +54,7 @@ def _observed():
     header = next(
         i for i, line in enumerate(lines)
         if line.startswith("| Metric | Value | GUE (computed) |")
-        or line.startswith("| Metric | Value | GUE Wigner surmise (computed) |")
+        or line.startswith("| Metric | Value | Wigner–surmise approximation (computed) |")
     )
     columns = {}
     for line in lines[header + 1:]:
@@ -137,7 +137,7 @@ def _reference():
 
 
 def _reference_alt():
-    """Независимые пути: выживание Wigner и ведущий член плотности."""
+    """Независимые пути: выживание Wigner–surmise approximation и ведущий член плотности."""
     return {
         "wigner_std": _wigner_survival_quad(),
         "corpus_std": _leading_std(),
@@ -179,7 +179,7 @@ _selfcheck()
 CLAIMS = [
     Claim(
         name=(
-            "Паспорт развёртки дзета воспроизводит std "
+            "Паспорт развёртки дзета воспроизводит std Wigner–surmise approximation "
             "0,42201569295012265 и объясняет 0,4009"
         ),
         source="data/zeta/zeta_gue_analysis_results.md:34",
@@ -203,7 +203,7 @@ CLAIMS = [
         novelty_key="zeta:unfolding_std_passport:v1",
         information_class="novelty",
         purpose="internal_consistency",
-        models=["Wigner—surmise", "точный закон GUE"],
+        models=["Wigner–surmise approximation", "точный закон GUE"],
         independent_of={"source": "сырой файл нулей", "observable": "рецепт развёртки"},
         notes=(
             "Машинный паспорт: 100000 нулей, индексы 1..100000, 99999 зазоров; "
@@ -213,8 +213,7 @@ CLAIMS = [
             "Для 0,4009 точная θ-развёртка даёт 0,4009327315, а ведущий член "
             "плотности с множителем по нижнему нулю — 0,4009263778: это иная "
             "измерительная развёртка того же файла, не табличная арифметика. "
-            "Точный Fredholm-GUE даёт около 0,424258, поэтому 0,4220 — Wigner "
-            "surmise, а не точный GUE; причина расхождения зафиксирована кодом."
+            "Точный Fredholm-GUE даёт около 0,424258, поэтому 0,4220 — Wigner–surmise approximation, а не точный GUE; причина расхождения зафиксирована кодом."
         ),
         skip_reasons={
             "С6": "рецепт не содержит дискретной сетки сходимости",

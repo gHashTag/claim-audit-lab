@@ -1,7 +1,7 @@
 """Аудит строки о стандартном отклонении расстояний дзета.
 
 Наблюдение читается из строки Comparison with Literature. Эталон не берётся
-из напечатанного 0,4220: он вычисляется из плотности Вигнера численным
+из напечатанного 0,4220 Wigner–surmise approximation: он вычисляется из плотности Вигнера численным
 интегрированием. Второй путь использует замкнутую формулу для второго момента.
 """
 
@@ -26,15 +26,15 @@ def _observed():
     """Наблюдение берётся только из строки Comparison with Literature."""
     match = re.search(
         # Подпись столбца уточнена в корпусе (пункт 1 приказа 2026-08-18):
-        # 0,4220 — это std Wigner surmise, а не точный закон GUE. Парсер
+        # 0,4220 — это std Wigner–surmise approximation, а не точный закон GUE. Парсер
         # принимает ОБА варианта подписи, чтобы уточнение терминологии не
         # выглядело изменением утверждения.
-        r"\| Std vs GUE(?: Wigner surmise)? \| ([0-9.]+) vs ([0-9.]+) \("
+        r"\| Std vs (?:GUE )?Wigner–surmise approximation \| ([0-9.]+) vs ([0-9.]+) \("
         r"[−-][0-9.]+%\) \|",
         _text(),
     )
     if not match:
-        raise AssertionError("строка Std vs GUE не найдена")
+        raise AssertionError("строка Std vs Wigner–surmise approximation не найдена")
     return float(match.group(1))
 
 
@@ -96,7 +96,7 @@ _selfcheck()
 
 CLAIMS = [
     Claim(
-        name="Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE",
+        name="Стандартное отклонение расстояний дзета равно 0,4009 против Wigner–surmise approximation 0,4220",
         source="data/zeta/zeta_bin_analysis_update.md:124",
         stated=_observed(),
         reference=_reference,
@@ -111,7 +111,7 @@ CLAIMS = [
         reference_alt=_reference_alt,
         alt_tolerance=_alt_tolerance,
         inputs=[SOURCE],
-        claim_family="сравнение стандартного отклонения расстояний с GUE",
+        claim_family="сравнение стандартного отклонения расстояний с Wigner–surmise approximation",
         observable="стандартное отклонение нормированных расстояний",
         measurement_source="корпус Trinity, строка Std vs GUE",
         uncertainty_type="none",
@@ -122,7 +122,7 @@ CLAIMS = [
                 "аналитический второй момент плотности Вигнера"],
         independent_of={},
         notes=(
-            "0,4009 извлекается из строки корпуса. 0,4220 не используется "
+            "0,4009 извлекается из строки корпуса. 0,4220 — Wigner–surmise approximation; не используется "
             "как эталон: reference получает его через интеграл, а "
             "reference_alt — через формулу второго момента. Подставка "
             "0,5 и контроль 1,0 различаются ситом."

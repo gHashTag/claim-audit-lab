@@ -837,8 +837,30 @@ def sieve_external_target(c: Claim) -> Result:
                       "сверка формулы с напечатанным числом прошла бы при любом "
                       "значении формулы")
     tgt = c.external_target()
-    value = float(tgt["value"])
-    unc = float(tgt["uncertainty"])
+    # Защита от нового класса риска: нечисловая/нефинитная цель или цель без
+    # проверяемого URL раньше могла пройти дальше как обычная цель. В частности,
+    # float("nan") делал worst_sigma равным нулю и мог ложно дать PASS.
+    if not isinstance(tgt, dict):
+        return Result(name, VOID, "внешняя цель не является записью")
+    missing = [key for key in ("value", "uncertainty", "source")
+               if key not in tgt]
+    if missing:
+        return Result(name, VOID,
+                      "внешняя цель неполна: нет " + ", ".join(missing))
+    source = str(tgt["source"])
+    if not (source.startswith("https://") or source.startswith("http://")
+            or " https://" in source or " http://" in source):
+        return Result(name, VOID,
+                      "внешняя цель без URL независимого источника")
+    try:
+        value = float(tgt["value"])
+        unc = float(tgt["uncertainty"])
+    except (TypeError, ValueError, OverflowError):
+        return Result(name, VOID,
+                      "значение или погрешность внешней цели нечисловы")
+    if not (math.isfinite(value) and math.isfinite(unc)):
+        return Result(name, VOID,
+                      "значение или погрешность внешней цели не конечны")
     if unc <= 0:
         return Result(name, VOID, "погрешность внешней величины не задана")
     nums = {}

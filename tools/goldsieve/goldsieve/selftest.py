@@ -12,6 +12,7 @@ import os
 
 import numpy as np
 
+from . import sieve as sieve_module
 from .sieve import (Claim, run, CONFIRMED, REFUTED, QUESTION, EMPTY, VOID,
                     PASS, OPEN, FAIL, rel_dev)
 
@@ -537,7 +538,8 @@ def main() -> int:
         reference=lambda: 878.5,
         wrong=lambda: 950.0,
         claim_kind="prediction",
-        external_target=lambda: {"value": 878.4, "uncertainty": 0.5},
+        external_target=lambda: {"value": 878.4, "uncertainty": 0.5,
+                                 "source": "https://example.invalid/measurement"},
         stated_target=lambda: 878.4,
         skip_reasons=SR,
     )
@@ -556,7 +558,8 @@ def main() -> int:
         reference=lambda: 878.4,
         wrong=lambda: 950.0,
         claim_kind="prediction",
-        external_target=lambda: {"value": 878.4, "uncertainty": 0.5},
+        external_target=lambda: {"value": 878.4, "uncertainty": 0.5,
+                                 "source": "https://example.invalid/measurement"},
         stated_target=lambda: 878.4,
         skip_reasons=SR,
     )
@@ -576,7 +579,8 @@ def main() -> int:
         reference=lambda: 888.4,
         wrong=lambda: 878.4,
         claim_kind="prediction",
-        external_target=lambda: {"value": 878.4, "uncertainty": 0.5},
+        external_target=lambda: {"value": 878.4, "uncertainty": 0.5,
+                                 "source": "https://example.invalid/measurement"},
         skip_reasons=SR,
     )
     st15b = {x.sieve: x.status for x in run(bad_pred).results}["С15 внешняя цель"]
@@ -586,6 +590,68 @@ def main() -> int:
     else:
         fail += 1
         print("  FAIL %-45s %s" % ("С15 ловит расхождение в 20 сигм", st15b))
+
+    # Новый тип риска С15: повреждённая цель не должна превращаться в
+    # согласие. Нефинитная погрешность и отсутствие URL проверяются отдельно.
+    for label, target in (
+        ("С15 ловит нефинитную цель",
+         {"value": float("nan"), "uncertainty": 0.5,
+          "source": "https://example.invalid/measurement"}),
+        ("С15 требует URL цели",
+         {"value": 878.4, "uncertainty": 0.5, "source": "архив без ссылки"}),
+    ):
+        malformed = Claim(
+            name=label,
+            stated=878.4,
+            reference=lambda: 878.4,
+            wrong=lambda: 950.0,
+            claim_kind="prediction",
+            external_target=lambda target=target: target,
+            skip_reasons=SR,
+        )
+        malformed_status = {
+            x.sieve: x.status for x in run(malformed).results
+        }["С15 внешняя цель"]
+        if malformed_status == VOID:
+            ok += 1
+            print("  ok   %-45s %s" % (label, malformed_status))
+        else:
+            fail += 1
+            print("  FAIL %-45s %s" % (label, malformed_status))
+
+    # Мутационная цель: удаление содержательной проверки конечности не должно
+    # выглядеть успешным. Подмена math.isfinite на всепропускающий мутант
+    # обязана изменить решение нефинитной фикстуры.
+    nan_target = {"value": float("nan"), "uncertainty": 0.5,
+                  "source": "https://example.invalid/measurement"}
+    nan_claim = Claim(
+        name="мутация проверки конечности внешней цели",
+        stated=878.4,
+        reference=lambda: 878.4,
+        wrong=lambda: 950.0,
+        claim_kind="prediction",
+        external_target=lambda: nan_target,
+        skip_reasons=SR,
+    )
+    original_isfinite = sieve_module.math.isfinite
+    try:
+        sieve_module.math.isfinite = lambda _value: True
+        mutant_status = {
+            x.sieve: x.status for x in run(nan_claim).results
+        }["С15 внешняя цель"]
+    finally:
+        sieve_module.math.isfinite = original_isfinite
+    original_status = {
+        x.sieve: x.status for x in run(nan_claim).results
+    }["С15 внешняя цель"]
+    if original_status == VOID and mutant_status != VOID:
+        ok += 1
+        print("  ok   %-45s %s -> %s" %
+              ("мутация finite ловится", mutant_status, original_status))
+    else:
+        fail += 1
+        print("  FAIL %-45s %s -> %s" %
+              ("мутация finite ловится", mutant_status, original_status))
 
     # С16: ожидаемых попаданий больше одного -> ПУСТО
     fitted = Claim(

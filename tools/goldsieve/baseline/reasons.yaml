@@ -95,9 +95,9 @@ deviations:
     reason_code: corpus-data-changed
     evidence: >-
       Пункт 1 приказа 2026-08-18. В корпусе уточнена ПОДПИСЬ столбца:
-      «Std vs GUE» -> «Std vs GUE Wigner surmise», а также заголовок
-      «GUE (computed)» -> «GUE Wigner surmise (computed)». Число 0,4220 НЕ
-      менялось: это std приближения Вигнера sqrt(3*pi/8 - 1) = 0,42201569295,
+      «Std vs GUE» -> «Std vs Wigner–surmise approximation», а также заголовок
+      «GUE (computed)» -> «Wigner–surmise approximation (computed)». Число 0,4220 НЕ
+      менялось: это std Wigner–surmise approximation sqrt(3*pi/8 - 1) = 0,42201569295,
       тогда как точный (Fredholm) закон GUE даёт 0,4242576222440628.
       Изменился только отпечаток входных файлов, поэтому парсеры кейсов
       приведены к приёму обеих подписей; вердикт сохранён.

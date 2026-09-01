@@ -69,6 +69,7 @@ cases/golden_chain_v252_held_out_recipe_20260816.py,Отчёт Golden Chain v2.5
 cases/golden_chain_v30_absolute_recipe_20260817.py,Golden Chain v3.0 воспроизводимо проходит 764 теста,ВОПРОС,docs/docs/research/trinity-golden-chain-v3-0-absolute-report.md:1-180,1c7ace52f744d9fe
 cases/gravitational_constant_external_20260814.py,Формула G = π³γ²/φ согласуется с CODATA,ВОПРОС,docs/docs/research/papers/gravitational-constants.md:10-15,d5b3e20a0308f63e
 cases/hslm_convergence_fraction_20260815.py,"Сходимость HSLM достигла 95,7 % полного расписания",ПОДТВЕРЖДЕНО,docs/research/bundles/B001_HSLM.md:127-130,35938cf8a9418cbb
+cases/hubble_planck_external_20260823.py,Формула H₀ = 4·3³·π⁻³·φ²·e² согласуется с Planck,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:74,
 cases/identity_cross_module_20260814.py,Межмодульная цепочка наблюдение→эталон распознаётся как тождество,ПУСТО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,1235b6ac4959d34b
 cases/identity_cross_module_20260814.py,Межмодульное чтение корпуса не распознаётся как тождество,ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,1235b6ac4959d34b
 cases/identity_honest_controls_20260814.py,Чтение каталога через functools.partial не тождественно эталону,ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,
@@ -148,6 +149,6 @@ cases/zeta_p95_summary_20260815.py,"Сводка p95 расстояний рав
 cases/zeta_p99_gue_20260815.py,"99-й процентиль расстояний дзета равен 2,0680",ОПРОВЕРГНУТО,data/zeta/zeta_gue_analysis_results.md:34,fdcdd26763d39113
 cases/zeta_shape.py,масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка out-of-sample по верхним полосам высот),ОПРОВЕРГНУТО,"data/zeta/zeros_odlyzko_100k.txt, 4 полосы высот; BBLM 2006",3436c916a7878261
 cases/zeta_shape.py,форма распределения расстояний согласуется с точным законом GUE в пределах конечновыборочного разброса,ОПРОВЕРГНУТО,data/zeta/zeta_gue_analysis_results.md:форма распределения,3436c916a7878261
-cases/zeta_std_gue_20260815.py,"Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE",ОПРОВЕРГНУТО,data/zeta/zeta_bin_analysis_update.md:124,d32c98af192622e1
-cases/zeta_std_unfolding_passport_20260815.py,"Паспорт развёртки дзета воспроизводит std 0,42201569295012265 и объясняет 0,4009",ПОДТВЕРЖДЕНО,data/zeta/zeta_gue_analysis_results.md:34,fdcdd26763d39113
+cases/zeta_std_gue_20260815.py,"Стандартное отклонение расстояний дзета равно 0,4009 против Wigner–surmise approximation 0,4220",ОПРОВЕРГНУТО,data/zeta/zeta_bin_analysis_update.md:124,d32c98af192622e1
+cases/zeta_std_unfolding_passport_20260815.py,"Паспорт развёртки дзета воспроизводит std Wigner–surmise approximation 0,42201569295012265 и объясняет 0,4009",ПОДТВЕРЖДЕНО,data/zeta/zeta_gue_analysis_results.md:34,fdcdd26763d39113
 cases/zeta_unfolding_std_recipe_20260815.py,"Напечатанная std 0,4009 получена из файла 100 000 нулей заявленной развёрткой",ПОДТВЕРЖДЕНО,data/zeta/zeta_gue_analysis_results.md:34,3436c916a7878261

@@ -490,6 +490,13 @@
     "inputs_digest": "35938cf8a9418cbb"
   },
   {
+    "case": "cases/hubble_planck_external_20260823.py",
+    "claim": "Формула H₀ = 4·3³·π⁻³·φ²·e² согласуется с Planck",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:74",
+    "inputs_digest": ""
+  },
+  {
     "case": "cases/identity_cross_module_20260814.py",
     "claim": "Межмодульная цепочка наблюдение→эталон распознаётся как тождество",
     "verdict": "ПУСТО",
@@ -1044,14 +1051,14 @@
   },
   {
     "case": "cases/zeta_std_gue_20260815.py",
-    "claim": "Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE",
+    "claim": "Стандартное отклонение расстояний дзета равно 0,4009 против Wigner–surmise approximation 0,4220",
     "verdict": "ОПРОВЕРГНУТО",
     "source": "data/zeta/zeta_bin_analysis_update.md:124",
     "inputs_digest": "d32c98af192622e1"
   },
   {
     "case": "cases/zeta_std_unfolding_passport_20260815.py",
-    "claim": "Паспорт развёртки дзета воспроизводит std 0,42201569295012265 и объясняет 0,4009",
+    "claim": "Паспорт развёртки дзета воспроизводит std Wigner–surmise approximation 0,42201569295012265 и объясняет 0,4009",
     "verdict": "ПОДТВЕРЖДЕНО",
     "source": "data/zeta/zeta_gue_analysis_results.md:34",
     "inputs_digest": "fdcdd26763d39113"

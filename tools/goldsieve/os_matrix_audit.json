@@ -1,0 +1,28 @@
+{
+  "verdict": "PASS",
+  "reason_code": "matrix_complete_success",
+  "expected_count": 6,
+  "observed_count": 6,
+  "expected": [
+    "macos-latest / py3.12",
+    "macos-latest / py3.13",
+    "ubuntu-latest / py3.12",
+    "ubuntu-latest / py3.13",
+    "windows-latest / py3.12",
+    "windows-latest / py3.13"
+  ],
+  "observed": [
+    "macos-latest / py3.12",
+    "macos-latest / py3.13",
+    "ubuntu-latest / py3.12",
+    "ubuntu-latest / py3.13",
+    "windows-latest / py3.12",
+    "windows-latest / py3.13"
+  ],
+  "missing": [],
+  "unexpected": [],
+  "duplicates": [],
+  "missing_ids": [],
+  "duplicate_ids": [],
+  "not_success": []
+}

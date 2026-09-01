@@ -1,11 +1,11 @@
 {
- "checked": 3,
+ "checked": 5,
  "degenerate_count": 2,
  "degenerate": [
   "tick210_external_measurement.json",
   "tick211_external_measurement.json"
  ],
- "rule": "артефакт внешней сверки обязан содержать наблюдаемое из корпуса и путь к файлу корпуса; иначе сверка проходит при любом значении корпусных формул",
+ "rule": "артефакт внешней сверки обязан содержать наблюдаемое из корпуса и путь к файлу корпуса; иначе сверка проходит при любом значении корпусных формул; отпечаток источника обязан совпадать с содержимым файла; внешняя цель обязана иметь конечное числовое значение, положительную неопределённость и URL",
  "why_this_check_exists": "тики 210 и 211 подали сверку внешнего источника с самим собой как содержательную цель: 0 и 0,0111 сигмы ни о чём не свидетельствуют",
  "rows": [
   {
@@ -15,10 +15,17 @@
    "degenerate": true,
    "verdict_if_submitted": "ПУСТО",
    "reasons": [
-    "нет корпусного наблюдаемого: сверяется внешний источник сам с собой"
+    "нет корпусного наблюдаемого: сверяется внешний источник сам с собой",
+    "наблюдаемое не найдено в тексте указанного файла корпуса"
    ],
    "observed_key": null,
-   "source": ""
+   "source": "",
+   "resolved_source": null,
+   "source_digest": null,
+   "source_digest_key": null,
+   "observed_in_source": "не подтверждено",
+   "source_integrity": "не подтверждён",
+   "external_target_contract": "не подтверждён"
   },
   {
    "file": "tick211_external_measurement.json",
@@ -27,10 +34,17 @@
    "degenerate": true,
    "verdict_if_submitted": "ПУСТО",
    "reasons": [
-    "нет корпусного наблюдаемого: сверяется внешний источник сам с собой"
+    "нет корпусного наблюдаемого: сверяется внешний источник сам с собой",
+    "наблюдаемое не найдено в тексте указанного файла корпуса"
    ],
    "observed_key": null,
-   "source": ""
+   "source": "",
+   "resolved_source": null,
+   "source_digest": null,
+   "source_digest_key": null,
+   "observed_in_source": "не подтверждено",
+   "source_integrity": "не подтверждён",
+   "external_target_contract": "не подтверждён"
   },
   {
    "file": "tick212_external_measurement.json",
@@ -38,7 +52,41 @@
    "class": "измерение_о_корпусе",
    "degenerate": false,
    "observed_key": "наблюдаемое_из_корпуса",
-   "source": "/home/user/workspace/corpus/trinity/docs/research/FORMULAS_SUMMARY.md"
+   "source": "/home/user/workspace/corpus/trinity/docs/research/FORMULAS_SUMMARY.md",
+   "resolved_source": "/home/user/workspace/corpus/trinity/docs/research/FORMULAS_SUMMARY.md",
+   "source_digest": "3d1f62c417f680eabd445e4c5a7e5c231f45d8609b17018afcbfe5d8a8273c22",
+   "source_digest_key": "отпечаток_источника",
+   "observed_in_source": "подтверждено",
+   "source_integrity": "подтверждён",
+   "external_target_contract": "подтверждён"
+  },
+  {
+   "file": "tick215_external_measurement.json",
+   "target": "Формула H₀ = 4·3³·π⁻³·φ²·e² против измерения Planck",
+   "class": "измерение_о_корпусе",
+   "degenerate": false,
+   "observed_key": "наблюдаемое_из_корпуса",
+   "source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+   "resolved_source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+   "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
+   "source_digest_key": "отпечаток_источника",
+   "observed_in_source": "подтверждено",
+   "source_integrity": "подтверждён",
+   "external_target_contract": "подтверждён"
+  },
+  {
+   "file": "tick262_external_measurement.json",
+   "target": "V_ts: внешняя сверка формулы с обзором PDG 2024",
+   "class": "измерение_о_корпусе",
+   "degenerate": false,
+   "observed_key": "наблюдаемое_из_корпуса",
+   "source": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-status-2026.md",
+   "resolved_source": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-status-2026.md",
+   "source_digest": "723e58dc8c516835786d24995d80190c785b1e717b442c1c731003654c1a55d6",
+   "source_digest_key": "отпечаток_источника",
+   "observed_in_source": "подтверждено",
+   "source_integrity": "подтверждён",
+   "external_target_contract": "подтверждён"
   }
  ]
 }
