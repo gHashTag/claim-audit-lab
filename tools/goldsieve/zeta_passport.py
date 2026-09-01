@@ -18,6 +18,7 @@ import hashlib
 import json
 import math
 import os
+import re
 import subprocess
 import sys
 
@@ -30,7 +31,6 @@ DOC_GUE = os.path.join(CORPUS, "data/zeta/zeta_gue_analysis_results.md")
 DOC_BIN = os.path.join(CORPUS, "data/zeta/zeta_bin_analysis_update.md")
 
 TARGET_REF = 0.42201569295012265      # число Wigner–surmise approximation, которое требуется воспроизвести
-TARGET_OBS = 0.4009                   # число из корпуса
 EXACT_GUE_STD = 0.424258              # точный закон зазоров GUE (refs/gue_exact_gap.py)
 
 
@@ -48,6 +48,31 @@ def corpus_head():
     out = subprocess.run(["git", "-C", CORPUS, "log", "-1", "--format=%H"],
                          capture_output=True, text=True, encoding="utf-8", errors="backslashreplace", check=True)
     return out.stdout.strip()
+
+
+def observed_std_from_corpus():
+    """Прочитать округлённое наблюдаемое из таблицы корпуса.
+
+    Ранее ``TARGET_OBS`` был константой в инструменте: паспорт хешировал
+    документ, но не извлекал из него число, которое называл наблюдаемым.
+    Это оставляло возможность пройти проверку при дрейфе текста корпуса.
+    Таблица содержит ровно одну строку ``Std deviation``; требуем ровно одно
+    совпадение, чтобы отсутствие или дублирование наблюдаемого не превращалось
+    в молчаливый пропуск.
+    """
+    with open(DOC_GUE, "r", encoding="utf-8", errors="strict") as fh:
+        text = fh.read()
+    rows = re.findall(
+        r"^\|\s*Std deviation\s*\|\s*([0-9]+(?:[.,][0-9]+)?)\s*\|",
+        text,
+        flags=re.MULTILINE,
+    )
+    if len(rows) != 1:
+        raise ValueError(
+            "в корпусном документе ожидалась ровно одна строка "
+            "Std deviation, найдено %d" % len(rows)
+        )
+    return float(rows[0].replace(",", "."))
 
 
 # ------------------------------------------------------- рецепт развёртки
@@ -183,7 +208,7 @@ def variants(g):
 
 # --------------------------------------------------------------- guard-и
 
-def selfchecks(g, paths, var):
+def selfchecks(g, paths, var, observed_std):
     """Подставки: проверка обязана отвергать неверный ответ."""
     checks = []
 
@@ -231,10 +256,13 @@ def selfchecks(g, paths, var):
        "Δ=%.6f (%.3f %%)" % (EXACT_GUE_STD - paths["A_closed"],
                              100.0 * (EXACT_GUE_STD - paths["A_closed"]) / paths["A_closed"]))
 
-    # 7. хотя бы один вариант рецепта обязан воспроизводить 0,4009 в пределах
+    # 7. хотя бы один вариант рецепта обязан воспроизводить наблюдаемое из
+    # корпусной таблицы в пределах печатной точности (половина последнего
+    # разряда = 5e-5). Число не берётся из константы инструмента.
     #    печатной точности (половина последнего разряда = 5e-5)
-    hits = [k for k, (_, v) in var.items() if abs(v - TARGET_OBS) <= 5e-5]
-    ck("0,4009 воспроизводится вариантом рецепта", bool(hits), ",".join(hits) or "нет")
+    hits = [k for k, (_, v) in var.items() if abs(v - observed_std) <= 5e-5]
+    ck("наблюдаемое из корпуса воспроизводится вариантом рецепта",
+       bool(hits), "%.4f: %s" % (observed_std, ",".join(hits) or "нет"))
     return checks
 
 
@@ -247,10 +275,11 @@ def main():
     paths = {"A_closed": a_closed, "B_mpmath": b_mp, "C_survival": c_surv,
              "D_monte_carlo": d_mc, "D_se": d_se}
 
+    observed_std = observed_std_from_corpus()
     var = variants(g)
-    checks = selfchecks(g, paths, var)
+    checks = selfchecks(g, paths, var, observed_std)
 
-    hits_obs = {k: v for k, (_, v) in var.items() if abs(v - TARGET_OBS) <= 5e-5}
+    hits_obs = {k: v for k, (_, v) in var.items() if abs(v - observed_std) <= 5e-5}
     report = {
         "паспорт_рецепта": {
             "набор_нулей": ZEROS,
@@ -270,6 +299,11 @@ def main():
             "перцентили": "линейная интерполяция между порядковыми статистиками",
         },
         "цель_эталона": TARGET_REF,
+        "наблюдаемое_из_корпуса": {
+            "value": observed_std,
+            "source": DOC_GUE,
+            "field": "Std deviation / Value",
+        },
         "пути_к_эталону": paths,
         "точный_GUE_std": EXACT_GUE_STD,
         "варианты_рецепта": {k: {"описание": d, "std": v} for k, (d, v) in var.items()},

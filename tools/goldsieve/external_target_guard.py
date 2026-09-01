@@ -15,26 +15,130 @@
 получил 45,98 сигмы — это измерение о корпусе. Тики 210 и 211 корпусного
 наблюдаемого не имеют вовсе.
 
-Правило: артефакт внешней сверки обязан содержать наблюдаемое ИЗ КОРПУСА и путь
-к файлу корпуса. Иначе класс сверки — вырожденная (ПУСТО), и подавать её как
-содержательную цель нельзя. Фикстуры этой проверки — три настоящих артефакта
-тиков 210, 211 и 212, поэтому чувствительность и специфичность измерены на
-истории, а не на придуманных примерах.
+Правило: артефакт внешней сверки обязан содержать наблюдаемое ИЗ КОРПУСА, путь
+к файлу корпуса и отпечаток SHA-256 этого файла. Несовпадение отпечатка делает
+класс сверки вырожденным (ПУСТО): наблюдаемое нельзя связать с проверенным
+содержимым. Фикстуры этой проверки — настоящие артефакты тиков 210–215 и
+временная мутация содержимого при неизменном пути, поэтому чувствительность
+измерена на истории и на отрицательной цели, а не на одном позитивном пути.
 """
 from __future__ import annotations
 
 import json
+import hashlib
+import math
 import sys
+import tempfile
+from urllib.parse import urlsplit
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 TICKDIR = Path("/home/user/workspace/cron_tracking/20fee222")
 OUT = HERE / "external_target_guard.json"
+CORPUS_ROOT = Path("/home/user/workspace/corpus/trinity").resolve()
 
 # Ключи, которыми артефакт заявляет корпусное наблюдаемое и его происхождение.
 OBSERVED_KEYS = ("наблюдаемое_из_корпуса", "observed_from_corpus")
 SOURCE_KEYS = ("источник_наблюдения", "observation_source")
+SOURCE_DIGEST_KEYS = ("отпечаток_источника", "source_sha256")
 CORPUS_MARK = "corpus/"
+EXTERNAL_TARGET_KEYS = ("external_target", "внешняя_цель")
+OBSERVATION_TEXT_KEYS = ("строка_наблюдения", "observation_text")
+RESERVED_TARGET_HOSTS = {
+    "example.com",
+    "example.net",
+    "example.org",
+    "example.invalid",
+}
+
+
+def _external_target_contract(art: dict) -> tuple[bool, list[str]]:
+    """Проверяет обязательные поля внешнего измерения.
+
+    Наблюдаемое из корпуса само по себе ещё не является внешней сверкой:
+    без численного значения, неопределённости и URL внешний эталон нельзя
+    воспроизвести или отличить от молчаливо удалённой цели. Поддерживаются
+    обе исторические схемы имён полей.
+    """
+    key = next((k for k in EXTERNAL_TARGET_KEYS
+                if isinstance(art.get(k), dict)), None)
+    if key is None:
+        return False, ["нет external_target/внешней_цели"]
+    target = art[key]
+    value_keys = ("value", "значение")
+    uncertainty_keys = ("uncertainty", "неопределённость")
+    url_keys = ("source", "url")
+    missing = []
+    value_key = next((k for k in value_keys
+                      if k in target and target[k] not in ("", None)), None)
+    uncertainty_key = next((k for k in uncertainty_keys
+                            if k in target and target[k] not in ("", None)), None)
+    if value_key is None:
+        missing.append("нет value/значения внешней цели")
+    if uncertainty_key is None:
+        missing.append("нет uncertainty/неопределённости внешней цели")
+    url_key = next((k for k in url_keys
+                    if k in target and str(target[k]).strip()), None)
+    if url_key is None:
+        missing.append("нет URL внешней цели")
+    else:
+        parsed_url = urlsplit(str(target[url_key]).strip())
+        if parsed_url.scheme not in ("http", "https") or not parsed_url.netloc:
+            missing.append("URL внешней цели должен быть абсолютным HTTP(S)-адресом")
+        elif (parsed_url.hostname or "").lower() in RESERVED_TARGET_HOSTS:
+            missing.append("URL внешней цели указывает на зарезервированный "
+                           "пример, а не на источник измерения")
+    # Наличие ключа не доказывает измерение: NaN, бесконечность, ноль и
+    # отрицательная неопределённость превращают нормировку в фиктивную.
+    # Разрешаем десятичные строки исторических артефактов, но требуем
+    # конечное числовое значение и строго положительную неопределённость.
+    if value_key is not None:
+        try:
+            value = float(target[value_key])
+            if not math.isfinite(value):
+                missing.append("значение внешней цели не является конечным числом")
+        except (TypeError, ValueError):
+            missing.append("значение внешней цели не является числом")
+    if uncertainty_key is not None:
+        try:
+            uncertainty = float(target[uncertainty_key])
+            if not math.isfinite(uncertainty) or uncertainty <= 0:
+                missing.append("неопределённость внешней цели должна быть положительной")
+        except (TypeError, ValueError):
+            missing.append("неопределённость внешней цели не является числом")
+    return not missing, missing
+
+
+def _sha256(path: Path) -> str:
+    """Возвращает отпечаток байтов файла, прочитанного как корпусное наблюдаемое."""
+    digest = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _observed_text_present(art: dict, path: Path) -> bool:
+    """Проверяет, что заявленное наблюдаемое действительно прочитано из файла.
+
+    Путь и SHA-256 фиксируют, КАКОЙ файл был выбран, но сами по себе не
+    связывают поле observed с его содержимым: произвольное число можно было
+    бы приписать честному файлу. Для исторических артефактов без отдельной
+    строки доказательства используется буквальное представление наблюдаемого;
+    новые артефакты могут передавать точную строку таблицы явно.
+    """
+    observed_key = next((k for k in OBSERVED_KEYS if k in art), None)
+    if observed_key is None:
+        return False
+    evidence_key = next((k for k in OBSERVATION_TEXT_KEYS if k in art), None)
+    evidence = art.get(evidence_key) if evidence_key else art.get(observed_key)
+    if evidence in (None, ""):
+        return False
+    try:
+        text = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError):
+        return False
+    return str(evidence) in text
 
 
 def classify(art: dict) -> dict:
@@ -42,10 +146,46 @@ def classify(art: dict) -> dict:
     observed = next((k for k in OBSERVED_KEYS if k in art), None)
     source = next((k for k in SOURCE_KEYS if k in art), None)
     src_val = str(art.get(source, "")) if source else ""
-    has_corpus_path = CORPUS_MARK in src_val
-    if observed and has_corpus_path:
+    # Одной подстроки «corpus/» недостаточно: путь вроде
+    # /tmp/corpus/trinity/fake.md создаёт ложное происхождение. Принимается
+    # только существующий файл внутри фактического корня корпуса.
+    has_corpus_path = False
+    resolved_source = None
+    source_digest = None
+    actual_digest = None
+    if src_val:
+        candidates = [Path(src_val)]
+        if not Path(src_val).is_absolute():
+            candidates.append(CORPUS_ROOT.parent.parent / src_val)
+        for candidate in candidates:
+            resolved = candidate.resolve()
+            try:
+                resolved.relative_to(CORPUS_ROOT)
+            except ValueError:
+                continue
+            if resolved.is_file():
+                has_corpus_path = True
+                resolved_source = str(resolved)
+                actual_digest = _sha256(resolved)
+                break
+    supplied_digest_key = next((k for k in SOURCE_DIGEST_KEYS if k in art), None)
+    supplied_digest = str(art.get(supplied_digest_key, "")).lower() \
+        if supplied_digest_key else ""
+    target_ok, target_reasons = _external_target_contract(art)
+    observed_in_source = (
+        has_corpus_path and resolved_source is not None
+        and _observed_text_present(art, Path(resolved_source))
+    )
+    if (observed and has_corpus_path and supplied_digest == actual_digest
+            and observed_in_source and target_ok):
         return {"class": "измерение_о_корпусе", "degenerate": False,
-                "observed_key": observed, "source": src_val}
+                "observed_key": observed, "source": src_val,
+                "resolved_source": resolved_source,
+                "source_digest": actual_digest,
+                "source_digest_key": supplied_digest_key,
+                "observed_in_source": "подтверждено",
+                "source_integrity": "подтверждён",
+                "external_target_contract": "подтверждён"}
     reasons = []
     if not observed:
         reasons.append("нет корпусного наблюдаемого: сверяется внешний "
@@ -53,9 +193,26 @@ def classify(art: dict) -> dict:
     elif not has_corpus_path:
         reasons.append("наблюдаемое объявлено, но путь к файлу корпуса не "
                        "указан: происхождение непроверяемо")
+    elif not supplied_digest:
+        reasons.append("у корпусного наблюдаемого нет отпечатка источника: "
+                       "целостность содержимого не зафиксирована")
+    else:
+        reasons.append("отпечаток источника не совпадает с содержимым файла: "
+                       "корпусное наблюдаемое нельзя связать с проверенным "
+                       "снимком")
+    if not observed_in_source:
+        reasons.append("наблюдаемое не найдено в тексте указанного файла корпуса")
+    if not target_ok:
+        reasons.extend(target_reasons)
     return {"class": "вырожденная_сверка", "degenerate": True,
             "verdict_if_submitted": "ПУСТО", "reasons": reasons,
-            "observed_key": observed, "source": src_val}
+            "observed_key": observed, "source": src_val,
+            "resolved_source": resolved_source,
+            "source_digest": actual_digest,
+            "source_digest_key": supplied_digest_key,
+            "observed_in_source": "не подтверждено",
+            "source_integrity": "не подтверждён",
+            "external_target_contract": "не подтверждён"}
 
 
 def selftest() -> int:
@@ -97,6 +254,100 @@ def selftest() -> int:
     mut2["источник_наблюдения"] = "/tmp/scratch/notes.md"
     check("мутант с путём вне корпуса ловится", classify(mut2)["degenerate"])
 
+    # МУТАЦИОННАЯ ЦЕЛЬ 3: строка содержит «corpus/», но файл не является
+    # частью корпуса. Старый подстрочный сторож пропускал бы такой мутант.
+    mut3 = dict(hist[212])
+    mut3["источник_наблюдения"] = "/tmp/corpus/trinity/fake.md"
+    check("мутант с поддельным путём corpus ловится",
+          classify(mut3)["degenerate"])
+
+    # МУТАЦИОННАЯ ЦЕЛЬ 4: корпусное наблюдаемое не может скрыть
+    # отсутствующую внешнюю цель, её неопределённость или URL.
+    mut4 = dict(hist[212])
+    mut4.pop("external_target", None)
+    check("мутант без внешней цели ловится", classify(mut4)["degenerate"])
+    mut5 = dict(hist[212])
+    mut5["external_target"] = dict(hist[212]["external_target"])
+    mut5["external_target"].pop("uncertainty", None)
+    check("мутант без неопределённости внешней цели ловится",
+          classify(mut5)["degenerate"])
+    mut6 = dict(hist[212])
+    mut6["external_target"] = dict(hist[212]["external_target"])
+    mut6["external_target"].pop("source", None)
+    check("мутант без URL внешней цели ловится", classify(mut6)["degenerate"])
+
+    # МУТАЦИОННАЯ ЦЕЛЬ 7: ключи присутствуют, но значение не является
+    # измерением. Такой артефакт раньше проходил сторож и мог породить
+    # бесконечное или фиктивное число сигм.
+    mut7 = dict(hist[212])
+    mut7["external_target"] = dict(hist[212]["external_target"])
+    mut7["external_target"]["uncertainty"] = 0
+    check("мутант с нулевой неопределённостью ловится",
+          classify(mut7)["degenerate"])
+    mut8 = dict(hist[212])
+    mut8["external_target"] = dict(hist[212]["external_target"])
+    mut8["external_target"]["uncertainty"] = "не число"
+    check("мутант с нечисловой неопределённостью ловится",
+          classify(mut8)["degenerate"])
+    mut9 = dict(hist[212])
+    mut9["external_target"] = dict(hist[212]["external_target"])
+    mut9["external_target"]["value"] = "NaN"
+    check("мутант с нечисловым значением ловится",
+          classify(mut9)["degenerate"])
+    mut10 = dict(hist[212])
+    mut10["external_target"] = dict(hist[212]["external_target"])
+    mut10["external_target"]["source"] = "это не URL"
+    check("мутант с поддельным URL ловится",
+          classify(mut10)["degenerate"])
+
+    # МУТАЦИОННАЯ ЦЕЛЬ 11: синтаксически правильный URL всё ещё может быть
+    # зарезервированной заглушкой. Такой адрес не является внешним измерением.
+    mut_placeholder = dict(hist[212])
+    mut_placeholder["external_target"] = dict(hist[212]["external_target"])
+    mut_placeholder["external_target"]["source"] = "https://example.invalid/target"
+    check("мутант с URL-заглушкой ловится",
+          classify(mut_placeholder)["degenerate"])
+
+    # МУТАЦИОННАЯ ЦЕЛЬ 12: путь и отпечаток остаются честными, но наблюдаемое
+    # подменено числом, которого в корпусном файле нет. Один SHA-256 не
+    # подтверждает происхождение отдельного поля observed.
+    mut12 = dict(hist[212])
+    mut12["наблюдаемое_из_корпуса"] = "999999999"
+    check("мутант с подменённым наблюдаемым ловится",
+          classify(mut12)["degenerate"])
+
+    # МУТАЦИОННАЯ ЦЕЛЬ 5: содержимое меняется при неизменном пути. Временный
+    # корень корпуса оставляет путь валидным, но меняет его байты после
+    # фиксации отпечатка; сторож обязан отвергнуть такой дрейф.
+    with tempfile.TemporaryDirectory() as td:
+        temp_root = Path(td) / "corpus" / "trinity"
+        temp_file = temp_root / "docs" / "source.md"
+        temp_file.parent.mkdir(parents=True)
+        temp_file.write_text("наблюдаемое до мутации: 1.234\n",
+                             encoding="utf-8")
+        original_root = CORPUS_ROOT
+        try:
+            globals()["CORPUS_ROOT"] = temp_root.resolve()
+            digest_art = {
+                "наблюдаемое_из_корпуса": "1.234",
+                "источник_наблюдения": str(temp_file),
+                "отпечаток_источника": _sha256(temp_file),
+                "external_target": {
+                    "value": "1.2",
+                    "uncertainty": "0.1",
+                    "source": "https://physics.nist.gov/cgi-bin/cuu/Value?re",
+                },
+            }
+            before = classify(digest_art)
+            temp_file.write_text("подмена содержимого при том же пути\n",
+                                 encoding="utf-8")
+            after = classify(digest_art)
+        finally:
+            globals()["CORPUS_ROOT"] = original_root
+    check("мутация содержимого при неизменном пути ловится",
+          not before["degenerate"] and after["degenerate"] and
+          after.get("source_integrity") == "не подтверждён")
+
     # ОТРИЦАТЕЛЬНАЯ ПРОВЕРКА: отклонение в сигмах решения НЕ определяет —
     # иначе сторож ловил бы «согласие», а не вырожденность.
     ok_small = dict(hist[212])
@@ -127,7 +378,10 @@ def main(argv: list[str]) -> int:
         "degenerate": [r["file"] for r in degenerate],
         "rule": ("артефакт внешней сверки обязан содержать наблюдаемое из "
                  "корпуса и путь к файлу корпуса; иначе сверка проходит при "
-                 "любом значении корпусных формул"),
+                 "любом значении корпусных формул; отпечаток источника "
+                 "обязан совпадать с содержимым файла; внешняя цель обязана "
+                 "иметь конечное числовое значение, положительную "
+                 "неопределённость и URL"),
         "why_this_check_exists": ("тики 210 и 211 подали сверку внешнего "
                                   "источника с самим собой как содержательную "
                                   "цель: 0 и 0,0111 сигмы ни о чём не "

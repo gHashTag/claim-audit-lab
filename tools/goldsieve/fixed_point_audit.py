@@ -134,6 +134,43 @@ def run() -> tuple[list[dict], int]:
     _check(rows, "pre-filter: вызов без причины M отвергнут",
            rejected, "VariantChoiceError")
 
+    # Ревизия молчащей проверки: отрицательная фикстура внешней цели не
+    # должна проходить только потому, что отклонение в сигмах мало. Мутация
+    # удаляет наблюдаемое из корпуса; чувствительность измеряется как 1 -> 0.
+    external = load_unregistered(ROOT / "external_target_guard.py",
+                                 "goldsieve_fixed_point_external")
+    _check(rows, "сторож внешних целей загружен без регистрации",
+           "goldsieve_fixed_point_external" not in sys.modules,
+           "module_from_spec")
+    good_source = (
+        "/home/user/workspace/corpus/trinity/docs/research/"
+        "FORMULAS_SUMMARY.md"
+    )
+    good_target = {
+        "наблюдаемое_из_корпуса": 2.81794,
+        "источник_наблюдения": good_source,
+        "отпечаток_источника": external._sha256(Path(good_source)),
+        "external_target": {
+            "value": 2.81794,
+            "uncertainty": 0.001,
+            "source": "https://physics.nist.gov/cgi-bin/cuu/Value?re",
+        },
+        "отклонение_эталона_от_цели_в_сигмах": 0.0,
+    }
+    negative = dict(good_target)
+    negative.pop("наблюдаемое_из_корпуса")
+    good_class = external.classify(good_target)
+    negative_class = external.classify(negative)
+    _check(rows, "внешняя цель: отрицательная фикстура ловится",
+           not good_class["degenerate"] and negative_class["degenerate"],
+           "честная 0; отрицательная 1")
+    _check(rows, "внешняя цель: мутация наблюдаемого измеренно ловится",
+           good_class["degenerate"] is False and
+           negative_class["reasons"] and
+           negative_class["reasons"][0] ==
+               "нет корпусного наблюдаемого: сверяется внешний источник сам с собой",
+           "мутация поймана 1/1")
+
     result = {
         "title": "Аудит неподвижной точки проверок",
         "verdict": "PASS" if all(r["passed"] for r in rows) else "FAIL",
@@ -142,8 +179,16 @@ def run() -> tuple[list[dict], int]:
             "проверки, читающие дерево и машинные входы",
             "реальный loader через module_from_spec без регистрации",
         ],
-        "mutation_target": "исключение audit_log для файла с нарушением",
-        "sensitivity": "мутация поймана 1/1; отчётные вставки не изменили решения",
+        "mutation_target": (
+            "исключение audit_log для файла с нарушением; удаление "
+            "наблюдаемого и мутация содержимого источника при неизменном "
+            "пути внешней цели"
+        ),
+        "negative_fixture": "внешняя цель без наблюдаемого из corpus/trinity",
+        "sensitivity": (
+            "мутация поймана 2/2; отрицательная фикстура 1/1; "
+            "отчётные вставки не изменили решения"
+        ),
     }
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=1),
                    encoding="utf-8")

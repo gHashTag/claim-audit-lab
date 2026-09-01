@@ -677,7 +677,7 @@ claims:
   inputs_digest: 35938cf8a9418cbb
 - source: data/zeta/zeta_bin_analysis_update.md:124
   case: cases/zeta_std_gue_20260815.py
-  claim: Стандартное отклонение расстояний дзета равно 0,4009 против 0,4220 по GUE
+  claim: Стандартное отклонение расстояний дзета равно 0,4009 против Wigner–surmise approximation 0,4220
   verdict: ОПРОВЕРГНУТО
   inputs_digest: d32c98af192622e1
 - source: docs/docs/research/trinity-golden-chain-v2-48-interpolated-report.md:72-76
@@ -740,7 +740,7 @@ claims:
     развёртки, законы зазоров или версии рантайма.
 - source: data/zeta/zeta_gue_analysis_results.md:34
   case: cases/zeta_std_unfolding_passport_20260815.py
-  claim: Паспорт развёртки дзета воспроизводит std 0,42201569295012265 и объясняет 0,4009
+  claim: Паспорт развёртки дзета воспроизводит std Wigner–surmise approximation 0,42201569295012265 и объясняет 0,4009
   verdict: ПОДТВЕРЖДЕНО
   reason_subtype: recipe_reproduction
   fingerprint: 5d06d00437f88407
@@ -751,12 +751,12 @@ claims:
   scope_statement: >-
     В области охвата для класса воспроизводимых рецептов развёртки дзета на
     указанных версиях CPython (CPython 3.14.3 и CPython 3.14.4): два
-    независимых пути воспроизводят std Wigner—surmise
+    независимых пути воспроизводят std Wigner–surmise approximation
     0,42201569295012265; паспорт фиксирует 100 000 нулей, индексы 1..100 000,
     99 999 зазоров, формулу θ Римана—Зигеля, отсутствие исключения краёв и
     выборочную std с ddof=1. Точная θ-развёртка и развёртка ведущим членом
     воспроизводят корпусное 0,4009 из того же файла, а Fredholm-GUE даёт около
-    0,424258, поэтому 0,4220 относится к Wigner—surmise, а не к точному GUE.
+    0,424258, поэтому 0,4220 относится к Wigner–surmise approximation, а не к точному GUE.
     НЕ доказано обобщение на другие выборки нулей, нормировки, диапазоны высот
     или версии рантайма.
 - source: goldsieve/sieve.py:1440
@@ -1663,3 +1663,27 @@ claims:
     Независимый эталон использует Wigner–surmise approximation как контроль,
     не как точный GUE; отрицательные подставки 0,50 и 1,50 от предсказания
     отвергнуты сквозным ситом.
+- source: docs/docs/math-foundations/sacred-formulas.md:74
+  case: cases/hubble_planck_external_20260823.py
+  claim: Формула H₀ = 4·3³·π⁻³·φ²·e² согласуется с Planck
+  verdict: ПУСТО
+  reason_subtype: multiplicity_limited
+  fingerprint: 2397d7d601568448
+  target: hubble_planck_external_20260823
+  novelty_key: trinity:hubble:planck:formula:v1
+  priority: 2
+  measurement_source: "корпус Trinity: таблица космологических параметров; внешний Planck"
+  observable: корпусное значение H₀ = 67,40 км/с/Мпк
+  models: [формула (4, 3, −3, 2, 2), измерение Planck 67,4 ± 0,5 км/с/Мпк]
+  scope_status: not-evaluated
+  scope_statement: >-
+    В области охвата на CPython 3.14.3 число 67,40 прочитано из корпуса,
+    формула пересчитана из параметров (4, 3, −3, 2, 2), а внешняя цель
+    Planck задаёт 67,4 ± 0,5 км/с/Мпк (https://doi.org/10.1051/0004-6361/201833910).
+    Отклонение вычисляемой формулы от внешней цели равно −0,03771 сигмы.
+    С1–С5, С12, С15, С18–С20 прошли; С16 признало 32,9 ожидаемых случайных
+    попадания и С17 не обнаружило сжатия, поэтому вердикт сита — ПУСТО.
+    Не доказаны физический вывод формулы, независимость выбора параметров,
+    разрешение пространства поиска и перенос на другие оценки H₀, источники,
+    версии CPython и ОС.
+  novelty_class: новый корпусный внешний риск Hubble

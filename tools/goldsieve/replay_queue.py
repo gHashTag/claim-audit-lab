@@ -146,24 +146,36 @@ def audit() -> int:
     повтор больше не произойдёт. Код возврата 1 при любой такой записи.
     """
     items = _load()["items"]
+    # Форматная мутация (тик 236): удаление id не должно превращаться в
+    # необъяснимый KeyError или молчаливое принятие битой записи. Такой объект
+    # обязан быть явно отмечен как несогласованность очереди.
+    malformed = [it for it in items
+                 if not isinstance(it, dict)
+                 or not isinstance(it.get("id"), str)
+                 or not it.get("id")]
     lost = [it for it in items
-            if it.get("state") == "failed" and it.get("reason") == "device_offline"]
+            if isinstance(it, dict)
+            and it.get("state") == "failed"
+            and it.get("reason") == "device_offline"]
     # Второй вид несогласованности (тик 97): дубль по одному id. Дедупликация
     # enqueue смотрела только на queued/claimed, поэтому задача, побывавшая в
     # failed, получала ВТОРУЮ запись с тем же id. После возврата в очередь их
     # стало две, и claim брал бы одну и ту же работу дважды.
     seen: dict[str, int] = {}
     for it in items:
-        seen[it["id"]] = seen.get(it["id"], 0) + 1
+        if isinstance(it, dict) and isinstance(it.get("id"), str) and it["id"]:
+            seen[it["id"]] = seen.get(it["id"], 0) + 1
     dups = sorted(k for k, v in seen.items() if v > 1)
     print(f"задач в очереди: {len(items)}, тихо потерянных: {len(lost)}, "
-          f"дублей по id: {len(dups)}")
+          f"дублей по id: {len(dups)}, битых записей: {len(malformed)}")
     for it in lost:
         print(f"  ПОТЕРЯНА {it['id']} {it['platform']}: reason=device_offline "
               f"в состоянии failed — повтор невозможен")
     for k in dups:
         print(f"  ДУБЛЬ {k}: записей {seen[k]} — claim взял бы работу дважды")
-    if lost or dups:
+    for it in malformed:
+        print(f"  БИТАЯ ЗАПИСЬ: отсутствует непустой строковый id: {it!r}")
+    if lost or dups or malformed:
         print("ОЧЕРЕДЬ НЕСОГЛАСОВАНА: deferred вместо fail, dedup при enqueue")
         return 1
     print("очередь согласована: временные причины живы, дублей нет")
@@ -267,6 +279,16 @@ def selftest() -> int:
             data["items"].append(dict(data["items"][0]))
             _save(data)
             check("аудит ЛОВИТ дубль по id", audit() == 1)
+            data = _load()
+            data["items"] = data["items"][:-1]
+            _save(data)
+            # Чувствительность к мутации формата: удаление id не должно
+            # приводить к KeyError или молчаливому PASS.
+            data = _load()
+            data["items"].append({"platform": "macos", "state": "queued",
+                                  "reason": "device_offline"})
+            _save(data)
+            check("аудит ЛОВИТ запись без id", audit() == 1)
             data = _load()
             data["items"] = data["items"][:-1]
             _save(data)
