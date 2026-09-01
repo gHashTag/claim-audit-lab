@@ -1,0 +1,41 @@
+{
+  "run": 33491630847,
+  "jobs": [
+    {
+      "id": 99804228269,
+      "name": "ubuntu-latest / py3.13",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 99804228455,
+      "name": "macos-latest / py3.13",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 99804228524,
+      "name": "ubuntu-latest / py3.12",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 99804228592,
+      "name": "windows-latest / py3.12",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 99804228608,
+      "name": "windows-latest / py3.13",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 99804228614,
+      "name": "macos-latest / py3.12",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ]
+}

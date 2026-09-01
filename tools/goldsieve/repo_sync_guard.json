@@ -1,8 +1,8 @@
 {
  "ветвь": "tools/goldsieve-v3-2026-08-13",
- "коммит_ветви": "f80aa1b",
+ "коммит_ветви": "e074f33",
  "файлов_в_песочнице": 43,
- "файлов_в_ветви": 178,
+ "файлов_в_ветви": 180,
  "почему_проверка_существует": "тики 216-260 девять суток отчитывались об исправлениях, не отправив ни одного коммита; os_matrix_audit.py не существовал в репозитории вовсе",
  "отсутствует_в_ветви": [],
  "нет_в_песочнице": [
@@ -67,6 +67,7 @@
   "gue_exact_gap.py",
   "gue_montecarlo.py",
   "hslm_convergence_fraction_20260815.py",
+  "hubble_planck_external_20260823.py",
   "identity.py",
   "identity_corpus.py",
   "identity_cross_helper.py",
@@ -88,6 +89,7 @@
   "meff.py",
   "modgraph.py",
   "neutrino_mixing_external_20260814.py",
+  "neutrino_theta13_external_20260901.py",
   "neutron_lifetime_formula.py",
   "os-matrix.yaml",
   "particle_physics_example_mean_error_20260815.py",

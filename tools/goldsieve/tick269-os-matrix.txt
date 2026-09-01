@@ -1,0 +1,13 @@
+запуск: 33514243582
+ветвь: tools/goldsieve-v3-2026-08-13
+SHA: e074f3382ff446eff158c61a896dd5baf6fd6a54
+статус запуска: queued
+итог: не выдано
+заданий: 6; завершено: 5; успешно: 5
+macos-latest / py3.13: queued / не выдано
+windows-latest / py3.13: completed / success
+ubuntu-latest / py3.13: completed / success
+windows-latest / py3.12: completed / success
+ubuntu-latest / py3.12: completed / success
+macos-latest / py3.12: completed / success
+URL: https://github.com/gHashTag/claim-audit-lab/actions/runs/33514243582

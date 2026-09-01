@@ -1,0 +1,9 @@
+цель: T_c = 7·π·φ²·e против внешнего HotQCD
+наблюдаемое из корпуса: 156.5 МэВ
+внешнее измерение: 156.5 ± 1.5 МэВ
+URL: https://arxiv.org/abs/1812.08235
+отклонение формулы: 0 сигма; отклонение корпуса: 0 сигма
+сито: ПУСТО, подтип multiplicity_limited; ожидаемых случайных попаданий 133.6
+источник наблюдения: /home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md
+SHA-256 источника: e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798
+строка наблюдения: | QCD phase $T_c$ | $7 \cdot 3^{0} \cdot \pi^{1} \cdot \varphi^{2} \cdot e^{1}$ | 156.5 | MeV | Measured 156.5 ± 1.5 MeV (HotQCD 2019, Phys. Lett. B 795, 15) → +0.0008σ, but **126 hits expected by chance** at this precision — see audit note |

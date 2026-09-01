@@ -1,0 +1,55 @@
+{
+ "run": 33514243582,
+ "ветвь": "tools/goldsieve-v3-2026-08-13",
+ "sha": "e074f3382ff446eff158c61a896dd5baf6fd6a54",
+ "статус": "queued",
+ "итог": "не выдано",
+ "заданий_всего": 6,
+ "успешно": 5,
+ "завершено": 5,
+ "задания": [
+  {
+   "имя": "macos-latest / py3.13",
+   "статус": "queued",
+   "итог": "не выдано",
+   "id": 99877168647,
+   "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33514243582/job/99877168647"
+  },
+  {
+   "имя": "windows-latest / py3.13",
+   "статус": "completed",
+   "итог": "success",
+   "id": 99877168760,
+   "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33514243582/job/99877168760"
+  },
+  {
+   "имя": "ubuntu-latest / py3.13",
+   "статус": "completed",
+   "итог": "success",
+   "id": 99877168802,
+   "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33514243582/job/99877168802"
+  },
+  {
+   "имя": "windows-latest / py3.12",
+   "статус": "completed",
+   "итог": "success",
+   "id": 99877168822,
+   "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33514243582/job/99877168822"
+  },
+  {
+   "имя": "ubuntu-latest / py3.12",
+   "статус": "completed",
+   "итог": "success",
+   "id": 99877168844,
+   "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33514243582/job/99877168844"
+  },
+  {
+   "имя": "macos-latest / py3.12",
+   "статус": "completed",
+   "итог": "success",
+   "id": 99877168889,
+   "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33514243582/job/99877168889"
+  }
+ ],
+ "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33514243582"
+}

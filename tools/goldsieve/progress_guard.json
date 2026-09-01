@@ -1,29 +1,53 @@
 {
- "суть": {
-  "гейт": [
-   69,
-   2,
-   0
+ "докладов": 32,
+ "разобрано": 28,
+ "не_разобрано": [
+  "tick135-report.md",
+  "tick201-report.md",
+  "tick218-report.md",
+  "tick261-report.md"
+ ],
+ "различных_сутей": 8,
+ "групп_повторов": 6,
+ "повторяющихся_докладов": 26,
+ "повторы": {
+  "caa39828448513f9": [
+   "tick197-report.md",
+   "tick198-report.md",
+   "tick200-report.md"
   ],
-  "регресс": [
-   150,
-   0,
-   3
+  "273f2d19eb6322dc": [
+   "tick209-report.md",
+   "tick212-report.md"
   ],
-  "ос_матрица": [
-   0,
-   6
+  "103ac420e61f6596": [
+   "tick210-report.md",
+   "tick211-report.md"
   ],
-  "bblm": [
-   4,
-   true
+  "27ff5bc869dfc580": [
+   "tick215-report.md",
+   "tick220-report.md",
+   "tick221-report.md",
+   "tick229-report.md",
+   "tick230-report.md"
   ],
-  "изменённые_файлы": []
- },
- "подпись": "7ffd7a985ae00bb6",
- "повторов_в_окне": 0,
- "единственный_файл": null,
- "длина_серии": 0,
- "причины": [],
- "итог": "СОДЕРЖАТЕЛЬНЫЙ"
+  "87ab34fa60fe46ea": [
+   "tick216-report.md",
+   "tick217-report.md",
+   "tick222-report.md",
+   "tick223-report.md",
+   "tick224-report.md",
+   "tick232-report.md",
+   "tick234-report.md",
+   "tick236-report.md",
+   "tick242-report.md"
+  ],
+  "cfc01c98c01761d8": [
+   "tick235-report.md",
+   "tick249-report.md",
+   "tick250-report.md",
+   "tick254-report.md",
+   "tick259-report.md"
+  ]
+ }
 }

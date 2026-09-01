@@ -1,0 +1,19 @@
+{
+ "цель": "T_c: формула 7·π·φ²·e против внешнего значения HotQCD",
+ "наблюдаемое_из_корпуса": 156.5,
+ "строка_наблюдения": "| QCD phase $T_c$ | $7 \\cdot 3^{0} \\cdot \\pi^{1} \\cdot \\varphi^{2} \\cdot e^{1}$ | 156.5 | MeV | Measured 156.5 ± 1.5 MeV (HotQCD 2019, Phys. Lett. B 795, 15) → +0.0008σ, but **126 hits expected by chance** at this precision — see audit note |",
+ "источник_наблюдения": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+ "отпечаток_источника": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
+ "reference": 156.5,
+ "external_target": {
+  "value": 156.5,
+  "uncertainty": 1.5,
+  "source": "https://arxiv.org/abs/1812.08235",
+  "название": "псевдокритическая температура при μB=0"
+ },
+ "отклонение_формулы_сигма": 0.0,
+ "отклонение_наблюдаемого_сигма": 0.0,
+ "ожидаемых_случайных_попаданий": 133.6,
+ "статус": "ПУСТО: С16 multiplicity_limited; это не находка",
+ "сито": "cases/qcd_phase_tc_external_20260901.py"
+}

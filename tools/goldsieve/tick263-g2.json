@@ -1,0 +1,241 @@
+{
+ "claim": "Формула Δaμ = (π−3)×10⁻⁹ согласуется с измерением FNAL E989",
+ "source": "docs/docs/math-foundations/formulas.md:305-319",
+ "verdict": "ПУСТО",
+ "notes": "Внешняя цель отделена от числа корпуса; число из строки корпуса используется только как observed. Порог С15 выводится по Шидаку из search_size=123201. Сигмы, множественность, MDL, С20 и С21 остаются раздельными координатами. Внешняя цель: (251 ± 59)×10⁻¹¹, разность измерения и теории в публикации Fermilab.",
+ "provenance": {
+  "python": "3.14.3",
+  "numpy": "2.5.2",
+  "scipy": "1.18.0",
+  "inputs": {
+   "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/formulas.md": "ec394b57d317ae59",
+   "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/formulas.md @commit": "04430c0"
+  },
+  "отпечаток рецепта": "6761c42a48d39cd6",
+  "alpha": 0.05,
+  "tolerance": 1e-06,
+  "предпосылка независимости": "not-declared",
+  "статус предпосылки": "independence-undeclared"
+ },
+ "results": [
+  {
+   "sieve": "С1 регенерируемость",
+   "status": "PASS",
+   "detail": "эталон пересчитан",
+   "numbers": {
+    "value": 1.4159265358979311e-10
+   },
+   "seconds": 4.76837158203125e-06,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С2 заявленное=эталон",
+   "status": "PASS",
+   "detail": "value +0.00%",
+   "numbers": {
+    "value": 0.0
+   },
+   "seconds": 1.71661376953125e-05,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С3 данные=эталон",
+   "status": "FAIL",
+   "detail": "value +1672.69%",
+   "numbers": {
+    "value": 16.726908397886938
+   },
+   "seconds": 0.020153522491455078,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С4 подставка ловится",
+   "status": "PASS",
+   "detail": "подставка 1 отклонена: value +50.00%; подставка 2 отклонена: value -50.00%; подставка 3 отклонена: value +1.00%",
+   "numbers": {},
+   "seconds": 1.7404556274414062e-05,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С5 контроль",
+   "status": "PASS",
+   "detail": "позитивный контроль даёт эталон: value +0.00%",
+   "numbers": {},
+   "seconds": 9.059906005859375e-06,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С6 сходимость",
+   "status": "SKIP",
+   "detail": "",
+   "numbers": {},
+   "seconds": 1.1920928955078125e-06,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С7 выбор оценки",
+   "status": "SKIP",
+   "detail": "",
+   "numbers": {},
+   "seconds": 9.5367431640625e-07,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С8 бюджет точности",
+   "status": "SKIP",
+   "detail": "",
+   "numbers": {},
+   "seconds": 7.152557373046875e-07,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С9 конечный размер",
+   "status": "SKIP",
+   "detail": "",
+   "numbers": {},
+   "seconds": 7.152557373046875e-07,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С10 неопределённость",
+   "status": "SKIP",
+   "detail": "значимость не проверяема: выборка детерминированная, полуширина интервала равна нулю (value +1672.69% (полуширина 0.00%, z +inf))",
+   "numbers": {
+    "value": Infinity
+   },
+   "seconds": 0.13807249069213867,
+   "reason_code": "significance_untestable",
+   "auto_skip": true
+  },
+  {
+   "sieve": "С11 слишком хорошо",
+   "status": "SKIP",
+   "detail": "меньше трёх статистик с определённым разбросом",
+   "numbers": {},
+   "seconds": 0.0024209022521972656,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С12 независимый метод",
+   "status": "PASS",
+   "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+   "numbers": {
+    "value": 2.1907402809614835e-15
+   },
+   "seconds": 0.027744293212890625,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С15 внешняя цель",
+   "status": "PASS",
+   "detail": "внешнее 2.51e-09 +- 5.9e-10; сигм_формула -4.014; сигм_цель 0 | порог 5.06 сигма ВЫВЕДЕН: перебор 123201, alpha=0.05, локальный alpha=4.16e-07 по Шидаку",
+   "numbers": {
+    "формула": 1.4159265358979311e-10,
+    "сигм_формула": -4.014249739678316,
+    "цель_в_корпусе": 2.51e-09,
+    "сигм_цель": 0.0,
+    "внешнее": 2.51e-09,
+    "погрешность": 5.9e-10,
+    "порог_сигм": 5.0613316768538885
+   },
+   "seconds": 1.1231021881103516,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С16 подгонка под ответ",
+   "status": "VOID",
+   "detail": "ожидаемых случайных попаданий 3.18e+03; p_глоб 1; случайная цель накрывается в 100.0% случаев | попадание ожидается случайно",
+   "numbers": {
+    "ожидаемых_попаданий": 3179.424,
+    "p_глоб": 1.0,
+    "доля_случайных_целей_с_попаданием": 1.0
+   },
+   "seconds": 0.09625864028930664,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С17 описание короче данных",
+   "status": "FAIL",
+   "detail": "описание 16.91 бит против совпадения 1.09 бит (выигрыш -15.82) | сжатия нет",
+   "numbers": {
+    "бит_описания": 16.91065444060912,
+    "бит_совпадения": 1.0889005045889304,
+    "выигрыш": -15.82175393602019
+   },
+   "seconds": 1.811981201171875e-05,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С18 объявленная область",
+   "status": "PASS",
+   "detail": "все параметры внутри объявленных границ",
+   "numbers": {},
+   "seconds": 6.9141387939453125e-06,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С19 достаточность арифметики",
+   "status": "PASS",
+   "detail": "ошибка арифметики 0.00e+00; предел 2.35e-03 (сотая доля погрешности сравнения 2.35e-01)",
+   "numbers": {
+    "ошибка_арифметики": 0.0,
+    "предел": 0.0023505976095617533,
+    "погрешность": 0.23505976095617534
+   },
+   "seconds": 0.040483713150024414,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С20 эффективное число попыток",
+   "status": "OPEN",
+   "detail": "эффективное число попыток не оценивается: пустое семейство",
+   "numbers": {},
+   "seconds": 0.18588995933532715,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С21 алгебраическая объяснимость",
+   "status": "OPEN",
+   "detail": "линейная форма содержит log pi; оценок бейкеровского типа для неё не доказано",
+   "numbers": {},
+   "seconds": 0.005682706832885742,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С13 объявленные пропуски",
+   "status": "PASS",
+   "detail": "все 5 пропуска объявлены",
+   "numbers": {},
+   "seconds": 0.0,
+   "reason_code": "",
+   "auto_skip": false
+  },
+  {
+   "sieve": "С14 сквозная подставка",
+   "status": "PASS",
+   "detail": "подставка 1: ПУСТО; подставка 2: ПУСТО; подставка 3: ПУСТО",
+   "numbers": {},
+   "seconds": 1.0903360843658447,
+   "reason_code": "",
+   "auto_skip": false
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "цель": "g−2: формула Δaμ = (π−3)×10⁻⁹ против измерения FNAL E989",
+ "наблюдаемое_из_корпуса": 2.51e-09,
+ "строка_наблюдения": "**Δa<sub>μ</sub> = 251 × 10⁻¹¹**",
+ "источник_наблюдения": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/formulas.md",
+ "отпечаток_источника": "ec394b57d317ae59265c8d6f3de44056dc4ebc157fe4b7e5aff142890eca25fe",
+ "reference": 1.4159265358979311e-10,
+ "external_target": {
+  "value": 2.51e-09,
+  "uncertainty": 5.9e-10,
+  "source": "https://arxiv.org/abs/2311.12730",
+  "название": "Fermilab Muon g−2, arXiv:2311.12730"
+ },
+ "отклонение_формулы_сигма": -4.014249739678316,
+ "отклонение_наблюдаемого_сигма": 0.0,
+ "статус": "ПУСТО: С3 и С17 провалены, С16 multiplicity_limited; это не находка",
+ "сито": "cases/formulas_precision_external_20260814.py"
+}
