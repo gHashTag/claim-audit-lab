@@ -55,9 +55,13 @@ def sha(data: bytes) -> str:
 
 def local_files(root: Path) -> dict[str, bytes]:
     out: dict[str, bytes] = {}
-    for p in sorted(root.iterdir()):
-        if p.is_file() and p.suffix in SUFFIXES and p.name not in EXCLUDE:
-            out[p.name] = p.read_bytes()
+    for p in sorted(root.rglob("*")):
+        if not p.is_file() or p.suffix not in SUFFIXES:
+            continue
+        rel = p.relative_to(root).as_posix()
+        if p.name in EXCLUDE:
+            continue
+        out[rel] = p.read_bytes()
     return out
 
 
@@ -71,8 +75,9 @@ def branch_files(clone: Path, branch: str, subdir: str) -> dict[str, bytes]:
         raise RuntimeError("git ls-tree: " + res.stderr.strip())
     out: dict[str, bytes] = {}
     for line in res.stdout.splitlines():
-        name = line.rsplit("/", 1)[-1]
-        if not name or Path(name).suffix not in SUFFIXES or name in EXCLUDE:
+        prefix = subdir.rstrip("/") + "/"
+        name = line[len(prefix):] if line.startswith(prefix) else line
+        if not name or Path(name).suffix not in SUFFIXES or Path(name).name in EXCLUDE:
             continue
         blob = subprocess.run(
             ["git", "-C", str(clone), "cat-file", "blob", branch + ":" + line],

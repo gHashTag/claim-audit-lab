@@ -1757,3 +1757,29 @@ claims:
   notes: >-
     Наблюдаемое 13,7877 прочитано из указанной строки корпуса; внешняя цель
     13,787 ± 0,020 Гир имеет URL https://arxiv.org/html/1807.06205v2.
+- source: docs/docs/math-foundations/sacred-formulas.md:131
+  case: cases/planck_time_external_20260903.py
+  claim: Формула времени Планка против внешней оценки CODATA 2022
+  verdict: ВОПРОС
+  reason_subtype: no_compression
+  novelty_key: fundamental:planck_time:external:v1
+  priority: 2
+  measurement_source: CODATA 2022/NIST
+  observable: корпусное значение времени Планка 5,3912 в единицах 10^-44 секунды
+  models: [формула Trinity (3, 4, −2, 1, −2), оценка CODATA 5,391247 ± 0,000060]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    В области охвата на указанных версиях CPython строка корпуса прочитана
+    отдельно от вычисляемой формулы, а внешняя оценка CODATA 2022/NIST
+    содержит значение 5,391247 ± 0,000060 в единицах 10^-44 секунды.
+    Формула даёт 5,391445316241101, что отличается от внешней цели примерно
+    на +3,305 сигмы; С16 и С17 не подтверждают сжатие данных, поэтому итог
+    каскада сит — ВОПРОС с подтипом no_compression. Это относится к данной
+    формуле и не доказывает физическую интерпретацию эмпирического совпадения.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 5,3912 прочитано из указанной строки корпуса; внешняя цель
+    CODATA 2022/NIST 5,391247 ± 0,000060 имеет URL
+    https://physics.nist.gov/cgi-bin/cuu/Value?plkt.
