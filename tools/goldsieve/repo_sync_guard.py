@@ -65,7 +65,8 @@ def branch_files(clone: Path, branch: str, subdir: str) -> dict[str, bytes]:
     """Содержимое файлов инструмента в HEAD ветви, читается из объектов git."""
     cmd = ["git", "-C", str(clone), "ls-tree", "-r", "--name-only", branch,
            "--", subdir + "/"]
-    res = subprocess.run(cmd, capture_output=True, text=True)
+    res = subprocess.run(cmd, capture_output=True, text=True,
+                         encoding="utf-8")
     if res.returncode != 0:
         raise RuntimeError("git ls-tree: " + res.stderr.strip())
     out: dict[str, bytes] = {}
@@ -192,7 +193,8 @@ def main(argv: list[str]) -> int:
     res = compare(local, remote)
     head = subprocess.run(
         ["git", "-C", str(CLONE), "rev-parse", "--short", BRANCH],
-        capture_output=True, text=True).stdout.strip()
+        capture_output=True, text=True,
+                         encoding="utf-8").stdout.strip()
     report = {
         "ветвь": BRANCH,
         "коммит_ветви": head,
