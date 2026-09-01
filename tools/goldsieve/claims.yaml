@@ -1783,3 +1783,28 @@ claims:
     Наблюдаемое 5,3912 прочитано из указанной строки корпуса; внешняя цель
     CODATA 2022/NIST 5,391247 ± 0,000060 имеет URL
     https://physics.nist.gov/cgi-bin/cuu/Value?plkt.
+- source: docs/docs/math-foundations/sacred-formulas.md:142
+  case: cases/kaon_mass_external_20260902.py
+  claim: Формула массы заряженного каона против внешней оценки PDG 2024
+  verdict: ВОПРОС
+  reason_subtype: no_compression
+  novelty_key: hadron:charged_kaon_mass:external:v1
+  priority: 2
+  measurement_source: PDG 2024, обзор массы заряженного каона
+  observable: корпусное значение массы заряженного каона 493,68 МэВ
+  models: [формула Trinity (8, 2, 0, 4, 0), оценка PDG 493,677 ± 0,013 МэВ]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    В области охвата на указанных версиях CPython строка корпуса прочитана
+    отдельно от вычисляемой формулы, а внешняя оценка PDG 2024 содержит
+    значение 493,677 ± 0,013 МэВ. Формула даёт 493,49534156997737 МэВ,
+    что отличается от внешней цели на −13,9737 сигмы. Каскад сит дал
+    ВОПРОС с подтипом no_compression: описание формулы не сжимает данные
+    после учёта объявленного пространства поиска. Это не подтверждённый
+    физический результат.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 493,68 прочитано из указанной строки корпуса; внешний URL:
+    https://pdg.lbl.gov/2024/reviews/rpp2024-rev-charged-kaon-mass.pdf.
