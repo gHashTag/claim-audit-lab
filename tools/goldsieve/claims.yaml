@@ -1689,7 +1689,7 @@ claims:
   novelty_class: новый корпусный внешний риск Hubble
 - source: docs/docs/math-foundations/sacred-formulas.md:206
   case: cases/neutron_proton_splitting_external_20260901.py
-  claim: Формула разности масс нейтрона и протона против внешнего значения NIST
+  claim: Формула разности масс нейтрона и протона согласуется с внешним значением NIST
   verdict: ОПРОВЕРГНУТО
   reason_subtype: external_mismatch
   novelty_key: neutron:proton_mass_splitting:external:v1
@@ -1711,3 +1711,26 @@ claims:
     Наблюдаемое 1,2934 прочитано из указанной строки корпуса; внешняя цель
     1,29333251 ± 0,00000038 МэВ имеет URL
     https://physics.nist.gov/cgi-bin/cuu/Value?mnmmpc2mev.
+- source: docs/docs/math-foundations/sacred-formulas.md:202
+  case: cases/dirac_cp_external_20260902.py
+  claim: Формула фазы Дирака CP против внешней оценки PDG
+  verdict: ПУСТО
+  reason_subtype: multiplicity_limited
+  novelty_key: neutrino:dirac_cp_phase:external:v1
+  priority: 2
+  measurement_source: PDG 2024, обзор нейтринного смешивания
+  observable: корпусное значение фазы Дирака CP 222,0 градуса
+  models: [формула Trinity (7, −2, 4, −4, 3), оценка PDG 197 ±33,5 градуса]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    Корпусная строка 222,0 прочитана отдельно от вычисляемой формулы.
+    Внешняя оценка PDG сообщает 197 градусов с асимметричной погрешностью
+    +42/−25 градусов; для скалярного интерфейса сита она симметризована до
+    197 ±33,5 градусов. На указанных версиях CPython каскад дал ПУСТО /
+    multiplicity_limited; это не подтверждённый результат.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 222,0 прочитано из указанной строки корпуса; URL внешней
+    цели: https://pdg.lbl.gov/2024/reviews/rpp2024-rev-neutrino-mixing.pdf.

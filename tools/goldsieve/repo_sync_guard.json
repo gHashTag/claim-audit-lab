@@ -1,8 +1,8 @@
 {
  "ветвь": "tools/goldsieve-v3-2026-08-13",
- "коммит_ветви": "5da0bfa",
+ "коммит_ветви": "052935f",
  "файлов_в_песочнице": 43,
- "файлов_в_ветви": 181,
+ "файлов_в_ветви": 183,
  "почему_проверка_существует": "тики 216-260 девять суток отчитывались об исправлениях, не отправив ни одного коммита; os_matrix_audit.py не существовал в репозитории вовсе",
  "отсутствует_в_ветви": [],
  "нет_в_песочнице": [
@@ -90,7 +90,9 @@
   "modgraph.py",
   "neutrino_mixing_external_20260814.py",
   "neutrino_theta13_external_20260901.py",
+  "neutrino_theta23_external_20260901.py",
   "neutron_lifetime_formula.py",
+  "neutron_proton_splitting_external_20260901.py",
   "os-matrix.yaml",
   "particle_physics_example_mean_error_20260815.py",
   "pellis_external_targets_20260814.py",
@@ -145,6 +147,8 @@
   "zeta_std_unfolding_passport_20260815.py",
   "zeta_unfolding_std_recipe_20260815.py"
  ],
- "различается": [],
- "расхождений": 0
+ "различается": [
+  "claims.yaml"
+ ],
+ "расхождений": 1
 }

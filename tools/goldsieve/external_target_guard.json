@@ -1,5 +1,5 @@
 {
- "checked": 7,
+ "checked": 8,
  "degenerate_count": 2,
  "degenerate": [
   "tick210_external_measurement.json",
@@ -105,6 +105,20 @@
   {
    "file": "tick269_external_measurement.json",
    "target": "T_c: формула 7·π·φ²·e против внешнего значения HotQCD",
+   "class": "измерение_о_корпусе",
+   "degenerate": false,
+   "observed_key": "наблюдаемое_из_корпуса",
+   "source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+   "resolved_source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+   "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
+   "source_digest_key": "отпечаток_источника",
+   "observed_in_source": "подтверждено",
+   "source_integrity": "подтверждён",
+   "external_target_contract": "подтверждён"
+  },
+  {
+   "file": "tick273_external_measurement.json",
+   "target": null,
    "class": "измерение_о_корпусе",
    "degenerate": false,
    "observed_key": "наблюдаемое_из_корпуса",

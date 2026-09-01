@@ -37,6 +37,7 @@ cases/delta001_gamma_entropy_comparison_20260818.py,"Расхождение γ =
 cases/delta001_strong_coincidences_20260815.py,Сводка DELTA-001 содержит 2 сильных φ-совпадения с ошибкой менее 1 %,ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:22-29,5e321473565ec35f
 cases/delta001_variance_claims_20260814.py,"γ = 0,200 даёт минимальную дисперсию спектральных промежутков",ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:63-68,5e321473565ec35f
 cases/delta001_variance_claims_20260814.py,γ = φ⁻³ занимает 5-е место из 13 по спектральной дисперсии,ПОДТВЕРЖДЕНО,docs/docs/research/delta-001/phase4-consistency.md:72-86,c69d48f08d2b0d79
+cases/dirac_cp_external_20260902.py,Формула фазы Дирака CP против внешней оценки PDG,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:202,e969471db87977c8
 cases/dirac_cp_phase_formula.py,"Формула фазы Дирака CP даёт 222,0°",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:202,3febbc70e0847989
 cases/established_constants_fit_count.py,раздел Established Constants содержит 75 совпадений,ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:30,3febbc70e0847989
 cases/formulas_deploy_external_20260814.py,Формула m(μ)/m(e) = 3(3π−1)²/π согласуется с отношением масс мюона и электрона,ОПРОВЕРГНУТО,deploy/trinity-nexus/docs/research/formulas.md:88-98,cf217f636057ecbe
@@ -90,6 +91,7 @@ cases/neutrino_mixing_external_20260814.py,Формула sin θ_C = φ⁻³ с�
 cases/neutrino_mixing_external_20260814.py,Формула sin θ₂₃ = 4·3⁻²·π⁻² согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:71-77,b15f3d88e57a4dae
 cases/neutrino_mixing_external_20260814.py,Формула δ = π/φ² согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:87-93,b15f3d88e57a4dae
 cases/neutron_lifetime_formula.py,"Формула времени жизни нейтрона даёт 879,4 с",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:194,3febbc70e0847989
+cases/neutron_proton_splitting_external_20260901.py,Формула разности масс нейтрона и протона согласуется с внешним значением NIST,ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:206,e969471db87977c8
 cases/particle_physics_example_mean_error_20260815.py,"Средняя ошибка пяти явно приведённых отношений Particle Physics равна 0,012 %",ОПРОВЕРГНУТО,docs/papers/README_FOR_SCIENTISTS.md:31-43,dec6ecc47e066f9a
 cases/pellis_external_targets_20260814.py,Формула r_e = 54φ/π³ согласуется с CODATA,ОПРОВЕРГНУТО,docs/research/PELLIS_TRINITY_COMPARISON.md:138,ca3de79351385e3a
 cases/pellis_external_targets_20260814.py,Формула sin²θ_W = 2π³e/729 согласуется с PDG,ПУСТО,docs/research/PELLIS_TRINITY_COMPARISON.md:128,ca3de79351385e3a

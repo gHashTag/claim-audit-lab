@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Внешний аудит формулы разности масс нейтрона и протона.
+"""Внешняя сверка формулы фазы Дирака CP с обзором PDG 2024.
 
-Наблюдаемое значение читается из строки корпуса, а внешний эталон NIST
-хранится отдельно. Никакой новый простой вердикт или подтверждение не
-выпускается: итог отдаётся каскаду золотого сита.
+Наблюдаемое извлекается из строки корпуса, эталон вычисляется независимо,
+а внешняя оценка хранится с симметризованной неопределённостью. Итог
+определяет каскад золотого сита; ноль сигм не считается подтверждением.
 """
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ from goldsieve.sieve import Claim
 
 
 SOURCE = os.environ.get(
-    "TRINITY_NEUTRON_PROTON_SOURCE",
+    "TRINITY_DIRAC_CP_SOURCE",
     "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/"
     "sacred-formulas.md",
 )
@@ -31,41 +31,41 @@ PHI = (1.0 + math.sqrt(5.0)) / 2.0
 
 
 def _observed() -> float:
+    marker = "| **Dirac CP phase** |"
     with open(SOURCE, encoding="utf-8") as handle:
         for line in handle:
-            if "| $\\Delta m(n{-}p)$ (MeV) |" in line and "| 1.2934 |" in line:
-                return 1.2934
-    raise AssertionError("строка корпуса разности масс нейтрона и протона не найдена")
+            if marker in line and "| 222.0 |" in line:
+                return 222.0
+    raise AssertionError("строка корпуса для фазы Дирака CP не найдена")
 
 
 def _reference() -> float:
-    return 4.0 * 3.0**2 * math.pi**-2 * PHI**2 * math.e**-2
+    return 7.0 * 3.0**-2 * math.pi**4 * PHI**-4 * math.e**3
 
 
 def _reference_alt() -> float:
     return math.exp(
-        math.log(4.0) + 2.0 * math.log(3.0) - 2.0 * math.log(math.pi)
-        + 2.0 * math.log(PHI) - 2.0
+        math.log(7.0) - 2.0 * math.log(3.0) + 4.0 * math.log(math.pi)
+        - 4.0 * math.log(PHI) + 3.0
     )
 
 
 def _external_target() -> dict:
     return {
-        "value": 1.29333251,
-        "uncertainty": 0.00000038,
-        "source": (
-            "NIST/CODATA, neutron-proton mass difference energy equivalent, "
-            "https://physics.nist.gov/cgi-bin/cuu/Value?mnmmpc2mev"
-        ),
-        "название": "энергетический эквивалент разности масс нейтрона и протона",
+        "value": 197.0,
+        # PDG reports +42/-25 degrees; the scalar interface uses their
+        # arithmetic mean as a conservative symmetric uncertainty.
+        "uncertainty": 33.5,
+        "source": "https://pdg.lbl.gov/2024/reviews/rpp2024-rev-neutrino-mixing.pdf",
+        "название": "фаза Дирака CP, наилучшая оценка при нормальном порядке",
     }
 
 
 def _wrong():
     return [
-        lambda: _reference() + 0.1,
-        lambda: _reference() - 0.1,
-        lambda: _reference() * 1.01,
+        lambda: _reference() + 5.0,
+        lambda: _reference() - 5.0,
+        lambda: _reference() * 1.1,
     ]
 
 
@@ -82,17 +82,15 @@ def _mean(values):
 
 
 def _alt_tolerance():
-    return max(
-        abs(_reference() - _reference_alt()) / abs(_reference()),
-        2.0 * math.ulp(_reference()) / abs(_reference()),
-    )
+    a, b = _reference(), _reference_alt()
+    return max(abs(a - b) / abs(a), 2.0 * math.ulp(a) / abs(a))
 
 
 def _multiplicity():
     target = _external_target()
     eps = target["uncertainty"] / abs(target["value"])
     fraction, expected = family.empirical_multiplicity(
-        (-2, 1), eps, ranges=RANGES, trials=1000, seed=20260901
+        (-2, 1), eps, ranges=RANGES, trials=1000, seed=20260902
     )
     return {
         "expected_hits": expected,
@@ -135,7 +133,7 @@ def _domain():
 def _arithmetic():
     target = _external_target()
     return {
-        "params": (4, 2, -2, 2, -2),
+        "params": (7, -2, 4, -4, 3),
         "rel_uncertainty": target["uncertainty"] / target["value"],
     }
 
@@ -144,7 +142,7 @@ def _algebraic():
     target = _external_target()
     return {
         "target": target["value"],
-        "coeffs": (4, 2, -2, 2, -2),
+        "coeffs": (7, -2, 4, -4, 3),
         "has_pi": True,
         "rel_deviation": abs(_reference() - target["value"]) / target["value"],
         "max_coeff": 12,
@@ -154,8 +152,8 @@ def _algebraic():
 
 CLAIMS = [
     Claim(
-        name="Формула разности масс нейтрона и протона согласуется с внешним значением NIST",
-        source="docs/docs/math-foundations/sacred-formulas.md:206",
+        name="Формула фазы Дирака CP против внешней оценки PDG",
+        source="docs/docs/math-foundations/sacred-formulas.md:202",
         claim_kind="prediction",
         stated=_reference,
         reference=_reference,
@@ -187,25 +185,24 @@ CLAIMS = [
             "С9": "формула не является выборкой конечного размера",
             "С11": "нет нескольких независимых статистик согласия",
         },
-        claim_family="neutron_proton_mass_splitting",
-        observable="разность масс нейтрона и протона (МэВ)",
-        measurement_source="NIST/CODATA",
+        claim_family="dirac_cp_phase",
+        observable="фаза Дирака CP (градусы)",
+        measurement_source="PDG 2024, обзор нейтринного смешивания",
         uncertainty_type="both",
-        expected_effect_sigma=2453.97,
+        expected_effect_sigma=0.75,
         resolution_sigma=1.0,
-        novelty_key="neutron:proton_mass_splitting:external:v1",
+        novelty_key="neutrino:dirac_cp_phase:external:v1",
         information_class="novelty",
         purpose="audit",
-        models=["формула Trinity", "NIST/CODATA"],
-        independent_of=["zeta", "BBLM", "CKM", "нейтринное смешивание"],
+        models=["формула Trinity", "оценка PDG 2024"],
+        independent_of=["zeta", "BBLM", "CKM", "нейтринные углы смешивания"],
         precision_gain=None,
         out_of_sample=True,
         tests_independent="unknown",
         notes=(
-            "1.2934 прочитано из строки корпуса; внешняя цель "
-            "1.29333251 ± 0.00000038 МэВ отделена URL NIST. "
-            "Большое расхождение проверяется ситом и не является новым "
-            "подтверждённым вердиктом."
+            "222.0 прочитано из строки корпуса; внешняя оценка PDG "
+            "197 +42/-25 градусов симметризована до 197 ±33.5 градусов. "
+            "Сигмы и множественность остаются отдельными координатами."
         ),
     )
 ]

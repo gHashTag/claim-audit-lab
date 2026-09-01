@@ -266,6 +266,13 @@
     "inputs_digest": "c69d48f08d2b0d79"
   },
   {
+    "case": "cases/dirac_cp_external_20260902.py",
+    "claim": "Формула фазы Дирака CP против внешней оценки PDG",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:202",
+    "inputs_digest": "e969471db87977c8"
+  },
+  {
     "case": "cases/dirac_cp_phase_formula.py",
     "claim": "Формула фазы Дирака CP даёт 222,0°",
     "verdict": "ПУСТО",
@@ -635,6 +642,13 @@
     "verdict": "ПУСТО",
     "source": "docs/docs/math-foundations/sacred-formulas.md:194",
     "inputs_digest": "3febbc70e0847989"
+  },
+  {
+    "case": "cases/neutron_proton_splitting_external_20260901.py",
+    "claim": "Формула разности масс нейтрона и протона согласуется с внешним значением NIST",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:206",
+    "inputs_digest": "e969471db87977c8"
   },
   {
     "case": "cases/particle_physics_example_mean_error_20260815.py",
