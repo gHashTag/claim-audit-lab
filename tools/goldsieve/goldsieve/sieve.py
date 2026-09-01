@@ -21,11 +21,13 @@ from __future__ import annotations
 import json
 import math
 import os
+import re
 import time
 import traceback
 import inspect
 from dataclasses import dataclass, field, asdict
 from typing import Callable, Iterable, Optional
+from urllib.parse import urlsplit
 
 from . import preconditions as _pre
 
@@ -39,6 +41,16 @@ CONFIRMED = "ПОДТВЕРЖДЕНО"
 REFUTED = "ОПРОВЕРГНУТО"
 QUESTION = "ВОПРОС"
 EMPTY = "ПУСТО"
+
+# Зарезервированные домены документации не являются независимым источником
+# измерения. Раньше С15 принимало строку только по наличию ``https://`` и тем
+# самым не различало рабочую ссылку и URL-заглушку.
+_RESERVED_EXTERNAL_HOSTS = {
+    "example.com",
+    "example.net",
+    "example.org",
+    "example.invalid",
+}
 
 
 @dataclass
@@ -852,6 +864,24 @@ def sieve_external_target(c: Claim) -> Result:
             or " https://" in source or " http://" in source):
         return Result(name, VOID,
                       "внешняя цель без URL независимого источника")
+    # Наличие маркера URL ещё не означает наличие проверяемого источника:
+    # example.* — зарезервированные домены документации. Поддерживаем
+    # исторический формат «Название, https://...», извлекая все URL и
+    # проверяя hostname.
+    urls = re.findall(r"https?://[^\s]+", source)
+    hosts = []
+    for raw_url in urls:
+        parsed = urlsplit(raw_url.rstrip(".,;:)]}"))
+        if parsed.hostname:
+            hosts.append(parsed.hostname.lower())
+    if not hosts or all(host in _RESERVED_EXTERNAL_HOSTS for host in hosts):
+        return Result(
+            name,
+            VOID,
+            "URL внешней цели указывает на заглушку или не имеет проверяемого "
+            "источника",
+            reason_code="external_source_unverifiable",
+        )
     try:
         value = float(tgt["value"])
         unc = float(tgt["uncertainty"])
@@ -1318,6 +1348,9 @@ ACTION = {
     "metrics_incommensurable":
         "зафиксировать общую шкалу, токенизацию, усреднение и стадию: "
         "текущие метрики несопоставимы",
+    "external_source_unverifiable":
+        "заменить URL-заглушку или недействительный адрес на проверяемый "
+        "первичный источник внешнего измерения",
     "estimator_dependent":
         "зафиксировать выбор оценки или сетки до прогона",
     "arithmetic_insufficient":
@@ -1369,6 +1402,7 @@ NON_AGGREGATABLE = (
     "control_broken",
     "input_precision_limited",
     "metrics_incommensurable",
+    "external_source_unverifiable",
 )
 
 
@@ -1390,6 +1424,9 @@ def reason_of(results: list, verdict: str, claim: Optional[Claim] = None) -> str
         # это про разрешение, а не про множественность.
         if st.get("С4 подставка ловится") == VOID or \
                 st.get("С15 внешняя цель") == VOID:
+            external = by.get("С15 внешняя цель")
+            if external is not None and external.reason_code:
+                return external.reason_code
             return "resolution_limited"
         # Сломанный позитивный контроль — дефект ПРОВЕРКИ, не утверждения.
         if st.get("С5 контроль") == FAIL:

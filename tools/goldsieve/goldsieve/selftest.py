@@ -14,7 +14,7 @@ import numpy as np
 
 from . import sieve as sieve_module
 from .sieve import (Claim, run, CONFIRMED, REFUTED, QUESTION, EMPTY, VOID,
-                    PASS, OPEN, FAIL, rel_dev)
+                    PASS, OPEN, FAIL, rel_dev, reason_of, verdict_of)
 
 # Все пропуски обязаны быть объявлены (сито С13), иначе вердикт ВОПРОС.
 SR = {"С%d" % i: "неприменимо к синтетическому случаю" for i in range(1, 22)}
@@ -539,7 +539,7 @@ def main() -> int:
         wrong=lambda: 950.0,
         claim_kind="prediction",
         external_target=lambda: {"value": 878.4, "uncertainty": 0.5,
-                                 "source": "https://example.invalid/measurement"},
+                                 "source": "https://pdg.lbl.gov/2024/fixture"},
         stated_target=lambda: 878.4,
         skip_reasons=SR,
     )
@@ -559,7 +559,7 @@ def main() -> int:
         wrong=lambda: 950.0,
         claim_kind="prediction",
         external_target=lambda: {"value": 878.4, "uncertainty": 0.5,
-                                 "source": "https://example.invalid/measurement"},
+                                 "source": "https://pdg.lbl.gov/2024/fixture"},
         stated_target=lambda: 878.4,
         skip_reasons=SR,
     )
@@ -580,7 +580,7 @@ def main() -> int:
         wrong=lambda: 878.4,
         claim_kind="prediction",
         external_target=lambda: {"value": 878.4, "uncertainty": 0.5,
-                                 "source": "https://example.invalid/measurement"},
+                                 "source": "https://pdg.lbl.gov/2024/fixture"},
         skip_reasons=SR,
     )
     st15b = {x.sieve: x.status for x in run(bad_pred).results}["С15 внешняя цель"]
@@ -596,7 +596,7 @@ def main() -> int:
     for label, target in (
         ("С15 ловит нефинитную цель",
          {"value": float("nan"), "uncertainty": 0.5,
-          "source": "https://example.invalid/measurement"}),
+          "source": "https://pdg.lbl.gov/2024/fixture"}),
         ("С15 требует URL цели",
          {"value": 878.4, "uncertainty": 0.5, "source": "архив без ссылки"}),
     ):
@@ -619,11 +619,47 @@ def main() -> int:
             fail += 1
             print("  FAIL %-45s %s" % (label, malformed_status))
 
+    # Отдельный риск происхождения: зарезервированный example.* не должен
+    # считаться измерением лишь из-за наличия схемы https://. Причина обязана
+    # сохраниться в своде как неагрегируемая, а не превратиться в обычное
+    # ограничение разрешения.
+    reserved_claim = Claim(
+        name="URL-заглушка внешней цели",
+        stated=878.4,
+        reference=lambda: 878.4,
+        wrong=lambda: 950.0,
+        claim_kind="prediction",
+        external_target=lambda: {
+            "value": 878.4,
+            "uncertainty": 0.5,
+            "source": "https://example.invalid/measurement",
+        },
+        skip_reasons=SR,
+    )
+    reserved_report = run(reserved_claim)
+    reserved_status = {
+        x.sieve: x.status for x in reserved_report.results
+    }["С15 внешняя цель"]
+    reserved_reason = reason_of(
+        reserved_report.results,
+        verdict_of(reserved_report.results),
+        reserved_claim,
+    )
+    if (reserved_status == VOID
+            and reserved_reason == "external_source_unverifiable"):
+        ok += 1
+        print("  ok   %-45s %s" %
+              ("С15 классифицирует URL-заглушку", reserved_reason))
+    else:
+        fail += 1
+        print("  FAIL %-45s %s" %
+              ("С15 классифицирует URL-заглушку", reserved_reason))
+
     # Мутационная цель: удаление содержательной проверки конечности не должно
     # выглядеть успешным. Подмена math.isfinite на всепропускающий мутант
     # обязана изменить решение нефинитной фикстуры.
     nan_target = {"value": float("nan"), "uncertainty": 0.5,
-                  "source": "https://example.invalid/measurement"}
+                  "source": "https://pdg.lbl.gov/2024/fixture"}
     nan_claim = Claim(
         name="мутация проверки конечности внешней цели",
         stated=878.4,
