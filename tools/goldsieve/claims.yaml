@@ -1687,3 +1687,27 @@ claims:
     разрешение пространства поиска и перенос на другие оценки H₀, источники,
     версии CPython и ОС.
   novelty_class: новый корпусный внешний риск Hubble
+- source: docs/docs/math-foundations/sacred-formulas.md:206
+  case: cases/neutron_proton_splitting_external_20260901.py
+  claim: Формула разности масс нейтрона и протона против внешнего значения NIST
+  verdict: ОПРОВЕРГНУТО
+  reason_subtype: external_mismatch
+  novelty_key: neutron:proton_mass_splitting:external:v1
+  priority: 1
+  measurement_source: NIST/CODATA, neutron-proton mass difference energy equivalent
+  observable: корпусное значение разности масс нейтрона и протона 1,2934 МэВ
+  models: [формула Trinity (4, 2, −2, 2, −2), измерение NIST 1,29333251 ± 0,00000038 МэВ]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    В области охвата на указанных версиях CPython корпусная строка прочитана
+    отдельно от вычисляемой формулы, внешний эталон NIST хранится с
+    положительной неопределённостью. Сито сравнивает формулу и внешний
+    эталон; большое расхождение не превращается в новое подтверждение и
+    относится только к этой записи, источнику и рецепту.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 1,2934 прочитано из указанной строки корпуса; внешняя цель
+    1,29333251 ± 0,00000038 МэВ имеет URL
+    https://physics.nist.gov/cgi-bin/cuu/Value?mnmmpc2mev.

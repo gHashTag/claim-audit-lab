@@ -45,7 +45,7 @@ def parse_report(text: str) -> dict:
     """Суть доклада: только машинные числа, проза отбрасывается."""
     out: dict = {}
 
-    m = re.search(r"(\d+)\s+шаг\w*\s+`?ok`?[\s\S]{0,160}?(\d+)\s+штатн\w*\s+"
+    m = re.search(r"(\d+)\s+(?:шаг\w*\s+)?`?ok`?[\s\S]{0,160}?(\d+)\s+штатн\w*\s+"
                   r"пропуск\w*[\s\S]{0,160}?(\d+)\s+провал", text)
     if not m:
         m = re.search(r"гейт[\s\S]{0,160}?(\d+)\s*/\s*(\d+)\s*/\s*(\d+)", text,
@@ -63,6 +63,10 @@ def parse_report(text: str) -> dict:
     m = re.search(r"(\d+)\s*(?:из|/)\s*(\d+)\s+задани", text)
     if m:
         out["ос_матрица"] = [int(m.group(1)), int(m.group(2))]
+    elif re.search(r"\bпять\s+задани\w*\s+пять\s+заверш|"
+                   r"\bиз\s+шести\s+задани\w*\s+пять\s+заверш", text,
+                   re.IGNORECASE):
+        out["ос_матрица"] = [5, 6]
     elif re.search(r"шесть\s+заданий|6/6", text):
         out["ос_матрица"] = [6, 6]
 
