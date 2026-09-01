@@ -1808,3 +1808,28 @@ claims:
   notes: >-
     Наблюдаемое 493,68 прочитано из указанной строки корпуса; внешний URL:
     https://pdg.lbl.gov/2024/reviews/rpp2024-rev-charged-kaon-mass.pdf.
+- source: docs/docs/math-foundations/sacred-formulas.md:43
+  case: cases/higgs_mass_external_20260902.py
+  claim: Формула массы бозона Хиггса против внешней оценки PDG 2024
+  verdict: ВОПРОС
+  reason_subtype: no_compression
+  novelty_key: boson:higgs_mass:external:v1
+  priority: 2
+  measurement_source: PDG 2024, таблица калибровочных бозонов и бозона Хиггса
+  observable: корпусное значение массы бозона Хиггса 125,25 ГэВ
+  models: ["формула Trinity (5, 3, 0, 4, −2)", "оценка PDG 125,20 ± 0,11 ГэВ"]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На указанных версиях CPython строка корпуса прочитана отдельно от
+    вычисляемой формулы, а внешняя таблица PDG 2024 содержит значение
+    125,20 ± 0,11 ГэВ. Формула даёт 125,22624717622841 ГэВ, что отличается
+    от внешней цели на +0,2386 сигмы; наблюдаемое корпуса отличается на
+    +0,4545 сигмы. Каскад сит проверяет эту новую категорию массы бозона;
+    итог берётся из сит и не является новым простым подтверждением.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 125,25 прочитано из указанной строки корпуса; внешняя цель
+    PDG 2024 125,20 ± 0,11 ГэВ имеет URL
+    https://pdg.lbl.gov/2024/tables/rpp2024-sum-gauge-higgs-bosons.pdf.
