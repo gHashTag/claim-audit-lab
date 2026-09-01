@@ -121,7 +121,7 @@
     "cases/zeta_unfolding_std_recipe_20260815.py": "e2a1e88e4d1e02554330eaf91b11f74c18350b7ce399155279ab18cdad96ec0c",
     "chain_overhead.py": "9396ef1cfaee2e5e5a9e22e0f4223f9d285fe98fa826b7e7c69cf793e92505f3",
     "ci_gate.sh": "8317fc47948014772972f050ff2de5118a5cd917bf5ae1f5a439a0ef171c20ce",
-    "claims.yaml": "52f937d489e404d52ed485a6f46a2ea754396e1bd451f2708ff31e22155482c1",
+    "claims.yaml": "3588f66b84776fd6b901249f4aca88ff2791c2b15470e2bba8d6aff96ce26cdb",
     "coverage_manifest.py": "8584989d602eb8157ac96b7d23a797c92ef716daa066b511604aae24f4be47b7",
     "coverage_manifest.yaml": "20d3d8e0ebb554768b069fa3034f055ec8787cd483769769e9a0ec08c8a869f8",
     "debug_sacred_table.py": "b2bf7633482a8931ba7286d19a941a82a72f31ce3773b2d391466a47b8e1e650",
@@ -185,7 +185,7 @@
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "7c01e663e4ea1696",
+  "files_digest": "cf743e0773e18fea",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,
@@ -200,7 +200,7 @@
   },
   "platform": "Linux-6.1.155+-x86_64-with-glibc2.43",
   "seed": 20260814,
-  "verdicts_digest": "267dc26b3cff2cc9",
+  "verdicts_digest": "7cfd4a0b850296a2",
   "versions": {
     "mpmath": "1.4.1",
     "numpy": "2.5.2",

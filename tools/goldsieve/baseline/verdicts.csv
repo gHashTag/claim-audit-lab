@@ -1,5 +1,5 @@
 case,claim,verdict,source,inputs_digest
-cases/age_universe_planck_external_20260902.py,Формула возраста Вселенной против оценки Planck 2018,not-run,docs/docs/math-foundations/sacred-formulas.md:79,
+cases/age_universe_planck_external_20260902.py,Формула возраста Вселенной против оценки Planck 2018,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:79,e969471db87977c8
 cases/ann_brute_simd_benchmark_recipe_20260817.py,Отчёт ANN Brute+SIMD раскрывает воспроизводимый benchmark точности поиска,ВОПРОС,docs/docs/research/trinity-ann-benchmark-verdict-report.md:1-240,87e8518346350595
 cases/appendix_external_targets_20260813.py,Формула 1/α = 4π³ + π² + π согласуется с CODATA,ОПРОВЕРГНУТО,deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:9-17,9530c3044725d9dd
 cases/appendix_external_targets_20260813.py,Формула n_s = 94π⁻⁴ согласуется со спектральным индексом,ПУСТО,deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:204-212,9530c3044725d9dd

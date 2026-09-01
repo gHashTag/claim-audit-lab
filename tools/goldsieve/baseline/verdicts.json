@@ -2,9 +2,9 @@
   {
     "case": "cases/age_universe_planck_external_20260902.py",
     "claim": "Формула возраста Вселенной против оценки Planck 2018",
-    "verdict": "not-run",
+    "verdict": "ПУСТО",
     "source": "docs/docs/math-foundations/sacred-formulas.md:79",
-    "inputs_digest": ""
+    "inputs_digest": "e969471db87977c8"
   },
   {
     "case": "cases/ann_brute_simd_benchmark_recipe_20260817.py",

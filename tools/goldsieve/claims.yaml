@@ -1737,17 +1737,23 @@ claims:
 - source: docs/docs/math-foundations/sacred-formulas.md:79
   case: cases/age_universe_planck_external_20260902.py
   claim: Формула возраста Вселенной против оценки Planck 2018
-  verdict: not-run
+  verdict: ПУСТО
+  reason_subtype: multiplicity_limited
   novelty_key: cosmology:age_of_universe:external:v1
   priority: 2
   measurement_source: Planck 2018, arXiv:1807.06205
   observable: корпусное значение возраста Вселенной 13,7877 Гир
   models: [формула Trinity (1, 4, −2, −1, 1), оценка Planck 13,787 ± 0,020 Гир]
-  scope_status: not-evaluated
+  scope_status: verified-in-scope
   scope_statement: >-
-    Новая внешняя сверка обязана прочитать 13,7877 из указанной строки
-    корпуса, отделить вычисление формулы от внешней цели 13,787 ± 0,020 Гир
-    и передать отклонение каскаду сит. Это не новое простое утверждение и не
-    заранее заданное подтверждение.
+    На указанных версиях CPython 3.14.3 корпусная строка 13,7877 прочитана
+    отдельно от вычисляемой формулы, а внешняя цель Planck 13,787 ± 0,020 Гир
+    задаёт отклонение +0,03546 сигмы. Каскад дал ПУСТО /
+    multiplicity_limited: С16 ожидает 20 случайных попаданий, С17 не обнаружило
+    сжатия. Это не подтверждённый результат и не новое простое утверждение.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
   notes: >-
-    Внешняя цель: https://arxiv.org/html/1807.06205v2.
+    Наблюдаемое 13,7877 прочитано из указанной строки корпуса; внешняя цель
+    13,787 ± 0,020 Гир имеет URL https://arxiv.org/html/1807.06205v2.
