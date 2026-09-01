@@ -13,6 +13,7 @@
     "calibrate_identity.py": "16e57d1ffd25c329a96c04fb32767725b9154d317b5ac4c0abd93c2831cd75fe",
     "calibrate_sieves.py": "d2db6415cbabceb2df63dd4eb4475ca71c16aaefb691e85af3ce5e45edb02027",
     "cases/_template_probe.py": "f3564a9f35bfc1d3c0ba96de0788f3c128289581f2e03458b365037a0ee8f639",
+    "cases/age_universe_planck_external_20260902.py": "5e0a3e7bd93ff2c50bbc00cd8a928bab77a9865a82467c31521128ed3dbd5d62",
     "cases/ann_brute_simd_benchmark_recipe_20260817.py": "f1cba3e5fecbafbd106dc60bf5449aa090e7e6a7a1af18386f8a6972f75b1eb6",
     "cases/appendix_external_targets_20260813.py": "0f1299772765d1851a93985ec2ad29757d2b70764f5b71e7b73983084a1f1819",
     "cases/axes_omega_lambda.py": "f34a5fff20c0e4ab599a176dacf012c0e2b63661807426dd552863e778088922",
@@ -120,7 +121,7 @@
     "cases/zeta_unfolding_std_recipe_20260815.py": "e2a1e88e4d1e02554330eaf91b11f74c18350b7ce399155279ab18cdad96ec0c",
     "chain_overhead.py": "9396ef1cfaee2e5e5a9e22e0f4223f9d285fe98fa826b7e7c69cf793e92505f3",
     "ci_gate.sh": "8317fc47948014772972f050ff2de5118a5cd917bf5ae1f5a439a0ef171c20ce",
-    "claims.yaml": "6daf6c142d45abe1e0c4b4a3b97f16de7a04bd6626e16aa98f58a02329d8dd00",
+    "claims.yaml": "52f937d489e404d52ed485a6f46a2ea754396e1bd451f2708ff31e22155482c1",
     "coverage_manifest.py": "8584989d602eb8157ac96b7d23a797c92ef716daa066b511604aae24f4be47b7",
     "coverage_manifest.yaml": "20d3d8e0ebb554768b069fa3034f055ec8787cd483769769e9a0ec08c8a869f8",
     "debug_sacred_table.py": "b2bf7633482a8931ba7286d19a941a82a72f31ce3773b2d391466a47b8e1e650",
@@ -175,7 +176,7 @@
     "patch_t41c.py": "52237ccdf4e0b0117fd3dd5b0bdac900ebe98d896904ebfd90033ca82a525455",
     "portability_lint.py": "41a084be813b253d0e5059ae2f9bb5ad02258e5b489d1236ea83415151f74db9",
     "probe_descriptors.py": "eb0302ec3ab88bff3e97c37b12f81496642426d98d41ce8e1a7c4ea4263518d4",
-    "progress_guard.py": "9c57fabf2b44d96d3e65d110ef791b22543052d922e670eefe12ecc8525d1a5c",
+    "progress_guard.py": "c7a9b73d4c6536e92da2151570a0ecb50f08d197d33e59b17cbf23557d58dccf",
     "replay_queue.py": "b30e89b9971b6367ff3ebf80d13118c84f70cc999521c2f56d0313bf0d3187b3",
     "repo_sync_guard.py": "ece95a5e556e1a315e163da1998eb58de6c591149738cbd296481caacdf2d979",
     "snapshot_manifest.py": "aa796d8d97ec8e58b9629c682f107f70467393589ab0571bcff06e26631d85d7",
@@ -184,7 +185,7 @@
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "9063d868f8ab86a3",
+  "files_digest": "7c01e663e4ea1696",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,
@@ -199,7 +200,7 @@
   },
   "platform": "Linux-6.1.155+-x86_64-with-glibc2.43",
   "seed": 20260814,
-  "verdicts_digest": "7935c58aa8abb39b",
+  "verdicts_digest": "267dc26b3cff2cc9",
   "versions": {
     "mpmath": "1.4.1",
     "numpy": "2.5.2",
