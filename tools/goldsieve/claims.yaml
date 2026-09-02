@@ -2056,3 +2056,30 @@ claims:
     1,9884 ± 0,0002 × 10^30 кг имеет URL
     https://arxiv.org/abs/1106.1508. Формула и внешнее измерение разделены;
     результат каскада не является новым простым подтверждением.
+- source: docs/papers/README_FOR_SCIENTISTS.md:58
+  case: cases/neutrino_theta13_external_20260901.py
+  claim: sin²(theta13) = 3γφ²/(π³e) против внешнего значения PDG
+  verdict: ПУСТО
+  reason_subtype: multiplicity_limited
+  novelty_key: neutrino:theta13:external:v1
+  priority: 2
+  measurement_source: PDG 2024, обзор нейтринного смешивания
+  observable: корпусное значение sin²(theta13) = 0,02236
+  models: ["формула Trinity (3, 0, −3, 2, −1)", "оценка PDG 0,0219 ± 0,0007"]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На указанных версиях CPython строка корпуса прочитана отдельно от
+    вычисляемой формулы, а внешняя оценка PDG 2024 содержит значение
+    0,0219 ± 0,0007. Формула даёт 0,02200215917223584, что отличается
+    от внешней цели на +0,1405 сигмы, а корпусное наблюдаемое — на
+    +0,6571 сигмы. С16 ожидает 445 случайных попаданий и С17 не
+    обнаруживает сжатия, поэтому каскад выносит ПУСТО /
+    multiplicity_limited. Это не подтверждённый физический результат.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 0,02236 прочитано из указанной строки корпуса; внешний URL:
+    https://pdg.ge.infn.it/2024/listings/rpp2024-list-neutrino-mixing.pdf.
+    Формула и внешнее измерение разделены; результат каскада не является
+    новым простым подтверждением.

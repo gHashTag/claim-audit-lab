@@ -4,17 +4,17 @@
     "logs": 16,
     "tool": 194
   },
-  "created": "2026-09-02T18:27:12",
-  "digest": "261a33677224f23c",
+  "created": "2026-09-02T20:52:37",
+  "digest": "515fab030f8b4fa8",
   "groups": {
     "docs": {
       "cron_tracking/8dff7aa3/audit-ledger.md": {
-        "sha256": "7a33d4674057c466b18ab22d183530753eaf6388cfbdf8790ee056569aa64623",
-        "size": 2560601
+        "sha256": "fee2bfaf2ddee32de1f63a84f138aa493f2668a7b52e9c8018ee6e2bcb6ac577",
+        "size": 2577157
       },
       "goldsieve/claims.yaml": {
-        "sha256": "aefa37a32277b6942e027975c21e2d47c6c26ccee549032c48dafb928a46e299",
-        "size": 146974
+        "sha256": "1a1d0e0a1628612f174fd04f9e07202f8248205b95d45e8e0630b1e2fb042f72",
+        "size": 148839
       },
       "goldsieve/coverage_manifest.yaml": {
         "sha256": "20d3d8e0ebb554768b069fa3034f055ec8787cd483769769e9a0ec08c8a869f8",
@@ -152,11 +152,11 @@
       },
       "cron_tracking/8dff7aa3/runs.jsonl": {
         "append_only": true,
-        "head_hash": "b82ba19825c5e800e1b34d661f0cc701fa1b1480b6b0e4ad6197ec69bebaad20",
-        "last_seq": 2577,
-        "prefix_bytes": 1223411,
-        "prefix_sha256": "ffab38b59f2b3f1116e12a29b87c98d51018f47d2fd6d28c915582b4ed923700",
-        "size": 1223411
+        "head_hash": "37205ae644301d3fa8e92023aa72da719cd8cb4169a29faa7e021e980d9ede53",
+        "last_seq": 2605,
+        "prefix_bytes": 1236985,
+        "prefix_sha256": "202173af46e23b00be96214aa855b5cca3d489e41dbf981dcd2f31a13d943256",
+        "size": 1236985
       }
     },
     "tool": {
@@ -685,8 +685,8 @@
         "size": 15138
       },
       "goldsieve/claims.yaml": {
-        "sha256": "aefa37a32277b6942e027975c21e2d47c6c26ccee549032c48dafb928a46e299",
-        "size": 146974
+        "sha256": "1a1d0e0a1628612f174fd04f9e07202f8248205b95d45e8e0630b1e2fb042f72",
+        "size": 148839
       },
       "goldsieve/coverage_manifest.py": {
         "sha256": "8584989d602eb8157ac96b7d23a797c92ef716daa066b511604aae24f4be47b7",
@@ -709,8 +709,8 @@
         "size": 5738
       },
       "goldsieve/external_target_guard.py": {
-        "sha256": "81802aa039ef469aa03de61e0fe2a561ff6a222fe35a497a6b2b5261786eb6c0",
-        "size": 28587
+        "sha256": "6398fa2ba60052d86de9db40cc331f848490b68b90b25a68b65d8f8443c904af",
+        "size": 29619
       },
       "goldsieve/fixed_point_audit.py": {
         "sha256": "73bea8db0a0045ea9328b6e2d433353b03ac363ba86014618958bf9031a66704",
@@ -905,8 +905,8 @@
         "size": 5422
       },
       "goldsieve/progress_guard.py": {
-        "sha256": "1c0043c88d1c9c89a1d5a9aeddc9d9219c7be359506a3387725b00c5d4816869",
-        "size": 20361
+        "sha256": "6957dd3ba8c4ba90d5d8ce50ed4feeb9713059613a496b08cc6b1b5f3173d125",
+        "size": 22641
       },
       "goldsieve/replay_queue.py": {
         "sha256": "b30e89b9971b6367ff3ebf80d13118c84f70cc999521c2f56d0313bf0d3187b3",
@@ -945,8 +945,8 @@
     "между двумя соседними checkpoint последовательность защищена только цепочкой в самом журнале"
   ],
   "log_checkpoint": {
-    "head_hash": "b82ba19825c5e800e1b34d661f0cc701fa1b1480b6b0e4ad6197ec69bebaad20",
-    "last_seq": 2577,
+    "head_hash": "37205ae644301d3fa8e92023aa72da719cd8cb4169a29faa7e021e980d9ede53",
+    "last_seq": 2605,
     "log_name": "runs.jsonl",
     "note": "цепочка обнаруживает правку копии; авторство и полная подмена вместе с checkpoint не покрыты",
     "snapshot_manifest": "goldsieve/baseline/snapshot-manifest.json"

@@ -672,6 +672,13 @@
     "inputs_digest": "b15f3d88e57a4dae"
   },
   {
+    "case": "cases/neutrino_theta13_external_20260901.py",
+    "claim": "sin²(theta13) = 3γφ²/(π³e) против внешнего значения PDG",
+    "verdict": "ПУСТО",
+    "source": "docs/papers/README_FOR_SCIENTISTS.md:58",
+    "inputs_digest": "e969471db87977c8"
+  },
+  {
     "case": "cases/neutron_lifetime_formula.py",
     "claim": "Формула времени жизни нейтрона даёт 879,4 с",
     "verdict": "ПУСТО",

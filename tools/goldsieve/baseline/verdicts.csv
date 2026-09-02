@@ -95,6 +95,7 @@ cases/master_catalog_msme_error.py,"Для m_s/m_e в каталоге указ�
 cases/neutrino_mixing_external_20260814.py,Формула sin θ_C = φ⁻³ согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:64-69,b15f3d88e57a4dae
 cases/neutrino_mixing_external_20260814.py,Формула sin θ₂₃ = 4·3⁻²·π⁻² согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:71-77,b15f3d88e57a4dae
 cases/neutrino_mixing_external_20260814.py,Формула δ = π/φ² согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:87-93,b15f3d88e57a4dae
+cases/neutrino_theta13_external_20260901.py,sin²(theta13) = 3γφ²/(π³e) против внешнего значения PDG,ПУСТО,docs/papers/README_FOR_SCIENTISTS.md:58,e969471db87977c8
 cases/neutron_lifetime_formula.py,"Формула времени жизни нейтрона даёт 879,4 с",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:194,3febbc70e0847989
 cases/neutron_proton_splitting_external_20260901.py,Формула разности масс нейтрона и протона согласуется с внешним значением NIST,ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:206,e969471db87977c8
 cases/omega_baryon_external_20260902.py,Формула плотности барионов против оценки Planck 2018,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:81,e969471db87977c8
