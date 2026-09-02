@@ -1,0 +1,6 @@
+[tools/goldsieve-v3-2026-08-13 e22bc1b] тик 284: снимок финальной синхронности
+ 5 files changed, 12 insertions(+), 1 deletion(-)
+ create mode 100644 tools/goldsieve/tick284-commit-final.txt
+ create mode 100644 tools/goldsieve/tick284-push-final.txt
+ create mode 100644 tools/goldsieve/tick284-repo-sync-guard-final2.rc
+ create mode 100644 tools/goldsieve/tick284-repo-sync-guard-final2.txt
