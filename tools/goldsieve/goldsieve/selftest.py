@@ -14,7 +14,8 @@ import numpy as np
 
 from . import sieve as sieve_module
 from .sieve import (Claim, run, CONFIRMED, REFUTED, QUESTION, EMPTY, VOID,
-                    PASS, OPEN, FAIL, rel_dev, reason_of, verdict_of)
+                    PASS, OPEN, FAIL, rel_dev, reason_of, verdict_of,
+                    ACTION, NON_AGGREGATABLE)
 
 # Все пропуски обязаны быть объявлены (сито С13), иначе вердикт ВОПРОС.
 SR = {"С%d" % i: "неприменимо к синтетическому случаю" for i in range(1, 22)}
@@ -643,6 +644,56 @@ def main() -> int:
         else:
             fail += 1
             print("  FAIL %-45s %s" % (label, malformed_status))
+
+    # Новый тип риска С15: численно правдоподобная сверка в смешанных
+    # единицах не должна проходить. Проверяется как отсутствие единицы на
+    # одной стороне, так и явное несовпадение; оба исхода неагрегируемы.
+    unit_fixtures = (
+        (
+            "С15 требует единицу внешней цели",
+            "МэВ",
+            {"value": 1.2933, "uncertainty": 0.001,
+             "source": "https://physics.nist.gov/fixture"},
+            "external_unit_missing",
+        ),
+        (
+            "С15 ловит несовпадение единиц",
+            "МэВ",
+            {"value": 1293.3, "uncertainty": 1.0, "unit": "кэВ",
+             "source": "https://physics.nist.gov/fixture"},
+            "external_unit_mismatch",
+        ),
+    )
+    for label, unit, target, expected_reason in unit_fixtures:
+        unit_claim = Claim(
+            name=label,
+            stated=1.2933,
+            reference=lambda: 1.2933,
+            wrong=lambda: 2.0,
+            claim_kind="prediction",
+            measurement_unit=unit,
+            external_target=lambda target=target: target,
+            skip_reasons=SR,
+        )
+        unit_report = run(unit_claim)
+        unit_result = next(
+            x for x in unit_report.results if x.sieve == "С15 внешняя цель"
+        )
+        unit_reason = reason_of(
+            unit_report.results,
+            verdict_of(unit_report.results),
+            unit_claim,
+        )
+        if (unit_result.status == VOID
+                and unit_result.reason_code == expected_reason
+                and unit_reason == expected_reason
+                and expected_reason in NON_AGGREGATABLE
+                and expected_reason in ACTION):
+            ok += 1
+            print("  ok   %-45s %s" % (label, expected_reason))
+        else:
+            fail += 1
+            print("  FAIL %-45s %s" % (label, unit_reason))
 
     # Отдельный риск происхождения: зарезервированный example.* не должен
     # считаться измерением лишь из-за наличия схемы https://. Причина обязана

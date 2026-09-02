@@ -123,6 +123,10 @@ class Claim:
     claim_kind: str = "value"          # value | prediction (формула про внешнюю величину)
     external_target: Optional[Callable[[], dict]] = None   # авторитетное измерение
     stated_target: Optional[Callable[[], float]] = None    # цель, как её пишет корпус
+    # Единица измерения вычисляемой величины. Если она объявлена, С15
+    # требует такую же единицу у внешней цели: численное совпадение в
+    # смешанных единицах не является содержательной сверкой.
+    measurement_unit: str = ""
     # Связь источника наблюдаемого с внешней целью. Пустая строка означает
     # независимый источник; значение same_as_observation обязано быть
     # объявлено ДО прогона, если внешний текст получен из того же наблюдаемого.
@@ -865,6 +869,24 @@ def sieve_external_target(c: Claim) -> Result:
     if missing:
         return Result(name, VOID,
                       "внешняя цель неполна: нет " + ", ".join(missing))
+    expected_unit = str(c.measurement_unit or "").strip()
+    target_unit = str(tgt.get("unit") or "").strip()
+    if expected_unit or target_unit:
+        if not expected_unit or not target_unit:
+            return Result(
+                name,
+                VOID,
+                "единица измерения внешней цели не зафиксирована с обеих сторон",
+                reason_code="external_unit_missing",
+            )
+        if expected_unit != target_unit:
+            return Result(
+                name,
+                VOID,
+                "единицы измерения не совпадают: %s против %s"
+                % (expected_unit, target_unit),
+                reason_code="external_unit_mismatch",
+            )
     source = str(tgt["source"])
     if not (source.startswith("https://") or source.startswith("http://")
             or " https://" in source or " http://" in source):
@@ -1373,6 +1395,12 @@ ACTION = {
     "external_source_degenerate":
         "развести источник корпусного наблюдаемого и внешней цели; нулевое "
         "отклонение одного источника не является измерением",
+    "external_unit_missing":
+        "зафиксировать единицу вычисляемой величины и внешней цели до "
+        "сравнения",
+    "external_unit_mismatch":
+        "привести формулу и внешнее измерение к одной единице либо остановить "
+        "сверку",
     "estimator_dependent":
         "зафиксировать выбор оценки или сетки до прогона",
     "arithmetic_insufficient":
@@ -1426,6 +1454,8 @@ NON_AGGREGATABLE = (
     "metrics_incommensurable",
     "external_source_unverifiable",
     "external_source_degenerate",
+    "external_unit_missing",
+    "external_unit_mismatch",
 )
 
 
