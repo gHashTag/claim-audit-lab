@@ -1,0 +1,10 @@
+протокол BBLM: вердикт ВОПРОС (заполнено 7 из 8)
+  есть    formula                          
+  НЕТ     coefficient_rederivation         файл с аналитическими выражениями коэффициентов (формула + номер уравнения статьи), после чего в
+  есть    height_parameters                
+  есть    per_bin_heights                  
+  есть    unfolding_mode                   
+  есть    error_estimate_method            
+  есть    out_of_sample_check              
+  есть    shape_vs_scale_discrimination    
+JSON: /home/user/workspace/goldsieve/bblm_protocol.json

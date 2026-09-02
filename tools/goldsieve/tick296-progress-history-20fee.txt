@@ -1,0 +1,5 @@
+докладов 45 разобрано 41 неразобрано ['tick135-report.md', 'tick201-report.md', 'tick261-report.md', 'tick288-report.md']
+tick135-report.md : гейт,регресс,ос_матрица,bblm,изменённые_файлы
+tick201-report.md : гейт,ос_матрица,изменённые_файлы
+tick261-report.md : ос_матрица,bblm,изменённые_файлы
+tick288-report.md : гейт,регресс,ос_матрица,bblm,изменённые_файлы

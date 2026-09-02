@@ -1,0 +1,13 @@
+докладов 46, разобрано 42, различных сутей 20, групп повторов 8, докладов в повторах 30
+  caa39828448513f9: tick197-report.md, tick198-report.md, tick200-report.md
+  273f2d19eb6322dc: tick209-report.md, tick212-report.md
+  103ac420e61f6596: tick210-report.md, tick211-report.md
+  27ff5bc869dfc580: tick215-report.md, tick220-report.md, tick221-report.md, tick229-report.md, tick230-report.md
+  87ab34fa60fe46ea: tick216-report.md, tick217-report.md, tick222-report.md, tick223-report.md, tick224-report.md, tick232-report.md, tick234-report.md, tick236-report.md, tick242-report.md
+  cfc01c98c01761d8: tick235-report.md, tick249-report.md, tick250-report.md, tick254-report.md, tick259-report.md
+  32cebfabe98b891d: tick262-report.md, tick270-report.md
+  b5a9a4287f9e7db5: tick279-report.md, tick280-report.md
+  НЕРАЗОБРАНО tick135-report.md: старый доклад не содержит машинных итогов гейт, регресс, ос_матрица, bblm, изменённые_файлы; значения не восстанавливаются из соседних тиков
+  НЕРАЗОБРАНО tick201-report.md: старый доклад не содержит машинных итогов гейт, ос_матрица, изменённые_файлы; значения не восстанавливаются из соседних тиков
+  НЕРАЗОБРАНО tick261-report.md: старый доклад не содержит машинных итогов ос_матрица, bblm, изменённые_файлы; значения не восстанавливаются из соседних тиков
+  НЕРАЗОБРАНО tick288-report.md: старый доклад не содержит машинных итогов гейт, регресс, ос_матрица, bblm, изменённые_файлы; значения не восстанавливаются из соседних тиков

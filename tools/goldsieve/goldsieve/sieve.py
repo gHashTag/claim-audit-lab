@@ -943,6 +943,32 @@ def sieve_external_target(c: Claim) -> Result:
             "источника",
             reason_code="external_source_unverifiable",
         )
+    # Новое сито трассируемости: один URL внешней цели не доказывает, что
+    # корпусное наблюдаемое действительно было прочитано. Для
+    # зарегистрированной внешней цели (у неё заполнено claim_family) обязан
+    # быть отдельный callable observed и существующий файл из corpus/trinity.
+    # Синтетические самотесты без паспорта цели этим правилом не маскируются.
+    if c.claim_family:
+        paths = [os.path.abspath(str(p)) for p in (c.inputs or [])]
+        corpus_paths = [
+            p for p in paths
+            if "/corpus/trinity/" in p.replace(os.sep, "/")
+        ]
+        if c.observed is None or not corpus_paths:
+            return Result(
+                name,
+                VOID,
+                "внешняя сверка не связана с прочитанным файлом corpus/trinity",
+                reason_code="external_observation_untraceable",
+            )
+        missing = [p for p in corpus_paths if not os.path.isfile(p)]
+        if missing:
+            return Result(
+                name,
+                VOID,
+                "файл корпусного наблюдаемого недоступен: " + ", ".join(missing),
+                reason_code="external_observation_untraceable",
+            )
     try:
         value = float(tgt["value"])
         unc = float(tgt["uncertainty"])
@@ -1428,6 +1454,9 @@ ACTION = {
     "external_source_degenerate":
         "развести источник корпусного наблюдаемого и внешней цели; нулевое "
         "отклонение одного источника не является измерением",
+    "external_observation_untraceable":
+        "связать внешнюю сверку с прочитанным файлом corpus/trinity и "
+        "сохранить путь наблюдения до прогона",
     "external_unit_missing":
         "зафиксировать единицу вычисляемой величины и внешней цели до "
         "сравнения",
@@ -1492,6 +1521,7 @@ NON_AGGREGATABLE = (
     "metrics_incommensurable",
     "external_source_unverifiable",
     "external_source_degenerate",
+    "external_observation_untraceable",
     "external_unit_missing",
     "external_unit_mismatch",
     "external_uncertainty_type_missing",

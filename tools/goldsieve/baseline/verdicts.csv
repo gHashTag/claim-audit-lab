@@ -135,6 +135,7 @@ cases/sacred_tsirelson_exact_external_20260817.py,Формула Tsirelson в р
 cases/sacred_two_formula_composition_recipe_20260817.py,Составление двух священных формул воспроизводимо как метод ускорения,ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,docs/docs/math-foundations/sacred-formulas.md:273-283,e969471db87977c8
 cases/sidak_applicability_20260816.py,"Порог Шидака 5,06σ применим к зависимому семейству формул",ВОПРОС,docs/docs/math-foundations/sacred-formulas.md:257-259,e969471db87977c8
 cases/sidak_threshold_20260815.py,"При 123 201 испытании и семейной ошибке 0,05 порог Шидака равен 5,06σ",ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,docs/docs/math-foundations/sacred-formulas.md:257-259,e969471db87977c8
+cases/solar_mass_external_20260902.py,Формула массы Солнца против внешней оценки Harmanec–Prša 2011,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:149,e969471db87977c8
 cases/spectral_index_external_20260902.py,Формула спектрального индекса против оценки Planck 2018,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:82,e969471db87977c8
 cases/top_mass_external_20260902.py,Формула массы t-кварка против внешней оценки PDG 2024,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:140,e969471db87977c8
 cases/transcendental_3phi_value.py,"3^φ напечатано как 5,91559",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:169,7df30c36cc64c8fc

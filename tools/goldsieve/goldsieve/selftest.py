@@ -396,6 +396,29 @@ def _reason_subtypes() -> int:
           "external_source_degenerate" in NON_AGGREGATABLE and
           "external_source_degenerate" in ACTION)
 
+    untraceable = Claim(
+        name="внешняя цель без корпусного наблюдаемого",
+        claim_kind="prediction",
+        claim_family="new_external_family",
+        reference=lambda: 7.0,
+        external_target=lambda: {
+            "value": 7.0,
+            "uncertainty": 0.1,
+            "source": "https://nist.gov/fixture",
+        },
+    )
+    untraceable_result = sieve_external_target(untraceable)
+    check("внешняя цель без файла корпуса опознана как external_observation_untraceable",
+          untraceable_result.status == _V and
+          untraceable_result.reason_code == "external_observation_untraceable")
+    check("нетрассируемое наблюдаемое не агрегируется",
+          reason_of([untraceable_result], EMPTY) ==
+          "external_observation_untraceable" and
+          "external_observation_untraceable" in NON_AGGREGATABLE)
+    check("для нетрассируемого наблюдаемого объявлено действие",
+          "external_observation_untraceable" in ACTION and
+          "corpus/trinity" in ACTION["external_observation_untraceable"])
+
     # ПОРЯДОК ПРАВИЛ: множественность сильнее обоих новых подтипов. Иначе
     # совпадение, купленное перебором, объяснялось бы «сломанным контролем» и
     # уходило из-под правила о предрегистрации пространства поиска.
@@ -1171,7 +1194,7 @@ def main() -> int:
     from .sidak import selftest as _sid
     from .preconditions import selftest as _pre
     mods = [("неопределённость", _stats.selftest, 9), ("покрытие", _cov, 11),
-            ("подтипы причины", _reason_subtypes, 11),
+            ("подтипы причины", _reason_subtypes, 14),
         ("вырождение по тождественности", _identity_guards, 10),
             ("граф вызовов: косвенная тавтология", _identity_graph, 18),
             ("метрики согласия формы", _gof_selftest, 6),

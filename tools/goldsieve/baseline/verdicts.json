@@ -952,6 +952,13 @@
     "inputs_digest": "e969471db87977c8"
   },
   {
+    "case": "cases/solar_mass_external_20260902.py",
+    "claim": "Формула массы Солнца против внешней оценки Harmanec–Prša 2011",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:149",
+    "inputs_digest": "e969471db87977c8"
+  },
+  {
     "case": "cases/spectral_index_external_20260902.py",
     "claim": "Формула спектрального индекса против оценки Planck 2018",
     "verdict": "ПУСТО",

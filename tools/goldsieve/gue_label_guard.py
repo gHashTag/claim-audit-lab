@@ -131,6 +131,7 @@ AUDIT_LOG_GLOBS = ("tick*_gate.txt", "tick*-gate.txt", "tick*-findings.md",
                    "tick*-selftest.txt", "tick*-selftest.json",
                    "tick*-gue.txt", "tick*_gue.txt",
                    "tick*-gue-label-guard.txt", "tick*-gue-label-guard.json",
+                   "tick*-gue-label-*.txt", "tick*-gue-label-*.json",
                    "tick*-state.md", "tick*-state.txt", "tick*-state.json",
                    "tick*-audit.txt", "tick*-audit.json",
                    "tick*-ledger-tail.txt")
@@ -264,6 +265,7 @@ def selftest() -> int:
         ("cron_tracking/20fee222/append_tick158_ledger.py", "audit_log"),
         ("cron_tracking/8dff7aa3/tick-counters.json", "audit_log"),
         ("cron_tracking/20fee222/tick110-gue-selftest.txt", "audit_log"),
+        ("cron_tracking/20fee222/tick296-gue-label-guard-full.txt", "audit_log"),
         ("cron_tracking/20fee222/tick111-state.md", "audit_log"),
     ]
     for rel, want in role_cases:

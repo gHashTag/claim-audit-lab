@@ -2,19 +2,19 @@
   "counts": {
     "docs": 20,
     "logs": 16,
-    "tool": 193
+    "tool": 194
   },
-  "created": "2026-09-02T15:32:06",
-  "digest": "08be074adc6d8e92",
+  "created": "2026-09-02T17:30:48",
+  "digest": "f782324b6814176b",
   "groups": {
     "docs": {
       "cron_tracking/8dff7aa3/audit-ledger.md": {
-        "sha256": "115bfcaa3ac665355e2b6ab498565e08f43bad2c04e97f41f13a35eb7a76e74d",
-        "size": 2535654
+        "sha256": "996cb0e4c234c4f9e31637f81ddbcad7163477277ea9feafe1704ef66a4c310e",
+        "size": 2552614
       },
       "goldsieve/claims.yaml": {
-        "sha256": "5d08b021c8d9f1081b79ee831cd8b8d8bd8d88e7fdcd8e468af0de69c6339868",
-        "size": 145093
+        "sha256": "aefa37a32277b6942e027975c21e2d47c6c26ccee549032c48dafb928a46e299",
+        "size": 146974
       },
       "goldsieve/coverage_manifest.yaml": {
         "sha256": "20d3d8e0ebb554768b069fa3034f055ec8787cd483769769e9a0ec08c8a869f8",
@@ -152,11 +152,11 @@
       },
       "cron_tracking/8dff7aa3/runs.jsonl": {
         "append_only": true,
-        "head_hash": "fe5a1f55aef7e788f0cca030e7f9db677b7f83cb997163c6fd56e86f57a883b3",
-        "last_seq": 2545,
-        "prefix_bytes": 1207985,
-        "prefix_sha256": "32aecae8d766c601dbb63a1e38a7241b90fe8b701700c996aab938c2e9ccdb9c",
-        "size": 1207985
+        "head_hash": "5efd069fd1ed5d788ca55f1fb9109a51eff6ccd50cd881836e807f4f68e3e80f",
+        "last_seq": 2567,
+        "prefix_bytes": 1218632,
+        "prefix_sha256": "3535944f5cf7220d7ca1a48d6754ca2edf6f26b9eea78ff71c9dd2793e86226f",
+        "size": 1218632
       }
     },
     "tool": {
@@ -588,6 +588,10 @@
         "sha256": "059a2c840e70b1d84888b33c7cfd921f04739e3451b505e6820c4c8dec9adb67",
         "size": 11189
       },
+      "goldsieve/cases/solar_mass_external_20260902.py": {
+        "sha256": "968d731f8f2c9336474d13141e7fb9a4319337ecfb025d81912bf946eb0cc3a2",
+        "size": 7036
+      },
       "goldsieve/cases/spectral_index_external_20260902.py": {
         "sha256": "0aa02db13008ad92d3cad2d78943baf4ef2aeb1658cd4c43bb9a128574fe61ae",
         "size": 6626
@@ -681,8 +685,8 @@
         "size": 15138
       },
       "goldsieve/claims.yaml": {
-        "sha256": "5d08b021c8d9f1081b79ee831cd8b8d8bd8d88e7fdcd8e468af0de69c6339868",
-        "size": 145093
+        "sha256": "aefa37a32277b6942e027975c21e2d47c6c26ccee549032c48dafb928a46e299",
+        "size": 146974
       },
       "goldsieve/coverage_manifest.py": {
         "sha256": "8584989d602eb8157ac96b7d23a797c92ef716daa066b511604aae24f4be47b7",
@@ -825,16 +829,16 @@
         "size": 10996
       },
       "goldsieve/goldsieve/selftest.py": {
-        "sha256": "780d17e5657c1fc6710c00170836e8f385aeb4ddca3401a896476d19cea6788f",
-        "size": 63696
+        "sha256": "435ba304aa0483204a18912482dc8650786e76ed3dc586e80f9fb9d5cd4f4048",
+        "size": 64902
       },
       "goldsieve/goldsieve/sidak.py": {
         "sha256": "826bdc96402bd386f23ff3e60d46440b3d8814f2bc7a0e7291662997139576a5",
         "size": 16835
       },
       "goldsieve/goldsieve/sieve.py": {
-        "sha256": "7658f93bc7f45e7732954d23f7890db12cfedd26615b382fe5f9441c6ca94f91",
-        "size": 104590
+        "sha256": "6e5b87aa1fea03fc18b0f195961f4df2aa7a00987dd73a0f8727cdd8aff19c73",
+        "size": 106365
       },
       "goldsieve/goldsieve/stats.py": {
         "sha256": "aafab1e86a6b1139298ca34a57b32c406b8a7619dc241ab60e0ae048adf5f1cd",
@@ -853,8 +857,8 @@
         "size": 4648
       },
       "goldsieve/gue_label_guard.py": {
-        "sha256": "8aa610371c1f92bca35e10785ce422cc476981918753c5ea09a366099a980fc6",
-        "size": 23835
+        "sha256": "d9c174f955175e751a7f46fd900c8ea8fd527bcc3f6fc58dfd5fb391a2286d1a",
+        "size": 23987
       },
       "goldsieve/independence.py": {
         "sha256": "88e86c36aa0e065f011bbdb235045a5b659cb6e334b0c0c4be1436179e2e7523",
@@ -941,8 +945,8 @@
     "между двумя соседними checkpoint последовательность защищена только цепочкой в самом журнале"
   ],
   "log_checkpoint": {
-    "head_hash": "fe5a1f55aef7e788f0cca030e7f9db677b7f83cb997163c6fd56e86f57a883b3",
-    "last_seq": 2545,
+    "head_hash": "5efd069fd1ed5d788ca55f1fb9109a51eff6ccd50cd881836e807f4f68e3e80f",
+    "last_seq": 2567,
     "log_name": "runs.jsonl",
     "note": "цепочка обнаруживает правку копии; авторство и полная подмена вместе с checkpoint не покрыты",
     "snapshot_manifest": "goldsieve/baseline/snapshot-manifest.json"
