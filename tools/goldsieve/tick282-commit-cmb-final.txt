@@ -1,0 +1,2 @@
+[tools/goldsieve-v3-2026-08-13 4d34af0] тик 282: обновить артефакт CMB
+ 1 file changed, 20 insertions(+), 20 deletions(-)

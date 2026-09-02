@@ -1,0 +1,32 @@
+  ok  strict=0 ожидалось=1 получено=1 :: | Std deviation | 0.4009 | 0.4220 | exact GUE |
+  ok  strict=0 ожидалось=1 получено=1 :: | Metric | Value | GUE (computed) | 0.4220 |
+  ok  strict=0 ожидалось=1 получено=1 :: std 0,4220 против точного закона GUE
+  ok  strict=1 ожидалось=1 получено=1 :: | Std vs GUE | 0.4009 vs 0.4220 (-5.0%) |
+  ok  strict=1 ожидалось=1 получено=1 :: std = 0.4220 по GUE
+  ok  strict=0 ожидалось=0 получено=0 :: std = 0.4220 по GUE
+  ok  strict=1 ожидалось=0 получено=0 :: | GUE Wigner surmise (computed) | 0.4220 |
+  ok  strict=1 ожидалось=0 получено=0 :: 0.4220 — Wigner surmise, а не точный GUE
+  ok  strict=1 ожидалось=0 получено=0 :: exact GUE gives 0.4242576222440628
+  ok  strict=1 ожидалось=0 получено=0 :: 27040.422044460
+  ok  strict=1 ожидалось=0 получено=0 ::   ok  запрет метки exact_gue на 0,4220  [Python 3.14.3]
+  ok  strict=1 ожидалось=0 получено=0 :: шаги «чувствительность запрета exact_gue», «запрет метки exact_gue на 
+  ok  strict=1 ожидалось=1 получено=1 :: запрет метки exact_gue на 0,4220; при этом 0.4220 — exact GUE
+  ok  strict=0 ожидалось=0 получено=0 :: проверка «запрет метки exact_gue на 0,4220» пройдена
+  ok  мутационная цель на обходе дерева: найдено 1
+  ok  роль corpus    получено corpus    :: corpus/trinity/reports/zeta.md
+  ok  роль corpus    получено corpus    :: corpus/trinity/audit-ledger.md
+  ok  роль tool      получено tool      :: goldsieve/cases/zeta_std.py
+  ok  роль audit_log получено audit_log :: cron_tracking/8dff7aa3/audit-ledger.md
+  ok  роль audit_log получено audit_log :: cron_tracking/20fee222/tick90_gate.txt
+  ok  роль audit_log получено audit_log :: cron_tracking/20fee222/tick89-findings.md
+  ok  роль audit_log получено audit_log :: cron_tracking/20fee222/tick157_state.md
+  ok  роль audit_log получено audit_log :: cron_tracking/20fee222/append_tick158_ledger.py
+  ok  роль audit_log получено audit_log :: cron_tracking/8dff7aa3/tick-counters.json
+  ok  роль audit_log получено audit_log :: cron_tracking/20fee222/tick110-gue-selftest.txt
+  ok  роль audit_log получено audit_log :: cron_tracking/20fee222/tick111-state.md
+  ok  роль не прикрывает нарушение рядом: найдено 1
+  ok  неподвижная точка после записи доклада: 0 -> 0
+  ok  мутация правила роли ловится: без правила 1, с правилом 0
+  ok  исторические ложные срабатывания (14 имён): с правилом корня 0, без правила 14
+  ok  имя журнала НЕ прикрывает корпус: найдено 1 (ожидается 1)
+самопроверка запрета: провалов 0

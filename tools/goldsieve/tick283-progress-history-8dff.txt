@@ -1,0 +1,5 @@
+докладов 23, разобрано 23, различных сутей 6, групп повторов 4, докладов в повторах 21
+  27ff5bc869dfc580: tick225-report.md, tick227-report.md, tick229-report.md, tick231-report.md, tick241-report.md
+  7802a361e8ef4abb: tick226-report.md, tick248-report.md, tick253-report.md
+  cfc01c98c01761d8: tick228-report.md, tick243-report.md, tick244-report.md, tick246-report.md, tick247-report.md, tick251-report.md, tick254-report.md, tick256-report.md, tick258-report.md
+  87ab34fa60fe46ea: tick233-report.md, tick234-report.md, tick237-report.md, tick242-report.md

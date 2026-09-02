@@ -1,0 +1,568 @@
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* tools/goldsieve-v3-2026-08-13 cross-platform selftest · 33591572838
+Triggered via workflow_dispatch less than a minute ago
+
+JOBS
+* windows-latest / py3.12 (ID 100126475408)
+  ✓ Set up job
+  * Run actions/checkout@v4
+  * Run actions/setup-python@v5
+  * runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/checkout@v4
+* macos-latest / py3.12 (ID 100126475445)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* macos-latest / py3.13 (ID 100126475494)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.13 (ID 100126475497)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* windows-latest / py3.13 (ID 100126475506)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.12 (ID 100126475531)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* tools/goldsieve-v3-2026-08-13 cross-platform selftest · 33591572838
+Triggered via workflow_dispatch less than a minute ago
+
+JOBS
+* windows-latest / py3.12 (ID 100126475408)
+  ✓ Set up job
+  * Run actions/checkout@v4
+  * Run actions/setup-python@v5
+  * runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/checkout@v4
+* macos-latest / py3.12 (ID 100126475445)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* macos-latest / py3.13 (ID 100126475494)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.13 (ID 100126475497)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* windows-latest / py3.13 (ID 100126475506)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.12 (ID 100126475531)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* tools/goldsieve-v3-2026-08-13 cross-platform selftest · 33591572838
+Triggered via workflow_dispatch less than a minute ago
+
+JOBS
+* windows-latest / py3.12 (ID 100126475408)
+  ✓ Set up job
+  * Run actions/checkout@v4
+  * Run actions/setup-python@v5
+  * runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/checkout@v4
+* macos-latest / py3.12 (ID 100126475445)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* macos-latest / py3.13 (ID 100126475494)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.13 (ID 100126475497)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* windows-latest / py3.13 (ID 100126475506)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.12 (ID 100126475531)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* tools/goldsieve-v3-2026-08-13 cross-platform selftest · 33591572838
+Triggered via workflow_dispatch less than a minute ago
+
+JOBS
+* windows-latest / py3.12 (ID 100126475408)
+  ✓ Set up job
+  * Run actions/checkout@v4
+  * Run actions/setup-python@v5
+  * runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/checkout@v4
+* macos-latest / py3.12 (ID 100126475445)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* macos-latest / py3.13 (ID 100126475494)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.13 (ID 100126475497)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* windows-latest / py3.13 (ID 100126475506)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.12 (ID 100126475531)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* tools/goldsieve-v3-2026-08-13 cross-platform selftest · 33591572838
+Triggered via workflow_dispatch less than a minute ago
+
+JOBS
+* windows-latest / py3.12 (ID 100126475408)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* macos-latest / py3.12 (ID 100126475445)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  ✓ goldsieve selftest
+  ✓ gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* macos-latest / py3.13 (ID 100126475494)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.13 (ID 100126475497)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* windows-latest / py3.13 (ID 100126475506)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.12 (ID 100126475531)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* tools/goldsieve-v3-2026-08-13 cross-platform selftest · 33591572838
+Triggered via workflow_dispatch less than a minute ago
+
+JOBS
+* windows-latest / py3.12 (ID 100126475408)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* macos-latest / py3.12 (ID 100126475445)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  ✓ goldsieve selftest
+  ✓ gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* macos-latest / py3.13 (ID 100126475494)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.13 (ID 100126475497)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* windows-latest / py3.13 (ID 100126475506)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.12 (ID 100126475531)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+macos-latest / py3.12: .github#2
+
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+macos-latest / py3.13: .github#2
+
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+ubuntu-latest / py3.12: .github#2
+
+Refreshing run status every 3 seconds. Press Ctrl+C to quit.
+
+* tools/goldsieve-v3-2026-08-13 cross-platform selftest · 33591572838
+Triggered via workflow_dispatch less than a minute ago
+
+JOBS
+* windows-latest / py3.12 (ID 100126475408)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* macos-latest / py3.12 (ID 100126475445)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  ✓ goldsieve selftest
+  ✓ gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* macos-latest / py3.13 (ID 100126475494)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.13 (ID 100126475497)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* windows-latest / py3.13 (ID 100126475506)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  * dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+* ubuntu-latest / py3.12 (ID 100126475531)
+  ✓ Set up job
+  ✓ Run actions/checkout@v4
+  ✓ Run actions/setup-python@v5
+  ✓ runtime fingerprint
+  ✓ dependencies
+  * goldsieve selftest
+  * gue label guard selftest
+  * aborted audit selftest
+  * replay queue selftest
+  * Post Run actions/setup-python@v5
+  * Post Run actions/checkout@v4
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+macos-latest / py3.12: .github#2
+
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+macos-latest / py3.13: .github#2
+
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+ubuntu-latest / py3.13: .github#2
+
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+ubuntu-latest / py3.12: .github#2
+
+failed to get jobs: HTTP 403: API rate limit exceeded for 23.22.183.111. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.) (https://api.github.com/repos/gHashTag/claim-audit-lab/actions/runs/33591572838/jobs?per_page=100)

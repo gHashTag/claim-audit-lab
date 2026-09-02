@@ -131,7 +131,8 @@ AUDIT_LOG_GLOBS = ("tick*_gate.txt", "tick*-gate.txt", "tick*-findings.md",
                    "tick*-selftest.txt", "tick*-selftest.json",
                    "tick*-gue.txt", "tick*_gue.txt",
                    "tick*-state.md", "tick*-state.txt", "tick*-state.json",
-                   "tick*-audit.txt", "tick*-audit.json")
+                   "tick*-audit.txt", "tick*-audit.json",
+                   "tick*-ledger-tail.txt")
 
 
 def classify_role(path: Path) -> str:

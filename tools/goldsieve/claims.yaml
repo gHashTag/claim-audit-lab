@@ -1926,3 +1926,30 @@ claims:
     Наблюдаемое 0,315 прочитано из указанной строки корпуса; внешний URL:
     https://arxiv.org/abs/1807.06209. Формула и внешнее измерение разделены;
     физическая интерпретация совпадения не утверждается.
+- source: docs/docs/math-foundations/sacred-formulas.md:201
+  case: cases/qcd_phase_tc_external_20260901.py
+  claim: Формула псевдокритической температуры КХД против внешней оценки HotQCD
+  verdict: ПУСТО
+  reason_subtype: multiplicity_limited
+  novelty_key: qcd:transition_temperature:external:v1
+  priority: 2
+  measurement_source: HotQCD, Chiral crossover in QCD
+  observable: корпусное значение псевдокритической температуры T_c = 156,5 МэВ
+  models: ["формула Trinity (7, 0, 1, 2, 1)", "оценка HotQCD 156,5 ± 1,5 МэВ"]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На указанных версиях CPython строка корпуса прочитана отдельно от
+    вычисляемой формулы, а внешняя оценка HotQCD содержит значение 156,5 ± 1,5
+    МэВ. Формула пересчитана независимо; нулевое отклонение не является
+    доказательством, поскольку С16 проверяет множественность, а С17 проверяет
+    сжатие. Итог каскада сит — ПУСТО / multiplicity_limited, а не новое
+    простое подтверждение.
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 156,5 прочитано из строки корпуса
+    /home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md;
+    внешняя цель 156,5 ± 1,5 МэВ имеет URL
+    https://arxiv.org/abs/1812.08235. Нулевое отклонение между разными
+    источниками не считается пустым результатом: риск множественности
+    измеряется отдельно.

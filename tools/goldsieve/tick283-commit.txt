@@ -1,0 +1,3 @@
+[tools/goldsieve-v3-2026-08-13 57a2e91] тик 283: внешняя сверка плотности вещества
+ 2 files changed, 233 insertions(+)
+ create mode 100644 tools/goldsieve/cases/omega_matter_external_20260902.py

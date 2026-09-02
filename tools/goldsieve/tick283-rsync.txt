@@ -1,0 +1,11 @@
+ M tools/goldsieve/claims.yaml
+ M tools/goldsieve/repo_sync_guard.json
+?? tools/goldsieve/cases/omega_matter_external_20260902.py
+?? tools/goldsieve/tick282-commit-final.txt
+?? tools/goldsieve/tick282-commit.txt
+?? tools/goldsieve/tick282-counter-completed.txt
+?? tools/goldsieve/tick282-push-final.txt
+?? tools/goldsieve/tick282-push.txt
+?? tools/goldsieve/tick282-repo-sync-guard-final.txt
+?? tools/goldsieve/tick282-rsync-case-final.txt
+?? tools/goldsieve/tick282-rsync-final.txt

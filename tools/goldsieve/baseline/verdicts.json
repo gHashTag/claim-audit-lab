@@ -686,6 +686,13 @@
     "inputs_digest": "e969471db87977c8"
   },
   {
+    "case": "cases/omega_matter_external_20260902.py",
+    "claim": "Формула плотности вещества против оценки Planck 2018",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:80",
+    "inputs_digest": "e969471db87977c8"
+  },
+  {
     "case": "cases/particle_physics_example_mean_error_20260815.py",
     "claim": "Средняя ошибка пяти явно приведённых отношений Particle Physics равна 0,012 %",
     "verdict": "ОПРОВЕРГНУТО",
