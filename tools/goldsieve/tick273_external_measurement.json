@@ -1,0 +1,14 @@
+{
+  "тик": 273,
+  "наблюдаемое_из_корпуса": 222.0,
+  "строка_наблюдения": "| **Dirac CP phase** | $7 \\cdot 3^{-2} \\cdot \\pi^{4} \\cdot \\varphi^{-4} \\cdot e^{3}$ | 222.0 | ° | **Testable** — predicted at **0.008%** error |",
+  "источник_наблюдения": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+  "отпечаток_источника": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
+  "external_target": {
+    "value": 197.0,
+    "uncertainty": 33.5,
+    "source": "https://pdg.lbl.gov/2024/reviews/rpp2024-rev-neutrino-mixing.pdf",
+    "название": "фаза Дирака CP, наилучшая оценка при нормальном порядке"
+  },
+  "симметризация_неопределённости": "среднее арифметическое асимметричных +42/-25 градусов PDG"
+}

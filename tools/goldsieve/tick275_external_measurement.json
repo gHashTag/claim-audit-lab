@@ -1,0 +1,20 @@
+{
+  "тик": 275,
+  "наблюдаемое_из_корпуса": 5.3912,
+  "строка_наблюдения": "| Planck time ($\\times 10^{44}$ s) | 5.3912 |",
+  "источник_наблюдения": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+  "отпечаток_источника": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
+  "external_target": {
+    "value": 5.391247,
+    "uncertainty": 6e-05,
+    "source": "https://physics.nist.gov/cgi-bin/cuu/Value?plkt",
+    "название": "время Планка, CODATA 2022"
+  },
+  "отклонение_сигма": 3.305270685016737,
+  "отклонение_сигма_формулы": 3.305270685016737,
+  "стандартные_диапазоны": 20412,
+  "фактические_диапазоны": 123201,
+  "вердикт_сита": "ВОПРОС",
+  "подтип": "no_compression",
+  "novelty_key": "fundamental:planck_time:external:v1"
+}

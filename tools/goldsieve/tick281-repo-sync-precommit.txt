@@ -1,0 +1,1 @@
+СТОРОЖ СИНХРОННОСТИ: расхождений 3 — не отправлено в ветвь: cases/bottom_mass_external_20260902.py; различается: claims.yaml, gue_label_guard.py

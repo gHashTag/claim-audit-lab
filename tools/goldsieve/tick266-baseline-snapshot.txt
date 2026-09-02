@@ -1,0 +1,4 @@
+baseline записан: 181 файлов инструмента, 154 вердиктов
+  отпечаток файлов:    2cefcae9c6226fb9
+  отпечаток вердиктов: 88a2bc60b1509492
+  метрики: {"measure_exit": 0, "sensitivity": "1.0000", "positive": "45/45", "specificity": "1.0000", "negative": "28/28", "mutation_exit": 0, "mutants_caught": "17/17", "selftest_exit": 0, "selftest": "238 пройдено, 0 провалено"}

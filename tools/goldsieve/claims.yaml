@@ -1879,3 +1879,26 @@ claims:
   notes: >-
     Наблюдаемое 4,183 прочитано из указанной строки корпуса; внешний URL:
     https://pdg.lbl.gov/2024/tables/rpp2024-sum-quarks.pdf.
+- source: docs/docs/math-foundations/sacred-formulas.md:70
+  case: cases/cmb_temperature_external_20260902.py
+  claim: Формула температуры реликтового микроволнового фона против измерения Fixsen 2009
+  verdict: ВОПРОС
+  reason_subtype: no_compression
+  novelty_key: cosmology:cmb_temperature:external:v1
+  priority: 2
+  measurement_source: Fixsen 2009, измерение COBE/FIRAS
+  observable: корпусное значение температуры реликтового микроволнового фона 2,7255 K
+  models: ["формула Trinity (8, 4, −3, 2, −3)", "измерение Fixsen 2,72548 ± 0,00057 K"]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На указанных версиях CPython строка корпуса прочитана отдельно от
+    вычисляемой формулы, а внешнее измерение Fixsen 2009 содержит значение
+    2,72548 ± 0,00057 K. Формула даёт 2,7240634716719687 K, что отличается
+    от внешней цели примерно на −2,485 сигмы; каскад сит выносит ВОПРОС
+    с подтипом no_compression. Это не подтверждённый физический результат.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 2,7255 прочитано из указанной строки корпуса; внешний URL:
+    https://arxiv.org/abs/0911.1955.

@@ -1,0 +1,20 @@
+{
+  "тик": 281,
+  "цель": "масса b-кварка",
+  "наблюдаемое_из_корпуса": 4.183,
+  "строка_наблюдения": "4.183 | $(8, 2, -2, 3, -2)$ | 4.18222 |",
+  "источник_наблюдения": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+  "отпечаток_источника": "e969471db87977c8",
+  "reference": 4.182218395972038,
+  "external_target": {
+    "value": 4.183,
+    "uncertainty": 0.004,
+    "source": "https://pdg.lbl.gov/2024/tables/rpp2024-sum-quarks.pdf",
+    "название": "масса b-кварка в схеме MS по PDG 2024"
+  },
+  "отклонение_формулы_сигма": -0.1954010069904477,
+  "отклонение_наблюдаемого_сигма": 0.0,
+  "вердикт_сита": "ПУСТО",
+  "подтип": "multiplicity_limited",
+  "сито": "cases/bottom_mass_external_20260902.py"
+}

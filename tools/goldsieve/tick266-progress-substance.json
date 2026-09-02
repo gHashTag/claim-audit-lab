@@ -1,0 +1,10 @@
+{
+  "гейт": [69, 2, 0],
+  "регресс": [151, 0, 3],
+  "ос_матрица": [6, 6],
+  "bblm": [4, true],
+  "изменённые_файлы": [
+    "cases/neutron_proton_splitting_external_20260901.py",
+    "progress_guard.py"
+  ]
+}

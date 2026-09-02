@@ -91,6 +91,13 @@
     "inputs_digest": "247c2ca5bedd72da"
   },
   {
+    "case": "cases/bottom_mass_external_20260902.py",
+    "claim": "Формула массы b-кварка против внешней оценки PDG 2024",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:141",
+    "inputs_digest": ""
+  },
+  {
     "case": "cases/c20_empty_family_guard_20260815.py",
     "claim": "Пустое семейство С20 сохраняет вопрос вместо подтверждения",
     "verdict": "ВОПРОС",
@@ -145,6 +152,13 @@
     "verdict": "ПУСТО",
     "source": "docs/docs/research/trinity-status-2026.md:172-178",
     "inputs_digest": "723e58dc8c516835"
+  },
+  {
+    "case": "cases/cmb_temperature_external_20260902.py",
+    "claim": "Формула температуры реликтового микроволнового фона против измерения Fixsen 2009",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:70",
+    "inputs_digest": "e969471db87977c8"
   },
   {
     "case": "cases/cosmology_columns.py",
@@ -497,6 +511,13 @@
     "inputs_digest": "d5b3e20a0308f63e"
   },
   {
+    "case": "cases/higgs_mass_external_20260902.py",
+    "claim": "Формула массы бозона Хиггса против внешней оценки PDG 2024",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:43",
+    "inputs_digest": "e969471db87977c8"
+  },
+  {
     "case": "cases/hslm_convergence_fraction_20260815.py",
     "claim": "Сходимость HSLM достигла 95,7 % полного расписания",
     "verdict": "ПОДТВЕРЖДЕНО",
@@ -565,6 +586,13 @@
     "verdict": "ОПРОВЕРГНУТО",
     "source": "docs/research/JEPAT/experiments.md:10-33",
     "inputs_digest": "de2136ec577dc4ce"
+  },
+  {
+    "case": "cases/kaon_mass_external_20260902.py",
+    "claim": "Формула массы заряженного каона против внешней оценки PDG 2024",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:142",
+    "inputs_digest": "e969471db87977c8"
   },
   {
     "case": "cases/khinchin.py",
@@ -684,6 +712,13 @@
     "verdict": "ПУСТО",
     "source": "docs/research/PELLIS_TRINITY_COMPARISON.md:106-115",
     "inputs_digest": "ca3de79351385e3a"
+  },
+  {
+    "case": "cases/planck_time_external_20260903.py",
+    "claim": "Формула времени Планка против внешней оценки CODATA 2022",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:131",
+    "inputs_digest": "e969471db87977c8"
   },
   {
     "case": "cases/pointer_architecture_external_20260814.py",
@@ -893,6 +928,13 @@
     "claim": "При 123 201 испытании и семейной ошибке 0,05 порог Шидака равен 5,06σ",
     "verdict": "ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО",
     "source": "docs/docs/math-foundations/sacred-formulas.md:257-259",
+    "inputs_digest": "e969471db87977c8"
+  },
+  {
+    "case": "cases/top_mass_external_20260902.py",
+    "claim": "Формула массы t-кварка против внешней оценки PDG 2024",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:140",
     "inputs_digest": "e969471db87977c8"
   },
   {

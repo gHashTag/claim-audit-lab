@@ -12,6 +12,7 @@ cases/b006_gf16_delta_20260815.py,"Разность PPL GF16 и исходной
 cases/b006_gf16_pvalue_20260815.py,"Двустороннее p-значение парного t-теста равно 0,87",ПОДТВЕРЖДЕНО,docs/research/bundles/B006_GF16.md:76-79,6ca34545aa9e39eb
 cases/b007_vsa_speedup_20260815.py,"Табличное ускорение VSA равно 1,5×",ПОДТВЕРЖДЕНО,docs/research/bundles/B007_VSA.md:39-46,9da22aa1b5738c96
 cases/bitnet_coherence_throughput_recipe_20260817.py,Отчёт BitNet отделяет связную генерацию от производительности теста ядра,ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,docs/docs/research/bitnet-report.md:1-220,247c2ca5bedd72da
+cases/bottom_mass_external_20260902.py,Формула массы b-кварка против внешней оценки PDG 2024,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:141,
 cases/c20_empty_family_guard_20260815.py,Пустое семейство С20 сохраняет вопрос вместо подтверждения,ВОПРОС,goldsieve/sieve.py:1440,
 cases/cifar10_metric_recipe_20260816.py,"Точность fp16 на CIFAR-10 равна 99,99 процента по воспроизводимому рецепту",ВОПРОС,data/results/cifar10_metrics.json; data/results/cifar10_summary.csv,a708af982fa12ee0
 cases/ckm_lqg_external_20260813.py,|V_cb| = γ³π согласуется с внешним значением CKM,ПУСТО,"docs/papers/README_FOR_SCIENTISTS.md:49,96",fb46d9572a26c132
@@ -20,6 +21,7 @@ cases/ckm_lqg_external_20260813.py,γ = φ⁻³ согласуется с вне
 cases/ckm_vtd_vts_vub_external_20260814.py,Формула V_td = e³/(81φ⁷) согласуется с внешним значением PDG,ПУСТО,docs/docs/research/trinity-status-2026.md:172-178,723e58dc8c516835
 cases/ckm_vtd_vts_vub_external_20260814.py,Формула V_ts = 2916/(π⁵φ³e⁴) согласуется с внешним значением PDG,ПУСТО,docs/docs/research/trinity-status-2026.md:172-178,723e58dc8c516835
 cases/ckm_vtd_vts_vub_external_20260814.py,Формула V_ub = 7/(729φ²) согласуется с внешним значением PDG,ПУСТО,docs/docs/research/trinity-status-2026.md:172-178,723e58dc8c516835
+cases/cmb_temperature_external_20260902.py,Формула температуры реликтового микроволнового фона против измерения Fixsen 2009,ВОПРОС,docs/docs/math-foundations/sacred-formulas.md:70,e969471db87977c8
 cases/cosmology_columns.py,"Ω_DM = γ⁴π²/φ даёт 0,257",ОПРОВЕРГНУТО,docs/papers/README_FOR_SCIENTISTS.md:72,
 cases/cosmology_columns.py,"Ω_Λ = γ⁸π⁴/φ² даёт 0,688",ОПРОВЕРГНУТО,docs/papers/README_FOR_SCIENTISTS.md:71,
 cases/cosmology_columns.py,"Колонка Error для sin²θ₁₃ равна 0,008 %",ОПРОВЕРГНУТО,docs/papers/README_FOR_SCIENTISTS.md:43,
@@ -70,6 +72,7 @@ cases/golden_chain_v251_4gram_ppl_recipe_20260816.py,"4-граммная KN-пе
 cases/golden_chain_v252_held_out_recipe_20260816.py,Отчёт Golden Chain v2.52 подтверждает честное обобщение 4-граммной KN-модели на отложенной выборке,ВОПРОС,deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-52-held-out-report.md:1-260,e7e8cc716e2cd677
 cases/golden_chain_v30_absolute_recipe_20260817.py,Golden Chain v3.0 воспроизводимо проходит 764 теста,ВОПРОС,docs/docs/research/trinity-golden-chain-v3-0-absolute-report.md:1-180,1c7ace52f744d9fe
 cases/gravitational_constant_external_20260814.py,Формула G = π³γ²/φ согласуется с CODATA,ВОПРОС,docs/docs/research/papers/gravitational-constants.md:10-15,d5b3e20a0308f63e
+cases/higgs_mass_external_20260902.py,Формула массы бозона Хиггса против внешней оценки PDG 2024,ВОПРОС,docs/docs/math-foundations/sacred-formulas.md:43,e969471db87977c8
 cases/hslm_convergence_fraction_20260815.py,"Сходимость HSLM достигла 95,7 % полного расписания",ПОДТВЕРЖДЕНО,docs/research/bundles/B001_HSLM.md:127-130,35938cf8a9418cbb
 cases/hubble_planck_external_20260823.py,Формула H₀ = 4·3³·π⁻³·φ²·e² согласуется с Planck,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:74,
 cases/identity_cross_module_20260814.py,Межмодульная цепочка наблюдение→эталон распознаётся как тождество,ПУСТО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,1235b6ac4959d34b
@@ -80,6 +83,7 @@ cases/identity_honest_controls_20260814.py,Чтение каталога чер�
 cases/jarlskog_theta13_external_20260814.py,Формула Jarlskog J согласуется с внешней оценкой PDG,ПУСТО,docs/papers/README_FOR_SCIENTISTS.md:37-43,7424155384454ccb
 cases/jarlskog_theta13_external_20260814.py,Формула sin²θ₁₃ согласуется с внешней оценкой NuFIT,ПУСТО,docs/papers/README_FOR_SCIENTISTS.md:37-43,7424155384454ccb
 cases/jepa_experiment_consistency_20260817.py,Сводка T-JEPA согласована с таблицей временного benchmark,ОПРОВЕРГНУТО,docs/research/JEPAT/experiments.md:10-33,de2136ec577dc4ce
+cases/kaon_mass_external_20260902.py,Формула массы заряженного каона против внешней оценки PDG 2024,ВОПРОС,docs/docs/math-foundations/sacred-formulas.md:142,e969471db87977c8
 cases/khinchin.py,"K по нулям дзеты = 2.620, систематически ниже 2.685",ВОПРОС,data/zeta/zeta_bin_analysis_update.md,8e0cc0c774a33542
 cases/khinchin_estimator_recipe_20260816.py,"Сводка Khinchin K по десяти корзинам равна 2,6201 ± 0,0293",ПОДТВЕРЖДЕНО,"data/zeta/zeta_bin_analysis_update.md:12-14,31-40",02b12e8636dfa325
 cases/level11_neurosymbolic_benchmark_recipe_20260817.py,Отчёт Level 11.31 воспроизводимо подтверждает нейросимвольный benchmark 162 из 166,ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,docs/docs/research/trinity-level11-neuro-symbolic-bench-report.md:1-220,5e9d51764045c3f8
@@ -97,6 +101,7 @@ cases/particle_physics_example_mean_error_20260815.py,"Средняя ошибк
 cases/pellis_external_targets_20260814.py,Формула r_e = 54φ/π³ согласуется с CODATA,ОПРОВЕРГНУТО,docs/research/PELLIS_TRINITY_COMPARISON.md:138,ca3de79351385e3a
 cases/pellis_external_targets_20260814.py,Формула sin²θ_W = 2π³e/729 согласуется с PDG,ПУСТО,docs/research/PELLIS_TRINITY_COMPARISON.md:128,ca3de79351385e3a
 cases/pellis_external_targets_20260814.py,Формула Ω_Λ = 6561φ⁻³/(π⁵e²) согласуется с Planck,ПУСТО,docs/research/PELLIS_TRINITY_COMPARISON.md:106-115,ca3de79351385e3a
+cases/planck_time_external_20260903.py,Формула времени Планка против внешней оценки CODATA 2022,ВОПРОС,docs/docs/math-foundations/sacred-formulas.md:131,e969471db87977c8
 cases/pointer_architecture_external_20260814.py,Формула 1/α = 4·3²·π⁻¹·φ·e² согласуется с CODATA,ОПРОВЕРГНУТО,docs/research/pointer_architecture_companion.md:234-244,725cdd17b496fe6f
 cases/pointer_architecture_external_20260814.py,Формула H₀ = 4·3³·π⁻³·φ²·e² согласуется с оценкой Planck,ПУСТО,docs/research/pointer_architecture_companion.md:212-220,725cdd17b496fe6f
 cases/pointer_architecture_external_20260814.py,Формула Ω_Λ = 4·3²·φ⁻²·e⁻³ согласуется с оценкой Planck,ПУСТО,docs/research/pointer_architecture_companion.md:223-231,725cdd17b496fe6f
@@ -127,6 +132,7 @@ cases/sacred_tsirelson_exact_external_20260817.py,Формула Tsirelson в р
 cases/sacred_two_formula_composition_recipe_20260817.py,Составление двух священных формул воспроизводимо как метод ускорения,ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,docs/docs/math-foundations/sacred-formulas.md:273-283,e969471db87977c8
 cases/sidak_applicability_20260816.py,"Порог Шидака 5,06σ применим к зависимому семейству формул",ВОПРОС,docs/docs/math-foundations/sacred-formulas.md:257-259,e969471db87977c8
 cases/sidak_threshold_20260815.py,"При 123 201 испытании и семейной ошибке 0,05 порог Шидака равен 5,06σ",ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,docs/docs/math-foundations/sacred-formulas.md:257-259,e969471db87977c8
+cases/top_mass_external_20260902.py,Формула массы t-кварка против внешней оценки PDG 2024,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:140,e969471db87977c8
 cases/transcendental_3phi_value.py,"3^φ напечатано как 5,91559",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:169,7df30c36cc64c8fc
 cases/transcendental_catalog_values.py,"3^(1/φ) напечатано как 1,97186",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:184,7df30c36cc64c8fc
 cases/transcendental_catalog_values.py,"e^φ напечатано как 5,04317",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:201,7df30c36cc64c8fc

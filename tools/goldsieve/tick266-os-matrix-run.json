@@ -1,0 +1,54 @@
+{
+ "databaseId": 33521216620,
+ "workflowName": "cross-platform selftest",
+ "status": "completed",
+ "conclusion": "success",
+ "headSha": "db703da450c5642ca242dc98f47062cff62ec5ab",
+ "ref": "tools/goldsieve-v3-2026-08-13",
+ "jobs": [
+  {
+   "id": 99900659532,
+   "name": "ubuntu-latest / py3.12",
+   "status": "completed",
+   "conclusion": "success"
+  },
+  {
+   "id": 99900659316,
+   "name": "ubuntu-latest / py3.13",
+   "status": "completed",
+   "conclusion": "success"
+  },
+  {
+   "id": 99900659164,
+   "name": "macos-latest / py3.13",
+   "status": "completed",
+   "conclusion": "success"
+  },
+  {
+   "id": 99900659319,
+   "name": "macos-latest / py3.12",
+   "status": "completed",
+   "conclusion": "success"
+  },
+  {
+   "id": 99900659271,
+   "name": "windows-latest / py3.13",
+   "status": "completed",
+   "conclusion": "success"
+  },
+  {
+   "id": 99900659841,
+   "name": "windows-latest / py3.12",
+   "status": "completed",
+   "conclusion": "success"
+  }
+ ],
+ "jobs_summary": {
+  "успешно": 6,
+  "всего": 6,
+  "пропуски": 0,
+  "провалы": 0
+ },
+ "evidence_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33521216620",
+ "evidence": "публичная страница запуска сообщает Success и 6 jobs completed; API gh jobs временно ответил HTTP 403 rate limit"
+}

@@ -1,0 +1,20 @@
+{
+  "тик": 271,
+  "цель": "масса заряженного каона",
+  "наблюдаемое_из_корпуса": 493.68,
+  "строка_наблюдения": "| $K^+$ mass (MeV) | 493.68 | $(8, 2, 0, 4, 0)$ | 493.495 | 0.037% |",
+  "источник_наблюдения": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+  "отпечаток_источника": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
+  "reference": 493.49534156997737,
+  "external_target": {
+    "value": 493.677,
+    "uncertainty": 0.013,
+    "source": "https://pdg.lbl.gov/2024/reviews/rpp2024-rev-charged-kaon-mass.pdf",
+    "название": "средняя масса заряженного каона по PDG 2024"
+  },
+  "отклонение_формулы_сигма": -13.973725386357764,
+  "отклонение_наблюдаемого_сигма": 0.23076923076814637,
+  "вердикт_сита": "ВОПРОС",
+  "подтип": "no_compression",
+  "novelty_key": "hadron:charged_kaon_mass:external:v1"
+}

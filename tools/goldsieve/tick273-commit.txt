@@ -1,0 +1,28 @@
+On branch tools/goldsieve-v3-2026-08-13
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   tools/goldsieve/aborted_audit.json
+	modified:   tools/goldsieve/baseline/log-checkpoint.json
+	modified:   tools/goldsieve/baseline/manifest.json
+	modified:   tools/goldsieve/baseline/snapshot-manifest.json
+	modified:   tools/goldsieve/baseline/verdicts.csv
+	modified:   tools/goldsieve/baseline/verdicts.json
+	modified:   tools/goldsieve/claims.yaml
+	modified:   tools/goldsieve/disk_guard.json
+	modified:   tools/goldsieve/external_target_guard.json
+	modified:   tools/goldsieve/gue_label_guard.json
+	modified:   tools/goldsieve/progress_guard.json
+	modified:   tools/goldsieve/repo_sync_guard.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	tools/goldsieve/dirac_cp_external_20260902.py
+	tools/goldsieve/log-checkpoint.json
+	tools/goldsieve/manifest.json
+	tools/goldsieve/neutron_proton_splitting_external_20260901.py
+	tools/goldsieve/snapshot-manifest.json
+	tools/goldsieve/verdicts.csv
+	tools/goldsieve/verdicts.json
+
+no changes added to commit (use "git add" and/or "git commit -a")

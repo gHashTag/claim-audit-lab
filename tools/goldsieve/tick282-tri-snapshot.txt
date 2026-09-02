@@ -1,0 +1,15 @@
+$ python3 baseline.py snapshot
+baseline записан: 189 файлов инструмента, 162 вердиктов
+  отпечаток файлов:    e85be4e8fd7919d1
+  отпечаток вердиктов: 8d42d6dba0c6bcab
+  метрики: {"measure_exit": 0, "sensitivity": "1.0000", "positive": "45/45", "specificity": "1.0000", "negative": "28/28", "mutation_exit": 0, "mutants_caught": "17/17", "selftest_exit": 0, "selftest": "238 пройдено, 0 провалено"}
+$ python3 snapshot_manifest.py build
+снимок собран: /home/user/workspace/goldsieve/baseline/snapshot-manifest.json
+  docs   20 файлов
+  logs   16 файлов
+  tool   189 файлов
+  отпечаток снимка: d2b8861f145b420d
+$ python3 snapshot_manifest.py checkpoint
+checkpoint журнала: runs.jsonl, seq 2409, голова 86b705167eb39be1
+  SHA-256 снимка: 46d30817a35e9d80
+  граница: цепочка ловит правку копии, но не доказывает авторства

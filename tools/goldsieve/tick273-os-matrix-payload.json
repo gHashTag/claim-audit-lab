@@ -1,0 +1,89 @@
+{
+  "run": {
+    "id": 33537391344,
+    "path": ".github/workflows/cross-platform-selftest.yml",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33537391344",
+    "html_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33537391344",
+    "head_branch": "tools/goldsieve-v3-2026-08-13",
+    "head_sha": "052935fc589a1c4298829f8f65711ea5d107ce69",
+    "workflow_name": "cross-platform-selftest.yml",
+    "run_attempt": 1
+  },
+  "total_count": 6,
+  "jobs": [
+    {
+      "id": 99954941838,
+      "name": "macos-latest / py3.13",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 33537391344,
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "052935fc589a1c4298829f8f65711ea5d107ce69",
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33537391344",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    },
+    {
+      "id": 99954942101,
+      "name": "windows-latest / py3.12",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 33537391344,
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "052935fc589a1c4298829f8f65711ea5d107ce69",
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33537391344",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    },
+    {
+      "id": 99954942110,
+      "name": "ubuntu-latest / py3.13",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 33537391344,
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "052935fc589a1c4298829f8f65711ea5d107ce69",
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33537391344",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    },
+    {
+      "id": 99954942266,
+      "name": "macos-latest / py3.12",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 33537391344,
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "052935fc589a1c4298829f8f65711ea5d107ce69",
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33537391344",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    },
+    {
+      "id": 99954942317,
+      "name": "ubuntu-latest / py3.12",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 33537391344,
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "052935fc589a1c4298829f8f65711ea5d107ce69",
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33537391344",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    },
+    {
+      "id": 99954942381,
+      "name": "windows-latest / py3.13",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 33537391344,
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "052935fc589a1c4298829f8f65711ea5d107ce69",
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33537391344",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    }
+  ]
+}

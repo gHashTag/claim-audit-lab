@@ -1,0 +1,48 @@
+{
+  "run_id": 33537391344,
+  "head_sha": "052935fc589a1c4298829f8f65711ea5d107ce69",
+  "status": "completed",
+  "conclusion": "success",
+  "total": 6,
+  "successful": 6,
+  "failed": 0,
+  "jobs": [
+    {
+      "name": "macos-latest / py3.13",
+      "id": 99954941838,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "windows-latest / py3.12",
+      "id": 99954942101,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "ubuntu-latest / py3.13",
+      "id": 99954942110,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "macos-latest / py3.12",
+      "id": 99954942266,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "ubuntu-latest / py3.12",
+      "id": 99954942317,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "windows-latest / py3.13",
+      "id": 99954942381,
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "scope_status": "verified-in-scope"
+}
