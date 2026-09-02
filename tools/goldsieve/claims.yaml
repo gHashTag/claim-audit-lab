@@ -2029,3 +2029,30 @@ claims:
     https://pdg.lbl.gov/2024/tables/rpp2024-sum-gauge-higgs-bosons.pdf.
     Формула и внешнее измерение разделены; результат каскада не является
     новым простым подтверждением.
+- source: docs/docs/math-foundations/sacred-formulas.md:149
+  case: cases/solar_mass_external_20260902.py
+  claim: Формула массы Солнца против внешней оценки Harmanec–Prša 2011
+  verdict: ПУСТО
+  reason_subtype: multiplicity_limited
+  novelty_key: astrophysics:solar_mass:external:v1
+  priority: 2
+  measurement_source: Harmanec–Prša 2011, arXiv:1106.1508, таблица 1
+  observable: корпусное значение массы Солнца 1,989 × 10^30 кг
+  models: ["формула Trinity (7, −3, 0, −2, 3)", "оценка 1,9884 ± 0,0002 × 10^30 кг"]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На указанных версиях CPython строка корпуса прочитана отдельно от
+    вычисляемой формулы, а внешняя оценка Harmanec–Prša 2011 содержит значение
+    1,9884 ± 0,0002 × 10^30 кг в таблице 1. Формула даёт
+    1,989035072465441 × 10^30 кг; отклонение от внешней цели составляет
+    примерно +3,175 сигмы, а корпусное наблюдаемое — +3,000 сигмы.
+    Каскад сит выносит ПУСТО / multiplicity_limited; это не подтверждённый
+    физический результат.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 1,989 прочитано из указанной строки корпуса; внешняя цель
+    1,9884 ± 0,0002 × 10^30 кг имеет URL
+    https://arxiv.org/abs/1106.1508. Формула и внешнее измерение разделены;
+    результат каскада не является новым простым подтверждением.
