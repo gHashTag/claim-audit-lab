@@ -1926,6 +1926,30 @@ claims:
     Наблюдаемое 0,315 прочитано из указанной строки корпуса; внешний URL:
     https://arxiv.org/abs/1807.06209. Формула и внешнее измерение разделены;
     физическая интерпретация совпадения не утверждается.
+- source: docs/docs/math-foundations/sacred-formulas.md:81
+  case: cases/omega_baryon_external_20260902.py
+  claim: Формула плотности барионов против оценки Planck 2018
+  verdict: ПУСТО
+  reason_subtype: multiplicity_limited
+  novelty_key: cosmology:omega_baryon:external:v1
+  priority: 2
+  measurement_source: Planck 2018, космологические параметры
+  observable: корпусное значение параметра плотности барионов 0,0493
+  models: ["формула Trinity (8, −1, −3, 3, −2)", "оценка Planck 0,0493 ± 0,0002"]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На указанных версиях CPython строка корпуса прочитана отдельно от
+    вычисляемой формулы, а внешняя оценка Planck 2018 содержит значение
+    0,0493 ± 0,0002. Формула пересчитана независимо; С16 и С17 ограничивают
+    интерпретацию совпадения с учётом пространства поиска. Итог взят из
+    каскада сит и не является новым простым подтверждением.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 0,0493 прочитано из указанной строки корпуса; внешний URL:
+    https://arxiv.org/abs/1807.06209. Формула и внешнее измерение разделены;
+    физическая интерпретация совпадения не утверждается.
 - source: docs/docs/math-foundations/sacred-formulas.md:201
   case: cases/qcd_phase_tc_external_20260901.py
   claim: Формула T_c = 7·π·φ²·e против внешнего значения HotQCD
