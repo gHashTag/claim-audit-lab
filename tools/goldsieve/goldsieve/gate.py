@@ -98,6 +98,9 @@ class Target:
     # зависит вердикт: подменить её после прогона и не изменить отпечаток было б
     # способом тихо вернуть безусловное ПОДТВЕРЖДЕНО.
     tests_independent: str = "not-declared"
+    # Независимость источника внешней цели — часть паспорта. При
+    # same_as_observation нулевое совпадение с корпусом считается вырождением.
+    external_source_relation: str = ""
 
     def hash(self) -> str:
         d = asdict(self)

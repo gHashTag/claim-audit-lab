@@ -123,6 +123,11 @@ class Claim:
     claim_kind: str = "value"          # value | prediction (формула про внешнюю величину)
     external_target: Optional[Callable[[], dict]] = None   # авторитетное измерение
     stated_target: Optional[Callable[[], float]] = None    # цель, как её пишет корпус
+    # Связь источника наблюдаемого с внешней целью. Пустая строка означает
+    # независимый источник; значение same_as_observation обязано быть
+    # объявлено ДО прогона, если внешний текст получен из того же наблюдаемого.
+    # Нулевое отклонение при такой связи — вырожденная сверка, а не результат.
+    external_source_relation: str = ""
     multiplicity: Optional[Callable[[], dict]] = None      # ожидаемые случайные попадания
     mdl: Optional[Callable[[], dict]] = None               # биты описания против бит совпадения
     declared_domain: Optional[Callable[[], list]] = None   # нарушения объявленных границ
@@ -195,6 +200,7 @@ class Claim:
             precision_gain=self.precision_gain,
             tests_independent=(_pre.normalize(self.tests_independent)
                                or "not-declared"),
+            external_source_relation=self.external_source_relation,
         )
 
 
@@ -915,6 +921,19 @@ def sieve_external_target(c: Claim) -> Result:
     # ошибочно превращается в OPEN.
     if "сигм_формула" not in nums and "сигм_цель" not in nums:
         return Result(name, OPEN, "нечего сравнивать с внешней величиной")
+    # Если корпусное наблюдаемое и внешняя цель объявлены одним источником,
+    # точное совпадение не измеряет предсказательную силу: оно прошло бы при
+    # любом значении формулы. Отдельный reason-code не позволяет смешать этот
+    # дефект выбора цели с обычным совпадением или с отсутствием URL.
+    if (c.external_source_relation == "same_as_observation"
+            and nums.get("сигм_цель") == 0.0):
+        return Result(
+            name,
+            VOID,
+            det + " | корпусное наблюдаемое и внешняя цель имеют один источник",
+            numbers=nums,
+            reason_code="external_source_degenerate",
+        )
     thr, thr_note = sigma_threshold(c)
     nums["порог_сигм"] = thr
     st = PASS if worst_sigma <= thr else FAIL
@@ -1351,6 +1370,9 @@ ACTION = {
     "external_source_unverifiable":
         "заменить URL-заглушку или недействительный адрес на проверяемый "
         "первичный источник внешнего измерения",
+    "external_source_degenerate":
+        "развести источник корпусного наблюдаемого и внешней цели; нулевое "
+        "отклонение одного источника не является измерением",
     "estimator_dependent":
         "зафиксировать выбор оценки или сетки до прогона",
     "arithmetic_insufficient":
@@ -1403,6 +1425,7 @@ NON_AGGREGATABLE = (
     "input_precision_limited",
     "metrics_incommensurable",
     "external_source_unverifiable",
+    "external_source_degenerate",
 )
 
 

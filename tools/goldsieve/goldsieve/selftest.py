@@ -345,6 +345,7 @@ def _reason_subtypes() -> int:
     отдельного подтипа такой случай попадал в 'unclassified' и терялся.
     """
     from .sieve import (Result, Claim, reason_of, ACTION, NON_AGGREGATABLE,
+                        sieve_external_target,
                         EMPTY, FAIL as _F, VOID as _V, PASS as _P2,
                         SKIP as _S2, OPEN as _O2)
     fail = 0
@@ -369,6 +370,30 @@ def _reason_subtypes() -> int:
     check("для input_precision_limited объявлено действие",
           "input_precision_limited" in ACTION and
           "погрешность" in ACTION["input_precision_limited"].lower())
+
+    # Выборочная цель, скопированная из того же наблюдаемого, не становится
+    # содержательной от наличия URL. Guard обязан сработать по объявленной
+    # связи источников и точному нулю сигм.
+    same_source = Claim(
+        name="вырожденная внешняя цель",
+        claim_kind="prediction",
+        reference=lambda: 7.0,
+        stated_target=lambda: 7.0,
+        external_target=lambda: {
+            "value": 7.0,
+            "uncertainty": 1.0,
+            "source": "https://pdg.lbl.gov/measurement",
+        },
+        external_source_relation="same_as_observation",
+    )
+    same_result = sieve_external_target(same_source)
+    check("совпадение одного источника опознано как external_source_degenerate",
+          same_result.status == _V and
+          same_result.reason_code == "external_source_degenerate")
+    check("вырожденная внешняя цель не агрегируется",
+          reason_of([same_result], EMPTY) == "external_source_degenerate" and
+          "external_source_degenerate" in NON_AGGREGATABLE and
+          "external_source_degenerate" in ACTION)
 
     # ПОРЯДОК ПРАВИЛ: множественность сильнее обоих новых подтипов. Иначе
     # совпадение, купленное перебором, объяснялось бы «сломанным контролем» и
@@ -1044,7 +1069,7 @@ def main() -> int:
     from .sidak import selftest as _sid
     from .preconditions import selftest as _pre
     mods = [("неопределённость", _stats.selftest, 9), ("покрытие", _cov, 11),
-            ("подтипы причины", _reason_subtypes, 9),
+            ("подтипы причины", _reason_subtypes, 11),
         ("вырождение по тождественности", _identity_guards, 10),
             ("граф вызовов: косвенная тавтология", _identity_graph, 18),
             ("метрики согласия формы", _gof_selftest, 6),

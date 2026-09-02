@@ -1928,7 +1928,7 @@ claims:
     физическая интерпретация совпадения не утверждается.
 - source: docs/docs/math-foundations/sacred-formulas.md:201
   case: cases/qcd_phase_tc_external_20260901.py
-  claim: Формула псевдокритической температуры КХД против внешней оценки HotQCD
+  claim: Формула T_c = 7·π·φ²·e против внешнего значения HotQCD
   verdict: ПУСТО
   reason_subtype: multiplicity_limited
   novelty_key: qcd:transition_temperature:external:v1
