@@ -1833,3 +1833,26 @@ claims:
     Наблюдаемое 125,25 прочитано из указанной строки корпуса; внешняя цель
     PDG 2024 125,20 ± 0,11 ГэВ имеет URL
     https://pdg.lbl.gov/2024/tables/rpp2024-sum-gauge-higgs-bosons.pdf.
+- source: docs/docs/math-foundations/sacred-formulas.md:140
+  case: cases/top_mass_external_20260902.py
+  claim: Формула массы t-кварка против внешней оценки PDG 2024
+  verdict: ПУСТО
+  reason_subtype: multiplicity_limited
+  novelty_key: quark:top_mass:external:v1
+  priority: 2
+  measurement_source: PDG 2024, таблица свойств кварков
+  observable: корпусное значение массы t-кварка 172,76 ГэВ
+  models: ["формула Trinity (5, 1, 0, 3, 1)", "оценка PDG 172,57 ± 0,29 ГэВ"]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На указанных версиях CPython строка корпуса прочитана отдельно от
+    вычисляемой формулы, а внешняя оценка PDG 2024 содержит значение
+    172,57 ± 0,29 ГэВ. Формула даёт 172,72239911032406 ГэВ, что отличается
+    от внешней цели на +0,5255 сигмы; каскад сит выносит итог из измеренных
+    проверок и не выпускает новое простое подтверждение.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 172,76 прочитано из указанной строки корпуса; внешний URL:
+    https://pdg.lbl.gov/2024/tables/rpp2024-sum-quarks.pdf.
