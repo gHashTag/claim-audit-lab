@@ -26,7 +26,7 @@
     "numbers": {
      "value": 2.7240634716719687
     },
-    "seconds": 7.62939453125e-06,
+    "seconds": 5.7220458984375e-06,
     "reason_code": "",
     "auto_skip": false
    },
@@ -37,7 +37,7 @@
     "numbers": {
      "value": 0.0
     },
-    "seconds": 2.6226043701171875e-05,
+    "seconds": 2.9087066650390625e-05,
     "reason_code": "",
     "auto_skip": false
    },
@@ -48,7 +48,7 @@
     "numbers": {
      "value": 0.0005273475977963855
     },
-    "seconds": 0.01885509490966797,
+    "seconds": 0.008762359619140625,
     "reason_code": "",
     "auto_skip": false
    },
@@ -57,7 +57,7 @@
     "status": "PASS",
     "detail": "подставка 1 отклонена: value +3.67%; подставка 2 отклонена: value -3.67%; подставка 3 отклонена: value +10.00%",
     "numbers": {},
-    "seconds": 2.384185791015625e-05,
+    "seconds": 2.3365020751953125e-05,
     "reason_code": "",
     "auto_skip": false
    },
@@ -66,7 +66,7 @@
     "status": "PASS",
     "detail": "позитивный контроль даёт эталон: value -0.00%",
     "numbers": {},
-    "seconds": 1.9311904907226562e-05,
+    "seconds": 1.71661376953125e-05,
     "reason_code": "",
     "auto_skip": false
    },
@@ -75,7 +75,7 @@
     "status": "SKIP",
     "detail": "",
     "numbers": {},
-    "seconds": 2.6226043701171875e-06,
+    "seconds": 1.6689300537109375e-06,
     "reason_code": "",
     "auto_skip": false
    },
@@ -84,7 +84,7 @@
     "status": "SKIP",
     "detail": "",
     "numbers": {},
-    "seconds": 1.6689300537109375e-06,
+    "seconds": 9.5367431640625e-07,
     "reason_code": "",
     "auto_skip": false
    },
@@ -93,7 +93,7 @@
     "status": "SKIP",
     "detail": "",
     "numbers": {},
-    "seconds": 1.9073486328125e-06,
+    "seconds": 9.5367431640625e-07,
     "reason_code": "",
     "auto_skip": false
    },
@@ -102,7 +102,7 @@
     "status": "SKIP",
     "detail": "",
     "numbers": {},
-    "seconds": 1.430511474609375e-06,
+    "seconds": 9.5367431640625e-07,
     "reason_code": "",
     "auto_skip": false
    },
@@ -113,7 +113,7 @@
     "numbers": {
      "value": Infinity
     },
-    "seconds": 0.12237310409545898,
+    "seconds": 0.058927059173583984,
     "reason_code": "significance_untestable",
     "auto_skip": true
    },
@@ -122,7 +122,7 @@
     "status": "SKIP",
     "detail": "меньше трёх статистик с определённым разбросом",
     "numbers": {},
-    "seconds": 0.0023543834686279297,
+    "seconds": 0.0022881031036376953,
     "reason_code": "",
     "auto_skip": false
    },
@@ -133,7 +133,7 @@
     "numbers": {
      "value": -1.1411718197015558e-15
     },
-    "seconds": 0.019021272659301758,
+    "seconds": 0.008035421371459961,
     "reason_code": "",
     "auto_skip": false
    },
@@ -150,7 +150,7 @@
      "погрешность": 0.00057,
      "порог_сигм": 5.0613316768538885
     },
-    "seconds": 0.6924962997436523,
+    "seconds": 0.5089457035064697,
     "reason_code": "",
     "auto_skip": false
    },
@@ -163,7 +163,7 @@
      "p_глоб": 0.843,
      "доля_случайных_целей_с_попаданием": 0.843
     },
-    "seconds": 0.10316777229309082,
+    "seconds": 0.04848837852478027,
     "reason_code": "",
     "auto_skip": false
    },
@@ -176,7 +176,7 @@
      "бит_совпадения": 11.22326079388146,
      "выигрыш": -5.687393646727662
     },
-    "seconds": 2.384185791015625e-05,
+    "seconds": 1.9073486328125e-05,
     "reason_code": "",
     "auto_skip": false
    },
@@ -185,7 +185,7 @@
     "status": "PASS",
     "detail": "все параметры внутри объявленных границ",
     "numbers": {},
-    "seconds": 1.1444091796875e-05,
+    "seconds": 8.344650268554688e-06,
     "reason_code": "",
     "auto_skip": false
    },
@@ -198,7 +198,7 @@
      "предел": 2.0913747303227323e-06,
      "погрешность": 0.0002091374730322732
     },
-    "seconds": 0.05253791809082031,
+    "seconds": 0.021552085876464844,
     "reason_code": "",
     "auto_skip": false
    },
@@ -216,7 +216,7 @@
      "M_eff_собств_подвыборка": 5.000092308766907,
      "подвыборка": 180.0
     },
-    "seconds": 0.14886069297790527,
+    "seconds": 0.06489753723144531,
     "reason_code": "",
     "auto_skip": false
    },
@@ -225,7 +225,7 @@
     "status": "OPEN",
     "detail": "линейная форма содержит log pi; оценок бейкеровского типа для неё не доказано",
     "numbers": {},
-    "seconds": 0.005915641784667969,
+    "seconds": 0.004191398620605469,
     "reason_code": "",
     "auto_skip": false
    },
@@ -243,7 +243,7 @@
     "status": "PASS",
     "detail": "подставка 1: ПУСТО; подставка 2: ПУСТО; подставка 3: ПУСТО",
     "numbers": {},
-    "seconds": 0.9509918689727783,
+    "seconds": 0.47838497161865234,
     "reason_code": "",
     "auto_skip": false
    }
