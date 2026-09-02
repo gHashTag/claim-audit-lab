@@ -1902,3 +1902,27 @@ claims:
   notes: >-
     Наблюдаемое 2,7255 прочитано из указанной строки корпуса; внешний URL:
     https://arxiv.org/abs/0911.1955.
+- source: docs/docs/math-foundations/sacred-formulas.md:80
+  case: cases/omega_matter_external_20260902.py
+  claim: Формула плотности вещества против оценки Planck 2018
+  verdict: ПУСТО
+  reason_subtype: multiplicity_limited
+  novelty_key: cosmology:omega_matter:external:v1
+  priority: 2
+  measurement_source: Planck 2018, Cosmological Parameters
+  observable: корпусное значение параметра плотности вещества 0,315
+  models: ["формула Trinity (8, −2, 0, 2, −2)", "оценка Planck 0,315 ± 0,007"]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На указанных версиях CPython строка корпуса прочитана отдельно от
+    вычисляемой формулы, а внешняя оценка Planck 2018 содержит значение
+    0,315 ± 0,007. Формула пересчитана независимо; С16 и С17 определяют,
+    сжимает ли описание данные после учёта пространства поиска. Итог берётся
+    из каскада сит и не является новым простым подтверждением.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 0,315 прочитано из указанной строки корпуса; внешний URL:
+    https://arxiv.org/abs/1807.06209. Формула и внешнее измерение разделены;
+    физическая интерпретация совпадения не утверждается.
