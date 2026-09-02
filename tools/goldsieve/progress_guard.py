@@ -27,6 +27,7 @@ import hashlib
 import json
 import re
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -186,10 +187,20 @@ def _report_texts(root: Path) -> list[tuple[str, str]]:
     P5 должен был показать причину.  Заголовок доклада — наблюдаемая граница
     блока; содержимое не восстанавливается из соседних записей.
     """
-    reports: list[tuple[str, str]] = [
-        (p.name, p.read_text(encoding="utf-8", errors="replace"))
-        for p in sorted(root.glob("tick*-report.md"))
-    ]
+    # Один и тот же тик может одновременно жить отдельным файлом и блоком
+    # общей ведомости. Это два представления одного доклада, а не два
+    # наблюдения: двойной подсчёт искусственно раздувает группы повторов и
+    # скрывает реальное число долгов P5. Сохраняем порядок первого появления,
+    # но содержимое из ведомости (более свежий источник при ротации) заменяет
+    # дубликат; повторный заголовок в ведомости также оставляет последнюю
+    # версию блока.
+    by_name: dict[str, str] = {}
+    order: list[str] = []
+    for p in sorted(root.glob("tick*-report.md")):
+        name = p.name
+        if name not in by_name:
+            order.append(name)
+        by_name[name] = p.read_text(encoding="utf-8", errors="replace")
     ledger = root / "audit-ledger.md"
     if ledger.is_file():
         text = ledger.read_text(encoding="utf-8", errors="replace")
@@ -199,8 +210,10 @@ def _report_texts(root: Path) -> list[tuple[str, str]]:
             block = text[mark.start():end]
             number = re.search(r"^# Доклад тика (\d+)", mark.group(0))
             name = "tick%s-report.md" % (number.group(1) if number else "unknown")
-            reports.append((name, block))
-    return reports
+            if name not in by_name:
+                order.append(name)
+            by_name[name] = block
+    return [(name, by_name[name]) for name in order]
 
 
 def history_scan(root: Path) -> dict:
@@ -301,6 +314,22 @@ def _selftest() -> int:
     # Отрицательная фикстура: пустая история не может дать ХОЛОСТОЙ.
     check("пустая история не наказывает",
           verdict(base, [])["итог"] == "СОДЕРЖАТЕЛЬНЫЙ")
+
+    # Одна запись, присутствующая и отдельным файлом, и блоком ведомости,
+    # должна считаться ровно один раз. Иначе ротация меняет статистику P5 без
+    # изменения самих докладов.
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        report = ("# Доклад тика 999\n"
+                  "Гейт открыт: 66 шагов `ok`, 2 штатных пропуска, 0 провалов.\n"
+                  "Регрессия: 150 совпало, 0 изменилось ситом, 3 изменилось "
+                  "из-за корпуса, 0 не сопоставлено.\n"
+                  "ОС-матрица: 6 из 6 заданий успешны.\n"
+                  "BBLM: 4 элемента, закрытых кодом, analytic_source_absent.\n")
+        (root / "tick999-report.md").write_text(report, encoding="utf-8")
+        (root / "audit-ledger.md").write_text(report, encoding="utf-8")
+        check("дубликат файла и ведомости считается один раз",
+              len(_report_texts(root)) == 1)
 
     # Порог серии проверяем на границе: ровно предел — ещё проходит.
     hist2 = [{"подпись": "иная", "суть": base}]

@@ -110,6 +110,9 @@ def _external_target_contract(art: dict) -> tuple[bool, list[str]]:
         parsed_url = urlsplit(str(target[url_key]).strip())
         if parsed_url.scheme not in ("http", "https") or not parsed_url.netloc:
             missing.append("URL внешней цели должен быть абсолютным HTTP(S)-адресом")
+        elif parsed_url.username is not None or parsed_url.password is not None:
+            missing.append("URL внешней цели содержит учётные данные, "
+                           "а не публичный адрес источника")
         elif (parsed_url.hostname or "").lower() in RESERVED_TARGET_HOSTS:
             missing.append("URL внешней цели указывает на зарезервированный "
                            "пример, а не на источник измерения")
@@ -384,6 +387,17 @@ def selftest() -> int:
     mut_local["external_target"]["source"] = "http://127.0.0.1/measurement"
     check("мутант с локальным URL ловится",
           classify(mut_local)["degenerate"])
+
+    # МУТАЦИОННАЯ ЦЕЛЬ 15: публичный домен с учётными данными в URL нельзя
+    # считать публичной внешней целью — секрет мог бы скрывать подменённый
+    # источник, а адрес не воспроизводим для независимого читателя.
+    mut_credentials = dict(hist[212])
+    mut_credentials["external_target"] = dict(hist[212]["external_target"])
+    mut_credentials["external_target"]["source"] = (
+        "https://reader:secret@physics.nist.gov/cgi-bin/cuu/Value?re"
+    )
+    check("мутант с учётными данными в URL ловится",
+          classify(mut_credentials)["degenerate"])
 
     # МУТАЦИОННАЯ ЦЕЛЬ 12: путь и отпечаток остаются честными, но наблюдаемое
     # подменено числом, которого в корпусном файле нет. Один SHA-256 не
