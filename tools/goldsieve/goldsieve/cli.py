@@ -224,6 +224,98 @@ def _inputs_digest(report):
     return hashlib.sha256("|".join(parts).encode()).hexdigest()[:16]
 
 
+REGRESSION_BASELINE = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "..", "baseline", "regression-fingerprints.json")
+TRINITY_CORPUS = os.environ.get(
+    "TRINITY_CORPUS", "/home/user/workspace/corpus/trinity")
+
+
+def _file_sha256(path):
+    import hashlib
+    try:
+        with open(path, "rb") as fh:
+            return hashlib.sha256(fh.read()).hexdigest()
+    except OSError:
+        return None
+
+
+def _source_file(root, source):
+    """Найти наблюдаемый файл корпуса без чтения внешнего URL."""
+    text = str(source or "").strip()
+    if text.startswith(("http://", "https://")):
+        return None
+    rel = text.split(":", 1)[0]
+    candidates = []
+    if os.path.isabs(rel):
+        candidates.append(rel)
+    else:
+        candidates.extend((
+            os.path.join(TRINITY_CORPUS, rel),
+            os.path.join(root, rel),
+        ))
+    for path in candidates:
+        if os.path.isfile(path):
+            return os.path.abspath(path)
+    return None
+
+
+def _regression_fingerprints(entries, root):
+    """Снимок файлов кейсов и их наблюдаемых входов.
+
+    Снимок не запускает кейсы: он предназначен именно для выбора малого
+    инкрементального регресса. Файл кейса покрывает изменение рецепта, а
+    отпечатки файлов, прочитанных из корпуса, покрывают дрейф наблюдаемого.
+    """
+    by_case = {}
+    for entry in entries:
+        case = str(entry.get("case", ""))
+        if not case:
+            continue
+        path = case if os.path.isabs(case) else os.path.join(root, case)
+        sources = {}
+        source_path = _source_file(root, entry.get("source"))
+        source_key = str(entry.get("source", ""))
+        sources[source_key] = {
+            "path": source_path,
+            "sha256": _file_sha256(source_path) if source_path else None,
+        }
+        row = by_case.setdefault(case, {
+            "case_sha256": _file_sha256(path),
+            "sources": {},
+        })
+        row["sources"].update(sources)
+    import hashlib
+    for row in by_case.values():
+        payload = json.dumps(
+            {"case_sha256": row["case_sha256"],
+             "sources": row["sources"]},
+            ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+        row["recipe_fingerprint"] = hashlib.sha256(
+            payload.encode("utf-8")).hexdigest()[:16]
+    return by_case
+
+
+def _load_regression_baseline():
+    try:
+        with open(REGRESSION_BASELINE, encoding="utf-8") as fh:
+            data = json.load(fh)
+        return data.get("cases", {})
+    except (OSError, ValueError, AttributeError):
+        return {}
+
+
+def _save_regression_baseline(fingerprints):
+    os.makedirs(os.path.dirname(REGRESSION_BASELINE), exist_ok=True)
+    payload = {
+        "version": 1,
+        "corpus": TRINITY_CORPUS,
+        "cases": fingerprints,
+    }
+    with open(REGRESSION_BASELINE, "w", encoding="utf-8") as fh:
+        json.dump(payload, fh, ensure_ascii=False, indent=2, sort_keys=True)
+
+
 def cmd_regress(args):
     """Перепрогон всего реестра: новый цикл не имеет права молча ломать старое.
 
@@ -241,10 +333,22 @@ def cmd_regress(args):
     for e in entries:
         recorded.setdefault(e.get("case", ""), {})[e.get("claim", "")] = e.get("verdict")
 
+    root = os.path.dirname(os.path.abspath(args.registry))
+    all_fingerprints = _regression_fingerprints(entries, root)
+    previous_fingerprints = _load_regression_baseline()
+    if args.changed_only:
+        selected_cases = {
+            case for case, current in all_fingerprints.items()
+            if case not in previous_fingerprints
+            or current != previous_fingerprints.get(case)
+        }
+    else:
+        selected_cases = set(recorded)
     changed, same, missing, corpus_moved = [], [], [], []
     _all_digests = {}
-    root = os.path.dirname(os.path.abspath(args.registry))
     for case, by_claim in sorted(recorded.items()):
+        if case not in selected_cases:
+            continue
         path = case if os.path.isabs(case) else os.path.join(root, case)
         if not os.path.exists(path):
             missing.append(case)
@@ -308,9 +412,13 @@ def cmd_regress(args):
             else:
                 same.append((case, claim_text, old))
 
-    print("перепрогон реестра: %d совпало, %d изменилось ситом, "
+    skipped = max(0, len(recorded) - len(selected_cases))
+    mode = "инкрементальный" if args.changed_only else "полный"
+    print("%s регресс реестра: выбрано %d, пропущено %d; %d совпало, "
+          "%d изменилось ситом, "
           "%d изменилось из-за корпуса, %d не сопоставлено"
-          % (len(same), len(changed), len(corpus_moved), len(missing)))
+          % (mode, len(selected_cases), skipped, len(same), len(changed),
+             len(corpus_moved), len(missing)))
     for case, claim_text, old, new, was, now in corpus_moved:
         print("  КОРПУС ИЗМЕНИЛСЯ %s -> %s | %s | %s | %s -> %s"
               % (old, new, claim_text, case, was, now))
@@ -336,6 +444,7 @@ def cmd_regress(args):
         with open(args.registry, "w", encoding="utf-8") as f:
             yaml.safe_dump(reg, f, allow_unicode=True, sort_keys=False)
         print("реестр обновлён: %s" % args.registry)
+    _save_regression_baseline(all_fingerprints)
     return 1 if (changed or missing) else 0
 
 
@@ -381,6 +490,8 @@ def main(argv=None):
 
     rg = sub.add_parser("regress", help="перепрогон реестра: искать изменения вердиктов")
     rg.add_argument("--registry", default="claims.yaml")
+    rg.add_argument("--changed-only", action="store_true",
+                    help="проверить только изменившиеся кейсы и входы корпуса")
     rg.add_argument("--update", action="store_true",
                     help="записать новые вердикты в реестр, сохранив прежний")
     rg.set_defaults(fn=cmd_regress)
