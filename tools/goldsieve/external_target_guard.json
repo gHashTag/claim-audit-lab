@@ -1,9 +1,10 @@
 {
- "checked": 15,
- "degenerate_count": 2,
+ "checked": 16,
+ "degenerate_count": 3,
  "degenerate": [
   "tick210_external_measurement.json",
-  "tick211_external_measurement.json"
+  "tick211_external_measurement.json",
+  "tick263_external_measurement.json"
  ],
  "rule": "артефакт внешней сверки обязан содержать наблюдаемое из корпуса и путь к файлу корпуса; иначе сверка проходит при любом значении корпусных формул; отпечаток источника обязан совпадать с содержимым файла; внешняя цель обязана иметь конечное числовое значение, положительную неопределённость и URL",
  "why_this_check_exists": "тики 210 и 211 подали сверку внешнего источника с самим собой как содержательную цель: 0 и 0,0111 сигмы ни о чём не свидетельствуют",
@@ -16,7 +17,8 @@
    "verdict_if_submitted": "ПУСТО",
    "reasons": [
     "нет корпусного наблюдаемого: сверяется внешний источник сам с собой",
-    "наблюдаемое не найдено в тексте указанного файла корпуса"
+    "наблюдаемое не найдено в тексте указанного файла корпуса",
+    "численное наблюдаемое не найдено в заявленной строке наблюдения"
    ],
    "observed_key": null,
    "source": "",
@@ -24,6 +26,7 @@
    "source_digest": null,
    "source_digest_key": null,
    "observed_in_source": "не подтверждено",
+   "observed_matches_evidence": "не подтверждено",
    "source_integrity": "не подтверждён",
    "external_target_contract": "не подтверждён"
   },
@@ -35,7 +38,8 @@
    "verdict_if_submitted": "ПУСТО",
    "reasons": [
     "нет корпусного наблюдаемого: сверяется внешний источник сам с собой",
-    "наблюдаемое не найдено в тексте указанного файла корпуса"
+    "наблюдаемое не найдено в тексте указанного файла корпуса",
+    "численное наблюдаемое не найдено в заявленной строке наблюдения"
    ],
    "observed_key": null,
    "source": "",
@@ -43,6 +47,7 @@
    "source_digest": null,
    "source_digest_key": null,
    "observed_in_source": "не подтверждено",
+   "observed_matches_evidence": "не подтверждено",
    "source_integrity": "не подтверждён",
    "external_target_contract": "не подтверждён"
   },
@@ -57,6 +62,7 @@
    "source_digest": "3d1f62c417f680eabd445e4c5a7e5c231f45d8609b17018afcbfe5d8a8273c22",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   },
@@ -71,6 +77,7 @@
    "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   },
@@ -85,22 +92,29 @@
    "source_digest": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   },
   {
    "file": "tick263_external_measurement.json",
    "target": "g−2: формула Δaμ = (π−3)×10⁻⁹ против измерения FNAL E989",
-   "class": "измерение_о_корпусе",
-   "degenerate": false,
+   "class": "вырожденная_сверка",
+   "degenerate": true,
+   "verdict_if_submitted": "ПУСТО",
+   "reasons": [
+    "отпечаток источника не совпадает с содержимым файла: корпусное наблюдаемое нельзя связать с проверенным снимком",
+    "численное наблюдаемое не найдено в заявленной строке наблюдения"
+   ],
    "observed_key": "наблюдаемое_из_корпуса",
    "source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/formulas.md",
    "resolved_source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/formulas.md",
    "source_digest": "ec394b57d317ae59265c8d6f3de44056dc4ebc157fe4b7e5aff142890eca25fe",
    "source_digest_key": "отпечаток_источника",
-   "observed_in_source": "подтверждено",
-   "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "observed_in_source": "не подтверждено",
+   "observed_matches_evidence": "не подтверждено",
+   "source_integrity": "не подтверждён",
+   "external_target_contract": "не подтверждён"
   },
   {
    "file": "tick269_external_measurement.json",
@@ -113,6 +127,7 @@
    "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   },
@@ -127,6 +142,7 @@
    "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   },
@@ -141,6 +157,7 @@
    "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   },
@@ -155,6 +172,7 @@
    "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   },
@@ -169,6 +187,7 @@
    "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   },
@@ -183,6 +202,7 @@
    "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   },
@@ -197,6 +217,7 @@
    "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   },
@@ -211,6 +232,7 @@
    "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   },
@@ -225,6 +247,22 @@
    "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
    "source_digest_key": "отпечаток_источника",
    "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
+   "source_integrity": "подтверждён",
+   "external_target_contract": "подтверждён"
+  },
+  {
+   "file": "tick290_external_measurement.json",
+   "target": "масса заряженного каона",
+   "class": "измерение_о_корпусе",
+   "degenerate": false,
+   "observed_key": "наблюдаемое_из_корпуса",
+   "source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+   "resolved_source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+   "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
+   "source_digest_key": "отпечаток_источника",
+   "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
    "external_target_contract": "подтверждён"
   }

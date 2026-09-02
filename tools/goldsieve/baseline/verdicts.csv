@@ -107,7 +107,7 @@ cases/pointer_architecture_external_20260814.py,Формула 1/α = 4·3²·π
 cases/pointer_architecture_external_20260814.py,Формула H₀ = 4·3³·π⁻³·φ²·e² согласуется с оценкой Planck,ПУСТО,docs/research/pointer_architecture_companion.md:212-220,725cdd17b496fe6f
 cases/pointer_architecture_external_20260814.py,Формула Ω_Λ = 4·3²·φ⁻²·e⁻³ согласуется с оценкой Planck,ПУСТО,docs/research/pointer_architecture_companion.md:223-231,725cdd17b496fe6f
 cases/proton_mass_ratio_error.py,"для m_p/m_e указана ошибка 0,109 %",ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:37,3febbc70e0847989
-cases/qcd_phase_tc_external_20260901.py,Формула псевдокритической температуры КХД против внешней оценки HotQCD,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:201,
+cases/qcd_phase_tc_external_20260901.py,Формула T_c = 7·π·φ²·e против внешнего значения HotQCD,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:201,
 cases/qcd_phase_tc_formula.py,"Формула QCD phase даёт 156,5 МэВ",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:201,3febbc70e0847989
 cases/readme_mp_me_external_20260818.py,Формула 6π⁵ в научном обзоре воспроизводит отношение масс протона и электрона,ОПРОВЕРГНУТО,docs/papers/README_FOR_SCIENTISTS.md:38-54,7424155384454ccb
 cases/reionization_zre_prediction.py,"Формула реионизации z_re даёт 7,67",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:206,3febbc70e0847989

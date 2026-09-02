@@ -27,6 +27,7 @@ from __future__ import annotations
 import json
 import hashlib
 import math
+import re
 import sys
 import tempfile
 from urllib.parse import urlsplit
@@ -141,6 +142,40 @@ def _observed_text_present(art: dict, path: Path) -> bool:
     return str(evidence) in text
 
 
+def _observed_value_present(art: dict) -> bool:
+    """Связывает численное наблюдаемое с предъявленной строкой доказательства.
+
+    Отпечаток файла и сама строка ещё не доказывают, что поле
+    ``наблюдаемое_из_корпуса`` относится именно к этой строке: можно было
+    оставить честную строку и подменить число в JSON.  Сопоставляем число с
+    числовыми токенами строки, допуская запятые и завершающие нули.
+    """
+    observed_key = next((k for k in OBSERVED_KEYS if k in art), None)
+    if observed_key is None:
+        return False
+    evidence_key = next((k for k in OBSERVATION_TEXT_KEYS if k in art), None)
+    try:
+        observed = float(art[observed_key])
+    except (TypeError, ValueError):
+        return False
+    # Старые артефакты не имели отдельного поля строки наблюдения; для них
+    # используется то же числовое поле, которое уже проверяется буквальным
+    # поиском в файле корпуса.
+    evidence = art[evidence_key] if evidence_key else art[observed_key]
+    tokens = re.findall(
+        r"(?<![A-Za-z])[-+]?(?:\d+(?:[.,]\d*)?|[.,]\d+)(?![A-Za-z])",
+        str(evidence),
+    )
+    for token in tokens:
+        try:
+            if math.isclose(float(token.replace(",", ".")), observed,
+                            rel_tol=1e-12, abs_tol=1e-12):
+                return True
+        except ValueError:
+            continue
+    return False
+
+
 def classify(art: dict) -> dict:
     """Вырожденная сверка или измерение о корпусе — решение по составу полей."""
     observed = next((k for k in OBSERVED_KEYS if k in art), None)
@@ -176,14 +211,16 @@ def classify(art: dict) -> dict:
         has_corpus_path and resolved_source is not None
         and _observed_text_present(art, Path(resolved_source))
     )
+    observed_matches_evidence = _observed_value_present(art)
     if (observed and has_corpus_path and supplied_digest == actual_digest
-            and observed_in_source and target_ok):
+            and observed_in_source and observed_matches_evidence and target_ok):
         return {"class": "измерение_о_корпусе", "degenerate": False,
                 "observed_key": observed, "source": src_val,
                 "resolved_source": resolved_source,
                 "source_digest": actual_digest,
                 "source_digest_key": supplied_digest_key,
                 "observed_in_source": "подтверждено",
+                "observed_matches_evidence": "подтверждено",
                 "source_integrity": "подтверждён",
                 "external_target_contract": "подтверждён"}
     reasons = []
@@ -202,6 +239,9 @@ def classify(art: dict) -> dict:
                        "снимком")
     if not observed_in_source:
         reasons.append("наблюдаемое не найдено в тексте указанного файла корпуса")
+    if not observed_matches_evidence:
+        reasons.append("численное наблюдаемое не найдено в заявленной строке "
+                       "наблюдения")
     if not target_ok:
         reasons.extend(target_reasons)
     return {"class": "вырожденная_сверка", "degenerate": True,
@@ -211,6 +251,7 @@ def classify(art: dict) -> dict:
             "source_digest": actual_digest,
             "source_digest_key": supplied_digest_key,
             "observed_in_source": "не подтверждено",
+            "observed_matches_evidence": "не подтверждено",
             "source_integrity": "не подтверждён",
             "external_target_contract": "не подтверждён"}
 
@@ -315,6 +356,15 @@ def selftest() -> int:
     mut12["наблюдаемое_из_корпуса"] = "999999999"
     check("мутант с подменённым наблюдаемым ловится",
           classify(mut12)["degenerate"])
+
+    # МУТАЦИОННАЯ ЦЕЛЬ 13: строка корпуса и её отпечаток остаются честными,
+    # но численное поле меняется на другое значение. Одной ссылки на строку
+    # недостаточно — связь наблюдаемого с доказательством должна быть явной.
+    mut13 = dict(hist[212])
+    mut13["строка_наблюдения"] = hist[212]["наблюдаемое_из_корпуса"]
+    mut13["наблюдаемое_из_корпуса"] = "0.0413"
+    check("мутант с наблюдаемым, не совпадающим со строкой, ловится",
+          classify(mut13)["degenerate"])
 
     # МУТАЦИОННАЯ ЦЕЛЬ 5: содержимое меняется при неизменном пути. Временный
     # корень корпуса оставляет путь валидным, но меняет его байты после
