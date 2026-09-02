@@ -1,0 +1,7 @@
+[tools/goldsieve-v3-2026-08-13 4788b95] тик 284: финализация сторожа синхронности
+ 6 files changed, 95 insertions(+), 1 deletion(-)
+ create mode 100644 tools/goldsieve/tick284-commit-sha.txt
+ create mode 100644 tools/goldsieve/tick284-commit.txt
+ create mode 100644 tools/goldsieve/tick284-push.txt
+ create mode 100644 tools/goldsieve/tick284-repo-sync-guard-final.rc
+ create mode 100644 tools/goldsieve/tick284-repo-sync-guard-final.txt
