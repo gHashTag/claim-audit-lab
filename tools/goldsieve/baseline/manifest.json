@@ -165,9 +165,9 @@
     "goldsieve/refs/unfolding_test.py": "c40b160da7b5f8589432a978bb788242d83cb77fd14e741358185b68c277a4e4",
     "goldsieve/runlog.py": "eaf22d0f3a000f87c4a825051e78d11e52332ff9f1595bf9612c1821b753f451",
     "goldsieve/scope.py": "d3a47c8b3940d68c54bbe702936a15f5c3b9900f479c4c297027702f24724956",
-    "goldsieve/selftest.py": "8ef99b39f8df9b5ccfe6185c591f6b36187cb7a64e8263fc43fca06084f9ab3e",
+    "goldsieve/selftest.py": "780d17e5657c1fc6710c00170836e8f385aeb4ddca3401a896476d19cea6788f",
     "goldsieve/sidak.py": "826bdc96402bd386f23ff3e60d46440b3d8814f2bc7a0e7291662997139576a5",
-    "goldsieve/sieve.py": "83492a03ed3ec7f95ada5e112c0e2c4aab6e612cd2c5bbb6a96df410b92e68f4",
+    "goldsieve/sieve.py": "7658f93bc7f45e7732954d23f7890db12cfedd26615b382fe5f9441c6ca94f91",
     "goldsieve/stats.py": "aafab1e86a6b1139298ca34a57b32c406b8a7619dc241ab60e0ae048adf5f1cd",
     "goldsieve/threshold.py": "786efabb73227bc4b31b977dfdedf4a063e2fb6935c3cd41e124695d08f0cec3",
     "gue_label_audit.py": "87738fa6b647b690927bd5346e336a9c98b0974c8f47c8575c69bf961091001b",
@@ -193,7 +193,7 @@
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "d2da8da3ec67bd46",
+  "files_digest": "615af7de106e99ba",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,
@@ -201,7 +201,7 @@
     "mutation_exit": 0,
     "negative": "28/28",
     "positive": "45/45",
-    "selftest": "240 пройдено, 0 провалено",
+    "selftest": "244 пройдено, 0 провалено",
     "selftest_exit": 0,
     "sensitivity": "1.0000",
     "specificity": "1.0000"

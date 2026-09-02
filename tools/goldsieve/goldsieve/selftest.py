@@ -695,6 +695,57 @@ def main() -> int:
             fail += 1
             print("  FAIL %-45s %s" % (label, unit_reason))
 
+    # Новый тип риска С15: одинаковые числа и единицы не делают бюджеты
+    # неопределённости сопоставимыми, если одна сторона сообщает только
+    # статистическую, а другая — объединённую погрешность.
+    uncertainty_fixtures = (
+        (
+            "С15 требует тип неопределённости внешней цели",
+            "both",
+            {"value": 1.2933, "uncertainty": 0.001,
+             "source": "https://physics.nist.gov/fixture"},
+            "external_uncertainty_type_missing",
+        ),
+        (
+            "С15 ловит несовпадение типа неопределённости",
+            "both",
+            {"value": 1.2933, "uncertainty": 0.001,
+             "uncertainty_type": "statistical",
+             "source": "https://physics.nist.gov/fixture"},
+            "external_uncertainty_type_mismatch",
+        ),
+    )
+    for label, uncertainty_type, target, expected_reason in uncertainty_fixtures:
+        uncertainty_claim = Claim(
+            name=label,
+            stated=1.2933,
+            reference=lambda: 1.2933,
+            wrong=lambda: 2.0,
+            claim_kind="prediction",
+            external_uncertainty_type=uncertainty_type,
+            external_target=lambda target=target: target,
+            skip_reasons=SR,
+        )
+        uncertainty_report = run(uncertainty_claim)
+        uncertainty_result = next(
+            x for x in uncertainty_report.results if x.sieve == "С15 внешняя цель"
+        )
+        uncertainty_reason = reason_of(
+            uncertainty_report.results,
+            verdict_of(uncertainty_report.results),
+            uncertainty_claim,
+        )
+        if (uncertainty_result.status == VOID
+                and uncertainty_result.reason_code == expected_reason
+                and uncertainty_reason == expected_reason
+                and expected_reason in NON_AGGREGATABLE
+                and expected_reason in ACTION):
+            ok += 1
+            print("  ok   %-45s %s" % (label, expected_reason))
+        else:
+            fail += 1
+            print("  FAIL %-45s %s" % (label, uncertainty_reason))
+
     # Отдельный риск происхождения: зарезервированный example.* не должен
     # считаться измерением лишь из-за наличия схемы https://. Причина обязана
     # сохраниться в своде как неагрегируемая, а не превратиться в обычное

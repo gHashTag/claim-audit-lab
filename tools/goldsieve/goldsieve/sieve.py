@@ -132,6 +132,11 @@ class Claim:
     # объявлено ДО прогона, если внешний текст получен из того же наблюдаемого.
     # Нулевое отклонение при такой связи — вырожденная сверка, а не результат.
     external_source_relation: str = ""
+    # Тип неопределённости внешней цели (statistical | systematic | both).
+    # Если он объявлен, С15 требует явного совпадения с типом,
+    # зарегистрированным у утверждения: одна и та же численная погрешность
+    # может означать разные бюджеты ошибок.
+    external_uncertainty_type: str = ""
     multiplicity: Optional[Callable[[], dict]] = None      # ожидаемые случайные попадания
     mdl: Optional[Callable[[], dict]] = None               # биты описания против бит совпадения
     declared_domain: Optional[Callable[[], list]] = None   # нарушения объявленных границ
@@ -887,6 +892,34 @@ def sieve_external_target(c: Claim) -> Result:
                 % (expected_unit, target_unit),
                 reason_code="external_unit_mismatch",
             )
+    expected_uncertainty_type = str(c.external_uncertainty_type or "").strip()
+    target_uncertainty_type = str(tgt.get("uncertainty_type") or "").strip()
+    if expected_uncertainty_type or target_uncertainty_type:
+        if not expected_uncertainty_type or not target_uncertainty_type:
+            return Result(
+                name,
+                VOID,
+                "тип неопределённости не зафиксирован с обеих сторон",
+                reason_code="external_uncertainty_type_missing",
+            )
+        aliases = {
+            "statistical_plus_systematic": "both",
+            "statistical+systematic": "both",
+            "statistical": "statistical",
+            "systematic": "systematic",
+            "both": "both",
+        }
+        expected_kind = aliases.get(expected_uncertainty_type.lower())
+        target_kind = aliases.get(target_uncertainty_type.lower())
+        if (expected_kind is None or target_kind is None
+                or expected_kind != target_kind):
+            return Result(
+                name,
+                VOID,
+                "типы неопределённости не совпадают: %s против %s"
+                % (expected_uncertainty_type, target_uncertainty_type),
+                reason_code="external_uncertainty_type_mismatch",
+            )
     source = str(tgt["source"])
     if not (source.startswith("https://") or source.startswith("http://")
             or " https://" in source or " http://" in source):
@@ -1401,6 +1434,11 @@ ACTION = {
     "external_unit_mismatch":
         "привести формулу и внешнее измерение к одной единице либо остановить "
         "сверку",
+    "external_uncertainty_type_missing":
+        "зафиксировать тип неопределённости формулы и внешней цели до сравнения",
+    "external_uncertainty_type_mismatch":
+        "согласовать статистическую и систематическую составляющие либо "
+        "остановить сверку",
     "estimator_dependent":
         "зафиксировать выбор оценки или сетки до прогона",
     "arithmetic_insufficient":
@@ -1456,6 +1494,8 @@ NON_AGGREGATABLE = (
     "external_source_degenerate",
     "external_unit_missing",
     "external_unit_mismatch",
+    "external_uncertainty_type_missing",
+    "external_uncertainty_type_mismatch",
 )
 
 
