@@ -181,11 +181,22 @@ def history_scan(root: Path) -> dict:
     reports = sorted(root.glob("tick*-report.md"))
     groups: dict[str, list[str]] = {}
     unparsable = []
+    unparsed_reasons = []
     for p in reports:
         text = p.read_text(encoding="utf-8", errors="replace")
         sub = parse_report(text)
         if len(sub) < 3:
             unparsable.append(p.name)
+            missing = [field for field in FIELDS if field not in sub]
+            unparsed_reasons.append({
+                "имя": p.name,
+                "недостающие_поля": missing,
+                "причина": (
+                    "старый доклад не содержит машинных итогов "
+                    + ", ".join(missing)
+                    + "; значения не восстанавливаются из соседних тиков"
+                ),
+            })
             continue
         groups.setdefault(signature(sub), []).append(p.name)
     collisions = {k: v for k, v in groups.items() if len(v) > 1}
@@ -197,6 +208,7 @@ def history_scan(root: Path) -> dict:
         "групп_повторов": len(collisions),
         "повторяющихся_докладов": sum(len(v) for v in collisions.values()),
         "повторы": collisions,
+        "неразобрано_с_причинами": unparsed_reasons,
     }
 
 
