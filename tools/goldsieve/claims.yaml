@@ -1856,3 +1856,26 @@ claims:
   notes: >-
     Наблюдаемое 172,76 прочитано из указанной строки корпуса; внешний URL:
     https://pdg.lbl.gov/2024/tables/rpp2024-sum-quarks.pdf.
+- source: docs/docs/math-foundations/sacred-formulas.md:141
+  case: cases/bottom_mass_external_20260902.py
+  claim: Формула массы b-кварка против внешней оценки PDG 2024
+  verdict: ПУСТО
+  reason_subtype: multiplicity_limited
+  novelty_key: quark:bottom_mass:external:v1
+  priority: 2
+  measurement_source: PDG 2024, сводная таблица свойств кварков
+  observable: корпусное значение массы b-кварка 4,183 ГэВ
+  models: ["формула Trinity (8, 2, −2, 3, −2)", "оценка PDG 4,183 ± 0,004 ГэВ"]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На указанных версиях CPython строка корпуса прочитана отдельно от
+    вычисляемой формулы, а внешняя оценка PDG 2024 содержит значение
+    4,183 ± 0,004 ГэВ. Формула даёт 4,182218395972038 ГэВ, отклонение
+    составляет −0,1954 сигмы; корпусное наблюдаемое совпадает с внешним
+    значением по округлению. Каскад сит выносит ПУСТО с подтипом
+    multiplicity_limited; новое простое подтверждение не выпускается.
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 4,183 прочитано из указанной строки корпуса; внешний URL:
+    https://pdg.lbl.gov/2024/tables/rpp2024-sum-quarks.pdf.
