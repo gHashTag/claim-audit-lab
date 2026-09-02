@@ -686,6 +686,13 @@
     "inputs_digest": "e969471db87977c8"
   },
   {
+    "case": "cases/omega_baryon_external_20260902.py",
+    "claim": "Формула плотности барионов против оценки Planck 2018",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:81",
+    "inputs_digest": "e969471db87977c8"
+  },
+  {
     "case": "cases/omega_matter_external_20260902.py",
     "claim": "Формула плотности вещества против оценки Planck 2018",
     "verdict": "ПУСТО",
@@ -1055,6 +1062,13 @@
     "verdict": "ПОДТВЕРЖДЕНО",
     "source": "docs/research/ZENODO_V20_STATISTICAL_SIGNIFICANCE.md:156-163",
     "inputs_digest": "759fee1903757b0c"
+  },
+  {
+    "case": "cases/z_boson_mass_external_20260902.py",
+    "claim": "Формула массы Z-бозона против внешней оценки PDG 2024",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:45",
+    "inputs_digest": "e969471db87977c8"
   },
   {
     "case": "cases/zeta_bblm_finite_height_comparison_20260818.py",

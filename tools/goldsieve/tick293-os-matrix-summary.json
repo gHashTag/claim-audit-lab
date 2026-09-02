@@ -1,0 +1,47 @@
+{
+  "run_id": 33636607867,
+  "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33636607867",
+  "status": "completed",
+  "conclusion": "success",
+  "head_sha": "761e113760709cf07bbde981066c0064125a7c5b",
+  "успешно": 6,
+  "всего": 6,
+  "задания": [
+    {
+      "имя": "macos-latest / py3.13",
+      "статус": "completed",
+      "итог": "success",
+      "id": 100268957278
+    },
+    {
+      "имя": "ubuntu-latest / py3.13",
+      "статус": "completed",
+      "итог": "success",
+      "id": 100268957556
+    },
+    {
+      "имя": "windows-latest / py3.13",
+      "статус": "completed",
+      "итог": "success",
+      "id": 100268957652
+    },
+    {
+      "имя": "ubuntu-latest / py3.12",
+      "статус": "completed",
+      "итог": "success",
+      "id": 100268957714
+    },
+    {
+      "имя": "windows-latest / py3.12",
+      "статус": "completed",
+      "итог": "success",
+      "id": 100268957734
+    },
+    {
+      "имя": "macos-latest / py3.12",
+      "статус": "completed",
+      "итог": "success",
+      "id": 100268957788
+    }
+  ]
+}

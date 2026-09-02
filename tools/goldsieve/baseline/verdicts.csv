@@ -97,6 +97,7 @@ cases/neutrino_mixing_external_20260814.py,Формула sin θ₂₃ = 4·3⁻
 cases/neutrino_mixing_external_20260814.py,Формула δ = π/φ² согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:87-93,b15f3d88e57a4dae
 cases/neutron_lifetime_formula.py,"Формула времени жизни нейтрона даёт 879,4 с",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:194,3febbc70e0847989
 cases/neutron_proton_splitting_external_20260901.py,Формула разности масс нейтрона и протона согласуется с внешним значением NIST,ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:206,e969471db87977c8
+cases/omega_baryon_external_20260902.py,Формула плотности барионов против оценки Planck 2018,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:81,e969471db87977c8
 cases/omega_matter_external_20260902.py,Формула плотности вещества против оценки Planck 2018,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:80,e969471db87977c8
 cases/particle_physics_example_mean_error_20260815.py,"Средняя ошибка пяти явно приведённых отношений Particle Physics равна 0,012 %",ОПРОВЕРГНУТО,docs/papers/README_FOR_SCIENTISTS.md:31-43,dec6ecc47e066f9a
 cases/pellis_external_targets_20260814.py,Формула r_e = 54φ/π³ согласуется с CODATA,ОПРОВЕРГНУТО,docs/research/PELLIS_TRINITY_COMPARISON.md:138,ca3de79351385e3a
@@ -150,6 +151,7 @@ cases/trinity_external_targets_20260813.py,α = 4φ²/(9π²) воспроизв
 cases/trinity_external_targets_20260813.py,γ = φ⁻³ согласуется с каноническим параметром Барберо–Иммирци,ПУСТО,docs/FOR_SCIENTISTS.md:29,8c0c456a38e25ba6
 cases/vsa_simd_benchmark_recipe_20260818.py,Отчёт VSA SIMD отделяет замер dot product от полноценной воспроизводимости производительности,ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,deploy/trinity-nexus/benchmarks/BENCHMARK_REPORT.md:1-63,673cbbcc54ea5c5e
 cases/wilcoxon_v20_pvalue_20260815.py,"Точное двустороннее p-значение критерия Вилкоксона равно 0,0625",ПОДТВЕРЖДЕНО,docs/research/ZENODO_V20_STATISTICAL_SIGNIFICANCE.md:156-163,759fee1903757b0c
+cases/z_boson_mass_external_20260902.py,Формула массы Z-бозона против внешней оценки PDG 2024,ВОПРОС,docs/docs/math-foundations/sacred-formulas.md:45,e969471db87977c8
 cases/zeta_bblm_finite_height_comparison_20260818.py,Ведущая BBLM-поправка объясняет три статистики расстояний дзета на верхних корзинах,ОПРОВЕРГНУТО,scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt; BBLM 2006,3436c916a7878261
 cases/zeta_chi2_independent_20260814.py,Сводка χ²/dof из таблицы совпадает с независимой реконструкцией по 100000 нулей,ОПРОВЕРГНУТО,data/zeta/zeta_bin_analysis_update.md:10-40,74e70460f38ecc48
 cases/zeta_chi2_statistics_20260814.py,"χ²/dof по десяти высотным корзинам = 2,67 ± 0,49",ПУСТО,data/zeta/zeta_bin_analysis_update.md:24-38,d32c98af192622e1

@@ -1,12 +1,12 @@
 {
- "checked": 16,
+ "checked": 18,
  "degenerate_count": 3,
  "degenerate": [
   "tick210_external_measurement.json",
   "tick211_external_measurement.json",
   "tick263_external_measurement.json"
  ],
- "rule": "артефакт внешней сверки обязан содержать наблюдаемое из корпуса и путь к файлу корпуса; иначе сверка проходит при любом значении корпусных формул; отпечаток источника обязан совпадать с содержимым файла; внешняя цель обязана иметь конечное числовое значение, положительную неопределённость и URL",
+ "rule": "артефакт внешней сверки обязан содержать наблюдаемое из корпуса и путь к файлу корпуса; иначе сверка проходит при любом значении корпусных формул; отпечаток источника обязан совпадать с содержимым файла; внешняя цель обязана иметь конечное числовое значение, положительную неопределённость и публичный URL внешнего источника",
  "why_this_check_exists": "тики 210 и 211 подали сверку внешнего источника с самим собой как содержательную цель: 0 и 0,0111 сигмы ни о чём не свидетельствуют",
  "rows": [
   {
@@ -252,8 +252,38 @@
    "external_target_contract": "подтверждён"
   },
   {
+   "file": "tick289_external_measurement.json",
+   "target": "масса Z-бозона",
+   "class": "измерение_о_корпусе",
+   "degenerate": false,
+   "observed_key": "наблюдаемое_из_корпуса",
+   "source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+   "resolved_source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+   "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
+   "source_digest_key": "отпечаток_источника",
+   "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
+   "source_integrity": "подтверждён",
+   "external_target_contract": "подтверждён"
+  },
+  {
    "file": "tick290_external_measurement.json",
    "target": "масса заряженного каона",
+   "class": "измерение_о_корпусе",
+   "degenerate": false,
+   "observed_key": "наблюдаемое_из_корпуса",
+   "source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+   "resolved_source": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+   "source_digest": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
+   "source_digest_key": "отпечаток_источника",
+   "observed_in_source": "подтверждено",
+   "observed_matches_evidence": "подтверждено",
+   "source_integrity": "подтверждён",
+   "external_target_contract": "подтверждён"
+  },
+  {
+   "file": "tick293_external_measurement.json",
+   "target": "плотность барионов",
    "class": "измерение_о_корпусе",
    "degenerate": false,
    "observed_key": "наблюдаемое_из_корпуса",

@@ -1,0 +1,7 @@
+observed 5.3912
+reference 5.391445316241101
+target {'value': 5.391247, 'uncertainty': 6e-05, 'source': 'https://physics.nist.gov/cgi-bin/cuu/Value?plkt', 'название': 'время Планка, CODATA 2022'}
+multiplicity {'expected_hits': 0.156, 'p_global': 0.09, 'fraction_random_targets_hit': 0.09, 'search_size': 123201}
+meff {'eps': 1.1129150639916888e-05, 'sigma': 3.305270685016737, 'search_size': 123201}
+mdl {'description_bits': 16.91065444060912, 'match_bits': 15.455296981877133}
+claims 1

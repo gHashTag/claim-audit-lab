@@ -1,0 +1,46 @@
+{
+  "databaseId": 33604404280,
+  "status": "completed",
+  "conclusion": "success",
+  "headSha": "1cbd1219a9f9d1629706f4ad4836410b947acb41",
+  "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33604404280",
+  "jobs": [
+    {
+      "name": "ubuntu-latest / py3.12",
+      "databaseId": 100165011203,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "windows-latest / py3.12",
+      "databaseId": 100165011283,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "macos-latest / py3.12",
+      "databaseId": 100165011320,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "windows-latest / py3.13",
+      "databaseId": 100165011335,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "macos-latest / py3.13",
+      "databaseId": 100165011347,
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "ubuntu-latest / py3.13",
+      "databaseId": 100165011362,
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "note": "Состояние и шесть заданий прочитаны командой gh run view; запись сохранена после ограничения API."
+}

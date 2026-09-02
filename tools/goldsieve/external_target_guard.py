@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import ipaddress
 import math
 import re
 import sys
@@ -51,6 +52,29 @@ RESERVED_TARGET_HOSTS = {
     "example.org",
     "example.invalid",
 }
+LOCAL_TARGET_HOSTS = {
+    "localhost",
+    "localhost.localdomain",
+}
+
+
+def _nonpublic_target_host(hostname: str) -> bool:
+    """Отбрасывает локальные и непубличные адреса как внешнюю цель."""
+    host = (hostname or "").strip().lower().rstrip(".")
+    if host in LOCAL_TARGET_HOSTS:
+        return True
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        return False
+    return (
+        address.is_private
+        or address.is_loopback
+        or address.is_link_local
+        or address.is_reserved
+        or address.is_multicast
+        or address.is_unspecified
+    )
 
 
 def _external_target_contract(art: dict) -> tuple[bool, list[str]]:
@@ -89,6 +113,9 @@ def _external_target_contract(art: dict) -> tuple[bool, list[str]]:
         elif (parsed_url.hostname or "").lower() in RESERVED_TARGET_HOSTS:
             missing.append("URL внешней цели указывает на зарезервированный "
                            "пример, а не на источник измерения")
+        elif _nonpublic_target_host(parsed_url.hostname or ""):
+            missing.append("URL внешней цели указывает на локальный или "
+                           "непубличный адрес, а не на внешний источник")
     # Наличие ключа не доказывает измерение: NaN, бесконечность, ноль и
     # отрицательная неопределённость превращают нормировку в фиктивную.
     # Разрешаем десятичные строки исторических артефактов, но требуем
@@ -349,6 +376,15 @@ def selftest() -> int:
     check("мутант с URL-заглушкой ловится",
           classify(mut_placeholder)["degenerate"])
 
+    # МУТАЦИОННАЯ ЦЕЛЬ 14: абсолютный URL может указывать на loopback или
+    # приватную сеть. Такой адрес не является проверяемым внешним измерением,
+    # даже если синтаксис и все числовые поля выглядят правдоподобно.
+    mut_local = dict(hist[212])
+    mut_local["external_target"] = dict(hist[212]["external_target"])
+    mut_local["external_target"]["source"] = "http://127.0.0.1/measurement"
+    check("мутант с локальным URL ловится",
+          classify(mut_local)["degenerate"])
+
     # МУТАЦИОННАЯ ЦЕЛЬ 12: путь и отпечаток остаются честными, но наблюдаемое
     # подменено числом, которого в корпусном файле нет. Один SHA-256 не
     # подтверждает происхождение отдельного поля observed.
@@ -431,7 +467,7 @@ def main(argv: list[str]) -> int:
                  "любом значении корпусных формул; отпечаток источника "
                  "обязан совпадать с содержимым файла; внешняя цель обязана "
                  "иметь конечное числовое значение, положительную "
-                 "неопределённость и URL"),
+                 "неопределённость и публичный URL внешнего источника"),
         "why_this_check_exists": ("тики 210 и 211 подали сверку внешнего "
                                   "источника с самим собой как содержательную "
                                   "цель: 0 и 0,0111 сигмы ни о чём не "
