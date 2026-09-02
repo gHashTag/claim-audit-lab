@@ -187,7 +187,7 @@
     "patch_t41c.py": "52237ccdf4e0b0117fd3dd5b0bdac900ebe98d896904ebfd90033ca82a525455",
     "portability_lint.py": "41a084be813b253d0e5059ae2f9bb5ad02258e5b489d1236ea83415151f74db9",
     "probe_descriptors.py": "eb0302ec3ab88bff3e97c37b12f81496642426d98d41ce8e1a7c4ea4263518d4",
-    "progress_guard.py": "e38acf386a0c850d150fe6f35ff92dfe0d646d29917a062047f06bd2ed7c7183",
+    "progress_guard.py": "1c0043c88d1c9c89a1d5a9aeddc9d9219c7be359506a3387725b00c5d4816869",
     "replay_queue.py": "b30e89b9971b6367ff3ebf80d13118c84f70cc999521c2f56d0313bf0d3187b3",
     "repo_sync_guard.py": "610e7bde1a38f23dd0187db0aea3f4792b44b4060f69f593f2d2de7707843acf",
     "snapshot_manifest.py": "aa796d8d97ec8e58b9629c682f107f70467393589ab0571bcff06e26631d85d7",
@@ -196,7 +196,7 @@
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "394db416bf705204",
+  "files_digest": "a2f833c9d182ba5a",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,

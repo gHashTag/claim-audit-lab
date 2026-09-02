@@ -177,19 +177,44 @@ def verdict(substance: dict, history: list[dict],
     }
 
 
+def _report_texts(root: Path) -> list[tuple[str, str]]:
+    """Возвращает отдельные доклады из файлов и из общей ведомости.
+
+    Ротация артефактов оставляет свежие доклады только внутри
+    ``audit-ledger.md``.  Старый разбор видел лишь отдельные
+    ``tick*-report.md`` и поэтому молча терял именно те записи, для которых
+    P5 должен был показать причину.  Заголовок доклада — наблюдаемая граница
+    блока; содержимое не восстанавливается из соседних записей.
+    """
+    reports: list[tuple[str, str]] = [
+        (p.name, p.read_text(encoding="utf-8", errors="replace"))
+        for p in sorted(root.glob("tick*-report.md"))
+    ]
+    ledger = root / "audit-ledger.md"
+    if ledger.is_file():
+        text = ledger.read_text(encoding="utf-8", errors="replace")
+        marks = list(re.finditer(r"^# Доклад тика \d+.*$", text, re.MULTILINE))
+        for index, mark in enumerate(marks):
+            end = marks[index + 1].start() if index + 1 < len(marks) else len(text)
+            block = text[mark.start():end]
+            number = re.search(r"^# Доклад тика (\d+)", mark.group(0))
+            name = "tick%s-report.md" % (number.group(1) if number else "unknown")
+            reports.append((name, block))
+    return reports
+
+
 def history_scan(root: Path) -> dict:
-    reports = sorted(root.glob("tick*-report.md"))
+    reports = _report_texts(root)
     groups: dict[str, list[str]] = {}
     unparsable = []
     unparsed_reasons = []
-    for p in reports:
-        text = p.read_text(encoding="utf-8", errors="replace")
+    for name, text in reports:
         sub = parse_report(text)
         if len(sub) < 3:
-            unparsable.append(p.name)
+            unparsable.append(name)
             missing = [field for field in FIELDS if field not in sub]
             unparsed_reasons.append({
-                "имя": p.name,
+                "имя": name,
                 "недостающие_поля": missing,
                 "причина": (
                     "старый доклад не содержит машинных итогов "
@@ -198,7 +223,7 @@ def history_scan(root: Path) -> dict:
                 ),
             })
             continue
-        groups.setdefault(signature(sub), []).append(p.name)
+        groups.setdefault(signature(sub), []).append(name)
     collisions = {k: v for k, v in groups.items() if len(v) > 1}
     return {
         "докладов": len(reports),
