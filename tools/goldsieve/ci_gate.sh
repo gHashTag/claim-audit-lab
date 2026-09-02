@@ -175,6 +175,8 @@ else
     step "чувствительность сторожа синхронности" "$BASE_PY" repo_sync_guard.py --selftest
     step "чувствительность сторожа содержательности" "$BASE_PY" progress_guard.py --selftest
     step "повторы сути в исторических докладах" "$BASE_PY" progress_guard.py --history /home/user/workspace/cron_tracking/20fee222
+    step "чувствительность сторожа новизны цели" "$BASE_PY" target_novelty_guard.py --selftest
+    step "повторы внешних целей против признанного долга" "$BASE_PY" target_novelty_guard.py --gate
 fi
 
 echo

@@ -651,6 +651,13 @@
     "inputs_digest": "a986d4874ad47b48"
   },
   {
+    "case": "cases/muon_mass_external_20260903.py",
+    "claim": "Формула массы мюона против внешней оценки PDG 2024",
+    "verdict": "ОПРОВЕРГНУТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:49",
+    "inputs_digest": "e969471db87977c8"
+  },
+  {
     "case": "cases/neutrino_mixing_external_20260814.py",
     "claim": "Формула sin θ_C = φ⁻³ согласуется с внешним значением PDG",
     "verdict": "ПУСТО",
