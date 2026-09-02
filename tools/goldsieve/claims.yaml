@@ -1956,8 +1956,8 @@ claims:
 - source: docs/docs/math-foundations/sacred-formulas.md:82
   case: cases/spectral_index_external_20260902.py
   claim: Формула спектрального индекса против оценки Planck 2018
-  verdict: ВОПРОС
-  reason_subtype: no_compression
+  verdict: ПУСТО
+  reason_subtype: multiplicity_limited
   novelty_key: cosmology:spectral_index:external:v1
   priority: 2
   measurement_source: Planck 2018, Cosmological Parameters
