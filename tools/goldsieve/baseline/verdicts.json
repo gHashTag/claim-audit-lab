@@ -756,6 +756,13 @@
     "inputs_digest": "3febbc70e0847989"
   },
   {
+    "case": "cases/qcd_phase_tc_external_20260901.py",
+    "claim": "Формула псевдокритической температуры КХД против внешней оценки HotQCD",
+    "verdict": "ПУСТО",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:201",
+    "inputs_digest": ""
+  },
+  {
     "case": "cases/qcd_phase_tc_formula.py",
     "claim": "Формула QCD phase даёт 156,5 МэВ",
     "verdict": "ПУСТО",
@@ -935,6 +942,13 @@
     "claim": "При 123 201 испытании и семейной ошибке 0,05 порог Шидака равен 5,06σ",
     "verdict": "ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО",
     "source": "docs/docs/math-foundations/sacred-formulas.md:257-259",
+    "inputs_digest": "e969471db87977c8"
+  },
+  {
+    "case": "cases/spectral_index_external_20260902.py",
+    "claim": "Формула спектрального индекса против оценки Planck 2018",
+    "verdict": "ВОПРОС",
+    "source": "docs/docs/math-foundations/sacred-formulas.md:82",
     "inputs_digest": "e969471db87977c8"
   },
   {

@@ -130,6 +130,7 @@ AUDIT_LOG_GLOBS = ("tick*_gate.txt", "tick*-gate.txt", "tick*-findings.md",
                    # без этих шаблонов журнал сам закрывает гейт.
                    "tick*-selftest.txt", "tick*-selftest.json",
                    "tick*-gue.txt", "tick*_gue.txt",
+                   "tick*-gue-label-guard.txt", "tick*-gue-label-guard.json",
                    "tick*-state.md", "tick*-state.txt", "tick*-state.json",
                    "tick*-audit.txt", "tick*-audit.json",
                    "tick*-ledger-tail.txt")

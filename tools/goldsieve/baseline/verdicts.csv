@@ -107,6 +107,7 @@ cases/pointer_architecture_external_20260814.py,Формула 1/α = 4·3²·π
 cases/pointer_architecture_external_20260814.py,Формула H₀ = 4·3³·π⁻³·φ²·e² согласуется с оценкой Planck,ПУСТО,docs/research/pointer_architecture_companion.md:212-220,725cdd17b496fe6f
 cases/pointer_architecture_external_20260814.py,Формула Ω_Λ = 4·3²·φ⁻²·e⁻³ согласуется с оценкой Planck,ПУСТО,docs/research/pointer_architecture_companion.md:223-231,725cdd17b496fe6f
 cases/proton_mass_ratio_error.py,"для m_p/m_e указана ошибка 0,109 %",ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:37,3febbc70e0847989
+cases/qcd_phase_tc_external_20260901.py,Формула псевдокритической температуры КХД против внешней оценки HotQCD,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:201,
 cases/qcd_phase_tc_formula.py,"Формула QCD phase даёт 156,5 МэВ",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:201,3febbc70e0847989
 cases/readme_mp_me_external_20260818.py,Формула 6π⁵ в научном обзоре воспроизводит отношение масс протона и электрона,ОПРОВЕРГНУТО,docs/papers/README_FOR_SCIENTISTS.md:38-54,7424155384454ccb
 cases/reionization_zre_prediction.py,"Формула реионизации z_re даёт 7,67",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:206,3febbc70e0847989
@@ -133,6 +134,7 @@ cases/sacred_tsirelson_exact_external_20260817.py,Формула Tsirelson в р
 cases/sacred_two_formula_composition_recipe_20260817.py,Составление двух священных формул воспроизводимо как метод ускорения,ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,docs/docs/math-foundations/sacred-formulas.md:273-283,e969471db87977c8
 cases/sidak_applicability_20260816.py,"Порог Шидака 5,06σ применим к зависимому семейству формул",ВОПРОС,docs/docs/math-foundations/sacred-formulas.md:257-259,e969471db87977c8
 cases/sidak_threshold_20260815.py,"При 123 201 испытании и семейной ошибке 0,05 порог Шидака равен 5,06σ",ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,docs/docs/math-foundations/sacred-formulas.md:257-259,e969471db87977c8
+cases/spectral_index_external_20260902.py,Формула спектрального индекса против оценки Planck 2018,ВОПРОС,docs/docs/math-foundations/sacred-formulas.md:82,e969471db87977c8
 cases/top_mass_external_20260902.py,Формула массы t-кварка против внешней оценки PDG 2024,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:140,e969471db87977c8
 cases/transcendental_3phi_value.py,"3^φ напечатано как 5,91559",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:169,7df30c36cc64c8fc
 cases/transcendental_catalog_values.py,"3^(1/φ) напечатано как 1,97186",ПОДТВЕРЖДЕНО,docs/docs/math-foundations/transcendental-numbers.md:184,7df30c36cc64c8fc

@@ -1953,3 +1953,26 @@ claims:
     https://arxiv.org/abs/1812.08235. Нулевое отклонение между разными
     источниками не считается пустым результатом: риск множественности
     измеряется отдельно.
+- source: docs/docs/math-foundations/sacred-formulas.md:82
+  case: cases/spectral_index_external_20260902.py
+  claim: Формула спектрального индекса против оценки Planck 2018
+  verdict: ВОПРОС
+  reason_subtype: no_compression
+  novelty_key: cosmology:spectral_index:external:v1
+  priority: 2
+  measurement_source: Planck 2018, Cosmological Parameters
+  observable: корпусное значение скалярного спектрального индекса n_s = 0,9649
+  models: ["формула Trinity (8, 1, −2, −4, 1)", "оценка Planck 0,9649 ± 0,0042"]
+  scope_status: verified-in-scope
+  scope_statement: >-
+    На указанных версиях CPython строка корпуса прочитана отдельно от
+    вычисляемой формулы, а внешняя оценка Planck 2018 содержит значение
+    0,9649 ± 0,0042. Формула даёт 0,9643960373713371, отклонение
+    составляет −0,1200 сигмы. Итог каскада берётся из сит и не является
+    новым простым подтверждением.
+  inputs_digest: e969471db87977c8
+  uncertainty_type: both
+  out_of_sample: true
+  notes: >-
+    Наблюдаемое 0,9649 прочитано из указанной строки корпуса; внешний URL:
+    https://arxiv.org/abs/1807.06209. Формула и внешнее измерение разделены.

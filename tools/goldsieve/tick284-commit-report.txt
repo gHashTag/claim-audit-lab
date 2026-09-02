@@ -1,0 +1,4 @@
+[tools/goldsieve-v3-2026-08-13 1f2c284] тик 284: уточнение итогового доклада
+ 3 files changed, 21 insertions(+), 8 deletions(-)
+ create mode 100644 tools/goldsieve/tick284-commit-final2.txt
+ create mode 100644 tools/goldsieve/tick284-push-final2.txt

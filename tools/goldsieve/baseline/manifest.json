@@ -107,6 +107,7 @@
     "cases/sacred_two_formula_composition_recipe_20260817.py": "2492795083b7facf876e880e9c6c2f60cd6ed18aa66b169fc00a727dcb9a3305",
     "cases/sidak_applicability_20260816.py": "268284f8dcb99066dc04e0f17641be2a9d4aa2063052f22afd76966fb3ffab55",
     "cases/sidak_threshold_20260815.py": "059a2c840e70b1d84888b33c7cfd921f04739e3451b505e6820c4c8dec9adb67",
+    "cases/spectral_index_external_20260902.py": "0aa02db13008ad92d3cad2d78943baf4ef2aeb1658cd4c43bb9a128574fe61ae",
     "cases/top_mass_external_20260902.py": "369ce45e46c0da9381f9fc6c7ed19e39e1d15a4a298215ab797c5bfc4e67af21",
     "cases/transcendental_3phi_value.py": "3e7432850bb7dc15d156dca80dc90a67001d2840fc93b528d513a31a1006ed2c",
     "cases/transcendental_catalog_values.py": "1d2772024a8af0660fb535f32366d7fe23361e983b55535db087f81a027130c4",
@@ -128,7 +129,7 @@
     "cases/zeta_unfolding_std_recipe_20260815.py": "e2a1e88e4d1e02554330eaf91b11f74c18350b7ce399155279ab18cdad96ec0c",
     "chain_overhead.py": "9396ef1cfaee2e5e5a9e22e0f4223f9d285fe98fa826b7e7c69cf793e92505f3",
     "ci_gate.sh": "8317fc47948014772972f050ff2de5118a5cd917bf5ae1f5a439a0ef171c20ce",
-    "claims.yaml": "bbf3fc2ac1cce6e69d3c3f7ef5ab2026cb7f76c65218456fe62fdf0fda48bf8c",
+    "claims.yaml": "95280161a96ecc41d4331dcce07d1c81e0d27a217431fbf49606c0b63a32f5f3",
     "coverage_manifest.py": "8584989d602eb8157ac96b7d23a797c92ef716daa066b511604aae24f4be47b7",
     "coverage_manifest.yaml": "20d3d8e0ebb554768b069fa3034f055ec8787cd483769769e9a0ec08c8a869f8",
     "debug_sacred_table.py": "b2bf7633482a8931ba7286d19a941a82a72f31ce3773b2d391466a47b8e1e650",
@@ -171,7 +172,7 @@
     "goldsieve/threshold.py": "786efabb73227bc4b31b977dfdedf4a063e2fb6935c3cd41e124695d08f0cec3",
     "gue_label_audit.py": "87738fa6b647b690927bd5346e336a9c98b0974c8f47c8575c69bf961091001b",
     "gue_label_fix.py": "0669229252a96a283531f305ecba04d3eb411c60967db59ea706355c390e174d",
-    "gue_label_guard.py": "7b41d55cd1c63a15f554bd7df1d4375b325b7ee62d53148e2c59bde52c42f368",
+    "gue_label_guard.py": "8aa610371c1f92bca35e10785ce422cc476981918753c5ea09a366099a980fc6",
     "independence.py": "88e86c36aa0e065f011bbdb235045a5b659cb6e334b0c0c4be1436179e2e7523",
     "measure_identity.py": "b5bafcebbf50115c6c5ef54106350a43fe8cb7f8282182346459beebab8b0b59",
     "mutation_identity.py": "4050d47c1d13bc6e5c8c1d04db87ad522437cb522f3d65232d3b15ead97bd1e8",
@@ -192,7 +193,7 @@
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "613114605277ff81",
+  "files_digest": "652948ddbf00d1e0",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,
@@ -207,7 +208,7 @@
   },
   "platform": "Linux-6.1.155+-x86_64-with-glibc2.43",
   "seed": 20260814,
-  "verdicts_digest": "9dce5b8406e88d7f",
+  "verdicts_digest": "c1cfcdc41e11b732",
   "versions": {
     "mpmath": "1.4.1",
     "numpy": "2.5.2",
