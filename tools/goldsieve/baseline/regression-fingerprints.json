@@ -1229,8 +1229,8 @@
       }
     },
     "cases/zeta_chi2_independent_20260814.py": {
-      "case_sha256": "9e5397c1d6471ee88764006e28c116a7a5091d00065a03ed08421d7e168d4752",
-      "recipe_fingerprint": "6bfceb1a2720da86",
+      "case_sha256": "358bee36d36084285c071f9aceeb85591ad5ca13686f5498a1c26996636fe34f",
+      "recipe_fingerprint": "2423d8aacb470165",
       "sources": {
         "data/zeta/zeta_bin_analysis_update.md:10-40": {
           "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md",

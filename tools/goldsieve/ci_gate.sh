@@ -153,6 +153,12 @@ else
     step "элементы протокола BBLM"        "$BASE_PY" bblm_elements.py --selftest
     step "чувствительность сторожа внешних целей" "$BASE_PY" external_target_guard.py --selftest
     step "разметка внешних сверок"        "$BASE_PY" external_target_guard.py
+    # Независимость происхождения: разные имена могут быть одним файлом
+    # через относительный путь или символическую ссылку.
+    step "чувствительность сторожа происхождения" "$BASE_PY" provenance_guard.py --selftest
+    step "происхождение сверки зета" "$BASE_PY" provenance_guard.py --check \
+        /home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md \
+        /home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt
     step "чувствительность сторожа диска" "$BASE_PY" disk_guard.py --selftest
     step "ресурс песочницы и утечка фикстур" "$BASE_PY" disk_guard.py --clean
     step "чувствительность учёта элементов BBLM" "$BASE_PY" bblm_accounting.py --selftest

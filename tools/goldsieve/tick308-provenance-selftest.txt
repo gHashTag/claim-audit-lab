@@ -1,0 +1,6 @@
+  ок   два разных файла принимаются
+  ок   один файл отвергается — дублированный вход после канонизации: /tmp/goldsieve-provenance-7mzjikaa/observed.txt
+  ок   символьный псевдоним отвергается — дублированный вход после канонизации: /tmp/goldsieve-provenance-7mzjikaa/reference-alias.txt
+  ок   дубликат списка отвергается — дублированный вход после канонизации: /tmp/goldsieve-provenance-7mzjikaa/observed.txt
+  ок   отсутствующий вход не считается покрытием — файл входа не найден: /tmp/goldsieve-provenance-7mzjikaa/missing.txt
+самопроверка сторожа происхождения: пройдено 5, провалено 0
