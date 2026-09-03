@@ -195,12 +195,12 @@
     "repo_sync_guard.py": "610e7bde1a38f23dd0187db0aea3f4792b44b4060f69f593f2d2de7707843acf",
     "snapshot_manifest.py": "aa796d8d97ec8e58b9629c682f107f70467393589ab0571bcff06e26631d85d7",
     "target_novelty_guard.py": "4a75d7c9ad7c249e5df2b5278b9b69288ca75ed4a400d27c1926df67fa9276a0",
-    "tick_counters.py": "5ebdf2c0f7fc0519d2c0707e0b87ffef03c8c0f6c8582b21689f47233401f922",
+    "tick_counters.py": "fec8947f26726ddc0619433b169c57a7cd4bb1e6c4aff07565c02ade6816d658",
     "tri": "7a8c087a42b79c1f990b2051d90c356b5a10dd22ba3388dbf28383d03b817d09",
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "2afd75428a783a9d",
+  "files_digest": "a84b74f58c80ddef",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,

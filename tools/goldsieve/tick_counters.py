@@ -44,6 +44,7 @@ KNOWN = (
     "verdict_flips",           # переворот вердикта против baseline
     "manifest_mismatch",       # coverage manifest разошёлся с фактом
     "frozen_integrity_fail",   # нарушена целостность заморозки
+    "counter_log_write_failures",  # append-журнал не принял событие
 )
 # Счётчики, для которых примечание обязательно: без него событие нельзя
 # отнести ни к одной категории аудита (aborted_audit.py).
@@ -59,13 +60,21 @@ MAX_EVENTS = 200
 APPEND_LOG = os.path.join(os.path.dirname(PATH), "counter-events.jsonl")
 
 
-def _append_event(ev: dict) -> None:
+def _append_path() -> str:
+    """Текущий append-журнал; нужен, чтобы самопроверка не писала в рабочий."""
+    return os.path.join(os.path.dirname(PATH), "counter-events.jsonl")
+
+
+def _append_event(ev: dict) -> bool:
+    """Записать событие и вернуть, было ли оно принято журналом."""
     try:
-        os.makedirs(os.path.dirname(APPEND_LOG), exist_ok=True)
-        with open(APPEND_LOG, "a", encoding="utf-8") as fh:
+        path = _append_path()
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "a", encoding="utf-8") as fh:
             fh.write(json.dumps(ev, ensure_ascii=False, sort_keys=True) + "\n")
+        return True
     except OSError:
-        pass   # журнал подсобный: сбой записи не имеет права ронять тик
+        return False
 
 
 def _load() -> dict:
@@ -109,7 +118,15 @@ def bump(name: str, note: str = "", amount: int = 1) -> int:
         print("ПРЕДУПРЕЖДЕНИЕ: %s без --note; причина срыва не разбирается" % name)
     data.setdefault("events", []).append(ev)
     data["events"] = data["events"][-MAX_EVENTS:]
-    _append_event(ev)          # до ротации: append-журнал полнее events
+    if not _append_event(ev):  # до ротации: append-журнал полнее events
+        # Раньше ошибка подсобного журнала терялась бесследно: счётчик
+        # выглядел исправным, хотя часть доказательной цепочки исчезала.
+        # Теперь это отдельное наблюдаемое событие инфраструктуры.
+        ev["append_log_write_failed"] = True
+        data["counters"]["counter_log_write_failures"] = int(
+            data["counters"].get("counter_log_write_failures", 0)) + 1
+        print("ПРЕДУПРЕЖДЕНИЕ: append-журнал не принял событие; "
+              "счётчик отказов увеличен")
     _save(data)
     print("%s = %d" % (name, data["counters"][name]))
     return 0
@@ -212,6 +229,17 @@ def selftest() -> int:
             check("здоровье: 5 из 10 выше порога", health() == 1)
             open(PATH, "w", encoding="utf-8").write("{битый")
             check("битый файл не роняет", bump("tick_started") == 0)
+            # Отказ append-журнала не должен быть невидимым: он возвращается
+            # вызывающему коду и попадает в отдельный технический счётчик.
+            saved_append = globals()["_append_event"]
+            globals()["_append_event"] = lambda _ev: False
+            try:
+                check("отказ append-журнала считается",
+                      bump("tick_started") == 0
+                      and _load()["counters"]["counter_log_write_failures"] == 1
+                      and _load()["events"][-1].get("append_log_write_failed"))
+            finally:
+                globals()["_append_event"] = saved_append
         finally:
             PATH = saved
 

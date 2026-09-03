@@ -1,0 +1,18 @@
+{
+  "запуск": 33761816425,
+  "ветвь": "tools/goldsieve-v3-2026-08-13",
+  "состояние": "completed",
+  "итог": "success",
+  "заданий": [
+    "ubuntu-latest / py3.12",
+    "ubuntu-latest / py3.13",
+    "macos-latest / py3.12",
+    "macos-latest / py3.13",
+    "windows-latest / py3.12",
+    "windows-latest / py3.13"
+  ],
+  "успешно": 6,
+  "всего": 6,
+  "ссылка": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33761816425",
+  "ограничение": "запуск относится к состоянию до правки tick_counters.py; переносимость этой правки platform-unverified"
+}
