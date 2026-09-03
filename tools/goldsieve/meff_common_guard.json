@@ -1,0 +1,401 @@
+{
+  "статус": "not-evaluated",
+  "причина": "совместный M_eff явно проверен; открытые архивы перечислены",
+  "архивов_с_несколькими_С20": 12,
+  "открытых_архивов": 12,
+  "наблюдения": [
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/appendix_external_targets_20260813.json",
+      "записей_С20": 3,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/appendix_external_targets_20260813.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 85145.07276516905,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/appendix_external_targets_20260813.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 778.5298091170574,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/appendix_external_targets_20260813.json",
+          "запись": 2,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 3593.1492314083926,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    },
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/ckm_vtd_vts_vub_external_20260814.json",
+      "записей_С20": 3,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/ckm_vtd_vts_vub_external_20260814.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 1062.0117209302327,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/ckm_vtd_vts_vub_external_20260814.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 938.4463473237565,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/ckm_vtd_vts_vub_external_20260814.json",
+          "запись": 2,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 545.5586560764743,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    },
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/formulas_deploy_external_20260814.json",
+      "записей_С20": 3,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/formulas_deploy_external_20260814.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 85345.15365841986,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/formulas_deploy_external_20260814.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 60260.72749309811,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/formulas_deploy_external_20260814.json",
+          "запись": 2,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 1552.7580557072638,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    },
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/formulas_external_targets_20260813.json",
+      "записей_С20": 2,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/formulas_external_targets_20260813.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 49373.754891909964,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/formulas_external_targets_20260813.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 16465.693853156175,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    },
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/formulas_summary_external_20260814.json",
+      "записей_С20": 3,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/formulas_summary_external_20260814.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 83810.789497079,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/formulas_summary_external_20260814.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 2363.403268612935,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/formulas_summary_external_20260814.json",
+          "запись": 2,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 38241.70261039278,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    },
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/jarlskog_theta13_external_20260814.json",
+      "записей_С20": 2,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/jarlskog_theta13_external_20260814.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 1882.673304005557,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/jarlskog_theta13_external_20260814.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 788.8423904120833,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    },
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/neutrino_mixing_external_20260814.json",
+      "записей_С20": 3,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/neutrino_mixing_external_20260814.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 5550.531567956636,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/neutrino_mixing_external_20260814.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 1070.3822762814943,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/neutrino_mixing_external_20260814.json",
+          "запись": 2,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 727.4948589833589,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    },
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/pellis_external_targets_20260814.json",
+      "записей_С20": 3,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/pellis_external_targets_20260814.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 678.0376843255052,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/pellis_external_targets_20260814.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 48990.643931661856,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/pellis_external_targets_20260814.json",
+          "запись": 2,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 83540.0266742569,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    },
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/pointer_architecture_external_20260814.json",
+      "записей_С20": 3,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/pointer_architecture_external_20260814.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 2294.2863068708357,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/pointer_architecture_external_20260814.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 1552.7580557072638,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/pointer_architecture_external_20260814.json",
+          "запись": 2,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 85145.07276516905,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    },
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/sacred_formula_complete_v2_external_20260814.json",
+      "записей_С20": 3,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/sacred_formula_complete_v2_external_20260814.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 49373.754891909964,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/sacred_formula_complete_v2_external_20260814.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 71066.63823093173,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/sacred_formula_complete_v2_external_20260814.json",
+          "запись": 2,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 16465.693853156175,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    },
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/sacred_formula_full_external_20260814.json",
+      "записей_С20": 3,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/sacred_formula_full_external_20260814.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 86989.81881085053,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/sacred_formula_full_external_20260814.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 85345.15365841986,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/sacred_formula_full_external_20260814.json",
+          "запись": 2,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 60260.72749309811,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    },
+    {
+      "статус": "not-evaluated",
+      "причина": "общий_M_eff не объявлен для нескольких записей одного M",
+      "источник_наблюдения": "/home/user/workspace/goldsieve/trinity_external_targets_20260813.json",
+      "записей_С20": 2,
+      "наблюдения": [
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/trinity_external_targets_20260813.json",
+          "запись": 0,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 30456.50938883968,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        },
+        {
+          "источник_наблюдения": "/home/user/workspace/goldsieve/trinity_external_targets_20260813.json",
+          "запись": 1,
+          "сито": 17,
+          "M": 123201.0,
+          "M_eff": 83810.789497079,
+          "общий_M_eff": null,
+          "идентификатор_общего_ансамбля": null
+        }
+      ]
+    }
+  ]
+}

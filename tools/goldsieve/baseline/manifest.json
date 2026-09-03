@@ -133,7 +133,8 @@
     "cases/zeta_unfolding_std_recipe_20260815.py": "e2a1e88e4d1e02554330eaf91b11f74c18350b7ce399155279ab18cdad96ec0c",
     "chain_overhead.py": "9396ef1cfaee2e5e5a9e22e0f4223f9d285fe98fa826b7e7c69cf793e92505f3",
     "chi2_dof_guard.py": "2523accba898544a4c3917eb69ebe538ae058657494c2c101b7f587480d1eb24",
-    "ci_gate.sh": "8c205eaec66db47d2f324023decc05eeed99acf4244a7d81d5edc6595bbf66a5",
+    "chi2_dof_rederivation.py": "86fc47beaccde0975112e3dfbb61270c4f187cee67d631a65e5f278dc492c52b",
+    "ci_gate.sh": "7660e0a5bf54e73bf09aeba262073b68fe022e5b02ca7442d2d9b2487286622e",
     "claims.yaml": "41cfbfcdc2a44b3bec3744d7c06d5d07216a03a4e784dbd31a6640c6f3e72865",
     "coverage_manifest.py": "8584989d602eb8157ac96b7d23a797c92ef716daa066b511604aae24f4be47b7",
     "coverage_manifest.yaml": "20d3d8e0ebb554768b069fa3034f055ec8787cd483769769e9a0ec08c8a869f8",
@@ -180,6 +181,7 @@
     "gue_label_guard.py": "00818fc4a29f8f5d2e448f44e35daf4cac6b28e4338f927f5cfcb81deaaff124",
     "independence.py": "88e86c36aa0e065f011bbdb235045a5b659cb6e334b0c0c4be1436179e2e7523",
     "measure_identity.py": "b5bafcebbf50115c6c5ef54106350a43fe8cb7f8282182346459beebab8b0b59",
+    "meff_common_guard.py": "04dc9cd528ca90297000b54c373de661aa72912502ef9c40dfcb53828a42d5a4",
     "mutation_identity.py": "4050d47c1d13bc6e5c8c1d04db87ad522437cb522f3d65232d3b15ead97bd1e8",
     "os_matrix_audit.py": "8572fcf98cad47cce6f7d86a5be4d7403f013c940541bbd36ea6f748b7815867",
     "patch_corpus_t41.py": "127bfc7a43577e7d97d32807b80fbfb8fca42d1c2782a549b12cac6be3dbbb01",
@@ -201,7 +203,7 @@
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "463c8b3c9c56637e",
+  "files_digest": "55cf5618bd63a080",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,

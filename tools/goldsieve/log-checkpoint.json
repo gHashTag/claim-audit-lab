@@ -1,7 +1,0 @@
-{
-  "head_hash": "ea336ae3174a4ba693b7ded1f0be031fbe229b46b18a0d8aa5a1baacd57f8774",
-  "last_seq": 2321,
-  "log_name": "runs.jsonl",
-  "note": "цепочка обнаруживает правку копии; авторство и полная подмена вместе с checkpoint не покрыты",
-  "snapshot_sha256": "d51d77466fe50d1f14cebd1559f1957ad6dec09f0165cc470d3feeb1d82cc790"
-}

@@ -1,0 +1,40 @@
+{
+  "идентификатор_запуска": 33790025968,
+  "адрес": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33790025968",
+  "ветвь": "tools/goldsieve-v3-2026-08-13",
+  "коммит": "732ab32684940cc00774c5a30d45b1af4cd2cae0",
+  "статус": "completed",
+  "итог": "success",
+  "задания": [
+    {
+      "имя": "ubuntu-latest / py3.12",
+      "статус": "completed",
+      "итог": "success"
+    },
+    {
+      "имя": "ubuntu-latest / py3.13",
+      "статус": "completed",
+      "итог": "success"
+    },
+    {
+      "имя": "macos-latest / py3.12",
+      "статус": "completed",
+      "итог": "success"
+    },
+    {
+      "имя": "macos-latest / py3.13",
+      "статус": "completed",
+      "итог": "success"
+    },
+    {
+      "имя": "windows-latest / py3.12",
+      "статус": "completed",
+      "итог": "success"
+    },
+    {
+      "имя": "windows-latest / py3.13",
+      "статус": "completed",
+      "итог": "success"
+    }
+  ]
+}
