@@ -31,6 +31,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+from progress_counts import count_token
+
 HERE = Path(__file__).resolve().parent
 LOG = Path("/home/user/workspace/cron_tracking/20fee222/progress-log.jsonl")
 OUT = HERE / "progress_guard.json"
@@ -47,7 +49,6 @@ WINDOW = 3
 SOLE_FILE_LIMIT = 2
 
 FIELDS = ("гейт", "регресс", "ос_матрица", "bblm", "изменённые_файлы")
-
 
 def parse_report(text: str) -> dict:
     """Суть доклада: только машинные числа, проза отбрасывается."""
@@ -68,16 +69,26 @@ def parse_report(text: str) -> dict:
     if m:
         out["гейт"] = [int(m.group(1)), int(m.group(2)), int(m.group(3))]
 
-    m = re.search(r"(\d+)\s+совпа\w+[\s\S]{0,60}?(\d+)\s+измен\w+\s+ситом"
-                  r"[\s\S]{0,80}?(\d+)\s+измен\w+", text)
+    m = re.search(r"(\d+|ноль|один|два|три|четыре|пять|шесть|семь|восемь)"
+                  r"\s+совпа\w+[\s\S]{0,60}?"
+                  r"(\d+|ноль|один|два|три|четыре|пять|шесть|семь|восемь)"
+                  r"\s+измен\w+\s+ситом[\s\S]{0,80}?"
+                  r"(\d+|ноль|один|два|три|четыре|пять|шесть|семь|восемь)"
+                  r"\s+измен\w+", text, re.IGNORECASE)
     if not m:
         m = re.search(r"(\d+)\s*/\s*(\d+)\s*/\s*(\d+)\s*/\s*0", text)
     if m:
-        out["регресс"] = [int(m.group(1)), int(m.group(2)), int(m.group(3))]
+        out["регресс"] = [count_token(m.group(1)),
+                          count_token(m.group(2)),
+                          count_token(m.group(3))]
 
-    m = re.search(r"(\d+)\s*(?:из|/)\s*(\d+)\s+задани", text)
+    m = re.search(r"(\d+|ноль|один|два|три|четыре|пять|шесть|семь|восемь)"
+                  r"\s*(?:из|/)\s*"
+                  r"(\d+|ноль|один|два|три|четыре|пять|шесть|шести|семь|восемь)"
+                  r"\s+задани", text, re.IGNORECASE)
     if m:
-        out["ос_матрица"] = [int(m.group(1)), int(m.group(2))]
+        out["ос_матрица"] = [count_token(m.group(1)),
+                             count_token(m.group(2))]
     elif re.search(r"\bпять\s+задани\w*\s+пять\s+заверш|"
                    r"\bиз\s+шести\s+задани\w*\s+пять\s+заверш", text,
                    re.IGNORECASE):
@@ -305,6 +316,14 @@ def _selftest() -> int:
     check("разбор регресса", sub.get("регресс") == [150, 0, 3])
     check("разбор ОС-матрицы", sub.get("ос_матрица") == [6, 6])
     check("разбор BBLM", sub.get("bblm") == [4, True])
+
+    legacy_counts = (
+        "Регрессия дала 162 совпадения, 0 изменений ситом, 6 изменений "
+        "корпусом. ОС-матрица: шесть из шести заданий завершились успешно.")
+    legacy_sub = parse_report(legacy_counts)
+    check("разбор арабских и русских счётчиков старого доклада",
+          legacy_sub.get("регресс") == [162, 0, 6]
+          and legacy_sub.get("ос_матрица") == [6, 6])
 
     legacy = ("Протокол BBLM остаётся машинным вопросом: заполнены 3 из 8 "
               "элементов; код analytic_source_absent.")
