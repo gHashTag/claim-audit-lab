@@ -110,11 +110,11 @@
     },
     "cases/c20_empty_family_guard_20260815.py": {
       "case_sha256": "31aa763a0c2ad6e5933b1ff8b6c2c597bec3ed207b6a2da2652490f942798a61",
-      "recipe_fingerprint": "675fd0396f255e9c",
+      "recipe_fingerprint": "7a7f3dd243897ccf",
       "sources": {
         "goldsieve/sieve.py:1440": {
           "path": "/home/user/workspace/goldsieve/goldsieve/sieve.py",
-          "sha256": "c0a58f741c15a40a81325f9fd16839fa3b6ac51ab7c96530baf4100df9d7a6a2"
+          "sha256": "194d95b40b2227dd544a605e568cc8ebb19103290c1a2bf27054f2b0c0b32d21"
         }
       }
     },

@@ -25,16 +25,28 @@ def _canonical(path: str | os.PathLike[str]) -> str:
 
 
 def distinct_inputs(paths: list[str | os.PathLike[str]]) -> list[str]:
-    """Вернуть канонические входы, отвергнув дубликаты и отсутствующие файлы."""
+    """Вернуть канонические входы, отвергнув дубликаты и отсутствующие файлы.
+
+    ``realpath`` ловит символьные ссылки, но не жёсткие: два имени жёсткой
+    ссылки имеют разные строки пути и один и тот же inode. Сверка таких имён
+    остаётся тавтологией, поэтому дополнительно проверяем пару (устройство,
+    inode). Нулевой inode не используем как идентификатор: некоторые
+    файловые системы не предоставляют его надёжно.
+    """
     if not paths:
         raise ValueError("не объявлен ни один вход")
     result = []
     seen = set()
+    seen_file_ids = set()
     for path in paths:
         canonical = _canonical(path)
-        if canonical in seen:
+        stat = os.stat(canonical)
+        file_id = (stat.st_dev, stat.st_ino)
+        if canonical in seen or (stat.st_ino and file_id in seen_file_ids):
             raise ValueError("дублированный вход после канонизации: %s" % path)
         seen.add(canonical)
+        if stat.st_ino:
+            seen_file_ids.add(file_id)
         result.append(canonical)
     return result
 
@@ -74,6 +86,11 @@ def selftest() -> int:
             alias.symlink_to(reference)
         except (OSError, NotImplementedError):
             alias = reference
+        hardlink = root / "reference-hardlink.txt"
+        try:
+            os.link(reference, hardlink)
+        except (OSError, NotImplementedError):
+            hardlink = None
 
         check("два разных файла принимаются",
               check_pair(str(observed), str(reference))["разные_файлы"])
@@ -89,6 +106,16 @@ def selftest() -> int:
             check("символьный псевдоним отвергается", True, str(exc))
         else:
             check("символьный псевдоним отвергается", False)
+        if hardlink is None:
+            check("жёсткий псевдоним отвергается", True,
+                  "жёсткие ссылки недоступны в этой среде")
+        else:
+            try:
+                check_pair(str(reference), str(hardlink))
+            except (ValueError, FileNotFoundError) as exc:
+                check("жёсткий псевдоним отвергается", True, str(exc))
+            else:
+                check("жёсткий псевдоним отвергается", False)
         try:
             distinct_inputs([str(observed), str(observed)])
         except (ValueError, FileNotFoundError) as exc:
@@ -104,7 +131,7 @@ def selftest() -> int:
     finally:
         shutil.rmtree(root, ignore_errors=True)
     print("самопроверка сторожа происхождения: пройдено %d, провалено %d"
-          % (5 - fail, fail))
+          % (6 - fail, fail))
     return fail
 
 
