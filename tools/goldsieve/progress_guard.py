@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import sys
 import tempfile
@@ -33,6 +34,12 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 LOG = Path("/home/user/workspace/cron_tracking/20fee222/progress-log.jsonl")
 OUT = HERE / "progress_guard.json"
+# Машинные паспорта старых тиков живут отдельно от общей ведомости. Если
+# старый доклад сам не содержит полной сути, разрешено использовать только
+# одноимённый JSON-паспорт с тем же номером тика: соседние записи и текущие
+# счётчики источником не являются.
+ARTIFACT_ROOT = Path(os.environ.get(
+    "GOLDSIEVE_ARTIFACTS", "/home/user/workspace/goldsieve"))
 # Сколько прошлых тиков сравнивать. Три — не «красивое число»: приказ уже
 # требует ревизии молчащих проверок после трёх тиков без изменений, порог здесь
 # согласован с ним, чтобы два правила не противоречили друг другу.
@@ -216,14 +223,40 @@ def _report_texts(root: Path) -> list[tuple[str, str]]:
     return [(name, by_name[name]) for name in order]
 
 
-def history_scan(root: Path) -> dict:
+def _artifact_substance(name: str, artifact_root: Path) -> dict | None:
+    """Прочитать полную машинную суть из одноимённого паспорта тика.
+
+    Это не восстановление по соседним тикам: файл обязан иметь тот же номер
+    ``tickNNN`` и содержать все пять полей контракта. Неполный или повреждённый
+    паспорт оставляется неразобранным, чтобы молчание не выглядело покрытием.
+    """
+    m = re.fullmatch(r"tick(\d+)-report\.md", name)
+    if not m:
+        return None
+    path = artifact_root / ("tick%s-progress-substance.json" % m.group(1))
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError, TypeError):
+        return None
+    if not isinstance(data, dict) or any(field not in data for field in FIELDS):
+        return None
+    return {field: data[field] for field in FIELDS}
+
+
+def history_scan(root: Path, artifact_root: Path = ARTIFACT_ROOT) -> dict:
     reports = _report_texts(root)
     groups: dict[str, list[str]] = {}
     unparsable = []
     unparsed_reasons = []
+    recovered = []
     for name, text in reports:
         sub = parse_report(text)
         if len(sub) < 3:
+            artifact = _artifact_substance(name, artifact_root)
+            if artifact is not None:
+                groups.setdefault(signature(artifact), []).append(name)
+                recovered.append(name)
+                continue
             unparsable.append(name)
             missing = [field for field in FIELDS if field not in sub]
             unparsed_reasons.append({
@@ -247,6 +280,7 @@ def history_scan(root: Path) -> dict:
         "повторяющихся_докладов": sum(len(v) for v in collisions.values()),
         "повторы": collisions,
         "неразобрано_с_причинами": unparsed_reasons,
+        "разобрано_по_одноимённому_паспорту": recovered,
     }
 
 
@@ -330,6 +364,22 @@ def _selftest() -> int:
         (root / "audit-ledger.md").write_text(report, encoding="utf-8")
         check("дубликат файла и ведомости считается один раз",
               len(_report_texts(root)) == 1)
+
+        # Старый текст может не иметь полной машинной сути, но одноимённый
+        # паспорт с тем же номером даёт честный источник всех пяти полей.
+        (root / "tick998-report.md").write_text(
+            "# Доклад тика 998\n"
+            "Гейт открыт: 66 шагов `ok`, 2 штатных пропуска, 0 провалов.\n"
+            "Регрессия: 150 совпало, 0 изменилось ситом, 3 изменилось "
+            "из-за корпуса, 0 не сопоставлено.\n", encoding="utf-8")
+        (root / "tick998-progress-substance.json").write_text(
+            json.dumps(base, ensure_ascii=False), encoding="utf-8")
+        recovered = history_scan(root, root)
+        check("одноимённый машинный паспорт закрывает старый долг",
+              recovered["разобрано"] == 2
+              and recovered["не_разобрано"] == []
+              and recovered["разобрано_по_одноимённому_паспорту"]
+              == ["tick998-report.md"])
 
     # Порог серии проверяем на границе: ровно предел — ещё проходит.
     hist2 = [{"подпись": "иная", "суть": base}]
