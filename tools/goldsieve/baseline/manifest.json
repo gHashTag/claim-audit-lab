@@ -121,7 +121,7 @@
     "cases/wilcoxon_v20_pvalue_20260815.py": "bf3f311ab2abdd409ef171db70f770625797cbbdd7d14716803450f833785816",
     "cases/z_boson_mass_external_20260902.py": "7bc3ef61b4b8b5a78ed6994182152f6a9f844f6f73fa522d56ccbc5ec89ee91e",
     "cases/zeta_bblm_finite_height_comparison_20260818.py": "b7d678bec14ead81b28a8cd6b76323b510ce8ff39cec1f5d068add8c1c84c69e",
-    "cases/zeta_chi2_independent_20260814.py": "9e5397c1d6471ee88764006e28c116a7a5091d00065a03ed08421d7e168d4752",
+    "cases/zeta_chi2_independent_20260814.py": "358bee36d36084285c071f9aceeb85591ad5ca13686f5498a1c26996636fe34f",
     "cases/zeta_chi2_statistics_20260814.py": "b934339ef0ca44b1dfd48d5541dcc2a1d86cc88abb8e7658089a6cb4e95106fa",
     "cases/zeta_finite_height_extrapolation_20260816.py": "ad8721f573b04ca82b503fe87af2b5096a91c6702395713ee9bfe01ebbc91d2e",
     "cases/zeta_gue.py": "bee110d82e7adbacfcfe043eea486b6a84dc8fb222158ef1654a93124a280c47",
@@ -199,7 +199,7 @@
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "d05b7678ad04895f",
+  "files_digest": "5b77e35551c2107d",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,

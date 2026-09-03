@@ -22,6 +22,31 @@ TABLE = "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.
 ZEROS = "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt"
 _cache = {}
 
+def _source_guard():
+    """Не допустить тавтологию: наблюдение и эталон обязаны быть разными файлами.
+
+    Проверка выполняется во время загрузки кейса, а не только объявляется
+    текстом Claim. Поэтому случайная подмена эталона тем же корпусным
+    документом превращается в явный сбой, а не в согласованное с самим собой
+    «совпадение».
+    """
+    observed_path = os.path.realpath(TABLE)
+    reference_path = os.path.realpath(ZEROS)
+    if observed_path == reference_path:
+        raise AssertionError(
+            "тавтология: observed и reference указывают на один файл")
+    if not os.path.isfile(observed_path) or not os.path.isfile(reference_path):
+        raise FileNotFoundError(
+            "для независимой сверки отсутствует observed или reference")
+    return {
+        "observed": observed_path,
+        "reference": reference_path,
+        "разные_файлы": True,
+    }
+
+
+SOURCE_GUARD = _source_guard()
+
 
 def _lines():
     if "lines" not in _cache:
@@ -147,6 +172,9 @@ def reference_alt():
 
 def observed():
     """Наблюдение: десять табличных строк сведены отдельным парсером."""
+    # Повторяем сторож на рабочем маршруте Claim, чтобы он не зависел только
+    # от времени импорта модуля при нестандартном загрузчике.
+    _source_guard()
     return table_observation()
 
 
