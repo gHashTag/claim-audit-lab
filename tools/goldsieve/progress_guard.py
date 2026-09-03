@@ -66,6 +66,14 @@ def parse_report(text: str) -> dict:
         m = re.search(r"(\d+)\s+ok[\s\S]{0,100}?(\d+)\s+штатн\w*\s+"
                       r"пропуск\w*[\s\S]{0,100}?(\d+)\s+провал", text,
                       re.IGNORECASE)
+    if not m:
+        # Историческая форма «73 успешных проверок, 2 штатных пропуска,
+        # 0 провалов» содержит тот же полный наблюдаемый итог. Ранее такая
+        # запись терялась в частичном разборе и могла ошибочно участвовать в
+        # подписи без поля гейта.
+        m = re.search(r"(\d+)\s+успешн\w*\s+провер\w*[\s\S]{0,100}?"
+                      r"(\d+)\s+штатн\w*\s+пропуск\w*[\s\S]{0,100}?"
+                      r"(\d+)\s+провал", text, re.IGNORECASE)
     if m:
         out["гейт"] = [int(m.group(1)), int(m.group(2)), int(m.group(3))]
 
@@ -104,6 +112,13 @@ def parse_report(text: str) -> dict:
     elif re.search(r"шесть\s+заданий|6/6", text):
         out["ос_матрица"] = [6, 6]
 
+    # Историческая форма: «шестью успешными заданиями» без дроби. Число
+    # заданий всё ещё наблюдаемо в самой строке; порядок и падеж не меняют
+    # факта, что выполнены все шесть.
+    elif re.search(r"(?:шест\w*|6)\s+успешн\w*\s+задан\w*", text,
+                   re.IGNORECASE):
+        out["ос_матрица"] = [6, 6]
+
     m = re.search(r"(\d+)\s+элемент\w*,?\s+закрыт\w*\s+кодом", text)
     if not m:
         m = re.search(r"кодом\s+закрыт\w*\s+(\d+)", text)
@@ -137,6 +152,20 @@ def parse_report(text: str) -> dict:
     closed = int(m.group(1)) if m else None
     if closed is not None:
         out["bblm"] = [closed, "analytic_source_absent" in text]
+
+    # Список изменённых файлов — обязательная часть машинной сути. Извлекаем
+    # его только из явной строки со списком, а не из произвольных упоминаний
+    # файлов в прозе и артефактах. Если список не предъявлен, поле остаётся
+    # отсутствующим: молчание не превращается в пустой список.
+    m = re.search(
+        r"(?im)^\s*(?:\*\*)?измен(?:ен|ён)\w*\s+\w+\s+файл\w*"
+        r"(?:\s+инструмента)?\s*:\s*(.+)$", text)
+    if m:
+        paths = re.findall(r"`([^`]+)`", m.group(1))
+        paths = [p for p in paths if ("/" in p or "\\" in p)
+                 and not p.endswith((".json", ".yaml", ".yml", ".md"))]
+        if paths:
+            out["изменённые_файлы"] = paths
 
     return out
 
@@ -262,7 +291,12 @@ def history_scan(root: Path, artifact_root: Path = ARTIFACT_ROOT) -> dict:
     recovered = []
     for name, text in reports:
         sub = parse_report(text)
-        if len(sub) < 3:
+        # Раньше порогом был len(sub) < 3: доклад с тремя-четырьмя полями
+        # считался «разобранным», хотя подпись молча включала отсутствующие
+        # поля как null. Это нарушает контракт пяти полей и скрывает
+        # исторический долг. Полный набор допускается также одноимённым
+        # паспортом; неполный паспорт не считается покрытием.
+        if set(sub) != set(FIELDS):
             artifact = _artifact_substance(name, artifact_root)
             if artifact is not None:
                 groups.setdefault(signature(artifact), []).append(name)
@@ -335,9 +369,16 @@ def _selftest() -> int:
              "0 изменилось ситом, 3 изменилось из-за корпуса. Гейт: 66 шагов "
              "`ok`, 2 штатных пропуска, 0 провалов. Задания ОС-матрицы: 6 из 6 "
              "заданий успешны. BBLM: 4 элемента, закрытых кодом, "
-             "analytic_source_absent.")
+             "analytic_source_absent.\nИзменены два файла инструмента: "
+             "`goldsieve/meff.py`, `goldsieve/sieve.py`.\n")
     check("иная проза при тех же числах даёт ту же подпись",
-          signature(parse_report(text)) == signature(parse_report(other)))
+          signature(dict(parse_report(text),
+                         изменённые_файлы=["goldsieve/meff.py",
+                                           "goldsieve/sieve.py"]))
+          == signature(parse_report(other)))
+    check("список изменённых файлов читается только из явной строки",
+          parse_report(other).get("изменённые_файлы")
+          == ["goldsieve/meff.py", "goldsieve/sieve.py"])
     # Иные числа — подпись обязана отличаться.
     changed = text.replace("150 совпало", "151 совпало")
     check("изменение числа меняет подпись",
@@ -378,11 +419,25 @@ def _selftest() -> int:
                   "Регрессия: 150 совпало, 0 изменилось ситом, 3 изменилось "
                   "из-за корпуса, 0 не сопоставлено.\n"
                   "ОС-матрица: 6 из 6 заданий успешны.\n"
-                  "BBLM: 4 элемента, закрытых кодом, analytic_source_absent.\n")
+                  "BBLM: 4 элемента, закрытых кодом, analytic_source_absent.\n"
+                  "Изменён один файл инструмента: `goldsieve/progress_guard.py`.\n")
         (root / "tick999-report.md").write_text(report, encoding="utf-8")
         (root / "audit-ledger.md").write_text(report, encoding="utf-8")
         check("дубликат файла и ведомости считается один раз",
               len(_report_texts(root)) == 1)
+
+        # Частичный исторический текст не может считаться разобранным только
+        # потому, что в нём есть три из пяти полей.
+        (root / "tick997-report.md").write_text(
+            "# Доклад тика 997\n"
+            "Гейт открыт: 66 шагов `ok`, 2 штатных пропуска, 0 провалов.\n"
+            "Регрессия: 150 совпало, 0 изменилось ситом, 3 изменилось "
+            "из-за корпуса, 0 не сопоставлено.\n"
+            "ОС-матрица: 6 из 6 заданий успешны.\n",
+            encoding="utf-8")
+        partial = history_scan(root, root)
+        check("частичный доклад остаётся неразобранным",
+              "tick997-report.md" in partial["не_разобрано"])
 
         # Старый текст может не иметь полной машинной сути, но одноимённый
         # паспорт с тем же номером даёт честный источник всех пяти полей.
@@ -396,7 +451,7 @@ def _selftest() -> int:
         recovered = history_scan(root, root)
         check("одноимённый машинный паспорт закрывает старый долг",
               recovered["разобрано"] == 2
-              and recovered["не_разобрано"] == []
+              and recovered["не_разобрано"] == ["tick997-report.md"]
               and recovered["разобрано_по_одноимённому_паспорту"]
               == ["tick998-report.md"])
 
