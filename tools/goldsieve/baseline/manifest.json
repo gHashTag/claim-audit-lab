@@ -155,7 +155,7 @@
     "goldsieve/identity_corpus.py": "5075dfa8cb5a7350a262a17991b145d08048c981f51b0fd93a684da9347c43b2",
     "goldsieve/identity_cross_helper.py": "678b62405fb85eee6f1a010bb1dac13c6bdb2a0cb7365d7ef3f15ab5652981f9",
     "goldsieve/identity_deep.py": "2d7f4b404a7b2ca41fdc87f20a6b8ca3ba80778451987be31164b99505905368",
-    "goldsieve/meff.py": "c067e91b68fd0e65d557a7a39431660fdb879799531e786353249fdeef65b1a3",
+    "goldsieve/meff.py": "48e8b0b75d87fff79f82385f54a03c1e14d38de639ced2c7eb6e5c37f5101ed9",
     "goldsieve/modgraph.py": "89efabc042b95c0e0793eb50af04f2afef5edd30d3e5623ab402b94459754d4c",
     "goldsieve/platform_sla.py": "15ad4ea6da46e0fd21a9f9a47980c69085d06647db56fbaa9cb8ed857d568e45",
     "goldsieve/preconditions.py": "cba0ffe696eb498eb4557c5fa55b08fca71cd613311b1d38e4f7d0b5e53b4d5e",
@@ -169,9 +169,9 @@
     "goldsieve/refs/unfolding_test.py": "c40b160da7b5f8589432a978bb788242d83cb77fd14e741358185b68c277a4e4",
     "goldsieve/runlog.py": "eaf22d0f3a000f87c4a825051e78d11e52332ff9f1595bf9612c1821b753f451",
     "goldsieve/scope.py": "d3a47c8b3940d68c54bbe702936a15f5c3b9900f479c4c297027702f24724956",
-    "goldsieve/selftest.py": "bf8d3560f32d3f9bbb0caff2a6ce4a5804399361ad41a546c130c82bb3aca10c",
+    "goldsieve/selftest.py": "7aefbf6172e60cf29b4c2c7b227e717574560b22d8ead45fc4c8c1978eb49d6b",
     "goldsieve/sidak.py": "826bdc96402bd386f23ff3e60d46440b3d8814f2bc7a0e7291662997139576a5",
-    "goldsieve/sieve.py": "6e5b87aa1fea03fc18b0f195961f4df2aa7a00987dd73a0f8727cdd8aff19c73",
+    "goldsieve/sieve.py": "c0a58f741c15a40a81325f9fd16839fa3b6ac51ab7c96530baf4100df9d7a6a2",
     "goldsieve/stats.py": "aafab1e86a6b1139298ca34a57b32c406b8a7619dc241ab60e0ae048adf5f1cd",
     "goldsieve/threshold.py": "786efabb73227bc4b31b977dfdedf4a063e2fb6935c3cd41e124695d08f0cec3",
     "gue_label_audit.py": "87738fa6b647b690927bd5346e336a9c98b0974c8f47c8575c69bf961091001b",
@@ -200,7 +200,7 @@
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "5ca3823a423437c0",
+  "files_digest": "7956983924961483",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,
@@ -208,7 +208,7 @@
     "mutation_exit": 0,
     "negative": "28/28",
     "positive": "45/45",
-    "selftest": "249 пройдено, 0 провалено",
+    "selftest": "254 пройдено, 0 провалено",
     "selftest_exit": 0,
     "sensitivity": "1.0000",
     "specificity": "1.0000"

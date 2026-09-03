@@ -839,6 +839,43 @@ def main() -> int:
         print("  FAIL %-45s %s -> %s" %
               ("мутация finite ловится", mutant_status, original_status))
 
+    # Новый тип риска С15: поставщик внешней цели может завершиться исключением.
+    # Это не отсутствие расхождения и не пустая цель; причина обязана попасть
+    # в машинный свод, чтобы сбой чтения нельзя было принять за согласие.
+    def broken_target():
+        raise RuntimeError("источник временно недоступен")
+
+    broken_target_claim = Claim(
+        name="поставщик внешней цели завершился ошибкой",
+        stated=878.4,
+        reference=lambda: 878.4,
+        wrong=lambda: 950.0,
+        claim_kind="prediction",
+        external_target=broken_target,
+        skip_reasons=SR,
+    )
+    broken_target_report = run(broken_target_claim)
+    broken_target_result = next(
+        x for x in broken_target_report.results if x.sieve == "С15 внешняя цель"
+    )
+    broken_target_reason = reason_of(
+        broken_target_report.results,
+        verdict_of(broken_target_report.results),
+        broken_target_claim,
+    )
+    if (broken_target_result.status == VOID
+            and broken_target_result.reason_code == "external_target_invalid"
+            and broken_target_reason == "external_target_invalid"
+            and "external_target_invalid" in NON_AGGREGATABLE
+            and "external_target_invalid" in ACTION):
+        ok += 1
+        print("  ok   %-45s %s" %
+              ("С15 классифицирует сбой поставщика", broken_target_reason))
+    else:
+        fail += 1
+        print("  FAIL %-45s %s" %
+              ("С15 классифицирует сбой поставщика", broken_target_reason))
+
     # С16: ожидаемых попаданий больше одного -> ПУСТО
     fitted = Claim(
         name="совпадение при переборе, ожидаемых попаданий 3",

@@ -1,0 +1,45 @@
+{
+  "run_id": 33733882389,
+  "branch": "tools/goldsieve-v3-2026-08-13",
+  "head_sha": "0143d80eb775d92f12d08d9289d2eec9ef736c4a",
+  "workflow": "cross-platform-selftest.yml",
+  "workflow_path": ".github/workflows/cross-platform-selftest.yml",
+  "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33733882389",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "macos-latest / py3.12",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "macos-latest / py3.13",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "windows-latest / py3.12",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "windows-latest / py3.13",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "ubuntu-latest / py3.12",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "ubuntu-latest / py3.13",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "job_count": 6,
+  "scope_status": "verified-in-scope",
+  "verification": "gh run watch --exit-status; матрица workflow содержит шесть сочетаний"
+}

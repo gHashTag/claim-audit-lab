@@ -863,7 +863,19 @@ def sieve_external_target(c: Claim) -> Result:
                       "предсказательное утверждение без внешнего измерения: "
                       "сверка формулы с напечатанным числом прошла бы при любом "
                       "значении формулы")
-    tgt = c.external_target()
+    try:
+        tgt = c.external_target()
+    except Exception as exc:  # noqa: BLE001
+        # Сбой поставщика цели не является отсутствием расхождения. Без
+        # отдельной причины общий обработчик run() превращал его в безымянный
+        # FAIL, а журнал терял различие между дефектом рецепта и источника.
+        return Result(
+            name,
+            VOID,
+            "внешняя цель не прочитана: поставщик завершился ошибкой %r"
+            % (exc,),
+            reason_code="external_target_invalid",
+        )
     # Защита от нового класса риска: нечисловая/нефинитная цель или цель без
     # проверяемого URL раньше могла пройти дальше как обычная цель. В частности,
     # float("nan") делал worst_sigma равным нулю и мог ложно дать PASS.
@@ -1517,6 +1529,9 @@ ACTION = {
     "external_uncertainty_type_mismatch":
         "согласовать статистическую и систематическую составляющие либо "
         "остановить сверку",
+    "external_target_invalid":
+        "исправить поставщик внешней цели и повторить чтение; ошибка источника "
+        "не является согласованием с формулой",
     "estimator_dependent":
         "зафиксировать выбор оценки или сетки до прогона",
     "arithmetic_insufficient":
@@ -1575,6 +1590,7 @@ NON_AGGREGATABLE = (
     "external_unit_mismatch",
     "external_uncertainty_type_missing",
     "external_uncertainty_type_mismatch",
+    "external_target_invalid",
     "multiplicity_invalid",
 )
 
