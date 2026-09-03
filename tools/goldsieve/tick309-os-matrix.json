@@ -1,0 +1,39 @@
+{
+  "идентификатор_запуска": 33718602089,
+  "состояние": "completed",
+  "результат": "success",
+  "ветвь": "tools/goldsieve-v3-2026-08-13",
+  "отправленный_снимок": "e1dea9ccebf15da0eaade8359446f05b9189a6c3",
+  "задания": [
+    {
+      "задание": "ubuntu-latest / CPython 3.12",
+      "состояние": "completed",
+      "результат": "success"
+    },
+    {
+      "задание": "ubuntu-latest / CPython 3.13",
+      "состояние": "completed",
+      "результат": "success"
+    },
+    {
+      "задание": "macos-latest / CPython 3.12",
+      "состояние": "completed",
+      "результат": "success"
+    },
+    {
+      "задание": "macos-latest / CPython 3.13",
+      "состояние": "completed",
+      "результат": "success"
+    },
+    {
+      "задание": "windows-latest / CPython 3.12",
+      "состояние": "completed",
+      "результат": "success"
+    },
+    {
+      "задание": "windows-latest / CPython 3.13",
+      "состояние": "completed",
+      "результат": "success"
+    }
+  ]
+}

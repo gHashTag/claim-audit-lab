@@ -155,7 +155,7 @@
     "goldsieve/identity_corpus.py": "5075dfa8cb5a7350a262a17991b145d08048c981f51b0fd93a684da9347c43b2",
     "goldsieve/identity_cross_helper.py": "678b62405fb85eee6f1a010bb1dac13c6bdb2a0cb7365d7ef3f15ab5652981f9",
     "goldsieve/identity_deep.py": "2d7f4b404a7b2ca41fdc87f20a6b8ca3ba80778451987be31164b99505905368",
-    "goldsieve/meff.py": "103c1eac5cc677bef41791cfa475f9e56c5dfa1556d04761e4397cf77ae56595",
+    "goldsieve/meff.py": "89b1afb4b505fed22202164b756ac540f09848082091cd7282a169b73f81402f",
     "goldsieve/modgraph.py": "89efabc042b95c0e0793eb50af04f2afef5edd30d3e5623ab402b94459754d4c",
     "goldsieve/platform_sla.py": "15ad4ea6da46e0fd21a9f9a47980c69085d06647db56fbaa9cb8ed857d568e45",
     "goldsieve/preconditions.py": "cba0ffe696eb498eb4557c5fa55b08fca71cd613311b1d38e4f7d0b5e53b4d5e",
@@ -169,7 +169,7 @@
     "goldsieve/refs/unfolding_test.py": "c40b160da7b5f8589432a978bb788242d83cb77fd14e741358185b68c277a4e4",
     "goldsieve/runlog.py": "eaf22d0f3a000f87c4a825051e78d11e52332ff9f1595bf9612c1821b753f451",
     "goldsieve/scope.py": "d3a47c8b3940d68c54bbe702936a15f5c3b9900f479c4c297027702f24724956",
-    "goldsieve/selftest.py": "435ba304aa0483204a18912482dc8650786e76ed3dc586e80f9fb9d5cd4f4048",
+    "goldsieve/selftest.py": "b3609059352a0c881ac334fba44b29ba3f0c2fed1d1983de00aa2130f35295af",
     "goldsieve/sidak.py": "826bdc96402bd386f23ff3e60d46440b3d8814f2bc7a0e7291662997139576a5",
     "goldsieve/sieve.py": "6e5b87aa1fea03fc18b0f195961f4df2aa7a00987dd73a0f8727cdd8aff19c73",
     "goldsieve/stats.py": "aafab1e86a6b1139298ca34a57b32c406b8a7619dc241ab60e0ae048adf5f1cd",
@@ -200,7 +200,7 @@
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "6a868843d15ce5dd",
+  "files_digest": "3618965f6d6448fe",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,
@@ -208,7 +208,7 @@
     "mutation_exit": 0,
     "negative": "28/28",
     "positive": "45/45",
-    "selftest": "247 пройдено, 0 провалено",
+    "selftest": "248 пройдено, 0 провалено",
     "selftest_exit": 0,
     "sensitivity": "1.0000",
     "specificity": "1.0000"

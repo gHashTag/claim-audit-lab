@@ -230,6 +230,24 @@ def selftest():
                   and 0.25 <= r_cl / r_ei <= 4.0)
             check("кластерный и собственный пути согласуются на семействе", ok,
                   "доли %.4g против %.4g" % (r_cl, r_ei or float("nan")))
+
+            # Новый риск каскада: собственный путь зависит от ансамбля
+            # случайных целей. Один seed в отчёте не является устойчивой
+            # оценкой M_eff: при неудачном ансамбле можно получить иной
+            # порог и принять шум за измерение. Здесь проверяем четыре
+            # независимых фиксированных ансамбля; разброс должен быть
+            # существенно меньше допуска согласования двух путей.
+            seeds = (0, 1, 2, 3)
+            eigen = [
+                meff_from_family(win, 0.0081, seed=seed).get("M_eff_eigen")
+                for seed in seeds
+            ]
+            finite = [float(v) for v in eigen if v is not None and math.isfinite(v)]
+            stable = (len(finite) == len(seeds)
+                      and min(finite) > 0.0
+                      and max(finite) / min(finite) < 1.5)
+            check("собственный M_eff устойчив к ансамблю целей", stable,
+                  "оценки %s" % ", ".join("%.4g" % v for v in finite))
         except Exception as exc:  # noqa: BLE001
             check("согласование путей проверено", False, repr(exc))
 
