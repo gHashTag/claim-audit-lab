@@ -870,6 +870,36 @@ def main() -> int:
         fail += 1
         print("  FAIL %-45s %s" % ("С16 не срабатывает на редком попадании", st16))
 
+    # С16: повреждённые числовые метрики не имеют права превращаться в PASS.
+    # NaN раньше проходил сравнения «>=» и «>» как ложный, поэтому тихо
+    # пропускал испорченную оценку множественности.
+    for label, payload in (
+            ("NaN в expected_hits",
+             {"expected_hits": float("nan"), "p_global": 0.001}),
+            ("NaN в p_global",
+             {"expected_hits": 1e-3, "p_global": float("nan")}),
+            ("доля вне диапазона",
+             {"expected_hits": 1e-3, "p_global": 1e-3,
+              "fraction_random_targets_hit": 1.1}),
+            ("отсутствует p_global",
+             {"expected_hits": 1e-3}),
+    ):
+        corrupt = Claim(
+            name="повреждённая метрика С16: " + label,
+            stated=1.0, reference=lambda: 1.0, wrong=lambda: 2.0,
+            multiplicity=lambda payload=payload: payload,
+            skip_reasons=SR,
+        )
+        rows = run(corrupt).results
+        row = next(x for x in rows if x.sieve == "С16 подгонка под ответ")
+        if row.status == FAIL and reason_of(rows, QUESTION) == "multiplicity_invalid":
+            ok += 1
+        else:
+            fail += 1
+            print("  FAIL повреждённая метрика С16: %s -> %s / %s"
+                  % (label, row.status, reason_of(rows, QUESTION)))
+    print("  ok   повреждённые метрики С16 отвергнуты (4/4)")
+
     # С17: описание дороже совпадения -> ВОПРОС, а не подтверждение
     nocompress = Claim(
         name="описание 14.3 бит против совпадения 5.6 бит",

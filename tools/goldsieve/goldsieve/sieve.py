@@ -1035,12 +1035,58 @@ def sieve_multiplicity(c: Claim) -> Result:
     if c.multiplicity is None:
         return Result(name, SKIP)
     m = c.multiplicity()
-    exp_hits = float(m["expected_hits"])
-    p_glob = float(m.get("p_global", float("nan")))
+    if not isinstance(m, dict) or "expected_hits" not in m:
+        return Result(name, FAIL,
+                      "метрика множественности не содержит expected_hits",
+                      reason_code="multiplicity_invalid")
+    try:
+        exp_hits = float(m["expected_hits"])
+    except (TypeError, ValueError, OverflowError):
+        return Result(name, FAIL,
+                      "expected_hits нечислов: метрика множественности "
+                      "непригодна",
+                      reason_code="multiplicity_invalid")
+    if not math.isfinite(exp_hits) or exp_hits < 0.0:
+        return Result(name, FAIL,
+                      "expected_hits не является конечным неотрицательным "
+                      "числом",
+                      reason_code="multiplicity_invalid")
+
+    # Раньше NaN в p_global или в доле случайных целей проходил все условия
+    # сравнения и превращал испорченную метрику в PASS. Это не отсутствие
+    # попаданий: это отсутствие проверяемого результата, поэтому нужен явный
+    # FAIL с машинной причиной, а не молчаливое продолжение каскада.
+    if "p_global" not in m:
+        return Result(name, FAIL,
+                      "метрика множественности не содержит p_global",
+                      reason_code="multiplicity_invalid")
+    try:
+        p_glob = float(m["p_global"])
+    except (TypeError, ValueError, OverflowError):
+        return Result(name, FAIL,
+                      "p_global нечислов: метрика множественности непригодна",
+                      reason_code="multiplicity_invalid")
+    if not math.isfinite(p_glob) or not 0.0 <= p_glob <= 1.0:
+        return Result(name, FAIL,
+                      "p_global должно быть конечной долей от 0 до 1",
+                      reason_code="multiplicity_invalid")
+
     frac = m.get("fraction_random_targets_hit")
+    if frac is not None:
+        try:
+            frac = float(frac)
+        except (TypeError, ValueError, OverflowError):
+            return Result(name, FAIL,
+                          "доля случайных целей нечислова",
+                          reason_code="multiplicity_invalid")
+        if not math.isfinite(frac) or not 0.0 <= frac <= 1.0:
+            return Result(name, FAIL,
+                          "доля случайных целей должна быть конечной "
+                          "и лежать от 0 до 1",
+                          reason_code="multiplicity_invalid")
     nums = {"ожидаемых_попаданий": exp_hits, "p_глоб": p_glob}
     if frac is not None:
-        nums["доля_случайных_целей_с_попаданием"] = float(frac)
+        nums["доля_случайных_целей_с_попаданием"] = frac
     # Молчаливый nan в выводе — след необъявленного ключа в задаче, и он
     # читается как настоящее число. Отсутствие величины называется отсутствием.
     det = ("ожидаемых случайных попаданий %.3g; p_глоб %s"
@@ -1433,6 +1479,9 @@ ACTION = {
         "не запускать похожие цели до появления более точных данных",
     "multiplicity_limited":
         "требовать предрегистрацию пространства поиска либо выигрыш по MDL",
+    "multiplicity_invalid":
+        "исправить или перепроверить метрику множественности: нужны конечные "
+        "expected_hits, p_global и доля случайных целей в диапазоне 0..1",
     "model_nonidentifiable":
         "требовать альтернативные модели и независимые наблюдаемые",
     "systematics_unmodeled":
@@ -1526,6 +1575,7 @@ NON_AGGREGATABLE = (
     "external_unit_mismatch",
     "external_uncertainty_type_missing",
     "external_uncertainty_type_mismatch",
+    "multiplicity_invalid",
 )
 
 
@@ -1588,6 +1638,8 @@ def reason_of(results: list, verdict: str, claim: Optional[Claim] = None) -> str
             return "meff_unstable"
         if st.get("С20 эффективное число попыток") == OPEN:
             return "meff_unstable"
+        if st.get("С16 подгонка под ответ") == FAIL:
+            return "multiplicity_invalid"
         if st.get("С12 независимый метод") == FAIL:
             return "no_second_method"
         if st.get("С11 слишком хорошо") == FAIL:
