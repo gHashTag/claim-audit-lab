@@ -39,6 +39,27 @@ except Exception:  # noqa: BLE001
     _np = None
 
 
+def _positive_finite(values, label):
+    """Проверить численный ансамбль до логарифмов и корреляций.
+
+    Молчаливое отбрасывание ``nan``, ``inf`` и неположительных значений
+    опасно: после такого фильтра собственный путь может построить вполне
+    правдоподобный M_eff на усечённом ансамбле. Это не «нет данных», а
+    повреждённый рецепт, поэтому вызывающая сторона должна получить явную
+    ошибку и не выпускать вердикт.
+    """
+    try:
+        out = [float(v) for v in values]
+    except (TypeError, ValueError) as exc:
+        raise ValueError("%s содержит нечисловое значение" % label) from exc
+    if not out:
+        raise ValueError("%s не должен быть пустым" % label)
+    if any(not math.isfinite(v) or v <= 0.0 for v in out):
+        raise ValueError("%s должен содержать только конечные положительные "
+                         "значения" % label)
+    return out
+
+
 def _targets_fingerprint(targets):
     """Короткий отпечаток фактического ансамбля целей для журнала."""
     if _np is None:
@@ -56,9 +77,7 @@ def resolvable_clusters(values, eps):
     соседи ближе eps сливаются, потому что при такой точности вердикт по ним
     один и тот же.
     """
-    vals = sorted(float(v) for v in values if v and v > 0.0)
-    if not vals:
-        return 0
+    vals = sorted(_positive_finite(values, "семейство"))
     if eps <= 0.0:
         return len(vals)
     logs = [math.log(v) for v in vals]
@@ -106,7 +125,9 @@ def meff_from_family(values, eps, targets=None, subsample=180, seed=0):
     кластерному пути — именно он используется ситом, потому что он не зависит
     от выбора ансамбля целей.
     """
-    vals = [float(v) for v in values if v and v > 0.0]
+    if not math.isfinite(float(eps)) or float(eps) <= 0.0:
+        raise ValueError("eps должен быть конечным и положительным")
+    vals = _positive_finite(values, "семейство")
     out = {
         "M": len(vals),
         "M_eff_cluster": resolvable_clusters(vals, eps),
@@ -133,6 +154,11 @@ def meff_from_family(values, eps, targets=None, subsample=180, seed=0):
         low, high = math.log10(min(vals)), math.log10(max(vals))
         targets = 10.0 ** rng.uniform(low, high, size=600)
     targets = _np.asarray(targets, dtype=float)
+    if targets.ndim != 1 or targets.size == 0:
+        raise ValueError("ансамбль целей должен быть непустым одномерным массивом")
+    if not _np.all(_np.isfinite(targets)) or not _np.all(targets > 0.0):
+        raise ValueError("ансамбль целей должен содержать только конечные "
+                         "положительные значения")
     # Риск каскада: без отпечатка ансамбля одинаковое число M_eff нельзя
     # отличить от результата другого набора целей. Сохраняем состав и seed,
     # не меняя численное решение.
@@ -279,6 +305,26 @@ def selftest():
             check("ансамбль M_eff имеет воспроизводимый отпечаток",
                   reproducible,
                   "seed=17: %s" % a.get("targets_sha256", "нет"))
+
+            # МУТАЦИОННАЯ ЦЕЛЬ: повреждённый ансамбль нельзя молча сократить
+            # перед логарифмированием. Иначе корреляционный путь выдаёт число
+            # для другого рецепта, хотя отчёт сохраняет прежний M.
+            bad_inputs = (
+                ("семейство", lambda: resolvable_clusters([1.0, float("nan")], 0.01)),
+                ("семейство inf", lambda: meff_from_family([1.0, float("inf")], 0.01)),
+                ("eps", lambda: meff_from_family(win, float("nan"))),
+                ("цели", lambda: meff_from_family(
+                    win, 0.0081, targets=_np.asarray([1.0, float("nan")]))),
+            )
+            rejected = 0
+            for _, call in bad_inputs:
+                try:
+                    call()
+                except ValueError:
+                    rejected += 1
+            check("повреждённые ансамбли и eps отвергаются явно",
+                  rejected == len(bad_inputs),
+                  "отклонено %d/%d" % (rejected, len(bad_inputs)))
         except Exception as exc:  # noqa: BLE001
             check("согласование путей проверено", False, repr(exc))
 
