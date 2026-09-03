@@ -77,9 +77,13 @@ def resolvable_clusters(values, eps):
     соседи ближе eps сливаются, потому что при такой точности вердикт по ним
     один и тот же.
     """
+    try:
+        eps = float(eps)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError("eps должен быть числом") from exc
+    if not math.isfinite(eps) or eps <= 0.0:
+        raise ValueError("eps должен быть конечным и положительным")
     vals = sorted(_positive_finite(values, "семейство"))
-    if eps <= 0.0:
-        return len(vals)
     logs = [math.log(v) for v in vals]
     # порог в логарифмах: log(1+eps) — относительная полоса
     step = math.log1p(eps)
@@ -104,7 +108,21 @@ def li_ji_meff(correlation):
     matrix = _np.asarray(correlation, dtype=float)
     if matrix.ndim != 2 or matrix.shape[0] != matrix.shape[1]:
         raise ValueError("нужна квадратная матрица корреляций")
+    if matrix.shape[0] == 0:
+        raise ValueError("матрица корреляций не должна быть пустой")
+    if not _np.all(_np.isfinite(matrix)):
+        raise ValueError("матрица корреляций должна быть конечной")
+    if not _np.allclose(matrix, matrix.T, rtol=0.0, atol=1e-12):
+        raise ValueError("матрица корреляций должна быть симметричной")
+    if not _np.allclose(_np.diag(matrix), 1.0, rtol=0.0, atol=1e-12):
+        raise ValueError("диагональ матрицы корреляций должна быть единичной")
     eig = _np.linalg.eigvalsh(matrix)
+    # Прежний безусловный clip отрицательных собственных значений мог
+    # превратить невалидную, не положительно полуопределённую матрицу в
+    # правдоподобный M_eff. Разрешаем лишь машинный шум на границе PSD;
+    # содержательно отрицательный спектр — повреждённый рецепт.
+    if float(_np.min(eig)) < -1e-10:
+        raise ValueError("матрица корреляций не положительно полуопределена")
     eig = _np.clip(eig, 0.0, None)
     # Ли-Цзи: целый тест за каждое собственное значение не меньше единицы плюс
     # дробный вклад за остальные. Дробную часть НЕЛЬЗЯ добавлять к lambda >= 1:
@@ -125,7 +143,11 @@ def meff_from_family(values, eps, targets=None, subsample=180, seed=0):
     кластерному пути — именно он используется ситом, потому что он не зависит
     от выбора ансамбля целей.
     """
-    if not math.isfinite(float(eps)) or float(eps) <= 0.0:
+    try:
+        eps = float(eps)
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise ValueError("eps должен быть числом") from exc
+    if not math.isfinite(eps) or eps <= 0.0:
         raise ValueError("eps должен быть конечным и положительным")
     vals = _positive_finite(values, "семейство")
     out = {
@@ -313,6 +335,7 @@ def selftest():
                 ("семейство", lambda: resolvable_clusters([1.0, float("nan")], 0.01)),
                 ("семейство inf", lambda: meff_from_family([1.0, float("inf")], 0.01)),
                 ("eps", lambda: meff_from_family(win, float("nan"))),
+                ("eps строка", lambda: resolvable_clusters(win, "не число")),
                 ("цели", lambda: meff_from_family(
                     win, 0.0081, targets=_np.asarray([1.0, float("nan")]))),
             )
@@ -325,6 +348,21 @@ def selftest():
             check("повреждённые ансамбли и eps отвергаются явно",
                   rejected == len(bad_inputs),
                   "отклонено %d/%d" % (rejected, len(bad_inputs)))
+            bad_matrices = (
+                _np.asarray([[1.0, float("nan")], [float("nan"), 1.0]]),
+                _np.asarray([[1.0, 0.2], [0.1, 1.0]]),
+                _np.asarray([[1.0, 2.0], [2.0, 1.0]]),
+                _np.asarray([[0.9, 0.0], [0.0, 1.0]]),
+            )
+            rejected_matrices = 0
+            for matrix in bad_matrices:
+                try:
+                    li_ji_meff(matrix)
+                except ValueError:
+                    rejected_matrices += 1
+            check("повреждённые матрицы корреляций отвергаются явно",
+                  rejected_matrices == len(bad_matrices),
+                  "отклонено %d/%d" % (rejected_matrices, len(bad_matrices)))
         except Exception as exc:  # noqa: BLE001
             check("согласование путей проверено", False, repr(exc))
 

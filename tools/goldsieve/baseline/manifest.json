@@ -155,7 +155,7 @@
     "goldsieve/identity_corpus.py": "5075dfa8cb5a7350a262a17991b145d08048c981f51b0fd93a684da9347c43b2",
     "goldsieve/identity_cross_helper.py": "678b62405fb85eee6f1a010bb1dac13c6bdb2a0cb7365d7ef3f15ab5652981f9",
     "goldsieve/identity_deep.py": "2d7f4b404a7b2ca41fdc87f20a6b8ca3ba80778451987be31164b99505905368",
-    "goldsieve/meff.py": "48e8b0b75d87fff79f82385f54a03c1e14d38de639ced2c7eb6e5c37f5101ed9",
+    "goldsieve/meff.py": "5e188f9c84ee1deddb3ee755cd84fa8ea27a9e84996cf0cb1e21a2aa6d8a86f6",
     "goldsieve/modgraph.py": "89efabc042b95c0e0793eb50af04f2afef5edd30d3e5623ab402b94459754d4c",
     "goldsieve/platform_sla.py": "15ad4ea6da46e0fd21a9f9a47980c69085d06647db56fbaa9cb8ed857d568e45",
     "goldsieve/preconditions.py": "cba0ffe696eb498eb4557c5fa55b08fca71cd613311b1d38e4f7d0b5e53b4d5e",
@@ -200,7 +200,7 @@
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "7956983924961483",
+  "files_digest": "2afd75428a783a9d",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,
