@@ -271,7 +271,7 @@ def _source_files(root, source):
     источника; URL по-прежнему не читаются как локальные входы.
     """
     text = str(source or "").strip()
-    if not text or text.startswith(("http://", "https://")):
+    if not text:
         return []
     paths = []
     # В реестре составные наблюдения разделяются точкой с запятой или
@@ -279,6 +279,13 @@ def _source_files(root, source):
     for fragment in re.split(r"[;,]", text):
         rel = fragment.strip()
         if not rel:
+            continue
+        # URL может соседствовать с локальным наблюдаемым в одной записи.
+        # Прежний ранний выход по префиксу URL отбрасывал всю строку и тем
+        # самым позволял пропустить изменение локального входа. Внешний URL
+        # сам по себе не является локальным входом, но остальные фрагменты
+        # обязаны участвовать в отпечатке.
+        if rel.startswith(("http://", "https://")):
             continue
         path = _source_file(root, rel)
         if path and path not in paths:

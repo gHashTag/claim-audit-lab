@@ -185,7 +185,9 @@ def _regress_cause():
     наоборот: молчаливое ослабление сита прячется за «данные изменились».
     Возвращает число провалов, как остальные модульные самопроверки.
     """
-    from .cli import _inputs_digest
+    from .cli import _inputs_digest, _source_files
+    import os
+    import tempfile
 
     class _Rep:
         def __init__(self, prov):
@@ -208,6 +210,18 @@ def _regress_cause():
     x = _inputs_digest(_Rep({"inputs": {"a": "1", "b": "2"}}))
     y = _inputs_digest(_Rep({"inputs": {"a": "2", "b": "1"}}))
     check("перестановка хешей между файлами меняет отпечаток", x != y)
+    # Составной источник может содержать внешний URL и локальный файл.
+    # URL не читается, но локальный фрагмент обязан остаться в отпечатке:
+    # иначе changed-only регресс пропустит изменение наблюдаемого.
+    with tempfile.TemporaryDirectory() as tmp:
+        local = os.path.join(tmp, "observed.txt")
+        with open(local, "w", encoding="utf-8") as fh:
+            fh.write("наблюдаемое\n")
+        got = _source_files(tmp, "https://example.invalid/ref; observed.txt")
+        check("URL не отбрасывает соседний локальный вход",
+              got == [os.path.abspath(local)])
+        check("чистый URL не становится локальным входом",
+              _source_files(tmp, "https://example.invalid/ref") == [])
     return fail
 
 
@@ -1265,7 +1279,7 @@ def main() -> int:
         ("вырождение по тождественности", _identity_guards, 10),
             ("граф вызовов: косвенная тавтология", _identity_graph, 18),
             ("метрики согласия формы", _gof_selftest, 6),
-        ("причина переворота", _regress_cause, 4),
+        ("причина переворота", _regress_cause, 6),
             ("семейство и множественность", _fam, 14),
             ("порог разрешающей способности", _thr, 9),
             ("достаточность арифметики", _exa, 5),
