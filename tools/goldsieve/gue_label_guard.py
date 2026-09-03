@@ -117,6 +117,7 @@ AUDIT_LOG_NAMES = {
 # явно включено в роль audit_log.
 AUDIT_LOG_GLOBS = ("tick*_gate.txt", "tick*-gate.txt", "tick*-findings.md",
                    "tick*_record.py", "tick*-record.py", "append_tick*.py",
+                   "tick*-report.md",
                    "tick*_state.md", "tick*_state.txt", "tick*_state.json",
                    "tick*_summary.md", "tick*_summary.txt", "tick*_summary.json",
                    "*_gate.txt",
@@ -330,6 +331,7 @@ def selftest() -> int:
                 "tick111-state.md", "tick125-summary.txt", "tick126-summary.txt",
                 "tick145-gue-guard.txt", "tick146-gate.txt", "tick160-gate.txt",
                 "state-tick136.md", "tick142-state.md", "append_tick169_report.py",
+                "tick320-report.md",
                 "нечто-совсем-новое-2026.md", "otchet_bez_shablona.json"]
     bad_line = "std = 0,4220 exact_gue\n"
     with tempfile.TemporaryDirectory() as td:

@@ -132,7 +132,8 @@
     "cases/zeta_std_unfolding_passport_20260815.py": "b66c183dd7193fa242748f97145b316f2b8034c16a648a408f0e1154acbf0b43",
     "cases/zeta_unfolding_std_recipe_20260815.py": "e2a1e88e4d1e02554330eaf91b11f74c18350b7ce399155279ab18cdad96ec0c",
     "chain_overhead.py": "9396ef1cfaee2e5e5a9e22e0f4223f9d285fe98fa826b7e7c69cf793e92505f3",
-    "ci_gate.sh": "6945737788f98a975a056dae155471e007902c9800d48537c1dccb05ed3b85f1",
+    "chi2_dof_guard.py": "2523accba898544a4c3917eb69ebe538ae058657494c2c101b7f587480d1eb24",
+    "ci_gate.sh": "8c205eaec66db47d2f324023decc05eeed99acf4244a7d81d5edc6595bbf66a5",
     "claims.yaml": "41cfbfcdc2a44b3bec3744d7c06d5d07216a03a4e784dbd31a6640c6f3e72865",
     "coverage_manifest.py": "8584989d602eb8157ac96b7d23a797c92ef716daa066b511604aae24f4be47b7",
     "coverage_manifest.yaml": "20d3d8e0ebb554768b069fa3034f055ec8787cd483769769e9a0ec08c8a869f8",
@@ -176,7 +177,7 @@
     "goldsieve/threshold.py": "786efabb73227bc4b31b977dfdedf4a063e2fb6935c3cd41e124695d08f0cec3",
     "gue_label_audit.py": "87738fa6b647b690927bd5346e336a9c98b0974c8f47c8575c69bf961091001b",
     "gue_label_fix.py": "0669229252a96a283531f305ecba04d3eb411c60967db59ea706355c390e174d",
-    "gue_label_guard.py": "d9c174f955175e751a7f46fd900c8ea8fd527bcc3f6fc58dfd5fb391a2286d1a",
+    "gue_label_guard.py": "00818fc4a29f8f5d2e448f44e35daf4cac6b28e4338f927f5cfcb81deaaff124",
     "independence.py": "88e86c36aa0e065f011bbdb235045a5b659cb6e334b0c0c4be1436179e2e7523",
     "measure_identity.py": "b5bafcebbf50115c6c5ef54106350a43fe8cb7f8282182346459beebab8b0b59",
     "mutation_identity.py": "4050d47c1d13bc6e5c8c1d04db87ad522437cb522f3d65232d3b15ead97bd1e8",
@@ -200,7 +201,7 @@
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "e0e37fd79b092f07",
+  "files_digest": "463c8b3c9c56637e",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,
