@@ -1223,6 +1223,18 @@ def sieve_effective_multiplicity(c: Claim) -> Result:
     if ratio <= 0.0:
         return Result(name, OPEN, "эффективное число попыток не оценивается: "
                                   "пустое семейство")
+    if info.get("M_eff_eigen_error"):
+        return Result(
+            name,
+            OPEN,
+            "собственный путь M_eff не подтверждён: %s"
+            % info["M_eff_eigen_error"],
+            numbers={
+                "M": float(m_full),
+                "M_eff": max(1.0, ratio * m_full),
+                "доля_независимых": ratio,
+            },
+        )
     m_eff = max(1.0, ratio * m_full)
     thr_full = sidak_sigma(m_full, c.alpha)
     thr_eff = sidak_sigma(m_eff, c.alpha)

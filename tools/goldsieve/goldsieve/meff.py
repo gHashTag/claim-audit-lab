@@ -141,7 +141,10 @@ def meff_from_family(values, eps, targets=None, subsample=180, seed=0):
     Возвращает dict с M (подано), M_eff_cluster, M_eff_eigen (может быть None,
     если numpy недоступен) и отношением independence_ratio = M_eff / M по
     кластерному пути — именно он используется ситом, потому что он не зависит
-    от выбора ансамбля целей.
+    от выбора ансамбля целей. Если собственный путь не может разобрать
+    корреляционную матрицу, это явно записывается в
+    ``M_eff_eigen_error``; молчаливое выпадение второго независимого пути
+    запрещено.
     """
     try:
         eps = float(eps)
@@ -196,11 +199,11 @@ def meff_from_family(values, eps, targets=None, subsample=180, seed=0):
     stat = stat[:, keep]
     if stat.shape[1] >= 2:
         corr = _np.corrcoef(stat, rowvar=False)
-        corr = _np.nan_to_num(corr, nan=0.0)
         try:
             eigen = li_ji_meff(corr)
-        except Exception:  # noqa: BLE001
+        except (TypeError, ValueError, RuntimeError) as exc:
             eigen = None
+            out["M_eff_eigen_error"] = str(exc)
         if eigen is not None:
             out["M_eff_eigen"] = eigen
             out["M_eff_eigen_of"] = int(stat.shape[1])
@@ -363,6 +366,29 @@ def selftest():
             check("повреждённые матрицы корреляций отвергаются явно",
                   rejected_matrices == len(bad_matrices),
                   "отклонено %d/%d" % (rejected_matrices, len(bad_matrices)))
+
+            # МУТАЦИОННАЯ ЦЕЛЬ: отказ второго независимого пути нельзя
+            # превращать в обычный результат только кластерного пути. Иначе
+            # повреждённая корреляционная матрица незаметно меняет рецепт
+            # оценки M_eff.
+            # Берём пространство имён самой функции: при запуске файла через
+            # ``python -m`` пакет может быть импортирован вторым именем, и
+            # изменение только globals() оболочки не обязано затронуть её
+            # разрешение имён.
+            function_globals = meff_from_family.__globals__
+            original_li_ji = function_globals["li_ji_meff"]
+            try:
+                def _broken_eigen(_correlation):
+                    raise ValueError("повреждённый собственный путь")
+                function_globals["li_ji_meff"] = _broken_eigen
+                broken = meff_from_family(win, 0.0081, seed=0)
+            finally:
+                function_globals["li_ji_meff"] = original_li_ji
+            check("отказ собственного пути записывается явно",
+                  broken.get("M_eff_eigen") is None
+                  and "повреждённый собственный путь"
+                  in broken.get("M_eff_eigen_error", ""),
+                  "ошибка не записана")
         except Exception as exc:  # noqa: BLE001
             check("согласование путей проверено", False, repr(exc))
 
