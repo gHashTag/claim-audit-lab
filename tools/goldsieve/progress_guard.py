@@ -162,7 +162,8 @@ def parse_report(text: str) -> dict:
         r"(?:\s+инструмента)?\s*:\s*(.+)$", text)
     if m:
         paths = re.findall(r"`([^`]+)`", m.group(1))
-        paths = [p for p in paths if ("/" in p or "\\" in p)
+        paths = [p for p in paths
+                 if ("/" in p or "\\" in p or p.endswith((".py", ".sh")))
                  and not p.endswith((".json", ".yaml", ".yml", ".md"))]
         if paths:
             out["изменённые_файлы"] = paths
