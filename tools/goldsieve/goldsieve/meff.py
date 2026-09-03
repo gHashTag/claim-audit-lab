@@ -30,12 +30,22 @@ n * 3^k * pi^m * phi^p * e^q лежат на логарифмической ре
 этой законной замене.
 """
 
+import hashlib
 import math
 
 try:
     import numpy as _np
 except Exception:  # noqa: BLE001
     _np = None
+
+
+def _targets_fingerprint(targets):
+    """Короткий отпечаток фактического ансамбля целей для журнала."""
+    if _np is None:
+        return None
+    values = _np.asarray(targets, dtype="<f8")
+    payload = str(values.size).encode("ascii") + b":" + values.tobytes()
+    return hashlib.sha256(payload).hexdigest()
 
 
 def resolvable_clusters(values, eps):
@@ -118,10 +128,17 @@ def meff_from_family(values, eps, targets=None, subsample=180, seed=0):
         # сохраняется и оба пути согласуются.
         start = (picked.size - subsample) // 2
         picked = picked[start:start + subsample]
+    generated_targets = targets is None
     if targets is None:
         low, high = math.log10(min(vals)), math.log10(max(vals))
         targets = 10.0 ** rng.uniform(low, high, size=600)
     targets = _np.asarray(targets, dtype=float)
+    # Риск каскада: без отпечатка ансамбля одинаковое число M_eff нельзя
+    # отличить от результата другого набора целей. Сохраняем состав и seed,
+    # не меняя численное решение.
+    out["targets_count"] = int(targets.size)
+    out["targets_seed"] = int(seed) if generated_targets else None
+    out["targets_sha256"] = _targets_fingerprint(targets)
     # Статистика теста i на цели t: близость в логарифмах, сглаженная полосой.
     # Гауссово ядро вместо жёсткого индикатора: у индикатора при малом eps
     # почти нулевая дисперсия, и корреляция вырождается численно.
@@ -248,6 +265,20 @@ def selftest():
                       and max(finite) / min(finite) < 1.5)
             check("собственный M_eff устойчив к ансамблю целей", stable,
                   "оценки %s" % ", ".join("%.4g" % v for v in finite))
+            # Даже устойчивый диапазон нуждается в воспроизводимом следе:
+            # один seed обязан давать тот же ансамбль, другой — иной.
+            a = meff_from_family(win, 0.0081, seed=17)
+            b = meff_from_family(win, 0.0081, seed=17)
+            c = meff_from_family(win, 0.0081, seed=18)
+            reproducible = (
+                a.get("targets_sha256") == b.get("targets_sha256")
+                and a.get("targets_sha256") != c.get("targets_sha256")
+                and a.get("targets_count") == 600
+                and a.get("targets_seed") == 17
+            )
+            check("ансамбль M_eff имеет воспроизводимый отпечаток",
+                  reproducible,
+                  "seed=17: %s" % a.get("targets_sha256", "нет"))
         except Exception as exc:  # noqa: BLE001
             check("согласование путей проверено", False, repr(exc))
 
