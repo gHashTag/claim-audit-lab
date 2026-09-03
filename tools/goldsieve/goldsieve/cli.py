@@ -12,6 +12,7 @@ import argparse
 import importlib.util
 import json
 import os
+import re
 import sys
 
 from .sieve import run, CONFIRMED, REFUTED, QUESTION, EMPTY
@@ -260,6 +261,31 @@ def _source_file(root, source):
     return None
 
 
+def _source_files(root, source):
+    """Найти все локальные файлы в составной ссылке на наблюдение.
+
+    В старом снимке строка вроде ``a.json; b.csv`` становилась одним
+    неразрешённым путём и затем могла навсегда остаться «неизменившейся»:
+    инкрементальный регресс пропускал кейс даже при изменении ``a.json`` или
+    ``b.csv``.  Разделители здесь относятся только к реестровому описанию
+    источника; URL по-прежнему не читаются как локальные входы.
+    """
+    text = str(source or "").strip()
+    if not text or text.startswith(("http://", "https://")):
+        return []
+    paths = []
+    # В реестре составные наблюдения разделяются точкой с запятой или
+    # запятой. Повторяющиеся пути сохраняем один раз в исходном порядке.
+    for fragment in re.split(r"[;,]", text):
+        rel = fragment.strip()
+        if not rel:
+            continue
+        path = _source_file(root, rel)
+        if path and path not in paths:
+            paths.append(path)
+    return paths
+
+
 def _regression_fingerprints(entries, root):
     """Снимок файлов кейсов и их наблюдаемых входов.
 
@@ -274,12 +300,24 @@ def _regression_fingerprints(entries, root):
             continue
         path = case if os.path.isabs(case) else os.path.join(root, case)
         sources = {}
-        source_path = _source_file(root, entry.get("source"))
         source_key = str(entry.get("source", ""))
-        sources[source_key] = {
-            "path": source_path,
-            "sha256": _file_sha256(source_path) if source_path else None,
-        }
+        source_paths = _source_files(root, source_key)
+        if len(source_paths) <= 1:
+            source_path = source_paths[0] if source_paths else None
+            sources[source_key] = {
+                "path": source_path,
+                "sha256": _file_sha256(source_path) if source_path else None,
+            }
+        else:
+            # Сохраняем прежние path/sha256 для совместимости со снимками и
+            # добавляем полный список только там, где реестр действительно
+            # описывает несколько локальных входов.
+            sources[source_key] = {
+                "path": source_paths[0],
+                "sha256": _file_sha256(source_paths[0]),
+                "paths": source_paths,
+                "sha256s": [_file_sha256(item) for item in source_paths],
+            }
         row = by_case.setdefault(case, {
             "case_sha256": _file_sha256(path),
             "sources": {},
@@ -341,6 +379,15 @@ def cmd_regress(args):
             case for case, current in all_fingerprints.items()
             if case not in previous_fingerprints
             or current != previous_fingerprints.get(case)
+            # Неразрешённый локальный source — не покрытие. Даже если такой
+            # пропуск уже попал в старый снимок, кейс надо выбрать снова, чтобы
+            # регресс не маскировал потерю входного файла. Внешний URL здесь не
+            # считается локальным входом и намеренно остаётся вне отбора.
+            or any(
+                meta.get("path") is None
+                and not str(source).startswith(("http://", "https://"))
+                for source, meta in current.get("sources", {}).items()
+            )
         }
     else:
         selected_cases = set(recorded)

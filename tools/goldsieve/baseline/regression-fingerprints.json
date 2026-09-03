@@ -1,0 +1,1346 @@
+{
+  "cases": {
+    "cases/age_universe_planck_external_20260902.py": {
+      "case_sha256": "5e0a3e7bd93ff2c50bbc00cd8a928bab77a9865a82467c31521128ed3dbd5d62",
+      "recipe_fingerprint": "53b91613409ee580",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:79": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/ann_brute_simd_benchmark_recipe_20260817.py": {
+      "case_sha256": "f1cba3e5fecbafbd106dc60bf5449aa090e7e6a7a1af18386f8a6972f75b1eb6",
+      "recipe_fingerprint": "008ee9ac05d92107",
+      "sources": {
+        "docs/docs/research/trinity-ann-benchmark-verdict-report.md:1-240": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-ann-benchmark-verdict-report.md",
+          "sha256": "87e851834635059503e37e8cb50f7c56105b49d2e310983ab40fbc0ade6d85f4"
+        }
+      }
+    },
+    "cases/appendix_external_targets_20260813.py": {
+      "case_sha256": "0f1299772765d1851a93985ec2ad29757d2b70764f5b71e7b73983084a1f1819",
+      "recipe_fingerprint": "1f5b6ea4f88d00c5",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:184-193": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md",
+          "sha256": "40ad5bb70b307dd094ee7316ec0d1372c529cd86829aa854f3225a7f12b9156a"
+        },
+        "deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:204-212": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md",
+          "sha256": "40ad5bb70b307dd094ee7316ec0d1372c529cd86829aa854f3225a7f12b9156a"
+        },
+        "deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md:9-17": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md",
+          "sha256": "40ad5bb70b307dd094ee7316ec0d1372c529cd86829aa854f3225a7f12b9156a"
+        }
+      }
+    },
+    "cases/axes_omega_lambda.py": {
+      "case_sha256": "f34a5fff20c0e4ab599a176dacf012c0e2b63661807426dd552863e778088922",
+      "recipe_fingerprint": "d602156c13be3ea2",
+      "sources": {
+        "docs/papers/README_FOR_SCIENTISTS.md:71": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        }
+      }
+    },
+    "cases/b004_lotus_ttest_threshold_20260815.py": {
+      "case_sha256": "db9e8e9d49ec7e9ee909d95cb309166f0d033ca851ec5db8d6297226b2d1f144",
+      "recipe_fingerprint": "1d4182e4b5286585",
+      "sources": {
+        "docs/research/bundles/B004_Lotus.md:71": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/bundles/B004_Lotus.md",
+          "sha256": "d85e5dd63be5addc0f9dbc989049b55fe6ab540e2a0a344216ea21f20321372c"
+        }
+      }
+    },
+    "cases/b006_gf16_delta_20260815.py": {
+      "case_sha256": "a491f73ee3416d7907e00e6ad2fefd113e532c0e37e2d017372d6f24aafaec60",
+      "recipe_fingerprint": "22e882cc7d02e1c4",
+      "sources": {
+        "docs/research/bundles/B006_GF16.md:50-54": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/bundles/B006_GF16.md",
+          "sha256": "6ca34545aa9e39eb6e80f2b24d6bb98028f533ecae45705ca0639b0707bf0317"
+        }
+      }
+    },
+    "cases/b006_gf16_pvalue_20260815.py": {
+      "case_sha256": "9b742b70dd2c68e54f18cd349e19964dbe078c2b6574b24dfe69cc8147d8d6a5",
+      "recipe_fingerprint": "554c79a70e6d6893",
+      "sources": {
+        "docs/research/bundles/B006_GF16.md:76-79": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/bundles/B006_GF16.md",
+          "sha256": "6ca34545aa9e39eb6e80f2b24d6bb98028f533ecae45705ca0639b0707bf0317"
+        }
+      }
+    },
+    "cases/b007_vsa_speedup_20260815.py": {
+      "case_sha256": "b356b633cc625964b4cac8845c51e744cb14a7d3c4158aafec0e0a221e1456b9",
+      "recipe_fingerprint": "94c912b6167790c0",
+      "sources": {
+        "docs/research/bundles/B007_VSA.md:39-46": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/bundles/B007_VSA.md",
+          "sha256": "9da22aa1b5738c96bdcf28340ddf663d11b3f175d3c9a7d60c8d195854a5cee6"
+        }
+      }
+    },
+    "cases/bitnet_coherence_throughput_recipe_20260817.py": {
+      "case_sha256": "8a8854b0630fc43af25ac01a2659df11dde21cb0ca1118438d4b6cafad2d4204",
+      "recipe_fingerprint": "02b24b46ae631bc8",
+      "sources": {
+        "docs/docs/research/bitnet-report.md:1-220": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/bitnet-report.md",
+          "sha256": "247c2ca5bedd72daa252a3ed8ca0c2470e9f738f48759d11fd4e3e7918f2274e"
+        }
+      }
+    },
+    "cases/bottom_mass_external_20260902.py": {
+      "case_sha256": "0ebd3ace01f5ef00d338b23875c3865e4883cb05302d913c8f1b59a41d3cc6c4",
+      "recipe_fingerprint": "fc13ddbd720ca651",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:141": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/c20_empty_family_guard_20260815.py": {
+      "case_sha256": "31aa763a0c2ad6e5933b1ff8b6c2c597bec3ed207b6a2da2652490f942798a61",
+      "recipe_fingerprint": "c91e30f978f7caf4",
+      "sources": {
+        "goldsieve/sieve.py:1440": {
+          "path": "/home/user/workspace/goldsieve/goldsieve/sieve.py",
+          "sha256": "6e5b87aa1fea03fc18b0f195961f4df2aa7a00987dd73a0f8727cdd8aff19c73"
+        }
+      }
+    },
+    "cases/cifar10_metric_recipe_20260816.py": {
+      "case_sha256": "59153ef1ff8ec01f14ce41afec8745c2870e89247dfbf319fbc1ac21d07d86aa",
+      "recipe_fingerprint": "af7f4c0c8e62ca88",
+      "sources": {
+        "data/results/cifar10_metrics.json; data/results/cifar10_summary.csv": {
+          "path": "/home/user/workspace/corpus/trinity/data/results/cifar10_metrics.json",
+          "paths": [
+            "/home/user/workspace/corpus/trinity/data/results/cifar10_metrics.json",
+            "/home/user/workspace/corpus/trinity/data/results/cifar10_summary.csv"
+          ],
+          "sha256": "29154ca55de763c33548971ae6843a1c518e153addc7f8780d3624c67c82550b",
+          "sha256s": [
+            "29154ca55de763c33548971ae6843a1c518e153addc7f8780d3624c67c82550b",
+            "968d9d02130248aff8c0525b14e4e445a1c71058413bc23ba4daf6b0ab44b9eb"
+          ]
+        }
+      }
+    },
+    "cases/ckm_lqg_external_20260813.py": {
+      "case_sha256": "d12646fd9695852a18e698938d229819de34b84260b47dcee06c89507a4c95b5",
+      "recipe_fingerprint": "ca29e9782bf8ca84",
+      "sources": {
+        "docs/papers/README_FOR_SCIENTISTS.md:20": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        },
+        "docs/papers/README_FOR_SCIENTISTS.md:47,95": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        },
+        "docs/papers/README_FOR_SCIENTISTS.md:49,96": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        }
+      }
+    },
+    "cases/ckm_vtd_vts_vub_external_20260814.py": {
+      "case_sha256": "ac0525a25ca1a4b0fd534323361608d69aaf35101b03e965439e36c58a039287",
+      "recipe_fingerprint": "87593c714fdfbb8d",
+      "sources": {
+        "docs/docs/research/trinity-status-2026.md:172-178": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-status-2026.md",
+          "sha256": "723e58dc8c516835786d24995d80190c785b1e717b442c1c731003654c1a55d6"
+        }
+      }
+    },
+    "cases/cmb_temperature_external_20260902.py": {
+      "case_sha256": "b33674120b4a1ad332caf004c3e86d08bd84f190c25e1687b41548e5225d3bdc",
+      "recipe_fingerprint": "a2f92767e9d2f047",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:70": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/cosmology_columns.py": {
+      "case_sha256": "d24c1153cb57797c21a5592d38a2edaaa2f0d8d97e0ba03973263fcbd8a162e6",
+      "recipe_fingerprint": "4b7f089a70f47b1a",
+      "sources": {
+        "docs/papers/README_FOR_SCIENTISTS.md:40": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        },
+        "docs/papers/README_FOR_SCIENTISTS.md:43": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        },
+        "docs/papers/README_FOR_SCIENTISTS.md:71": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        },
+        "docs/papers/README_FOR_SCIENTISTS.md:72": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        }
+      }
+    },
+    "cases/cycle45_priority_queue_recipe_20260816.py": {
+      "case_sha256": "ff825dadab21528faa8fe4da1b87736c44893cfc1788b413a629a4969c4cdebc",
+      "recipe_fingerprint": "bc33739d5b4b7c37",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/cycle45-priority-queue-report.md:1-180": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/cycle45-priority-queue-report.md",
+          "sha256": "7defeee07c1f7539af2f0a59d45f15f833f32bb70b689c42da417bc6f1bc1041"
+        }
+      }
+    },
+    "cases/cycle46_deadline_scheduling_recipe_20260816.py": {
+      "case_sha256": "347d18e800fa74dfe48e74555df0c84d9669b3a2f6195caac93781041e574383",
+      "recipe_fingerprint": "7d4d2d761ab04f81",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/cycle46-deadline-scheduling-report.md:1-190": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/cycle46-deadline-scheduling-report.md",
+          "sha256": "5bc0d4539fd913e31344564f651da4da16b6c8801ce008773857777d24efce89"
+        }
+      }
+    },
+    "cases/cycle46_federated_privacy_recipe_20260816.py": {
+      "case_sha256": "121535e86fce2456f06962e91aa434f73d7e82b583f9a42b118d8e210bd0e609",
+      "recipe_fingerprint": "0a3a88cd410de0d0",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/cycle46-federated-learning-report.md:1-220": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/cycle46-federated-learning-report.md",
+          "sha256": "39544aaf806c527730a895a4c0d45805e50990ba6576a6a2456c3c478ddeb494"
+        }
+      }
+    },
+    "cases/cycle50_adaptive_caching_recipe_20260816.py": {
+      "case_sha256": "37a763f48f7f02340d7b6bb0b15c63f6a23fad8ae9644191caa613d90fb82ac0",
+      "recipe_fingerprint": "979f87f158b0c85b",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/cycle50-adaptive-caching-report.md:1-190": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/cycle50-adaptive-caching-report.md",
+          "sha256": "6eb38d2dd0ceb9b941ddc9bbb86d415a7927a9f11142bea50cddcbf1b2b20acb"
+        }
+      }
+    },
+    "cases/dark_photon_x17_formula.py": {
+      "case_sha256": "1eb79592e69c54e9b532027afbdd17e339ad38fdb4e3bf874b50b993c7a4c2a4",
+      "recipe_fingerprint": "bdc79cb333207cef",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:203": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/delta001_additional_claims_20260814.py": {
+      "case_sha256": "375531d7c3182f0cc5f10f1a2686a6d999b4a4f40404b4958fdbe682b8174f3f",
+      "recipe_fingerprint": "19161cd908fe2338",
+      "sources": {
+        "docs/docs/research/delta-001/phase4-consistency.md:23-31": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md",
+          "sha256": "5e321473565ec35f1cebdbdfb7cb74ffd655a2f91450502853099e84082f39f1"
+        },
+        "docs/docs/research/delta-001/phase4-consistency.md:32-41": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md",
+          "sha256": "5e321473565ec35f1cebdbdfb7cb74ffd655a2f91450502853099e84082f39f1"
+        },
+        "docs/docs/research/delta-001/phase4-consistency.md:63-88": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md",
+          "sha256": "5e321473565ec35f1cebdbdfb7cb74ffd655a2f91450502853099e84082f39f1"
+        }
+      }
+    },
+    "cases/delta001_alpha_inverse_source_20260817.py": {
+      "case_sha256": "3074ac7771b7d47d56ad03367b13ace462540d0a1477033ac1de4dbdff0a55c9",
+      "recipe_fingerprint": "1b548bebfa972681",
+      "sources": {
+        ".trinity/experience/DELTA-001.md:43-47": {
+          "path": "/home/user/workspace/corpus/trinity/.trinity/experience/DELTA-001.md",
+          "sha256": "ca439b3f7dbe10775a86245cf7fa94401a35b1353c820026bc97c48164661888"
+        }
+      }
+    },
+    "cases/delta001_gamma_entropy_comparison_20260818.py": {
+      "case_sha256": "cbc3592dd98476807113623027eb602b5918c866ed1e0e43fae84a9b1e7c506d",
+      "recipe_fingerprint": "f1b8a22339c85aff",
+      "sources": {
+        "docs/docs/research/delta-001/phase4-consistency.md:72-86": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md",
+          "sha256": "5e321473565ec35f1cebdbdfb7cb74ffd655a2f91450502853099e84082f39f1"
+        }
+      }
+    },
+    "cases/delta001_strong_coincidences_20260815.py": {
+      "case_sha256": "e850de35bf5deb4b08e7e88124ab0f8c2d3fda7d5a9d5034c4ac61a3d252f058",
+      "recipe_fingerprint": "8468acff7679ca7b",
+      "sources": {
+        "docs/docs/research/delta-001/phase4-consistency.md:22-29": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md",
+          "sha256": "5e321473565ec35f1cebdbdfb7cb74ffd655a2f91450502853099e84082f39f1"
+        }
+      }
+    },
+    "cases/delta001_variance_claims_20260814.py": {
+      "case_sha256": "7c94880b4be75033e1e3a5ea7209e34421930e0e55db423e323f680949c78a2d",
+      "recipe_fingerprint": "b26ee9fe4204c9f3",
+      "sources": {
+        "docs/docs/research/delta-001/phase4-consistency.md:63-68": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md",
+          "sha256": "5e321473565ec35f1cebdbdfb7cb74ffd655a2f91450502853099e84082f39f1"
+        },
+        "docs/docs/research/delta-001/phase4-consistency.md:72-86": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md",
+          "sha256": "5e321473565ec35f1cebdbdfb7cb74ffd655a2f91450502853099e84082f39f1"
+        }
+      }
+    },
+    "cases/dirac_cp_external_20260902.py": {
+      "case_sha256": "379b9295342f580a81ba6c730433b753bf341ba27fd4592b551ee0c9f5a8f5e5",
+      "recipe_fingerprint": "eec3b826714289dc",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:202": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/dirac_cp_phase_formula.py": {
+      "case_sha256": "dbf675e28a24f6ef1c7a5209c60a046f2362e0cb29a9ce80ff2aadcc8168dc92",
+      "recipe_fingerprint": "1efc7bd42dc33fdc",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:202": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/established_constants_fit_count.py": {
+      "case_sha256": "d0645c4ea9958b95bb97e2c52cb1edea96157a9e08374bef223f98edd3fdee10",
+      "recipe_fingerprint": "c14fd4da312a6fd5",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:30": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/formulas_deploy_external_20260814.py": {
+      "case_sha256": "abfa08379023e0223344be99cd8a2d15974bfbfd447e8d694b7680673093bc86",
+      "recipe_fingerprint": "1b70599cb919831f",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/formulas.md:100-110": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/formulas.md",
+          "sha256": "cf217f636057ecbe2f4325216db07b796b2f00d52848eea734488d739b7fbd8f"
+        },
+        "deploy/trinity-nexus/docs/research/formulas.md:130-142": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/formulas.md",
+          "sha256": "cf217f636057ecbe2f4325216db07b796b2f00d52848eea734488d739b7fbd8f"
+        },
+        "deploy/trinity-nexus/docs/research/formulas.md:88-98": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/formulas.md",
+          "sha256": "cf217f636057ecbe2f4325216db07b796b2f00d52848eea734488d739b7fbd8f"
+        }
+      }
+    },
+    "cases/formulas_external_targets_20260813.py": {
+      "case_sha256": "3b335a869639bf0255034539c727f3264ca71e59fb8d856a1566356ff48c0b63",
+      "recipe_fingerprint": "2eabfc396a9f6de1",
+      "sources": {
+        "docs/docs/math-foundations/formulas.md:202-206": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/formulas.md",
+          "sha256": "ec394b57d317ae59265c8d6f3de44056dc4ebc157fe4b7e5aff142890eca25fe"
+        },
+        "docs/docs/math-foundations/formulas.md:226-230": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/formulas.md",
+          "sha256": "ec394b57d317ae59265c8d6f3de44056dc4ebc157fe4b7e5aff142890eca25fe"
+        }
+      }
+    },
+    "cases/formulas_precision_external_20260814.py": {
+      "case_sha256": "8dabe4cd8290b281e991bd74fe25ca27f3ecae183ec04022f491df9f41520f96",
+      "recipe_fingerprint": "a130cb4999523911",
+      "sources": {
+        "docs/docs/math-foundations/formulas.md:305-319": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/formulas.md",
+          "sha256": "ec394b57d317ae59265c8d6f3de44056dc4ebc157fe4b7e5aff142890eca25fe"
+        },
+        "docs/docs/math-foundations/formulas.md:321-333": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/formulas.md",
+          "sha256": "ec394b57d317ae59265c8d6f3de44056dc4ebc157fe4b7e5aff142890eca25fe"
+        }
+      }
+    },
+    "cases/formulas_summary_external_20260814.py": {
+      "case_sha256": "2ac50b5307633416429552f831346b938dc6d332684141d0fb58a0eaff50dd19",
+      "recipe_fingerprint": "bc238f9e675fd93a",
+      "sources": {
+        "docs/research/FORMULAS_SUMMARY.md:42": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/FORMULAS_SUMMARY.md",
+          "sha256": "3d1f62c417f680eabd445e4c5a7e5c231f45d8609b17018afcbfe5d8a8273c22"
+        },
+        "docs/research/FORMULAS_SUMMARY.md:43": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/FORMULAS_SUMMARY.md",
+          "sha256": "3d1f62c417f680eabd445e4c5a7e5c231f45d8609b17018afcbfe5d8a8273c22"
+        },
+        "docs/research/FORMULAS_SUMMARY.md:53": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/FORMULAS_SUMMARY.md",
+          "sha256": "3d1f62c417f680eabd445e4c5a7e5c231f45d8609b17018afcbfe5d8a8273c22"
+        }
+      }
+    },
+    "cases/gamma_bi_meissner_equation_20260817.py": {
+      "case_sha256": "9c58f06226b702eb374893b672eca75ee9e48a6c5257d8cd9cec6ede3cf1ab02",
+      "recipe_fingerprint": "305c5b2d6f7108f0",
+      "sources": {
+        "specs/physics/gamma_conjecture.t27:4-20": {
+          "path": "/home/user/workspace/corpus/trinity/specs/physics/gamma_conjecture.t27",
+          "sha256": "925172c39fe861f4fa2bb6c2f9bd51f12ee863027e136e18e5f5db5a60b8fdaa"
+        }
+      }
+    },
+    "cases/gf16_mnist_accuracy_recipe_20260816.py": {
+      "case_sha256": "ce45e4f0b9a5ea35f73be21635c891d70a8885b49c975c7a590255bc48d8f29d",
+      "recipe_fingerprint": "a0af0230f2eb6a85",
+      "sources": {
+        "docs/research/gf16_vs_literature.md:151-201": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/gf16_vs_literature.md",
+          "sha256": "6c104135f24710a0c81400b0c3ee3f0a1e6ba26ed46ba74cf2b3b344b6b14f38"
+        }
+      }
+    },
+    "cases/golden_chain_final_report_consistency_20260817.py": {
+      "case_sha256": "abb5d745d44b59e5982fbfa9955030709ce234d3a36a4c7d53af6f7333d586a2",
+      "recipe_fingerprint": "44aa191f4f5732ac",
+      "sources": {
+        ".trinity/ralph/golden_chain/GOLDEN_CHAIN_FINAL_REPORT.md:1-180": {
+          "path": "/home/user/workspace/corpus/trinity/.trinity/ralph/golden_chain/GOLDEN_CHAIN_FINAL_REPORT.md",
+          "sha256": "16fa51fc320678b97acd1f784f24fefc4cd95ba37a13eac03836952b63f0a8a7"
+        }
+      }
+    },
+    "cases/golden_chain_v238_dim1024_quality_recipe_20260817.py": {
+      "case_sha256": "0ce4580737bafbde30ba1f2b93be6c1ada43ca689c18dccf6fd6713c56317388",
+      "recipe_fingerprint": "4b43658916175c85",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-38-dim1024-report.md:1-260": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-38-dim1024-report.md",
+          "sha256": "8a7e8dbb2fcaf15052e1e66ff75062a2bb3d0302d90000e43bf9fc097d9d8378"
+        }
+      }
+    },
+    "cases/golden_chain_v240_statistics_20260814.py": {
+      "case_sha256": "925dcad4316c03d1a5866b99929afdf7bcd45f9dbe0a342a1ee4f8de35104ee4",
+      "recipe_fingerprint": "4bbcbb8d3c148859",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:47-49": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md",
+          "sha256": "2635099cd9629f125be9d6f200c292fed8abb8bb1690fbe5cc26a370afb3a883"
+        },
+        "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:55-59": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md",
+          "sha256": "2635099cd9629f125be9d6f200c292fed8abb8bb1690fbe5cc26a370afb3a883"
+        }
+      }
+    },
+    "cases/golden_chain_v240_train_ppl_20260815.py": {
+      "case_sha256": "11e2e2f367747afd6e71ea299b1f255da2461c877b883b685b93245242b4c120",
+      "recipe_fingerprint": "786ec8ab1aa0c7fa",
+      "sources": {
+        "docs/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:14,16,30-33,55-59,78-86": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md",
+          "sha256": "2635099cd9629f125be9d6f200c292fed8abb8bb1690fbe5cc26a370afb3a883"
+        }
+      }
+    },
+    "cases/golden_chain_v240_trigram_coverage_recipe_20260816.py": {
+      "case_sha256": "b63af9b8d5de8e7beab750c9f6b8f7089769ff7b2c7d91e4971acac4de847629",
+      "recipe_fingerprint": "86ff45e6281bc6d6",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:1-120": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md",
+          "sha256": "2635099cd9629f125be9d6f200c292fed8abb8bb1690fbe5cc26a370afb3a883"
+        }
+      }
+    },
+    "cases/golden_chain_v241_offsets_20260815.py": {
+      "case_sha256": "0b5244b80a10ec0b4363a8ac374040219b2a451225e29b1ad9b4b1c3e9f921c3",
+      "recipe_fingerprint": "9c73379cbf5b80fa",
+      "sources": {
+        "docs/docs/research/trinity-golden-chain-v2-41-offsets-report.md:70-78": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-41-offsets-report.md",
+          "sha256": "14f8f3b1002b9732aef63a49ebcca7c6227c786b475a4cb1218a8dad63a18e74"
+        }
+      }
+    },
+    "cases/golden_chain_v245_word_ppl_recipe_20260816.py": {
+      "case_sha256": "be349aea139f8a9b5ad5a92764afa25d0a948922caae7a3eaf04a9e9bb049f82",
+      "recipe_fingerprint": "2c6624a56a677200",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-45-word-level-report.md:1-190": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-45-word-level-report.md",
+          "sha256": "61c918d473059e3d8c5fba5a5fed25b0d677ef226659f2d990d31821e889e250"
+        }
+      }
+    },
+    "cases/golden_chain_v246_phrase_memorization_recipe_20260817.py": {
+      "case_sha256": "be56f499c6a17d97e48aa7956a5090a68d2122d8ecd080e93e8595f099a94097",
+      "recipe_fingerprint": "9208dde74899ec53",
+      "sources": {
+        "docs/docs/research/trinity-golden-chain-v2-46-word-trigram-report.md:1-220": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-46-word-trigram-report.md",
+          "sha256": "e0f1fbf13a01503f7d7beeee7d075aab8ba928d467c735ca7036fd1338edb8c9"
+        }
+      }
+    },
+    "cases/golden_chain_v248_ppl_gain_20260815.py": {
+      "case_sha256": "180715af39c5d013fef3e3ace1998b2ec99868dd57d1ef4ebc7b5063fb3f4ae7",
+      "recipe_fingerprint": "3541cbe6272a620b",
+      "sources": {
+        "docs/docs/research/trinity-golden-chain-v2-48-interpolated-report.md:72-76": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-48-interpolated-report.md",
+          "sha256": "c749bad8fa5fbfe9a4c59634e470334aaec7f65032bfef04275b26dc3064b598"
+        }
+      }
+    },
+    "cases/golden_chain_v249_generation_quality_recipe_20260817.py": {
+      "case_sha256": "4203a12d558434f73f4d748489d0a28af25fb2e051104f70f2e21cd4f62d520e",
+      "recipe_fingerprint": "c68f71abb03dbb31",
+      "sources": {
+        "docs/docs/research/trinity-golden-chain-v2-49-penalty-report.md:1-220": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-49-penalty-report.md",
+          "sha256": "4f15299a24f513d52b49761a459a883e4131578696af7b93da70022878b0d5f4"
+        }
+      }
+    },
+    "cases/golden_chain_v250_kneser_ney_recipe_20260816.py": {
+      "case_sha256": "1b914baa2f793594c6c0e49bcb3f357c6088292f803efe16e377f7d66a5d67bd",
+      "recipe_fingerprint": "f48df220190328bc",
+      "sources": {
+        "docs/docs/research/trinity-golden-chain-v2-50-kneser-ney-report.md:1-232": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-50-kneser-ney-report.md",
+          "sha256": "ded5b962dede71d9c073c723f793ee7cb9b56b8b46a0c2d3c3973a93a5534437"
+        }
+      }
+    },
+    "cases/golden_chain_v251_4gram_ppl_recipe_20260816.py": {
+      "case_sha256": "47abba1d5c4f4476ac4c86fc160bc572702317ff86f22eaf05c3e32d11fe6b96",
+      "recipe_fingerprint": "f3e5fd8c03df748c",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-51-4gram-report.md:1-260": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-51-4gram-report.md",
+          "sha256": "3305c2f210e45220c2fc2390decca03071a9e14cd4a28c7a5ac4e64a5c4c745a"
+        }
+      }
+    },
+    "cases/golden_chain_v252_held_out_recipe_20260816.py": {
+      "case_sha256": "bdc3f655f6a954a6e2f2343c76ce57e04b6b2365b03cda472d9777c065b697d7",
+      "recipe_fingerprint": "b87616661e42e2c3",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-52-held-out-report.md:1-260": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-52-held-out-report.md",
+          "sha256": "e7e8cc716e2cd677406642c5a48c11634d417f016dcfc66025ea3b12dcf8b642"
+        }
+      }
+    },
+    "cases/golden_chain_v30_absolute_recipe_20260817.py": {
+      "case_sha256": "74b595c04aace5d912b848429d9d97fdadcfc78d24d37d882ff4e88409ee056c",
+      "recipe_fingerprint": "beddeb2e77fbc13f",
+      "sources": {
+        "docs/docs/research/trinity-golden-chain-v3-0-absolute-report.md:1-180": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v3-0-absolute-report.md",
+          "sha256": "1c7ace52f744d9fe076e67fcd8317bbd2a6452d40256db18fa96f8c8239f8285"
+        }
+      }
+    },
+    "cases/gravitational_constant_external_20260814.py": {
+      "case_sha256": "5d28a0ca7ac91fff7d6581565705604f2cc350365980d9593cda2f130ce8103a",
+      "recipe_fingerprint": "aff432780c527aed",
+      "sources": {
+        "docs/docs/research/papers/gravitational-constants.md:10-15": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/papers/gravitational-constants.md",
+          "sha256": "d5b3e20a0308f63e4ad3c0d6635f9db4fbb7b035f1d90d0bee25704ce1fd0150"
+        }
+      }
+    },
+    "cases/higgs_mass_external_20260902.py": {
+      "case_sha256": "6da05bf22a6201f841e5f3ca2fa49e21bea78dce5b38e3b37c2c8a49dda88f3c",
+      "recipe_fingerprint": "dc9017e14cfc670a",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:43": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/hslm_convergence_fraction_20260815.py": {
+      "case_sha256": "7dfc8c31b21ab475b37aaacfcb434ef614c199b22adb11f9b7ee1ff8006387d5",
+      "recipe_fingerprint": "eca4cc95e9c98374",
+      "sources": {
+        "docs/research/bundles/B001_HSLM.md:127-130": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/bundles/B001_HSLM.md",
+          "sha256": "35938cf8a9418cbb1142c16ea75afbdaeed4287809ed5e8e4a08c821c3325600"
+        }
+      }
+    },
+    "cases/hubble_planck_external_20260823.py": {
+      "case_sha256": "143f7f07eab087116aba6c41620a03f93d8dc6f255521d99eca9534d85788da2",
+      "recipe_fingerprint": "d0141c13760ee8bb",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:74": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/identity_cross_module_20260814.py": {
+      "case_sha256": "d608859014a85856cb7f60d005ed1a7bad1bfecf10919a3b48c1d43cf06bd853",
+      "recipe_fingerprint": "5d90b07a0e881f80",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md",
+          "sha256": "1235b6ac4959d34bd2fcbdfb69c900325a8a4bc678a83aff1a4a2a6a8c564099"
+        }
+      }
+    },
+    "cases/identity_honest_controls_20260814.py": {
+      "case_sha256": "9710b34b8e7f4c2369976abe1bf2c0eaf49028e5afd26cc204c19eb11b254645",
+      "recipe_fingerprint": "ad17b78a7672fd9b",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md",
+          "sha256": "1235b6ac4959d34bd2fcbdfb69c900325a8a4bc678a83aff1a4a2a6a8c564099"
+        }
+      }
+    },
+    "cases/jarlskog_theta13_external_20260814.py": {
+      "case_sha256": "930ae4fc601c9bb37564568ef501efdd80b9b98099616ee7a7d5ed4f4e0ddecd",
+      "recipe_fingerprint": "36bb791cae593d48",
+      "sources": {
+        "docs/papers/README_FOR_SCIENTISTS.md:37-43": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        }
+      }
+    },
+    "cases/jepa_experiment_consistency_20260817.py": {
+      "case_sha256": "3190c4b8b2ccd7bf0f6f6b7a7aaa369c5a990b084a90d4a0df32ec2090899f9f",
+      "recipe_fingerprint": "83bb63c94292f13e",
+      "sources": {
+        "docs/research/JEPAT/experiments.md:10-33": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/JEPAT/experiments.md",
+          "sha256": "de2136ec577dc4cec1cb335bf84f748c4dbab3d6a280f26dc3f6f6a256ffbea6"
+        }
+      }
+    },
+    "cases/kaon_mass_external_20260902.py": {
+      "case_sha256": "1cafb5f7b8e2534e0324e158d6d99b9e7e97e9244990a077b459cb2a67bbdd94",
+      "recipe_fingerprint": "f06f7ba599f32cff",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:142": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/khinchin.py": {
+      "case_sha256": "7e303b555966820d216730ec9605a20ada7af8d6416c8f3bf03d317d65e6d6ed",
+      "recipe_fingerprint": "b9a459f65a78f5d9",
+      "sources": {
+        "data/zeta/zeta_bin_analysis_update.md": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md",
+          "sha256": "1afa4fbd550fdef7a1227d2428fc9c143d3aef23e9b301fdff3b0c10138a4904"
+        }
+      }
+    },
+    "cases/khinchin_estimator_recipe_20260816.py": {
+      "case_sha256": "70e76ef409e3d1ca669c03dc7c19e43e7185c6d8aaa54c017b4306efba496200",
+      "recipe_fingerprint": "01f6587307ad7532",
+      "sources": {
+        "data/zeta/zeta_bin_analysis_update.md:12-14,31-40": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md",
+          "sha256": "1afa4fbd550fdef7a1227d2428fc9c143d3aef23e9b301fdff3b0c10138a4904"
+        }
+      }
+    },
+    "cases/level11_neurosymbolic_benchmark_recipe_20260817.py": {
+      "case_sha256": "ba896082a857a599abf03e0e28329e0f85763d81265d763eb79a62c4118e5753",
+      "recipe_fingerprint": "e4c640dea1b75031",
+      "sources": {
+        "docs/docs/research/trinity-level11-neuro-symbolic-bench-report.md:1-220": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-level11-neuro-symbolic-bench-report.md",
+          "sha256": "5e9d51764045c3f86b31040ed34c044d29faa523d1a955e007379343251b2601"
+        }
+      }
+    },
+    "cases/level11_planning_accuracy_recipe_20260816.py": {
+      "case_sha256": "f594648e20ddf528ca53a1e436f2968e6ac3f8283609cd77b3b05fc8d96e6cc4",
+      "recipe_fingerprint": "6dd3de0f98a07adc",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/trinity-level11-planning-sota-report.md:6-22,42-137": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-level11-planning-sota-report.md",
+          "sha256": "4d502cec08fc21f14ca3aa7c5cc97ea5bdddd24d906bdc789f70d74fe5320a92"
+        }
+      }
+    },
+    "cases/level11_rdf_multihop_recipe_20260817.py": {
+      "case_sha256": "d79b4a83b97a58a99482cb86ce7dff7756464775736122ab76d5e6f4f73c3444",
+      "recipe_fingerprint": "353758ac872913c2",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/trinity-level11-rdf-multi-hop-report.md:1-260": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-level11-rdf-multi-hop-report.md",
+          "sha256": "f282bdd749166a46d23c11b188786ba1faa581f34133a85af1a0dc69c9319cd9"
+        }
+      }
+    },
+    "cases/m_theory_dimension_formula.py": {
+      "case_sha256": "b20d95407b14c532861468f55526a9048caf5264b6825c8f288c58bc31a13bba",
+      "recipe_fingerprint": "b3a08dda31357570",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:197": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/master_catalog_lucas_l10.py": {
+      "case_sha256": "3776ab1592e7ff1eeb9d6f7ba89c5990c6e6858c7cab2ca140108f61d38d601b",
+      "recipe_fingerprint": "71b141da21618aeb",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md",
+          "sha256": "1235b6ac4959d34bd2fcbdfb69c900325a8a4bc678a83aff1a4a2a6a8c564099"
+        }
+      }
+    },
+    "cases/master_catalog_msme_error.py": {
+      "case_sha256": "f11ecaaac476aba592301112b6afa0fd5590640917c5c0f3dbace89f37f8a6eb",
+      "recipe_fingerprint": "abda3a3a528c76f3",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:37": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md",
+          "sha256": "1235b6ac4959d34bd2fcbdfb69c900325a8a4bc678a83aff1a4a2a6a8c564099"
+        }
+      }
+    },
+    "cases/muon_mass_external_20260903.py": {
+      "case_sha256": "4f678e8e158e0d1ccbbbdc401bb69b8447f6fb0f3c7e251c659f57ad4a93723c",
+      "recipe_fingerprint": "fab1a039bc0db59c",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:49": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/neutrino_mixing_external_20260814.py": {
+      "case_sha256": "7fb2f0cb9913b80e22e7b64b30f5f0d2e2f26c3d0139427c3abc477099c53097",
+      "recipe_fingerprint": "fe99ccd45d8c88ae",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:64-69": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/MIXING_MATRICES.md",
+          "sha256": "b15f3d88e57a4dae2c4916d3d3b026ad107751baf253385f9682834e1d7bf851"
+        },
+        "deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:71-77": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/MIXING_MATRICES.md",
+          "sha256": "b15f3d88e57a4dae2c4916d3d3b026ad107751baf253385f9682834e1d7bf851"
+        },
+        "deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:87-93": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/MIXING_MATRICES.md",
+          "sha256": "b15f3d88e57a4dae2c4916d3d3b026ad107751baf253385f9682834e1d7bf851"
+        }
+      }
+    },
+    "cases/neutrino_theta13_external_20260901.py": {
+      "case_sha256": "5f50fa8831a1e200e1f0b069190e26b14dd5de05c8e99e1b120911ab13231057",
+      "recipe_fingerprint": "963585a5db7cce76",
+      "sources": {
+        "docs/papers/README_FOR_SCIENTISTS.md:58": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        }
+      }
+    },
+    "cases/neutron_lifetime_formula.py": {
+      "case_sha256": "97de857c69db0319de0e7aa5afbaa2f2dac4992d0a0ae9ef2ae5ea5c6b0c293b",
+      "recipe_fingerprint": "44e683097b7dc7a5",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:194": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/neutron_proton_splitting_external_20260901.py": {
+      "case_sha256": "66cab35975c890df73486b09b5d7bd0370c740c2a9a4e0f081846b0ba107606e",
+      "recipe_fingerprint": "817fc40dd1834e57",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:206": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/omega_baryon_external_20260902.py": {
+      "case_sha256": "69ebe71178ae31b9853cbee7f123ef8b40aefddf50711d93da9cd1c3622d8d17",
+      "recipe_fingerprint": "b9676da8e53d406f",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:81": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/omega_matter_external_20260902.py": {
+      "case_sha256": "797d8dc7d0c66ecfa29dbfc5e329f4959507efa7e7a6657024cb4cda117b3664",
+      "recipe_fingerprint": "947202f91c296fea",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:80": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/particle_physics_example_mean_error_20260815.py": {
+      "case_sha256": "d57637389e98601498a1169884de4b68a803e2d500826cbadf0c7be5df1577a7",
+      "recipe_fingerprint": "767c0d20d79e22fc",
+      "sources": {
+        "docs/papers/README_FOR_SCIENTISTS.md:31-43": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        }
+      }
+    },
+    "cases/pellis_external_targets_20260814.py": {
+      "case_sha256": "b70be1e22d1ba72d662da749c123e6851b03963609cad86e74384cac0d727b53",
+      "recipe_fingerprint": "73484ab3647e7fff",
+      "sources": {
+        "docs/research/PELLIS_TRINITY_COMPARISON.md:106-115": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/PELLIS_TRINITY_COMPARISON.md",
+          "sha256": "ca3de79351385e3a65cae395946ad48ded161350f3c15c67f40639f22ab186e8"
+        },
+        "docs/research/PELLIS_TRINITY_COMPARISON.md:128": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/PELLIS_TRINITY_COMPARISON.md",
+          "sha256": "ca3de79351385e3a65cae395946ad48ded161350f3c15c67f40639f22ab186e8"
+        },
+        "docs/research/PELLIS_TRINITY_COMPARISON.md:138": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/PELLIS_TRINITY_COMPARISON.md",
+          "sha256": "ca3de79351385e3a65cae395946ad48ded161350f3c15c67f40639f22ab186e8"
+        }
+      }
+    },
+    "cases/planck_time_external_20260903.py": {
+      "case_sha256": "664b2f60256310172f37eacaa497b1404117dc428294c75ac38276581fb51ad3",
+      "recipe_fingerprint": "4a303d1bd3fd4690",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:131": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/pointer_architecture_external_20260814.py": {
+      "case_sha256": "097f9683e98604769ce996edb013f015d281efb4c29499db6160df26311d71f6",
+      "recipe_fingerprint": "a31ef9cfadbf96db",
+      "sources": {
+        "docs/research/pointer_architecture_companion.md:212-220": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/pointer_architecture_companion.md",
+          "sha256": "725cdd17b496fe6f3875324f2afe1348002005b5f23197303144c9f1e537c2a1"
+        },
+        "docs/research/pointer_architecture_companion.md:223-231": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/pointer_architecture_companion.md",
+          "sha256": "725cdd17b496fe6f3875324f2afe1348002005b5f23197303144c9f1e537c2a1"
+        },
+        "docs/research/pointer_architecture_companion.md:234-244": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/pointer_architecture_companion.md",
+          "sha256": "725cdd17b496fe6f3875324f2afe1348002005b5f23197303144c9f1e537c2a1"
+        }
+      }
+    },
+    "cases/proton_mass_ratio_error.py": {
+      "case_sha256": "b3ced273ff4e97055fb337c7840f0d43564fecd48153326d5b69f61869990d9d",
+      "recipe_fingerprint": "bda69ad1e99ffb9c",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:37": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/qcd_phase_tc_external_20260901.py": {
+      "case_sha256": "cf7393c348e4a37b7e5042912840a4fa421ce8be4be586dc9339b553931b3909",
+      "recipe_fingerprint": "d8f80d82c359a894",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:201": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/qcd_phase_tc_formula.py": {
+      "case_sha256": "e268b572b77dac81b8163325bcab94510f8bd9cfa4fb8906f1c40d3366aa8eae",
+      "recipe_fingerprint": "1723dabaef6e7597",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:201": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/readme_mp_me_external_20260818.py": {
+      "case_sha256": "426b95836fe43b22d5f300d8b2a506eeff7277230469a33f7bfdad14062f5a0e",
+      "recipe_fingerprint": "536b469d703a015b",
+      "sources": {
+        "docs/papers/README_FOR_SCIENTISTS.md:38-54": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+        }
+      }
+    },
+    "cases/reionization_zre_prediction.py": {
+      "case_sha256": "ecc5cab214e757297ddce26be99645a124f876b9114f3ef9c49a3fc1bc6dfb54",
+      "recipe_fingerprint": "d88d1839021b3301",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:206": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/sacred_external_targets.py": {
+      "case_sha256": "d49f7ddfa273780ba4190879e97bcf38c9a6289e17e18e2d825b2bbd244f7b6e",
+      "recipe_fingerprint": "7fc97afde78d100b",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:194": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        },
+        "docs/docs/math-foundations/sacred-formulas.md:201": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        },
+        "docs/docs/math-foundations/sacred-formulas.md:203": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        },
+        "docs/docs/math-foundations/sacred-formulas.md:37": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/sacred_fit_multiplicity.py": {
+      "case_sha256": "6456340d291c56d03b604075c35bde0bcd54c4c68aa8cccb612d06076c363279",
+      "recipe_fingerprint": "9d6c05ce9c99a50a",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:25": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        },
+        "docs/docs/math-foundations/sacred-formulas.md:30": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/sacred_formula_complete_v2_external_20260814.py": {
+      "case_sha256": "0628af843ec35760e49925a6cca4f6b68b5ad03c1b56ebb86a1ba0686cd1c042",
+      "recipe_fingerprint": "e2df5081dc77d487",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md:198-206": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md",
+          "sha256": "83cfe65ff088a13e7c971bb771b61ea69fbc464f3143a97d408ccc1b2805d4a8"
+        }
+      }
+    },
+    "cases/sacred_formula_full_external_20260814.py": {
+      "case_sha256": "8e8a0611c755241c9df36eb9192de5a4d325b4d60d587c5edea8fbdcd814b232",
+      "recipe_fingerprint": "790f061a410bd38c",
+      "sources": {
+        "deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:170-176": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md",
+          "sha256": "1f4d53ef6425f0296399a8a3f510ac57967d9a4059f83bcb7afbce37a53135c9"
+        },
+        "deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:180-185": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md",
+          "sha256": "1f4d53ef6425f0296399a8a3f510ac57967d9a4059f83bcb7afbce37a53135c9"
+        },
+        "deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md:187-192": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md",
+          "sha256": "1f4d53ef6425f0296399a8a3f510ac57967d9a4059f83bcb7afbce37a53135c9"
+        }
+      }
+    },
+    "cases/sacred_predictions_registry_recipe_20260817.py": {
+      "case_sha256": "a045faf245e9bc74edf2b233b1b395123ae67f33e65cf2d63500b777c14dae7c",
+      "recipe_fingerprint": "b68d5bb5d273032d",
+      "sources": {
+        "docs/docs/math-foundations/sacred-predictions.md:1-322": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-predictions.md",
+          "sha256": "8dd446d1cf937945d85828aa68717e8143c53b166e73c1dd4534e7a5e1468d66"
+        }
+      }
+    },
+    "cases/sacred_random_probability.py": {
+      "case_sha256": "a86c09a365f56a6a0a10aa560709ee751ed9e17a056bcea3752c21d6e9a774fe",
+      "recipe_fingerprint": "df2c7afae4559646",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:234": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        },
+        "docs/docs/math-foundations/sacred-formulas.md:285": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/sacred_search_count.py": {
+      "case_sha256": "629d72fab7326613b2619519b7b810cc1c29c5ffe3218807fe121722d0e84f64",
+      "recipe_fingerprint": "72eb8ddb9c65c013",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:25": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/sacred_table_audit_20260813.py": {
+      "case_sha256": "0aed104264b09dc4d1bb14ca1bacd9de90ff7de0c2d87c053b35694b92e70fb0",
+      "recipe_fingerprint": "f8bef15644e051ed",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:214": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        },
+        "docs/docs/math-foundations/sacred-formulas.md:26": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/sacred_tsirelson_exact_external_20260817.py": {
+      "case_sha256": "88ac9f6e32b7fc756b7eb8688dd257f449745b5bdec11e03987683b6b87a64c2",
+      "recipe_fingerprint": "0a93a0b3caffefcc",
+      "sources": {
+        "docs/papers/trinity-sacred-mathematics.tex:1499": {
+          "path": "/home/user/workspace/corpus/trinity/docs/papers/trinity-sacred-mathematics.tex",
+          "sha256": "be1390f05435298bc14d5d40a6f28c69954ee402bfc4bf3ce282ad6a5f2447db"
+        }
+      }
+    },
+    "cases/sacred_two_formula_composition_recipe_20260817.py": {
+      "case_sha256": "2492795083b7facf876e880e9c6c2f60cd6ed18aa66b169fc00a727dcb9a3305",
+      "recipe_fingerprint": "0a5fe71250b7077c",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:273-283": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/sidak_applicability_20260816.py": {
+      "case_sha256": "268284f8dcb99066dc04e0f17641be2a9d4aa2063052f22afd76966fb3ffab55",
+      "recipe_fingerprint": "e91d4b19a573ed1c",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:257-259": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/sidak_threshold_20260815.py": {
+      "case_sha256": "059a2c840e70b1d84888b33c7cfd921f04739e3451b505e6820c4c8dec9adb67",
+      "recipe_fingerprint": "ed141dc349ab63b5",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:257-259": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/solar_mass_external_20260902.py": {
+      "case_sha256": "968d731f8f2c9336474d13141e7fb9a4319337ecfb025d81912bf946eb0cc3a2",
+      "recipe_fingerprint": "90de5e4010ba3e78",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:149": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/spectral_index_external_20260902.py": {
+      "case_sha256": "0aa02db13008ad92d3cad2d78943baf4ef2aeb1658cd4c43bb9a128574fe61ae",
+      "recipe_fingerprint": "dbbaf5032bf7dd9d",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:82": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/top_mass_external_20260902.py": {
+      "case_sha256": "369ce45e46c0da9381f9fc6c7ed19e39e1d15a4a298215ab797c5bfc4e67af21",
+      "recipe_fingerprint": "f681ce6919e1426c",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:140": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/transcendental_3phi_value.py": {
+      "case_sha256": "3e7432850bb7dc15d156dca80dc90a67001d2840fc93b528d513a31a1006ed2c",
+      "recipe_fingerprint": "c65e82d76b020c00",
+      "sources": {
+        "docs/docs/math-foundations/transcendental-numbers.md:169": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md",
+          "sha256": "31f8d1512d1009ea0e37cdc64f32dada20905f8a4fe55896c0d6f4d30b2e4154"
+        }
+      }
+    },
+    "cases/transcendental_catalog_values.py": {
+      "case_sha256": "1d2772024a8af0660fb535f32366d7fe23361e983b55535db087f81a027130c4",
+      "recipe_fingerprint": "e83d13ec1672fbf1",
+      "sources": {
+        "docs/docs/math-foundations/transcendental-numbers.md:184": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md",
+          "sha256": "31f8d1512d1009ea0e37cdc64f32dada20905f8a4fe55896c0d6f4d30b2e4154"
+        },
+        "docs/docs/math-foundations/transcendental-numbers.md:201": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md",
+          "sha256": "31f8d1512d1009ea0e37cdc64f32dada20905f8a4fe55896c0d6f4d30b2e4154"
+        },
+        "docs/docs/math-foundations/transcendental-numbers.md:215": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md",
+          "sha256": "31f8d1512d1009ea0e37cdc64f32dada20905f8a4fe55896c0d6f4d30b2e4154"
+        }
+      }
+    },
+    "cases/transcendental_catalog_values_2.py": {
+      "case_sha256": "94493dcbeca3a2f6da2e4c430766618b719e83b3b02804a7309817f4496bade1",
+      "recipe_fingerprint": "1f2bb166ae3a8044",
+      "sources": {
+        "docs/docs/math-foundations/transcendental-numbers.md:185": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md",
+          "sha256": "31f8d1512d1009ea0e37cdc64f32dada20905f8a4fe55896c0d6f4d30b2e4154"
+        },
+        "docs/docs/math-foundations/transcendental-numbers.md:186": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md",
+          "sha256": "31f8d1512d1009ea0e37cdc64f32dada20905f8a4fe55896c0d6f4d30b2e4154"
+        },
+        "docs/docs/math-foundations/transcendental-numbers.md:187": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md",
+          "sha256": "31f8d1512d1009ea0e37cdc64f32dada20905f8a4fe55896c0d6f4d30b2e4154"
+        }
+      }
+    },
+    "cases/transcendental_catalog_values_3.py": {
+      "case_sha256": "b32efcc1957a87fc48459b70ea8adb6dc778a7833a9b8ab53361512a328e7408",
+      "recipe_fingerprint": "d859412d9874741b",
+      "sources": {
+        "docs/docs/math-foundations/transcendental-numbers.md:188": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md",
+          "sha256": "31f8d1512d1009ea0e37cdc64f32dada20905f8a4fe55896c0d6f4d30b2e4154"
+        },
+        "docs/docs/math-foundations/transcendental-numbers.md:189": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md",
+          "sha256": "31f8d1512d1009ea0e37cdc64f32dada20905f8a4fe55896c0d6f4d30b2e4154"
+        },
+        "docs/docs/math-foundations/transcendental-numbers.md:190": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md",
+          "sha256": "31f8d1512d1009ea0e37cdc64f32dada20905f8a4fe55896c0d6f4d30b2e4154"
+        }
+      }
+    },
+    "cases/trinity_external_targets_20260813.py": {
+      "case_sha256": "a6477e68872778cfaf514d534a5e84fd1984400dbe412ea72a5754d1e24d4911",
+      "recipe_fingerprint": "059de8e989557000",
+      "sources": {
+        "docs/FOR_SCIENTISTS.md:15": {
+          "path": "/home/user/workspace/corpus/trinity/docs/FOR_SCIENTISTS.md",
+          "sha256": "8c0c456a38e25ba643104d7b27f5f212a0604654a277aa92a61fa20a2f37f1bd"
+        },
+        "docs/FOR_SCIENTISTS.md:29": {
+          "path": "/home/user/workspace/corpus/trinity/docs/FOR_SCIENTISTS.md",
+          "sha256": "8c0c456a38e25ba643104d7b27f5f212a0604654a277aa92a61fa20a2f37f1bd"
+        }
+      }
+    },
+    "cases/vsa_simd_benchmark_recipe_20260818.py": {
+      "case_sha256": "71e5453391fcf6a948bb59ee4cfe68c7de3a336d6733f21bcf47ac7552177428",
+      "recipe_fingerprint": "5f57f9bbefa9efe6",
+      "sources": {
+        "deploy/trinity-nexus/benchmarks/BENCHMARK_REPORT.md:1-63": {
+          "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/benchmarks/BENCHMARK_REPORT.md",
+          "sha256": "673cbbcc54ea5c5e7bd76da605711d3b91792abe49785e7d20a04a5579a6cf00"
+        }
+      }
+    },
+    "cases/wilcoxon_v20_pvalue_20260815.py": {
+      "case_sha256": "bf3f311ab2abdd409ef171db70f770625797cbbdd7d14716803450f833785816",
+      "recipe_fingerprint": "c84e84cc1653c1ba",
+      "sources": {
+        "docs/research/ZENODO_V20_STATISTICAL_SIGNIFICANCE.md:156-163": {
+          "path": "/home/user/workspace/corpus/trinity/docs/research/ZENODO_V20_STATISTICAL_SIGNIFICANCE.md",
+          "sha256": "759fee1903757b0cf173c1d645d7ebfb151788bf1a16b83f8194929366682628"
+        }
+      }
+    },
+    "cases/z_boson_mass_external_20260902.py": {
+      "case_sha256": "7bc3ef61b4b8b5a78ed6994182152f6a9f844f6f73fa522d56ccbc5ec89ee91e",
+      "recipe_fingerprint": "c91d4b937979263b",
+      "sources": {
+        "docs/docs/math-foundations/sacred-formulas.md:45": {
+          "path": "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md",
+          "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798"
+        }
+      }
+    },
+    "cases/zeta_bblm_finite_height_comparison_20260818.py": {
+      "case_sha256": "b7d678bec14ead81b28a8cd6b76323b510ce8ff39cec1f5d068add8c1c84c69e",
+      "recipe_fingerprint": "9d39f5ad45acc7bd",
+      "sources": {
+        "scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt; BBLM 2006": {
+          "path": "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py",
+          "paths": [
+            "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py",
+            "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt"
+          ],
+          "sha256": "18c244c32e9d0f42794f1b44f6febc3bd5fe8ee3905ae1bbfc3b617b580f7221",
+          "sha256s": [
+            "18c244c32e9d0f42794f1b44f6febc3bd5fe8ee3905ae1bbfc3b617b580f7221",
+            "3436c916a7878261ac183fd7b9448c9a4736b8bbccf1356874a6ce1788541632"
+          ]
+        }
+      }
+    },
+    "cases/zeta_chi2_independent_20260814.py": {
+      "case_sha256": "9e5397c1d6471ee88764006e28c116a7a5091d00065a03ed08421d7e168d4752",
+      "recipe_fingerprint": "6bfceb1a2720da86",
+      "sources": {
+        "data/zeta/zeta_bin_analysis_update.md:10-40": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md",
+          "sha256": "1afa4fbd550fdef7a1227d2428fc9c143d3aef23e9b301fdff3b0c10138a4904"
+        }
+      }
+    },
+    "cases/zeta_chi2_statistics_20260814.py": {
+      "case_sha256": "b934339ef0ca44b1dfd48d5541dcc2a1d86cc88abb8e7658089a6cb4e95106fa",
+      "recipe_fingerprint": "ae6e005d973375ad",
+      "sources": {
+        "data/zeta/zeta_bin_analysis_update.md:24-38": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md",
+          "sha256": "1afa4fbd550fdef7a1227d2428fc9c143d3aef23e9b301fdff3b0c10138a4904"
+        }
+      }
+    },
+    "cases/zeta_finite_height_extrapolation_20260816.py": {
+      "case_sha256": "ad8721f573b04ca82b503fe87af2b5096a91c6702395713ee9bfe01ebbc91d2e",
+      "recipe_fingerprint": "ab43f8146e0e64a6",
+      "sources": {
+        "scripts/height_extrapolation.py:1-15,139-151": {
+          "path": "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py",
+          "sha256": "18c244c32e9d0f42794f1b44f6febc3bd5fe8ee3905ae1bbfc3b617b580f7221"
+        }
+      }
+    },
+    "cases/zeta_gue.py": {
+      "case_sha256": "bee110d82e7adbacfcfe043eea486b6a84dc8fb222158ef1654a93124a280c47",
+      "recipe_fingerprint": "d9fb84ab0c71fd45",
+      "sources": {
+        "data/zeta/zeros_odlyzko_100k.txt": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt",
+          "sha256": "3436c916a7878261ac183fd7b9448c9a4736b8bbccf1356874a6ce1788541632"
+        },
+        "data/zeta/zeta_gue_analysis_results.md": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
+          "sha256": "0f7b06f23dde9e8a3cab5d7057d39b2839d838306e7abdd56a21be317b9298aa"
+        },
+        "src/sacred/zeta_spacing.zig": {
+          "path": "/home/user/workspace/corpus/trinity/src/sacred/zeta_spacing.zig",
+          "sha256": "511004b5bd08795116eb575cb4ab848b19312954ace88e48fbc7572842737bb9"
+        }
+      }
+    },
+    "cases/zeta_p95_summary_20260815.py": {
+      "case_sha256": "6abbf203b3a7b1a5bd72787e414e5c709720ac58d6f853e9bfc10bc322930639",
+      "recipe_fingerprint": "469d76ed0c0c521a",
+      "sources": {
+        "data/zeta/zeta_bin_analysis_update.md:12-16": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md",
+          "sha256": "1afa4fbd550fdef7a1227d2428fc9c143d3aef23e9b301fdff3b0c10138a4904"
+        }
+      }
+    },
+    "cases/zeta_p99_gue_20260815.py": {
+      "case_sha256": "aa87e07f29d4ee189ca5b9f0c6822ea67c7fae9f1801fe3daec11a200750026f",
+      "recipe_fingerprint": "f729bad0382af8de",
+      "sources": {
+        "data/zeta/zeta_gue_analysis_results.md:34": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
+          "sha256": "0f7b06f23dde9e8a3cab5d7057d39b2839d838306e7abdd56a21be317b9298aa"
+        }
+      }
+    },
+    "cases/zeta_shape.py": {
+      "case_sha256": "ca7b4439f17d0ce50529e77b37fbacda6f8e17b0f297ccbdcd69bfbcb0cf71c6",
+      "recipe_fingerprint": "a6ddbc70a99cff6f",
+      "sources": {
+        "data/zeta/zeros_odlyzko_100k.txt, 4 полосы высот; BBLM 2006": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt",
+          "sha256": "3436c916a7878261ac183fd7b9448c9a4736b8bbccf1356874a6ce1788541632"
+        },
+        "data/zeta/zeta_gue_analysis_results.md:форма распределения": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
+          "sha256": "0f7b06f23dde9e8a3cab5d7057d39b2839d838306e7abdd56a21be317b9298aa"
+        }
+      }
+    },
+    "cases/zeta_std_gue_20260815.py": {
+      "case_sha256": "367b6969fb724c0404583affb1e89e14b3475e15e6a2d72463670cf4959fee4a",
+      "recipe_fingerprint": "4e71d81cf181b8f6",
+      "sources": {
+        "data/zeta/zeta_bin_analysis_update.md:124": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md",
+          "sha256": "1afa4fbd550fdef7a1227d2428fc9c143d3aef23e9b301fdff3b0c10138a4904"
+        }
+      }
+    },
+    "cases/zeta_std_unfolding_passport_20260815.py": {
+      "case_sha256": "b66c183dd7193fa242748f97145b316f2b8034c16a648a408f0e1154acbf0b43",
+      "recipe_fingerprint": "6fc196b538aadefa",
+      "sources": {
+        "data/zeta/zeta_gue_analysis_results.md:34": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
+          "sha256": "0f7b06f23dde9e8a3cab5d7057d39b2839d838306e7abdd56a21be317b9298aa"
+        }
+      }
+    },
+    "cases/zeta_unfolding_std_recipe_20260815.py": {
+      "case_sha256": "e2a1e88e4d1e02554330eaf91b11f74c18350b7ce399155279ab18cdad96ec0c",
+      "recipe_fingerprint": "1970573ebfe58ec3",
+      "sources": {
+        "data/zeta/zeta_gue_analysis_results.md:34": {
+          "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
+          "sha256": "0f7b06f23dde9e8a3cab5d7057d39b2839d838306e7abdd56a21be317b9298aa"
+        }
+      }
+    }
+  },
+  "corpus": "/home/user/workspace/corpus/trinity",
+  "version": 1
+}

@@ -1,0 +1,45 @@
+{
+ "кейсов_с_целью": 37,
+ "различных_целей": 51,
+ "групп_повторов": 7,
+ "повторяющихся_кейсов": 15,
+ "нечитаемых_целей": [
+  "axes_omega_lambda.py:non_literal",
+  "gamma_bi_meissner_equation_20260817.py:non_literal",
+  "sacred_external_targets.py:non_literal",
+  "sacred_formula_complete_v2_external_20260814.py:non_literal",
+  "sacred_formula_full_external_20260814.py:non_literal",
+  "sacred_tsirelson_exact_external_20260817.py:non_literal"
+ ],
+ "повторы": {
+  "1.370360e2|2.100000e-8|": [
+   "appendix_external_targets_20260813.py",
+   "delta001_alpha_inverse_source_20260817.py",
+   "pointer_architecture_external_20260814.py"
+  ],
+  "2.375330e-1|9.000000e-5|": [
+   "ckm_lqg_external_20260813.py",
+   "trinity_external_targets_20260813.py"
+  ],
+  "6.847000e-1|7.300000e-3|": [
+   "formulas_deploy_external_20260814.py",
+   "pointer_architecture_external_20260814.py"
+  ],
+  "7.297353e-3|1.100000e-12|": [
+   "formulas_summary_external_20260814.py",
+   "trinity_external_targets_20260813.py"
+  ],
+  "6.740000e1|5.000000e-1|": [
+   "hubble_planck_external_20260823.py",
+   "pointer_architecture_external_20260814.py"
+  ],
+  "1.565000e2|1.500000e0|": [
+   "qcd_phase_tc_external_20260901.py",
+   "sacred_external_targets.py"
+  ],
+  "1.836153e3|3.200000e-8|": [
+   "readme_mp_me_external_20260818.py",
+   "sacred_external_targets.py"
+  ]
+ }
+}

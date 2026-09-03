@@ -92,6 +92,7 @@ cases/level11_rdf_multihop_recipe_20260817.py,Отчёт Level 11.2 раскры
 cases/m_theory_dimension_formula.py,"Формула размерности M-теории даёт 11,0001",ПУСТО,docs/docs/math-foundations/sacred-formulas.md:197,3febbc70e0847989
 cases/master_catalog_lucas_l10.py,В таблице каталога для n=10 указано L(10)=123,ПОДТВЕРЖДЕНО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:138,a986d4874ad47b48
 cases/master_catalog_msme_error.py,"Для m_s/m_e в каталоге указано значение 182,8",ОПРОВЕРГНУТО,deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md:37,a986d4874ad47b48
+cases/muon_mass_external_20260903.py,Формула массы мюона против внешней оценки PDG 2024,ОПРОВЕРГНУТО,docs/docs/math-foundations/sacred-formulas.md:49,e969471db87977c8
 cases/neutrino_mixing_external_20260814.py,Формула sin θ_C = φ⁻³ согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:64-69,b15f3d88e57a4dae
 cases/neutrino_mixing_external_20260814.py,Формула sin θ₂₃ = 4·3⁻²·π⁻² согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:71-77,b15f3d88e57a4dae
 cases/neutrino_mixing_external_20260814.py,Формула δ = π/φ² согласуется с внешним значением PDG,ПУСТО,deploy/trinity-nexus/docs/research/MIXING_MATRICES.md:87-93,b15f3d88e57a4dae
