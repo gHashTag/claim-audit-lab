@@ -109,6 +109,7 @@ else
     # ловит оборванную или продублированную запись одного запуска.
     step "парность записей журнала" "$BASE_PY" runlog_record_guard.py
     step "чувствительность парности записей журнала" "$BASE_PY" runlog_record_guard.py --selftest
+    step "отсутствующий журнал явно not-evaluated" "$BASE_PY" runlog_record_guard_remote_selftest.py
     # Тик 44. Хеш-цепочка: журнал без связи записей можно править
     # построчно, и ничто этого не обнаружит.
     step "хеш-цепочка журнала" "$BASE_PY" -m goldsieve.chain
