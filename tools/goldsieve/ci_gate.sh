@@ -65,6 +65,7 @@ for PY in $PYTHONS; do
     step "машинный след анализатора" "$PY" -m goldsieve.proof
     step "межмодульный граф"        "$PY" -m goldsieve.modgraph
     step "независимость разметки"   "$PY" independence.py
+    step "чувствительность предпосылки независимости" "$PY" independence_assumption_guard.py --selftest
     step "счётчики тика"             "$PY" tick_counters.py selftest
     [ "$FULL" = 1 ] && step "калибровка на реестре" "$PY" calibrate_identity.py
     [ "$FULL" = 1 ] && step "калибровка сит С4 С5 С16" "$PY" calibrate_sieves.py
@@ -122,6 +123,9 @@ else
     # Семантическая предпосылка: unknown или молчание о независимости
     # испытаний НЕ имеют права давать безусловное ПОДТВЕРЖДЕНО.
     step "предпосылка независимости" "$BASE_PY" -m goldsieve.preconditions
+    # Отдельный риск: отсутствие поля tests_independent в старом кейсе нельзя
+    # принять за независимость. Сторож оставляет такие записи not-evaluated.
+    step "аудит предпосылки независимости" "$BASE_PY" independence_assumption_guard.py --scan
     # Несколько целей одного запуска могут делить общий ансамбль попыток.
     # Отсутствие совместного M_eff — машинный not-evaluated, а не скрытое
     # суммирование отдельных оценок.
