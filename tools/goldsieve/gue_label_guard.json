@@ -13,6 +13,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/goldsieve/tick329-uncertainty-type-selftest.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/goldsieve/tick308-gue-label-guard.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -138,6 +143,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/goldsieve/tick329-history-audit.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/goldsieve/tick316-report.md",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -184,6 +194,11 @@
   },
   {
    "file": "/home/user/workspace/goldsieve/tick317-target-novelty-gate.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/goldsieve/tick329-target-novelty-gate.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -683,6 +698,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-os-matrix.json",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick251-report.md",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -699,6 +719,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick307-target-novelty-gate.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-chi2-dof-semantics.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -793,6 +818,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-bblm-protocol.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick226-silent-review.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -844,6 +874,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick323-external-target-guard.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-report.md",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -1353,6 +1388,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-coverage-update.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick264-external-target-guard.json",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -1464,6 +1504,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick270-external-guard.json",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick327-progress-record.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -1608,6 +1653,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-progress-record.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick247-replay-audit.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -1748,6 +1798,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-bblm-accounting.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick290-os-matrix-run.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -1808,6 +1863,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick327-gate-closed-counter.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick248-replay-audit.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -1829,6 +1889,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick219-bblm-protocol.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-tri-snapshot.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -1949,6 +2014,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick251-tri-snapshot.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-zeta-passport.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -2123,6 +2193,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-repo-sync-guard.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick262-ckm-case.json",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -2154,6 +2229,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick248-report.md",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-progress-substance.json",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -2508,6 +2588,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-target-novelty-gate.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick243-tool-sha256.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -2614,6 +2699,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick234-report.md",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-counter-completed.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -2888,6 +2978,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-progress-check.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick223-regression.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -3123,6 +3218,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-fixed-point.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick246-zeta-passport.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -3313,6 +3413,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-report.md",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick219-os-matrix-jobs.json",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -3363,6 +3468,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-external-target-guard.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick258-report-digest-check.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -3398,6 +3508,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-bblm-protocol.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick270-progress-history.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -3424,6 +3539,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick241-tri-snapshot-final.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-bblm-accounting.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -3503,6 +3623,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-external-target.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick262-repo-sync-guard-final.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -3559,6 +3684,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/regress-run35-final.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-progress-record.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -3733,6 +3863,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-counter-gate.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick290-baseline-snapshot.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -3789,6 +3924,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick241-replay-audit.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-repo-sync-guard.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -3858,7 +3998,17 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-baseline-snapshot.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick264-repo-sync-precommit.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-bblm-elements.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -4053,6 +4203,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick327-completed-counter.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick314-zeta-passport.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -4098,6 +4253,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-zeta-passport.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick245-gate.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -4128,6 +4288,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick327-report.md",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick230-os-matrix-selftest.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -4144,6 +4309,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick270-os-matrix-audit.json",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-coverage-update.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -4254,6 +4424,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick290-kaon-mass.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-os-matrix.json",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -4543,6 +4718,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-progress-check.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick262-report.md",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -4608,6 +4788,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-baseline-snapshot.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick243-bblm-accounting.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -4643,7 +4828,17 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-target-novelty-gate.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick290-external-target-guard.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-bblm-elements.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -4654,6 +4849,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick310-progress-record.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-tri-snapshot.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -4804,6 +5004,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick262-os-matrix-watch-status.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-progress-substance.json",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -5328,6 +5533,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-coverage-update.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick162-gate.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -5484,6 +5694,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick203-selftests.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick324-baseline-snapshot-final.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -6123,6 +6338,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-open-risks.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick130-gate.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -6169,6 +6389,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick320-bblm-protocol.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-baseline-snapshot.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -6623,6 +6848,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick324-rsync-final-status.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick124-queue-audit.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -6793,6 +7023,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-target-novelty.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick89_gate.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -6804,6 +7039,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick196-gate.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick324-progress-record-final.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -6899,6 +7139,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick253-external-target-guard.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick324-commit-final.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -7273,7 +7518,17 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick328-note.md",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick249-api-join-risk.json",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick324-progress-check-final.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -7479,6 +7734,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick320-bblm-accounting.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick326-state.md",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -8538,6 +8798,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick324-push-final.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick-248-timeout-note.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -8623,6 +8888,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-bblm-elements.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick321-progress-check.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -8649,6 +8919,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/regress-tick54.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-os-matrix.json",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -9054,6 +9329,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick82_os_sla.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-external-target.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -9568,6 +9848,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick324-repo-sync-guard-final.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick170-reg.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -9679,6 +9964,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick80-findings.md",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-bblm-accounting.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -10233,6 +10523,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-fixed-point.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick249-gate-final.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -10244,6 +10539,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick253-os-matrix-runs.json",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-progress-substance.json",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -10493,6 +10793,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick325-state.md",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick179_completed.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -10698,7 +11003,17 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-state.md",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick80_final_regression.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-progress-check.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -10919,6 +11234,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick320-progress-substance.json",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick324-tri-snapshot-final.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -11734,6 +12054,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick98_queue_status.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-bblm-protocol.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -12618,6 +12943,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-tri-snapshot.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick278-progress-history.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -12699,6 +13029,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick207-aborted-timeout.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-zeta-passport.json",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -13214,6 +13549,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick202-aborted-audit.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick324-progress-record-final2.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -14013,6 +14353,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick326-progress-substance.json",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick98_regression.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -14074,6 +14419,11 @@
   },
   {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick320-os-matrix.json",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick327-repo-sync-guard-final.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
@@ -14408,6 +14758,11 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   },
   {
+   "file": "/home/user/workspace/cron_tracking/20fee222/tick324-progress-check-final2.txt",
+   "role": "audit_log",
+   "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
+  },
+  {
    "file": "/home/user/workspace/cron_tracking/20fee222/tick301-reg.txt",
    "role": "audit_log",
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
@@ -14643,7 +14998,7 @@
    "reason": "журнал аудита: описывает сам запрет, не является утверждением о GUE"
   }
  ],
- "exempt_count": 2928,
+ "exempt_count": 2999,
  "roles": [
   "corpus",
   "tool",

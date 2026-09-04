@@ -1,0 +1,40 @@
+{
+  "статус": "not-evaluated",
+  "причина": "корпус не предъявляет машиночитаемые границы Arb; точечные значения не заменяют шаровую арифметику",
+  "источники_наблюдения": [
+    "/home/user/workspace/corpus/trinity/data/zeta/zeta_figure1_chi2.csv",
+    "/home/user/workspace/corpus/trinity/data/zeta/zeta_figure1_p95.csv",
+    "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md"
+  ],
+  "прочитано_файлов": 3,
+  "интервалов": 0,
+  "отчёты": [
+    {
+      "путь": "/home/user/workspace/corpus/trinity/data/zeta/zeta_figure1_chi2.csv",
+      "прочитано": true,
+      "метод_arb": false,
+      "есть_нижняя_граница": false,
+      "есть_верхняя_граница": false,
+      "интервалы": [],
+      "ошибки": []
+    },
+    {
+      "путь": "/home/user/workspace/corpus/trinity/data/zeta/zeta_figure1_p95.csv",
+      "прочитано": true,
+      "метод_arb": false,
+      "есть_нижняя_граница": false,
+      "есть_верхняя_граница": false,
+      "интервалы": [],
+      "ошибки": []
+    },
+    {
+      "путь": "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md",
+      "прочитано": true,
+      "метод_arb": false,
+      "есть_нижняя_граница": false,
+      "есть_верхняя_граница": false,
+      "интервалы": [],
+      "ошибки": []
+    }
+  ]
+}

@@ -177,6 +177,8 @@ else
     step "элементы протокола BBLM"        "$BASE_PY" bblm_elements.py --selftest
     step "чувствительность сторожа внешних целей" "$BASE_PY" external_target_guard.py --selftest
     step "разметка внешних сверок"        "$BASE_PY" external_target_guard.py
+    step "чувствительность типа неопределённости" "$BASE_PY" external_uncertainty_type_guard.py --selftest
+    step "тип неопределённости внешних сверок" "$BASE_PY" external_uncertainty_type_guard.py
     # Независимость происхождения: разные имена могут быть одним файлом
     # через относительный путь или символическую ссылку.
     step "чувствительность сторожа происхождения" "$BASE_PY" provenance_guard.py --selftest

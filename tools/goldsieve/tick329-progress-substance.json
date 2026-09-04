@@ -1,0 +1,11 @@
+{
+  "гейт": [84, 2, 0],
+  "регресс": [0, 116, 0],
+  "ос_матрица": [6, 6],
+  "bblm": [4, true],
+  "изменённые_файлы": [
+    "external_uncertainty_type_guard.py",
+    "ci_gate.sh",
+    "coverage_manifest.yaml"
+  ]
+}

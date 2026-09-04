@@ -1,0 +1,75 @@
+{
+  "статус": "not-evaluated",
+  "причина": "часть внешних сверок не предъявляет тип неопределённости",
+  "прочитано_артефактов": 10,
+  "сводка": {
+    "not-evaluated": 10
+  },
+  "разрешённые_типы": [
+    "систематическая",
+    "статистическая",
+    "статистическая и систематическая"
+  ],
+  "наблюдения": [
+    {
+      "путь": "/home/user/workspace/goldsieve/tick263_external_measurement.json",
+      "прочитано": true,
+      "статус": "not-evaluated",
+      "причина": "тип неопределённости не предъявлен"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/tick266_external_measurement.json",
+      "прочитано": true,
+      "статус": "not-evaluated",
+      "причина": "тип неопределённости не предъявлен"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/tick269_external_measurement.json",
+      "прочитано": true,
+      "статус": "not-evaluated",
+      "причина": "тип неопределённости не предъявлен"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/tick271_external_measurement.json",
+      "прочитано": true,
+      "статус": "not-evaluated",
+      "причина": "тип неопределённости не предъявлен"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/tick273_external_measurement.json",
+      "прочитано": true,
+      "статус": "not-evaluated",
+      "причина": "тип неопределённости не предъявлен"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/tick275_external_measurement.json",
+      "прочитано": true,
+      "статус": "not-evaluated",
+      "причина": "тип неопределённости не предъявлен"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/tick281_external_measurement.json",
+      "прочитано": true,
+      "статус": "not-evaluated",
+      "причина": "тип неопределённости не предъявлен"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/tick283_external_measurement.json",
+      "прочитано": true,
+      "статус": "not-evaluated",
+      "причина": "тип неопределённости не предъявлен"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/tick293_external_measurement.json",
+      "прочитано": true,
+      "статус": "not-evaluated",
+      "причина": "тип неопределённости не предъявлен"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/tick300_external_measurement.json",
+      "прочитано": true,
+      "статус": "not-evaluated",
+      "причина": "тип неопределённости не предъявлен"
+    }
+  ]
+}
