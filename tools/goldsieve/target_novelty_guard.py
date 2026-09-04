@@ -97,6 +97,26 @@ def extract_targets(path: Path) -> list[dict]:
     return found
 
 
+def declares_external_target(path: Path) -> bool:
+    """Проверить, что код кейса предъявляет внешнюю цель.
+
+    `extract_targets` берёт только литеральные словари. Пустой результат
+    поэтому нельзя трактовать как отсутствие цели: она могла быть собрана
+    вызовом функции или переменной. Для `--check` нечитаемая цель обязана
+    остановить гейт, иначе динамический target тихо пройдёт проверку новизны.
+    """
+    tree = ast.parse(path.read_text(encoding="utf-8"))
+    names = {"external_target", "внешняя_цель"}
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Name) and node.id in names:
+            return True
+        if isinstance(node, ast.keyword) and node.arg in names:
+            return True
+        if isinstance(node, ast.Constant) and node.value in names:
+            return True
+    return False
+
+
 def audit(cases_dir: Path = CASES) -> dict:
     groups: dict[str, list[str]] = {}
     unreadable = []
@@ -185,6 +205,19 @@ def _selftest() -> int:
         check("вычисляемая цель попадает в нечитаемые",
               any("bad.py" in u for u in r["нечитаемых_целей"]))
 
+        (d / "dynamic.py").write_text(
+            'def make_target():\n'
+            '    return {"value": value(), "uncertainty": 1.0,\n'
+            '            "source": "https://example.invalid/target"}\n'
+            'external_target = make_target\n',
+            encoding="utf-8")
+        dynamic_targets = extract_targets(d / "dynamic.py")
+        check("динамическая внешняя цель объявлена",
+              declares_external_target(d / "dynamic.py"))
+        check("динамическая цель остаётся нечитаемой",
+              dynamic_targets and any(fingerprint(t) is None
+                                      for t in dynamic_targets))
+
         # Гейт против признанного долга: тот же долг проходит, рост — нет.
         base = {"групп_повторов": r["групп_повторов"]}
         check("гейт при неизменном долге проходит",
@@ -207,7 +240,21 @@ def main(argv: list[str]) -> int:
 
     if "--check" in argv:
         path = Path(argv[argv.index("--check") + 1])
-        mine = [fingerprint(t) for t in extract_targets(path)]
+        try:
+            targets = extract_targets(path)
+            declared = declares_external_target(path)
+        except (OSError, UnicodeError, SyntaxError) as exc:
+            print("НОВИЗНА ЦЕЛИ: цель кейса %s не читается: %s"
+                  % (path.name, exc))
+            return 2
+        mine = [fingerprint(t) for t in targets]
+        # Динамический или вычисляемый target нельзя считать новым только
+        # потому, что AST не извлёк его числовые поля. Код 2 — это
+        # not-evaluated и явная причина остановки, а не PASS.
+        if declared and (not targets or any(fp is None for fp in mine)):
+            print("НОВИЗНА ЦЕЛИ: цель кейса %s не является литеральной и "
+                  "не может пройти проверку новизны" % path.name)
+            return 2
         clash = {fp: names for fp, names in rep["повторы"].items()
                  if fp in mine}
         if clash:

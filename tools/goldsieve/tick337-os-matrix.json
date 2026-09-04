@@ -1,0 +1,12 @@
+{
+  "тик": 337,
+  "workflow": "cross-platform-selftest.yml",
+  "ветвь": "tools/goldsieve-v3-2026-08-13",
+  "run_id": "33862544563",
+  "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33862544563",
+  "ожидалось_заданий": 6,
+  "наблюдено_успешных": null,
+  "статус": "not-evaluated",
+  "причина": "GitHub API вернул HTTP 403: API rate limit exceeded; gh run watch и gh run view --log-failed не смогли предъявить итог заданий",
+  "ограничение": "шесть заданий запрошены, но их исходы в этом тике не объявляются успешными; локальная правка target_novelty_guard.py остаётся platform-unverified"
+}

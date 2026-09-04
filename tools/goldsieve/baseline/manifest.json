@@ -206,13 +206,13 @@
     "runlog_record_guard.py": "25ba57a244c835bf923f7f1dbf3c7762d6b74dcc4e73916547ba46c9f0e47e34",
     "runlog_record_guard_remote_selftest.py": "8711fa6b7ef864cacc838660a02ef90a89380cd17c58a705be727a0907463b90",
     "snapshot_manifest.py": "aa796d8d97ec8e58b9629c682f107f70467393589ab0571bcff06e26631d85d7",
-    "target_novelty_guard.py": "4a75d7c9ad7c249e5df2b5278b9b69288ca75ed4a400d27c1926df67fa9276a0",
+    "target_novelty_guard.py": "49cbdf7a7f3b5b343394f76cb5e80cb3a33903673dbc9e8660a6542c8a077a1b",
     "tick_counters.py": "fec8947f26726ddc0619433b169c57a7cd4bb1e6c4aff07565c02ade6816d658",
     "tri": "9d536db705d1ef576647e351b01342c365387cda5ca1b4008d6240c20d182291",
     "tri_integration_test.py": "508a29653cc22a9b03153db17bc33b6edcb59cfd2dd96208372a850a2494439b",
     "zeta_passport.py": "73e7e5e9969f07dc921ce94d44af94624fa7a46e29161ffa98065ab1e690bb82"
   },
-  "files_digest": "cdc7f5331d410d1a",
+  "files_digest": "f87cd2859df05576",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,
