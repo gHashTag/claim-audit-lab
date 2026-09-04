@@ -420,7 +420,7 @@ def cmd_regress(args):
     all_fingerprints = _regression_fingerprints(entries, root)
     previous_fingerprints = _load_regression_baseline()
     if args.changed_only:
-        selected_cases = {
+        candidate_cases = {
             case for case, current in all_fingerprints.items()
             if case not in previous_fingerprints
             or current != previous_fingerprints.get(case)
@@ -438,6 +438,33 @@ def cmd_regress(args):
                 for meta in current.get("sources", {}).values()
             )
         }
+        # Неразрешённые локальные источники нужно проверять снова, но не
+        # обязательно все в одном процессе. При большом реестре именно такие
+        # кейсы образуют постоянный хвост и раздувают цену каждого тика.
+        # Разбиение детерминировано по имени кейса, поэтому соседний тик может
+        # выбрать следующий сегмент без изменения baseline и без потери
+        # наблюдаемости: каждый сегмент всё равно будет выбран регулярно.
+        try:
+            shard_count = max(1, int(os.environ.get(
+                "GOLDSIEVE_REGRESSION_SHARDS", "1")))
+            shard_index = int(os.environ.get(
+                "GOLDSIEVE_REGRESSION_SHARD", "0")) % shard_count
+        except ValueError:
+            shard_count, shard_index = 1, 0
+        if shard_count > 1:
+            import hashlib
+            selected_cases = {
+                case for case in candidate_cases
+                if case not in all_fingerprints
+                or not any(
+                    meta.get("unresolved", False)
+                    for meta in all_fingerprints[case].get(
+                        "sources", {}).values())
+                or int(hashlib.sha256(case.encode("utf-8")).hexdigest(), 16)
+                % shard_count == shard_index
+            }
+        else:
+            selected_cases = candidate_cases
     else:
         selected_cases = set(recorded)
     changed, same, missing, corpus_moved = [], [], [], []
@@ -515,6 +542,9 @@ def cmd_regress(args):
           "%d изменилось из-за корпуса, %d не сопоставлено"
           % (mode, len(selected_cases), skipped, len(same), len(changed),
              len(corpus_moved), len(missing)))
+    if args.changed_only and shard_count > 1:
+        print("  ротация неразрешённых источников: сегмент %d/%d"
+              % (shard_index + 1, shard_count))
     for case, claim_text, old, new, was, now in corpus_moved:
         print("  КОРПУС ИЗМЕНИЛСЯ %s -> %s | %s | %s | %s -> %s"
               % (old, new, claim_text, case, was, now))
