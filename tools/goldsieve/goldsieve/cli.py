@@ -293,6 +293,26 @@ def _source_files(root, source):
     return paths
 
 
+def _source_has_unresolved_fragment(root, source):
+    """Проверить, не потерян ли один из локальных фрагментов наблюдения.
+
+    Для составной ссылки ``a.json; b.csv`` старый отпечаток сохранял только
+    существующие пути. Если ``b.csv`` исчезал, в снимке оставался отпечаток
+    ``a.json`` и ``--changed-only`` мог навсегда пропустить кейс. Внешний URL
+    не является локальным входом и поэтому не считается неразрешённым.
+    """
+    text = str(source or "").strip()
+    if not text:
+        return False
+    for fragment in re.split(r"[;,]", text):
+        rel = fragment.strip()
+        if not rel or rel.startswith(("http://", "https://")):
+            continue
+        if _source_file(root, rel) is None:
+            return True
+    return False
+
+
 def _regression_fingerprints(entries, root):
     """Снимок файлов кейсов и их наблюдаемых входов.
 
@@ -309,22 +329,29 @@ def _regression_fingerprints(entries, root):
         sources = {}
         source_key = str(entry.get("source", ""))
         source_paths = _source_files(root, source_key)
+        unresolved = _source_has_unresolved_fragment(root, source_key)
         if len(source_paths) <= 1:
             source_path = source_paths[0] if source_paths else None
-            sources[source_key] = {
+            meta = {
                 "path": source_path,
                 "sha256": _file_sha256(source_path) if source_path else None,
             }
+            if unresolved:
+                meta["unresolved"] = True
+            sources[source_key] = meta
         else:
             # Сохраняем прежние path/sha256 для совместимости со снимками и
             # добавляем полный список только там, где реестр действительно
             # описывает несколько локальных входов.
-            sources[source_key] = {
+            meta = {
                 "path": source_paths[0],
                 "sha256": _file_sha256(source_paths[0]),
                 "paths": source_paths,
                 "sha256s": [_file_sha256(item) for item in source_paths],
             }
+            if unresolved:
+                meta["unresolved"] = True
+            sources[source_key] = meta
         row = by_case.setdefault(case, {
             "case_sha256": _file_sha256(path),
             "sources": {},
@@ -394,6 +421,10 @@ def cmd_regress(args):
                 meta.get("path") is None
                 and not str(source).startswith(("http://", "https://"))
                 for source, meta in current.get("sources", {}).items()
+            )
+            or any(
+                meta.get("unresolved", False)
+                for meta in current.get("sources", {}).values()
             )
         }
     else:
