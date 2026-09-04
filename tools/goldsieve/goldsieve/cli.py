@@ -228,6 +228,10 @@ def _inputs_digest(report):
 REGRESSION_BASELINE = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     "..", "baseline", "regression-fingerprints.json")
+REGRESSION_FILE_CACHE = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "..", "baseline", "regression-file-cache.json")
+REGRESSION_CACHE_STATS = {"hits": 0, "misses": 0}
 TRINITY_CORPUS = os.environ.get(
     "TRINITY_CORPUS", "/home/user/workspace/corpus/trinity")
 
@@ -239,6 +243,67 @@ def _file_sha256(path):
             return hashlib.sha256(fh.read()).hexdigest()
     except OSError:
         return None
+
+
+def _load_file_digest_cache():
+    """Загрузить кэш отпечатков, не превращая его в источник истины.
+
+    Кэш ускоряет только повторное чтение неизменившихся файлов. Решение о
+    пригодности записи всё равно принимает свежий ``stat``: размер, inode,
+    mtime и ctime. Повреждённый или старый кэш безопасно отбрасывается.
+    """
+    try:
+        with open(REGRESSION_FILE_CACHE, encoding="utf-8") as fh:
+            data = json.load(fh)
+        files = data.get("files", {})
+        return files if isinstance(files, dict) else {}
+    except (OSError, ValueError, AttributeError):
+        return {}
+
+
+def _save_file_digest_cache(cache):
+    """Атомарно сохранить малый кэш файловых отпечатков."""
+    directory = os.path.dirname(REGRESSION_FILE_CACHE)
+    os.makedirs(directory, exist_ok=True)
+    temporary = REGRESSION_FILE_CACHE + ".tmp"
+    payload = {"version": 1, "files": cache}
+    with open(temporary, "w", encoding="utf-8") as fh:
+        json.dump(payload, fh, ensure_ascii=False, indent=2, sort_keys=True)
+    os.replace(temporary, REGRESSION_FILE_CACHE)
+
+
+def _cached_file_sha256(path, cache, stats):
+    """Вернуть отпечаток файла с проверяемым кэшем метаданных.
+
+    ``ctime_ns`` добавлен намеренно: замена содержимого с сохранённым размером
+    не должна выглядеть как неизменившийся вход. При сомнении файл читается
+    заново, поэтому ускорение не ослабляет обнаружение дрейфа корпуса.
+    """
+    if not path:
+        return None
+    try:
+        stat = os.stat(path)
+    except OSError:
+        stats["misses"] += 1
+        return None
+    key = os.path.abspath(path)
+    signature = {
+        "size": stat.st_size,
+        "mtime_ns": stat.st_mtime_ns,
+        "ctime_ns": stat.st_ctime_ns,
+        "inode": stat.st_ino,
+    }
+    previous = cache.get(key)
+    if (isinstance(previous, dict)
+            and all(previous.get(name) == value
+                    for name, value in signature.items())
+            and isinstance(previous.get("sha256"), str)):
+        stats["hits"] += 1
+        return previous["sha256"]
+    digest = _file_sha256(key)
+    stats["misses"] += 1
+    cache[key] = dict(signature, sha256=digest)
+    return digest
 
 
 def _source_file(root, source):
@@ -326,10 +391,13 @@ def _regression_fingerprints(entries, root):
     # хотя для выбора инкрементального регресса достаточно одного отпечатка
     # на путь. Это только оптимизация чтения: ключи и формат снимка не меняются.
     digest_cache = {}
+    file_digest_cache = _load_file_digest_cache()
+    cache_stats = {"hits": 0, "misses": 0}
 
     def cached_digest(path):
         if path not in digest_cache:
-            digest_cache[path] = _file_sha256(path)
+            digest_cache[path] = _cached_file_sha256(
+                path, file_digest_cache, cache_stats)
         return digest_cache[path]
 
     for entry in entries:
@@ -376,6 +444,11 @@ def _regression_fingerprints(entries, root):
             ensure_ascii=False, sort_keys=True, separators=(",", ":"))
         row["recipe_fingerprint"] = hashlib.sha256(
             payload.encode("utf-8")).hexdigest()[:16]
+    # Сохраняем только после полного построения снимка: частичный отбор не
+    # должен оставлять кэш, который выглядит завершённым в следующем тике.
+    _save_file_digest_cache(file_digest_cache)
+    REGRESSION_CACHE_STATS.clear()
+    REGRESSION_CACHE_STATS.update(cache_stats)
     return by_case
 
 
@@ -545,6 +618,9 @@ def cmd_regress(args):
     if args.changed_only and shard_count > 1:
         print("  ротация неразрешённых источников: сегмент %d/%d"
               % (shard_index + 1, shard_count))
+    print("  кэш отпечатков файлов: попаданий %d, пересчитано %d"
+          % (REGRESSION_CACHE_STATS["hits"],
+             REGRESSION_CACHE_STATS["misses"]))
     for case, claim_text, old, new, was, now in corpus_moved:
         print("  КОРПУС ИЗМЕНИЛСЯ %s -> %s | %s | %s | %s -> %s"
               % (old, new, claim_text, case, was, now))
