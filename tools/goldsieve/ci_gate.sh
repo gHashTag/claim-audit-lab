@@ -198,6 +198,10 @@ else
     # Сравнение содержимого делает эту тавтологию отдельным машинным риском;
     # различие файлов не объявляется доказательством независимости алгоритмов.
     step "контроль тавтологии observed/reference" "$BASE_PY" reference_tautology_guard.py
+    # Контракт доклада: форма из четырёх обязательных разделов и отдельная
+    # машинная суть. Неполный или оборванный отчёт не является покрытием.
+    step "чувствительность контракта доклада" "$BASE_PY" report_contract_guard.py --selftest
+    step "контракт последнего доклада" "$BASE_PY" report_contract_guard.py
     step "чувствительность сторожа диска" "$BASE_PY" disk_guard.py --selftest
     step "ресурс песочницы и утечка фикстур" "$BASE_PY" disk_guard.py --clean
     step "чувствительность учёта элементов BBLM" "$BASE_PY" bblm_accounting.py --selftest
