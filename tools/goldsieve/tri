@@ -150,8 +150,14 @@ def cmd_manifest(argv: list[str]) -> int:
 
 
 def cmd_regress(argv: list[str]) -> int:
-    return _bg(["timeout", "3000", "python3", "-m", "goldsieve", "regress",
-                "--registry", "claims.yaml"], "/tmp/tri-regress.txt")
+    # Реестр уже содержит отпечаток каждого рецепта и локального наблюдаемого
+    # входа. Полный прогон 164 кейсов стал источником срывов по времени, тогда
+    # как для тика достаточно выбрать только изменившиеся записи. Полный
+    # регресс по-прежнему доступен напрямую через `goldsieve regress`, но
+    # оболочка тика обязана пользоваться дешёвым инкрементальным режимом.
+    return _bg(["timeout", "300", "python3", "-m", "goldsieve", "regress",
+                "--changed-only", "--registry", "claims.yaml"],
+               "/tmp/tri-regress.txt")
 
 
 def cmd_run(argv: list[str]) -> int:
