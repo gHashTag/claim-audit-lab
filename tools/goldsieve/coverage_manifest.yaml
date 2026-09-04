@@ -57,7 +57,7 @@ audit_guards:
     positive_fixture: живой журнал запусков
     negative_fixture: /etc/passwd, ../../secret.txt и симлинк наружу
     mutation_target: удаление проверки разрешённого корня
-    sensitivity: 6/6 самопроверок плюс симлинк 1/1
+    sensitivity: 8/8 самопроверок, включая симлинк и неверную форму контейнера
     status_class: verified-in-scope
   gue_label_guard:
     script: gue_label_guard.py

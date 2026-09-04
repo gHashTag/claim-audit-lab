@@ -75,13 +75,27 @@ def scan(path: Path = DEFAULT_LOG) -> dict:
         }
     rows = []
     malformed = 0
+    container_issues = []
     for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
         try:
             record = json.loads(line)
         except json.JSONDecodeError:
             malformed += 1
             continue
-        for raw in record.get("artifacts", []) or []:
+        if not isinstance(record, dict):
+            malformed += 1
+            continue
+        artifacts = record.get("artifacts", [])
+        if artifacts is not None and not isinstance(artifacts, list):
+            # Строка раньше молча перебиралась посимвольно. Это не проверка
+            # границы путей: форма контейнера должна быть предъявлена явно.
+            container_issues.append({
+                "line": number,
+                "status": "unsupported",
+                "reason": "поле artifacts не является списком",
+            })
+            continue
+        for raw in artifacts or []:
             rows.append((number, inspect_artifact(raw)))
     issues = [
         {"line": line, **result}
@@ -90,7 +104,11 @@ def scan(path: Path = DEFAULT_LOG) -> dict:
     ]
     nonpaths = sum(result["status"] == "not-evaluated" for _, result in rows)
     verified = sum(result["status"] == "verified-in-scope" for _, result in rows)
-    status = "unsupported" if issues else ("not-evaluated" if malformed or nonpaths else "verified-in-scope")
+    status = (
+        "unsupported"
+        if issues or container_issues
+        else ("not-evaluated" if malformed or nonpaths else "verified-in-scope")
+    )
     return {
         "status": status,
         "journal": str(path),
@@ -98,7 +116,8 @@ def scan(path: Path = DEFAULT_LOG) -> dict:
         "artifacts": len(rows),
         "verified_paths": verified,
         "not_evaluated": nonpaths + malformed,
-        "issues": issues,
+        "issues": issues + container_issues,
+        "container_issues": container_issues,
     }
 
 
@@ -134,6 +153,19 @@ def selftest() -> int:
             print("  ПРОВАЛ символическая ссылка наружу: %s" % actual)
     finally:
         link.unlink(missing_ok=True)
+    # Неверный контейнер не должен превращаться в перебор символов и
+    # ошибочно получать not-evaluated вместо явного unsupported.
+    import tempfile
+    with tempfile.TemporaryDirectory(prefix="goldsieve-artifact-log-") as td:
+        log = Path(td) / "runs.jsonl"
+        log.write_text('{"artifacts": "tick341-gate.log"}\n', encoding="utf-8")
+        result = scan(log)
+        if result["status"] == "unsupported" and result["container_issues"]:
+            ok += 1
+            print("  ok   неверная форма контейнера artifacts")
+        else:
+            fail += 1
+            print("  ПРОВАЛ неверная форма контейнера artifacts")
     print("самопроверка границы путей артефактов: пройдено %d, провалено %d" % (ok, fail))
     return 1 if fail else 0
 
