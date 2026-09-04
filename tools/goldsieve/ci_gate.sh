@@ -194,6 +194,10 @@ else
     step "происхождение сверки зета" "$BASE_PY" provenance_guard.py --check \
         /home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md \
         /home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt
+    # Разные пути ещё не исключают копию observed под именем reference.
+    # Сравнение содержимого делает эту тавтологию отдельным машинным риском;
+    # различие файлов не объявляется доказательством независимости алгоритмов.
+    step "контроль тавтологии observed/reference" "$BASE_PY" reference_tautology_guard.py
     step "чувствительность сторожа диска" "$BASE_PY" disk_guard.py --selftest
     step "ресурс песочницы и утечка фикстур" "$BASE_PY" disk_guard.py --clean
     step "чувствительность учёта элементов BBLM" "$BASE_PY" bblm_accounting.py --selftest
