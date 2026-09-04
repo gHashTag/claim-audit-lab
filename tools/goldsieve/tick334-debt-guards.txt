@@ -1,0 +1,14 @@
+--- meff_common_guard.py --scan
+сторож общего M_eff: архивов 12, открытых 12
+--- independence_assumption_guard.py --scan
+сторож предпосылки независимости: not-evaluated; кейсов 133; сводка {"not-evaluated": 132, "platform-unverified": 0, "unsupported": 1, "verified-in-scope": 0}
+JSON: /home/user/workspace/goldsieve/independence_assumption_guard.json
+--- chi2_dof_semantics_guard.py --scan
+сторож смысла χ²/dof: not-evaluated; таблица содержит только готовое отношение χ²/dof; число степеней свободы не предъявлено, поэтому научная интерпретация χ²/dof остаётся not-evaluated
+--- arb_interval_guard.py
+сторож шаровой арифметики Arb: not-evaluated; прочитано файлов 3; интервалов 0
+--- journal_signature_guard.py
+сторож криптографической подписи журнала: not-evaluated; причина: криптографическая подпись не предъявлена; хеш-цепочка не доказывает авторство
+журнал: /home/user/workspace/cron_tracking/8dff7aa3/runs.jsonl; записей: 2996; подписей: 0
+--- reference_tautology_guard.py
+сторож тавтологии observed/reference: verified-in-scope

@@ -54,6 +54,7 @@ def audit_text(text: str) -> dict:
     duplicate_terminal: list[str] = []
     duplicate_start: list[str] = []
     terminal_result_mismatch: list[str] = []
+    identity_mismatch: list[str] = []
     for run_id, rows in sorted(groups.items()):
         starts = [row for row in rows if row.get("status") == "running"]
         terminals = [row for row in rows if row.get("status") in TERMINAL]
@@ -68,6 +69,30 @@ def audit_text(text: str) -> dict:
                           % (run_id, ",".join(map(str, unknown))))
         if terminals:
             final = terminals[0]
+            start = starts[0] if len(starts) == 1 else None
+            # Один run_id и парная запись ещё не доказывают, что итог
+            # относится к тому же вызову: повреждённый или вручную
+            # склеенный журнал мог оставить команду/тик/процесс от другого
+            # запуска. Сверяем только поля, которые предъявлены обеими
+            # сторонами; отсутствие необязательного tick в старых записях
+            # не превращаем в ложный провал.
+            if start is not None:
+                mismatched = []
+                if (start.get("command") is not None
+                        and final.get("command") != start.get("command")):
+                    mismatched.append("command")
+                for key in ("tick", "pid"):
+                    if (start.get(key) is not None
+                            and final.get(key) is not None
+                            and final.get(key) != start.get(key)):
+                        mismatched.append(key)
+                if mismatched:
+                    identity_mismatch.append(
+                        "%s (%s)" % (run_id, ",".join(mismatched)))
+                    errors.append(
+                        "run_id %s: итог не относится к началу по полям %s"
+                        % (run_id, ",".join(mismatched))
+                    )
             if not final.get("finished"):
                 errors.append("run_id %s: у итоговой записи нет finished"
                               % run_id)
@@ -107,6 +132,7 @@ def audit_text(text: str) -> dict:
         "duplicate_start": duplicate_start,
         "duplicate_terminal": duplicate_terminal,
         "terminal_result_mismatch": terminal_result_mismatch,
+        "identity_mismatch": identity_mismatch,
         "terminal_statuses": sorted(TERMINAL),
     }
 
@@ -130,6 +156,10 @@ def selftest() -> int:
          audit_text(good.replace('"status":"passed"',
                                  '"status":"failed"'))["verdict"]
          == "unsupported"),
+        ("итог чужой команды ловится",
+         audit_text(good.replace('"command":"tick","status":"passed"',
+                                 '"command":"другая-команда","status":"passed"'))[
+             "verdict"] == "unsupported"),
     ]
     failed = 0
     for name, ok in cases:
@@ -139,13 +169,49 @@ def selftest() -> int:
     return failed
 
 
+def identity_selftest() -> int:
+    """Отдельно измерить чувствительность связи начала и итога запуска."""
+    good = (
+        '{"run_id":"r1","command":"tick","status":"running",'
+        '"tick":336,"pid":17,"started":"2026-01-01T00:00:00"}\n'
+        '{"run_id":"r1","command":"tick","status":"passed",'
+        '"tick":336,"pid":17,"finished":"2026-01-01T00:00:01",'
+        '"exit_code":0,"artifacts":[]}\n'
+    )
+    cases = [
+        ("команда начала и итога совпадает",
+         audit_text(good)["verdict"] == "verified-in-scope"),
+        ("чужая команда ловится",
+         audit_text(good.replace('"command":"tick","status":"passed"',
+                                 '"command":"other","status":"passed"'))[
+             "identity_mismatch"] == ["r1 (command)"]),
+        ("чужой тик ловится",
+         audit_text(good.replace('"tick":336,"pid":17,"finished"',
+                                 '"tick":337,"pid":17,"finished"'))[
+             "identity_mismatch"] == ["r1 (tick)"]),
+        ("чужой PID ловится",
+         audit_text(good.replace('"tick":336,"pid":17,"finished"',
+                                 '"tick":336,"pid":18,"finished"'))[
+             "identity_mismatch"] == ["r1 (pid)"]),
+    ]
+    failed = sum(not ok for _, ok in cases)
+    for name, ok in cases:
+        print("  %-34s %s" % (name, "ok" if ok else "ПРОВАЛ"))
+    print("самопроверка связи начала и итога: %d пройдено, %d провалено"
+          % (len(cases) - failed, failed))
+    return failed
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--selftest", action="store_true")
+    parser.add_argument("--identity-selftest", action="store_true")
     parser.add_argument("--journal", default=str(JOURNAL))
     args = parser.parse_args()
     if args.selftest:
         return selftest()
+    if args.identity_selftest:
+        return identity_selftest()
     try:
         result = audit_text(Path(args.journal).read_text(encoding="utf-8"))
     except (OSError, UnicodeError) as exc:

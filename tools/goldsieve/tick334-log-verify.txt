@@ -1,0 +1,19 @@
+{
+  "chained": 2989,
+  "checkpoint_used": true,
+  "guarantee": "обнаружение изменений в проверяемой копии",
+  "head": {
+    "hash": "c4749e2bfe57f5337dbca320e873817e0e34f8aff32ccda37ace2dd18bb15a9d",
+    "seq": 2989
+  },
+  "lines": 2997,
+  "not_guaranteed": [
+    "авторство записи",
+    "полная подмена журнала вместе с checkpoint",
+    "доверенное время"
+  ],
+  "ok": true,
+  "path": "/home/user/workspace/cron_tracking/8dff7aa3/runs.jsonl",
+  "pre_chain": 8,
+  "violations": []
+}

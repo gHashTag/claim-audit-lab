@@ -1,0 +1,18 @@
+{
+  "verdict": "verified-in-scope",
+  "reason_code": "run_pairs_complete",
+  "lines": 3024,
+  "run_groups": 1512,
+  "errors": [],
+  "incomplete_run_ids": [],
+  "duplicate_start": [],
+  "duplicate_terminal": [],
+  "terminal_result_mismatch": [],
+  "identity_mismatch": [],
+  "terminal_statuses": [
+    "aborted",
+    "blocked",
+    "failed",
+    "passed"
+  ]
+}

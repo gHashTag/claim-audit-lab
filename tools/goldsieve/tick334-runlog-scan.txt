@@ -1,0 +1,2 @@
+сторож записей журнала: verified-in-scope; групп запусков 1499; строк 2998
+JSON: /home/user/workspace/goldsieve/runlog_record_guard.json
