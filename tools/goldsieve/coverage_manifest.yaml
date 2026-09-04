@@ -59,6 +59,18 @@ audit_guards:
     mutation_target: удаление проверки разрешённого корня
     sensitivity: 8/8 самопроверок, включая симлинк и неверную форму контейнера
     status_class: verified-in-scope
+  zeta_passport_observation:
+    role: >-
+      наблюдаемое число в паспорте zeta должно быть прочитано из предъявленного
+      файла корпуса, а хеши документа и набора нулей должны совпадать с
+      паспортом; иначе запись получает not-evaluated
+    script: zeta_passport_provenance_guard.py
+    gate_step: происхождение наблюдаемого паспорта zeta
+    positive_fixture: data/zeta/zeta_gue_analysis_results.md
+    negative_fixture: подмена числа или пути наблюдаемого
+    mutation_target: удаление проверки источника и хеша
+    sensitivity: 3/3 самопроверки
+    status_class: verified-in-scope
   gue_label_guard:
     script: gue_label_guard.py
     gate_step: запрет метки exact_gue на 0,4220

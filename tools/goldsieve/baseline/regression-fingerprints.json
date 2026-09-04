@@ -138,7 +138,7 @@
     },
     "cases/ckm_lqg_external_20260813.py": {
       "case_sha256": "d12646fd9695852a18e698938d229819de34b84260b47dcee06c89507a4c95b5",
-      "recipe_fingerprint": "ca29e9782bf8ca84",
+      "recipe_fingerprint": "12c0ae6d743a6234",
       "sources": {
         "docs/papers/README_FOR_SCIENTISTS.md:20": {
           "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
@@ -146,11 +146,13 @@
         },
         "docs/papers/README_FOR_SCIENTISTS.md:47,95": {
           "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
-          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543",
+          "unresolved": true
         },
         "docs/papers/README_FOR_SCIENTISTS.md:49,96": {
           "path": "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md",
-          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543"
+          "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543",
+          "unresolved": true
         }
       }
     },
@@ -458,11 +460,12 @@
     },
     "cases/golden_chain_v240_train_ppl_20260815.py": {
       "case_sha256": "11e2e2f367747afd6e71ea299b1f255da2461c877b883b685b93245242b4c120",
-      "recipe_fingerprint": "786ec8ab1aa0c7fa",
+      "recipe_fingerprint": "0456b4723d5f974e",
       "sources": {
         "docs/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:14,16,30-33,55-59,78-86": {
           "path": "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md",
-          "sha256": "2635099cd9629f125be9d6f200c292fed8abb8bb1690fbe5cc26a370afb3a883"
+          "sha256": "2635099cd9629f125be9d6f200c292fed8abb8bb1690fbe5cc26a370afb3a883",
+          "unresolved": true
         }
       }
     },
@@ -668,11 +671,12 @@
     },
     "cases/khinchin_estimator_recipe_20260816.py": {
       "case_sha256": "70e76ef409e3d1ca669c03dc7c19e43e7185c6d8aaa54c017b4306efba496200",
-      "recipe_fingerprint": "01f6587307ad7532",
+      "recipe_fingerprint": "12125c61e2c5bfcc",
       "sources": {
         "data/zeta/zeta_bin_analysis_update.md:12-14,31-40": {
           "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md",
-          "sha256": "1afa4fbd550fdef7a1227d2428fc9c143d3aef23e9b301fdff3b0c10138a4904"
+          "sha256": "1afa4fbd550fdef7a1227d2428fc9c143d3aef23e9b301fdff3b0c10138a4904",
+          "unresolved": true
         }
       }
     },
@@ -688,11 +692,12 @@
     },
     "cases/level11_planning_accuracy_recipe_20260816.py": {
       "case_sha256": "f594648e20ddf528ca53a1e436f2968e6ac3f8283609cd77b3b05fc8d96e6cc4",
-      "recipe_fingerprint": "6dd3de0f98a07adc",
+      "recipe_fingerprint": "6a1260981c7ba0a9",
       "sources": {
         "deploy/trinity-nexus/docs/research/trinity-level11-planning-sota-report.md:6-22,42-137": {
           "path": "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-level11-planning-sota-report.md",
-          "sha256": "4d502cec08fc21f14ca3aa7c5cc97ea5bdddd24d906bdc789f70d74fe5320a92"
+          "sha256": "4d502cec08fc21f14ca3aa7c5cc97ea5bdddd24d906bdc789f70d74fe5320a92",
+          "unresolved": true
         }
       }
     },
@@ -1212,7 +1217,7 @@
     },
     "cases/zeta_bblm_finite_height_comparison_20260818.py": {
       "case_sha256": "b7d678bec14ead81b28a8cd6b76323b510ce8ff39cec1f5d068add8c1c84c69e",
-      "recipe_fingerprint": "9d39f5ad45acc7bd",
+      "recipe_fingerprint": "5b1e97014b802497",
       "sources": {
         "scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt; BBLM 2006": {
           "path": "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py",
@@ -1224,7 +1229,8 @@
           "sha256s": [
             "18c244c32e9d0f42794f1b44f6febc3bd5fe8ee3905ae1bbfc3b617b580f7221",
             "3436c916a7878261ac183fd7b9448c9a4736b8bbccf1356874a6ce1788541632"
-          ]
+          ],
+          "unresolved": true
         }
       }
     },
@@ -1250,11 +1256,12 @@
     },
     "cases/zeta_finite_height_extrapolation_20260816.py": {
       "case_sha256": "ad8721f573b04ca82b503fe87af2b5096a91c6702395713ee9bfe01ebbc91d2e",
-      "recipe_fingerprint": "ab43f8146e0e64a6",
+      "recipe_fingerprint": "0c6f691c1bb8949a",
       "sources": {
         "scripts/height_extrapolation.py:1-15,139-151": {
           "path": "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py",
-          "sha256": "18c244c32e9d0f42794f1b44f6febc3bd5fe8ee3905ae1bbfc3b617b580f7221"
+          "sha256": "18c244c32e9d0f42794f1b44f6febc3bd5fe8ee3905ae1bbfc3b617b580f7221",
+          "unresolved": true
         }
       }
     },
@@ -1298,11 +1305,12 @@
     },
     "cases/zeta_shape.py": {
       "case_sha256": "ca7b4439f17d0ce50529e77b37fbacda6f8e17b0f297ccbdcd69bfbcb0cf71c6",
-      "recipe_fingerprint": "a6ddbc70a99cff6f",
+      "recipe_fingerprint": "81959f92c433ba86",
       "sources": {
         "data/zeta/zeros_odlyzko_100k.txt, 4 полосы высот; BBLM 2006": {
           "path": "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt",
-          "sha256": "3436c916a7878261ac183fd7b9448c9a4736b8bbccf1356874a6ce1788541632"
+          "sha256": "3436c916a7878261ac183fd7b9448c9a4736b8bbccf1356874a6ce1788541632",
+          "unresolved": true
         },
         "data/zeta/zeta_gue_analysis_results.md:форма распределения": {
           "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
