@@ -111,6 +111,10 @@ else
     step "чувствительность парности записей журнала" "$BASE_PY" runlog_record_guard.py --selftest
     step "связь начала и итога записи журнала" "$BASE_PY" runlog_record_guard.py --identity-selftest
     step "отсутствующий журнал явно not-evaluated" "$BASE_PY" runlog_record_guard_remote_selftest.py
+    # Новый риск тика 338: строка artifacts не должна уводить происхождение
+    # за пределы разрешённых корней или скрывать относительный путь.
+    step "граница путей артефактов" "$BASE_PY" artifact_path_guard.py
+    step "чувствительность границы путей артефактов" "$BASE_PY" artifact_path_guard.py --selftest
     # Тик 44. Хеш-цепочка: журнал без связи записей можно править
     # построчно, и ничто этого не обнаружит.
     step "хеш-цепочка журнала" "$BASE_PY" -m goldsieve.chain

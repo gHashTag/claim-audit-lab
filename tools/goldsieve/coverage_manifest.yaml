@@ -47,6 +47,18 @@ runtimes:
 # мутационную цель; диагностические tick*-selftest/state-файлы относятся к
 # audit_log и не являются утверждениями корпуса.
 audit_guards:
+  artifact_path_boundary:
+    role: >-
+      путь артефакта в журнале не должен уводить происхождение за разрешённые
+      корни, использовать относительный переход или скрывать симлинк наружу;
+      старые непутевые значения получают not-evaluated
+    script: artifact_path_guard.py
+    gate_step: граница путей артефактов
+    positive_fixture: живой журнал запусков
+    negative_fixture: /etc/passwd, ../../secret.txt и симлинк наружу
+    mutation_target: удаление проверки разрешённого корня
+    sensitivity: 6/6 самопроверок плюс симлинк 1/1
+    status_class: verified-in-scope
   gue_label_guard:
     script: gue_label_guard.py
     gate_step: запрет метки exact_gue на 0,4220
