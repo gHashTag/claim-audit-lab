@@ -372,6 +372,16 @@ shell_checks:
     limits: >-
       разные файлы не доказывают независимость формул, библиотек или
       вычислительных путей; сторож не выносит научный вердикт
+  zeta_recipe_ambiguity_guard.py:
+    gate_step: неоднозначность рецепта zeta
+    selftest_cmd: [zeta_recipe_ambiguity_guard.py, --selftest]
+    selftest_checks: 3
+    role: >-
+      несколько законных вариантов рецепта, воспроизводящих одно наблюдаемое
+      число, оставляются not-evaluated вместо выбора рецепта задним числом
+    limits: >-
+      сторож проверяет неоднозначность предъявленного паспорта, но не
+      оценивает истинность закона GUE и не доказывает независимость вариантов
   report_contract_guard.py:
     gate_step: контракт последнего доклада
     selftest_cmd: [report_contract_guard.py, --selftest]
