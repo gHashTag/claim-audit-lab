@@ -4,8 +4,9 @@
 
 Хеш-цепочка отвечает за порядок байтов, но не за смысл записи. Этот сторож
 отдельно проверяет, что каждая запись ``running`` имеет ровно одну
-терминальную запись, что у терминальной записи есть итог и артефакты, а
-неполная строка JSON не превращается в молчаливый пропуск.
+терминальную запись, что у терминальной записи есть итог, артефакты и
+согласованный код возврата, а неполная строка JSON не превращается в
+молчаливый пропуск.
 """
 from __future__ import annotations
 
@@ -52,6 +53,7 @@ def audit_text(text: str) -> dict:
     incomplete: list[str] = []
     duplicate_terminal: list[str] = []
     duplicate_start: list[str] = []
+    terminal_result_mismatch: list[str] = []
     for run_id, rows in sorted(groups.items()):
         starts = [row for row in rows if row.get("status") == "running"]
         terminals = [row for row in rows if row.get("status") in TERMINAL]
@@ -72,6 +74,21 @@ def audit_text(text: str) -> dict:
             if not isinstance(final.get("artifacts"), list):
                 errors.append("run_id %s: artifacts итоговой записи не список"
                               % run_id)
+            exit_code = final.get("exit_code")
+            status = final.get("status")
+            result_ok = (
+                isinstance(exit_code, int)
+                and not isinstance(exit_code, bool)
+                and ((status == "passed" and exit_code == 0)
+                     or (status in {"failed", "aborted", "blocked"}
+                         and exit_code != 0))
+            )
+            if not result_ok:
+                terminal_result_mismatch.append(run_id)
+                errors.append(
+                    "run_id %s: status=%s не согласован с exit_code=%s"
+                    % (run_id, status, exit_code)
+                )
         if len(starts) == 1 and len(terminals) == 1 and not unknown:
             continue
         incomplete.append(run_id)
@@ -89,6 +106,7 @@ def audit_text(text: str) -> dict:
         "incomplete_run_ids": incomplete,
         "duplicate_start": duplicate_start,
         "duplicate_terminal": duplicate_terminal,
+        "terminal_result_mismatch": terminal_result_mismatch,
         "terminal_statuses": sorted(TERMINAL),
     }
 
@@ -98,7 +116,7 @@ def selftest() -> int:
         '{"run_id":"r1","command":"tick","status":"running",'
         '"started":"2026-01-01T00:00:00"}\n'
         '{"run_id":"r1","command":"tick","status":"passed",'
-        '"finished":"2026-01-01T00:00:01","artifacts":[]}\n'
+        '"finished":"2026-01-01T00:00:01","exit_code":0,"artifacts":[]}\n'
     )
     cases = [
         ("парная запись проходит", audit_text(good)["verdict"] == "verified-in-scope"),
@@ -108,6 +126,10 @@ def selftest() -> int:
          audit_text(good + good.splitlines()[1] + "\n")["verdict"] == "unsupported"),
         ("повреждённая строка ловится",
          audit_text(good + "{\n")["verdict"] == "unsupported"),
+        ("несогласованный код возврата ловится",
+         audit_text(good.replace('"status":"passed"',
+                                 '"status":"failed"'))["verdict"]
+         == "unsupported"),
     ]
     failed = 0
     for name, ok in cases:

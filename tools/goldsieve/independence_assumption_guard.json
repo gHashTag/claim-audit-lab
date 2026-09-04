@@ -1,0 +1,947 @@
+{
+  "контракт": "явная предпосылка независимости испытаний",
+  "статус": "not-evaluated",
+  "причина": "отсутствующие и неизвестные декларации не считаются независимостью",
+  "источник_наблюдения": "/home/user/workspace/goldsieve/cases",
+  "кейсов": 133,
+  "сводка": {
+    "verified-in-scope": 0,
+    "not-evaluated": 132,
+    "unsupported": 1,
+    "platform-unverified": 0
+  },
+  "наблюдения": [
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/_template_probe.py",
+      "строка": 17,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/age_universe_planck_external_20260902.py",
+      "строка": 132,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/ann_brute_simd_benchmark_recipe_20260817.py",
+      "строка": 93,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/appendix_external_targets_20260813.py",
+      "строка": 214,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/axes_omega_lambda.py",
+      "строка": 154,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/axes_omega_lambda.py",
+      "строка": 186,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/axes_omega_lambda.py",
+      "строка": 209,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/b004_lotus_ttest_threshold_20260815.py",
+      "строка": 192,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/b006_gf16_delta_20260815.py",
+      "строка": 83,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/b006_gf16_pvalue_20260815.py",
+      "строка": 175,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/b007_vsa_speedup_20260815.py",
+      "строка": 82,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/bitnet_coherence_throughput_recipe_20260817.py",
+      "строка": 209,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/bottom_mass_external_20260902.py",
+      "строка": 154,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/c20_empty_family_guard_20260815.py",
+      "строка": 55,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cifar10_metric_recipe_20260816.py",
+      "строка": 112,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/ckm_lqg_external_20260813.py",
+      "строка": 263,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/ckm_vtd_vts_vub_external_20260814.py",
+      "строка": 208,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cmb_temperature_external_20260902.py",
+      "строка": 151,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cosmology_columns.py",
+      "строка": 327,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cosmology_columns.py",
+      "строка": 345,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cosmology_columns.py",
+      "строка": 373,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cosmology_columns.py",
+      "строка": 391,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cosmology_columns.py",
+      "строка": 409,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cycle45_priority_queue_recipe_20260816.py",
+      "строка": 85,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cycle46_deadline_scheduling_recipe_20260816.py",
+      "строка": 105,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cycle46_federated_privacy_recipe_20260816.py",
+      "строка": 107,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cycle50_adaptive_caching_recipe_20260816.py",
+      "строка": 87,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/dark_photon_x17_formula.py",
+      "строка": 162,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 234,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_alpha_inverse_source_20260817.py",
+      "строка": 174,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_gamma_entropy_comparison_20260818.py",
+      "строка": 79,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_strong_coincidences_20260815.py",
+      "строка": 132,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_variance_claims_20260814.py",
+      "строка": 154,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/dirac_cp_external_20260902.py",
+      "строка": 154,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/dirac_cp_phase_formula.py",
+      "строка": 170,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/established_constants_fit_count.py",
+      "строка": 118,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/formulas_deploy_external_20260814.py",
+      "строка": 209,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/formulas_external_targets_20260813.py",
+      "строка": 222,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/formulas_precision_external_20260814.py",
+      "строка": 194,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/formulas_summary_external_20260814.py",
+      "строка": 205,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/gamma_bi_meissner_equation_20260817.py",
+      "строка": 195,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/gf16_mnist_accuracy_recipe_20260816.py",
+      "строка": 83,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_final_report_consistency_20260817.py",
+      "строка": 133,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v238_dim1024_quality_recipe_20260817.py",
+      "строка": 159,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v240_statistics_20260814.py",
+      "строка": 153,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v240_train_ppl_20260815.py",
+      "строка": 116,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v240_trigram_coverage_recipe_20260816.py",
+      "строка": 71,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v241_offsets_20260815.py",
+      "строка": 113,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v245_word_ppl_recipe_20260816.py",
+      "строка": 89,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v246_phrase_memorization_recipe_20260817.py",
+      "строка": 217,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v248_ppl_gain_20260815.py",
+      "строка": 106,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v249_generation_quality_recipe_20260817.py",
+      "строка": 116,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v250_kneser_ney_recipe_20260816.py",
+      "строка": 96,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v251_4gram_ppl_recipe_20260816.py",
+      "строка": 85,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v252_held_out_recipe_20260816.py",
+      "строка": 98,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v30_absolute_recipe_20260817.py",
+      "строка": 107,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/gravitational_constant_external_20260814.py",
+      "строка": 161,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/higgs_mass_external_20260902.py",
+      "строка": 153,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/hslm_convergence_fraction_20260815.py",
+      "строка": 74,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/hubble_planck_external_20260823.py",
+      "строка": 168,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/identity_cross_module_20260814.py",
+      "строка": 89,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/identity_honest_controls_20260814.py",
+      "строка": 102,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/jarlskog_theta13_external_20260814.py",
+      "строка": 228,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/jepa_experiment_consistency_20260817.py",
+      "строка": 125,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/kaon_mass_external_20260902.py",
+      "строка": 154,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/khinchin.py",
+      "строка": 91,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/khinchin_estimator_recipe_20260816.py",
+      "строка": 113,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/level11_neurosymbolic_benchmark_recipe_20260817.py",
+      "строка": 148,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/level11_planning_accuracy_recipe_20260816.py",
+      "строка": 90,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/level11_rdf_multihop_recipe_20260817.py",
+      "строка": 225,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/m_theory_dimension_formula.py",
+      "строка": 142,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/master_catalog_lucas_l10.py",
+      "строка": 92,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/master_catalog_msme_error.py",
+      "строка": 130,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/muon_mass_external_20260903.py",
+      "строка": 153,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/neutrino_mixing_external_20260814.py",
+      "строка": 212,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/neutrino_theta13_external_20260901.py",
+      "строка": 146,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/neutrino_theta23_external_20260901.py",
+      "строка": 127,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/neutron_lifetime_formula.py",
+      "строка": 141,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/neutron_proton_splitting_external_20260901.py",
+      "строка": 156,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/omega_baryon_external_20260902.py",
+      "строка": 149,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/omega_matter_external_20260902.py",
+      "строка": 149,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/particle_physics_example_mean_error_20260815.py",
+      "строка": 96,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/pellis_external_targets_20260814.py",
+      "строка": 220,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/planck_time_external_20260903.py",
+      "строка": 152,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/pointer_architecture_external_20260814.py",
+      "строка": 208,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/proton_mass_ratio_error.py",
+      "строка": 157,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/pvalue_leq69_lambda286.py",
+      "строка": 63,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/qcd_phase_tc_external_20260901.py",
+      "строка": 160,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/qcd_phase_tc_formula.py",
+      "строка": 147,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/readme_mp_me_external_20260818.py",
+      "строка": 143,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/reionization_zre_prediction.py",
+      "строка": 181,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_external_targets.py",
+      "строка": 145,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_fit_multiplicity.py",
+      "строка": 205,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_fit_multiplicity.py",
+      "строка": 236,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_formula_complete_v2_external_20260814.py",
+      "строка": 241,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_formula_full_external_20260814.py",
+      "строка": 218,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_predictions_registry_recipe_20260817.py",
+      "строка": 131,
+      "статус": "unsupported",
+      "код_причины": "tests_declared_not_independent",
+      "tests_independent": "false"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_random_probability.py",
+      "строка": 212,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_random_probability.py",
+      "строка": 231,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_random_probability.py",
+      "строка": 246,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_search_count.py",
+      "строка": 85,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py",
+      "строка": 176,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py",
+      "строка": 199,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_tsirelson_exact_external_20260817.py",
+      "строка": 195,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_two_formula_composition_recipe_20260817.py",
+      "строка": 151,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sidak_applicability_20260816.py",
+      "строка": 124,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sidak_threshold_20260815.py",
+      "строка": 140,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/solar_mass_external_20260902.py",
+      "строка": 151,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/spectral_index_external_20260902.py",
+      "строка": 151,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/top_mass_external_20260902.py",
+      "строка": 153,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/transcendental_3phi_value.py",
+      "строка": 88,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/transcendental_catalog_values.py",
+      "строка": 183,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/transcendental_catalog_values_2.py",
+      "строка": 158,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/transcendental_catalog_values_3.py",
+      "строка": 148,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/trinity_external_targets_20260813.py",
+      "строка": 255,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/trinity_external_targets_20260813.py",
+      "строка": 294,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/vsa_simd_benchmark_recipe_20260818.py",
+      "строка": 190,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/wilcoxon_v20_pvalue_20260815.py",
+      "строка": 140,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/z_boson_mass_external_20260902.py",
+      "строка": 153,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_unknown",
+      "tests_independent": "unknown"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_bblm_finite_height_comparison_20260818.py",
+      "строка": 165,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_chi2_independent_20260814.py",
+      "строка": 215,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_chi2_statistics_20260814.py",
+      "строка": 101,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_finite_height_extrapolation_20260816.py",
+      "строка": 148,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_gue.py",
+      "строка": 144,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_gue.py",
+      "строка": 168,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_gue.py",
+      "строка": 190,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_p95_summary_20260815.py",
+      "строка": 120,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_p99_gue_20260815.py",
+      "строка": 67,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_shape.py",
+      "строка": 277,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_shape.py",
+      "строка": 316,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_std_gue_20260815.py",
+      "строка": 98,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_std_unfolding_passport_20260815.py",
+      "строка": 180,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_unfolding_std_recipe_20260815.py",
+      "строка": 168,
+      "статус": "not-evaluated",
+      "код_причины": "independence_assumption_absent",
+      "tests_independent": null
+    }
+  ],
+  "ошибки_разбора": []
+}

@@ -1,0 +1,12 @@
+{
+  "статус": "verified-in-scope",
+  "наблюдаемое": "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt",
+  "эталон": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
+  "sha256_наблюдаемого": "3436c916a7878261ac183fd7b9448c9a4736b8bbccf1356874a6ce1788541632",
+  "sha256_эталона": "0f7b06f23dde9e8a3cab5d7057d39b2839d838306e7abdd56a21be317b9298aa",
+  "inode_совпадает": false,
+  "содержимое_совпадает": false,
+  "путь_совпадает": false,
+  "причина": "предъявлены разные существующие файлы с разными inode и SHA-256; алгоритмическая независимость отдельно не доказана",
+  "ограничение": "разные файлы не доказывают независимость формул, библиотек или вычислительных путей"
+}

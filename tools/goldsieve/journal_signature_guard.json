@@ -2,6 +2,6 @@
   "status": "not-evaluated",
   "reason": "криптографическая подпись не предъявлена; хеш-цепочка не доказывает авторство",
   "journal": "/home/user/workspace/cron_tracking/8dff7aa3/runs.jsonl",
-  "records": 2936,
+  "records": 3000,
   "signatures": 0
 }
