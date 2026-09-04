@@ -26,23 +26,46 @@ ALLOWED = {
 }
 
 
-def _target(artifact: dict) -> dict | None:
+def _target_entry(artifact: dict) -> tuple[bool, dict | None, str | None]:
+    """Вернуть наличие, содержимое и имя поля внешней цели.
+
+    Отсутствие поля и повреждённая форма — разные наблюдения. Раньше строка
+    или список в ``external_target`` выглядели как отсутствие цели и могли
+    тихо выпасть из свода.
+    """
     for key in ("external_target", "внешняя_цель"):
-        value = artifact.get(key)
+        if key not in artifact:
+            continue
+        value = artifact[key]
         if isinstance(value, dict):
-            return value
-    return None
+            return True, value, key
+        return True, None, key
+    return False, None, None
+
+
+def _target(artifact: dict) -> dict | None:
+    """Совместимый помощник для вызовов, которым нужна только цель."""
+    found, value, _key = _target_entry(artifact)
+    return value if found else None
 
 
 def inspect(artifact: dict, path: str) -> dict:
     """Разобрать одну запись без вывода вердикта о научной гипотезе."""
-    target = _target(artifact)
-    if target is None:
+    found, target, key = _target_entry(artifact)
+    if not found:
         return {
             "путь": path,
             "прочитано": True,
             "статус": "not-evaluated",
             "причина": "в артефакте нет внешней цели",
+        }
+    if target is None:
+        return {
+            "путь": path,
+            "прочитано": True,
+            "статус": "unsupported",
+            "причина": "поле внешней цели не является объектом",
+            "поле": key,
         }
     raw = target.get("uncertainty_type", target.get("тип_неопределённости"))
     label = str(raw or "").strip().lower()
@@ -94,7 +117,16 @@ def collect(root: Path = HERE) -> dict:
                 "причина": "артефакт нельзя прочитать как JSON",
             })
             continue
-        if isinstance(artifact, dict) and _target(artifact) is not None:
+        if not isinstance(artifact, dict):
+            reports.append({
+                "путь": str(path),
+                "прочитано": True,
+                "статус": "unsupported",
+                "причина": "корень внешнего артефакта не является объектом",
+            })
+            continue
+        found, _target_value, _target_key = _target_entry(artifact)
+        if found:
             reports.append(inspect(artifact, str(path)))
     counts = {}
     for report in reports:
@@ -153,6 +185,14 @@ def selftest() -> int:
                    "фикстура/нулевая-погрешность")
     check("нулевая неопределённость отклоняется",
           zero["статус"] == "unsupported")
+    malformed = inspect({"external_target": ["value", 1]},
+                         "фикстура/неверная-форма")
+    check("неверная форма цели не выдаётся за отсутствие",
+          malformed["статус"] == "unsupported")
+    malformed_alias = inspect({"внешняя_цель": "строка"},
+                              "фикстура/неверная-форма-алиаса")
+    check("неверная форма русской цели отклоняется",
+          malformed_alias["статус"] == "unsupported")
     print("самопроверка типа неопределённости: %d пройдено, %d провалено"
           % (checks - failures, failures))
     return failures
