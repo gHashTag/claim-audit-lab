@@ -106,6 +106,18 @@ def inspect(document: object, source: str) -> dict:
             "записей_С20": len(records),
             "наблюдения": records,
         }
+    declared_values = [
+        item["общий_M_eff"] for item in records
+        if item["общий_M_eff"] is not None
+    ]
+    if not all(_finite_number(value) for value in declared_values):
+        return {
+            "статус": "not-evaluated",
+            "причина": "общий_M_eff объявлен нечисловым или не конечным значением",
+            "источник_наблюдения": source,
+            "записей_С20": len(records),
+            "наблюдения": records,
+        }
     common = {round(float(item["общий_M_eff"]), 12)
               for item in records if item["общий_M_eff"] is not None}
     if len(common) != 1:
@@ -202,6 +214,21 @@ def selftest() -> int:
     check("разный M не объявляется общим ансамблем",
           diff["статус"] == "not-evaluated"
           and "M различаются" in diff["причина"])
+
+    malformed = {
+        "results": [
+            {"sieve": "С20 эффективное число попыток",
+             "numbers": {"M": 123201, "M_eff": 80000,
+                         "M_eff_общий": "не число"}},
+            {"sieve": "С20 эффективное число попыток",
+             "numbers": {"M": 123201, "M_eff": 70000,
+                         "M_eff_общий": "не число"}},
+        ]
+    }
+    malformed_result = inspect([malformed], "фикстура/нечисловой-m-eff.json")
+    check("нечисловой общий M_eff не вызывает исключение",
+          malformed_result["статус"] == "not-evaluated"
+          and "нечисловым" in malformed_result["причина"])
     print("самопроверка общего M_eff: пройдено %d, провалено %d" % (good, bad))
     return bad
 
