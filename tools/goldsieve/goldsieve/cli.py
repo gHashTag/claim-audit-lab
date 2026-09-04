@@ -321,6 +321,17 @@ def _regression_fingerprints(entries, root):
     отпечатки файлов, прочитанных из корпуса, покрывают дрейф наблюдаемого.
     """
     by_case = {}
+    # Один и тот же источник обычно предъявлен многими утверждениями. Без
+    # кэша полный реестр перечитывает большой файл корпуса для каждой строки,
+    # хотя для выбора инкрементального регресса достаточно одного отпечатка
+    # на путь. Это только оптимизация чтения: ключи и формат снимка не меняются.
+    digest_cache = {}
+
+    def cached_digest(path):
+        if path not in digest_cache:
+            digest_cache[path] = _file_sha256(path)
+        return digest_cache[path]
+
     for entry in entries:
         case = str(entry.get("case", ""))
         if not case:
@@ -334,7 +345,7 @@ def _regression_fingerprints(entries, root):
             source_path = source_paths[0] if source_paths else None
             meta = {
                 "path": source_path,
-                "sha256": _file_sha256(source_path) if source_path else None,
+                "sha256": cached_digest(source_path) if source_path else None,
             }
             if unresolved:
                 meta["unresolved"] = True
@@ -345,15 +356,15 @@ def _regression_fingerprints(entries, root):
             # описывает несколько локальных входов.
             meta = {
                 "path": source_paths[0],
-                "sha256": _file_sha256(source_paths[0]),
+                "sha256": cached_digest(source_paths[0]),
                 "paths": source_paths,
-                "sha256s": [_file_sha256(item) for item in source_paths],
+                "sha256s": [cached_digest(item) for item in source_paths],
             }
             if unresolved:
                 meta["unresolved"] = True
             sources[source_key] = meta
         row = by_case.setdefault(case, {
-            "case_sha256": _file_sha256(path),
+            "case_sha256": cached_digest(path),
             "sources": {},
         })
         row["sources"].update(sources)
