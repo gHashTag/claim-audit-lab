@@ -1,0 +1,2 @@
+сторож путей артефактов: not-evaluated; прочитано артефактов 503; путей в области 501; not-evaluated 2; нарушений 0
+журнал: /home/user/workspace/cron_tracking/8dff7aa3/runs.jsonl

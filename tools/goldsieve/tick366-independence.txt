@@ -1,0 +1,2 @@
+сторож предпосылки независимости: not-evaluated; кейсов 133; сводка {"not-evaluated": 132, "platform-unverified": 0, "unsupported": 1, "verified-in-scope": 0}
+JSON: /home/user/workspace/goldsieve/independence_assumption_guard.json

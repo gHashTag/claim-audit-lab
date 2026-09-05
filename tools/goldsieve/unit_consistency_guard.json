@@ -1,0 +1,66 @@
+{
+  "статус": "verified-in-scope",
+  "проверено_артефактов": 7,
+  "сводка": {
+    "not-evaluated": 7
+  },
+  "наблюдения": [
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick225-risk-invalid-external-uncertainty.json",
+      "прочитано": true,
+      "единица_наблюдаемого": null,
+      "единица_внешней_цели": "fm",
+      "статус": "not-evaluated",
+      "причина": "явные единицы наблюдаемого и внешней цели не предъявлены"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick262_external_measurement.json",
+      "прочитано": true,
+      "единица_наблюдаемого": null,
+      "единица_внешней_цели": null,
+      "статус": "not-evaluated",
+      "причина": "явные единицы наблюдаемого и внешней цели не предъявлены"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick264-vub.json",
+      "прочитано": true,
+      "единица_наблюдаемого": null,
+      "единица_внешней_цели": null,
+      "статус": "not-evaluated",
+      "причина": "явные единицы наблюдаемого и внешней цели не предъявлены"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick270_external_measurement.json",
+      "прочитано": true,
+      "единица_наблюдаемого": null,
+      "единица_внешней_цели": null,
+      "статус": "not-evaluated",
+      "причина": "явные единицы наблюдаемого и внешней цели не предъявлены"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick271_external_measurement.json",
+      "прочитано": true,
+      "единица_наблюдаемого": null,
+      "единица_внешней_цели": null,
+      "статус": "not-evaluated",
+      "причина": "явные единицы наблюдаемого и внешней цели не предъявлены"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick280_external_measurement.json",
+      "прочитано": true,
+      "единица_наблюдаемого": null,
+      "единица_внешней_цели": null,
+      "статус": "not-evaluated",
+      "причина": "явные единицы наблюдаемого и внешней цели не предъявлены"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick288_external_measurement.json",
+      "прочитано": true,
+      "единица_наблюдаемого": null,
+      "единица_внешней_цели": null,
+      "статус": "not-evaluated",
+      "причина": "явные единицы наблюдаемого и внешней цели не предъявлены"
+    }
+  ],
+  "ограничение": "проверка единиц не подтверждает значение измерения; отсутствующая единица остаётся not-evaluated"
+}

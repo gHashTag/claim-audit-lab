@@ -1,0 +1,696 @@
+{
+  "run": {
+    "id": 33986964876,
+    "path": ".github/workflows/cross-platform-selftest.yml",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876",
+    "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876"
+  },
+  "jobs": [
+    {
+      "completedAt": "2026-09-05T19:24:00Z",
+      "conclusion": "success",
+      "databaseId": 101362234616,
+      "name": "ubuntu-latest / py3.13",
+      "startedAt": "2026-09-05T19:23:30Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-05T19:23:33Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-05T19:23:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:35Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-09-05T19:23:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:35Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 3,
+          "startedAt": "2026-09-05T19:23:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:36Z",
+          "conclusion": "success",
+          "name": "runtime fingerprint",
+          "number": 4,
+          "startedAt": "2026-09-05T19:23:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:48Z",
+          "conclusion": "success",
+          "name": "dependencies",
+          "number": 5,
+          "startedAt": "2026-09-05T19:23:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:56Z",
+          "conclusion": "success",
+          "name": "goldsieve selftest",
+          "number": 6,
+          "startedAt": "2026-09-05T19:23:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:56Z",
+          "conclusion": "success",
+          "name": "gue label guard selftest",
+          "number": 7,
+          "startedAt": "2026-09-05T19:23:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:56Z",
+          "conclusion": "success",
+          "name": "aborted audit selftest",
+          "number": 8,
+          "startedAt": "2026-09-05T19:23:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:56Z",
+          "conclusion": "success",
+          "name": "replay queue selftest",
+          "number": 9,
+          "startedAt": "2026-09-05T19:23:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:57Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 17,
+          "startedAt": "2026-09-05T19:23:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:57Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 18,
+          "startedAt": "2026-09-05T19:23:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:57Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-09-05T19:23:57Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876/job/101362234616",
+      "id": 101362234616,
+      "run_id": 33986964876,
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876",
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "954a3410ebb3d5d10f5865cb118904bcb66c7cf1",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    },
+    {
+      "completedAt": "2026-09-05T19:23:59Z",
+      "conclusion": "success",
+      "databaseId": 101362234678,
+      "name": "macos-latest / py3.12",
+      "startedAt": "2026-09-05T19:23:31Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-05T19:23:33Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-05T19:23:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:35Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-09-05T19:23:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:36Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 3,
+          "startedAt": "2026-09-05T19:23:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:36Z",
+          "conclusion": "success",
+          "name": "runtime fingerprint",
+          "number": 4,
+          "startedAt": "2026-09-05T19:23:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:45Z",
+          "conclusion": "success",
+          "name": "dependencies",
+          "number": 5,
+          "startedAt": "2026-09-05T19:23:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:55Z",
+          "conclusion": "success",
+          "name": "goldsieve selftest",
+          "number": 6,
+          "startedAt": "2026-09-05T19:23:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:55Z",
+          "conclusion": "success",
+          "name": "gue label guard selftest",
+          "number": 7,
+          "startedAt": "2026-09-05T19:23:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:55Z",
+          "conclusion": "success",
+          "name": "aborted audit selftest",
+          "number": 8,
+          "startedAt": "2026-09-05T19:23:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:56Z",
+          "conclusion": "success",
+          "name": "replay queue selftest",
+          "number": 9,
+          "startedAt": "2026-09-05T19:23:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:56Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 17,
+          "startedAt": "2026-09-05T19:23:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:57Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 18,
+          "startedAt": "2026-09-05T19:23:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:57Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-09-05T19:23:57Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876/job/101362234678",
+      "id": 101362234678,
+      "run_id": 33986964876,
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876",
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "954a3410ebb3d5d10f5865cb118904bcb66c7cf1",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    },
+    {
+      "completedAt": "2026-09-05T19:24:17Z",
+      "conclusion": "success",
+      "databaseId": 101362234686,
+      "name": "windows-latest / py3.13",
+      "startedAt": "2026-09-05T19:23:30Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-05T19:23:31Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-05T19:23:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:38Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-09-05T19:23:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:38Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 3,
+          "startedAt": "2026-09-05T19:23:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:39Z",
+          "conclusion": "success",
+          "name": "runtime fingerprint",
+          "number": 4,
+          "startedAt": "2026-09-05T19:23:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:01Z",
+          "conclusion": "success",
+          "name": "dependencies",
+          "number": 5,
+          "startedAt": "2026-09-05T19:23:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:12Z",
+          "conclusion": "success",
+          "name": "goldsieve selftest",
+          "number": 6,
+          "startedAt": "2026-09-05T19:24:01Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:13Z",
+          "conclusion": "success",
+          "name": "gue label guard selftest",
+          "number": 7,
+          "startedAt": "2026-09-05T19:24:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:13Z",
+          "conclusion": "success",
+          "name": "aborted audit selftest",
+          "number": 8,
+          "startedAt": "2026-09-05T19:24:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:13Z",
+          "conclusion": "success",
+          "name": "replay queue selftest",
+          "number": 9,
+          "startedAt": "2026-09-05T19:24:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:13Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 17,
+          "startedAt": "2026-09-05T19:24:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:15Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 18,
+          "startedAt": "2026-09-05T19:24:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:15Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-09-05T19:24:15Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876/job/101362234686",
+      "id": 101362234686,
+      "run_id": 33986964876,
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876",
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "954a3410ebb3d5d10f5865cb118904bcb66c7cf1",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    },
+    {
+      "completedAt": "2026-09-05T19:23:59Z",
+      "conclusion": "success",
+      "databaseId": 101362234702,
+      "name": "ubuntu-latest / py3.12",
+      "startedAt": "2026-09-05T19:23:30Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-05T19:23:32Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-05T19:23:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:34Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-09-05T19:23:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:34Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 3,
+          "startedAt": "2026-09-05T19:23:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:35Z",
+          "conclusion": "success",
+          "name": "runtime fingerprint",
+          "number": 4,
+          "startedAt": "2026-09-05T19:23:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:46Z",
+          "conclusion": "success",
+          "name": "dependencies",
+          "number": 5,
+          "startedAt": "2026-09-05T19:23:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:55Z",
+          "conclusion": "success",
+          "name": "goldsieve selftest",
+          "number": 6,
+          "startedAt": "2026-09-05T19:23:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:55Z",
+          "conclusion": "success",
+          "name": "gue label guard selftest",
+          "number": 7,
+          "startedAt": "2026-09-05T19:23:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:55Z",
+          "conclusion": "success",
+          "name": "aborted audit selftest",
+          "number": 8,
+          "startedAt": "2026-09-05T19:23:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:55Z",
+          "conclusion": "success",
+          "name": "replay queue selftest",
+          "number": 9,
+          "startedAt": "2026-09-05T19:23:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:55Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 17,
+          "startedAt": "2026-09-05T19:23:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:55Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 18,
+          "startedAt": "2026-09-05T19:23:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:55Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-09-05T19:23:55Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876/job/101362234702",
+      "id": 101362234702,
+      "run_id": 33986964876,
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876",
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "954a3410ebb3d5d10f5865cb118904bcb66c7cf1",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    },
+    {
+      "completedAt": "2026-09-05T19:24:11Z",
+      "conclusion": "success",
+      "databaseId": 101362234727,
+      "name": "macos-latest / py3.13",
+      "startedAt": "2026-09-05T19:23:39Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-05T19:23:40Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-05T19:23:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:43Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-09-05T19:23:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:43Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 3,
+          "startedAt": "2026-09-05T19:23:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:43Z",
+          "conclusion": "success",
+          "name": "runtime fingerprint",
+          "number": 4,
+          "startedAt": "2026-09-05T19:23:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:54Z",
+          "conclusion": "success",
+          "name": "dependencies",
+          "number": 5,
+          "startedAt": "2026-09-05T19:23:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:05Z",
+          "conclusion": "success",
+          "name": "goldsieve selftest",
+          "number": 6,
+          "startedAt": "2026-09-05T19:23:54Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:05Z",
+          "conclusion": "success",
+          "name": "gue label guard selftest",
+          "number": 7,
+          "startedAt": "2026-09-05T19:24:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:05Z",
+          "conclusion": "success",
+          "name": "aborted audit selftest",
+          "number": 8,
+          "startedAt": "2026-09-05T19:24:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:05Z",
+          "conclusion": "success",
+          "name": "replay queue selftest",
+          "number": 9,
+          "startedAt": "2026-09-05T19:24:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:06Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 17,
+          "startedAt": "2026-09-05T19:24:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:06Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 18,
+          "startedAt": "2026-09-05T19:24:06Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:07Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-09-05T19:24:06Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876/job/101362234727",
+      "id": 101362234727,
+      "run_id": 33986964876,
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876",
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "954a3410ebb3d5d10f5865cb118904bcb66c7cf1",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    },
+    {
+      "completedAt": "2026-09-05T19:24:19Z",
+      "conclusion": "success",
+      "databaseId": 101362234821,
+      "name": "windows-latest / py3.12",
+      "startedAt": "2026-09-05T19:23:30Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-05T19:23:32Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-05T19:23:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:38Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-09-05T19:23:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:39Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 3,
+          "startedAt": "2026-09-05T19:23:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:23:40Z",
+          "conclusion": "success",
+          "name": "runtime fingerprint",
+          "number": 4,
+          "startedAt": "2026-09-05T19:23:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:03Z",
+          "conclusion": "success",
+          "name": "dependencies",
+          "number": 5,
+          "startedAt": "2026-09-05T19:23:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:15Z",
+          "conclusion": "success",
+          "name": "goldsieve selftest",
+          "number": 6,
+          "startedAt": "2026-09-05T19:24:03Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:15Z",
+          "conclusion": "success",
+          "name": "gue label guard selftest",
+          "number": 7,
+          "startedAt": "2026-09-05T19:24:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:16Z",
+          "conclusion": "success",
+          "name": "aborted audit selftest",
+          "number": 8,
+          "startedAt": "2026-09-05T19:24:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:16Z",
+          "conclusion": "success",
+          "name": "replay queue selftest",
+          "number": 9,
+          "startedAt": "2026-09-05T19:24:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:16Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 17,
+          "startedAt": "2026-09-05T19:24:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:18Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 18,
+          "startedAt": "2026-09-05T19:24:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-05T19:24:18Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-09-05T19:24:18Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876/job/101362234821",
+      "id": 101362234821,
+      "run_id": 33986964876,
+      "run_url": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33986964876",
+      "head_branch": "tools/goldsieve-v3-2026-08-13",
+      "head_sha": "954a3410ebb3d5d10f5865cb118904bcb66c7cf1",
+      "workflow_name": "cross-platform-selftest.yml",
+      "run_attempt": 1
+    }
+  ]
+}

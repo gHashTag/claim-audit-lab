@@ -1,0 +1,2 @@
+[tools/goldsieve-v3-2026-08-13 087ff50] Уточнить целостность вариантов рецепта zeta
+ 2 files changed, 39 insertions(+), 7 deletions(-)

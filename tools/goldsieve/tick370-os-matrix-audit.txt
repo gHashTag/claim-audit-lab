@@ -1,0 +1,2 @@
+матрица ОС: PASS, заданий 6, пропущено 0, неуспешно 0
+JSON: tick370-os-matrix-audit.json

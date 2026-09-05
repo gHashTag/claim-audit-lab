@@ -1,0 +1,57 @@
+{
+  "рабочий_процесс": 33966997296,
+  "ветвь": "tools/goldsieve-v3-2026-08-13",
+  "статус": "verified-in-scope",
+  "заданий": [
+    {
+      "задание": "macos-latest / py3.12",
+      "идентификатор": 101308767970,
+      "статус": "verified-in-scope",
+      "состояние": "completed",
+      "итог": "success",
+      "ссылка": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33966997296/job/101308767970"
+    },
+    {
+      "задание": "ubuntu-latest / py3.13",
+      "идентификатор": 101308768056,
+      "статус": "verified-in-scope",
+      "состояние": "completed",
+      "итог": "success",
+      "ссылка": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33966997296/job/101308768056"
+    },
+    {
+      "задание": "macos-latest / py3.13",
+      "идентификатор": 101308768068,
+      "статус": "verified-in-scope",
+      "состояние": "completed",
+      "итог": "success",
+      "ссылка": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33966997296/job/101308768068"
+    },
+    {
+      "задание": "windows-latest / py3.12",
+      "идентификатор": 101308768106,
+      "статус": "verified-in-scope",
+      "состояние": "completed",
+      "итог": "success",
+      "ссылка": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33966997296/job/101308768106"
+    },
+    {
+      "задание": "ubuntu-latest / py3.12",
+      "идентификатор": 101308768119,
+      "статус": "verified-in-scope",
+      "состояние": "completed",
+      "итог": "success",
+      "ссылка": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33966997296/job/101308768119"
+    },
+    {
+      "задание": "windows-latest / py3.13",
+      "идентификатор": 101308768151,
+      "статус": "verified-in-scope",
+      "состояние": "completed",
+      "итог": "success",
+      "ссылка": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33966997296/job/101308768151"
+    }
+  ],
+  "итог": "6 из 6 заданий завершены успешно",
+  "ссылка": "https://github.com/gHashTag/claim-audit-lab/actions/runs/33966997296"
+}

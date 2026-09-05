@@ -1,0 +1,2 @@
+usage: audit_substance_guard.py [-h] [--selftest] [--check CHECK]
+audit_substance_guard.py: error: укажите --selftest или --check

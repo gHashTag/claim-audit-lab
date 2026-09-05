@@ -1,0 +1,2 @@
+сторож согласованности единиц: verified-in-scope; артефактов: 7; сводка: {"not-evaluated": 7}
+JSON: /home/user/workspace/goldsieve/unit_consistency_guard.json
