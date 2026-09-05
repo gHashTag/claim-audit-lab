@@ -206,6 +206,10 @@ else
     step "разметка внешних сверок"        "$BASE_PY" external_target_guard.py
     step "чувствительность типа неопределённости" "$BASE_PY" external_uncertainty_type_guard.py --selftest
     step "тип неопределённости внешних сверок" "$BASE_PY" external_uncertainty_type_guard.py
+    # Тик 365: новая семантическая граница — одинаковые числа нельзя
+    # сопоставлять без проверенной согласованности единиц.
+    step "чувствительность согласованности единиц" "$BASE_PY" unit_consistency_guard.py --selftest
+    step "согласованность единиц внешних сверок" "$BASE_PY" unit_consistency_guard.py
     # Независимость происхождения: разные имена могут быть одним файлом
     # через относительный путь или символическую ссылку.
     step "чувствительность сторожа происхождения" "$BASE_PY" provenance_guard.py --selftest
