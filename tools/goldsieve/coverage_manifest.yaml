@@ -567,6 +567,17 @@ tooling_guards:
     mutation_target: удаление проверки конечности внешней цели
     sensitivity: 2/2 отрицательные фикстуры; 1/1 мутация поймана
     status_class: verified-in-scope
+  json_duplicate_key_integrity:
+    role: >-
+      повторяющийся ключ JSON не должен молча заменяться последним значением
+      и превращать неоднозначный машинный отчёт в покрытие
+    script: json_duplicate_key_guard.py
+    gate_step: однозначность ключей машинных отчётов
+    positive_fixture: машинные JSON-отчёты сит
+    negative_fixture: повтор верхнего и вложенного ключа
+    mutation_target: удаление object_pairs_hook из строгого разбора
+    sensitivity: 2/2 отрицательные фикстуры; 1/1 оборванный JSON
+    status_class: verified-in-scope
   silent_external_target_boundary:
     role: >-
       ревизия молчащего шага: внешняя сверка без наблюдаемого,
