@@ -75,16 +75,19 @@ def _combined_components(target: dict) -> tuple[str, str]:
     syst = raw.get("systematic", raw.get("систематическая"))
     combined = target.get("combined_uncertainty",
                           target.get("объединённая_неопределённость"))
+    reported = target.get("uncertainty",
+                          target.get("неопределённость"))
     try:
         stat = float(stat)
         syst = float(syst)
         combined = float(combined)
+        reported = float(reported)
     except (TypeError, ValueError):
         return ("unsupported",
                 "компоненты и объединённая неопределённость должны быть числами")
     if (not math.isfinite(stat) or not math.isfinite(syst)
-            or not math.isfinite(combined) or stat <= 0 or syst <= 0
-            or combined <= 0):
+            or not math.isfinite(combined) or not math.isfinite(reported)
+            or stat <= 0 or syst <= 0 or combined <= 0 or reported <= 0):
         return ("unsupported",
                 "компоненты и объединённая неопределённость должны быть "
                 "положительными конечными числами")
@@ -92,6 +95,10 @@ def _combined_components(target: dict) -> tuple[str, str]:
     if not math.isclose(combined, expected, rel_tol=1e-12, abs_tol=1e-12):
         return ("unsupported",
                 "объединённая неопределённость не равна sqrt(stat² + syst²)")
+    if not math.isclose(reported, combined, rel_tol=1e-12, abs_tol=1e-12):
+        return ("unsupported",
+                "поле uncertainty не совпадает с объединённой "
+                "неопределённостью")
     return ("verified-in-scope", "")
 
 
@@ -270,6 +277,17 @@ def selftest() -> int:
     )
     check("несогласованная составная неопределённость отклоняется",
           inconsistent["статус"] == "unsupported")
+    mismatched_reported = inspect(
+        {"external_target": {
+            "value": 1, "uncertainty": 0.2, "uncertainty_type": "both",
+            "uncertainty_components": {
+                "statistical": 0.08, "systematic": 0.06},
+            "combined_uncertainty": 0.1,
+        }},
+        "фикстура/составная-рассогласована-с-полем",
+    )
+    check("поле uncertainty должно совпадать с объединённой величиной",
+          mismatched_reported["статус"] == "unsupported")
     malformed = inspect({"external_target": ["value", 1]},
                          "фикстура/неверная-форма")
     check("неверная форма цели не выдаётся за отсутствие",

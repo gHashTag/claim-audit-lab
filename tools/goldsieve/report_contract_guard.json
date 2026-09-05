@@ -1,10 +1,10 @@
 {
   "статус": "verified-in-scope",
   "режим": "исторический аудит формы",
-  "доклады": 46,
+  "доклады": 47,
   "статусы": {
     "not-evaluated": 34,
-    "verified-in-scope": 12
+    "verified-in-scope": 13
   },
   "наблюдения": [
     {
@@ -280,6 +280,12 @@
     {
       "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick358-report.md",
       "суть": "/home/user/workspace/goldsieve/tick358-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick359-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick359-progress-substance.json",
       "статус": "verified-in-scope",
       "причина": "контракт доклада предъявлен полностью"
     }
