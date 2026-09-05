@@ -393,6 +393,17 @@ shell_checks:
     limits: >-
       контракт формы не подтверждает научную истинность утверждений и не
       восстанавливает значения из соседних тиков
+  audit_substance_guard.py:
+    gate_step: чувствительность формы машинной сути
+    selftest_cmd: [audit_substance_guard.py, --selftest]
+    selftest_checks: 8
+    role: >-
+      проверяет размерность и типы полей machine-substance, чтобы запрет
+      холостого тика не потерял гейт, регресс, ОС-матрицу, BBLM или список
+      изменённых файлов
+    limits: >-
+      проверка формы не подтверждает научный результат и не заменяет
+      проверку происхождения чисел
   snapshot_manifest.py:
     gate_step: проверяемый снимок
     selftest_cmd: [snapshot_manifest.py, selftest]

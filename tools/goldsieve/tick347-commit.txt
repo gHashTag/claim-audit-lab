@@ -1,0 +1,2 @@
+[tools/goldsieve-v3-2026-08-13 151941e] Ускорить инкрементальный регресс ротацией источников
+ 1 file changed, 31 insertions(+), 1 deletion(-)

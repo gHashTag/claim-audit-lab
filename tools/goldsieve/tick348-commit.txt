@@ -1,0 +1,3 @@
+[tools/goldsieve-v3-2026-08-13 3aa7325] Ускорить регресс проверяемым кэшем отпечатков
+ 3 files changed, 139 insertions(+), 1 deletion(-)
+ create mode 100644 tools/goldsieve/regression_cache_guard.py

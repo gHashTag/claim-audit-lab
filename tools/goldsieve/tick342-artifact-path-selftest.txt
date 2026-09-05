@@ -1,0 +1,9 @@
+  ok   /home/user/workspace/goldsieve/ci_gate.sh
+  ok   /etc/passwd
+  ok   /tmp/../etc/passwd
+  ok   ../../secret.txt
+  ok   FileNotFoundError
+  ok   /tmp/путь.txt
+  ok   символическая ссылка наружу
+  ok   неверная форма контейнера artifacts
+самопроверка границы путей артефактов: пройдено 8, провалено 0

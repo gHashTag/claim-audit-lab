@@ -1,0 +1,2 @@
+[tools/goldsieve-v3-2026-08-13 d54c9c9] Учитывать detached-подписи журнала
+ 2 files changed, 50 insertions(+), 3 deletions(-)

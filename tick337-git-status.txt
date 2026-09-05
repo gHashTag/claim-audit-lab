@@ -1,0 +1,38 @@
+## tools/goldsieve-v3-2026-08-13
+ M tools/goldsieve/baseline/log-checkpoint.json
+ M tools/goldsieve/baseline/manifest.json
+ M tools/goldsieve/baseline/snapshot-manifest.json
+ M tools/goldsieve/disk_guard.json
+ M tools/goldsieve/gue_label_guard.json
+ M tools/goldsieve/journal_signature_guard.json
+ M tools/goldsieve/progress_guard.json
+ M tools/goldsieve/repo_sync_guard.json
+ M tools/goldsieve/report_contract_guard.json
+ M tools/goldsieve/runlog_record_guard.json
+ M tools/goldsieve/target_novelty_guard.py
+?? tick337-git-status.txt
+?? tools/goldsieve/tick336-counter-completed.txt
+?? tools/goldsieve/tick336-repo-sync-guard-final2.txt
+?? tools/goldsieve/tick336-repo-sync-guard-workspace.txt
+?? tools/goldsieve/tick337-baseline-snapshot.txt
+?? tools/goldsieve/tick337-bblm-accounting.txt
+?? tools/goldsieve/tick337-bblm-elements.txt
+?? tools/goldsieve/tick337-bblm-protocol.txt
+?? tools/goldsieve/tick337-counter-completed.txt
+?? tools/goldsieve/tick337-coverage-update.txt
+?? tools/goldsieve/tick337-gate-closed-counter.txt
+?? tools/goldsieve/tick337-gate-final.rc
+?? tools/goldsieve/tick337-gate.rc
+?? tools/goldsieve/tick337-open-debts.txt
+?? tools/goldsieve/tick337-os-matrix.json
+?? tools/goldsieve/tick337-progress-check.txt
+?? tools/goldsieve/tick337-progress-record.txt
+?? tools/goldsieve/tick337-progress-substance.json
+?? tools/goldsieve/tick337-regression.rc
+?? tools/goldsieve/tick337-report-contract.txt
+?? tools/goldsieve/tick337-report.md
+?? tools/goldsieve/tick337-target-dynamic-test.txt
+?? tools/goldsieve/tick337-target-novelty-selftest.txt
+?? tools/goldsieve/tick337-targets.txt
+?? tools/goldsieve/tick337-tri-snapshot.txt
+?? tools/goldsieve/tick337-zeta-passport.txt

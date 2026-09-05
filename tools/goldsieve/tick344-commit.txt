@@ -1,0 +1,4 @@
+[tools/goldsieve-v3-2026-08-13 aef8a69] тик 344: проверить происхождение паспорта zeta
+ 15 files changed, 685 insertions(+), 68 deletions(-)
+ create mode 100644 tools/goldsieve/zeta_passport_provenance_guard.json
+ create mode 100644 tools/goldsieve/zeta_passport_provenance_guard.py

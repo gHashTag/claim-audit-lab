@@ -1,0 +1,2 @@
+контракт χ²/dof: 2 строк, статус verified-in-scope
+JSON: /home/user/workspace/goldsieve/chi2_dof_guard.json

@@ -1,0 +1,3 @@
+ОС-матрица: запуск 33915777306, итог completed/success.
+Задания: Ubuntu CPython 3.12 — success; Ubuntu CPython 3.13 — success; macOS CPython 3.12 — success; macOS CPython 3.13 — success; Windows CPython 3.12 — success; Windows CPython 3.13 — success.
+Формулировка охвата: проверено на указанных версиях CPython; платформонезависимость не заявляется.

@@ -1,0 +1,6 @@
+sending incremental file list
+ci_gate.sh
+cli.py
+
+sent 54,093 bytes  received 54 bytes  108,294.00 bytes/sec
+total size is 53,917  speedup is 1.00

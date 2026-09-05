@@ -1,0 +1,5 @@
+sending incremental file list
+cli.py
+
+sent 33,035 bytes  received 35 bytes  66,140.00 bytes/sec
+total size is 32,926  speedup is 1.00

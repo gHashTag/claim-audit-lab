@@ -1,0 +1,7 @@
+запуск 33920993818: completed/success
+ubuntu-latest / py3.12: completed/success
+windows-latest / py3.12: completed/success
+macos-latest / py3.13: completed/success
+windows-latest / py3.13: completed/success
+macos-latest / py3.12: completed/success
+ubuntu-latest / py3.13: completed/success

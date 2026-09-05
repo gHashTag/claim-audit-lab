@@ -116,21 +116,21 @@
     "claim": "|V_cb| = γ³π согласуется с внешним значением CKM",
     "verdict": "ПУСТО",
     "source": "docs/papers/README_FOR_SCIENTISTS.md:49,96",
-    "inputs_digest": "fb46d9572a26c132"
+    "inputs_digest": "dec6ecc47e066f9a"
   },
   {
     "case": "cases/ckm_lqg_external_20260813.py",
     "claim": "|V_us| = 3γ/π согласуется с внешним значением CKM",
     "verdict": "ПУСТО",
     "source": "docs/papers/README_FOR_SCIENTISTS.md:47,95",
-    "inputs_digest": "6893f19297705c6d"
+    "inputs_digest": "dec6ecc47e066f9a"
   },
   {
     "case": "cases/ckm_lqg_external_20260813.py",
     "claim": "γ = φ⁻³ согласуется с внешней оценкой параметра Барберо–Иммирци",
     "verdict": "ПУСТО",
     "source": "docs/papers/README_FOR_SCIENTISTS.md:20",
-    "inputs_digest": "7424155384454ccb"
+    "inputs_digest": "dec6ecc47e066f9a"
   },
   {
     "case": "cases/ckm_vtd_vts_vub_external_20260814.py",
@@ -431,7 +431,7 @@
     "claim": "Перплексия обучения большого корпуса равна 1,87",
     "verdict": "ВОПРОС",
     "source": "docs/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md:14,16,30-33,55-59,78-86",
-    "inputs_digest": "2635099cd9629f12"
+    "inputs_digest": "8b4e0eaad6efc5fe"
   },
   {
     "case": "cases/golden_chain_v240_trigram_coverage_recipe_20260816.py",
@@ -606,7 +606,7 @@
     "claim": "Сводка Khinchin K по десяти корзинам равна 2,6201 ± 0,0293",
     "verdict": "ПОДТВЕРЖДЕНО",
     "source": "data/zeta/zeta_bin_analysis_update.md:12-14,31-40",
-    "inputs_digest": "02b12e8636dfa325"
+    "inputs_digest": "2a913b88ff8b9333"
   },
   {
     "case": "cases/level11_neurosymbolic_benchmark_recipe_20260817.py",
@@ -620,7 +620,7 @@
     "claim": "190 запросов планирования из 190 имеют точность 100 процентов по воспроизводимому рецепту",
     "verdict": "ВОПРОС",
     "source": "deploy/trinity-nexus/docs/research/trinity-level11-planning-sota-report.md:6-22,42-137",
-    "inputs_digest": "4d502cec08fc21f1"
+    "inputs_digest": "55f8aaa462058aa0"
   },
   {
     "case": "cases/level11_rdf_multihop_recipe_20260817.py",
@@ -1096,7 +1096,7 @@
     "claim": "Ведущая BBLM-поправка объясняет три статистики расстояний дзета на верхних корзинах",
     "verdict": "ОПРОВЕРГНУТО",
     "source": "scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt; BBLM 2006",
-    "inputs_digest": "3436c916a7878261"
+    "inputs_digest": "6c90b589383b96c8"
   },
   {
     "case": "cases/zeta_chi2_independent_20260814.py",
@@ -1117,7 +1117,7 @@
     "claim": "Линейная экстраполяция по 1/L объясняет дефицит std нулей дзета точным GUE",
     "verdict": "ОПРОВЕРГНУТО",
     "source": "scripts/height_extrapolation.py:1-15,139-151",
-    "inputs_digest": "1114eedaa62471e3"
+    "inputs_digest": "e1ad8e54496b2d4e"
   },
   {
     "case": "cases/zeta_gue.py",
@@ -1159,14 +1159,14 @@
     "claim": "масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка out-of-sample по верхним полосам высот)",
     "verdict": "ОПРОВЕРГНУТО",
     "source": "data/zeta/zeros_odlyzko_100k.txt, 4 полосы высот; BBLM 2006",
-    "inputs_digest": "3436c916a7878261"
+    "inputs_digest": "8e0cc0c774a33542"
   },
   {
     "case": "cases/zeta_shape.py",
     "claim": "форма распределения расстояний согласуется с точным законом GUE в пределах конечновыборочного разброса",
     "verdict": "ОПРОВЕРГНУТО",
     "source": "data/zeta/zeta_gue_analysis_results.md:форма распределения",
-    "inputs_digest": "3436c916a7878261"
+    "inputs_digest": "8e0cc0c774a33542"
   },
   {
     "case": "cases/zeta_std_gue_20260815.py",

@@ -1,0 +1,2 @@
+[tools/goldsieve-v3-2026-08-13 6f850aa] Аудит: согласованность chi2/dof
+ 1 file changed, 72 insertions(+), 14 deletions(-)

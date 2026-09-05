@@ -1,0 +1,1230 @@
+{
+  "files": {
+    "/home/user/workspace/corpus/trinity/.trinity/experience/DELTA-001.md": {
+      "ctime_ns": 1786559769581928590,
+      "inode": 656038,
+      "mtime_ns": 1786559769581928590,
+      "sha256": "ca439b3f7dbe10775a86245cf7fa94401a35b1353c820026bc97c48164661888",
+      "size": 2368
+    },
+    "/home/user/workspace/corpus/trinity/.trinity/ralph/golden_chain/GOLDEN_CHAIN_FINAL_REPORT.md": {
+      "ctime_ns": 1786559769609928590,
+      "inode": 656662,
+      "mtime_ns": 1786559769609928590,
+      "sha256": "16fa51fc320678b97acd1f784f24fefc4cd95ba37a13eac03836952b63f0a8a7",
+      "size": 4705
+    },
+    "/home/user/workspace/corpus/trinity/data/results/cifar10_metrics.json": {
+      "ctime_ns": 1786559770993928590,
+      "inode": 657725,
+      "mtime_ns": 1786559770993928590,
+      "sha256": "29154ca55de763c33548971ae6843a1c518e153addc7f8780d3624c67c82550b",
+      "size": 375
+    },
+    "/home/user/workspace/corpus/trinity/data/results/cifar10_summary.csv": {
+      "ctime_ns": 1786559770993928590,
+      "inode": 657726,
+      "mtime_ns": 1786559770993928590,
+      "sha256": "968d9d02130248aff8c0525b14e4e445a1c71058413bc23ba4daf6b0ab44b9eb",
+      "size": 117
+    },
+    "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt": {
+      "ctime_ns": 1786559771117928590,
+      "inode": 657740,
+      "mtime_ns": 1786559771117928590,
+      "sha256": "3436c916a7878261ac183fd7b9448c9a4736b8bbccf1356874a6ce1788541632",
+      "size": 1800000
+    },
+    "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md": {
+      "ctime_ns": 1787065359886380631,
+      "inode": 657741,
+      "mtime_ns": 1787065359886380631,
+      "sha256": "1afa4fbd550fdef7a1227d2428fc9c143d3aef23e9b301fdff3b0c10138a4904",
+      "size": 7676
+    },
+    "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md": {
+      "ctime_ns": 1787065359886380631,
+      "inode": 657745,
+      "mtime_ns": 1787065359886380631,
+      "sha256": "0f7b06f23dde9e8a3cab5d7057d39b2839d838306e7abdd56a21be317b9298aa",
+      "size": 7675
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/benchmarks/BENCHMARK_REPORT.md": {
+      "ctime_ns": 1786559771165928590,
+      "inode": 658010,
+      "mtime_ns": 1786559771165928590,
+      "sha256": "673cbbcc54ea5c5e7bd76da605711d3b91792abe49785e7d20a04a5579a6cf00",
+      "size": 2915
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/APPENDIX_COMPLETE_CATALOG.md": {
+      "ctime_ns": 1786559771205928590,
+      "inode": 658477,
+      "mtime_ns": 1786559771205928590,
+      "sha256": "40ad5bb70b307dd094ee7316ec0d1372c529cd86829aa854f3225a7f12b9156a",
+      "size": 8092
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/MASTER_SACRED_CATALOG.md": {
+      "ctime_ns": 1786559771213928590,
+      "inode": 658610,
+      "mtime_ns": 1786559771213928590,
+      "sha256": "1235b6ac4959d34bd2fcbdfb69c900325a8a4bc678a83aff1a4a2a6a8c564099",
+      "size": 19629
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/MIXING_MATRICES.md": {
+      "ctime_ns": 1786559771213928590,
+      "inode": 658612,
+      "mtime_ns": 1786559771213928590,
+      "sha256": "b15f3d88e57a4dae2c4916d3d3b026ad107751baf253385f9682834e1d7bf851",
+      "size": 7200
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/SACRED_FORMULA_COMPLETE_v2.md": {
+      "ctime_ns": 1786559771217928590,
+      "inode": 658655,
+      "mtime_ns": 1786559771217928590,
+      "sha256": "83cfe65ff088a13e7c971bb771b61ea69fbc464f3143a97d408ccc1b2805d4a8",
+      "size": 10450
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/SACRED_FORMULA_FULL.md": {
+      "ctime_ns": 1786559771217928590,
+      "inode": 658657,
+      "mtime_ns": 1786559771217928590,
+      "sha256": "1f4d53ef6425f0296399a8a3f510ac57967d9a4059f83bcb7afbce37a53135c9",
+      "size": 9205
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/cycle45-priority-queue-report.md": {
+      "ctime_ns": 1786559771225928590,
+      "inode": 658793,
+      "mtime_ns": 1786559771225928590,
+      "sha256": "7defeee07c1f7539af2f0a59d45f15f833f32bb70b689c42da417bc6f1bc1041",
+      "size": 4819
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/cycle46-deadline-scheduling-report.md": {
+      "ctime_ns": 1786559771225928590,
+      "inode": 658794,
+      "mtime_ns": 1786559771225928590,
+      "sha256": "5bc0d4539fd913e31344564f651da4da16b6c8801ce008773857777d24efce89",
+      "size": 5294
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/cycle46-federated-learning-report.md": {
+      "ctime_ns": 1786559771225928590,
+      "inode": 658795,
+      "mtime_ns": 1786559771225928590,
+      "sha256": "39544aaf806c527730a895a4c0d45805e50990ba6576a6a2456c3c478ddeb494",
+      "size": 12888
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/cycle50-adaptive-caching-report.md": {
+      "ctime_ns": 1786559771225928590,
+      "inode": 658802,
+      "mtime_ns": 1786559771225928590,
+      "sha256": "6eb38d2dd0ceb9b941ddc9bbb86d415a7927a9f11142bea50cddcbf1b2b20acb",
+      "size": 14578
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/formulas.md": {
+      "ctime_ns": 1786559771229928590,
+      "inode": 658815,
+      "mtime_ns": 1786559771229928590,
+      "sha256": "cf217f636057ecbe2f4325216db07b796b2f00d52848eea734488d739b7fbd8f",
+      "size": 12360
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-38-dim1024-report.md": {
+      "ctime_ns": 1786559771233928590,
+      "inode": 658895,
+      "mtime_ns": 1786559771233928590,
+      "sha256": "8a7e8dbb2fcaf15052e1e66ff75062a2bb3d0302d90000e43bf9fc097d9d8378",
+      "size": 9858
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md": {
+      "ctime_ns": 1786559771233928590,
+      "inode": 658897,
+      "mtime_ns": 1786559771233928590,
+      "sha256": "2635099cd9629f125be9d6f200c292fed8abb8bb1690fbe5cc26a370afb3a883",
+      "size": 10874
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-45-word-level-report.md": {
+      "ctime_ns": 1786559771233928590,
+      "inode": 658902,
+      "mtime_ns": 1786559771233928590,
+      "sha256": "61c918d473059e3d8c5fba5a5fed25b0d677ef226659f2d990d31821e889e250",
+      "size": 11469
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-51-4gram-report.md": {
+      "ctime_ns": 1786559771233928590,
+      "inode": 658909,
+      "mtime_ns": 1786559771233928590,
+      "sha256": "3305c2f210e45220c2fc2390decca03071a9e14cd4a28c7a5ac4e64a5c4c745a",
+      "size": 12628
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-golden-chain-v2-52-held-out-report.md": {
+      "ctime_ns": 1786559771233928590,
+      "inode": 658910,
+      "mtime_ns": 1786559771233928590,
+      "sha256": "e7e8cc716e2cd677406642c5a48c11634d417f016dcfc66025ea3b12dcf8b642",
+      "size": 12073
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-level11-planning-sota-report.md": {
+      "ctime_ns": 1786559771237928590,
+      "inode": 658944,
+      "mtime_ns": 1786559771237928590,
+      "sha256": "4d502cec08fc21f14ca3aa7c5cc97ea5bdddd24d906bdc789f70d74fe5320a92",
+      "size": 8729
+    },
+    "/home/user/workspace/corpus/trinity/deploy/trinity-nexus/docs/research/trinity-level11-rdf-multi-hop-report.md": {
+      "ctime_ns": 1786559771237928590,
+      "inode": 658946,
+      "mtime_ns": 1786559771237928590,
+      "sha256": "f282bdd749166a46d23c11b188786ba1faa581f34133a85af1a0dc69c9319cd9",
+      "size": 11263
+    },
+    "/home/user/workspace/corpus/trinity/docs/FOR_SCIENTISTS.md": {
+      "ctime_ns": 1786559771393928590,
+      "inode": 661337,
+      "mtime_ns": 1786559771393928590,
+      "sha256": "8c0c456a38e25ba643104d7b27f5f212a0604654a277aa92a61fa20a2f37f1bd",
+      "size": 2424
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/formulas.md": {
+      "ctime_ns": 1786559771409928590,
+      "inode": 661588,
+      "mtime_ns": 1786559771409928590,
+      "sha256": "ec394b57d317ae59265c8d6f3de44056dc4ebc157fe4b7e5aff142890eca25fe",
+      "size": 15683
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md": {
+      "ctime_ns": 1786625788465572965,
+      "inode": 661597,
+      "mtime_ns": 1786625788465572965,
+      "sha256": "e969471db87977c8a10091c4649645fd4d8e9da80064048111405ad5030fb798",
+      "size": 17612
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-predictions.md": {
+      "ctime_ns": 1786559771413928590,
+      "inode": 661599,
+      "mtime_ns": 1786559771413928590,
+      "sha256": "8dd446d1cf937945d85828aa68717e8143c53b166e73c1dd4534e7a5e1468d66",
+      "size": 9128
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/transcendental-numbers.md": {
+      "ctime_ns": 1786559771413928590,
+      "inode": 661601,
+      "mtime_ns": 1786559771413928590,
+      "sha256": "31f8d1512d1009ea0e37cdc64f32dada20905f8a4fe55896c0d6f4d30b2e4154",
+      "size": 19382
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/bitnet-report.md": {
+      "ctime_ns": 1786559771413928590,
+      "inode": 661610,
+      "mtime_ns": 1786559771413928590,
+      "sha256": "247c2ca5bedd72daa252a3ed8ca0c2470e9f738f48759d11fd4e3e7918f2274e",
+      "size": 9425
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md": {
+      "ctime_ns": 1786559771417928590,
+      "inode": 661679,
+      "mtime_ns": 1786559771417928590,
+      "sha256": "5e321473565ec35f1cebdbdfb7cb74ffd655a2f91450502853099e84082f39f1",
+      "size": 15088
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/papers/gravitational-constants.md": {
+      "ctime_ns": 1786559771417928590,
+      "inode": 661708,
+      "mtime_ns": 1786559771417928590,
+      "sha256": "d5b3e20a0308f63e4ad3c0d6635f9db4fbb7b035f1d90d0bee25704ce1fd0150",
+      "size": 938
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-ann-benchmark-verdict-report.md": {
+      "ctime_ns": 1786559771421928590,
+      "inode": 661731,
+      "mtime_ns": 1786559771421928590,
+      "sha256": "87e851834635059503e37e8cb50f7c56105b49d2e310983ab40fbc0ade6d85f4",
+      "size": 7139
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-40-large-corpus-report.md": {
+      "ctime_ns": 1786559771425928590,
+      "inode": 661786,
+      "mtime_ns": 1786559771425928590,
+      "sha256": "2635099cd9629f125be9d6f200c292fed8abb8bb1690fbe5cc26a370afb3a883",
+      "size": 10874
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-41-offsets-report.md": {
+      "ctime_ns": 1786559771425928590,
+      "inode": 661787,
+      "mtime_ns": 1786559771425928590,
+      "sha256": "14f8f3b1002b9732aef63a49ebcca7c6227c786b475a4cb1218a8dad63a18e74",
+      "size": 11085
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-46-word-trigram-report.md": {
+      "ctime_ns": 1786559771425928590,
+      "inode": 661792,
+      "mtime_ns": 1786559771425928590,
+      "sha256": "e0f1fbf13a01503f7d7beeee7d075aab8ba928d467c735ca7036fd1338edb8c9",
+      "size": 12710
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-48-interpolated-report.md": {
+      "ctime_ns": 1786559771425928590,
+      "inode": 661794,
+      "mtime_ns": 1786559771425928590,
+      "sha256": "c749bad8fa5fbfe9a4c59634e470334aaec7f65032bfef04275b26dc3064b598",
+      "size": 11815
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-49-penalty-report.md": {
+      "ctime_ns": 1786559771425928590,
+      "inode": 661795,
+      "mtime_ns": 1786559771425928590,
+      "sha256": "4f15299a24f513d52b49761a459a883e4131578696af7b93da70022878b0d5f4",
+      "size": 12992
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-50-kneser-ney-report.md": {
+      "ctime_ns": 1786559771425928590,
+      "inode": 661797,
+      "mtime_ns": 1786559771425928590,
+      "sha256": "ded5b962dede71d9c073c723f793ee7cb9b56b8b46a0c2d3c3973a93a5534437",
+      "size": 13489
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v3-0-absolute-report.md": {
+      "ctime_ns": 1786559771425928590,
+      "inode": 661804,
+      "mtime_ns": 1786559771425928590,
+      "sha256": "1c7ace52f744d9fe076e67fcd8317bbd2a6452d40256db18fa96f8c8239f8285",
+      "size": 6074
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-level11-neuro-symbolic-bench-report.md": {
+      "ctime_ns": 1786559771429928590,
+      "inode": 661830,
+      "mtime_ns": 1786559771429928590,
+      "sha256": "5e9d51764045c3f86b31040ed34c044d29faa523d1a955e007379343251b2601",
+      "size": 10294
+    },
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-status-2026.md": {
+      "ctime_ns": 1786559771429928590,
+      "inode": 661851,
+      "mtime_ns": 1786559771429928590,
+      "sha256": "723e58dc8c516835786d24995d80190c785b1e717b442c1c731003654c1a55d6",
+      "size": 22771
+    },
+    "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md": {
+      "ctime_ns": 1786559771441928590,
+      "inode": 662014,
+      "mtime_ns": 1786559771441928590,
+      "sha256": "7424155384454ccb781f7082abdcd47c394dd224235fd7805a5616182c955543",
+      "size": 9015
+    },
+    "/home/user/workspace/corpus/trinity/docs/papers/trinity-sacred-mathematics.tex": {
+      "ctime_ns": 1786559771445928590,
+      "inode": 662021,
+      "mtime_ns": 1786559771445928590,
+      "sha256": "be1390f05435298bc14d5d40a6f28c69954ee402bfc4bf3ce282ad6a5f2447db",
+      "size": 138692
+    },
+    "/home/user/workspace/corpus/trinity/docs/research/FORMULAS_SUMMARY.md": {
+      "ctime_ns": 1786559771445928590,
+      "inode": 662071,
+      "mtime_ns": 1786559771445928590,
+      "sha256": "3d1f62c417f680eabd445e4c5a7e5c231f45d8609b17018afcbfe5d8a8273c22",
+      "size": 3652
+    },
+    "/home/user/workspace/corpus/trinity/docs/research/JEPAT/experiments.md": {
+      "ctime_ns": 1786559771449928590,
+      "inode": 662079,
+      "mtime_ns": 1786559771449928590,
+      "sha256": "de2136ec577dc4cec1cb335bf84f748c4dbab3d6a280f26dc3f6f6a256ffbea6",
+      "size": 1342
+    },
+    "/home/user/workspace/corpus/trinity/docs/research/PELLIS_TRINITY_COMPARISON.md": {
+      "ctime_ns": 1786559771449928590,
+      "inode": 662089,
+      "mtime_ns": 1786559771449928590,
+      "sha256": "ca3de79351385e3a65cae395946ad48ded161350f3c15c67f40639f22ab186e8",
+      "size": 6837
+    },
+    "/home/user/workspace/corpus/trinity/docs/research/ZENODO_V20_STATISTICAL_SIGNIFICANCE.md": {
+      "ctime_ns": 1786559771449928590,
+      "inode": 662114,
+      "mtime_ns": 1786559771449928590,
+      "sha256": "759fee1903757b0cf173c1d645d7ebfb151788bf1a16b83f8194929366682628",
+      "size": 8505
+    },
+    "/home/user/workspace/corpus/trinity/docs/research/bundles/B001_HSLM.md": {
+      "ctime_ns": 1786559771449928590,
+      "inode": 662121,
+      "mtime_ns": 1786559771449928590,
+      "sha256": "35938cf8a9418cbb1142c16ea75afbdaeed4287809ed5e8e4a08c821c3325600",
+      "size": 6157
+    },
+    "/home/user/workspace/corpus/trinity/docs/research/bundles/B004_Lotus.md": {
+      "ctime_ns": 1786559771449928590,
+      "inode": 662124,
+      "mtime_ns": 1786559771449928590,
+      "sha256": "d85e5dd63be5addc0f9dbc989049b55fe6ab540e2a0a344216ea21f20321372c",
+      "size": 5443
+    },
+    "/home/user/workspace/corpus/trinity/docs/research/bundles/B006_GF16.md": {
+      "ctime_ns": 1786559771449928590,
+      "inode": 662126,
+      "mtime_ns": 1786559771449928590,
+      "sha256": "6ca34545aa9e39eb6e80f2b24d6bb98028f533ecae45705ca0639b0707bf0317",
+      "size": 3854
+    },
+    "/home/user/workspace/corpus/trinity/docs/research/bundles/B007_VSA.md": {
+      "ctime_ns": 1786559771449928590,
+      "inode": 662127,
+      "mtime_ns": 1786559771449928590,
+      "sha256": "9da22aa1b5738c96bdcf28340ddf663d11b3f175d3c9a7d60c8d195854a5cee6",
+      "size": 3519
+    },
+    "/home/user/workspace/corpus/trinity/docs/research/gf16_vs_literature.md": {
+      "ctime_ns": 1786559771461928590,
+      "inode": 662151,
+      "mtime_ns": 1786559771461928590,
+      "sha256": "6c104135f24710a0c81400b0c3ee3f0a1e6ba26ed46ba74cf2b3b344b6b14f38",
+      "size": 19078
+    },
+    "/home/user/workspace/corpus/trinity/docs/research/pointer_architecture_companion.md": {
+      "ctime_ns": 1786559771461928590,
+      "inode": 662175,
+      "mtime_ns": 1786559771461928590,
+      "sha256": "725cdd17b496fe6f3875324f2afe1348002005b5f23197303144c9f1e537c2a1",
+      "size": 32378
+    },
+    "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py": {
+      "ctime_ns": 1786564281769928590,
+      "inode": 691145,
+      "mtime_ns": 1786564281769928590,
+      "sha256": "18c244c32e9d0f42794f1b44f6febc3bd5fe8ee3905ae1bbfc3b617b580f7221",
+      "size": 5356
+    },
+    "/home/user/workspace/corpus/trinity/specs/physics/gamma_conjecture.t27": {
+      "ctime_ns": 1786559772045928590,
+      "inode": 663801,
+      "mtime_ns": 1786559772045928590,
+      "sha256": "925172c39fe861f4fa2bb6c2f9bd51f12ee863027e136e18e5f5db5a60b8fdaa",
+      "size": 4155
+    },
+    "/home/user/workspace/corpus/trinity/src/sacred/zeta_spacing.zig": {
+      "ctime_ns": 1786563172289928590,
+      "inode": 666019,
+      "mtime_ns": 1786563172289928590,
+      "sha256": "511004b5bd08795116eb575cb4ab848b19312954ace88e48fbc7572842737bb9",
+      "size": 16268
+    },
+    "/home/user/workspace/goldsieve/cases/age_universe_planck_external_20260902.py": {
+      "ctime_ns": 1788287578228108319,
+      "inode": 429687,
+      "mtime_ns": 1788287578228108319,
+      "sha256": "5e0a3e7bd93ff2c50bbc00cd8a928bab77a9865a82467c31521128ed3dbd5d62",
+      "size": 6154
+    },
+    "/home/user/workspace/goldsieve/cases/ann_brute_simd_benchmark_recipe_20260817.py": {
+      "ctime_ns": 1786905336273962915,
+      "inode": 487328,
+      "mtime_ns": 1786905336273962915,
+      "sha256": "f1cba3e5fecbafbd106dc60bf5449aa090e7e6a7a1af18386f8a6972f75b1eb6",
+      "size": 9053
+    },
+    "/home/user/workspace/goldsieve/cases/appendix_external_targets_20260813.py": {
+      "ctime_ns": 1786637463922563577,
+      "inode": 410266,
+      "mtime_ns": 1786637463922563577,
+      "sha256": "0f1299772765d1851a93985ec2ad29757d2b70764f5b71e7b73983084a1f1819",
+      "size": 9309
+    },
+    "/home/user/workspace/goldsieve/cases/axes_omega_lambda.py": {
+      "ctime_ns": 1786628187813572965,
+      "inode": 409716,
+      "mtime_ns": 1786628187813572965,
+      "sha256": "f34a5fff20c0e4ab599a176dacf012c0e2b63661807426dd552863e778088922",
+      "size": 13089
+    },
+    "/home/user/workspace/goldsieve/cases/b004_lotus_ttest_threshold_20260815.py": {
+      "ctime_ns": 1786759151550151760,
+      "inode": 470662,
+      "mtime_ns": 1786759151550151760,
+      "sha256": "db9e8e9d49ec7e9ee909d95cb309166f0d033ca851ec5db8d6297226b2d1f144",
+      "size": 9636
+    },
+    "/home/user/workspace/goldsieve/cases/b006_gf16_delta_20260815.py": {
+      "ctime_ns": 1786748838351232069,
+      "inode": 470008,
+      "mtime_ns": 1786748838351232069,
+      "sha256": "a491f73ee3416d7907e00e6ad2fefd113e532c0e37e2d017372d6f24aafaec60",
+      "size": 5138
+    },
+    "/home/user/workspace/goldsieve/cases/b006_gf16_pvalue_20260815.py": {
+      "ctime_ns": 1786751565677052883,
+      "inode": 470282,
+      "mtime_ns": 1786751565677052883,
+      "sha256": "9b742b70dd2c68e54f18cd349e19964dbe078c2b6574b24dfe69cc8147d8d6a5",
+      "size": 8622
+    },
+    "/home/user/workspace/goldsieve/cases/b007_vsa_speedup_20260815.py": {
+      "ctime_ns": 1786755473634915451,
+      "inode": 470472,
+      "mtime_ns": 1786755473634915451,
+      "sha256": "b356b633cc625964b4cac8845c51e744cb14a7d3c4158aafec0e0a221e1456b9",
+      "size": 5167
+    },
+    "/home/user/workspace/goldsieve/cases/bitnet_coherence_throughput_recipe_20260817.py": {
+      "ctime_ns": 1786944699921839526,
+      "inode": 489732,
+      "mtime_ns": 1786944699921839526,
+      "sha256": "8a8854b0630fc43af25ac01a2659df11dde21cb0ca1118438d4b6cafad2d4204",
+      "size": 12535
+    },
+    "/home/user/workspace/goldsieve/cases/bottom_mass_external_20260902.py": {
+      "ctime_ns": 1788312835868582183,
+      "inode": 431262,
+      "mtime_ns": 1788312835868582183,
+      "sha256": "0ebd3ace01f5ef00d338b23875c3865e4883cb05302d913c8f1b59a41d3cc6c4",
+      "size": 6736
+    },
+    "/home/user/workspace/goldsieve/cases/c20_empty_family_guard_20260815.py": {
+      "ctime_ns": 1786808002196124426,
+      "inode": 474793,
+      "mtime_ns": 1786808002196124426,
+      "sha256": "31aa763a0c2ad6e5933b1ff8b6c2c597bec3ed207b6a2da2652490f942798a61",
+      "size": 3671
+    },
+    "/home/user/workspace/goldsieve/cases/cifar10_metric_recipe_20260816.py": {
+      "ctime_ns": 1786833001622761668,
+      "inode": 484050,
+      "mtime_ns": 1786833001622761668,
+      "sha256": "59153ef1ff8ec01f14ce41afec8745c2870e89247dfbf319fbc1ac21d07d86aa",
+      "size": 8742
+    },
+    "/home/user/workspace/goldsieve/cases/ckm_lqg_external_20260813.py": {
+      "ctime_ns": 1786630548692947403,
+      "inode": 410194,
+      "mtime_ns": 1786630548692947403,
+      "sha256": "d12646fd9695852a18e698938d229819de34b84260b47dcee06c89507a4c95b5",
+      "size": 10228
+    },
+    "/home/user/workspace/goldsieve/cases/ckm_vtd_vts_vub_external_20260814.py": {
+      "ctime_ns": 1786662712399397106,
+      "inode": 410303,
+      "mtime_ns": 1786662712399397106,
+      "sha256": "ac0525a25ca1a4b0fd534323361608d69aaf35101b03e965439e36c58a039287",
+      "size": 9721
+    },
+    "/home/user/workspace/goldsieve/cases/cmb_temperature_external_20260902.py": {
+      "ctime_ns": 1788316101273586695,
+      "inode": 431574,
+      "mtime_ns": 1788316101273586695,
+      "sha256": "b33674120b4a1ad332caf004c3e86d08bd84f190c25e1687b41548e5225d3bdc",
+      "size": 6877
+    },
+    "/home/user/workspace/goldsieve/cases/cosmology_columns.py": {
+      "ctime_ns": 1786627822877572965,
+      "inode": 410099,
+      "mtime_ns": 1786627822877572965,
+      "sha256": "d24c1153cb57797c21a5592d38a2edaaa2f0d8d97e0ba03973263fcbd8a162e6",
+      "size": 17256
+    },
+    "/home/user/workspace/goldsieve/cases/cycle45_priority_queue_recipe_20260816.py": {
+      "ctime_ns": 1786851641367683944,
+      "inode": 485201,
+      "mtime_ns": 1786851641367683944,
+      "sha256": "ff825dadab21528faa8fe4da1b87736c44893cfc1788b413a629a4969c4cdebc",
+      "size": 8871
+    },
+    "/home/user/workspace/goldsieve/cases/cycle46_deadline_scheduling_recipe_20260816.py": {
+      "ctime_ns": 1786855028506299148,
+      "inode": 485407,
+      "mtime_ns": 1786855028506299148,
+      "sha256": "347d18e800fa74dfe48e74555df0c84d9669b3a2f6195caac93781041e574383",
+      "size": 10276
+    },
+    "/home/user/workspace/goldsieve/cases/cycle46_federated_privacy_recipe_20260816.py": {
+      "ctime_ns": 1786872311037726708,
+      "inode": 486332,
+      "mtime_ns": 1786872311037726708,
+      "sha256": "121535e86fce2456f06962e91aa434f73d7e82b583f9a42b118d8e210bd0e609",
+      "size": 10414
+    },
+    "/home/user/workspace/goldsieve/cases/cycle50_adaptive_caching_recipe_20260816.py": {
+      "ctime_ns": 1786887377105147902,
+      "inode": 486830,
+      "mtime_ns": 1786887377105147902,
+      "sha256": "37a763f48f7f02340d7b6bb0b15c63f6a23fad8ae9644191caa613d90fb82ac0",
+      "size": 8310
+    },
+    "/home/user/workspace/goldsieve/cases/dark_photon_x17_formula.py": {
+      "ctime_ns": 1786627803501572965,
+      "inode": 409228,
+      "mtime_ns": 1786627803501572965,
+      "sha256": "1eb79592e69c54e9b532027afbdd17e339ad38fdb4e3bf874b50b993c7a4c2a4",
+      "size": 9316
+    },
+    "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py": {
+      "ctime_ns": 1786677560787737504,
+      "inode": 410322,
+      "mtime_ns": 1786677560787737504,
+      "sha256": "375531d7c3182f0cc5f10f1a2686a6d999b4a4f40404b4958fdbe682b8174f3f",
+      "size": 10406
+    },
+    "/home/user/workspace/goldsieve/cases/delta001_alpha_inverse_source_20260817.py": {
+      "ctime_ns": 1786934105092634018,
+      "inode": 489082,
+      "mtime_ns": 1786934105092634018,
+      "sha256": "3074ac7771b7d47d56ad03367b13ace462540d0a1477033ac1de4dbdff0a55c9",
+      "size": 8844
+    },
+    "/home/user/workspace/goldsieve/cases/delta001_gamma_entropy_comparison_20260818.py": {
+      "ctime_ns": 1787005630525648103,
+      "inode": 501155,
+      "mtime_ns": 1787005630525648103,
+      "sha256": "cbc3592dd98476807113623027eb602b5918c866ed1e0e43fae84a9b1e7c506d",
+      "size": 5893
+    },
+    "/home/user/workspace/goldsieve/cases/delta001_strong_coincidences_20260815.py": {
+      "ctime_ns": 1786737685829755783,
+      "inode": 468025,
+      "mtime_ns": 1786737685829755783,
+      "sha256": "e850de35bf5deb4b08e7e88124ab0f8c2d3fda7d5a9d5034c4ac61a3d252f058",
+      "size": 8330
+    },
+    "/home/user/workspace/goldsieve/cases/delta001_variance_claims_20260814.py": {
+      "ctime_ns": 1786674487393426162,
+      "inode": 410317,
+      "mtime_ns": 1786674487393426162,
+      "sha256": "7c94880b4be75033e1e3a5ea7209e34421930e0e55db423e323f680949c78a2d",
+      "size": 8546
+    },
+    "/home/user/workspace/goldsieve/cases/dirac_cp_external_20260902.py": {
+      "ctime_ns": 1788283480467855797,
+      "inode": 429135,
+      "mtime_ns": 1788283480467855797,
+      "sha256": "379b9295342f580a81ba6c730433b753bf341ba27fd4592b551ee0c9f5a8f5e5",
+      "size": 6688
+    },
+    "/home/user/workspace/goldsieve/cases/dirac_cp_phase_formula.py": {
+      "ctime_ns": 1786627803501572965,
+      "inode": 409225,
+      "mtime_ns": 1786627803501572965,
+      "sha256": "dbf675e28a24f6ef1c7a5209c60a046f2362e0cb29a9ce80ff2aadcc8168dc92",
+      "size": 9476
+    },
+    "/home/user/workspace/goldsieve/cases/established_constants_fit_count.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409205,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "d0645c4ea9958b95bb97e2c52cb1edea96157a9e08374bef223f98edd3fdee10",
+      "size": 7406
+    },
+    "/home/user/workspace/goldsieve/cases/formulas_deploy_external_20260814.py": {
+      "ctime_ns": 1786656292085395440,
+      "inode": 410289,
+      "mtime_ns": 1786656292085395440,
+      "sha256": "abfa08379023e0223344be99cd8a2d15974bfbfd447e8d694b7680673093bc86",
+      "size": 9257
+    },
+    "/home/user/workspace/goldsieve/cases/formulas_external_targets_20260813.py": {
+      "ctime_ns": 1786634504223586915,
+      "inode": 410263,
+      "mtime_ns": 1786634504223586915,
+      "sha256": "3b335a869639bf0255034539c727f3264ca71e59fb8d856a1566356ff48c0b63",
+      "size": 9123
+    },
+    "/home/user/workspace/goldsieve/cases/formulas_precision_external_20260814.py": {
+      "ctime_ns": 1786670235396010179,
+      "inode": 410314,
+      "mtime_ns": 1786670235396010179,
+      "sha256": "8dabe4cd8290b281e991bd74fe25ca27f3ecae183ec04022f491df9f41520f96",
+      "size": 8883
+    },
+    "/home/user/workspace/goldsieve/cases/formulas_summary_external_20260814.py": {
+      "ctime_ns": 1786641456432832049,
+      "inode": 410270,
+      "mtime_ns": 1786641456432832049,
+      "sha256": "2ac50b5307633416429552f831346b938dc6d332684141d0fb58a0eaff50dd19",
+      "size": 9752
+    },
+    "/home/user/workspace/goldsieve/cases/gamma_bi_meissner_equation_20260817.py": {
+      "ctime_ns": 1786959094956650877,
+      "inode": 490486,
+      "mtime_ns": 1786959094956650877,
+      "sha256": "9c58f06226b702eb374893b672eca75ee9e48a6c5257d8cd9cec6ede3cf1ab02",
+      "size": 10507
+    },
+    "/home/user/workspace/goldsieve/cases/gf16_mnist_accuracy_recipe_20260816.py": {
+      "ctime_ns": 1786840293029455608,
+      "inode": 484583,
+      "mtime_ns": 1786840293029455608,
+      "sha256": "ce45e4f0b9a5ea35f73be21635c891d70a8885b49c975c7a590255bc48d8f29d",
+      "size": 8314
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_final_report_consistency_20260817.py": {
+      "ctime_ns": 1786919170800260339,
+      "inode": 488290,
+      "mtime_ns": 1786919170800260339,
+      "sha256": "abb5d745d44b59e5982fbfa9955030709ce234d3a36a4c7d53af6f7333d586a2",
+      "size": 9914
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v238_dim1024_quality_recipe_20260817.py": {
+      "ctime_ns": 1786973847419702035,
+      "inode": 491293,
+      "mtime_ns": 1786973847419702035,
+      "sha256": "0ce4580737bafbde30ba1f2b93be6c1ada43ca689c18dccf6fd6713c56317388",
+      "size": 11535
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v240_statistics_20260814.py": {
+      "ctime_ns": 1786680891594517107,
+      "inode": 410323,
+      "mtime_ns": 1786680891594517107,
+      "sha256": "925dcad4316c03d1a5866b99929afdf7bcd45f9dbe0a342a1ee4f8de35104ee4",
+      "size": 9620
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v240_train_ppl_20260815.py": {
+      "ctime_ns": 1786786734826266258,
+      "inode": 427643,
+      "mtime_ns": 1786786734826266258,
+      "sha256": "11e2e2f367747afd6e71ea299b1f255da2461c877b883b685b93245242b4c120",
+      "size": 8717
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v240_trigram_coverage_recipe_20260816.py": {
+      "ctime_ns": 1786891490229313780,
+      "inode": 487037,
+      "mtime_ns": 1786891490229313780,
+      "sha256": "b63af9b8d5de8e7beab750c9f6b8f7089769ff7b2c7d91e4971acac4de847629",
+      "size": 7664
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v241_offsets_20260815.py": {
+      "ctime_ns": 1786732651893079295,
+      "inode": 458275,
+      "mtime_ns": 1786732651893079295,
+      "sha256": "0b5244b80a10ec0b4363a8ac374040219b2a451225e29b1ad9b4b1c3e9f921c3",
+      "size": 7605
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v245_word_ppl_recipe_20260816.py": {
+      "ctime_ns": 1786843414381790777,
+      "inode": 484789,
+      "mtime_ns": 1786843414381790777,
+      "sha256": "be349aea139f8a9b5ad5a92764afa25d0a948922caae7a3eaf04a9e9bb049f82",
+      "size": 8812
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v246_phrase_memorization_recipe_20260817.py": {
+      "ctime_ns": 1786967868270359656,
+      "inode": 490777,
+      "mtime_ns": 1786967868270359656,
+      "sha256": "be56f499c6a17d97e48aa7956a5090a68d2122d8ecd080e93e8595f099a94097",
+      "size": 12845
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v248_ppl_gain_20260815.py": {
+      "ctime_ns": 1786784055464978550,
+      "inode": 472888,
+      "mtime_ns": 1786784055464978550,
+      "sha256": "180715af39c5d013fef3e3ace1998b2ec99868dd57d1ef4ebc7b5063fb3f4ae7",
+      "size": 8149
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v249_generation_quality_recipe_20260817.py": {
+      "ctime_ns": 1786909463808258958,
+      "inode": 487551,
+      "mtime_ns": 1786909463808258958,
+      "sha256": "4203a12d558434f73f4d748489d0a28af25fb2e051104f70f2e21cd4f62d520e",
+      "size": 10409
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v250_kneser_ney_recipe_20260816.py": {
+      "ctime_ns": 1786875909784601901,
+      "inode": 486538,
+      "mtime_ns": 1786875909784601901,
+      "sha256": "1b914baa2f793594c6c0e49bcb3f357c6088292f803efe16e377f7d66a5d67bd",
+      "size": 9739
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v251_4gram_ppl_recipe_20260816.py": {
+      "ctime_ns": 1786846853708042046,
+      "inode": 484995,
+      "mtime_ns": 1786846853708042046,
+      "sha256": "47abba1d5c4f4476ac4c86fc160bc572702317ff86f22eaf05c3e32d11fe6b96",
+      "size": 8618
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v252_held_out_recipe_20260816.py": {
+      "ctime_ns": 1786860365239777033,
+      "inode": 485613,
+      "mtime_ns": 1786860365239777033,
+      "sha256": "bdc3f655f6a954a6e2f2343c76ce57e04b6b2365b03cda472d9777c065b697d7",
+      "size": 10273
+    },
+    "/home/user/workspace/goldsieve/cases/golden_chain_v30_absolute_recipe_20260817.py": {
+      "ctime_ns": 1786912012203304473,
+      "inode": 487877,
+      "mtime_ns": 1786912012203304473,
+      "sha256": "74b595c04aace5d912b848429d9d97fdadcfc78d24d37d882ff4e88409ee056c",
+      "size": 9252
+    },
+    "/home/user/workspace/goldsieve/cases/gravitational_constant_external_20260814.py": {
+      "ctime_ns": 1786695062865677648,
+      "inode": 409355,
+      "mtime_ns": 1786695062865677648,
+      "sha256": "5d28a0ca7ac91fff7d6581565705604f2cc350365980d9593cda2f130ce8103a",
+      "size": 6180
+    },
+    "/home/user/workspace/goldsieve/cases/higgs_mass_external_20260902.py": {
+      "ctime_ns": 1788301147808176549,
+      "inode": 430556,
+      "mtime_ns": 1788301147808176549,
+      "sha256": "6da05bf22a6201f841e5f3ca2fa49e21bea78dce5b38e3b37c2c8a49dda88f3c",
+      "size": 6737
+    },
+    "/home/user/workspace/goldsieve/cases/hslm_convergence_fraction_20260815.py": {
+      "ctime_ns": 1786773481387637867,
+      "inode": 472065,
+      "mtime_ns": 1786773481387637867,
+      "sha256": "7dfc8c31b21ab475b37aaacfcb434ef614c199b22adb11f9b7ee1ff8006387d5",
+      "size": 5732
+    },
+    "/home/user/workspace/goldsieve/cases/hubble_planck_external_20260823.py": {
+      "ctime_ns": 1787485174508619427,
+      "inode": 410551,
+      "mtime_ns": 1787485174508619427,
+      "sha256": "143f7f07eab087116aba6c41620a03f93d8dc6f255521d99eca9534d85788da2",
+      "size": 6541
+    },
+    "/home/user/workspace/goldsieve/cases/identity_cross_module_20260814.py": {
+      "ctime_ns": 1786720686426694872,
+      "inode": 410459,
+      "mtime_ns": 1786720686426694872,
+      "sha256": "d608859014a85856cb7f60d005ed1a7bad1bfecf10919a3b48c1d43cf06bd853",
+      "size": 6116
+    },
+    "/home/user/workspace/goldsieve/cases/identity_honest_controls_20260814.py": {
+      "ctime_ns": 1786716001378435536,
+      "inode": 410443,
+      "mtime_ns": 1786716001378435536,
+      "sha256": "9710b34b8e7f4c2369976abe1bf2c0eaf49028e5afd26cc204c19eb11b254645",
+      "size": 7311
+    },
+    "/home/user/workspace/goldsieve/cases/jarlskog_theta13_external_20260814.py": {
+      "ctime_ns": 1786688110335747442,
+      "inode": 409124,
+      "mtime_ns": 1786688110335747442,
+      "sha256": "930ae4fc601c9bb37564568ef501efdd80b9b98099616ee7a7d5ed4f4e0ddecd",
+      "size": 9154
+    },
+    "/home/user/workspace/goldsieve/cases/jepa_experiment_consistency_20260817.py": {
+      "ctime_ns": 1786955784585376490,
+      "inode": 490194,
+      "mtime_ns": 1786955784585376490,
+      "sha256": "3190c4b8b2ccd7bf0f6f6b7a7aaa369c5a990b084a90d4a0df32ec2090899f9f",
+      "size": 9362
+    },
+    "/home/user/workspace/goldsieve/cases/kaon_mass_external_20260902.py": {
+      "ctime_ns": 1788294839552988873,
+      "inode": 430303,
+      "mtime_ns": 1788294839552988873,
+      "sha256": "1cafb5f7b8e2534e0324e158d6d99b9e7e97e9244990a077b459cb2a67bbdd94",
+      "size": 6705
+    },
+    "/home/user/workspace/goldsieve/cases/khinchin.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 408897,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "7e303b555966820d216730ec9605a20ada7af8d6416c8f3bf03d317d65e6d6ed",
+      "size": 5974
+    },
+    "/home/user/workspace/goldsieve/cases/khinchin_estimator_recipe_20260816.py": {
+      "ctime_ns": 1786829692597449005,
+      "inode": 483807,
+      "mtime_ns": 1786829692597449005,
+      "sha256": "70e76ef409e3d1ca669c03dc7c19e43e7185c6d8aaa54c017b4306efba496200",
+      "size": 6569
+    },
+    "/home/user/workspace/goldsieve/cases/level11_neurosymbolic_benchmark_recipe_20260817.py": {
+      "ctime_ns": 1786922276233781094,
+      "inode": 488583,
+      "mtime_ns": 1786922276233781094,
+      "sha256": "ba896082a857a599abf03e0e28329e0f85763d81265d763eb79a62c4118e5753",
+      "size": 12259
+    },
+    "/home/user/workspace/goldsieve/cases/level11_planning_accuracy_recipe_20260816.py": {
+      "ctime_ns": 1786836354031446314,
+      "inode": 484496,
+      "mtime_ns": 1786836354031446314,
+      "sha256": "f594648e20ddf528ca53a1e436f2968e6ac3f8283609cd77b3b05fc8d96e6cc4",
+      "size": 9239
+    },
+    "/home/user/workspace/goldsieve/cases/level11_rdf_multihop_recipe_20260817.py": {
+      "ctime_ns": 1786930400900471036,
+      "inode": 488875,
+      "mtime_ns": 1786930400900471036,
+      "sha256": "d79b4a83b97a58a99482cb86ce7dff7756464775736122ab76d5e6f4f73c3444",
+      "size": 16758
+    },
+    "/home/user/workspace/goldsieve/cases/m_theory_dimension_formula.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409216,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "b20d95407b14c532861468f55526a9048caf5264b6825c8f288c58bc31a13bba",
+      "size": 8794
+    },
+    "/home/user/workspace/goldsieve/cases/master_catalog_lucas_l10.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409202,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "3776ab1592e7ff1eeb9d6f7ba89c5990c6e6858c7cab2ca140108f61d38d601b",
+      "size": 6163
+    },
+    "/home/user/workspace/goldsieve/cases/master_catalog_msme_error.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409208,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "f11ecaaac476aba592301112b6afa0fd5590640917c5c0f3dbace89f37f8a6eb",
+      "size": 7546
+    },
+    "/home/user/workspace/goldsieve/cases/muon_mass_external_20260903.py": {
+      "ctime_ns": 1788384431428000469,
+      "inode": 437690,
+      "mtime_ns": 1788384431428000469,
+      "sha256": "4f678e8e158e0d1ccbbbdc401bb69b8447f6fb0f3c7e251c659f57ad4a93723c",
+      "size": 6625
+    },
+    "/home/user/workspace/goldsieve/cases/neutrino_mixing_external_20260814.py": {
+      "ctime_ns": 1786667004556385541,
+      "inode": 410310,
+      "mtime_ns": 1786667004556385541,
+      "sha256": "7fb2f0cb9913b80e22e7b64b30f5f0d2e2f26c3d0139427c3abc477099c53097",
+      "size": 9706
+    },
+    "/home/user/workspace/goldsieve/cases/neutrino_theta13_external_20260901.py": {
+      "ctime_ns": 1788262082815908246,
+      "inode": 427896,
+      "mtime_ns": 1788262082815908246,
+      "sha256": "5f50fa8831a1e200e1f0b069190e26b14dd5de05c8e99e1b120911ab13231057",
+      "size": 5986
+    },
+    "/home/user/workspace/goldsieve/cases/neutron_lifetime_formula.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409213,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "97de857c69db0319de0e7aa5afbaa2f2dac4992d0a0ae9ef2ae5ea5c6b0c293b",
+      "size": 8859
+    },
+    "/home/user/workspace/goldsieve/cases/neutron_proton_splitting_external_20260901.py": {
+      "ctime_ns": 1788284217859855797,
+      "inode": 428927,
+      "mtime_ns": 1788284217859855797,
+      "sha256": "66cab35975c890df73486b09b5d7bd0370c740c2a9a4e0f081846b0ba107606e",
+      "size": 6741
+    },
+    "/home/user/workspace/goldsieve/cases/omega_baryon_external_20260902.py": {
+      "ctime_ns": 1788356862020821948,
+      "inode": 435033,
+      "mtime_ns": 1788356862020821948,
+      "sha256": "69ebe71178ae31b9853cbee7f123ef8b40aefddf50711d93da9cd1c3622d8d17",
+      "size": 6625
+    },
+    "/home/user/workspace/goldsieve/cases/omega_matter_external_20260902.py": {
+      "ctime_ns": 1788319167929229627,
+      "inode": 431933,
+      "mtime_ns": 1788319167929229627,
+      "sha256": "797d8dc7d0c66ecfa29dbfc5e329f4959507efa7e7a6657024cb4cda117b3664",
+      "size": 6584
+    },
+    "/home/user/workspace/goldsieve/cases/particle_physics_example_mean_error_20260815.py": {
+      "ctime_ns": 1786766854270260251,
+      "inode": 471414,
+      "mtime_ns": 1786766854270260251,
+      "sha256": "d57637389e98601498a1169884de4b68a803e2d500826cbadf0c7be5df1577a7",
+      "size": 6911
+    },
+    "/home/user/workspace/goldsieve/cases/pellis_external_targets_20260814.py": {
+      "ctime_ns": 1786660126547123557,
+      "inode": 410299,
+      "mtime_ns": 1786660126547123557,
+      "sha256": "b70be1e22d1ba72d662da749c123e6851b03963609cad86e74384cac0d727b53",
+      "size": 10215
+    },
+    "/home/user/workspace/goldsieve/cases/planck_time_external_20260903.py": {
+      "ctime_ns": 1788291318508018392,
+      "inode": 429971,
+      "mtime_ns": 1788291318508018392,
+      "sha256": "664b2f60256310172f37eacaa497b1404117dc428294c75ac38276581fb51ad3",
+      "size": 6599
+    },
+    "/home/user/workspace/goldsieve/cases/pointer_architecture_external_20260814.py": {
+      "ctime_ns": 1786644961459634832,
+      "inode": 410273,
+      "mtime_ns": 1786644961459634832,
+      "sha256": "097f9683e98604769ce996edb013f015d281efb4c29499db6160df26311d71f6",
+      "size": 9469
+    },
+    "/home/user/workspace/goldsieve/cases/proton_mass_ratio_error.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409219,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "b3ced273ff4e97055fb337c7840f0d43564fecd48153326d5b69f61869990d9d",
+      "size": 9243
+    },
+    "/home/user/workspace/goldsieve/cases/qcd_phase_tc_external_20260901.py": {
+      "ctime_ns": 1788270097883668567,
+      "inode": 428286,
+      "mtime_ns": 1788270097883668567,
+      "sha256": "cf7393c348e4a37b7e5042912840a4fa421ce8be4be586dc9339b553931b3909",
+      "size": 6809
+    },
+    "/home/user/workspace/goldsieve/cases/qcd_phase_tc_formula.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409222,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "e268b572b77dac81b8163325bcab94510f8bd9cfa4fb8906f1c40d3366aa8eae",
+      "size": 8826
+    },
+    "/home/user/workspace/goldsieve/cases/readme_mp_me_external_20260818.py": {
+      "ctime_ns": 1787035435252946578,
+      "inode": 504231,
+      "mtime_ns": 1787035435252946578,
+      "sha256": "426b95836fe43b22d5f300d8b2a506eeff7277230469a33f7bfdad14062f5a0e",
+      "size": 7903
+    },
+    "/home/user/workspace/goldsieve/cases/reionization_zre_prediction.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 410068,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "ecc5cab214e757297ddce26be99645a124f876b9114f3ef9c49a3fc1bc6dfb54",
+      "size": 9050
+    },
+    "/home/user/workspace/goldsieve/cases/sacred_external_targets.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409597,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "d49f7ddfa273780ba4190879e97bcf38c9a6289e17e18e2d825b2bbd244f7b6e",
+      "size": 13485
+    },
+    "/home/user/workspace/goldsieve/cases/sacred_fit_multiplicity.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409580,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "6456340d291c56d03b604075c35bde0bcd54c4c68aa8cccb612d06076c363279",
+      "size": 13645
+    },
+    "/home/user/workspace/goldsieve/cases/sacred_formula_complete_v2_external_20260814.py": {
+      "ctime_ns": 1786652620118342940,
+      "inode": 410286,
+      "mtime_ns": 1786652620118342940,
+      "sha256": "0628af843ec35760e49925a6cca4f6b68b5ad03c1b56ebb86a1ba0686cd1c042",
+      "size": 9872
+    },
+    "/home/user/workspace/goldsieve/cases/sacred_formula_full_external_20260814.py": {
+      "ctime_ns": 1786648269429122290,
+      "inode": 410279,
+      "mtime_ns": 1786648269429122290,
+      "sha256": "8e8a0611c755241c9df36eb9192de5a4d325b4d60d587c5edea8fbdcd814b232",
+      "size": 9917
+    },
+    "/home/user/workspace/goldsieve/cases/sacred_predictions_registry_recipe_20260817.py": {
+      "ctime_ns": 1786916579583532956,
+      "inode": 488084,
+      "mtime_ns": 1786916579583532956,
+      "sha256": "a045faf245e9bc74edf2b233b1b395123ae67f33e65cf2d63500b777c14dae7c",
+      "size": 11717
+    },
+    "/home/user/workspace/goldsieve/cases/sacred_random_probability.py": {
+      "ctime_ns": 1786627822877572965,
+      "inode": 409201,
+      "mtime_ns": 1786627822877572965,
+      "sha256": "a86c09a365f56a6a0a10aa560709ee751ed9e17a056bcea3752c21d6e9a774fe",
+      "size": 13477
+    },
+    "/home/user/workspace/goldsieve/cases/sacred_search_count.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409198,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "629d72fab7326613b2619519b7b810cc1c29c5ffe3218807fe121722d0e84f64",
+      "size": 6330
+    },
+    "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409119,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "0aed104264b09dc4d1bb14ca1bacd9de90ff7de0c2d87c053b35694b92e70fb0",
+      "size": 9794
+    },
+    "/home/user/workspace/goldsieve/cases/sacred_tsirelson_exact_external_20260817.py": {
+      "ctime_ns": 1786938243475286418,
+      "inode": 489322,
+      "mtime_ns": 1786938243475286418,
+      "sha256": "88ac9f6e32b7fc756b7eb8688dd257f449745b5bdec11e03987683b6b87a64c2",
+      "size": 10501
+    },
+    "/home/user/workspace/goldsieve/cases/sacred_two_formula_composition_recipe_20260817.py": {
+      "ctime_ns": 1787010197785420655,
+      "inode": 490985,
+      "mtime_ns": 1787010197785420655,
+      "sha256": "2492795083b7facf876e880e9c6c2f60cd6ed18aa66b169fc00a727dcb9a3305",
+      "size": 10950
+    },
+    "/home/user/workspace/goldsieve/cases/sidak_applicability_20260816.py": {
+      "ctime_ns": 1786826476353268976,
+      "inode": 483201,
+      "mtime_ns": 1786826476353268976,
+      "sha256": "268284f8dcb99066dc04e0f17641be2a9d4aa2063052f22afd76966fb3ffab55",
+      "size": 8672
+    },
+    "/home/user/workspace/goldsieve/cases/sidak_threshold_20260815.py": {
+      "ctime_ns": 1786742586508397316,
+      "inode": 468524,
+      "mtime_ns": 1786742586508397316,
+      "sha256": "059a2c840e70b1d84888b33c7cfd921f04739e3451b505e6820c4c8dec9adb67",
+      "size": 11189
+    },
+    "/home/user/workspace/goldsieve/cases/solar_mass_external_20260902.py": {
+      "ctime_ns": 1788366702705307168,
+      "inode": 435965,
+      "mtime_ns": 1788366702705307168,
+      "sha256": "968d731f8f2c9336474d13141e7fb9a4319337ecfb025d81912bf946eb0cc3a2",
+      "size": 7036
+    },
+    "/home/user/workspace/goldsieve/cases/spectral_index_external_20260902.py": {
+      "ctime_ns": 1788329880727907625,
+      "inode": 432611,
+      "mtime_ns": 1788329880727907625,
+      "sha256": "0aa02db13008ad92d3cad2d78943baf4ef2aeb1658cd4c43bb9a128574fe61ae",
+      "size": 6626
+    },
+    "/home/user/workspace/goldsieve/cases/top_mass_external_20260902.py": {
+      "ctime_ns": 1788308779448922929,
+      "inode": 430934,
+      "mtime_ns": 1788308779448922929,
+      "sha256": "369ce45e46c0da9381f9fc6c7ed19e39e1d15a4a298215ab797c5bfc4e67af21",
+      "size": 6615
+    },
+    "/home/user/workspace/goldsieve/cases/transcendental_3phi_value.py": {
+      "ctime_ns": 1786627803505572965,
+      "inode": 409200,
+      "mtime_ns": 1786627803505572965,
+      "sha256": "3e7432850bb7dc15d156dca80dc90a67001d2840fc93b528d513a31a1006ed2c",
+      "size": 6267
+    },
+    "/home/user/workspace/goldsieve/cases/transcendental_catalog_values.py": {
+      "ctime_ns": 1786627822877572965,
+      "inode": 410075,
+      "mtime_ns": 1786627822877572965,
+      "sha256": "1d2772024a8af0660fb535f32366d7fe23361e983b55535db087f81a027130c4",
+      "size": 9649
+    },
+    "/home/user/workspace/goldsieve/cases/transcendental_catalog_values_2.py": {
+      "ctime_ns": 1786627838997572965,
+      "inode": 409968,
+      "mtime_ns": 1786627838997572965,
+      "sha256": "94493dcbeca3a2f6da2e4c430766618b719e83b3b02804a7309817f4496bade1",
+      "size": 7522
+    },
+    "/home/user/workspace/goldsieve/cases/transcendental_catalog_values_3.py": {
+      "ctime_ns": 1786627822877572965,
+      "inode": 410098,
+      "mtime_ns": 1786627822877572965,
+      "sha256": "b32efcc1957a87fc48459b70ea8adb6dc778a7833a9b8ab53361512a328e7408",
+      "size": 7483
+    },
+    "/home/user/workspace/goldsieve/cases/trinity_external_targets_20260813.py": {
+      "ctime_ns": 1786629547613572965,
+      "inode": 409024,
+      "mtime_ns": 1786629547613572965,
+      "sha256": "a6477e68872778cfaf514d534a5e84fd1984400dbe412ea72a5754d1e24d4911",
+      "size": 12162
+    },
+    "/home/user/workspace/goldsieve/cases/vsa_simd_benchmark_recipe_20260818.py": {
+      "ctime_ns": 1787013674432699073,
+      "inode": 502874,
+      "mtime_ns": 1787013674432699073,
+      "sha256": "71e5453391fcf6a948bb59ee4cfe68c7de3a336d6733f21bcf47ac7552177428",
+      "size": 14590
+    },
+    "/home/user/workspace/goldsieve/cases/wilcoxon_v20_pvalue_20260815.py": {
+      "ctime_ns": 1786736814009255756,
+      "inode": 467687,
+      "mtime_ns": 1786736814009255756,
+      "sha256": "bf3f311ab2abdd409ef171db70f770625797cbbdd7d14716803450f833785816",
+      "size": 9177
+    },
+    "/home/user/workspace/goldsieve/cases/z_boson_mass_external_20260902.py": {
+      "ctime_ns": 1788359307309164249,
+      "inode": 435237,
+      "mtime_ns": 1788359307309164249,
+      "sha256": "7bc3ef61b4b8b5a78ed6994182152f6a9f844f6f73fa522d56ccbc5ec89ee91e",
+      "size": 6708
+    },
+    "/home/user/workspace/goldsieve/cases/zeta_bblm_finite_height_comparison_20260818.py": {
+      "ctime_ns": 1787050900427820342,
+      "inode": 505880,
+      "mtime_ns": 1787050900427820342,
+      "sha256": "b7d678bec14ead81b28a8cd6b76323b510ce8ff39cec1f5d068add8c1c84c69e",
+      "size": 11006
+    },
+    "/home/user/workspace/goldsieve/cases/zeta_chi2_independent_20260814.py": {
+      "ctime_ns": 1788405997728083343,
+      "inode": 409301,
+      "mtime_ns": 1788405997728083343,
+      "sha256": "358bee36d36084285c071f9aceeb85591ad5ca13686f5498a1c26996636fe34f",
+      "size": 11480
+    },
+    "/home/user/workspace/goldsieve/cases/zeta_chi2_statistics_20260814.py": {
+      "ctime_ns": 1786709064867331243,
+      "inode": 410326,
+      "mtime_ns": 1786709064867331243,
+      "sha256": "b934339ef0ca44b1dfd48d5541dcc2a1d86cc88abb8e7658089a6cb4e95106fa",
+      "size": 5728
+    },
+    "/home/user/workspace/goldsieve/cases/zeta_finite_height_extrapolation_20260816.py": {
+      "ctime_ns": 1786865146659353822,
+      "inode": 486040,
+      "mtime_ns": 1786865146659353822,
+      "sha256": "ad8721f573b04ca82b503fe87af2b5096a91c6702395713ee9bfe01ebbc91d2e",
+      "size": 9980
+    },
+    "/home/user/workspace/goldsieve/cases/zeta_gue.py": {
+      "ctime_ns": 1786815970330179363,
+      "inode": 408891,
+      "mtime_ns": 1786815970330179363,
+      "sha256": "bee110d82e7adbacfcfe043eea486b6a84dc8fb222158ef1654a93124a280c47",
+      "size": 12240
+    },
+    "/home/user/workspace/goldsieve/cases/zeta_p95_summary_20260815.py": {
+      "ctime_ns": 1786744482100397316,
+      "inode": 469593,
+      "mtime_ns": 1786744482100397316,
+      "sha256": "6abbf203b3a7b1a5bd72787e414e5c709720ac58d6f853e9bfc10bc322930639",
+      "size": 6254
+    },
+    "/home/user/workspace/goldsieve/cases/zeta_p99_gue_20260815.py": {
+      "ctime_ns": 1786800534156192973,
+      "inode": 474294,
+      "mtime_ns": 1786800534156192973,
+      "sha256": "aa87e07f29d4ee189ca5b9f0c6822ea67c7fae9f1801fe3daec11a200750026f",
+      "size": 5511
+    },
+    "/home/user/workspace/goldsieve/cases/zeta_shape.py": {
+      "ctime_ns": 1786818350900232540,
+      "inode": 409357,
+      "mtime_ns": 1786818350900232540,
+      "sha256": "ca7b4439f17d0ce50529e77b37fbacda6f8e17b0f297ccbdcd69bfbcb0cf71c6",
+      "size": 19904
+    },
+    "/home/user/workspace/goldsieve/cases/zeta_std_gue_20260815.py": {
+      "ctime_ns": 1787066062062380631,
+      "inode": 472341,
+      "mtime_ns": 1787066062062380631,
+      "sha256": "367b6969fb724c0404583affb1e89e14b3475e15e6a2d72463670cf4959fee4a",
+      "size": 6264
+    },
+    "/home/user/workspace/goldsieve/cases/zeta_std_unfolding_passport_20260815.py": {
+      "ctime_ns": 1787065383078380631,
+      "inode": 474501,
+      "mtime_ns": 1787065383078380631,
+      "sha256": "b66c183dd7193fa242748f97145b316f2b8034c16a648a408f0e1154acbf0b43",
+      "size": 9737
+    },
+    "/home/user/workspace/goldsieve/cases/zeta_unfolding_std_recipe_20260815.py": {
+      "ctime_ns": 1787065359890380631,
+      "inode": 427422,
+      "mtime_ns": 1787065359890380631,
+      "sha256": "e2a1e88e4d1e02554330eaf91b11f74c18350b7ce399155279ab18cdad96ec0c",
+      "size": 11191
+    },
+    "/home/user/workspace/goldsieve/goldsieve/sieve.py": {
+      "ctime_ns": 1788449482378115686,
+      "inode": 408879,
+      "mtime_ns": 1788449482378115686,
+      "sha256": "194d95b40b2227dd544a605e568cc8ebb19103290c1a2bf27054f2b0c0b32d21",
+      "size": 110904
+    }
+  },
+  "version": 1
+}

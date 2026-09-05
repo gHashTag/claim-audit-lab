@@ -1,0 +1,3 @@
+[tools/goldsieve-v3-2026-08-13 93ddf7a] Добавить сторож неоднозначности рецепта zeta
+ 3 files changed, 181 insertions(+)
+ create mode 100644 tools/goldsieve/zeta_recipe_ambiguity_guard.py

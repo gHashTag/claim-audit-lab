@@ -1,0 +1,2 @@
+[tools/goldsieve-v3-2026-08-13 394513e] Удешевить отпечатки регресса и читать chi2/dof
+ 2 files changed, 20 insertions(+), 4 deletions(-)

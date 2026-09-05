@@ -1,0 +1,10 @@
+{
+  "status": "not-evaluated",
+  "journal": "/home/user/workspace/cron_tracking/8dff7aa3/runs.jsonl",
+  "read": 3202,
+  "artifacts": 479,
+  "verified_paths": 477,
+  "not_evaluated": 2,
+  "issues": [],
+  "container_issues": []
+}
