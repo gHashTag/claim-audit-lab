@@ -73,6 +73,12 @@ def evaluate(spec: dict) -> dict:
             else:
                 row["needed"] = (node.get("needed")
                                  or "элемент не описан в спецификации")
+            # Недостающий аналитический вывод — это машинный ВОПРОС, а не
+            # свободный текст. Код берём только из самой спецификации:
+            # соседние тики и ведомость не являются источником значения.
+            reason_code = node.get("machine_reason_code")
+            if reason_code:
+                row["код_вопроса"] = str(reason_code)
         elements.append(row)
     missing = [e for e in elements if not e["present"]]
     verdict = "ВОПРОС" if missing else "ПРОТОКОЛ ПОЛОН"
@@ -121,6 +127,11 @@ def selftest() -> int:
     check("перечень недостающего непуст", rep["missing_count"] >= 1)
     check("у каждого недостающего есть текст «что нужно»",
           all(e.get("needed") for e in rep["elements"] if not e["present"]))
+    missing_coeff = next(
+        (e for e in rep["elements"]
+         if e["element"] == "coefficient_rederivation"), {})
+    check("долг вывода коэффициентов имеет код analytic_source_absent",
+          missing_coeff.get("код_вопроса") == "analytic_source_absent")
     check("присутствующие элементы тоже есть", rep["present_count"] >= 1)
 
     # НЕГАТИВНАЯ ФИКСТУРА 1: полностью заполненный протокол обязан дать «полон».
