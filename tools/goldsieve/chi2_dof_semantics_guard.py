@@ -32,15 +32,20 @@ def inspect(path: Path = TABLE) -> dict:
     with path.open(encoding="utf-8", newline="") as fh:
         rows = list(csv.DictReader(fh))
     fields = list(rows[0]) if rows else []
-    has_chi2 = any(name.lower() in {"chi2", "χ²", "chi_squared"}
-                   for name in fields)
-    has_dof = any(name.lower() in {"dof", "degrees_of_freedom", "степени_свободы"}
-                  for name in fields)
+    chi2_field = next((name for name in fields
+                       if name.lower() in {"chi2", "χ²", "chi_squared"}), None)
+    dof_field = next((name for name in fields
+                      if name.lower() in {"dof", "degrees_of_freedom",
+                                          "степени_свободы"}), None)
+    ratio_field = next((name for name in fields
+                        if name.lower() == "chi2_dof"), None)
+    has_chi2 = chi2_field is not None
+    has_dof = dof_field is not None
     ratios = []
-    if rows and "chi2_dof" in rows[0]:
+    if rows and ratio_field is not None:
         for number, row in enumerate(rows, 1):
             try:
-                value = float(row["chi2_dof"])
+                value = float(row[ratio_field])
             except (TypeError, ValueError) as exc:
                 raise ValueError("строка %d содержит нечисловое отношение χ²/dof"
                                  % number) from exc
@@ -49,21 +54,58 @@ def inspect(path: Path = TABLE) -> dict:
                                  % number)
             ratios.append(value)
     separate = has_chi2 and has_dof
+    ratio_consistent = None
+    inconsistency = None
+    if separate:
+        ratio_consistent = True
+        for number, row in enumerate(rows, 1):
+            try:
+                chi2 = float(row[chi2_field])
+                dof = float(row[dof_field])
+            except (TypeError, ValueError) as exc:
+                raise ValueError("строка %d содержит нечисловые χ² или dof"
+                                 % number) from exc
+            if (not math.isfinite(chi2) or chi2 < 0
+                    or not math.isfinite(dof) or dof <= 0
+                    or not dof.is_integer()):
+                raise ValueError("строка %d содержит недопустимые χ² или dof"
+                                 % number)
+            if ratio_field is not None:
+                expected = chi2 / dof
+                observed = float(row[ratio_field])
+                if not math.isclose(observed, expected, rel_tol=1e-9,
+                                    abs_tol=1e-12):
+                    ratio_consistent = False
+                    inconsistency = (
+                        "строка %d: χ²/dof=%g, но χ²/dof из полей=%g"
+                        % (number, observed, expected))
+                    break
+    if separate and ratio_consistent is False:
+        status = "unsupported"
+        reason = (
+            "таблица предъявляет отдельные χ² и dof, но готовое отношение "
+            "им противоречит: %s" % inconsistency
+        )
+    elif separate:
+        status = "verified-in-scope"
+        reason = "исходные χ² и dof предъявлены раздельно"
+    else:
+        status = "not-evaluated"
+        reason = (
+            "таблица содержит только готовое отношение χ²/dof; число степеней "
+            "свободы не предъявлено, поэтому научная интерпретация χ²/dof "
+            "остаётся not-evaluated"
+        )
     return {
-        "статус": "verified-in-scope" if separate else "not-evaluated",
+        "статус": status,
         "источник_наблюдения": str(path),
         "столбцы": fields,
         "строк": len(rows),
         "отношение_наблюдено": bool(ratios),
         "chi2_наблюдено_отдельно": has_chi2,
         "dof_наблюдено_отдельно": has_dof,
-        "причина": (
-            "исходные χ² и dof предъявлены раздельно"
-            if separate else
-            "таблица содержит только готовое отношение χ²/dof; число степеней "
-            "свободы не предъявлено, поэтому научная интерпретация "
-            "χ²/dof остаётся not-evaluated"
-        ),
+        "отношение_согласовано_с_полями": ratio_consistent,
+        "причина": reason,
         "ограничение": "сторож не оценивает научную пригодность и не выводит dof",
     }
 
@@ -95,6 +137,22 @@ def selftest() -> int:
               report["статус"] == "verified-in-scope"
               and report["chi2_наблюдено_отдельно"]
               and report["dof_наблюдено_отдельно"])
+
+        consistent = root / "consistent.csv"
+        consistent.write_text("T_mid,chi2,dof,chi2_dof\n1,4.0,2,2.0\n",
+                              encoding="utf-8")
+        report = inspect(consistent)
+        check("готовое отношение согласуется с раздельными полями",
+              report["статус"] == "verified-in-scope"
+              and report["отношение_согласовано_с_полями"] is True)
+
+        inconsistent = root / "inconsistent.csv"
+        inconsistent.write_text("T_mid,chi2,dof,chi2_dof\n1,4.0,2,3.0\n",
+                                encoding="utf-8")
+        report = inspect(inconsistent)
+        check("противоречивое отношение не считается доказанным",
+              report["статус"] == "unsupported"
+              and report["отношение_согласовано_с_полями"] is False)
 
         ratio.write_text("T_mid,chi2_dof\n1,nan\n", encoding="utf-8")
         try:
