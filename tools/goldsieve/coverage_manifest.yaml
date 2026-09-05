@@ -336,7 +336,7 @@ shell_checks:
   journal_signature_guard.py:
     gate_step: аудит криптографической подписи журнала
     selftest_cmd: [journal_signature_guard.py, --selftest]
-    selftest_checks: 4
+    selftest_checks: 5
     role: >-
       явное различение отсутствующей, повреждённой и непроверенной
       криптографической подписи; хеш-цепочка не переименовывается в доказательство

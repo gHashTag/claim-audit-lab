@@ -21,6 +21,16 @@ OUT = HERE / "journal_signature_guard.json"
 
 SIGNATURE_KEYS = ("signature", "подпись", "detached_signature")
 REQUIRED_SIGNATURE_FIELDS = ("algorithm", "value", "public_key")
+DETACHED_SUFFIXES = (".sig", ".asc", ".minisig", ".signature")
+
+
+def _detached_candidates(path: Path) -> list[Path]:
+    """Найти соседние файлы detached-подписи без признания их валидными."""
+    candidates = []
+    for suffix in DETACHED_SUFFIXES:
+        candidates.append(path.with_name(path.name + suffix))
+        candidates.append(path.with_suffix(suffix))
+    return list(dict.fromkeys(candidates))
 
 
 def _read_jsonl(path: Path) -> tuple[list[dict], list[str]]:
@@ -73,6 +83,25 @@ def audit(path: Path) -> dict:
             if key in record:
                 signatures.append(record[key])
 
+    detached = [candidate for candidate in _detached_candidates(path)
+                if candidate.is_file()]
+    signature_count = len(signatures) + len(detached)
+
+    if detached:
+        return {
+            "status": "not-evaluated",
+            "reason": (
+                "отдельная подпись предъявлена, но проверяющий алгоритм и "
+                "доверенный открытый ключ не закреплены в инструменте"
+            ),
+            "journal": str(path),
+            "records": len(records),
+            "signatures": signature_count,
+            "inline_signatures": len(signatures),
+            "detached_signatures": len(detached),
+            "detached_paths": [str(item) for item in detached],
+        }
+
     if not signatures:
         return {
             "status": "not-evaluated",
@@ -83,6 +112,8 @@ def audit(path: Path) -> dict:
             "journal": str(path),
             "records": len(records),
             "signatures": 0,
+            "inline_signatures": 0,
+            "detached_signatures": 0,
         }
 
     malformed = [
@@ -96,7 +127,9 @@ def audit(path: Path) -> dict:
             "reason": "контракт подписи неполон",
             "journal": str(path),
             "records": len(records),
-            "signatures": len(signatures),
+            "signatures": signature_count,
+            "inline_signatures": len(signatures),
+            "detached_signatures": 0,
         }
 
     return {
@@ -107,7 +140,9 @@ def audit(path: Path) -> dict:
         ),
         "journal": str(path),
         "records": len(records),
-        "signatures": len(signatures),
+        "signatures": signature_count,
+        "inline_signatures": len(signatures),
+        "detached_signatures": 0,
     }
 
 
@@ -135,6 +170,18 @@ def selftest() -> tuple[int, int]:
             "неподписанный журнал не считается подписанным",
             result["status"] == "not-evaluated"
             and "авторство" in result["reason"],
+        )
+
+        detached = root / "detached.jsonl"
+        detached.write_text('{"seq": 1}\n', encoding="utf-8")
+        detached.with_name(detached.name + ".sig").write_text(
+            "подпись без проверяющего\n", encoding="utf-8")
+        result = audit(detached)
+        check(
+            "отдельная подпись не теряется при поиске",
+            result["status"] == "not-evaluated"
+            and result["detached_signatures"] == 1
+            and "отдельная подпись" in result["reason"],
         )
 
         malformed = root / "malformed.jsonl"
