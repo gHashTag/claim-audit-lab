@@ -2,6 +2,6 @@
   "verdict": "not-evaluated",
   "reason_code": "journal_unavailable",
   "errors": [
-    "[Errno 2] No such file or directory: '/tmp/runlog-missing-e3tsa4zk/no-such-journal.jsonl'"
+    "[Errno 2] No such file or directory: '/tmp/runlog-missing-plyhjtj6/no-such-journal.jsonl'"
   ]
 }

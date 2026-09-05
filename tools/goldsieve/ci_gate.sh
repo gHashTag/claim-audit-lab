@@ -99,6 +99,8 @@ else
     # шаг требует полного окружения.
     step "execution-proof на маршруте CLI" "$BASE_PY" execution_proof.py
     step "кэш отпечатков регресса"        "$BASE_PY" regression_cache_guard.py --selftest
+    step "чувствительность неоднозначного ключа реестра" "$BASE_PY" registry_identity_guard.py --selftest
+    step "однозначность ключа реестра регресса" "$BASE_PY" registry_identity_guard.py
     # tri — оболочка тика. Она пишет в ведомость и читает счётчики,
     # поэтому её тихий отказ стоит дороже всего: пропадают именно записи
     # опыта. Проверка идёт на временных файлах, ведомость не трогается.
