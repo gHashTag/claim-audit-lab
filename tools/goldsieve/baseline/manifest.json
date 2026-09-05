@@ -146,7 +146,7 @@
     "disk_guard.py": "3779bb521c12e9a5d07060199b5b23c77e393783ff3baa620967aa2cdf286109",
     "execution_proof.py": "6d8d06441da3af681d6d61e9936eb5e50ebeb8774ce343a6709a56707bf10b7d",
     "external_target_guard.py": "6398fa2ba60052d86de9db40cc331f848490b68b90b25a68b65d8f8443c904af",
-    "external_uncertainty_type_guard.py": "71c39ce0aebb212d115f88c31dd1ced9d5682835546795bfde7783822c2c709b",
+    "external_uncertainty_type_guard.py": "3f23dbf7c03bca833c58cfc8a3e2cd94c2d9d7af4696fc077fec4aaaa645cf34",
     "fixed_point_audit.py": "73bea8db0a0045ea9328b6e2d433353b03ac363ba86014618958bf9031a66704",
     "goldsieve/__init__.py": "49baafab6c5f9b12621cc82bc4cf2bfb37e2deea5761097ae876a1f010fc3890",
     "goldsieve/__main__.py": "6ce05b79ee1666025af142adc913f1d468781e77af67ae431fe163472a52fb3a",
@@ -217,7 +217,7 @@
     "zeta_passport_provenance_guard.py": "0f866a68e48aac57460ef151622223db37a33e2b9a20b97ac903ecc31025d548",
     "zeta_recipe_ambiguity_guard.py": "90c5ebbc9d074bff318c86f8cd0d72629bcf464bda2430ad763428d346b03e92"
   },
-  "files_digest": "57623905642cf840",
+  "files_digest": "25569f976d9bcbdb",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,

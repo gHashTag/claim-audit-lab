@@ -1,18 +1,7 @@
 {
-  "verdict": "verified-in-scope",
-  "reason_code": "run_pairs_complete",
-  "lines": 3236,
-  "run_groups": 1618,
-  "errors": [],
-  "incomplete_run_ids": [],
-  "duplicate_start": [],
-  "duplicate_terminal": [],
-  "terminal_result_mismatch": [],
-  "identity_mismatch": [],
-  "terminal_statuses": [
-    "aborted",
-    "blocked",
-    "failed",
-    "passed"
+  "verdict": "not-evaluated",
+  "reason_code": "journal_unavailable",
+  "errors": [
+    "[Errno 2] No such file or directory: '/tmp/runlog-missing-wg89lcj8/no-such-journal.jsonl'"
   ]
 }

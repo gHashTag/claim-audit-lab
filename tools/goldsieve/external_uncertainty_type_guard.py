@@ -24,6 +24,11 @@ ALLOWED = {
     "statistical+systematic": "статистическая и систематическая",
     "statistical_plus_systematic": "статистическая и систематическая",
 }
+COMBINED_LABELS = {
+    "both",
+    "statistical+systematic",
+    "statistical_plus_systematic",
+}
 
 
 def _target_entry(artifact: dict) -> tuple[bool, dict | None, str | None]:
@@ -47,6 +52,47 @@ def _target(artifact: dict) -> dict | None:
     """Совместимый помощник для вызовов, которым нужна только цель."""
     found, value, _key = _target_entry(artifact)
     return value if found else None
+
+
+def _combined_components(target: dict) -> tuple[str, str]:
+    """Проверить составную неопределённость, не подменяя её одной цифрой.
+
+    Метка ``both`` семантически сильнее положительного числа: без двух
+    предъявленных компонент и их объединения нельзя воспроизвести, что именно
+    было нормировано. Поэтому отсутствие компонент — ``not-evaluated``, а
+    повреждённая арифметика — ``unsupported``.
+    """
+    raw = target.get("uncertainty_components",
+                     target.get("компоненты_неопределённости"))
+    if raw is None:
+        return ("not-evaluated",
+                "для составной неопределённости не предъявлены "
+                "статистическая и систематическая компоненты")
+    if not isinstance(raw, dict):
+        return ("unsupported",
+                "компоненты неопределённости не являются объектом")
+    stat = raw.get("statistical", raw.get("статистическая"))
+    syst = raw.get("systematic", raw.get("систематическая"))
+    combined = target.get("combined_uncertainty",
+                          target.get("объединённая_неопределённость"))
+    try:
+        stat = float(stat)
+        syst = float(syst)
+        combined = float(combined)
+    except (TypeError, ValueError):
+        return ("unsupported",
+                "компоненты и объединённая неопределённость должны быть числами")
+    if (not math.isfinite(stat) or not math.isfinite(syst)
+            or not math.isfinite(combined) or stat <= 0 or syst <= 0
+            or combined <= 0):
+        return ("unsupported",
+                "компоненты и объединённая неопределённость должны быть "
+                "положительными конечными числами")
+    expected = math.hypot(stat, syst)
+    if not math.isclose(combined, expected, rel_tol=1e-12, abs_tol=1e-12):
+        return ("unsupported",
+                "объединённая неопределённость не равна sqrt(stat² + syst²)")
+    return ("verified-in-scope", "")
 
 
 def inspect(artifact: dict, path: str) -> dict:
@@ -96,6 +142,15 @@ def inspect(artifact: dict, path: str) -> dict:
             "статус": "unsupported",
             "причина": "неопределённость не является положительным конечным числом",
         }
+    if label in COMBINED_LABELS:
+        component_status, component_reason = _combined_components(target)
+        if component_status != "verified-in-scope":
+            return {
+                "путь": path,
+                "прочитано": True,
+                "статус": component_status,
+                "причина": component_reason,
+            }
     return {
         "путь": path,
         "прочитано": True,
@@ -185,6 +240,36 @@ def selftest() -> int:
                    "фикстура/нулевая-погрешность")
     check("нулевая неопределённость отклоняется",
           zero["статус"] == "unsupported")
+    combined = inspect(
+        {"external_target": {
+            "value": 1, "uncertainty": math.hypot(0.08, 0.06),
+            "uncertainty_type": "both",
+            "uncertainty_components": {
+                "statistical": 0.08, "systematic": 0.06},
+            "combined_uncertainty": 0.1,
+        }},
+        "фикстура/составная",
+    )
+    check("составная неопределённость с компонентами проходит",
+          combined["статус"] == "verified-in-scope")
+    missing_components = inspect(
+        {"external_target": {
+            "value": 1, "uncertainty": 0.1, "uncertainty_type": "both"}},
+        "фикстура/составная-без-компонент",
+    )
+    check("составная неопределённость без компонент остаётся not-evaluated",
+          missing_components["статус"] == "not-evaluated")
+    inconsistent = inspect(
+        {"external_target": {
+            "value": 1, "uncertainty": 0.1, "uncertainty_type": "both",
+            "uncertainty_components": {
+                "statistical": 0.08, "systematic": 0.06},
+            "combined_uncertainty": 0.2,
+        }},
+        "фикстура/составная-рассогласована",
+    )
+    check("несогласованная составная неопределённость отклоняется",
+          inconsistent["статус"] == "unsupported")
     malformed = inspect({"external_target": ["value", 1]},
                          "фикстура/неверная-форма")
     check("неверная форма цели не выдаётся за отсутствие",
