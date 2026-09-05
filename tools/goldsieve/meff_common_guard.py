@@ -76,6 +76,27 @@ def inspect(document: object, source: str) -> dict:
             "наблюдения": records,
         }
 
+    # Значение M_eff нельзя принять только потому, что оно конечно и
+    # одинаково объявлено. Невырожденный ансамбль обязан иметь M > 0 и
+    # эффективное число попыток в диапазоне 0 <= M_eff <= M. Иначе
+    # последующее объединение могло бы молча усилить статистическую
+    # значимость за счёт арифметически невозможного входа.
+    invalid_range = [
+        item for item in records
+        if item["M"] <= 0.0
+        or item["M_eff"] < 0.0
+        or item["M_eff"] > item["M"]
+    ]
+    if invalid_range:
+        return {
+            "статус": "unsupported",
+            "причина": "M_eff вне диапазона 0 <= M_eff <= M или M не положительно",
+            "источник_наблюдения": source,
+            "записей_С20": len(records),
+            "наблюдения": records,
+            "некорректных_диапазонов": len(invalid_range),
+        }
+
     m_values = {round(item["M"], 12) for item in records}
     explicit = [
         item for item in records
@@ -259,6 +280,23 @@ def selftest() -> int:
     check("расходящиеся идентификаторы не объявляются общим ансамблем",
           conflicting["статус"] == "not-evaluated"
           and "идентификаторы общего ансамбля расходятся" in conflicting["причина"])
+
+    invalid_range = {
+        "results": [
+            {"sieve": "С20 эффективное число попыток",
+             "numbers": {"M": 100, "M_eff": 101,
+                         "M_eff_общий": 90}},
+            {"sieve": "С20 эффективное число попыток",
+             "numbers": {"M": 100, "M_eff": 99,
+                         "M_eff_общий": 90}},
+        ]
+    }
+    invalid = inspect([invalid_range], "фикстура/невозможный-диапазон-m-eff.json")
+    check("M_eff за пределами M получает unsupported",
+          invalid["статус"] == "unsupported"
+          and "вне диапазона" in invalid["причина"]
+          and invalid["некорректных_диапазонов"] == 1)
+
     print("самопроверка общего M_eff: пройдено %d, провалено %d" % (good, bad))
     return bad
 

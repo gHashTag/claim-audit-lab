@@ -1,0 +1,3 @@
+сторож записей журнала: verified-in-scope; групп запусков 1618; строк 3236
+JSON: /home/user/workspace/goldsieve/runlog_record_guard.json
+коды fixed_point=0 runlog=0

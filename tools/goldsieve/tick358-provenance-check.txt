@@ -1,0 +1,1 @@
+{'статус': 'PASS', 'наблюдаемое': '/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md', 'эталон': '/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt', 'разные_файлы': True}
