@@ -162,13 +162,28 @@ def inspect(document: object, source: str) -> dict:
             "записей_С20": len(records),
             "наблюдения": records,
         }
+    common_value = next(iter(common))
+    row_max = max(item["M_eff"] for item in records)
+    row_min_m = min(item["M"] for item in records)
+    if common_value < row_max or common_value > row_min_m:
+        return {
+            "статус": "not-evaluated",
+            "причина": (
+                "объявленный общий_M_eff не согласован с наблюдаемыми "
+                "M_eff и M: требуется max(M_eff) <= общий_M_eff <= min(M)"
+            ),
+            "источник_наблюдения": source,
+            "записей_С20": len(records),
+            "наблюдения": records,
+            "общий_M_eff": common_value,
+        }
     return {
         "статус": "verified-in-scope",
         "причина": "общий_M_eff объявлен единообразно",
         "источник_наблюдения": source,
         "записей_С20": len(records),
         "наблюдения": records,
-        "общий_M_eff": next(iter(common)),
+        "общий_M_eff": common_value,
     }
 
 
@@ -235,6 +250,22 @@ def selftest() -> int:
     ok = inspect([declared], "фикстура/объявленный-m-eff.json")
     check("единый общий M_eff получает verified-in-scope",
           ok["статус"] == "verified-in-scope")
+
+    inconsistent = {
+        "results": [
+            {"sieve": "С20 эффективное число попыток",
+             "numbers": {"M": 123201, "M_eff": 80000,
+                         "M_eff_общий": 70000}},
+            {"sieve": "С20 эффективное число попыток",
+             "numbers": {"M": 123201, "M_eff": 70000,
+                         "M_eff_общий": 70000}},
+        ]
+    }
+    inconsistent_result = inspect(
+        [inconsistent], "фикстура/несогласованный-общий-m-eff.json")
+    check("несогласованный общий M_eff не объявляется проверенным",
+          inconsistent_result["статус"] == "not-evaluated"
+          and "не согласован" in inconsistent_result["причина"])
 
     different = {
         "results": [
