@@ -137,7 +137,7 @@
     "chain_overhead.py": "9396ef1cfaee2e5e5a9e22e0f4223f9d285fe98fa826b7e7c69cf793e92505f3",
     "chi2_dof_guard.py": "2523accba898544a4c3917eb69ebe538ae058657494c2c101b7f587480d1eb24",
     "chi2_dof_rederivation.py": "86fc47beaccde0975112e3dfbb61270c4f187cee67d631a65e5f278dc492c52b",
-    "chi2_dof_semantics_guard.py": "0602c3ad9ff1c0822d06a3cbf6ae417836c29ae44558dda35c5e29be29a23f18",
+    "chi2_dof_semantics_guard.py": "49b09e7b99f1aeb5738e4a318c4823409d757c6d5e6512fa9bf3d351ded6e5eb",
     "ci_gate.sh": "d7c0102bf0762d6f636e01a1d62c40308665b827e3abf514c2fb7dc2c979a922",
     "claims.yaml": "557c4545fadc7512b6bb98d2bacbd632fd3d142b589cf128a3274f8c100d9034",
     "coverage_manifest.py": "8584989d602eb8157ac96b7d23a797c92ef716daa066b511604aae24f4be47b7",
@@ -217,7 +217,7 @@
     "zeta_passport_provenance_guard.py": "0f866a68e48aac57460ef151622223db37a33e2b9a20b97ac903ecc31025d548",
     "zeta_recipe_ambiguity_guard.py": "90c5ebbc9d074bff318c86f8cd0d72629bcf464bda2430ad763428d346b03e92"
   },
-  "files_digest": "56a3c5414dc83e76",
+  "files_digest": "3b05efefe939b37e",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,

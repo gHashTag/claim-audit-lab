@@ -53,7 +53,10 @@ def inspect(path: Path = TABLE) -> dict:
                 raise ValueError("строка %d содержит недопустимое отношение χ²/dof"
                                  % number)
             ratios.append(value)
-    separate = has_chi2 and has_dof
+    # Заголовки сами по себе не являются наблюдением: пустая таблица с
+    # колонками chi2 и dof не может закрыть долг происхождения чисел.
+    has_rows = bool(rows)
+    separate = has_rows and has_chi2 and has_dof
     ratio_consistent = None
     inconsistency = None
     if separate:
@@ -89,6 +92,12 @@ def inspect(path: Path = TABLE) -> dict:
     elif separate:
         status = "verified-in-scope"
         reason = "исходные χ² и dof предъявлены раздельно"
+    elif not has_rows:
+        status = "not-evaluated"
+        reason = (
+            "таблица не содержит строк наблюдения; одних заголовков χ² и dof "
+            "недостаточно для реконструкции"
+        )
     else:
         status = "not-evaluated"
         reason = (
@@ -161,6 +170,13 @@ def selftest() -> int:
             check("нефинитное отношение отвергается", True)
         else:
             check("нефинитное отношение отвергается", False)
+
+        empty = root / "empty.csv"
+        empty.write_text("T_mid,chi2,dof\n", encoding="utf-8")
+        report = inspect(empty)
+        check("пустая таблица с заголовками не закрывает наблюдение",
+              report["статус"] == "not-evaluated"
+              and report["строк"] == 0)
 
     print("самопроверка сторожа смысла χ²/dof: %d пройдено, %d провалено"
           % (ok, fail))
