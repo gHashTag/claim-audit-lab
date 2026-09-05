@@ -106,6 +106,19 @@ def inspect(document: object, source: str) -> dict:
             "записей_С20": len(records),
             "наблюдения": records,
         }
+    ensemble_ids = [
+        str(item["идентификатор_общего_ансамбля"])
+        for item in records
+        if item["идентификатор_общего_ансамбля"] is not None
+    ]
+    if ensemble_ids and len(set(ensemble_ids)) != 1:
+        return {
+            "статус": "not-evaluated",
+            "причина": "идентификаторы общего ансамбля расходятся между записями",
+            "источник_наблюдения": source,
+            "записей_С20": len(records),
+            "наблюдения": records,
+        }
     declared_values = [
         item["общий_M_eff"] for item in records
         if item["общий_M_eff"] is not None
@@ -229,6 +242,23 @@ def selftest() -> int:
     check("нечисловой общий M_eff не вызывает исключение",
           malformed_result["статус"] == "not-evaluated"
           and "нечисловым" in malformed_result["причина"])
+
+    conflicting_ids = {
+        "results": [
+            {"sieve": "С20 эффективное число попыток",
+             "numbers": {"M": 123201, "M_eff": 80000,
+                         "M_eff_общий": 80000,
+                         "идентификатор_общего_ансамбля": "архив-A"}},
+            {"sieve": "С20 эффективное число попыток",
+             "numbers": {"M": 123201, "M_eff": 70000,
+                         "M_eff_общий": 80000,
+                         "идентификатор_общего_ансамбля": "архив-B"}},
+        ]
+    }
+    conflicting = inspect([conflicting_ids], "фикстура/разные-идентификаторы.json")
+    check("расходящиеся идентификаторы не объявляются общим ансамблем",
+          conflicting["статус"] == "not-evaluated"
+          and "идентификаторы общего ансамбля расходятся" in conflicting["причина"])
     print("самопроверка общего M_eff: пройдено %d, провалено %d" % (good, bad))
     return bad
 
