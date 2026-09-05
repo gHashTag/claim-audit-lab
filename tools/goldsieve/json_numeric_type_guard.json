@@ -1,0 +1,73 @@
+{
+  "статус": "verified-in-scope",
+  "проверка": "тип числовых полей в машинных JSON-отчётах",
+  "сводка": {
+    "verified-in-scope": 9
+  },
+  "артефакты": [
+    {
+      "путь": "/home/user/workspace/goldsieve/bblm_protocol.json",
+      "прочитано": true,
+      "статус": "verified-in-scope",
+      "поля_с_ошибкой": [],
+      "причина": "все поля числового контракта имеют конечный числовой тип"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/bblm_elements.json",
+      "прочитано": true,
+      "статус": "verified-in-scope",
+      "поля_с_ошибкой": [],
+      "причина": "все поля числового контракта имеют конечный числовой тип"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/chi2_dof_semantics_guard.json",
+      "прочитано": true,
+      "статус": "verified-in-scope",
+      "поля_с_ошибкой": [],
+      "причина": "все поля числового контракта имеют конечный числовой тип"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/external_target_guard.json",
+      "прочитано": true,
+      "статус": "verified-in-scope",
+      "поля_с_ошибкой": [],
+      "причина": "все поля числового контракта имеют конечный числовой тип"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/independence_assumption_guard.json",
+      "прочитано": true,
+      "статус": "verified-in-scope",
+      "поля_с_ошибкой": [],
+      "причина": "все поля числового контракта имеют конечный числовой тип"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/meff_common_guard.json",
+      "прочитано": true,
+      "статус": "verified-in-scope",
+      "поля_с_ошибкой": [],
+      "причина": "все поля числового контракта имеют конечный числовой тип"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/unit_consistency_guard.json",
+      "прочитано": true,
+      "статус": "verified-in-scope",
+      "поля_с_ошибкой": [],
+      "причина": "все поля числового контракта имеют конечный числовой тип"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/zeta_passport_provenance_guard.json",
+      "прочитано": true,
+      "статус": "verified-in-scope",
+      "поля_с_ошибкой": [],
+      "причина": "все поля числового контракта имеют конечный числовой тип"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/zeta_recipe_ambiguity_guard.json",
+      "прочитано": true,
+      "статус": "verified-in-scope",
+      "поля_с_ошибкой": [],
+      "причина": "все поля числового контракта имеют конечный числовой тип"
+    }
+  ],
+  "ограничение": "проверка типов не является научным подтверждением zeta/GUE"
+}

@@ -578,6 +578,17 @@ tooling_guards:
     mutation_target: удаление object_pairs_hook из строгого разбора
     sensitivity: 2/2 отрицательные фикстуры; 1/1 оборванный JSON
     status_class: verified-in-scope
+  json_numeric_type_integrity:
+    role: >-
+      строка вместо числа в машинном отчёте не должна зависеть от неявного
+      преобразования потребителя и превращать неоднозначный тип в покрытие
+    script: json_numeric_type_guard.py
+    gate_step: типы числовых полей машинных отчётов
+    positive_fixture: машинные JSON-отчёты сит
+    negative_fixture: строка в поле std и оборванный JSON
+    mutation_target: удаление проверки числового типа
+    sensitivity: 1/1 отрицательная фикстура; 1/1 оборванный JSON
+    status_class: verified-in-scope
   silent_external_target_boundary:
     role: >-
       ревизия молчащего шага: внешняя сверка без наблюдаемого,

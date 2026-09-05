@@ -1,7 +1,7 @@
 {
  "суть": {
   "гейт": [
-   117,
+   119,
    2,
    0
   ],
@@ -18,15 +18,16 @@
    6
   ],
   "bblm": [
-   7,
+   4,
    true
   ],
   "изменённые_файлы": [
-   "bblm_elements.py",
-   "bblm_elements.json"
+   "json_numeric_type_guard.py",
+   "ci_gate.sh",
+   "coverage_manifest.yaml"
   ]
  },
- "подпись": "bd245640d92ef818",
+ "подпись": "7f66b16eb1d92c94",
  "повторов_в_окне": 0,
  "единственный_файл": null,
  "длина_серии": 0,
