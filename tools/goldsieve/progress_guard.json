@@ -8,7 +8,7 @@
   "регресс": [
    7,
    109,
-   0,
+   10,
    0,
    0,
    0
@@ -22,15 +22,13 @@
    true
   ],
   "изменённые_файлы": [
-   "audit_substance_guard.py",
-   "ci_gate.sh",
-   "coverage_manifest.yaml"
+   "independence_assumption_guard.py"
   ]
  },
- "подпись": "f8b286d40777ed1e",
+ "подпись": "85188d2af2c005cb",
  "повторов_в_окне": 0,
- "единственный_файл": null,
- "длина_серии": 0,
+ "единственный_файл": "independence_assumption_guard.py",
+ "длина_серии": 1,
  "причины": [],
  "итог": "СОДЕРЖАТЕЛЬНЫЙ"
 }

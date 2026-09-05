@@ -1,0 +1,21 @@
+{
+  "статус": "not-evaluated",
+  "вердикт": "not-evaluated",
+  "причина": "после двух разрешённых окон запуск оставался queued; молчание не считается покрытием",
+  "run_id": 33946931302,
+  "ветвь": "tools/goldsieve-v3-2026-08-13",
+  "sha": "cff91bcc2c236838ceea8b79be82dd13d4df03b1",
+  "workflow": "cross-platform-selftest.yml",
+  "наблюдаемый_статус": "queued",
+  "задания_ожидались": [
+    "windows-latest / py3.12",
+    "windows-latest / py3.13",
+    "ubuntu-latest / py3.12",
+    "ubuntu-latest / py3.13",
+    "macos-latest / py3.12",
+    "macos-latest / py3.13"
+  ],
+  "успешно": 0,
+  "всего": 6,
+  "охват": "проверено на указанных версиях CPython не установлено в этом тике"
+}

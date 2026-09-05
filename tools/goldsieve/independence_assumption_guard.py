@@ -64,8 +64,12 @@ def scan(cases_dir: Path = CASES) -> dict:
             else:
                 value = _constant(kw.value)
                 if value in ("true", True):
-                    status = "verified-in-scope"
-                    reason = "independence_assumption_declared_true"
+                    # Декларация автора кейса — наблюдаемое поле, но не
+                    # независимое доказательство независимости испытаний.
+                    # Нельзя повышать такой вход до verified-in-scope:
+                    # иначе сам сторож принимает предпосылку за её проверку.
+                    status = "not-evaluated"
+                    reason = "independence_assumption_declared_true_unverified"
                 elif value in ("false", False):
                     status = "unsupported"
                     reason = "tests_declared_not_independent"
@@ -131,10 +135,10 @@ def selftest() -> int:
         report = scan(root)
         values = {x["статус"] for x in report["наблюдения"]}
         _assert(report["кейсов"] == 4, "обнаружены не все фикстуры")
-        _assert(values == {"verified-in-scope", "not-evaluated", "unsupported"},
+        _assert(values == {"not-evaluated", "unsupported"},
                 "неверная классификация фикстур")
-        _assert(report["сводка"]["not-evaluated"] == 2,
-                "молчание не понижено до not-evaluated")
+        _assert(report["сводка"]["not-evaluated"] == 3,
+                "декларация true или молчание не понижены до not-evaluated")
         print("самопроверка предпосылки независимости: 4/0")
     return 0
 
