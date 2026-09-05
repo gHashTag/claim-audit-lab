@@ -8,7 +8,7 @@
     "audit_substance_guard.py": "b7131c4a580581aac0341053c99c211e2d2d0d1be543620915581dafca43df64",
     "baseline.py": "897cf4bb2a4069fefd2d4748768ec79574caf7047ea02b007795f416bb9690de",
     "bblm_accounting.py": "e5ba775942cda49483281f571844d8f83fa177060389cf3bafa255bb8b838221",
-    "bblm_elements.py": "d96535f19f244a3920c1ec5f05d3a5bca0553eb75f80c4543e76255013382b42",
+    "bblm_elements.py": "e4560b5d354a29dd8e1fc2c008b0d4c687ca7dbebda344d20a990ae474179d6b",
     "bblm_height.py": "d3d992e050bb57c7d652db0b68a5b4f341d8afd47a7c94a3a545cc0bfa3223af",
     "bblm_protocol.py": "aba1ed2751b49c69b03abce958a1d8c4feb76b7feacbe3cb882c8edbf59a3a5e",
     "bblm_shape_scale_guard.py": "149a9c0b4a2334d5784f00f9d6cdf3389980d28f19e99ec9ead58d5f3f71f428",
@@ -223,7 +223,7 @@
     "zeta_passport_provenance_guard.py": "0f866a68e48aac57460ef151622223db37a33e2b9a20b97ac903ecc31025d548",
     "zeta_recipe_ambiguity_guard.py": "0cd8b32fd254820137e35c21c4c91d6f54b1e435108e836809b863a090bcbb66"
   },
-  "files_digest": "5c4df5066dc40416",
+  "files_digest": "306e4e23e30de1d0",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,

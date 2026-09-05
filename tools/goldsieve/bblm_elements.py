@@ -17,7 +17,9 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import math
+import re
 import sys
 from pathlib import Path
 
@@ -32,6 +34,16 @@ except Exception:
 
 ZEROS = Path("/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt")
 DEST = Path("/home/user/workspace/goldsieve/bblm_elements.json")
+CORPUS = Path("/home/user/workspace/corpus/trinity")
+COEFFICIENT_LITERALS = ("0.230158", "1.4720")
+SOURCE_TERMS = ("bblm", "bogomolny", "leboeuf", "monastra")
+FORMULA_RE = re.compile(
+    r"(?:0\.230158|1\.4720).{0,100}"
+    r"(?:=|/|\*|formula|формул|coefficient|коэффициент)"
+    r"|(?:=|/|\*|formula|формул|coefficient|коэффициент).{0,100}"
+    r"(?:0\.230158|1\.4720)",
+    re.IGNORECASE,
+)
 
 # Коэффициенты, процитированные корпусом со ссылкой на BBLM 2006.
 C_NEFF_CITED = 0.230158      # N_eff ≈ 0.230158·L
@@ -101,6 +113,70 @@ def best_scale(obs: dict, ref: dict) -> tuple[float, dict]:
     alpha = float(np.exp(np.mean(np.log(ratios))))
     resid = {k: float(obs[k] - alpha * ref[k]) for k in keys}
     return alpha, resid
+
+
+def coefficient_source_observation() -> dict:
+    """Прочитать корпус и зафиксировать границу машинного вопроса BBLM.
+
+    Поиск только имён файлов был слишком слабым: источник может упоминать
+    BBLM в обычном файле, а имя не обязано это отражать. Здесь наблюдение
+    строится по содержимому прочитанных текстовых файлов. Сырые строки не
+    переносятся в JSON, чтобы английская цитата корпуса не стала записью
+    аудита; сохраняются только путь, число строк с упоминанием и факт
+    аналитического выражения.
+    """
+    observed = []
+    if not CORPUS.is_dir():
+        return {
+            "источник_наблюдения": "corpus/trinity/data/zeta/zeta_bin_analysis_update.md",
+            "статус_чтения": "not-evaluated",
+            "причина": "каталог корпуса не найден",
+            "аналитические_выражения_найдены": False,
+        }
+    for path in sorted(CORPUS.rglob("*")):
+        if not path.is_file():
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        rows = text.splitlines()
+        term_rows = [
+            line for line in rows
+            if any(term in line.lower() for term in SOURCE_TERMS)
+        ]
+        if not term_rows:
+            continue
+        coefficient_rows = [
+            line for line in term_rows
+            if any(literal in line for literal in COEFFICIENT_LITERALS)
+        ]
+        formula_rows = [line for line in coefficient_rows if FORMULA_RE.search(line)]
+        observed.append({
+            "путь": str(path.relative_to(CORPUS.parent.parent)),
+            "строк_с_упоминанием": len(term_rows),
+            "строк_с_коэффициентом": len(coefficient_rows),
+            "строк_с_аналитическим_выражением": len(formula_rows),
+        })
+    observation_path = CORPUS / "data/zeta/zeta_bin_analysis_update.md"
+    try:
+        observation_text = observation_path.read_text(encoding="utf-8")
+        observation_sha256 = hashlib.sha256(
+            observation_text.encode("utf-8")).hexdigest()
+        observation_status = "verified-in-scope"
+    except (OSError, UnicodeDecodeError):
+        observation_sha256 = None
+        observation_status = "not-evaluated"
+    formula_count = sum(
+        row["строк_с_аналитическим_выражением"] for row in observed)
+    return {
+        "источник_наблюдения": str(observation_path.relative_to(CORPUS.parent.parent)),
+        "источники_с_упоминанием": observed,
+        "статус_чтения": observation_status,
+        "наблюдение_sha256": observation_sha256,
+        "аналитические_выражения_найдены": bool(formula_count),
+        "аналитических_выражений": formula_count,
+    }
 
 
 def main(argv: list[str]) -> int:
@@ -205,10 +281,9 @@ def main(argv: list[str]) -> int:
 
     # --- элемент coefficient_rederivation: машинный ВОПРОС ----------------
     # Приказ разрешает формальный ВОПРОС с ТОЧНОЙ причиной. Причина машинная:
-    # проверяется наличие аналитических выражений в песочнице, и его нет.
-    src_candidates = sorted(
-        p.name for p in Path("/home/user/workspace/corpus/trinity").rglob("*")
-        if p.is_file() and "bblm" in p.name.lower())
+    # проверяется содержимое прочитанных файлов корпуса, а не только имена
+    # файлов. Это не превращает упоминание статьи в независимый вывод.
+    source_observation = coefficient_source_observation()
     coeff = {
         "element": "coefficient_rederivation",
         "status": "ВОПРОС",
@@ -218,7 +293,8 @@ def main(argv: list[str]) -> int:
                    "песочнице нет ни текста статьи, ни файла с этими "
                    "выражениями, поэтому единственный доступный путь — перенос "
                    "чисел, а он запрещён как тавтология"),
-        "searched_corpus_files_with_bblm_in_name": src_candidates,
+        "источник_наблюдения": source_observation["источник_наблюдения"],
+        "наблюдение": source_observation,
         "what_would_close_it": ("файл с аналитическими выражениями коэффициентов "
                                 "(формула + номер уравнения статьи), после чего "
                                 "вывод считается кодом и сравнивается с 0.230158 "
