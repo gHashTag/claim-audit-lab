@@ -29,13 +29,34 @@ def evaluate(
     hits: list[str],
 ) -> dict:
     """Классифицировать число воспроизводящих рецептов без научного вывода."""
-    if not source:
+    variant_count = len(variants) if isinstance(variants, dict) else 0
+    hit_names = list(hits) if isinstance(hits, list) else []
+    malformed = (
+        not isinstance(variants, dict)
+        or not isinstance(hits, list)
+        or any(not isinstance(name, str) for name in hit_names)
+        or len(set(hit_names)) != len(hit_names)
+    )
+    unknown = (
+        [name for name in hit_names if name not in variants]
+        if isinstance(variants, dict)
+        else []
+    )
+    if malformed or unknown:
+        status = "unsupported"
+        details = []
+        if malformed:
+            details.append("варианты или попадания имеют неправильную форму")
+        if unknown:
+            details.append("попадания отсутствуют среди предъявленных вариантов")
+        reason = "; ".join(details)
+    elif not source:
         status = "not-evaluated"
         reason = "источник наблюдаемого не предъявлен"
-    elif not hits:
+    elif not hit_names:
         status = "not-evaluated"
         reason = "ни один предъявленный вариант рецепта не воспроизводит наблюдаемое"
-    elif len(hits) == 1:
+    elif len(hit_names) == 1:
         status = "verified-in-scope"
         reason = "наблюдаемое воспроизводит ровно один предъявленный вариант"
     else:
@@ -48,9 +69,9 @@ def evaluate(
         "статус": status,
         "источник_наблюдения": source,
         "наблюдаемое": observed,
-        "вариантов_рецепта": len(variants),
-        "воспроизводящих_вариантов": len(hits),
-        "воспроизводящие_варианты": list(hits),
+        "вариантов_рецепта": variant_count,
+        "воспроизводящих_вариантов": len(hit_names),
+        "воспроизводящие_варианты": hit_names,
         "причина": reason,
         "ограничение": (
             "сторож проверяет неоднозначность рецепта, но не оценивает "
@@ -134,6 +155,17 @@ def selftest() -> int:
         check(
             "отсутствие попадания не становится покрытием",
             absent["статус"] == "not-evaluated",
+        )
+        unknown = evaluate(source, 0.4009, {"a": 0.4}, ["не предъявлен"])
+        check(
+            "неизвестное попадание не становится покрытием",
+            unknown["статус"] == "unsupported"
+            and "отсутствуют" in unknown["причина"],
+        )
+        duplicate = evaluate(source, 0.4009, {"a": 0.4}, ["a", "a"])
+        check(
+            "дубликат попадания не становится неоднозначностью",
+            duplicate["статус"] == "unsupported",
         )
     print(
         "самопроверка неоднозначности рецепта zeta: пройдено %d, провалено %d"

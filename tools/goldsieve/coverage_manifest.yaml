@@ -386,7 +386,7 @@ shell_checks:
   zeta_recipe_ambiguity_guard.py:
     gate_step: неоднозначность рецепта zeta
     selftest_cmd: [zeta_recipe_ambiguity_guard.py, --selftest]
-    selftest_checks: 3
+    selftest_checks: 5
     role: >-
       несколько законных вариантов рецепта, воспроизводящих одно наблюдаемое
       число, оставляются not-evaluated вместо выбора рецепта задним числом
