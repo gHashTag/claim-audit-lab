@@ -517,13 +517,31 @@ def cmd_regress(args):
         # Разбиение детерминировано по имени кейса, поэтому соседний тик может
         # выбрать следующий сегмент без изменения baseline и без потери
         # наблюдаемости: каждый сегмент всё равно будет выбран регулярно.
+        # Ротация может задаваться прямо в команде. Это важнее переменных
+        # окружения для фонового запуска: номер тика становится явным
+        # воспроизводимым входом и не теряется в оболочке nohup. Переменные
+        # окружения оставлены для старых автоматических запусков.
         try:
-            shard_count = max(1, int(os.environ.get(
-                "GOLDSIEVE_REGRESSION_SHARDS", "1")))
-            shard_index = int(os.environ.get(
-                "GOLDSIEVE_REGRESSION_SHARD", "0")) % shard_count
-        except ValueError:
-            shard_count, shard_index = 1, 0
+            env_count = os.environ.get("GOLDSIEVE_REGRESSION_SHARDS")
+            env_index = os.environ.get("GOLDSIEVE_REGRESSION_SHARD")
+            arg_count = getattr(args, "shard_count", None)
+            arg_index = getattr(args, "shard_index", None)
+            tick_number = getattr(args, "tick_number", None)
+            shard_count = max(1, int(
+                arg_count if arg_count is not None
+                else (env_count if env_count is not None else 1)))
+            if arg_index is not None:
+                raw_index = arg_index
+            elif env_index is not None:
+                raw_index = env_index
+            elif tick_number is not None:
+                raw_index = tick_number
+            else:
+                raw_index = 0
+            shard_index = int(raw_index) % shard_count
+        except (TypeError, ValueError):
+            print("ОТКАЗ: параметры ротации регресса должны быть целыми")
+            return 2
         if shard_count > 1:
             import hashlib
             selected_cases = {
@@ -696,6 +714,12 @@ def main(argv=None):
                     help="проверить только изменившиеся кейсы и входы корпуса")
     rg.add_argument("--update", action="store_true",
                     help="записать новые вердикты в реестр, сохранив прежний")
+    rg.add_argument("--shard-count", type=int, default=None,
+                    help="число сегментов для ротации неразрешённых источников")
+    rg.add_argument("--shard-index", type=int, default=None,
+                    help="индекс сегмента; имеет приоритет над номером тика")
+    rg.add_argument("--tick-number", type=int, default=None,
+                    help="номер тика для детерминированной ротации сегмента")
     rg.set_defaults(fn=cmd_regress)
 
     n = sub.add_parser("new", help="заготовка новой задачи")
