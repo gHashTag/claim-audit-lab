@@ -50,9 +50,30 @@ def _scope(signature: object, records: list[dict]) -> set[int] | None:
     if covers == "all":
         return set(range(1, len(records) + 1))
     if not isinstance(covers, list) or not all(
-            isinstance(item, int) and item > 0 for item in covers):
+            isinstance(item, int) and not isinstance(item, bool) and item > 0
+            for item in covers):
         return None
     return set(covers)
+
+
+def _scope_out_of_range(signature: object, records: list[dict]) -> bool:
+    """Обнаружить ссылки на записи, которых в журнале нет.
+
+    Простое пересечение с ``expected`` скрывало бы подменённую область:
+    ``covers: [1, 999]`` выглядело как частичное покрытие, хотя 999 не может
+    относиться к прочитанному журналу. Это повреждённая форма контракта, а не
+    честно неоценённая область.
+    """
+    if not isinstance(signature, dict):
+        return False
+    covers = signature.get("covers")
+    if not isinstance(covers, list):
+        return False
+    return any(
+        isinstance(item, int) and not isinstance(item, bool)
+        and (item < 1 or item > len(records))
+        for item in covers
+    )
 
 
 def audit(path: Path) -> dict:
@@ -91,6 +112,18 @@ def audit(path: Path) -> dict:
         }
     covered: set[int] = set()
     for item in signatures:
+        if _scope_out_of_range(item, records):
+            return {
+                "статус": "unsupported",
+                "причина": (
+                    "область действия подписи содержит номер записи вне "
+                    "прочитанного журнала"
+                ),
+                "журнал": str(path),
+                "записей": len(records),
+                "подписей": len(signatures),
+                "покрытие": len(covered),
+            }
         part = _scope(item, records)
         if part is not None:
             covered.update(part)
@@ -160,6 +193,16 @@ def selftest() -> tuple[int, int]:
               result["статус"] == "not-evaluated"
               and result["покрытие"] == 2
               and "ключ" in result["причина"])
+
+        out_of_range = root / "вне-диапазона.jsonl"
+        out_of_range.write_text(
+            '{"seq": 1, "signature": {"covers": [1, 9]}}\n',
+            encoding="utf-8",
+        )
+        result = audit(out_of_range)
+        check("ссылка за пределами журнала получает unsupported",
+              result["статус"] == "unsupported"
+              and "вне" in result["причина"])
 
         malformed = root / "повреждено.jsonl"
         malformed.write_text('не JSON\n', encoding="utf-8")
