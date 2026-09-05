@@ -222,6 +222,7 @@ else
     # машинная суть. Неполный или оборванный отчёт не является покрытием.
     step "чувствительность контракта доклада" "$BASE_PY" report_contract_guard.py --selftest
     step "контракт последнего доклада" "$BASE_PY" report_contract_guard.py
+    step "исторический аудит формы докладов" "$BASE_PY" report_contract_guard.py --history /home/user/workspace/cron_tracking/8dff7aa3
     # Машинная суть — единственный вход запрета холостого тика. Проверяем её
     # размерность и типы отдельно, чтобы испорченное поле не стало молчанием.
     step "чувствительность формы машинной сути" "$BASE_PY" audit_substance_guard.py --selftest

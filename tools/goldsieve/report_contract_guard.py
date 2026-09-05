@@ -10,6 +10,7 @@
 
 Команды:
     python3 report_contract_guard.py
+    python3 report_contract_guard.py --history /home/user/workspace/cron_tracking/8dff7aa3
     python3 report_contract_guard.py --selftest
 """
 
@@ -107,6 +108,43 @@ def scan(root: Path = ROOT) -> dict:
     return inspect(report, _substance_for(report, root))
 
 
+def scan_history(root: Path = ROOT) -> dict:
+    """Проверить каждый предъявленный исторический доклад, не восстанавливая его."""
+    reports = sorted(root.glob("tick*-report.md"))
+    rows = []
+    for report in reports:
+        substance = _substance_for(report, root)
+        if not substance.exists():
+            rows.append({
+                "доклад": str(report),
+                "суть": str(substance),
+                "статус": "not-evaluated",
+                "причина": "машинная суть доклада отсутствует",
+            })
+            continue
+        result = inspect(report, substance)
+        rows.append({
+            "доклад": str(report),
+            "суть": str(substance),
+            "статус": result["статус"],
+            "причина": result["причина"],
+        })
+    counts = {}
+    for row in rows:
+        counts[row["статус"]] = counts.get(row["статус"], 0) + 1
+    return {
+        "статус": "verified-in-scope",
+        "режим": "исторический аудит формы",
+        "доклады": len(rows),
+        "статусы": counts,
+        "наблюдения": rows,
+        "ограничение": (
+            "аудит подтверждает, что каждый найденный доклад классифицирован; "
+            "not-evaluated не превращается в доказанный научный результат"
+        ),
+    }
+
+
 def selftest() -> int:
     good = bad = 0
 
@@ -166,6 +204,11 @@ def selftest() -> int:
               result["статус"] == "not-evaluated"
               and not result["поля_сути_проверены"])
 
+        history = scan_history(root)
+        check("исторический аудит классифицирует предъявленные доклады",
+              history["доклады"] == 1
+              and history["статусы"] == {"verified-in-scope": 1})
+
     print("самопроверка контракта доклада: %d пройдено, %d провалено" % (good, bad))
     return 1 if bad else 0
 
@@ -173,8 +216,24 @@ def selftest() -> int:
 def main(argv: list[str]) -> int:
     if argv == ["--selftest"]:
         return selftest()
+    if argv in (["--history"], ["--history", str(ROOT)]):
+        result = scan_history(ROOT)
+        OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n",
+                       encoding="utf-8")
+        print("сторож исторических докладов: %s; докладов: %d; статусы: %s"
+              % (result["статус"], result["доклады"],
+                 json.dumps(result["статусы"], ensure_ascii=False, sort_keys=True)))
+        return 0
+    if len(argv) == 2 and argv[0] == "--history":
+        result = scan_history(Path(argv[1]))
+        OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n",
+                       encoding="utf-8")
+        print("сторож исторических докладов: %s; докладов: %d; статусы: %s"
+              % (result["статус"], result["доклады"],
+                 json.dumps(result["статусы"], ensure_ascii=False, sort_keys=True)))
+        return 0
     if argv not in ([], ["--scan"]):
-        print("использование: --selftest или --scan")
+        print("использование: --selftest, --scan или --history <каталог>")
         return 2
     try:
         result = scan()
