@@ -11,6 +11,7 @@
 from __future__ import annotations
 
 import json
+import math
 import subprocess
 import sys
 import tempfile
@@ -22,6 +23,22 @@ OUT = HERE / "zeta_recipe_ambiguity_guard.json"
 PASSPORT = HERE / "zeta_passport.py"
 
 
+def _variant_number(value: object) -> float | None:
+    """Извлечь проверяемое число варианта, не принимая одно описание."""
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, (int, float)):
+        number = float(value)
+    elif isinstance(value, dict):
+        number = value.get("std")
+        if isinstance(number, bool) or not isinstance(number, (int, float)):
+            return None
+        number = float(number)
+    else:
+        return None
+    return number if math.isfinite(number) else None
+
+
 def evaluate(
     source: str,
     observed: object,
@@ -31,11 +48,21 @@ def evaluate(
     """Классифицировать число воспроизводящих рецептов без научного вывода."""
     variant_count = len(variants) if isinstance(variants, dict) else 0
     hit_names = list(hits) if isinstance(hits, list) else []
+    source_is_file = (
+        isinstance(source, str)
+        and bool(source)
+        and Path(source).is_file()
+    )
     malformed = (
         not isinstance(variants, dict)
         or not isinstance(hits, list)
         or any(not isinstance(name, str) for name in hit_names)
         or len(set(hit_names)) != len(hit_names)
+        or any(
+            _variant_number(variants.get(name)) is None
+            for name in hit_names
+            if isinstance(variants, dict) and name in variants
+        )
     )
     unknown = (
         [name for name in hit_names if name not in variants]
@@ -53,6 +80,9 @@ def evaluate(
     elif not source:
         status = "not-evaluated"
         reason = "источник наблюдаемого не предъявлен"
+    elif not source_is_file:
+        status = "not-evaluated"
+        reason = "источник наблюдаемого не является существующим файлом"
     elif not hit_names:
         status = "not-evaluated"
         reason = "ни один предъявленный вариант рецепта не воспроизводит наблюдаемое"
@@ -69,6 +99,7 @@ def evaluate(
         "статус": status,
         "источник_наблюдения": source,
         "наблюдаемое": observed,
+        "источник_является_файлом": source_is_file,
         "вариантов_рецепта": variant_count,
         "воспроизводящих_вариантов": len(hit_names),
         "воспроизводящие_варианты": hit_names,
@@ -135,6 +166,7 @@ def selftest() -> int:
 
     with tempfile.TemporaryDirectory(prefix="zeta-recipe-ambiguity-") as tmp:
         source = str(Path(tmp) / "наблюдение.md")
+        Path(source).write_text("| Std deviation | 0,4009 |\n", encoding="utf-8")
         different = evaluate(source, 0.4009, {"a": 0.4}, ["a"])
         check(
             "один вариант получает verified-in-scope",
@@ -166,6 +198,18 @@ def selftest() -> int:
         check(
             "дубликат попадания не становится неоднозначностью",
             duplicate["статус"] == "unsupported",
+        )
+        missing_source = evaluate(
+            str(Path(tmp) / "нет.md"), 0.4009, {"a": 0.4}, ["a"]
+        )
+        check(
+            "несуществующий источник не становится покрытием",
+            missing_source["статус"] == "not-evaluated",
+        )
+        nonfinite = evaluate(source, 0.4009, {"a": float("nan")}, ["a"])
+        check(
+            "нечисловой вариант не становится покрытием",
+            nonfinite["статус"] == "unsupported",
         )
     print(
         "самопроверка неоднозначности рецепта zeta: пройдено %d, провалено %d"
