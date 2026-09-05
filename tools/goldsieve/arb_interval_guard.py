@@ -68,13 +68,29 @@ def _csv_report(path: Path, text: str) -> dict:
                    for value in method_values)
     intervals = []
     malformed = []
+    non_arb_intervals = []
     if lower and upper:
         for index, row in enumerate(rows, 2):
+            method_value = str(row.get(method_field, "")).lower() if method_field else ""
+            row_is_arb = (
+                "arb" in method_value
+                or "шаров" in method_value
+                or "интервал" in method_value
+            )
             try:
                 lo, hi = _finite(row[lower]), _finite(row[upper])
                 if lo > hi:
                     raise ValueError("нижняя граница выше верхней")
-                intervals.append({"строка": index, "нижняя": lo, "верхняя": hi})
+                interval = {
+                    "строка": index, "нижняя": lo, "верхняя": hi,
+                    "метод_arb": row_is_arb,
+                }
+                if row_is_arb:
+                    intervals.append(interval)
+                else:
+                    # Числовой интервал другой арифметики не является
+                    # наблюдением Arb и не должен закрывать этот долг.
+                    non_arb_intervals.append(interval)
             except (KeyError, TypeError, ValueError) as exc:
                 malformed.append({"строка": index, "причина": str(exc)})
     return {
@@ -84,6 +100,7 @@ def _csv_report(path: Path, text: str) -> dict:
         "есть_нижняя_граница": lower is not None,
         "есть_верхняя_граница": upper is not None,
         "интервалы": intervals,
+        "интервалы_не_Arb": non_arb_intervals,
         "ошибки": malformed,
     }
 
@@ -164,6 +181,12 @@ def selftest() -> int:
           evaluate([_csv_report(Path("фикстура_reversed.csv"),
                                 reversed_bounds)])["статус"]
           == "unsupported")
+    mixed = "method,lower,upper\nordinary,1.0,1.1\nArb,2.0,2.1\n"
+    mixed_report = _csv_report(Path("фикстура_mixed.csv"), mixed)
+    check("интервал другой арифметики не засчитывается как Arb",
+          len(mixed_report["интервалы"]) == 1
+          and len(mixed_report["интервалы_не_Arb"]) == 1
+          and mixed_report["интервалы"][0]["метод_arb"])
     print("самопроверка шаровой арифметики Arb: пройдено %d, провалено %d"
           % (good, bad))
     return 1 if bad else 0
