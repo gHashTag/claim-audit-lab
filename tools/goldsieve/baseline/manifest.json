@@ -139,7 +139,7 @@
     "chi2_dof_guard.py": "2523accba898544a4c3917eb69ebe538ae058657494c2c101b7f587480d1eb24",
     "chi2_dof_rederivation.py": "86fc47beaccde0975112e3dfbb61270c4f187cee67d631a65e5f278dc492c52b",
     "chi2_dof_semantics_guard.py": "49b09e7b99f1aeb5738e4a318c4823409d757c6d5e6512fa9bf3d351ded6e5eb",
-    "ci_gate.sh": "1b1acfcaf3b1cc97f961f4cebc5d45a91992c088a2303103b19facee730d4abc",
+    "ci_gate.sh": "517d33c5f0e0992c9162e4ed67e81f6cc5b182c1abb726e1e80880a496763014",
     "claims.yaml": "557c4545fadc7512b6bb98d2bacbd632fd3d142b589cf128a3274f8c100d9034",
     "coverage_manifest.py": "8584989d602eb8157ac96b7d23a797c92ef716daa066b511604aae24f4be47b7",
     "coverage_manifest.yaml": "1b1cee32a11e06334e183159e0fa34041e085f65c854c1a75bd796712a487df9",
@@ -192,6 +192,7 @@
     "measure_identity.py": "b5bafcebbf50115c6c5ef54106350a43fe8cb7f8282182346459beebab8b0b59",
     "meff_common_guard.py": "358528f44b5697b018a1c8cbd28916621e2e030c3c78be687089c87025c6806f",
     "mutation_identity.py": "4050d47c1d13bc6e5c8c1d04db87ad522437cb522f3d65232d3b15ead97bd1e8",
+    "numeric_domain_guard.py": "bb9f18cde2757d3fac72050b9019cb41b225d8b5618deefe6831c1dba2515799",
     "os_matrix_audit.py": "8572fcf98cad47cce6f7d86a5be4d7403f013c940541bbd36ea6f748b7815867",
     "patch_corpus_t41.py": "127bfc7a43577e7d97d32807b80fbfb8fca42d1c2782a549b12cac6be3dbbb01",
     "patch_freeze.py": "5842ae2447d651113ea8db3185c7583a829c6010a22f20574cef759c5a477b64",
@@ -221,7 +222,7 @@
     "zeta_passport_provenance_guard.py": "0f866a68e48aac57460ef151622223db37a33e2b9a20b97ac903ecc31025d548",
     "zeta_recipe_ambiguity_guard.py": "0cd8b32fd254820137e35c21c4c91d6f54b1e435108e836809b863a090bcbb66"
   },
-  "files_digest": "c413b3632acdca5d",
+  "files_digest": "442b0dbaed03727e",
   "machine": "x86_64",
   "metrics": {
     "measure_exit": 0,

@@ -243,6 +243,11 @@ else
     step "учёт BBLM: один источник истины"  "$BASE_PY" bblm_accounting.py
     step "чувствительность сторожа формы и масштаба BBLM" "$BASE_PY" bblm_shape_scale_guard.py --selftest
     step "аудит формы и масштаба BBLM" "$BASE_PY" bblm_shape_scale_guard.py
+    # Тик 371: стандартный json.loads допускает NaN/Infinity вне стандарта
+    # JSON. Такие значения могут скрыть нечисловой результат в машинном
+    # отчёте; строгий разбор обязан остановить этот путь.
+    step "конечность чисел машинных отчётов" "$BASE_PY" numeric_domain_guard.py
+    step "чувствительность конечности чисел" "$BASE_PY" numeric_domain_guard.py --selftest
     step "чувствительность линтера переносимости" "$BASE_PY" portability_lint.py --selftest
     step "переносимость: кодировки и python3" "$BASE_PY" portability_lint.py
     # Проверка нового риска: успешный общий run не должен скрывать удалённое,
