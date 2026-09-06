@@ -482,6 +482,18 @@ shell_checks:
     limits: >-
       проверка формы не подтверждает научный результат и не заменяет
       проверку происхождения чисел
+  unsupported_construct_guard.py:
+    gate_step: чувствительность сторожа неохваченных конструкций
+    selftest_cmd: [unsupported_construct_guard.py, --selftest]
+    selftest_checks: 4
+    role: >-
+      отмечает генераторы, корутины, contextvars, exec/eval и метаклассы,
+      для которых анализатор не заявляет поддержку; найденная конструкция
+      получает unsupported с путём и строкой, ошибка разбора получает
+      not-evaluated
+    limits: >-
+      статический обзор не доказывает отсутствие динамически созданной
+      конструкции и не превращает отсутствие риска в научную проверку кейса
   snapshot_manifest.py:
     gate_step: проверяемый снимок
     selftest_cmd: [snapshot_manifest.py, selftest]

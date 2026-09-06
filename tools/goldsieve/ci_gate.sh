@@ -294,6 +294,8 @@ else
     step "чувствительность однозначности ключей" "$BASE_PY" json_duplicate_key_guard.py --selftest
     step "чувствительность линтера переносимости" "$BASE_PY" portability_lint.py --selftest
     step "переносимость: кодировки и python3" "$BASE_PY" portability_lint.py
+    step "чувствительность сторожа неохваченных конструкций" "$BASE_PY" unsupported_construct_guard.py --selftest
+    step "аудит неохваченных конструкций кейсов" "$BASE_PY" unsupported_construct_guard.py
     # Проверка нового риска: успешный общий run не должен скрывать удалённое,
     # незавершённое, дублированное или подменённое задание матрицы.
     step "полнота ОС-матрицы"           "$BASE_PY" os_matrix_audit.py --selftest

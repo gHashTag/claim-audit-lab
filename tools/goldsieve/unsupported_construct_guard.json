@@ -1,0 +1,904 @@
+{
+  "статус": "unsupported",
+  "прочитано_кейсов": 119,
+  "неохваченные_конструкции": 128,
+  "наблюдения": [
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/appendix_external_targets_20260813.py",
+      "строка": 261,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/appendix_external_targets_20260813.py",
+      "строка": 262,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/bitnet_coherence_throughput_recipe_20260817.py",
+      "строка": 84,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/bitnet_coherence_throughput_recipe_20260817.py",
+      "строка": 93,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/bitnet_coherence_throughput_recipe_20260817.py",
+      "строка": 102,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/bitnet_coherence_throughput_recipe_20260817.py",
+      "строка": 106,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/ckm_lqg_external_20260813.py",
+      "строка": 240,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/ckm_lqg_external_20260813.py",
+      "строка": 241,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/ckm_lqg_external_20260813.py",
+      "строка": 242,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/ckm_vtd_vts_vub_external_20260814.py",
+      "строка": 258,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cycle46_deadline_scheduling_recipe_20260816.py",
+      "строка": 55,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cycle46_deadline_scheduling_recipe_20260816.py",
+      "строка": 72,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cycle50_adaptive_caching_recipe_20260816.py",
+      "строка": 59,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/dark_photon_x17_formula.py",
+      "строка": 145,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 127,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 169,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 280,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 281,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 282,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 70,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 76,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 150,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 198,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 113,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_additional_claims_20260814.py",
+      "строка": 110,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_alpha_inverse_source_20260817.py",
+      "строка": 167,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_strong_coincidences_20260815.py",
+      "строка": 42,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_strong_coincidences_20260815.py",
+      "строка": 44,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_strong_coincidences_20260815.py",
+      "строка": 68,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_strong_coincidences_20260815.py",
+      "строка": 82,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_variance_claims_20260814.py",
+      "строка": 198,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_variance_claims_20260814.py",
+      "строка": 199,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_variance_claims_20260814.py",
+      "строка": 58,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_variance_claims_20260814.py",
+      "строка": 69,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_variance_claims_20260814.py",
+      "строка": 125,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_variance_claims_20260814.py",
+      "строка": 100,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/delta001_variance_claims_20260814.py",
+      "строка": 122,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/dirac_cp_phase_formula.py",
+      "строка": 153,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/established_constants_fit_count.py",
+      "строка": 26,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/established_constants_fit_count.py",
+      "строка": 27,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/established_constants_fit_count.py",
+      "строка": 89,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/established_constants_fit_count.py",
+      "строка": 90,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/formulas_deploy_external_20260814.py",
+      "строка": 186,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/formulas_external_targets_20260813.py",
+      "строка": 202,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/formulas_external_targets_20260813.py",
+      "строка": 203,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/formulas_precision_external_20260814.py",
+      "строка": 243,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/gamma_bi_meissner_equation_20260817.py",
+      "строка": 186,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_final_report_consistency_20260817.py",
+      "строка": 63,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_final_report_consistency_20260817.py",
+      "строка": 64,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_final_report_consistency_20260817.py",
+      "строка": 90,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_final_report_consistency_20260817.py",
+      "строка": 91,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_final_report_consistency_20260817.py",
+      "строка": 87,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v238_dim1024_quality_recipe_20260817.py",
+      "строка": 69,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v238_dim1024_quality_recipe_20260817.py",
+      "строка": 70,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v238_dim1024_quality_recipe_20260817.py",
+      "строка": 71,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v240_statistics_20260814.py",
+      "строка": 197,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v240_statistics_20260814.py",
+      "строка": 198,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v240_statistics_20260814.py",
+      "строка": 199,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v240_train_ppl_20260815.py",
+      "строка": 52,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v246_phrase_memorization_recipe_20260817.py",
+      "строка": 79,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v246_phrase_memorization_recipe_20260817.py",
+      "строка": 89,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v246_phrase_memorization_recipe_20260817.py",
+      "строка": 99,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/golden_chain_v252_held_out_recipe_20260816.py",
+      "строка": 67,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/gravitational_constant_external_20260814.py",
+      "строка": 157,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/hubble_planck_external_20260823.py",
+      "строка": 164,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/jarlskog_theta13_external_20260814.py",
+      "строка": 268,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/jarlskog_theta13_external_20260814.py",
+      "строка": 269,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/jarlskog_theta13_external_20260814.py",
+      "строка": 212,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/khinchin_estimator_recipe_20260816.py",
+      "строка": 52,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/level11_neurosymbolic_benchmark_recipe_20260817.py",
+      "строка": 63,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/level11_neurosymbolic_benchmark_recipe_20260817.py",
+      "строка": 64,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/level11_neurosymbolic_benchmark_recipe_20260817.py",
+      "строка": 93,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/level11_neurosymbolic_benchmark_recipe_20260817.py",
+      "строка": 94,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/level11_neurosymbolic_benchmark_recipe_20260817.py",
+      "строка": 90,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/m_theory_dimension_formula.py",
+      "строка": 125,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/master_catalog_msme_error.py",
+      "строка": 112,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/neutrino_mixing_external_20260814.py",
+      "строка": 264,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/neutron_lifetime_formula.py",
+      "строка": 124,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/pellis_external_targets_20260814.py",
+      "строка": 269,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/pellis_external_targets_20260814.py",
+      "строка": 270,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/pellis_external_targets_20260814.py",
+      "строка": 271,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/proton_mass_ratio_error.py",
+      "строка": 140,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/qcd_phase_tc_formula.py",
+      "строка": 130,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/readme_mp_me_external_20260818.py",
+      "строка": 136,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/readme_mp_me_external_20260818.py",
+      "строка": 33,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/reionization_zre_prediction.py",
+      "строка": 128,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_fit_multiplicity.py",
+      "строка": 127,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_fit_multiplicity.py",
+      "строка": 45,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_formula_complete_v2_external_20260814.py",
+      "строка": 213,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_formula_full_external_20260814.py",
+      "строка": 200,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_predictions_registry_recipe_20260817.py",
+      "строка": 47,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_search_count.py",
+      "строка": 32,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_search_count.py",
+      "строка": 37,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py",
+      "строка": 27,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py",
+      "строка": 41,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py",
+      "строка": 47,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py",
+      "строка": 70,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py",
+      "строка": 75,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py",
+      "строка": 76,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py",
+      "строка": 102,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py",
+      "строка": 134,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_table_audit_20260813.py",
+      "строка": 89,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_tsirelson_exact_external_20260817.py",
+      "строка": 188,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_two_formula_composition_recipe_20260817.py",
+      "строка": 110,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/transcendental_catalog_values.py",
+      "строка": 153,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/transcendental_catalog_values_2.py",
+      "строка": 136,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/transcendental_catalog_values_3.py",
+      "строка": 126,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/trinity_external_targets_20260813.py",
+      "строка": 237,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/trinity_external_targets_20260813.py",
+      "строка": 239,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/wilcoxon_v20_pvalue_20260815.py",
+      "строка": 99,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/wilcoxon_v20_pvalue_20260815.py",
+      "строка": 81,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/wilcoxon_v20_pvalue_20260815.py",
+      "строка": 82,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/wilcoxon_v20_pvalue_20260815.py",
+      "строка": 87,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/wilcoxon_v20_pvalue_20260815.py",
+      "строка": 111,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_bblm_finite_height_comparison_20260818.py",
+      "строка": 149,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_bblm_finite_height_comparison_20260818.py",
+      "строка": 154,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_bblm_finite_height_comparison_20260818.py",
+      "строка": 158,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_bblm_finite_height_comparison_20260818.py",
+      "строка": 153,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_chi2_independent_20260814.py",
+      "строка": 117,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_chi2_independent_20260814.py",
+      "строка": 134,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_chi2_statistics_20260814.py",
+      "строка": 50,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_chi2_statistics_20260814.py",
+      "строка": 97,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_finite_height_extrapolation_20260816.py",
+      "строка": 83,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_gue.py",
+      "строка": 67,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_p95_summary_20260815.py",
+      "строка": 92,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_p95_summary_20260815.py",
+      "строка": 56,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_std_unfolding_passport_20260815.py",
+      "строка": 54,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_unfolding_std_recipe_20260815.py",
+      "строка": 89,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    }
+  ],
+  "ограничение": "отсутствие найденной конструкции не доказывает научную истинность кейса; неизвестные динамические конструкции могут остаться not-evaluated"
+}
