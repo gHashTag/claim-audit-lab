@@ -1,24 +1,23 @@
 {
   "статус": "not-evaluated",
-  "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick394-report.md",
-  "путей": 16,
+  "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick395-report.md",
+  "путей": 15,
   "без_sha256": [
     "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
-    "/home/user/workspace/cron_tracking/20fee222/tick394-baseline-snapshot.txt",
-    "/home/user/workspace/cron_tracking/20fee222/tick394-bblm-accounting.txt",
-    "/home/user/workspace/cron_tracking/20fee222/tick394-bblm-protocol.txt",
-    "/home/user/workspace/cron_tracking/20fee222/tick394-gate-final2.txt",
-    "/home/user/workspace/cron_tracking/20fee222/tick394-independence.txt",
-    "/home/user/workspace/cron_tracking/20fee222/tick394-journal.txt",
-    "/home/user/workspace/cron_tracking/20fee222/tick394-meff.txt",
-    "/home/user/workspace/cron_tracking/20fee222/tick394-regression-final.txt",
-    "/home/user/workspace/cron_tracking/20fee222/tick394-report-contract.txt",
-    "/home/user/workspace/cron_tracking/20fee222/tick394-tri-snapshot.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick395-baseline-snapshot.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick395-gate-final.log",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick395-gate-final.rc",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick395-os-jobs.json",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick395-os-matrix.json",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick395-progress-substance.json",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick395-regression.log",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick395-regression.rc",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick395-repo-sync-guard.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick395-tri-snapshot.txt",
+    "/home/user/workspace/goldsieve/bblm_status_consistency_guard.json",
+    "/home/user/workspace/goldsieve/bblm_status_consistency_guard.py",
     "/home/user/workspace/goldsieve/ci_gate.sh",
-    "/home/user/workspace/goldsieve/coverage_manifest.yaml",
-    "/home/user/workspace/goldsieve/goldsieve/cli.py",
-    "/home/user/workspace/goldsieve/recipe_tautology_guard.json",
-    "/home/user/workspace/goldsieve/recipe_tautology_guard.py"
+    "/home/user/workspace/goldsieve/coverage_manifest.yaml"
   ],
   "несовпадающих_sha256": [],
   "наблюдения": [
@@ -28,79 +27,74 @@
       "фактический_sha256": "0f7b06f23dde9e8a3cab5d7057d39b2839d838306e7abdd56a21be317b9298aa"
     },
     {
-      "путь": "/home/user/workspace/cron_tracking/20fee222/tick394-baseline-snapshot.txt",
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick395-baseline-snapshot.txt",
       "предъявленный_sha256": null,
-      "фактический_sha256": "69891307b2c07ba6bcdf2f319c622b7461cbd11643a75d1e8d567954d499893c"
+      "фактический_sha256": "3de0f868a81109d024ed5ebb315c7ad9ce52c2fe14fd2dcfb8abc9102c296410"
     },
     {
-      "путь": "/home/user/workspace/cron_tracking/20fee222/tick394-bblm-accounting.txt",
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick395-gate-final.log",
       "предъявленный_sha256": null,
-      "фактический_sha256": "49f8244b3c1f936c0eceba5f87b5398a2ca54bf0153e7df59258f03b34e32a46"
+      "фактический_sha256": "22c59291296d92b74fac4777ff4fd70af301f98674beb28a528461377a2a0699"
     },
     {
-      "путь": "/home/user/workspace/cron_tracking/20fee222/tick394-bblm-protocol.txt",
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick395-gate-final.rc",
       "предъявленный_sha256": null,
-      "фактический_sha256": "8276e1726d95cc91f2c0872fef51f1001d416040f4c2a81d60e1b8a21f6e1af4"
+      "фактический_sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
     },
     {
-      "путь": "/home/user/workspace/cron_tracking/20fee222/tick394-gate-final2.txt",
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick395-os-jobs.json",
       "предъявленный_sha256": null,
-      "фактический_sha256": "8f143f5351cf6d97a7741d1a7014ed2d130dc387d07bf7802378db7c1fd4d362"
+      "фактический_sha256": "8d0c8ee3df3f6579f3ebbdab793c62a0a7c9b1ca0f0193de30469db4f73669a0"
     },
     {
-      "путь": "/home/user/workspace/cron_tracking/20fee222/tick394-independence.txt",
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick395-os-matrix.json",
       "предъявленный_sha256": null,
-      "фактический_sha256": "b0a8b7e71f7c373f2ce8bd27dc5634aa45c664f28be2f7e77b03fed230285458"
+      "фактический_sha256": "bffa7ef471b2ec5103768c77b9c11c09225103d671206ef0c44d75acc7836138"
     },
     {
-      "путь": "/home/user/workspace/cron_tracking/20fee222/tick394-journal.txt",
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick395-progress-substance.json",
       "предъявленный_sha256": null,
-      "фактический_sha256": "529b9ac26ce3645d7e2bb8dd0fb49d9fc595502e9b8d5c9f16b92d482622c1f7"
+      "фактический_sha256": "c0dbc639d07eaf0d62a052b0c57176b066b974c9aa0cf7deeed422e74ddc5584"
     },
     {
-      "путь": "/home/user/workspace/cron_tracking/20fee222/tick394-meff.txt",
-      "предъявленный_sha256": null,
-      "фактический_sha256": "b2633a453db87b8e0dd6f581b0a57980e4f9b4df8e0b7c145c9bf78747cd1be0"
-    },
-    {
-      "путь": "/home/user/workspace/cron_tracking/20fee222/tick394-regression-final.txt",
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick395-regression.log",
       "предъявленный_sha256": null,
       "фактический_sha256": "4ecd139b60f9345585b16140975ae0a28615c8994a7dd15266caa5a7497c0cca"
     },
     {
-      "путь": "/home/user/workspace/cron_tracking/20fee222/tick394-report-contract.txt",
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick395-regression.rc",
       "предъявленный_sha256": null,
-      "фактический_sha256": "5e85fd2a7aaec20420a32f5e83b438a5513bcd962afec399984d4ec029086e67"
+      "фактический_sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
     },
     {
-      "путь": "/home/user/workspace/cron_tracking/20fee222/tick394-tri-snapshot.txt",
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick395-repo-sync-guard.txt",
       "предъявленный_sha256": null,
-      "фактический_sha256": "4044eb5538a9897bab2d9ac37cd0280491f22d4264a6d8bcd95b5774f25a7000"
+      "фактический_sha256": "f8cac5b0f7d984050561862a0fe60fb7f73147d89ce484d3c8c3ef8975f3d48e"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick395-tri-snapshot.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "900d382a8a02df5247158b0f81ffd4dd8fbe2c3658ddb26098c2f2c680799056"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/bblm_status_consistency_guard.json",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "5db3d88f039bdeb8680eb4e6454b0579a759853a203a0e80d7c26d3831ee0d48"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/bblm_status_consistency_guard.py",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "bfde9000ff0768d71ea14cd1fc207b60b2c16e8385a18ecc0bfd0c8ac1803f60"
     },
     {
       "путь": "/home/user/workspace/goldsieve/ci_gate.sh",
       "предъявленный_sha256": null,
-      "фактический_sha256": "a0dc26dd6a8a5be1a3face78bbef0d6b3f3221ba50b64459bed83c7531d5a2d2"
+      "фактический_sha256": "46d7d991992faf527f10f5acbcb9808ae1587f478ce5c32b3db3ed6e7985c9da"
     },
     {
       "путь": "/home/user/workspace/goldsieve/coverage_manifest.yaml",
       "предъявленный_sha256": null,
-      "фактический_sha256": "4fd2031384a31741a4b25ef71a90b51306df1b6a4062cd02a55ae5606c11d231"
-    },
-    {
-      "путь": "/home/user/workspace/goldsieve/goldsieve/cli.py",
-      "предъявленный_sha256": null,
-      "фактический_sha256": "dcbca946268bca4a6776c98fe1ff1389dcb027dfc12a4689b9eba1e8ead5f4bd"
-    },
-    {
-      "путь": "/home/user/workspace/goldsieve/recipe_tautology_guard.json",
-      "предъявленный_sha256": null,
-      "фактический_sha256": "82a8768b9081d076c7afbbc6002e34bb7e575692b4c8f2355fb5b1967766e195"
-    },
-    {
-      "путь": "/home/user/workspace/goldsieve/recipe_tautology_guard.py",
-      "предъявленный_sha256": null,
-      "фактический_sha256": "ed135cc7ea79060169c047aff89a1334472ae04bedeac547e6696c8fe2ee018d"
+      "фактический_sha256": "a9732cced4038514400595a90cddd07631538932d5019b1f6048cd3186f905ea"
     }
   ],
   "причина": "для части путей не предъявлен SHA-256 содержимого",

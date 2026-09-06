@@ -1,7 +1,7 @@
 {
  "суть": {
   "гейт": [
-   143,
+   147,
    2,
    0
   ],
@@ -22,12 +22,12 @@
    true
   ],
   "изменённые_файлы": [
-   "bblm_status_consistency_guard.py",
+   "skip_reason_contract_guard.py",
    "ci_gate.sh",
    "coverage_manifest.yaml"
   ]
  },
- "подпись": "049421e20f1a62fe",
+ "подпись": "3ea301ad81afeafc",
  "повторов_в_окне": 0,
  "единственный_файл": null,
  "длина_серии": 0,

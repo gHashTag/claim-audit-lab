@@ -69,6 +69,18 @@ audit_guards:
     mutation_target: удаление проверки границы разрешённого пути
     sensitivity: 3/3 самопроверки при доступном симлинке
     status_class: verified-in-scope
+  skip_reason_key_contract:
+    role: >-
+      литеральные ключи skip_reasons обязаны обозначать конкретное сито С1…С21
+      и иметь непустое объяснение; динамические части не объявляются
+      покрытыми
+    script: skip_reason_contract_guard.py
+    gate_step: контракт ключей skip_reasons
+    positive_fixture: cases/*.py с литеральными словарями причин пропуска
+    negative_fixture: ключ С0, пустое объяснение и динамическая часть
+    mutation_target: удаление проверки диапазона ключа или непустого объяснения
+    sensitivity: 4/4 самопроверки; 1198 литеральных ключей, 0 нарушений
+    status_class: verified-in-scope
   artifact_path_boundary:
     role: >-
       путь артефакта в журнале не должен уводить происхождение за разрешённые
