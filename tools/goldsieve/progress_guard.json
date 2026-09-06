@@ -1,7 +1,7 @@
 {
  "суть": {
   "гейт": [
-   121,
+   125,
    2,
    0
   ],
@@ -22,12 +22,13 @@
    true
   ],
   "изменённые_файлы": [
-   "artifact_uniqueness_guard.py",
+   "source_fragment_guard.py",
    "ci_gate.sh",
-   "coverage_manifest.yaml"
+   "coverage_manifest.yaml",
+   "claims.yaml"
   ]
  },
- "подпись": "c87394b283c7b096",
+ "подпись": "be79e50e26887447",
  "повторов_в_окне": 0,
  "единственный_файл": null,
  "длина_серии": 0,

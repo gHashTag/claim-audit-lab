@@ -14,7 +14,7 @@ cases/b007_vsa_speedup_20260815.py,"Табличное ускорение VSA р
 cases/bitnet_coherence_throughput_recipe_20260817.py,Отчёт BitNet отделяет связную генерацию от производительности теста ядра,ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,docs/docs/research/bitnet-report.md:1-220,247c2ca5bedd72da
 cases/bottom_mass_external_20260902.py,Формула массы b-кварка против внешней оценки PDG 2024,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:141,
 cases/c20_empty_family_guard_20260815.py,Пустое семейство С20 сохраняет вопрос вместо подтверждения,ВОПРОС,goldsieve/sieve.py:1440,
-cases/cifar10_metric_recipe_20260816.py,"Точность fp16 на CIFAR-10 равна 99,99 процента по воспроизводимому рецепту",ВОПРОС,data/results/cifar10_metrics.json; data/results/cifar10_summary.csv,a708af982fa12ee0
+cases/cifar10_metric_recipe_20260816.py,"Точность fp16 на CIFAR-10 равна 99,99 процента по воспроизводимому рецепту",ВОПРОС,data/results/cifar10_metrics.json;data/results/cifar10_summary.csv,a708af982fa12ee0
 cases/ckm_lqg_external_20260813.py,|V_cb| = γ³π согласуется с внешним значением CKM,ПУСТО,"docs/papers/README_FOR_SCIENTISTS.md:49,96",dec6ecc47e066f9a
 cases/ckm_lqg_external_20260813.py,|V_us| = 3γ/π согласуется с внешним значением CKM,ПУСТО,"docs/papers/README_FOR_SCIENTISTS.md:47,95",dec6ecc47e066f9a
 cases/ckm_lqg_external_20260813.py,γ = φ⁻³ согласуется с внешней оценкой параметра Барберо–Иммирци,ПУСТО,docs/papers/README_FOR_SCIENTISTS.md:20,dec6ecc47e066f9a
@@ -155,7 +155,7 @@ cases/trinity_external_targets_20260813.py,γ = φ⁻³ согласуется �
 cases/vsa_simd_benchmark_recipe_20260818.py,Отчёт VSA SIMD отделяет замер dot product от полноценной воспроизводимости производительности,ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,deploy/trinity-nexus/benchmarks/BENCHMARK_REPORT.md:1-63,673cbbcc54ea5c5e
 cases/wilcoxon_v20_pvalue_20260815.py,"Точное двустороннее p-значение критерия Вилкоксона равно 0,0625",ПОДТВЕРЖДЕНО,docs/research/ZENODO_V20_STATISTICAL_SIGNIFICANCE.md:156-163,759fee1903757b0c
 cases/z_boson_mass_external_20260902.py,Формула массы Z-бозона против внешней оценки PDG 2024,ВОПРОС,docs/docs/math-foundations/sacred-formulas.md:45,e969471db87977c8
-cases/zeta_bblm_finite_height_comparison_20260818.py,Ведущая BBLM-поправка объясняет три статистики расстояний дзета на верхних корзинах,ОПРОВЕРГНУТО,scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt; BBLM 2006,6c90b589383b96c8
+cases/zeta_bblm_finite_height_comparison_20260818.py,Ведущая BBLM-поправка объясняет три статистики расстояний дзета на верхних корзинах,ОПРОВЕРГНУТО,scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt,6c90b589383b96c8
 cases/zeta_chi2_independent_20260814.py,Сводка χ²/dof из таблицы совпадает с независимой реконструкцией по 100000 нулей,ОПРОВЕРГНУТО,data/zeta/zeta_bin_analysis_update.md:10-40,74e70460f38ecc48
 cases/zeta_chi2_statistics_20260814.py,"χ²/dof по десяти высотным корзинам = 2,67 ± 0,49",ПУСТО,data/zeta/zeta_bin_analysis_update.md:24-38,d32c98af192622e1
 cases/zeta_finite_height_extrapolation_20260816.py,Линейная экстраполяция по 1/L объясняет дефицит std нулей дзета точным GUE,ОПРОВЕРГНУТО,"scripts/height_extrapolation.py:1-15,139-151",e1ad8e54496b2d4e
@@ -164,7 +164,7 @@ cases/zeta_gue.py,колонка «GUE Expected» = 0.91 / 2.15 / 2.75,ПУСТ�
 cases/zeta_gue.py,наблюдённые расстояния совпадают с GUE в пределах 1%,ВОПРОС,data/zeta/zeros_odlyzko_100k.txt,3436c916a7878261
 cases/zeta_p95_summary_20260815.py,"Сводка p95 расстояний равна 1,7186 ± 0,0045",ОПРОВЕРГНУТО,data/zeta/zeta_bin_analysis_update.md:12-16,d32c98af192622e1
 cases/zeta_p99_gue_20260815.py,"99-й процентиль расстояний дзета равен 2,0680",ОПРОВЕРГНУТО,data/zeta/zeta_gue_analysis_results.md:34,fdcdd26763d39113
-cases/zeta_shape.py,масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка out-of-sample по верхним полосам высот),ОПРОВЕРГНУТО,"data/zeta/zeros_odlyzko_100k.txt, 4 полосы высот; BBLM 2006",8e0cc0c774a33542
+cases/zeta_shape.py,масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка out-of-sample по верхним полосам высот),ОПРОВЕРГНУТО,data/zeta/zeros_odlyzko_100k.txt,8e0cc0c774a33542
 cases/zeta_shape.py,форма распределения расстояний согласуется с точным законом GUE в пределах конечновыборочного разброса,ОПРОВЕРГНУТО,data/zeta/zeta_gue_analysis_results.md:форма распределения,8e0cc0c774a33542
 cases/zeta_std_gue_20260815.py,"Стандартное отклонение расстояний дзета равно 0,4009 против Wigner–surmise approximation 0,4220",ОПРОВЕРГНУТО,data/zeta/zeta_bin_analysis_update.md:124,d32c98af192622e1
 cases/zeta_std_unfolding_passport_20260815.py,"Паспорт развёртки дзета воспроизводит std Wigner–surmise approximation 0,42201569295012265 и объясняет 0,4009",ПОДТВЕРЖДЕНО,data/zeta/zeta_gue_analysis_results.md:34,fdcdd26763d39113

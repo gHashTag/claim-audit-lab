@@ -472,7 +472,7 @@ claims:
   target: 79e4ed3c2403facc
   novelty_key: zeta:gap_shape:v1
   inputs_digest: 8e0cc0c774a33542
-- source: data/zeta/zeros_odlyzko_100k.txt, 4 полосы высот; BBLM 2006
+- source: data/zeta/zeros_odlyzko_100k.txt
   case: cases/zeta_shape.py
   claim: масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка
     out-of-sample по верхним полосам высот)
@@ -778,7 +778,7 @@ claims:
     а не подтверждение применимости. НЕ доказан единственный истинный M_eff для другой
     выборки, степень зависимости вне заданной полосы 0,0056/0,6889, перенос результата
     на другие диапазоны и межплатформенная воспроизводимость.'
-- source: data/results/cifar10_metrics.json; data/results/cifar10_summary.csv
+- source: data/results/cifar10_metrics.json;data/results/cifar10_summary.csv
   case: cases/cifar10_metric_recipe_20260816.py
   claim: Точность fp16 на CIFAR-10 равна 99,99 процента по воспроизводимому рецепту
   verdict: ВОПРОС
@@ -1634,8 +1634,7 @@ claims:
     интерпретация формулы, универсальность модели и перенос на другие документы, источники,
     версии CPython и ОС.'
   novelty_class: новый источник и новый внешний риск публичного утверждения
-- source: scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt;
-    BBLM 2006
+- source: scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt
   case: cases/zeta_bblm_finite_height_comparison_20260818.py
   claim: Ведущая BBLM-поправка объясняет три статистики расстояний дзета на верхних
     корзинах

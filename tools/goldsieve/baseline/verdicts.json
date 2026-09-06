@@ -108,7 +108,7 @@
     "case": "cases/cifar10_metric_recipe_20260816.py",
     "claim": "Точность fp16 на CIFAR-10 равна 99,99 процента по воспроизводимому рецепту",
     "verdict": "ВОПРОС",
-    "source": "data/results/cifar10_metrics.json; data/results/cifar10_summary.csv",
+    "source": "data/results/cifar10_metrics.json;data/results/cifar10_summary.csv",
     "inputs_digest": "a708af982fa12ee0"
   },
   {
@@ -1095,7 +1095,7 @@
     "case": "cases/zeta_bblm_finite_height_comparison_20260818.py",
     "claim": "Ведущая BBLM-поправка объясняет три статистики расстояний дзета на верхних корзинах",
     "verdict": "ОПРОВЕРГНУТО",
-    "source": "scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt; BBLM 2006",
+    "source": "scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt",
     "inputs_digest": "6c90b589383b96c8"
   },
   {
@@ -1158,7 +1158,7 @@
     "case": "cases/zeta_shape.py",
     "claim": "масштабная деформация с коэффициентом BBLM объясняет расхождение формы (проверка out-of-sample по верхним полосам высот)",
     "verdict": "ОПРОВЕРГНУТО",
-    "source": "data/zeta/zeros_odlyzko_100k.txt, 4 полосы высот; BBLM 2006",
+    "source": "data/zeta/zeros_odlyzko_100k.txt",
     "inputs_digest": "8e0cc0c774a33542"
   },
   {

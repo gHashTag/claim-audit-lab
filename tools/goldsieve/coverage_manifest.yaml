@@ -610,6 +610,17 @@ tooling_guards:
     mutation_target: удаление проверки принадлежности статусу словарю
     sensitivity: 2/2 отрицательные фикстуры; 1/1 отсутствующий статус
     status_class: verified-in-scope
+  source_fragment_integrity:
+    role: >-
+      свободное описание после пути source не должно становиться
+      неразрешённым входом инкрементального регресса
+    script: source_fragment_guard.py
+    gate_step: фрагменты источника реестра
+    positive_fixture: claims.yaml с 172 разрешёнными файлами
+    negative_fixture: путь с суффиксом «четыре полосы высот»
+    mutation_target: удаление проверки неразрешённого фрагмента
+    sensitivity: 1/1 отрицательная фикстура; 1/1 положительный контроль
+    status_class: verified-in-scope
   silent_external_target_boundary:
     role: >-
       ревизия молчащего шага: внешняя сверка без наблюдаемого,
