@@ -1,0 +1,162 @@
+{
+  "статус": "not-evaluated",
+  "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-report.md",
+  "путей": 25,
+  "без_sha256": [
+    "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-arb.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-baseline-snapshot.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-bblm-accounting.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-bblm-protocol.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-chi2-semantics.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-coverage-update.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-gate-final2.log",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-gate-final2.rc",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-independence.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-meff.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-os-matrix.json",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-progress-substance.json",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-regression.log",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-regression.rc",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-tri-snapshot.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-zeta-ambiguity.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick389-zeta-provenance.txt",
+    "/home/user/workspace/goldsieve/bblm_protocol.json",
+    "/home/user/workspace/goldsieve/ci_gate.sh",
+    "/home/user/workspace/goldsieve/coverage_manifest.yaml",
+    "/home/user/workspace/goldsieve/report_artifact_digest_guard.json",
+    "/home/user/workspace/goldsieve/report_artifact_digest_guard.py",
+    "/home/user/workspace/goldsieve/report_contract_guard.json",
+    "/home/user/workspace/goldsieve/zeta_recipe_ambiguity_guard.json"
+  ],
+  "несовпадающих_sha256": [],
+  "наблюдения": [
+    {
+      "путь": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "0f7b06f23dde9e8a3cab5d7057d39b2839d838306e7abdd56a21be317b9298aa"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-arb.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "9f5737eb71b8c6fafd4b841289cbdafb44a0946e5f9f6b4d001ac7c0c361faf2"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-baseline-snapshot.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "48e0509e8469e80950d07e213ef5000fdfd69b1cc8fbe280daa7ed7eeb29a5ce"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-bblm-accounting.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "49f8244b3c1f936c0eceba5f87b5398a2ca54bf0153e7df59258f03b34e32a46"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-bblm-protocol.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "8276e1726d95cc91f2c0872fef51f1001d416040f4c2a81d60e1b8a21f6e1af4"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-chi2-semantics.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "2d97f8b1505ad06649b97b5098ac6d57422236a0cf4fbc96560435a765db175b"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-coverage-update.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "06260bf21215e7432a03a24e1c7d7d01a0651372c7e635160dee05b00921feab"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-gate-final2.log",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "5fd2fba1c9a03d309ce067a740131f9b3cc7c074da10a98f7430090a1a8e1685"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-gate-final2.rc",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-independence.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "b0a8b7e71f7c373f2ce8bd27dc5634aa45c664f28be2f7e77b03fed230285458"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-meff.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "b2633a453db87b8e0dd6f581b0a57980e4f9b4df8e0b7c145c9bf78747cd1be0"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-os-matrix.json",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "662511d42696fd7c1ad1cd2046140c18b157377f880f9f2d9abcf5b614f743b6"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-progress-substance.json",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "6f610728b0968372a9fcde4e14b2f4564c5c677ec269481c0b4ca686cd2f3d26"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-regression.log",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "b964948f871de535a0c1fde3c9c8db8cc40830fcb604e17a35061e28d6e4adb0"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-regression.rc",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-tri-snapshot.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "481709fecb153e1e704ba79da3794bb90c491ba8b6d2810fc01c51411c0f653a"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-zeta-ambiguity.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "e47c5bdf3daf2e1cbb580e6f9e8b9ab0a2428e360ac163a2e52c5893100f6ba7"
+    },
+    {
+      "путь": "/home/user/workspace/cron_tracking/8dff7aa3/tick389-zeta-provenance.txt",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "a6c8b0e9a11eb60934606beca36c842c95486f499b9c653ef7202a7b3eff6880"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/bblm_protocol.json",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "9d3e1e37a0990d5ceff9c3023fcd78907da8e744bf1f67f615d83f636f9775f3"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/ci_gate.sh",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "5873579d60d13b9fc935395f28be5ee2c5841045a336eab4a5084bd04c3bcf0b"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/coverage_manifest.yaml",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "6541299de1ea2c23def848287a497f6084ddd39c3ce04b476c9973ca7c0e3446"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/report_artifact_digest_guard.json",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "c9e968fd492bdc4e364cc6862719ebdf2a32d139aa02b337c842ca2b6ad39c87"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/report_artifact_digest_guard.py",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "c95f5bc1fc494e099bbdf8afb7c6e1f1e6122b631fac4143b6ac4ccf8492e7ca"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/report_contract_guard.json",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "f39d3e1ae350338c1d7adecc5aadd945e195e9e3b757ef4c82fa4959d79695a4"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/zeta_recipe_ambiguity_guard.json",
+      "предъявленный_sha256": null,
+      "фактический_sha256": "4fc61691150f2ab96c94f314ecaba80c32f5ac6aab2bc4f769596bde082505e6"
+    }
+  ],
+  "причина": "для части путей не предъявлен SHA-256 содержимого",
+  "ограничение": "дайджест связывает прочитанную копию с докладом, но не доказывает авторство файла или научную истинность утверждения"
+}

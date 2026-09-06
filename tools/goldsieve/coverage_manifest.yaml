@@ -47,6 +47,17 @@ runtimes:
 # мутационную цель; диагностические tick*-selftest/state-файлы относятся к
 # audit_log и не являются утверждениями корпуса.
 audit_guards:
+  regression_result_semantics:
+    role: >-
+      шесть счётчиков инкрементального регресса обязаны разлагать все выбранные
+      записи по исходам; старый четырёхполный формат получает not-evaluated
+    script: regression_result_guard.py
+    gate_step: семантика результата регресса
+    positive_fixture: tick*-progress-substance.json с полной формой
+    negative_fixture: неполная форма и несогласованная сумма исходов
+    mutation_target: удаление проверки разложения исходов
+    sensitivity: 7/7 самопроверок
+    status_class: verified-in-scope
   registry_case_path_boundary:
     role: >-
       путь case в реестре обязан разрешаться в существующий файл внутри

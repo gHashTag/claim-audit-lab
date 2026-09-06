@@ -99,6 +99,8 @@ else
     # шаг требует полного окружения.
     step "execution-proof на маршруте CLI" "$BASE_PY" execution_proof.py
     step "кэш отпечатков регресса"        "$BASE_PY" regression_cache_guard.py --selftest
+    step "семантика результата регресса" "$BASE_PY" regression_result_guard.py --scan
+    step "чувствительность семантики результата регресса" "$BASE_PY" regression_result_guard.py --selftest
     step "чувствительность неоднозначного ключа реестра" "$BASE_PY" registry_identity_guard.py --selftest
     step "однозначность ключа реестра регресса" "$BASE_PY" registry_identity_guard.py
     # Тик 380: существование файла case не доказывает безопасную границу
