@@ -358,7 +358,7 @@ shell_checks:
   journal_signature_scope_guard.py:
     gate_step: область действия подписи журнала
     selftest_cmd: [journal_signature_scope_guard.py, --selftest]
-    selftest_checks: 7
+    selftest_checks: 9
     role: >-
       предъявленная подпись не считается покрытием всего журнала без явной
       области действия для каждой записи; отсутствие области оставляет

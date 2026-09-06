@@ -76,6 +76,36 @@ def _scope_out_of_range(signature: object, records: list[dict]) -> bool:
     )
 
 
+def _scope_shape_error(signature: object) -> str | None:
+    """Проверить форму ``covers`` до проверки диапазона.
+
+    Неподдерживаемый тип области нельзя понижать до ``not-evaluated``:
+    например, ``["1"]`` не является ни честным отсутствием области, ни
+    ссылкой на запись 1. Ранее такая форма проходила через ``_scope`` как
+    ``None`` и теряла различие между повреждённым контрактом и отсутствием
+    подписи.
+    """
+    if not isinstance(signature, dict):
+        return None
+    if "covers" not in signature:
+        return None
+    covers = signature["covers"]
+    if covers == "all":
+        return None
+    if not isinstance(covers, list):
+        return "область действия подписи имеет неподдерживаемый тип"
+    if not covers:
+        return "область действия подписи пуста"
+    if not all(
+        isinstance(item, int) and not isinstance(item, bool)
+        for item in covers
+    ):
+        return "область действия подписи содержит нецелый номер записи"
+    if len(covers) != len(set(covers)):
+        return "область действия подписи содержит повторяющийся номер записи"
+    return None
+
+
 def audit(path: Path) -> dict:
     if not path.is_file():
         return {
@@ -112,6 +142,16 @@ def audit(path: Path) -> dict:
         }
     covered: set[int] = set()
     for item in signatures:
+        shape_error = _scope_shape_error(item)
+        if shape_error:
+            return {
+                "статус": "unsupported",
+                "причина": shape_error,
+                "журнал": str(path),
+                "записей": len(records),
+                "подписей": len(signatures),
+                "покрытие": len(covered),
+            }
         if _scope_out_of_range(item, records):
             return {
                 "статус": "unsupported",
@@ -233,6 +273,26 @@ def selftest() -> tuple[int, int]:
         check("повтор номера записи делает область неподдерживаемой",
               result["статус"] == "unsupported"
               and "повторяющийся" in result["причина"])
+
+        malformed_scope = root / "нецелая-область.jsonl"
+        malformed_scope.write_text(
+            '{"seq": 1, "signature": {"covers": ["1"]}}\n',
+            encoding="utf-8",
+        )
+        result = audit(malformed_scope)
+        check("нецелый номер записи делает область неподдерживаемой",
+              result["статус"] == "unsupported"
+              and "нецелый" in result["причина"])
+
+        empty_scope = root / "пустая-область.jsonl"
+        empty_scope.write_text(
+            '{"seq": 1, "signature": {"covers": []}}\n',
+            encoding="utf-8",
+        )
+        result = audit(empty_scope)
+        check("пустая область делает контракт неподдерживаемым",
+              result["статус"] == "unsupported"
+              and "пуста" in result["причина"])
 
         empty = root / "пустой-журнал.jsonl"
         empty.write_text(
