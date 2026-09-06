@@ -247,6 +247,10 @@ else
     # корпусу или рабочей копии.
     step "чувствительность границы путей источника" "$BASE_PY" source_path_boundary_guard.py --selftest
     step "граница путей источников реестра" "$BASE_PY" source_path_boundary_guard.py
+    # Тик 382: verified-in-scope обязан ссылаться на файл внутри корпуса, а
+    # не только на существующий файл рабочей копии инструмента.
+    step "чувствительность происхождения статуса" "$BASE_PY" scope_provenance_guard.py --selftest
+    step "происхождение статуса в реестре" "$BASE_PY" scope_provenance_guard.py
     # Контракт доклада: форма из четырёх обязательных разделов и отдельная
     # машинная суть. Неполный или оборванный отчёт не является покрытием.
     step "чувствительность контракта доклада" "$BASE_PY" report_contract_guard.py --selftest

@@ -1,0 +1,281 @@
+{
+  "статус": "verified-in-scope",
+  "реестр": "/home/user/workspace/goldsieve/claims.yaml",
+  "корпус": "/home/user/workspace/corpus/trinity",
+  "проверено_записей": 30,
+  "наблюдения": [
+    {
+      "индекс": 91,
+      "case": "cases/zeta_shape.py",
+      "источник": "data/zeta/zeros_odlyzko_100k.txt",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 113,
+      "case": "cases/golden_chain_v248_ppl_gain_20260815.py",
+      "источник": "docs/docs/research/trinity-golden-chain-v2-48-interpolated-report.md:72-76",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-48-interpolated-report.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 114,
+      "case": "cases/zeta_unfolding_std_recipe_20260815.py",
+      "источник": "data/zeta/zeta_gue_analysis_results.md:34",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 115,
+      "case": "cases/zeta_p99_gue_20260815.py",
+      "источник": "data/zeta/zeta_gue_analysis_results.md:34",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 116,
+      "case": "cases/zeta_std_unfolding_passport_20260815.py",
+      "источник": "data/zeta/zeta_gue_analysis_results.md:34",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 127,
+      "case": "cases/zeta_finite_height_extrapolation_20260816.py",
+      "источник": "scripts/height_extrapolation.py:1-15,139-151",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 136,
+      "case": "cases/golden_chain_final_report_consistency_20260817.py",
+      "источник": ".trinity/ralph/golden_chain/GOLDEN_CHAIN_FINAL_REPORT.md:1-180",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/.trinity/ralph/golden_chain/GOLDEN_CHAIN_FINAL_REPORT.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 139,
+      "case": "cases/delta001_alpha_inverse_source_20260817.py",
+      "источник": ".trinity/experience/DELTA-001.md:43-47",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/.trinity/experience/DELTA-001.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 143,
+      "case": "cases/gamma_bi_meissner_equation_20260817.py",
+      "источник": "specs/physics/gamma_conjecture.t27:4-20",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/specs/physics/gamma_conjecture.t27"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 146,
+      "case": "cases/khinchin_estimator_recipe_20260816.py",
+      "источник": "data/zeta/zeta_bin_analysis_update.md:12-14,31-40",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 147,
+      "case": "cases/delta001_gamma_entropy_comparison_20260818.py",
+      "источник": "docs/docs/research/delta-001/phase4-consistency.md:72-86",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 150,
+      "case": "cases/readme_mp_me_external_20260818.py",
+      "источник": "docs/papers/README_FOR_SCIENTISTS.md:38-54",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 151,
+      "case": "cases/zeta_bblm_finite_height_comparison_20260818.py",
+      "источник": "scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py",
+        "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 153,
+      "case": "cases/neutron_proton_splitting_external_20260901.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:206",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 154,
+      "case": "cases/dirac_cp_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:202",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 155,
+      "case": "cases/age_universe_planck_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:79",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 156,
+      "case": "cases/planck_time_external_20260903.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:131",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 157,
+      "case": "cases/kaon_mass_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:142",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 158,
+      "case": "cases/higgs_mass_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:43",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 159,
+      "case": "cases/top_mass_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:140",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 160,
+      "case": "cases/bottom_mass_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:141",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 161,
+      "case": "cases/cmb_temperature_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:70",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 162,
+      "case": "cases/omega_matter_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:80",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 163,
+      "case": "cases/omega_baryon_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:81",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 164,
+      "case": "cases/qcd_phase_tc_external_20260901.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:201",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 165,
+      "case": "cases/spectral_index_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:82",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 166,
+      "case": "cases/z_boson_mass_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:45",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 167,
+      "case": "cases/solar_mass_external_20260902.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:149",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 168,
+      "case": "cases/neutrino_theta13_external_20260901.py",
+      "источник": "docs/papers/README_FOR_SCIENTISTS.md:58",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md"
+      ],
+      "статус": "verified-in-scope"
+    },
+    {
+      "индекс": 169,
+      "case": "cases/muon_mass_external_20260903.py",
+      "источник": "docs/docs/math-foundations/sacred-formulas.md:49",
+      "пути_в_корпусе": [
+        "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md"
+      ],
+      "статус": "verified-in-scope"
+    }
+  ],
+  "неподтверждённые": [],
+  "ограничение": "принадлежность пути корпусу не доказывает независимость наблюдаемого и эталонного вычислительных путей"
+}

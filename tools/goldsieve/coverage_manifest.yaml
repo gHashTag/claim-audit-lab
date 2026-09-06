@@ -632,6 +632,18 @@ tooling_guards:
     mutation_target: удаление проверки неразрешённого фрагмента
     sensitivity: 1/1 отрицательная фикстура; 1/1 положительный контроль
     status_class: verified-in-scope
+  scope_status_provenance:
+    role: >-
+      статус verified-in-scope обязан иметь локальный source внутри
+      corpus/trinity; существующий файл рабочей копии и внешний URL не
+      являются корпусным наблюдением
+    script: scope_provenance_guard.py
+    gate_step: происхождение статуса в реестре
+    positive_fixture: claims.yaml с 30 записями verified-in-scope
+    negative_fixture: путь рабочей копии, внешний URL и отсутствующий файл
+    mutation_target: удаление проверки принадлежности source корпусу
+    sensitivity: 4/4 самопроверки
+    status_class: verified-in-scope
   silent_external_target_boundary:
     role: >-
       ревизия молчащего шага: внешняя сверка без наблюдаемого,
