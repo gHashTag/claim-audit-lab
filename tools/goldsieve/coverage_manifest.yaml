@@ -599,6 +599,17 @@ tooling_guards:
     mutation_target: удаление проверки числового типа
     sensitivity: 1/1 отрицательная фикстура; 1/1 оборванный JSON
     status_class: verified-in-scope
+  status_domain_integrity:
+    role: >-
+      опечатка в верхнеуровневом статусе машинного отчёта не должна выглядеть
+      новым результатом; отсутствие статуса сохраняет not-evaluated
+    script: status_domain_guard.py
+    gate_step: словарь статусов машинных отчётов
+    positive_fixture: машинные JSON-отчёты с разрешёнными статусами
+    negative_fixture: опечатанный, нестроковый и отсутствующий статус
+    mutation_target: удаление проверки принадлежности статусу словарю
+    sensitivity: 2/2 отрицательные фикстуры; 1/1 отсутствующий статус
+    status_class: verified-in-scope
   silent_external_target_boundary:
     role: >-
       ревизия молчащего шага: внешняя сверка без наблюдаемого,
