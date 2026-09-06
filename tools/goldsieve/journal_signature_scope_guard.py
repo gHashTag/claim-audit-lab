@@ -124,6 +124,26 @@ def audit(path: Path) -> dict:
                 "подписей": len(signatures),
                 "покрытие": len(covered),
             }
+        covers = item.get("covers") if isinstance(item, dict) else None
+        valid_cover_numbers = (
+            covers if isinstance(covers, list)
+            and all(isinstance(value, int) and not isinstance(value, bool)
+                    for value in covers)
+            else None
+        )
+        if (valid_cover_numbers is not None
+                and len(valid_cover_numbers) != len(set(valid_cover_numbers))):
+            return {
+                "статус": "unsupported",
+                "причина": (
+                    "область действия подписи содержит повторяющийся номер "
+                    "записи"
+                ),
+                "журнал": str(path),
+                "записей": len(records),
+                "подписей": len(signatures),
+                "покрытие": len(covered),
+            }
         part = _scope(item, records)
         if part is not None:
             covered.update(part)
@@ -203,6 +223,28 @@ def selftest() -> tuple[int, int]:
         check("ссылка за пределами журнала получает unsupported",
               result["статус"] == "unsupported"
               and "вне" in result["причина"])
+
+        duplicate = root / "повтор-области.jsonl"
+        duplicate.write_text(
+            '{"seq": 1, "signature": {"covers": [1, 1]}}\n',
+            encoding="utf-8",
+        )
+        result = audit(duplicate)
+        check("повтор номера записи делает область неподдерживаемой",
+              result["статус"] == "unsupported"
+              and "повторяющийся" in result["причина"])
+
+        empty = root / "пустой-журнал.jsonl"
+        empty.write_text(
+            "",
+            encoding="utf-8",
+        )
+        result = audit(empty)
+        check("пустой журнал без подписи не считается покрытым",
+              result["статус"] == "not-evaluated"
+              and result["записей"] == 0
+              and result["покрытие"] == 0
+              and result["подписей"] == 0)
 
         malformed = root / "повреждено.jsonl"
         malformed.write_text('не JSON\n', encoding="utf-8")
