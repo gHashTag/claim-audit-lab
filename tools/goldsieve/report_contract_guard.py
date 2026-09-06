@@ -132,15 +132,30 @@ def scan_history(root: Path = ROOT) -> dict:
     counts = {}
     for row in rows:
         counts[row["статус"]] = counts.get(row["статус"], 0) + 1
+    # Агрегат не имеет права называться verified-in-scope, если хотя бы один
+    # найденный доклад остался без машинной сути или нарушил контракт. Раньше
+    # верхний статус был безусловно положительным, и читатель мог принять его
+    # за покрытие всех исторических записей, хотя в ``статусы`` одновременно
+    # присутствовали not-evaluated. Молчание исторического аудита не является
+    # покрытием.
+    aggregate_status = (
+        "verified-in-scope"
+        if rows and all(row["статус"] == "verified-in-scope" for row in rows)
+        else "not-evaluated"
+    )
     return {
-        "статус": "verified-in-scope",
+        "статус": aggregate_status,
         "режим": "исторический аудит формы",
         "доклады": len(rows),
         "статусы": counts,
+        "непокрытые_доклады": sum(
+            1 for row in rows if row["статус"] != "verified-in-scope"
+        ),
         "наблюдения": rows,
         "ограничение": (
             "аудит подтверждает, что каждый найденный доклад классифицирован; "
-            "not-evaluated не превращается в доказанный научный результат"
+            "not-evaluated не превращается в доказанный научный результат; "
+            "агрегат verified-in-scope разрешён только при полном покрытии"
         ),
     }
 
@@ -207,7 +222,17 @@ def selftest() -> int:
         history = scan_history(root)
         check("исторический аудит классифицирует предъявленные доклады",
               history["доклады"] == 1
-              and history["статусы"] == {"verified-in-scope": 1})
+              and history["статус"] == "verified-in-scope"
+              and history["статусы"] == {"verified-in-scope": 1}
+              and history["непокрытые_доклады"] == 0)
+
+        missing_report = root / "tick2-report.md"
+        missing_report.write_text(valid_report, encoding="utf-8")
+        missing_history = scan_history(root)
+        check("неполная историческая выборка понижает агрегатный статус",
+              missing_history["статус"] == "not-evaluated"
+              and missing_history["статусы"]["not-evaluated"] == 1
+              and missing_history["непокрытые_доклады"] == 1)
 
     print("самопроверка контракта доклада: %d пройдено, %d провалено" % (good, bad))
     return 1 if bad else 0

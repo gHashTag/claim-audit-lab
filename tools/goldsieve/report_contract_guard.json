@@ -1,11 +1,12 @@
 {
-  "статус": "verified-in-scope",
+  "статус": "not-evaluated",
   "режим": "исторический аудит формы",
-  "доклады": 56,
+  "доклады": 57,
   "статусы": {
     "not-evaluated": 34,
-    "verified-in-scope": 22
+    "verified-in-scope": 23
   },
+  "непокрытые_доклады": 34,
   "наблюдения": [
     {
       "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick225-report.md",
@@ -342,7 +343,13 @@
       "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick380-progress-substance.json",
       "статус": "verified-in-scope",
       "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick382-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick382-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
     }
   ],
-  "ограничение": "аудит подтверждает, что каждый найденный доклад классифицирован; not-evaluated не превращается в доказанный научный результат"
+  "ограничение": "аудит подтверждает, что каждый найденный доклад классифицирован; not-evaluated не превращается в доказанный научный результат; агрегат verified-in-scope разрешён только при полном покрытии"
 }
