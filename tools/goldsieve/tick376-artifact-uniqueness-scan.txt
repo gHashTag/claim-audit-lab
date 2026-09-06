@@ -1,0 +1,2 @@
+сторож неоднозначности артефактов: not-evaluated; прочитано 3442; проверено 275; not-evaluated 3167; нарушений 0
+JSON: /home/user/workspace/goldsieve/artifact_uniqueness_guard.json

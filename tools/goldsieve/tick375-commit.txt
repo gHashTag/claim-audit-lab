@@ -1,0 +1,2 @@
+[tools/goldsieve-v3-2026-08-13 b4597ed] Уточнить область действия подписи журнала
+ 2 files changed, 43 insertions(+), 1 deletion(-)

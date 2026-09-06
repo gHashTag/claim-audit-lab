@@ -1,0 +1,48 @@
+## tools/goldsieve-v3-2026-08-13
+ M tools/goldsieve/artifact_path_guard.json
+ M tools/goldsieve/baseline/log-checkpoint.json
+ M tools/goldsieve/baseline/manifest.json
+ M tools/goldsieve/baseline/snapshot-manifest.json
+ M tools/goldsieve/ci_gate.sh
+ M tools/goldsieve/coverage_manifest.yaml
+ M tools/goldsieve/disk_guard.json
+ M tools/goldsieve/gue_label_guard.json
+ M tools/goldsieve/journal_signature_guard.json
+ M tools/goldsieve/journal_signature_scope_guard.json
+ M tools/goldsieve/progress_guard.json
+ M tools/goldsieve/repo_sync_guard.json
+ M tools/goldsieve/report_contract_guard.json
+ M tools/goldsieve/runlog_record_guard.json
+?? tools/goldsieve/json_numeric_type_guard.json
+?? tools/goldsieve/json_numeric_type_guard.py
+?? tools/goldsieve/tick374-baseline-snapshot.txt
+?? tools/goldsieve/tick374-bblm-accounting.txt
+?? tools/goldsieve/tick374-bblm-analytic-source.txt
+?? tools/goldsieve/tick374-bblm-protocol.txt
+?? tools/goldsieve/tick374-coverage-update.txt
+?? tools/goldsieve/tick374-external-target.txt
+?? tools/goldsieve/tick374-gate-counter.txt
+?? tools/goldsieve/tick374-gate-final-counter.txt
+?? tools/goldsieve/tick374-gate-final-summary.txt
+?? tools/goldsieve/tick374-gate-final.pid
+?? tools/goldsieve/tick374-gate-final.rc
+?? tools/goldsieve/tick374-gate-required.pid
+?? tools/goldsieve/tick374-gate-required.rc
+?? tools/goldsieve/tick374-gate-summary.txt
+?? tools/goldsieve/tick374-json-numeric-type-scan.txt
+?? tools/goldsieve/tick374-json-numeric-type-selftest.txt
+?? tools/goldsieve/tick374-new-guard-syntax.txt
+?? tools/goldsieve/tick374-os-matrix.json
+?? tools/goldsieve/tick374-os-runs.json
+?? tools/goldsieve/tick374-os-trigger.txt
+?? tools/goldsieve/tick374-progress-check.txt
+?? tools/goldsieve/tick374-progress-record.txt
+?? tools/goldsieve/tick374-reference-tautology.txt
+?? tools/goldsieve/tick374-regression.pid
+?? tools/goldsieve/tick374-regression.rc
+?? tools/goldsieve/tick374-report-contract.txt
+?? tools/goldsieve/tick374-report-substance.txt
+?? tools/goldsieve/tick374-target-novelty.txt
+?? tools/goldsieve/tick374-tri-snapshot.txt
+?? tools/goldsieve/tick374-zeta-ambiguity.txt
+?? tools/goldsieve/tick374-zeta-provenance.txt

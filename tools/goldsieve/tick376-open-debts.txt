@@ -1,0 +1,9 @@
+сторож общего M_eff: архивов 12, открытых 12
+сторож предпосылки независимости: not-evaluated; кейсов 133; сводка {"not-evaluated": 132, "platform-unverified": 0, "unsupported": 1, "verified-in-scope": 0}
+JSON: /home/user/workspace/goldsieve/independence_assumption_guard.json
+сторож смысла χ²/dof: not-evaluated; таблица содержит только готовое отношение χ²/dof; число степеней свободы не предъявлено, поэтому научная интерпретация χ²/dof остаётся not-evaluated
+сторож шаровой арифметики Arb: not-evaluated; прочитано файлов 3; интервалов 0
+сторож криптографической подписи журнала: not-evaluated; причина: криптографическая подпись не предъявлена; хеш-цепочка не доказывает авторство
+журнал: /home/user/workspace/cron_tracking/8dff7aa3/runs.jsonl; записей: 3442; подписей: 0
+сторож области подписи журнала: not-evaluated; причина: подпись и область её действия не предъявлены
+журнал: /home/user/workspace/cron_tracking/8dff7aa3/runs.jsonl; записей: 3442; покрытие: 0

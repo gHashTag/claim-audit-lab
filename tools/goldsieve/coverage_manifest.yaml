@@ -355,6 +355,16 @@ shell_checks:
     limits: >-
       сторож проверяет только полноту заявленной области и не выполняет
       криптографическую проверку алгоритма или доверенного ключа
+  artifact_uniqueness_guard.py:
+    gate_step: однозначность списка артефактов
+    selftest_cmd: [artifact_uniqueness_guard.py, --selftest]
+    selftest_checks: 5
+    role: >-
+      повтор пути в одном поле artifacts не считается двумя независимыми
+      артефактами; пустой или отсутствующий список сохраняет not-evaluated
+    limits: >-
+      сторож проверяет только структуру списка и не подтверждает содержимое
+      файлов, их подпись или независимость артефактов между записями
   unit_consistency_guard.py:
     gate_step: согласованность единиц внешних сверок
     selftest_cmd: [unit_consistency_guard.py, --selftest]

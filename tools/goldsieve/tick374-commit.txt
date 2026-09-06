@@ -1,0 +1,35 @@
+[tools/goldsieve-v3-2026-08-13 f5bbb6f] Добавить сторож типов числовых полей
+ 47 files changed, 745 insertions(+), 164 deletions(-)
+ create mode 100644 tools/goldsieve/json_numeric_type_guard.json
+ create mode 100644 tools/goldsieve/json_numeric_type_guard.py
+ create mode 100644 tools/goldsieve/tick374-baseline-snapshot.txt
+ create mode 100644 tools/goldsieve/tick374-bblm-accounting.txt
+ create mode 100644 tools/goldsieve/tick374-bblm-analytic-source.txt
+ create mode 100644 tools/goldsieve/tick374-bblm-protocol.txt
+ create mode 100644 tools/goldsieve/tick374-coverage-update.txt
+ create mode 100644 tools/goldsieve/tick374-external-target.txt
+ create mode 100644 tools/goldsieve/tick374-gate-counter.txt
+ create mode 100644 tools/goldsieve/tick374-gate-final-counter.txt
+ create mode 100644 tools/goldsieve/tick374-gate-final-summary.txt
+ create mode 100644 tools/goldsieve/tick374-gate-final.pid
+ create mode 100644 tools/goldsieve/tick374-gate-final.rc
+ create mode 100644 tools/goldsieve/tick374-gate-required.pid
+ create mode 100644 tools/goldsieve/tick374-gate-required.rc
+ create mode 100644 tools/goldsieve/tick374-gate-summary.txt
+ create mode 100644 tools/goldsieve/tick374-json-numeric-type-scan.txt
+ create mode 100644 tools/goldsieve/tick374-json-numeric-type-selftest.txt
+ create mode 100644 tools/goldsieve/tick374-new-guard-syntax.txt
+ create mode 100644 tools/goldsieve/tick374-os-matrix.json
+ create mode 100644 tools/goldsieve/tick374-os-runs.json
+ create mode 100644 tools/goldsieve/tick374-os-trigger.txt
+ create mode 100644 tools/goldsieve/tick374-progress-check.txt
+ create mode 100644 tools/goldsieve/tick374-progress-record.txt
+ create mode 100644 tools/goldsieve/tick374-reference-tautology.txt
+ create mode 100644 tools/goldsieve/tick374-regression.pid
+ create mode 100644 tools/goldsieve/tick374-regression.rc
+ create mode 100644 tools/goldsieve/tick374-report-contract.txt
+ create mode 100644 tools/goldsieve/tick374-report-substance.txt
+ create mode 100644 tools/goldsieve/tick374-target-novelty.txt
+ create mode 100644 tools/goldsieve/tick374-tri-snapshot.txt
+ create mode 100644 tools/goldsieve/tick374-zeta-ambiguity.txt
+ create mode 100644 tools/goldsieve/tick374-zeta-provenance.txt
