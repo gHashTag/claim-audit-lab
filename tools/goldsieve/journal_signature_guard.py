@@ -21,6 +21,7 @@ OUT = HERE / "journal_signature_guard.json"
 
 SIGNATURE_KEYS = ("signature", "подпись", "detached_signature")
 REQUIRED_SIGNATURE_FIELDS = ("algorithm", "value", "public_key")
+SUPPORTED_ALGORITHMS = {"ed25519", "minisign", "openpgp"}
 DETACHED_SUFFIXES = (".sig", ".asc", ".minisig", ".signature")
 
 
@@ -119,12 +120,32 @@ def audit(path: Path) -> dict:
     malformed = [
         item for item in signatures
         if not isinstance(item, dict)
-        or any(not item.get(field) for field in REQUIRED_SIGNATURE_FIELDS)
+        or any(
+            not isinstance(item.get(field), str) or not item[field].strip()
+            for field in REQUIRED_SIGNATURE_FIELDS
+        )
     ]
     if malformed:
         return {
             "status": "unsupported",
             "reason": "контракт подписи неполон",
+            "journal": str(path),
+            "records": len(records),
+            "signatures": signature_count,
+            "inline_signatures": len(signatures),
+            "detached_signatures": 0,
+        }
+
+    unknown_algorithms = sorted({
+        item["algorithm"].strip().lower()
+        for item in signatures
+        if item["algorithm"].strip().lower() not in SUPPORTED_ALGORITHMS
+    })
+    if unknown_algorithms:
+        return {
+            "status": "unsupported",
+            "reason": "алгоритм подписи не входит в закреплённый словарь",
+            "algorithms": unknown_algorithms,
             "journal": str(path),
             "records": len(records),
             "signatures": signature_count,
@@ -191,6 +212,24 @@ def selftest() -> tuple[int, int]:
         )
         check("неполный контракт подписи отвергается",
               audit(malformed)["status"] == "unsupported")
+
+        typed = root / "typed.jsonl"
+        typed.write_text(
+            '{"seq": 1, "signature": {"algorithm": "ed25519", '
+            '"value": 7, "public_key": "key"}}\n',
+            encoding="utf-8",
+        )
+        check("нетекстовое поле подписи отвергается",
+              audit(typed)["status"] == "unsupported")
+
+        unknown = root / "unknown.jsonl"
+        unknown.write_text(
+            '{"seq": 1, "signature": {"algorithm": "rsa2048", '
+            '"value": "sig", "public_key": "key"}}\n',
+            encoding="utf-8",
+        )
+        check("неизвестный алгоритм подписи отвергается",
+              audit(unknown)["status"] == "unsupported")
 
         broken = root / "broken.jsonl"
         broken.write_text('{"seq": 1}\nне JSON\n', encoding="utf-8")
