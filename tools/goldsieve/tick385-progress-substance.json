@@ -1,0 +1,28 @@
+{
+  "гейт": [
+    133,
+    2,
+    0
+  ],
+  "регресс": [
+    5,
+    111,
+    0,
+    0,
+    0,
+    0
+  ],
+  "ос_матрица": [
+    6,
+    6
+  ],
+  "bblm": [
+    7,
+    true
+  ],
+  "изменённые_файлы": [
+    "report_artifact_provenance_guard.py",
+    "ci_gate.sh",
+    "coverage_manifest.yaml"
+  ]
+}

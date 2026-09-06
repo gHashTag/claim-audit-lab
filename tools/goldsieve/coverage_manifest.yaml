@@ -645,6 +645,17 @@ tooling_guards:
     mutation_target: удаление проверки принадлежности source корпусу
     sensitivity: 4/4 самопроверки
     status_class: verified-in-scope
+  report_artifact_provenance:
+    role: >-
+      ссылка на артефакт в докладе не должна становиться покрытием, если путь
+      отсутствует или уводит за разрешённые корни рабочего пространства
+    script: report_artifact_provenance_guard.py
+    gate_step: происхождение артефактов доклада
+    positive_fixture: последний доклад и предъявленные в нём артефакты
+    negative_fixture: внешний временный путь и отсутствующий артефакт
+    mutation_target: удаление проверки существования или границы корня
+    sensitivity: 4/4 самопроверки
+    status_class: verified-in-scope
   silent_external_target_boundary:
     role: >-
       ревизия молчащего шага: внешняя сверка без наблюдаемого,

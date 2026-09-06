@@ -1,0 +1,30 @@
+{
+  "статус": "verified-in-scope",
+  "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick385-report.md",
+  "найдено_путей": 13,
+  "проверенные_пути": [
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick385-baseline-snapshot.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick385-bblm-protocol.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick385-coverage-update.txt",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick385-gate-final.log",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick385-gate-final.rc",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick385-os-matrix.json",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick385-progress-substance.json",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick385-regression.log",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick385-regression.rc",
+    "/home/user/workspace/cron_tracking/8dff7aa3/tick385-tri-snapshot.txt",
+    "/home/user/workspace/goldsieve/bblm_protocol.json",
+    "/home/user/workspace/goldsieve/report_artifact_provenance_guard.json",
+    "/home/user/workspace/goldsieve/report_artifact_provenance_guard.py"
+  ],
+  "отсутствующие_пути": [],
+  "пути_вне_разрешённых_корней": [],
+  "разрешённые_корни": [
+    "/home/user/workspace/goldsieve",
+    "/home/user/workspace/cron_tracking/8dff7aa3",
+    "/home/user/workspace/cron_tracking/20fee222",
+    "/home/user/workspace/corpus/trinity"
+  ],
+  "причина": "каждый предъявленный путь существует и находится в разрешённом корне",
+  "ограничение": "проверка существования и границы пути не доказывает содержание артефакта или научную истинность доклада"
+}
