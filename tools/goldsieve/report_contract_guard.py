@@ -69,11 +69,20 @@ def inspect(report: Path, substance: Path) -> dict:
         isinstance(payload[field], list) and payload[field]
         for field in FIELDS
     )
-    files_ok = (
+    files_shape = (
         fields_ok
-        and isinstance(payload["изменённые_файлы"], list)
+        and isinstance(payload.get("изменённые_файлы"), list)
         and all(isinstance(item, str) and item for item
-                in payload["изменённые_файлы"])
+                in payload.get("изменённые_файлы", []))
+    )
+    files_unique = (
+        files_shape
+        and len(payload["изменённые_файлы"])
+        == len(set(payload["изменённые_файлы"]))
+    )
+    files_ok = (
+        files_shape
+        and files_unique
     )
     status = (
         "verified-in-scope"
@@ -89,6 +98,8 @@ def inspect(report: Path, substance: Path) -> dict:
         reasons.append("progress-substance не содержит ровно пять машинных полей")
     if not files_ok:
         reasons.append("изменённые_файлы не предъявлены непустым списком")
+    if fields_ok and not files_unique:
+        reasons.append("изменённые_файлы содержат повторный путь")
     return {
         "статус": status,
         "доклад": str(report),
@@ -98,6 +109,7 @@ def inspect(report: Path, substance: Path) -> dict:
         "отличие_проверено": distinction_ok,
         "поля_сути_проверены": fields_ok,
         "изменённые_файлы_проверены": files_ok,
+        "уникальность_изменённых_файлов_проверена": files_unique,
         "причина": "; ".join(reasons) if reasons else "контракт доклада предъявлен полностью",
         "ограничение": "контракт формы не подтверждает научную истинность утверждений",
     }
@@ -218,6 +230,17 @@ def selftest() -> int:
         check("неполная машинная суть не считается покрытием",
               result["статус"] == "not-evaluated"
               and not result["поля_сути_проверены"])
+
+        duplicate = dict(valid_substance)
+        duplicate["изменённые_файлы"] = ["guard.py", "guard.py"]
+        duplicate_path = root / "duplicate.json"
+        duplicate_path.write_text(
+            json.dumps(duplicate, ensure_ascii=False), encoding="utf-8"
+        )
+        result = inspect(report, duplicate_path)
+        check("повторный путь изменённого файла не считается покрытием",
+              result["статус"] == "not-evaluated"
+              and not result["уникальность_изменённых_файлов_проверена"])
 
         history = scan_history(root)
         check("исторический аудит классифицирует предъявленные доклады",

@@ -438,7 +438,7 @@ shell_checks:
   report_contract_guard.py:
     gate_step: контракт последнего доклада
     selftest_cmd: [report_contract_guard.py, --selftest]
-    selftest_checks: 5
+    selftest_checks: 6
     role: >-
       ровно четыре обязательных раздела доклада, строка отличия тика и
       отдельная машинная суть из пяти полей; исторический агрегат не объявляет

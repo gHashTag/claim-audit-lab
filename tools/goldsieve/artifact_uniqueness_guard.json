@@ -1,9 +1,9 @@
 {
   "статус": "not-evaluated",
   "журнал": "/home/user/workspace/cron_tracking/8dff7aa3/runs.jsonl",
-  "прочитано": 3538,
-  "проверено": 285,
-  "not_evaluated": 3253,
+  "прочитано": 3568,
+  "проверено": 290,
+  "not_evaluated": 3278,
   "нарушения": [],
   "некорректных_json": 0
 }
