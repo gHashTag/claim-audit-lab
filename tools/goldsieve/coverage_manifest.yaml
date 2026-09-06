@@ -81,6 +81,19 @@ audit_guards:
     mutation_target: удаление проверки диапазона ключа или непустого объяснения
     sensitivity: 4/4 самопроверки; 1198 литеральных ключей, 0 нарушений
     status_class: verified-in-scope
+  bblm_coefficient_rederivation_question:
+    role: >-
+      независимый вывод численных коэффициентов BBLM обязан предъявить
+      аналитический источник с формулой и номером уравнения; при его отсутствии
+      запись получает машинный вопрос analytic_source_absent и
+      not-evaluated, а не научный вердикт
+    script: bblm_coefficient_rederivation_guard.py
+    gate_step: машинный вопрос вывода коэффициентов BBLM
+    positive_fixture: bblm_protocol.json с отсутствующим аналитическим источником
+    negative_fixture: дублированный элемент и заявленный вывод без источника
+    mutation_target: подмена отсутствующего источника статусом доказанного вывода
+    sensitivity: 4/4 самопроверки
+    status_class: verified-in-scope
   artifact_path_boundary:
     role: >-
       путь артефакта в журнале не должен уводить происхождение за разрешённые
