@@ -1,0 +1,11 @@
+{
+  "статус": "verified-in-scope",
+  "реестр": "/home/user/workspace/goldsieve/claims.yaml",
+  "проверено_локальных_файлов": 172,
+  "нарушения": [],
+  "разрешённые_корни": [
+    "/home/user/workspace/corpus/trinity",
+    "/home/user/workspace/goldsieve"
+  ],
+  "ограничение": "граница пути не доказывает содержательную независимость observed/reference"
+}
