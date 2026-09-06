@@ -129,17 +129,17 @@
     {
       "путь": "/home/user/workspace/goldsieve/ci_gate.sh",
       "предъявленный_sha256": null,
-      "фактический_sha256": "5f7802bfd9a72c9a259645692a93469fef356d0cc5810318a9cd1eeec34d4d14"
+      "фактический_sha256": "ab1f9e5647a0c37a0a4eb1eba92549e4747021d865459fad10264495a316c82b"
     },
     {
       "путь": "/home/user/workspace/goldsieve/coverage_manifest.yaml",
       "предъявленный_sha256": null,
-      "фактический_sha256": "a67c625da47b70194971df248a463869544582fb671fc8ffcc7ad932b045499a"
+      "фактический_sha256": "18d25a2bcf3b6232c1cc7bc6a44ca6a80c6784dd79db4ebee827e802f2b27eab"
     },
     {
       "путь": "/home/user/workspace/goldsieve/report_artifact_digest_guard.json",
       "предъявленный_sha256": null,
-      "фактический_sha256": "90c187d353b8bef6a8693b390826b3ef40e0deebbae634c1b21bfb3a4d85398d"
+      "фактический_sha256": "8be6b410e9c0e6ba9c8435b5701c2a867d55a43457765e5b93264782e5fe874f"
     },
     {
       "путь": "/home/user/workspace/goldsieve/report_artifact_digest_guard.py",

@@ -1,0 +1,36 @@
+{
+  "статус": "not-evaluated",
+  "прочитано_кейсов": 119,
+  "прямых_повторов_рецепта": 4,
+  "наблюдения": [
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/axes_omega_lambda.py",
+      "строка": 154,
+      "риск": "observed_reference_same_recipe",
+      "статус": "not-evaluated",
+      "причина": "поля observed и reference содержат один и тот же рецепт; сравнение не является независимым"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/cosmology_columns.py",
+      "строка": 345,
+      "риск": "observed_reference_same_recipe",
+      "статус": "not-evaluated",
+      "причина": "поля observed и reference содержат один и тот же рецепт; сравнение не является независимым"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_external_targets.py",
+      "строка": 145,
+      "риск": "observed_reference_same_recipe",
+      "статус": "not-evaluated",
+      "причина": "поля observed и reference содержат один и тот же рецепт; сравнение не является независимым"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/sacred_fit_multiplicity.py",
+      "строка": 236,
+      "риск": "observed_reference_same_recipe",
+      "статус": "not-evaluated",
+      "причина": "поля observed и reference содержат один и тот же рецепт; сравнение не является независимым"
+    }
+  ],
+  "ограничение": "сравнивается только буквальная форма AST; косвенные цепочки проверяются отдельным детектором identity; отсутствие строки не доказывает научную независимость"
+}

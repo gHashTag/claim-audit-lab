@@ -626,12 +626,21 @@ def cmd_regress(args):
             else:
                 same.append((case, claim_text, old))
 
-    skipped = max(0, len(recorded) - len(selected_cases))
+    # ``selected_cases`` is a set of case paths, while ``same``/``changed``/
+    # ``corpus_moved`` count individual claims.  Printing the former beside
+    # the latter made the machine summary internally inconsistent (for
+    # example, five selected cases produced seven matching claims).  Report
+    # one unit only: claims, which are the rows actually decomposed below.
+    selected_count = sum(
+        len(recorded.get(case, {})) for case in selected_cases
+    )
+    skipped = max(0, sum(len(by_claim) for by_claim in recorded.values())
+                  - selected_count)
     mode = "инкрементальный" if args.changed_only else "полный"
     print("%s регресс реестра: выбрано %d, пропущено %d; %d совпало, "
           "%d изменилось ситом, "
           "%d изменилось из-за корпуса, %d не сопоставлено"
-          % (mode, len(selected_cases), skipped, len(same), len(changed),
+          % (mode, selected_count, skipped, len(same), len(changed),
              len(corpus_moved), len(missing)))
     if args.changed_only and shard_count > 1:
         print("  ротация неразрешённых источников: сегмент %d/%d"

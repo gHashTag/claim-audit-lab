@@ -438,6 +438,17 @@ shell_checks:
     limits: >-
       разные файлы не доказывают независимость формул, библиотек или
       вычислительных путей; сторож не выносит научный вердикт
+  recipe_tautology_guard.py:
+    gate_step: аудит прямого повтора рецепта
+    selftest_cmd: [recipe_tautology_guard.py, --selftest]
+    selftest_checks: 3
+    role: >-
+      буквальное совпадение AST полей observed и reference в Claim получает
+      not-evaluated; тем самым повтор одного вычислительного рецепта не
+      выглядит независимой сверкой
+    limits: >-
+      проверка ограничена прямым AST и не заменяет детектор косвенных цепочек
+      identity; отсутствие повтора не подтверждает научный результат
   zeta_recipe_ambiguity_guard.py:
     gate_step: неоднозначность рецепта zeta
     selftest_cmd: [zeta_recipe_ambiguity_guard.py, --selftest]
