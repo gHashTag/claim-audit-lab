@@ -410,6 +410,17 @@ shell_checks:
     limits: >-
       сторож проверяет только предъявленный машинный отчёт BBLM и не выводит
       аналитические коэффициенты без первичного источника
+  bblm_status_consistency_guard.py:
+    gate_step: согласованность статусов BBLM
+    selftest_cmd: [bblm_status_consistency_guard.py, --selftest]
+    selftest_checks: 7
+    role: >-
+      сверяет машинные списки обязательных, отсутствующих и закрытых элементов
+      между протоколом BBLM, отчётом элементов и сводным учётом; расхождение
+      получает unsupported, а analytic_source_absent сохраняется как вопрос
+    limits: >-
+      согласованность трёх JSON не является научным подтверждением zeta/GUE и
+      не заменяет аналитический источник коэффициентов
   tri:
     gate_step: цепочка живого журнала
     selftest_cmd: null

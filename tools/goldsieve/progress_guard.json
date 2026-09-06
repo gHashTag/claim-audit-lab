@@ -1,7 +1,7 @@
 {
  "суть": {
   "гейт": [
-   141,
+   143,
    2,
    0
   ],
@@ -22,13 +22,12 @@
    true
   ],
   "изменённые_файлы": [
-   "goldsieve/cli.py",
-   "recipe_tautology_guard.py",
+   "bblm_status_consistency_guard.py",
    "ci_gate.sh",
    "coverage_manifest.yaml"
   ]
  },
- "подпись": "7e6144982601e1ac",
+ "подпись": "049421e20f1a62fe",
  "повторов_в_окне": 0,
  "единственный_файл": null,
  "длина_серии": 0,

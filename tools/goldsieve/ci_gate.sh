@@ -279,6 +279,12 @@ else
     step "учёт BBLM: один источник истины"  "$BASE_PY" bblm_accounting.py
     step "чувствительность сторожа формы и масштаба BBLM" "$BASE_PY" bblm_shape_scale_guard.py --selftest
     step "аудит формы и масштаба BBLM" "$BASE_PY" bblm_shape_scale_guard.py
+    # Новый риск: протокол, расчёт элементов и сводный учёт могут разойтись
+    # машинно даже при валидном каждом JSON по отдельности. Несогласованность
+    # получает unsupported; аналитический источник коэффициентов остаётся
+    # analytic_source_absent и не превращается в находку.
+    step "чувствительность согласованности статусов BBLM" "$BASE_PY" bblm_status_consistency_guard.py --selftest
+    step "согласованность статусов BBLM" "$BASE_PY" bblm_status_consistency_guard.py
     # Тик 371: стандартный json.loads допускает NaN/Infinity вне стандарта
     # JSON. Такие значения могут скрыть нечисловой результат в машинном
     # отчёте; строгий разбор обязан остановить этот путь.

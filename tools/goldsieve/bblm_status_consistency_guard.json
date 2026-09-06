@@ -1,0 +1,18 @@
+{
+  "статус": "verified-in-scope",
+  "проверка": "согласованность машинных статусов BBLM",
+  "ошибки": [],
+  "сводка": {
+    "required_total": 8,
+    "present_count": 7,
+    "missing_count": 1,
+    "missing_elements": [
+      "coefficient_rederivation"
+    ],
+    "protocol_verdict": "ВОПРОС",
+    "protocol_status_class": "not-evaluated",
+    "elements_status_class": "verified-in-scope",
+    "accounting_divergence_count": 0
+  },
+  "ограничение": "согласованность машинных статусов не является научным подтверждением zeta/GUE; analytic_source_absent сохраняется до предъявления аналитической формулы и номера уравнения"
+}
