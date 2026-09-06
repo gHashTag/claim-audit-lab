@@ -449,6 +449,17 @@ shell_checks:
     limits: >-
       контракт формы не подтверждает научную истинность утверждений и не
       восстанавливает значения из соседних тиков
+  report_artifact_digest_guard.py:
+    gate_step: дайджест содержимого артефактов доклада
+    selftest_cmd: [report_artifact_digest_guard.py, --selftest]
+    selftest_checks: 4
+    role: >-
+      связывает каждый предъявленный путь артефакта с прочитанным SHA-256;
+      отсутствие дайджеста оставляет not-evaluated, а несоответствие
+      получает unsupported
+    limits: >-
+      дайджест связывает прочитанную копию с докладом, но не доказывает
+      авторство файла или научную истинность утверждения
   audit_substance_guard.py:
     gate_step: чувствительность формы машинной сути
     selftest_cmd: [audit_substance_guard.py, --selftest]

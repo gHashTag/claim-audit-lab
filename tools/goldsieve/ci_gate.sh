@@ -261,6 +261,8 @@ else
     # предъявленного пути, не восстанавливая отсутствующие файлы.
     step "чувствительность происхождения артефактов доклада" "$BASE_PY" report_artifact_provenance_guard.py --selftest
     step "происхождение артефактов доклада" "$BASE_PY" report_artifact_provenance_guard.py
+    step "чувствительность дайджеста артефактов доклада" "$BASE_PY" report_artifact_digest_guard.py --selftest
+    step "дайджест содержимого артефактов доклада" "$BASE_PY" report_artifact_digest_guard.py
     # Машинная суть — единственный вход запрета холостого тика. Проверяем её
     # размерность и типы отдельно, чтобы испорченное поле не стало молчанием.
     step "чувствительность формы машинной сути" "$BASE_PY" audit_substance_guard.py --selftest
