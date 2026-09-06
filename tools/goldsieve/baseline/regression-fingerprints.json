@@ -120,9 +120,9 @@
     },
     "cases/cifar10_metric_recipe_20260816.py": {
       "case_sha256": "59153ef1ff8ec01f14ce41afec8745c2870e89247dfbf319fbc1ac21d07d86aa",
-      "recipe_fingerprint": "af7f4c0c8e62ca88",
+      "recipe_fingerprint": "7ff51623773761fe",
       "sources": {
-        "data/results/cifar10_metrics.json; data/results/cifar10_summary.csv": {
+        "data/results/cifar10_metrics.json;data/results/cifar10_summary.csv": {
           "path": "/home/user/workspace/corpus/trinity/data/results/cifar10_metrics.json",
           "paths": [
             "/home/user/workspace/corpus/trinity/data/results/cifar10_metrics.json",
@@ -1217,9 +1217,9 @@
     },
     "cases/zeta_bblm_finite_height_comparison_20260818.py": {
       "case_sha256": "b7d678bec14ead81b28a8cd6b76323b510ce8ff39cec1f5d068add8c1c84c69e",
-      "recipe_fingerprint": "5b1e97014b802497",
+      "recipe_fingerprint": "7e2156f38174b6ef",
       "sources": {
-        "scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt; BBLM 2006": {
+        "scripts/height_extrapolation.py:7-15; data/zeta/zeros_odlyzko_100k.txt": {
           "path": "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py",
           "paths": [
             "/home/user/workspace/corpus/trinity/scripts/height_extrapolation.py",
@@ -1229,8 +1229,7 @@
           "sha256s": [
             "18c244c32e9d0f42794f1b44f6febc3bd5fe8ee3905ae1bbfc3b617b580f7221",
             "3436c916a7878261ac183fd7b9448c9a4736b8bbccf1356874a6ce1788541632"
-          ],
-          "unresolved": true
+          ]
         }
       }
     },
@@ -1305,12 +1304,11 @@
     },
     "cases/zeta_shape.py": {
       "case_sha256": "ca7b4439f17d0ce50529e77b37fbacda6f8e17b0f297ccbdcd69bfbcb0cf71c6",
-      "recipe_fingerprint": "81959f92c433ba86",
+      "recipe_fingerprint": "50d3788fb64a7d7a",
       "sources": {
-        "data/zeta/zeros_odlyzko_100k.txt, 4 полосы высот; BBLM 2006": {
+        "data/zeta/zeros_odlyzko_100k.txt": {
           "path": "/home/user/workspace/corpus/trinity/data/zeta/zeros_odlyzko_100k.txt",
-          "sha256": "3436c916a7878261ac183fd7b9448c9a4736b8bbccf1356874a6ce1788541632",
-          "unresolved": true
+          "sha256": "3436c916a7878261ac183fd7b9448c9a4736b8bbccf1356874a6ce1788541632"
         },
         "data/zeta/zeta_gue_analysis_results.md:форма распределения": {
           "path": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",

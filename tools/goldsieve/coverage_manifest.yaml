@@ -47,6 +47,17 @@ runtimes:
 # мутационную цель; диагностические tick*-selftest/state-файлы относятся к
 # audit_log и не являются утверждениями корпуса.
 audit_guards:
+  registry_case_path_boundary:
+    role: >-
+      путь case в реестре обязан разрешаться в существующий файл внутри
+      рабочей копии; переход ../ и симлинк наружу получают unsupported
+    script: registry_case_path_guard.py
+    gate_step: граница путей кейсов реестра
+    positive_fixture: claims.yaml и существующие cases/*.py
+    negative_fixture: переход ../ и симлинк наружу
+    mutation_target: удаление проверки границы разрешённого пути
+    sensitivity: 3/3 самопроверки при доступном симлинке
+    status_class: verified-in-scope
   artifact_path_boundary:
     role: >-
       путь артефакта в журнале не должен уводить происхождение за разрешённые

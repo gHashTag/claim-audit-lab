@@ -1,17 +1,342 @@
 {
   "статус": "verified-in-scope",
-  "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick379-report.md",
-  "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick379-progress-substance.json",
-  "разделы": [
-    "(1) что исправлено в инструменте",
-    "(2) что установлено о zeta/GUE",
-    "(3) что осталось недоказанным",
-    "(4) какие артефакты и тесты это подтверждают"
+  "режим": "исторический аудит формы",
+  "доклады": 55,
+  "статусы": {
+    "not-evaluated": 34,
+    "verified-in-scope": 21
+  },
+  "наблюдения": [
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick225-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick225-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick226-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick226-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick227-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick227-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick228-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick228-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick229-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick229-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick231-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick231-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick233-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick233-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick234-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick234-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick237-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick237-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick241-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick241-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick242-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick242-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick243-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick243-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick244-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick244-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick246-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick246-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick247-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick247-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick248-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick248-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick251-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick251-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick253-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick253-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick254-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick254-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick256-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick256-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick258-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick258-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "машинная суть доклада отсутствует"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick262-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick262-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами; progress-substance не содержит ровно пять машинных полей; изменённые_файлы не предъявлены непустым списком"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick271-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick271-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick290-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick290-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick306-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick306-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick307-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick307-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами; нет строки отличия текущего тика от предыдущего"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick310-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick310-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами; нет строки отличия текущего тика от предыдущего"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick314-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick314-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick315-report.md",
+      "суть": "/home/user/workspace/goldsieve/tick315-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick319-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick319-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick323-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick323-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick325-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick327-report.md",
+      "суть": "/home/user/workspace/cron_tracking/20fee222/tick327-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick328-progress-substance.json",
+      "статус": "not-evaluated",
+      "причина": "структура доклада не совпадает с четырьмя обязательными разделами"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick329-report.md",
+      "суть": "/home/user/workspace/goldsieve/tick329-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick331-report.md",
+      "суть": "/home/user/workspace/cron_tracking/20fee222/tick331-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick333-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick333-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick335-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick335-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick337-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick337-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick340-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick340-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick343-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick343-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick349-report.md",
+      "суть": "/home/user/workspace/goldsieve/tick349-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick355-report.md",
+      "суть": "/home/user/workspace/goldsieve/tick355-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick356-report.md",
+      "суть": "/home/user/workspace/goldsieve/tick356-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick357-report.md",
+      "суть": "/home/user/workspace/cron_tracking/20fee222/tick357-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick358-report.md",
+      "суть": "/home/user/workspace/goldsieve/tick358-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick359-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick359-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick360-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick360-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick362-report.md",
+      "суть": "/home/user/workspace/cron_tracking/20fee222/tick362-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick366-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick366-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick372-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick372-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick375-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick375-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick376-report.md",
+      "суть": "/home/user/workspace/cron_tracking/20fee222/tick376-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick378-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick378-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    },
+    {
+      "доклад": "/home/user/workspace/cron_tracking/8dff7aa3/tick379-report.md",
+      "суть": "/home/user/workspace/cron_tracking/8dff7aa3/tick379-progress-substance.json",
+      "статус": "verified-in-scope",
+      "причина": "контракт доклада предъявлен полностью"
+    }
   ],
-  "структура_проверена": true,
-  "отличие_проверено": true,
-  "поля_сути_проверены": true,
-  "изменённые_файлы_проверены": true,
-  "причина": "контракт доклада предъявлен полностью",
-  "ограничение": "контракт формы не подтверждает научную истинность утверждений"
+  "ограничение": "аудит подтверждает, что каждый найденный доклад классифицирован; not-evaluated не превращается в доказанный научный результат"
 }

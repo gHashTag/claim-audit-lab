@@ -786,7 +786,7 @@ claims:
   fingerprint: 24ef74fa65fba288
   target: 3d7ebb582bdb87b5
   novelty_key: trinity:cifar10:metric_recipe:v1
-  inputs_digest: a708af982fa12ee0
+  inputs_digest: 3fcfe165110d56d5
   priority: 1
   measurement_source: пакет результатов CIFAR-10
   observable: точность fp16 на CIFAR-10

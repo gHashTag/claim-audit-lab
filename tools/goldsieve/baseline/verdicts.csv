@@ -14,7 +14,7 @@ cases/b007_vsa_speedup_20260815.py,"Табличное ускорение VSA р
 cases/bitnet_coherence_throughput_recipe_20260817.py,Отчёт BitNet отделяет связную генерацию от производительности теста ядра,ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО,docs/docs/research/bitnet-report.md:1-220,247c2ca5bedd72da
 cases/bottom_mass_external_20260902.py,Формула массы b-кварка против внешней оценки PDG 2024,ПУСТО,docs/docs/math-foundations/sacred-formulas.md:141,
 cases/c20_empty_family_guard_20260815.py,Пустое семейство С20 сохраняет вопрос вместо подтверждения,ВОПРОС,goldsieve/sieve.py:1440,
-cases/cifar10_metric_recipe_20260816.py,"Точность fp16 на CIFAR-10 равна 99,99 процента по воспроизводимому рецепту",ВОПРОС,data/results/cifar10_metrics.json;data/results/cifar10_summary.csv,a708af982fa12ee0
+cases/cifar10_metric_recipe_20260816.py,"Точность fp16 на CIFAR-10 равна 99,99 процента по воспроизводимому рецепту",ВОПРОС,data/results/cifar10_metrics.json;data/results/cifar10_summary.csv,3fcfe165110d56d5
 cases/ckm_lqg_external_20260813.py,|V_cb| = γ³π согласуется с внешним значением CKM,ПУСТО,"docs/papers/README_FOR_SCIENTISTS.md:49,96",dec6ecc47e066f9a
 cases/ckm_lqg_external_20260813.py,|V_us| = 3γ/π согласуется с внешним значением CKM,ПУСТО,"docs/papers/README_FOR_SCIENTISTS.md:47,95",dec6ecc47e066f9a
 cases/ckm_lqg_external_20260813.py,γ = φ⁻³ согласуется с внешней оценкой параметра Барберо–Иммирци,ПУСТО,docs/papers/README_FOR_SCIENTISTS.md:20,dec6ecc47e066f9a

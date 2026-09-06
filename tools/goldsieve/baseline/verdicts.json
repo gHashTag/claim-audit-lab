@@ -109,7 +109,7 @@
     "claim": "Точность fp16 на CIFAR-10 равна 99,99 процента по воспроизводимому рецепту",
     "verdict": "ВОПРОС",
     "source": "data/results/cifar10_metrics.json;data/results/cifar10_summary.csv",
-    "inputs_digest": "a708af982fa12ee0"
+    "inputs_digest": "3fcfe165110d56d5"
   },
   {
     "case": "cases/ckm_lqg_external_20260813.py",
