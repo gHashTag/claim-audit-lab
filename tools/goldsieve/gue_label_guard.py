@@ -109,6 +109,7 @@ AUDIT_LOG_NAMES = {
     "audit-ledger.md", "tick-counters.json", "runs.jsonl", "current-state.md",
     "cross-platform-replay.json", "prefilter-decisions.jsonl",
     "gue_label_guard.json", "gue_label_audit.json", "gue_label_fix.json",
+    "progress_guard.json",
 }
 # Диагностические файлы тика используют и подчёркивание, и дефис. Оба
 # варианта являются журналом, а не утверждением корпуса: без hyphen-варианта
