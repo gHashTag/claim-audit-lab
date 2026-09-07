@@ -12,12 +12,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import tempfile
 from pathlib import Path
 from typing import Any
 
 
 REQUIRED = ("гейт", "регресс", "ос_матрица", "bblm", "изменённые_файлы")
+TICK_ROOT = Path("/home/user/workspace/cron_tracking/20fee222")
+OUT = Path(__file__).resolve().with_suffix(".json")
 
 
 def _ints(value: Any, length: int) -> bool:
@@ -106,17 +109,82 @@ def check(path: Path) -> int:
     return 0 if ok else 1
 
 
+def _latest_substance(root: Path = TICK_ROOT) -> Path | None:
+    """Найти предъявленный паспорт сути с наибольшим номером тика.
+
+    Это чтение настоящего артефакта текущего аудита, а не восстановление
+    значений из соседних докладов. Номер тика извлекается из имени файла,
+    чтобы лексикографическая сортировка не поставила tick99 после tick100.
+    """
+    candidates: list[tuple[int, Path]] = []
+    for path in root.glob("tick*-progress-substance.json"):
+        match = re.fullmatch(r"tick(\d+)-progress-substance\.json", path.name)
+        if match:
+            candidates.append((int(match.group(1)), path))
+    return max(candidates, default=None, key=lambda item: item[0])[1] if candidates else None
+
+
+def scan(path: Path | None = None) -> int:
+    """Проверить форму настоящей машинной сути и предъявить область входа."""
+    source = path or _latest_substance()
+    result: dict[str, Any] = {
+        "проверка": "форма машинной сути предъявленного паспорта тика",
+        "ограничение": (
+            "проверка формы не подтверждает научную истинность счётчиков "
+            "и не закрывает долги zeta/GUE"
+        ),
+    }
+    if source is None:
+        result.update({
+            "статус": "not-evaluated",
+            "причина": "настоящий паспорт tickNNN-progress-substance.json не найден",
+        })
+        OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n",
+                       encoding="utf-8")
+        print("статус входа: not-evaluated")
+        print("форма машинной сути: настоящий паспорт не найден")
+        return 1
+    try:
+        value = json.loads(source.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        result.update({
+            "статус": "unsupported",
+            "вход": str(source),
+            "причина": "паспорт не прочитан: " + str(exc),
+        })
+        OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n",
+                       encoding="utf-8")
+        print("статус входа: unsupported")
+        print("форма машинной сути: паспорт не прочитан — %s" % exc)
+        return 1
+    ok, reason = validate(value)
+    result.update({
+        "статус": "verified-in-scope" if ok else "unsupported",
+        "вход": str(source),
+        "проверенные_поля": sorted(value) if isinstance(value, dict) else [],
+        "причина": reason,
+    })
+    OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n",
+                   encoding="utf-8")
+    print("статус входа: %s" % result["статус"])
+    print("форма машинной сути: %s — %s" %
+          ("ok" if ok else "ПРОВАЛ", reason))
+    print("вход: %s" % source)
+    return 0 if ok else 1
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--selftest", action="store_true")
-    parser.add_argument("--check", type=Path)
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--selftest", action="store_true")
+    group.add_argument("--check", type=Path)
+    group.add_argument("--scan", action="store_true")
     args = parser.parse_args()
     if args.selftest:
         return selftest()
     if args.check:
         return check(args.check)
-    parser.error("укажите --selftest или --check")
-    return 2
+    return scan()
 
 
 if __name__ == "__main__":
