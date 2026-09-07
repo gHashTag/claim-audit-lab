@@ -89,7 +89,7 @@
     {
       "путь": "/home/user/workspace/goldsieve/ci_gate.sh",
       "предъявленный_sha256": null,
-      "фактический_sha256": "f10978137265fc8fb915a122686fdf76b291d81ce5513dd17a108728ee429a1d"
+      "фактический_sha256": "3fc415397dddf61ef0386a3af567cffcc759a35fe7e94095b70b5842305d859d"
     },
     {
       "путь": "/home/user/workspace/goldsieve/coverage_manifest.yaml",

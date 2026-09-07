@@ -1,0 +1,19 @@
+{
+  "долг_пустых": 13,
+  "всего": 40,
+  "пустые": [
+    "arb_interval_guard.py",
+    "artifact_path_guard.py",
+    "artifact_uniqueness_guard.py",
+    "bblm_coefficient_rederivation_guard.py",
+    "chi2_dof_semantics_guard.py",
+    "external_uncertainty_type_guard.py",
+    "journal_signature_guard.py",
+    "journal_signature_scope_guard.py",
+    "recipe_tautology_guard.py",
+    "report_artifact_digest_guard.py",
+    "report_contract_guard.py",
+    "unsupported_construct_guard.py",
+    "zeta_recipe_ambiguity_guard.py"
+  ]
+}

@@ -23,15 +23,27 @@ PYTHONS=${GOLDSIEVE_PYTHONS:-"$(command -v python3) /usr/bin/python3.14 /usr/loc
 FAIL=0
 declare -a FAILED=()
 
+# Тик 402: стоимость гейта измеряется, а не угадывается. Срывы по таймауту
+# выросли 39 -> 53 при росте шагов 69 -> 147, но КАКИЕ шаги съедают окно, до
+# сих пор не было измерено ни разу. Пока распределение времени неизвестно,
+# любая «оптимизация» гейта — подгонка наугад.
+GATE_TIMINGS=${GATE_TIMINGS:-/home/user/workspace/cron_tracking/20fee222/gate-timings.tsv}
+: >"$GATE_TIMINGS" 2>/dev/null || GATE_TIMINGS=/dev/null
+
 step() {  # step <имя> <интерпретатор> <аргументы...>
     local name="$1"; shift
     local py="$1"; shift
-    local log
+    local log t0 t1 dt rc=0
     log=$(mktemp)
-    if timeout 3600 "$py" "$@" >"$log" 2>&1; then
-        echo "  ok      $name  [$($py -V 2>&1)]"
+    t0=$(date +%s)
+    timeout 3600 "$py" "$@" >"$log" 2>&1 || rc=$?
+    t1=$(date +%s)
+    dt=$((t1 - t0))
+    printf '%s\t%s\t%s\n' "$dt" "$name" "$($py -V 2>&1)" >>"$GATE_TIMINGS"
+    if [ "$rc" = 0 ]; then
+        echo "  ok      $name  [$($py -V 2>&1)]  ${dt}с"
     else
-        echo "  ПРОВАЛ  $name  [$($py -V 2>&1)]"
+        echo "  ПРОВАЛ  $name  [$($py -V 2>&1)]  ${dt}с"
         tail -12 "$log" | sed 's/^/          /'
         FAIL=1
         FAILED+=("$name")
@@ -67,6 +79,11 @@ for PY in $PYTHONS; do
     step "независимость разметки"   "$PY" independence.py
     step "чувствительность предпосылки независимости" "$PY" independence_assumption_guard.py --selftest
     step "счётчики тика"             "$PY" tick_counters.py selftest
+    # Тик 402: содержательность сторожей. В гейт входит ТОЛЬКО самопроверка
+    # (мгновенная); полный аудит --gate стоит около трёх минут и запускается
+    # шагом тика не чаще одного раза в шесть тиков, иначе сторож содержательности
+    # сам стал бы тем, что он запрещает.
+    step "содержательность сторожей" "$PY" guard_efficacy_guard.py --selftest
     [ "$FULL" = 1 ] && step "калибровка на реестре" "$PY" calibrate_identity.py
     [ "$FULL" = 1 ] && step "калибровка сит С4 С5 С16" "$PY" calibrate_sieves.py
 done
@@ -337,6 +354,15 @@ else
     step "повторы сути в исторических докладах" "$BASE_PY" progress_guard.py --history /home/user/workspace/cron_tracking/20fee222
     step "чувствительность сторожа новизны цели" "$BASE_PY" target_novelty_guard.py --selftest
     step "повторы внешних целей против признанного долга" "$BASE_PY" target_novelty_guard.py --gate
+fi
+
+# Тик 402: распределение стоимости шагов. Без него правило «цена регресса»
+# нечем исполнять: неизвестно, какие шаги съедают окно тика.
+if [ -s "$GATE_TIMINGS" ]; then
+    echo
+    TOTAL=$(awk -F'\t' '{s+=$1} END {print s+0}' "$GATE_TIMINGS")
+    echo "--- стоимость гейта: $(wc -l <"$GATE_TIMINGS") шагов, ${TOTAL}с суммарно; десять самых дорогих"
+    sort -t$'\t' -k1,1nr "$GATE_TIMINGS" | head -10 | awk -F'\t' '{printf "    %5dс  %s  [%s]\n", $1, $2, $3}'
 fi
 
 echo
