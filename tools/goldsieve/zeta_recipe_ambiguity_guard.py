@@ -69,6 +69,27 @@ def evaluate(
         if isinstance(variants, dict)
         else []
     )
+    observed_is_number = (
+        isinstance(observed, (int, float))
+        and not isinstance(observed, bool)
+        and math.isfinite(float(observed))
+    )
+    all_variants_numeric = (
+        isinstance(variants, dict)
+        and bool(variants)
+        and all(_variant_number(value) is not None
+                for value in variants.values())
+    )
+    # Это отдельный статус входа, а не вердикт о выборе рецепта. Он означает
+    # только, что настоящий файл наблюдения и полный числовой набор вариантов
+    # прочитаны в пределах контракта. При нескольких попаданиях итоговый
+    # ``статус`` ниже по-прежнему остаётся not-evaluated.
+    input_status = (
+        "verified-in-scope"
+        if (source_is_file and observed_is_number and all_variants_numeric
+            and not malformed and not unknown)
+        else ("unsupported" if malformed or unknown else "not-evaluated")
+    )
     if malformed or unknown:
         status = "unsupported"
         details = []
@@ -97,6 +118,7 @@ def evaluate(
         )
     return {
         "статус": status,
+        "статус_входа": input_status,
         "источник_наблюдения": source,
         "наблюдаемое": observed,
         "источник_является_файлом": source_is_file,
@@ -181,7 +203,8 @@ def selftest() -> int:
         check(
             "два варианта получают not-evaluated",
             ambiguous["статус"] == "not-evaluated"
-            and ambiguous["воспроизводящих_вариантов"] == 2,
+            and ambiguous["воспроизводящих_вариантов"] == 2
+            and ambiguous["статус_входа"] == "verified-in-scope",
         )
         absent = evaluate(source, 0.4009, {"a": 0.4}, [])
         check(
@@ -204,7 +227,8 @@ def selftest() -> int:
         )
         check(
             "несуществующий источник не становится покрытием",
-            missing_source["статус"] == "not-evaluated",
+            missing_source["статус"] == "not-evaluated"
+            and missing_source["статус_входа"] == "not-evaluated",
         )
         nonfinite = evaluate(source, 0.4009, {"a": float("nan")}, ["a"])
         check(
@@ -228,9 +252,10 @@ def main(argv: list[str]) -> int:
     )
     print(
         "сторож неоднозначности рецепта zeta: %s; "
-        "воспроизводящих вариантов %d; источник %s"
+        "статус входа %s; воспроизводящих вариантов %d; источник %s"
         % (
             result["статус"],
+            result["статус_входа"],
             result["воспроизводящих_вариантов"],
             result["источник_наблюдения"],
         )
