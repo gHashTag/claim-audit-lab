@@ -477,7 +477,7 @@ shell_checks:
   recipe_tautology_guard.py:
     gate_step: аудит прямого повтора рецепта
     selftest_cmd: [recipe_tautology_guard.py, --selftest]
-    selftest_checks: 3
+    selftest_checks: 4
     role: >-
       буквальное совпадение AST полей observed и reference в Claim получает
       not-evaluated; тем самым повтор одного вычислительного рецепта не

@@ -80,8 +80,14 @@ def scan(cases_dir: Path = CASES) -> dict:
                 }
             )
     rows.extend(errors)
+    # Область входа и научный результат — разные утверждения. Сам факт, что
+    # реальные файлы кейсов найдены и прочитаны для AST-аудита, устанавливает
+    # границу входа; найденный прямой повтор по-прежнему оставляет научный
+    # риск not-evaluated. Не смешиваем эти статусы в один флаг.
+    input_status = "verified-in-scope" if paths else "not-evaluated"
     return {
         "статус": "not-evaluated" if rows else "verified-in-scope",
+        "статус_входа": input_status,
         "прочитано_кейсов": len(paths),
         "прямых_повторов_рецепта": len(rows),
         "наблюдения": rows,
@@ -133,8 +139,12 @@ def selftest() -> int:
         report = scan(root)
         check("ошибка разбора не становится покрытием",
               report["статус"] == "not-evaluated"
+              and report["статус_входа"] == "verified-in-scope"
               and any(row["статус"] == "not-evaluated"
                       for row in report["наблюдения"]))
+        empty = scan(root / "missing")
+        check("отсутствие входа явно not-evaluated",
+              empty["статус_входа"] == "not-evaluated")
 
     print(
         "самопроверка сторожа прямого повтора рецепта: %d пройдено, %d провалено"
@@ -153,9 +163,11 @@ def main(argv: list[str]) -> int:
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n",
                    encoding="utf-8")
     print(
-        "сторож прямого повтора рецепта: %s; кейсов: %d; повторов: %d"
+        "сторож прямого повтора рецепта: %s; статус входа: %s; "
+        "кейсов: %d; повторов: %d"
         % (
             result["статус"],
+            result["статус_входа"],
             result["прочитано_кейсов"],
             result["прямых_повторов_рецепта"],
         )
