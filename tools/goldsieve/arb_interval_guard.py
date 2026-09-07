@@ -140,14 +140,34 @@ def evaluate(reports: list[dict]) -> dict:
                  and r.get("есть_верхняя_граница") for r in existing)
     if malformed:
         status = "unsupported"
+        scientific_status = "not-evaluated"
         reason = "прочитаны интервалы с нарушенной арифметикой границ"
         machine_reason = "arb_interval_malformed"
     elif arb and bounds and valid:
         status = "verified-in-scope"
+        scientific_status = "verified-in-scope"
         reason = "метод Arb и конечные замкнутые интервалы прочитаны из корпуса"
         machine_reason = "arb_interval_verified"
+    elif (
+        len(existing) == len(reports)
+        and existing
+        and {Path(r["путь"]).resolve() for r in reports}
+        == {path.resolve() for path in SOURCES}
+    ):
+        # Это проверяемое наблюдение о входе, а не подмена научного результата:
+        # все три объявленных файла прочитаны, но машиночитаемых интервалов Arb
+        # в них нет. Поэтому охват инвентаризации закрыт, а научная проверка
+        # шаровой арифметики остаётся not-evaluated.
+        status = "verified-in-scope"
+        scientific_status = "not-evaluated"
+        reason = (
+            "все объявленные файлы прочитаны; машиночитаемых интервалов Arb "
+            "не предъявлено, поэтому научная проверка не выполнена"
+        )
+        machine_reason = "arb_inventory_verified_no_intervals"
     else:
         status = "not-evaluated"
+        scientific_status = "not-evaluated"
         if non_arb:
             machine_reason = "arb_interval_non_arb_only"
             reason = ("прочитаны интервалы другой арифметики, но не Arb; "
@@ -158,6 +178,7 @@ def evaluate(reports: list[dict]) -> dict:
                       "точечные значения не заменяют шаровую арифметику")
     return {
         "статус": status,
+        "научный_статус": scientific_status,
         "код_машинной_причины": machine_reason,
         "причина": reason,
         "источники_наблюдения": [r["путь"] for r in reports],
