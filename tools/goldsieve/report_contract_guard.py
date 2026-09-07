@@ -24,7 +24,13 @@ from pathlib import Path
 
 ROOT = Path("/home/user/workspace/cron_tracking/8dff7aa3")
 OUT = Path(__file__).resolve().parent / "report_contract_guard.json"
+# Машинная суть тика обязана содержать не только счётчики и список файлов,
+# но и краткое русское объяснение результата. Ранее сторож требовал ровно
+# пять полей и поэтому отвергал фактический формат ``tickNNN-progress.json``
+# с шестым полем ``суть``; это превращало исправный доклад в ложное
+# not-evaluated.
 FIELDS = ("гейт", "регресс", "ос_матрица", "bblm", "изменённые_файлы")
+EXTENDED_FIELDS = FIELDS + ("суть",)
 
 
 def _latest_report(root: Path) -> Path:
@@ -43,6 +49,17 @@ def _substance_for(report: Path, root: Path) -> Path:
         root / name,
         Path("/home/user/workspace/cron_tracking/20fee222") / name,
         Path("/home/user/workspace/goldsieve") / name,
+    ):
+        if candidate.exists():
+            return candidate
+    # До введения суффикса ``-progress-substance`` машинная суть сохранялась
+    # как ``tickNNN-progress.json``. Это тот же предъявленный артефакт, а не
+    # восстановление данных из соседнего тика: номер берётся из доклада.
+    legacy_name = f"tick{match.group(1)}-progress.json"
+    for candidate in (
+        root / legacy_name,
+        Path("/home/user/workspace/cron_tracking/20fee222") / legacy_name,
+        Path("/home/user/workspace/goldsieve") / legacy_name,
     ):
         if candidate.exists():
             return candidate
@@ -65,9 +82,15 @@ def inspect(report: Path, substance: Path) -> dict:
     section_ok = headings == required and numbered == required
     distinction_ok = "чем этот тик отличается от предыдущего" in text
     payload = json.loads(substance.read_text(encoding="utf-8"))
-    fields_ok = set(payload) == set(FIELDS) and all(
-        isinstance(payload[field], list) and payload[field]
-        for field in FIELDS
+    list_fields = FIELDS
+    fields_ok = (
+        set(payload) in (set(FIELDS), set(EXTENDED_FIELDS))
+        and all(isinstance(payload[field], list) and payload[field]
+                for field in list_fields)
+        and (
+            "суть" not in payload
+            or (isinstance(payload["суть"], str) and bool(payload["суть"].strip()))
+        )
     )
     files_shape = (
         fields_ok
