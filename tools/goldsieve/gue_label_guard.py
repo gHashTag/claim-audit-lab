@@ -189,7 +189,8 @@ def iter_files(root: Path):
         yield p
 
 
-def scan_tree(root: Path, strict: bool, exempt: list[dict] | None = None) -> list[dict]:
+def scan_tree(root: Path, strict: bool, exempt: list[dict] | None = None,
+              stats: dict[str, int] | None = None) -> list[dict]:
     """strict=True оставлен для совместимости фикстур; реальная строгость — по роли."""
     out = []
     for p in iter_files(root):
@@ -204,7 +205,11 @@ def scan_tree(root: Path, strict: bool, exempt: list[dict] | None = None) -> lis
         try:
             text = p.read_text(encoding="utf-8", errors="replace")
         except OSError:
+            if stats is not None:
+                stats["read_errors"] = stats.get("read_errors", 0) + 1
             continue
+        if stats is not None:
+            stats["files_read"] = stats.get("files_read", 0) + 1
         for i, line in enumerate(text.splitlines(), 1):
             kind = scan_line(line, line_strict)
             if kind:
@@ -380,14 +385,26 @@ def main(argv: list[str]) -> int:
     if "--selftest" in argv:
         return selftest()
     exempt: list[dict] = []
-    violations = scan_tree(CORPUS_ROOT, strict=True, exempt=exempt)
+    stats = {"files_read": 0, "read_errors": 0}
+    violations = scan_tree(CORPUS_ROOT, strict=True, exempt=exempt, stats=stats)
     for r in TOOL_ROOTS:
-        violations += scan_tree(r, strict=False, exempt=exempt)
+        violations += scan_tree(r, strict=False, exempt=exempt, stats=stats)
+    if stats["read_errors"]:
+        input_status = "unsupported"
+    elif stats["files_read"]:
+        input_status = "verified-in-scope"
+    else:
+        input_status = "not-evaluated"
     dest = Path("/home/user/workspace/goldsieve/gue_label_guard.json")
-    dest.write_text(json.dumps({"violations": violations, "count": len(violations),
+    dest.write_text(json.dumps({"статус_входа": input_status,
+                                "прочитано_файлов": stats["files_read"],
+                                "ошибок_чтения": stats["read_errors"],
+                                "violations": violations, "count": len(violations),
                                 "exempt_files": exempt, "exempt_count": len(exempt),
                                 "roles": ["corpus", "tool", "audit_log"]},
                                ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"статус_входа: {input_status}; прочитано файлов: {stats['files_read']}; "
+          f"ошибок чтения: {stats['read_errors']}")
     print(f"объявленное исключение по роли audit_log: файлов {len(exempt)}")
     if violations:
         print(f"ЗАПРЕТ НАРУШЕН: {len(violations)} строк связывают 0,4220 с меткой точного GUE")
