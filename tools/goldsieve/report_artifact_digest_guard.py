@@ -70,6 +70,15 @@ def inspect_text(text: str, report: str) -> dict:
         elif actual is None or declared != actual:
             mismatched.append(path)
         observations.append(row)
+    unreadable = [
+        row["путь"] for row in observations
+        if row["фактический_sha256"] is None
+    ]
+    input_status = (
+        "verified-in-scope"
+        if paths and not unreadable
+        else "not-evaluated"
+    )
     if mismatched:
         status = "unsupported"
         reason = "предъявленный SHA-256 не совпадает с прочитанным содержимым"
@@ -84,12 +93,19 @@ def inspect_text(text: str, report: str) -> dict:
         reason = "каждый предъявленный путь связан с прочитанным SHA-256"
     return {
         "статус": status,
+        "статус_входа": input_status,
         "доклад": report,
         "путей": len(paths),
+        "прочитано_артефактов": len(paths) - len(unreadable),
+        "непрочитано_артефактов": unreadable,
         "без_sha256": missing,
         "несовпадающих_sha256": mismatched,
         "наблюдения": observations,
         "причина": reason,
+        "ограничение_входа": (
+            "проверено, что каждый предъявленный путь существует как файл "
+            "в пределах /home/user/workspace; это не доказывает его авторство"
+        ),
         "ограничение": (
             "дайджест связывает прочитанную копию с докладом, но не доказывает "
             "авторство файла или научную истинность утверждения"
@@ -125,10 +141,13 @@ def selftest() -> int:
         valid = f"артефакт {artifact} sha256: {digest}\n"
         result = inspect_text(valid, "фикстура-valid.md")
         check("совпадающий дайджест получает verified-in-scope",
-              result["статус"] == "verified-in-scope")
+              result["статус"] == "verified-in-scope"
+              and result["статус_входа"] == "verified-in-scope"
+              and result["прочитано_артефактов"] == 1)
         result = inspect_text(f"артефакт {artifact}\n", "фикстура-missing.md")
         check("отсутствующий дайджест получает not-evaluated",
               result["статус"] == "not-evaluated"
+              and result["статус_входа"] == "verified-in-scope"
               and result["без_sha256"] == [str(artifact)])
         result = inspect_text(
             f"артефакт {artifact} sha256: {'0' * 64}\n",
@@ -139,7 +158,8 @@ def selftest() -> int:
               and result["несовпадающих_sha256"] == [str(artifact)])
         result = inspect_text("доклад без пути\n", "фикстура-empty.md")
         check("отсутствие пути не становится покрытием",
-              result["статус"] == "not-evaluated")
+              result["статус"] == "not-evaluated"
+              and result["статус_входа"] == "not-evaluated")
 
     print("самопроверка дайджеста артефактов доклада: пройдено %d, провалено %d"
           % (good, bad))
@@ -158,9 +178,10 @@ def main(argv: list[str] | None = None) -> int:
     except (OSError, UnicodeError, ValueError) as exc:
         print("сторож дайджеста артефактов: not-evaluated; %s" % exc)
         return 0
-    print("сторож дайджеста артефактов: %s; путей: %d; без SHA-256: %d; "
-          "несовпадений: %d" % (
-              result["статус"], result["путей"], len(result["без_sha256"]),
+    print("сторож дайджеста артефактов: %s; статус входа: %s; путей: %d; "
+          "прочитано артефактов: %d; без SHA-256: %d; несовпадений: %d" % (
+              result["статус"], result["статус_входа"], result["путей"],
+              result["прочитано_артефактов"], len(result["без_sha256"]),
               len(result["несовпадающих_sha256"])))
     # Отсутствие доказательства наблюдаемо, но не является провалом гейта:
     # корпус не обязан ретроспективно содержать подписи старых докладов.
