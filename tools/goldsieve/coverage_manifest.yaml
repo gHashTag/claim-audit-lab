@@ -532,7 +532,7 @@ shell_checks:
   unsupported_construct_guard.py:
     gate_step: чувствительность сторожа неохваченных конструкций
     selftest_cmd: [unsupported_construct_guard.py, --selftest]
-    selftest_checks: 4
+    selftest_checks: 5
     role: >-
       отмечает генераторы, корутины, contextvars, exec/eval и метаклассы,
       для которых анализатор не заявляет поддержку; найденная конструкция

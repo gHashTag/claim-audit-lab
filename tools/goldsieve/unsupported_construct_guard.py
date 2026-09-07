@@ -68,21 +68,36 @@ def inspect(path: Path) -> list[dict]:
 def scan(cases_dir: Path = CASES) -> dict:
     rows = []
     parse_errors = []
-    for path in sorted(cases_dir.glob("*.py")):
+    case_statuses = []
+    paths = sorted(cases_dir.glob("*.py"))
+    for path in paths:
         try:
-            rows.extend(inspect(path))
+            found = inspect(path)
+            rows.extend(found)
+            case_statuses.append({
+                "путь": str(path),
+                "статус": "unsupported" if found else "verified-in-scope",
+                "неохваченных_конструкций": len(found),
+            })
         except (OSError, UnicodeError, SyntaxError) as exc:
-            parse_errors.append({
+            row = {
                 "путь": str(path),
                 "статус": "not-evaluated",
                 "причина": "файл не удалось разобрать: %s" % exc,
-            })
+            }
+            parse_errors.append(row)
+            case_statuses.append(row)
     if parse_errors:
         rows.extend(parse_errors)
     status = "unsupported" if rows else "verified-in-scope"
+    verified_cases = sum(
+        1 for item in case_statuses if item["статус"] == "verified-in-scope"
+    )
     return {
         "статус": status,
-        "прочитано_кейсов": len(list(cases_dir.glob("*.py"))),
+        "прочитано_кейсов": len(paths),
+        "проверено_в_области": verified_cases,
+        "статусы_кейсов": case_statuses,
         "неохваченные_конструкции": len(rows),
         "наблюдения": rows,
         "ограничение": (
@@ -142,6 +157,10 @@ def selftest() -> int:
               report["статус"] == "unsupported"
               and any(row["статус"] == "not-evaluated"
                       for row in report["наблюдения"]))
+        check("чистый файл получает verified-in-scope в своей области",
+              report["проверено_в_области"] == 1
+              and any(row["статус"] == "verified-in-scope"
+                      for row in report["статусы_кейсов"]))
 
     print("самопроверка сторожа неохваченных конструкций: %d пройдено, "
           "%d провалено" % (good, bad))
@@ -157,8 +176,10 @@ def main(argv: list[str]) -> int:
     result = scan()
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n",
                    encoding="utf-8")
-    print("сторож неохваченных конструкций: %s; кейсов: %d; рисков: %d"
+    print("сторож неохваченных конструкций: %s; кейсов: %d; "
+          "проверено в области: %d (verified-in-scope); рисков: %d"
           % (result["статус"], result["прочитано_кейсов"],
+             result["проверено_в_области"],
              result["неохваченные_конструкции"]))
     return 0
 
