@@ -32,6 +32,10 @@ def inspect(path: Path = TABLE) -> dict:
     with path.open(encoding="utf-8", newline="") as fh:
         rows = list(csv.DictReader(fh))
     fields = list(rows[0]) if rows else []
+    # Область входа и научный вывод — разные вопросы. Настоящая таблица
+    # действительно прочитана и имеет наблюдаемый столбец chi2_dof, даже если
+    # она не предъявляет исходные χ² и dof. Это должно быть видно отдельно,
+    # иначе пустой сторож маскирует честный not-evaluated научного вывода.
     chi2_field = next((name for name in fields
                        if name.lower() in {"chi2", "χ²", "chi_squared"}), None)
     dof_field = next((name for name in fields
@@ -41,6 +45,12 @@ def inspect(path: Path = TABLE) -> dict:
                         if name.lower() == "chi2_dof"), None)
     has_chi2 = chi2_field is not None
     has_dof = dof_field is not None
+    input_status = (
+        "verified-in-scope"
+        if path.is_file() and bool(rows)
+        and (ratio_field is not None or (has_chi2 and has_dof))
+        else "not-evaluated"
+    )
     ratios = []
     if rows and ratio_field is not None:
         for number, row in enumerate(rows, 1):
@@ -107,6 +117,7 @@ def inspect(path: Path = TABLE) -> dict:
         )
     return {
         "статус": status,
+        "статус_входа": input_status,
         "источник_наблюдения": str(path),
         "столбцы": fields,
         "строк": len(rows),
@@ -137,7 +148,8 @@ def selftest() -> int:
         report = inspect(ratio)
         check("готовое отношение без исходных полей не закрывает dof",
               report["статус"] == "not-evaluated"
-              and report["dof_наблюдено_отдельно"] is False)
+              and report["dof_наблюдено_отдельно"] is False
+              and report["статус_входа"] == "verified-in-scope")
 
         separate = root / "separate.csv"
         separate.write_text("T_mid,chi2,dof\n1,4.0,2\n", encoding="utf-8")
@@ -145,7 +157,8 @@ def selftest() -> int:
         check("раздельные χ² и dof распознаются",
               report["статус"] == "verified-in-scope"
               and report["chi2_наблюдено_отдельно"]
-              and report["dof_наблюдено_отдельно"])
+              and report["dof_наблюдено_отдельно"]
+              and report["статус_входа"] == "verified-in-scope")
 
         consistent = root / "consistent.csv"
         consistent.write_text("T_mid,chi2,dof,chi2_dof\n1,4.0,2,2.0\n",
@@ -176,7 +189,8 @@ def selftest() -> int:
         report = inspect(empty)
         check("пустая таблица с заголовками не закрывает наблюдение",
               report["статус"] == "not-evaluated"
-              and report["строк"] == 0)
+              and report["строк"] == 0
+              and report["статус_входа"] == "not-evaluated")
 
     print("самопроверка сторожа смысла χ²/dof: %d пройдено, %d провалено"
           % (ok, fail))
@@ -190,8 +204,8 @@ def main(argv: list[str] | None = None) -> int:
     report = inspect()
     OUT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n",
                    encoding="utf-8")
-    print("сторож смысла χ²/dof: %s; %s" %
-          (report["статус"], report["причина"]))
+    print("сторож смысла χ²/dof: %s; статус входа: %s; %s" %
+          (report["статус"], report["статус_входа"], report["причина"]))
     return 0
 
 
