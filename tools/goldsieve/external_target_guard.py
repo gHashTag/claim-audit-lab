@@ -286,6 +286,20 @@ def classify(art: dict) -> dict:
             "external_target_contract": "не подтверждён"}
 
 
+def _input_status(row: dict) -> str:
+    """Даёт наблюдаемый статус именно проверенного входа.
+
+    Успешная сверка имеет проверяемую область входа, а вырожденная запись
+    сохраняет явный предел: её научная пригодность не оценена. Ошибка чтения
+    не превращается в покрытие и маркируется как неподдержанная.
+    """
+    if row.get("error"):
+        return "unsupported"
+    if row.get("degenerate"):
+        return "not-evaluated"
+    return "verified-in-scope"
+
+
 def selftest() -> int:
     bad = 0
 
@@ -467,15 +481,24 @@ def main(argv: list[str]) -> int:
         try:
             art = json.loads(p.read_text(encoding="utf-8"))
         except Exception as exc:
-            rows.append({"file": p.name, "error": str(exc)})
+            row = {"file": p.name, "error": str(exc)}
+            row["status"] = _input_status(row)
+            rows.append(row)
             continue
         rows.append({"file": p.name, "target": art.get("цель"),
                      **classify(art)})
+        rows[-1]["status"] = _input_status(rows[-1])
     degenerate = [r for r in rows if r.get("degenerate")]
+    status_counts = {
+        status: sum(1 for row in rows if row.get("status") == status)
+        for status in ("verified-in-scope", "not-evaluated",
+                       "unsupported", "platform-unverified")
+    }
     report = {
         "checked": len(rows),
         "degenerate_count": len(degenerate),
         "degenerate": [r["file"] for r in degenerate],
+        "status_counts": status_counts,
         "rule": ("артефакт внешней сверки обязан содержать наблюдаемое из "
                  "корпуса и путь к файлу корпуса; иначе сверка проходит при "
                  "любом значении корпусных формул; отпечаток источника "
@@ -492,6 +515,15 @@ def main(argv: list[str]) -> int:
                    encoding="utf-8")
     print("сторож внешних целей: проверено %d, вырожденных %d"
           % (len(rows), len(degenerate)))
+    print("статусы входов: verified-in-scope=%d, not-evaluated=%d, "
+          "unsupported=%d, platform-unverified=%d"
+          % tuple(status_counts[s] for s in
+                  ("verified-in-scope", "not-evaluated", "unsupported",
+                   "platform-unverified")))
+    for r in rows:
+        print("  %s  %s — %s" % (r.get("status", "unsupported"),
+                                 r["file"],
+                                 r.get("class", "ошибка чтения")))
     for r in degenerate:
         print("  ПУСТО  %s — %s" % (r["file"], "; ".join(r["reasons"])))
     # Код возврата 0: это ретроспективная разметка уже сделанного, а не запрет.
