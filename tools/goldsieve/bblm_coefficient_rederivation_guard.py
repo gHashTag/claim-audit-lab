@@ -66,6 +66,10 @@ def inspect(path: Path = PROTOCOL) -> dict:
             "источник_наблюдения": str(path),
         }
     item = matches[0]
+    # Это область проверяемого входа, а не закрытие коэффициентного долга:
+    # настоящий протокол с ровно одной строкой элемента прочитан, но его
+    # analytic_source_absent по-прежнему оставляет итог not-evaluated.
+    input_status = "verified-in-scope"
     present = item.get("present")
     declared = item.get("declared_present")
     code = item.get("код_вопроса")
@@ -73,6 +77,7 @@ def inspect(path: Path = PROTOCOL) -> dict:
     if present is False and declared is False and code == QUESTION_CODE:
         return {
             "статус": "not-evaluated",
+            "статус_входа": input_status,
             "код_вопроса": QUESTION_CODE,
             "элемент": ELEMENT,
             "аналитический_источник": "отсутствует",
@@ -87,6 +92,7 @@ def inspect(path: Path = PROTOCOL) -> dict:
     if present is True and declared is True and code in (None, ""):
         return {
             "статус": "unsupported",
+            "статус_входа": input_status,
             "причина": (
                 "коэффициентный вывод объявлен предъявленным без "
                 "аналитического источника и номера уравнения"
@@ -96,6 +102,7 @@ def inspect(path: Path = PROTOCOL) -> dict:
         }
     return {
         "статус": "unsupported",
+        "статус_входа": input_status,
         "причина": "форма статуса коэффициентного вывода противоречива",
         "элемент": ELEMENT,
         "значения": {
@@ -140,6 +147,11 @@ def selftest() -> int:
         check("отсутствующий источник получает analytic_source_absent",
               result["статус"] == "not-evaluated"
               and result["код_вопроса"] == QUESTION_CODE)
+        current = inspect(PROTOCOL)
+        check("настоящий протокол получает verified-in-scope области входа",
+              current["статус"] == "not-evaluated"
+              and current["статус_входа"] == "verified-in-scope"
+              and current["код_вопроса"] == QUESTION_CODE)
 
         forged = root / "подмена.json"
         forged.write_text(json.dumps({
@@ -180,9 +192,12 @@ def main(argv: list[str] | None = None) -> int:
     result = inspect()
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n",
                    encoding="utf-8")
-    print("сторож coefficient_rederivation: %s; код: %s; источник: %s" % (
-        result.get("статус"), result.get("код_вопроса", "нет"),
-        result.get("источник_наблюдения", str(PROTOCOL))))
+    print("сторож coefficient_rederivation: %s; статус входа: %s; код: %s; "
+          "источник: %s" % (
+              result.get("статус"),
+              result.get("статус_входа", "not-evaluated"),
+              result.get("код_вопроса", "нет"),
+              result.get("источник_наблюдения", str(PROTOCOL))))
     return 0 if result["статус"] in {"not-evaluated", "verified-in-scope"} else 1
 
 
