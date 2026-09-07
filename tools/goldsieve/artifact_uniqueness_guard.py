@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -96,6 +97,7 @@ def scan(path: Path = DEFAULT_LOG) -> dict:
             continue
         rows.append(inspect_record(record, number))
     issues = [row for row in rows if row["статус"] == "unsupported"]
+    verified = sum(row["статус"] == "verified-in-scope" for row in rows)
     not_evaluated = sum(row["статус"] == "not-evaluated" for row in rows)
     status = (
         "unsupported" if issues
@@ -105,8 +107,13 @@ def scan(path: Path = DEFAULT_LOG) -> dict:
         "статус": status,
         "журнал": str(path),
         "прочитано": len(rows) + malformed,
-        "проверено": sum(row["статус"] == "verified-in-scope" for row in rows),
+        "проверено": verified,
         "not_evaluated": not_evaluated + malformed,
+        "статусы": {
+            "verified-in-scope": verified,
+            "not-evaluated": not_evaluated + malformed,
+            "unsupported": len(issues),
+        },
         "нарушения": issues,
         "некорректных_json": malformed,
     }
@@ -146,6 +153,22 @@ def selftest() -> int:
         "отсутствующее поле не считается покрытием",
         inspect_record({}, 5)["статус"] == "not-evaluated",
     )
+    with tempfile.TemporaryDirectory(prefix="goldsieve-artifact-uniqueness-") as td:
+        path = Path(td) / "runs.jsonl"
+        path.write_text(
+            json.dumps({"artifacts": ["/tmp/a", "/tmp/b"]}) + "\n"
+            + json.dumps({"artifacts": []}) + "\n",
+            encoding="utf-8",
+        )
+        report = scan(path)
+        check(
+            "сводка настоящего входа предъявляет verified-in-scope",
+            report["статусы"] == {
+                "verified-in-scope": 1,
+                "not-evaluated": 1,
+                "unsupported": 0,
+            },
+        )
     print("самопроверка неоднозначности артефактов: пройдено %d, провалено %d" % (good, bad))
     return 1 if bad else 0
 
@@ -164,6 +187,15 @@ def main(argv: list[str]) -> int:
             report["проверено"],
             report["not_evaluated"],
             len(report["нарушения"]),
+        )
+    )
+    counts = report["статусы"]
+    print(
+        "статусы: verified-in-scope=%d; not-evaluated=%d; unsupported=%d"
+        % (
+            counts["verified-in-scope"],
+            counts["not-evaluated"],
+            counts["unsupported"],
         )
     )
     print("JSON: %s" % OUT)

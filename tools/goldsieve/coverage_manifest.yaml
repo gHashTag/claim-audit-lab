@@ -407,7 +407,7 @@ shell_checks:
   artifact_uniqueness_guard.py:
     gate_step: однозначность списка артефактов
     selftest_cmd: [artifact_uniqueness_guard.py, --selftest]
-    selftest_checks: 5
+    selftest_checks: 6
     role: >-
       повтор пути в одном поле artifacts не считается двумя независимыми
       артефактами; пустой или отсутствующий список сохраняет not-evaluated
