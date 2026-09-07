@@ -134,21 +134,31 @@ def evaluate(reports: list[dict]) -> dict:
     existing = [r for r in reports if r.get("прочитано")]
     malformed = [r for r in existing if r.get("ошибки")]
     valid = [i for r in existing for i in r.get("интервалы", [])]
+    non_arb = [i for r in existing for i in r.get("интервалы_не_Arb", [])]
     arb = any(r.get("метод_arb") for r in existing)
     bounds = all(r.get("есть_нижняя_граница")
                  and r.get("есть_верхняя_граница") for r in existing)
     if malformed:
         status = "unsupported"
         reason = "прочитаны интервалы с нарушенной арифметикой границ"
+        machine_reason = "arb_interval_malformed"
     elif arb and bounds and valid:
         status = "verified-in-scope"
         reason = "метод Arb и конечные замкнутые интервалы прочитаны из корпуса"
+        machine_reason = "arb_interval_verified"
     else:
         status = "not-evaluated"
-        reason = ("корпус не предъявляет машиночитаемые границы Arb; "
-                  "точечные значения не заменяют шаровую арифметику")
+        if non_arb:
+            machine_reason = "arb_interval_non_arb_only"
+            reason = ("прочитаны интервалы другой арифметики, но не Arb; "
+                      "они не закрывают долг шаровой арифметики")
+        else:
+            machine_reason = "arb_interval_absent"
+            reason = ("корпус не предъявляет машиночитаемые границы Arb; "
+                      "точечные значения не заменяют шаровую арифметику")
     return {
         "статус": status,
+        "код_машинной_причины": machine_reason,
         "причина": reason,
         "источники_наблюдения": [r["путь"] for r in reports],
         "прочитано_файлов": len(existing),
@@ -174,19 +184,32 @@ def selftest() -> int:
     check("валидный Arb-интервал подтверждается",
           evaluate([_csv_report(Path("фикстура_valid.csv"), valid)])["статус"]
           == "verified-in-scope")
+    point_result = evaluate(
+        [_csv_report(Path("фикстура_point.csv"), point)]
+    )
     check("точка не выдаётся за интервал",
-          evaluate([_csv_report(Path("фикстура_point.csv"), point)])["статус"]
-          == "not-evaluated")
+          point_result["статус"] == "not-evaluated"
+          and point_result["код_машинной_причины"] == "arb_interval_absent")
     check("перевёрнутые границы отклоняются",
           evaluate([_csv_report(Path("фикстура_reversed.csv"),
                                 reversed_bounds)])["статус"]
           == "unsupported")
     mixed = "method,lower,upper\nordinary,1.0,1.1\nArb,2.0,2.1\n"
     mixed_report = _csv_report(Path("фикстура_mixed.csv"), mixed)
+    mixed_result = evaluate([mixed_report])
     check("интервал другой арифметики не засчитывается как Arb",
           len(mixed_report["интервалы"]) == 1
           and len(mixed_report["интервалы_не_Arb"]) == 1
-          and mixed_report["интервалы"][0]["метод_arb"])
+          and mixed_report["интервалы"][0]["метод_arb"]
+          and mixed_result["код_машинной_причины"] == "arb_interval_verified")
+    ordinary_result = evaluate([
+        _csv_report(Path("фикстура_ordinary.csv"),
+                    "method,lower,upper\nordinary,1.0,1.1\n")
+    ])
+    check("только не-Arb интервал получает отдельный код долга",
+          ordinary_result["статус"] == "not-evaluated"
+          and ordinary_result["код_машинной_причины"]
+          == "arb_interval_non_arb_only")
     print("самопроверка шаровой арифметики Arb: пройдено %d, провалено %d"
           % (good, bad))
     return 1 if bad else 0

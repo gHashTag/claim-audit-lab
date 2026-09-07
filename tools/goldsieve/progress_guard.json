@@ -18,19 +18,17 @@
    6
   ],
   "bblm": [
-   7,
+   4,
    true
   ],
   "изменённые_файлы": [
-   "skip_reason_contract_guard.py",
-   "ci_gate.sh",
-   "coverage_manifest.yaml"
+   "arb_interval_guard.py"
   ]
  },
- "подпись": "3ea301ad81afeafc",
+ "подпись": "b31c25f7ce0ef366",
  "повторов_в_окне": 0,
- "единственный_файл": null,
- "длина_серии": 0,
+ "единственный_файл": "arb_interval_guard.py",
+ "длина_серии": 1,
  "причины": [],
  "итог": "СОДЕРЖАТЕЛЬНЫЙ"
 }

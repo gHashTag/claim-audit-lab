@@ -89,12 +89,12 @@
     {
       "путь": "/home/user/workspace/goldsieve/ci_gate.sh",
       "предъявленный_sha256": null,
-      "фактический_sha256": "46d7d991992faf527f10f5acbcb9808ae1587f478ce5c32b3db3ed6e7985c9da"
+      "фактический_sha256": "f10978137265fc8fb915a122686fdf76b291d81ce5513dd17a108728ee429a1d"
     },
     {
       "путь": "/home/user/workspace/goldsieve/coverage_manifest.yaml",
       "предъявленный_sha256": null,
-      "фактический_sha256": "a9732cced4038514400595a90cddd07631538932d5019b1f6048cd3186f905ea"
+      "фактический_sha256": "7e5a230e3f1c72b7405487e60bb664e4440fb543811d69f54911ca1c706820ce"
     }
   ],
   "причина": "для части путей не предъявлен SHA-256 содержимого",

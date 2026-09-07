@@ -1,5 +1,6 @@
 {
   "статус": "not-evaluated",
+  "код_машинной_причины": "arb_interval_absent",
   "причина": "корпус не предъявляет машиночитаемые границы Arb; точечные значения не заменяют шаровую арифметику",
   "источники_наблюдения": [
     "/home/user/workspace/corpus/trinity/data/zeta/zeta_figure1_chi2.csv",
