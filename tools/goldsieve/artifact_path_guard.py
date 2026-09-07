@@ -116,6 +116,11 @@ def scan(path: Path = DEFAULT_LOG) -> dict:
         "artifacts": len(rows),
         "verified_paths": verified,
         "not_evaluated": nonpaths + malformed,
+        "status_counts": {
+            "verified-in-scope": verified,
+            "not-evaluated": nonpaths + malformed,
+            "unsupported": len(issues) + len(container_issues),
+        },
         "issues": issues + container_issues,
         "container_issues": container_issues,
     }
@@ -166,6 +171,21 @@ def selftest() -> int:
         else:
             fail += 1
             print("  ПРОВАЛ неверная форма контейнера artifacts")
+    with tempfile.TemporaryDirectory(prefix="goldsieve-artifact-status-") as td:
+        log = Path(td) / "runs.jsonl"
+        log.write_text(
+            json.dumps({"artifacts": [str(HERE / "ci_gate.sh"), "старый-диагноз"]},
+                       ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        result = scan(log)
+        counts = result["status_counts"]
+        if counts == {"verified-in-scope": 1, "not-evaluated": 1, "unsupported": 0}:
+            ok += 1
+            print("  ok   смешанный журнал предъявляет оба статуса")
+        else:
+            fail += 1
+            print("  ПРОВАЛ смешанный журнал предъявляет оба статуса")
     print("самопроверка границы путей артефактов: пройдено %d, провалено %d" % (ok, fail))
     return 1 if fail else 0
 
@@ -175,10 +195,14 @@ def main(argv: list[str]) -> int:
         return selftest()
     report = scan()
     OUT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    counts = report["status_counts"]
     print("сторож путей артефактов: %s; прочитано артефактов %d; "
           "путей в области %d; not-evaluated %d; нарушений %d"
           % (report["status"], report["artifacts"], report["verified_paths"],
              report["not_evaluated"], len(report["issues"])))
+    print("статусы: verified-in-scope=%d; not-evaluated=%d; unsupported=%d"
+          % (counts["verified-in-scope"], counts["not-evaluated"],
+             counts["unsupported"]))
     print("журнал: %s" % report["journal"])
     return 0
 
