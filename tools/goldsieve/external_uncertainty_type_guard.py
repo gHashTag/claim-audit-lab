@@ -109,6 +109,7 @@ def inspect(artifact: dict, path: str) -> dict:
         return {
             "путь": path,
             "прочитано": True,
+            "статус_входа": "not-evaluated",
             "статус": "not-evaluated",
             "причина": "в артефакте нет внешней цели",
         }
@@ -116,16 +117,26 @@ def inspect(artifact: dict, path: str) -> dict:
         return {
             "путь": path,
             "прочитано": True,
+            "статус_входа": "not-evaluated",
             "статус": "unsupported",
             "причина": "поле внешней цели не является объектом",
             "поле": key,
         }
+    # Проверка области входа отделена от научной семантики типа. Настоящий
+    # артефакт с объектом внешней цели действительно прочитан и находится в
+    # области этого сторожа даже тогда, когда сам тип неопределённости не
+    # предъявлен. Это не превращает ``not-evaluated`` в доказательство.
+    input_status = (
+        "verified-in-scope"
+        if Path(path).is_file() else "not-evaluated"
+    )
     raw = target.get("uncertainty_type", target.get("тип_неопределённости"))
     label = str(raw or "").strip().lower()
     if not label:
         return {
             "путь": path,
             "прочитано": True,
+            "статус_входа": input_status,
             "статус": "not-evaluated",
             "причина": "тип неопределённости не предъявлен",
         }
@@ -133,6 +144,7 @@ def inspect(artifact: dict, path: str) -> dict:
         return {
             "путь": path,
             "прочитано": True,
+            "статус_входа": input_status,
             "статус": "unsupported",
             "причина": "тип неопределённости не входит в разрешённый перечень",
             "значение_типа": str(raw),
@@ -146,6 +158,7 @@ def inspect(artifact: dict, path: str) -> dict:
         return {
             "путь": path,
             "прочитано": True,
+            "статус_входа": input_status,
             "статус": "unsupported",
             "причина": "неопределённость не является положительным конечным числом",
         }
@@ -155,12 +168,14 @@ def inspect(artifact: dict, path: str) -> dict:
             return {
                 "путь": path,
                 "прочитано": True,
+                "статус_входа": input_status,
                 "статус": component_status,
                 "причина": component_reason,
             }
     return {
         "путь": path,
         "прочитано": True,
+        "статус_входа": input_status,
         "статус": "verified-in-scope",
         "тип": ALLOWED[label],
     }
@@ -193,6 +208,10 @@ def collect(root: Path = HERE) -> dict:
     counts = {}
     for report in reports:
         counts[report["статус"]] = counts.get(report["статус"], 0) + 1
+    input_counts = {}
+    for report in reports:
+        status = report.get("статус_входа", "not-evaluated")
+        input_counts[status] = input_counts.get(status, 0) + 1
     if counts.get("unsupported"):
         status = "unsupported"
         reason = "найдены записи с неподдержанным типом или числом неопределённости"
@@ -207,6 +226,11 @@ def collect(root: Path = HERE) -> dict:
         "причина": reason,
         "прочитано_артефактов": len(reports),
         "сводка": counts,
+        "статус_входа": (
+            "verified-in-scope"
+            if input_counts.get("verified-in-scope", 0) else "not-evaluated"
+        ),
+        "сводка_области_входа": input_counts,
         "разрешённые_типы": sorted(set(ALLOWED.values())),
         "наблюдения": reports,
     }
@@ -305,10 +329,11 @@ def main(argv: list[str]) -> int:
     if argv and argv[0] == "--selftest":
         return selftest()
     result = collect()
-    print("сторож типа неопределённости: %s; прочитано артефактов %d; "
-          "сводка %s" % (result["статус"], result["прочитано_артефактов"],
-                         json.dumps(result["сводка"], ensure_ascii=False,
-                                    sort_keys=True)))
+    print("сторож типа неопределённости: %s; статус_входа: %s; "
+          "прочитано артефактов %d; сводка %s" %
+          (result["статус"], result["статус_входа"],
+           result["прочитано_артефактов"],
+           json.dumps(result["сводка"], ensure_ascii=False, sort_keys=True)))
     return 0
 
 
