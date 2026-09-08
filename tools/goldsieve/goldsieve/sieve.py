@@ -1538,6 +1538,9 @@ ACTION = {
         "сверку",
     "external_uncertainty_type_missing":
         "зафиксировать тип неопределённости формулы и внешней цели до сравнения",
+    "repeat_provenance_undeclared":
+        "предъявить идентификатор эксперимента, набора данных или запуска "
+        "до слияния повторных внешних целей",
     "external_uncertainty_type_mismatch":
         "согласовать статистическую и систематическую составляющие либо "
         "остановить сверку",
@@ -1603,6 +1606,7 @@ NON_AGGREGATABLE = (
     "external_uncertainty_type_missing",
     "external_uncertainty_type_mismatch",
     "external_target_invalid",
+    "repeat_provenance_undeclared",
     "multiplicity_invalid",
 )
 
