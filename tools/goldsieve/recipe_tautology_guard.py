@@ -27,13 +27,55 @@ CASES = HERE / "cases"
 OUT = HERE / "recipe_tautology_guard.json"
 
 
-def _normal(node: ast.AST) -> str:
-    """Каноническое представление выражения без позиций в файле."""
+def _bindings(tree: ast.AST) -> dict[str, ast.AST]:
+    """Собрать только простые присваивания, пригодные для безопасного раскрытия.
+
+    Прямое сравнение AST не видит вырожденный случай, когда один и тот же
+    callable передан через простую псевдонимную цепочку::
+
+        recipe = lambda: 1
+        observed_recipe = recipe
+        Claim(observed=observed_recipe, reference=recipe)
+
+    Здесь намеренно не вычисляется произвольный Python-код: раскрываются лишь
+    присваивания одного имени одному выражению. Сложные случаи остаются за
+    пределами этого сторожа и не превращаются в доказательство независимости.
+    """
+    bindings: dict[str, ast.AST] = {}
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Assign) and len(node.targets) == 1:
+            target = node.targets[0]
+            if isinstance(target, ast.Name):
+                bindings[target.id] = node.value
+        elif isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name):
+            if node.value is not None:
+                bindings[node.target.id] = node.value
+    return bindings
+
+
+def _normal(
+    node: ast.AST,
+    bindings: dict[str, ast.AST] | None = None,
+    resolving: frozenset[str] = frozenset(),
+) -> str:
+    """Каноническое представление выражения без позиций в файле.
+
+    Простые псевдонимы раскрываются до фиксированной точки. Циклические
+    присваивания намеренно не раскрываются дальше имени.
+    """
+    bindings = bindings or {}
+    if isinstance(node, ast.Name) and node.id in bindings:
+        if node.id in resolving:
+            return ast.dump(node, annotate_fields=True, include_attributes=False)
+        return _normal(
+            bindings[node.id], bindings, resolving | frozenset({node.id})
+        )
     return ast.dump(node, annotate_fields=True, include_attributes=False)
 
 
 def _claim_rows(path: Path) -> list[dict]:
     tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+    bindings = _bindings(tree)
     rows: list[dict] = []
     for node in ast.walk(tree):
         if not (
@@ -47,7 +89,7 @@ def _claim_rows(path: Path) -> list[dict]:
         reference = values.get("reference")
         if observed is None or reference is None:
             continue
-        if _normal(observed) != _normal(reference):
+        if _normal(observed, bindings) != _normal(reference, bindings):
             continue
         rows.append(
             {
@@ -57,7 +99,8 @@ def _claim_rows(path: Path) -> list[dict]:
                 "статус": "not-evaluated",
                 "причина": (
                     "поля observed и reference содержат один и тот же "
-                    "рецепт; сравнение не является независимым"
+                    "рецепт (включая простые псевдонимы); сравнение не является "
+                    "независимым"
                 ),
             }
         )
@@ -129,11 +172,24 @@ def selftest() -> int:
             "reference=ref, observed=obs)]\n",
             encoding="utf-8",
         )
+        indirect = root / "indirect.py"
+        indirect.write_text(
+            "from goldsieve.sieve import Claim\n"
+            "recipe = lambda: 1\n"
+            "observed_recipe = recipe\n"
+            "CLAIMS = [Claim(name='indirect', source='x', "
+            "reference=recipe, observed=observed_recipe)]\n",
+            encoding="utf-8",
+        )
         same_rows = _claim_rows(same)
         different_rows = _claim_rows(different)
+        indirect_rows = _claim_rows(indirect)
         check("одинаковый AST получает not-evaluated", len(same_rows) == 1)
         check("разные имена callable не получают прямой повтор",
               different_rows == [])
+        check("простая псевдонимная цепочка получает not-evaluated",
+              len(indirect_rows) == 1
+              and "псевдонимы" in indirect_rows[0]["причина"])
         broken = root / "broken.py"
         broken.write_text("def broken(:\n", encoding="utf-8")
         report = scan(root)

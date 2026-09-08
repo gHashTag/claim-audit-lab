@@ -492,14 +492,15 @@ shell_checks:
   recipe_tautology_guard.py:
     gate_step: аудит прямого повтора рецепта
     selftest_cmd: [recipe_tautology_guard.py, --selftest]
-    selftest_checks: 4
+    selftest_checks: 5
     role: >-
-      буквальное совпадение AST полей observed и reference в Claim получает
-      not-evaluated; тем самым повтор одного вычислительного рецепта не
-      выглядит независимой сверкой
+      совпадение AST полей observed и reference в Claim, включая простые
+      псевдонимные цепочки, получает not-evaluated; тем самым повтор одного
+      вычислительного рецепта не выглядит независимой сверкой
     limits: >-
-      проверка ограничена прямым AST и не заменяет детектор косвенных цепочек
-      identity; отсутствие повтора не подтверждает научный результат
+      проверка раскрывает только простые присваивания и не заменяет детектор
+      сложных косвенных цепочек identity; отсутствие повтора не подтверждает
+      научный результат
   zeta_recipe_ambiguity_guard.py:
     gate_step: неоднозначность рецепта zeta
     selftest_cmd: [zeta_recipe_ambiguity_guard.py, --selftest]
