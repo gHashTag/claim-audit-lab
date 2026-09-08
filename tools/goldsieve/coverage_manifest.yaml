@@ -118,6 +118,19 @@ audit_guards:
     mutation_target: удаление проверки источника и хеша
     sensitivity: 3/3 самопроверки
     status_class: verified-in-scope
+  provenance_input_scope:
+    role: >-
+      наблюдаемое и эталонное имена обязаны разрешаться в два существующих
+      канонически различных файла; символьный или жёсткий псевдоним получает
+      unsupported, отсутствие входа получает not-evaluated, а успех
+      предъявляет только границу входа verified-in-scope
+    script: provenance_guard.py
+    gate_step: происхождение сверки зета
+    positive_fixture: data/zeta/zeta_bin_analysis_update.md и zeros_odlyzko_100k.txt
+    negative_fixture: отсутствующий файл, символьный и жёсткий псевдоним
+    mutation_target: удаление канонизации пути или проверки inode
+    sensitivity: 6/6 самопроверки
+    status_class: verified-in-scope
   gue_label_guard:
     script: gue_label_guard.py
     gate_step: запрет метки exact_gue на 0,4220

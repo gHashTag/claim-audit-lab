@@ -16,6 +16,15 @@ import shutil
 import tempfile
 from pathlib import Path
 
+OBSERVED_INPUT = (
+    "/home/user/workspace/corpus/trinity/data/zeta/"
+    "zeta_bin_analysis_update.md"
+)
+REFERENCE_INPUT = (
+    "/home/user/workspace/corpus/trinity/data/zeta/"
+    "zeros_odlyzko_100k.txt"
+)
+
 
 def _canonical(path: str | os.PathLike[str]) -> str:
     value = os.path.realpath(os.path.abspath(os.fspath(path)))
@@ -55,7 +64,10 @@ def check_pair(observed: str, reference: str) -> dict:
     """Проверить, что observed и reference — разные существующие файлы."""
     inputs = distinct_inputs([observed, reference])
     return {
-        "статус": "PASS",
+        # Различие канонических файлов — проверяемый факт области входа.
+        # Оно не доказывает независимость научных алгоритмов или рецептов.
+        "статус": "verified-in-scope",
+        "результат": "PASS",
         "наблюдаемое": inputs[0],
         "эталон": inputs[1],
         "разные_файлы": True,
@@ -139,14 +151,24 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="проверка происхождения входных файлов")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--selftest", action="store_true")
+    # Читающие режимы нужны не только для ручной проверки: guard_efficacy_guard
+    # предъявляет настоящий вход через --audit/--scan и не принимает молчание
+    # argparse за покрытие.
+    group.add_argument("--audit", action="store_true")
+    group.add_argument("--scan", action="store_true")
     group.add_argument("--check", nargs=2, metavar=("НАБЛЮДЕНИЕ", "ЭТАЛОН"))
     args = parser.parse_args(argv)
     if args.selftest:
         return selftest()
+    if args.audit or args.scan:
+        args.check = (OBSERVED_INPUT, REFERENCE_INPUT)
     try:
         print(check_pair(*args.check))
-    except (ValueError, FileNotFoundError) as exc:
-        print("ПУСТО: %s" % exc)
+    except FileNotFoundError as exc:
+        print({"статус": "not-evaluated", "причина": str(exc)})
+        return 1
+    except ValueError as exc:
+        print({"статус": "unsupported", "причина": str(exc)})
         return 1
     return 0
 
