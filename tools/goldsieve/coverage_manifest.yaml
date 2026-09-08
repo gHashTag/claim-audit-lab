@@ -751,6 +751,17 @@ tooling_guards:
     sensitivity: 1/1 отрицательная фикстура; 1/1 мутация поймана
     loader_guard: module_from_spec без регистрации в sys.modules
     status_class: verified-in-scope
+  meff_common_input_scope:
+    role: >-
+      архив с реально прочитанными записями С20 предъявляет границу входа
+      verified-in-scope, но отсутствие общего идентификатора ансамбля
+      сохраняет научный статус not-evaluated
+    script: meff_common_guard.py
+    positive_fixture: архивы с несколькими записями С20
+    negative_fixture: пустой вход и архив без общего M_eff
+    mutation_target: смешение статуса области входа со статусом общего ансамбля
+    sensitivity: 2/2 самопроверки области входа
+    status_class: verified-in-scope
 
 # Кейсные проверки корпуса (не синтаксические конструкции детектора).
 # Здесь явно фиксируется измеренная чувствительность нового риска, чтобы

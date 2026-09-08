@@ -11,6 +11,11 @@
 Режимы:
     python3 meff_common_guard.py --selftest
     python3 meff_common_guard.py --scan
+
+Статусы разделены по смыслу: ``статус_входа`` предъявляет, что настоящие
+записи С20 прочитаны в заявленной области, а ``статус`` отдельно сохраняет
+вердикт о совместном M_eff. Наличие области входа не превращает
+непредъявленный общий ансамбль в доказанный.
 """
 
 from __future__ import annotations
@@ -64,7 +69,7 @@ def _entries(document: object, source: str) -> list[dict]:
     return found
 
 
-def inspect(document: object, source: str) -> dict:
+def _inspect(document: object, source: str) -> dict:
     """Классифицировать общий ансамбль без восстановления пропущенных данных."""
     records = _entries(document, source)
     if len(records) < 2:
@@ -203,6 +208,23 @@ def inspect(document: object, source: str) -> dict:
     }
 
 
+def inspect(document: object, source: str) -> dict:
+    """Добавить отдельный статус области к вердикту общего ансамбля.
+
+    Настоящий архив с распознанными записями С20 устанавливает только
+    границу прочитанного входа. Научный вердикт ``статус`` намеренно не
+    меняется и остаётся ``not-evaluated`` либо ``unsupported``, пока общий
+    ансамбль не предъявлен.
+    """
+    result = _inspect(document, source)
+    result["статус_входа"] = (
+        "verified-in-scope"
+        if result.get("записей_С20", 0) > 0
+        else "not-evaluated"
+    )
+    return result
+
+
 def scan(root: Path = ROOT) -> dict:
     reports = []
     for path in sorted(root.glob("*.json")):
@@ -252,6 +274,11 @@ def selftest() -> int:
     check("одинаковый M без общего M_eff получает not-evaluated",
           missing["статус"] == "not-evaluated"
           and missing["причина"].startswith("общий_M_eff не объявлен"))
+    check("прочитанные записи получают отдельный статус области входа",
+          missing["статус_входа"] == "verified-in-scope")
+    check("пустой вход не получает статус области",
+          inspect([], "фикстура/пустой-m-eff.json")["статус_входа"]
+          == "not-evaluated")
 
     declared = {
         "results": [
@@ -382,9 +409,13 @@ def main(argv: list[str]) -> int:
         print("сторож общего M_eff: статус %s; архивов %d, открытых %d" %
               (report["статус"], report["архивов_с_несколькими_С20"],
                report["открытых_архивов"]))
+        print("статус входа: %s" %
+              ("verified-in-scope"
+               if report["наблюдения"] else "not-evaluated"))
         for item in report["наблюдения"]:
-            print("  архив %s: статус %s; %s" %
-                  (item["источник_наблюдения"], item["статус"],
+            print("  архив %s: статус входа %s; статус %s; %s" %
+                  (item["источник_наблюдения"], item["статус_входа"],
+                   item["статус"],
                    item["причина"]))
         return 0
     print("использование: --selftest, --scan или --audit")
