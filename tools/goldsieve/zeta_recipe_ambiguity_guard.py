@@ -21,6 +21,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "zeta_recipe_ambiguity_guard.json"
 PASSPORT = HERE / "zeta_passport.py"
+OBSERVED_DISPLAY_TOLERANCE = 5.0e-5
 
 
 def _variant_number(value: object) -> float | None:
@@ -39,6 +40,21 @@ def _variant_number(value: object) -> float | None:
     return number if math.isfinite(number) else None
 
 
+def _recomputed_hits(observed: object, variants: object) -> list[str]:
+    """Пересчитать попадания из числа, а не доверять списку паспорта."""
+    if (isinstance(observed, bool)
+            or not isinstance(observed, (int, float))
+            or not math.isfinite(float(observed))
+            or not isinstance(variants, dict)):
+        return []
+    result: list[str] = []
+    for name, value in variants.items():
+        number = _variant_number(value)
+        if number is not None and abs(number - float(observed)) <= OBSERVED_DISPLAY_TOLERANCE:
+            result.append(name)
+    return result
+
+
 def evaluate(
     source: str,
     observed: object,
@@ -48,6 +64,7 @@ def evaluate(
     """Классифицировать число воспроизводящих рецептов без научного вывода."""
     variant_count = len(variants) if isinstance(variants, dict) else 0
     hit_names = list(hits) if isinstance(hits, list) else []
+    recomputed_hits = _recomputed_hits(observed, variants)
     source_is_file = (
         isinstance(source, str)
         and bool(source)
@@ -69,6 +86,11 @@ def evaluate(
         if isinstance(variants, dict)
         else []
     )
+    hits_consistent = (
+        isinstance(variants, dict)
+        and not malformed
+        and set(hit_names) == set(recomputed_hits)
+    )
     observed_is_number = (
         isinstance(observed, (int, float))
         and not isinstance(observed, bool)
@@ -87,7 +109,7 @@ def evaluate(
     input_status = (
         "verified-in-scope"
         if (source_is_file and observed_is_number and all_variants_numeric
-            and not malformed and not unknown)
+            and not malformed and not unknown and hits_consistent)
         else ("unsupported" if malformed or unknown else "not-evaluated")
     )
     if malformed or unknown:
@@ -98,6 +120,12 @@ def evaluate(
         if unknown:
             details.append("попадания отсутствуют среди предъявленных вариантов")
         reason = "; ".join(details)
+    elif not hits_consistent:
+        status = "unsupported"
+        reason = (
+            "список попаданий паспорта расходится с независимым пересчётом "
+            "при допуске напечатанного наблюдаемого"
+        )
     elif not source:
         status = "not-evaluated"
         reason = "источник наблюдаемого не предъявлен"
@@ -125,6 +153,9 @@ def evaluate(
         "вариантов_рецепта": variant_count,
         "воспроизводящих_вариантов": len(hit_names),
         "воспроизводящие_варианты": hit_names,
+        "пересчитанные_воспроизводящие_варианты": recomputed_hits,
+        "список_попаданий_согласован": hits_consistent,
+        "допуск_сопоставления": OBSERVED_DISPLAY_TOLERANCE,
         "причина": reason,
         "ограничение": (
             "сторож проверяет неоднозначность рецепта, но не оценивает "
@@ -189,7 +220,7 @@ def selftest() -> int:
     with tempfile.TemporaryDirectory(prefix="zeta-recipe-ambiguity-") as tmp:
         source = str(Path(tmp) / "наблюдение.md")
         Path(source).write_text("| Std deviation | 0,4009 |\n", encoding="utf-8")
-        different = evaluate(source, 0.4009, {"a": 0.4}, ["a"])
+        different = evaluate(source, 0.4009, {"a": 0.40091}, ["a"])
         check(
             "один вариант получает verified-in-scope",
             different["статус"] == "verified-in-scope",
@@ -197,7 +228,7 @@ def selftest() -> int:
         ambiguous = evaluate(
             source,
             0.4009,
-            {"a": 0.4, "b": 0.4},
+            {"a": 0.40091, "b": 0.40092},
             ["a", "b"],
         )
         check(
@@ -206,24 +237,25 @@ def selftest() -> int:
             and ambiguous["воспроизводящих_вариантов"] == 2
             and ambiguous["статус_входа"] == "verified-in-scope",
         )
-        absent = evaluate(source, 0.4009, {"a": 0.4}, [])
+        absent = evaluate(source, 0.4009, {"a": 0.40091}, [])
         check(
             "отсутствие попадания не становится покрытием",
-            absent["статус"] == "not-evaluated",
+            absent["статус"] in {"not-evaluated", "unsupported"}
+            and absent["статус"] != "verified-in-scope",
         )
-        unknown = evaluate(source, 0.4009, {"a": 0.4}, ["не предъявлен"])
+        unknown = evaluate(source, 0.4009, {"a": 0.40091}, ["не предъявлен"])
         check(
             "неизвестное попадание не становится покрытием",
             unknown["статус"] == "unsupported"
             and "отсутствуют" in unknown["причина"],
         )
-        duplicate = evaluate(source, 0.4009, {"a": 0.4}, ["a", "a"])
+        duplicate = evaluate(source, 0.4009, {"a": 0.40091}, ["a", "a"])
         check(
             "дубликат попадания не становится неоднозначностью",
             duplicate["статус"] == "unsupported",
         )
         missing_source = evaluate(
-            str(Path(tmp) / "нет.md"), 0.4009, {"a": 0.4}, ["a"]
+            str(Path(tmp) / "нет.md"), 0.4009, {"a": 0.40091}, ["a"]
         )
         check(
             "несуществующий источник не становится покрытием",
@@ -234,6 +266,13 @@ def selftest() -> int:
         check(
             "нечисловой вариант не становится покрытием",
             nonfinite["статус"] == "unsupported",
+        )
+        inconsistent = evaluate(source, 0.4009, {"a": 0.40091, "b": 0.9}, ["b"])
+        check(
+            "список попаданий перепроверяется независимо",
+            inconsistent["статус"] == "unsupported"
+            and inconsistent["пересчитанные_воспроизводящие_варианты"] == ["a"]
+            and not inconsistent["список_попаданий_согласован"],
         )
     print(
         "самопроверка неоднозначности рецепта zeta: пройдено %d, провалено %d"
