@@ -1,5 +1,6 @@
 {
   "статус": "not-evaluated",
+  "статус_входа": "verified-in-scope",
   "источник_наблюдения": "/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md",
   "наблюдаемое": 0.4009,
   "источник_является_файлом": true,

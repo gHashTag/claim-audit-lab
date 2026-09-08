@@ -8,16 +8,16 @@
     "verified-in-scope"
   ],
   "сводка": {
-    "not-evaluated": 12,
-    "verified-in-scope": 9
+    "verified-in-scope": 10,
+    "not-evaluated": 11
   },
   "отчёты": [
     {
       "путь": "/home/user/workspace/goldsieve/arb_interval_guard.json",
       "прочитано": true,
-      "статус": "not-evaluated",
+      "статус": "verified-in-scope",
       "поле": "статус",
-      "значение": "not-evaluated",
+      "значение": "verified-in-scope",
       "причина": "статус входит в разрешённый словарь"
     },
     {

@@ -1,5 +1,6 @@
 {
   "статус": "not-evaluated",
+  "статус_входа": "verified-in-scope",
   "код_вопроса": "analytic_source_absent",
   "элемент": "coefficient_rederivation",
   "аналитический_источник": "отсутствует",

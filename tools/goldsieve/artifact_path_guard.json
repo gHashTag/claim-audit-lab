@@ -1,10 +1,15 @@
 {
   "status": "not-evaluated",
   "journal": "/home/user/workspace/cron_tracking/8dff7aa3/runs.jsonl",
-  "read": 3712,
-  "artifacts": 585,
-  "verified_paths": 583,
+  "read": 3808,
+  "artifacts": 607,
+  "verified_paths": 605,
   "not_evaluated": 2,
+  "status_counts": {
+    "verified-in-scope": 605,
+    "not-evaluated": 2,
+    "unsupported": 0
+  },
   "issues": [],
   "container_issues": []
 }

@@ -6,6 +6,12 @@
   "tick211_external_measurement.json",
   "tick263_external_measurement.json"
  ],
+ "status_counts": {
+  "verified-in-scope": 19,
+  "not-evaluated": 3,
+  "unsupported": 0,
+  "platform-unverified": 0
+ },
  "rule": "артефакт внешней сверки обязан содержать наблюдаемое из корпуса и путь к файлу корпуса; иначе сверка проходит при любом значении корпусных формул; отпечаток источника обязан совпадать с содержимым файла; внешняя цель обязана иметь конечное числовое значение, положительную неопределённость и публичный URL внешнего источника",
  "why_this_check_exists": "тики 210 и 211 подали сверку внешнего источника с самим собой как содержательную цель: 0 и 0,0111 сигмы ни о чём не свидетельствуют",
  "rows": [
@@ -28,7 +34,8 @@
    "observed_in_source": "не подтверждено",
    "observed_matches_evidence": "не подтверждено",
    "source_integrity": "не подтверждён",
-   "external_target_contract": "не подтверждён"
+   "external_target_contract": "не подтверждён",
+   "status": "not-evaluated"
   },
   {
    "file": "tick211_external_measurement.json",
@@ -49,7 +56,8 @@
    "observed_in_source": "не подтверждено",
    "observed_matches_evidence": "не подтверждено",
    "source_integrity": "не подтверждён",
-   "external_target_contract": "не подтверждён"
+   "external_target_contract": "не подтверждён",
+   "status": "not-evaluated"
   },
   {
    "file": "tick212_external_measurement.json",
@@ -64,7 +72,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick215_external_measurement.json",
@@ -79,7 +88,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick262_external_measurement.json",
@@ -94,7 +104,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick263_external_measurement.json",
@@ -114,7 +125,8 @@
    "observed_in_source": "не подтверждено",
    "observed_matches_evidence": "не подтверждено",
    "source_integrity": "не подтверждён",
-   "external_target_contract": "не подтверждён"
+   "external_target_contract": "не подтверждён",
+   "status": "not-evaluated"
   },
   {
    "file": "tick269_external_measurement.json",
@@ -129,7 +141,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick273_external_measurement.json",
@@ -144,7 +157,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick274_external_measurement.json",
@@ -159,7 +173,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick275_external_measurement.json",
@@ -174,7 +189,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick278_external_measurement.json",
@@ -189,7 +205,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick279_external_measurement.json",
@@ -204,7 +221,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick280_external_measurement.json",
@@ -219,7 +237,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick282_external_measurement.json",
@@ -234,7 +253,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick283_external_measurement.json",
@@ -249,7 +269,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick289_external_measurement.json",
@@ -264,7 +285,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick290_external_measurement.json",
@@ -279,7 +301,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick293_external_measurement.json",
@@ -294,7 +317,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick296_external_measurement.json",
@@ -309,7 +333,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick299_external_measurement.json",
@@ -324,7 +349,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick300_external_measurement.json",
@@ -339,7 +365,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   },
   {
    "file": "tick301_external_measurement.json",
@@ -354,7 +381,8 @@
    "observed_in_source": "подтверждено",
    "observed_matches_evidence": "подтверждено",
    "source_integrity": "подтверждён",
-   "external_target_contract": "подтверждён"
+   "external_target_contract": "подтверждён",
+   "status": "verified-in-scope"
   }
  ]
 }

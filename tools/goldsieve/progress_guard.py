@@ -467,9 +467,67 @@ def _selftest() -> int:
     return 1 if failed else 0
 
 
+# --- Тик 430: научный холостой ход -------------------------------------
+#
+# Критерий тика 402 («сторож обязан предъявить verified-in-scope на
+# настоящем входе») оказался ОБХОДИМ: тики 403-429 его выполнили,
+# научив сторожей печатать verified-in-scope про ТО, ЧТО ФАЙЛ
+# ПРОЧИТАН, при неизменном научном статусе not-evaluated.
+#
+# Измерено по ветви tools/goldsieve-v3-2026-08-13: из сорока последних
+# коммитов 38 тронули *_guard.py и НИ ОДИН не тронул cases/. Сорок
+# коммитов подряд инструмент не вынес ни одного вердикта об
+# утверждении корпуса. Сторож по СВОЕЙ ПРИРОДЕ не может закрыть
+# научный долг: он проверяет контракты, а вердикт даёт КЕЙС сита.
+
+SCIENCE_WINDOW = 10
+
+
+def science_scan(clone: Path, window: int = SCIENCE_WINDOW,
+                 branch: str = "tools/goldsieve-v3-2026-08-13") -> dict:
+    """Сколько из последних коммитов касались кейсов сита, а сколько — сторожей."""
+    import subprocess
+
+    def git(*args: str) -> str:
+        return subprocess.run(["git", "-C", str(clone), *args], capture_output=True,
+                              text=True, encoding="utf-8", errors="replace",
+                              timeout=120).stdout
+
+    heads = [h for h in git("log", "--format=%h", f"-{window}", branch).split() if h]
+    if not heads:
+        return {"коммитов": 0, "со_сторожами": 0, "с_кейсами": 0,
+                "статус": "not-evaluated", "причина": "ветвь или клон недоступны"}
+    guards = cases = 0
+    for h in heads:
+        names = git("show", "--name-only", "--format=", h).splitlines()
+        if any("_guard.py" in n for n in names):
+            guards += 1
+        if any("/cases/" in n for n in names):
+            cases += 1
+    rep = {"коммитов": len(heads), "со_сторожами": guards, "с_кейсами": cases,
+           "окно": window}
+    if cases > 0:
+        rep["статус"] = "verified-in-scope"
+        rep["причина"] = "в окне есть коммит, тронувший кейс сита"
+    else:
+        rep["статус"] = "unsupported"
+        rep["причина"] = ("научный холостой ход: всё окно правятся сторожа, "
+                          "вердиктов об утверждениях корпуса нет")
+    return rep
+
+
 def main(argv: list[str]) -> int:
     if "--selftest" in argv:
         return _selftest()
+
+    if "--science" in argv:
+        clone = Path(argv[argv.index("--science") + 1])
+        rep = science_scan(clone)
+        print("научный ход: коммитов %d, со сторожами %d, с кейсами сита %d; "
+              "статус %s (%s)"
+              % (rep["коммитов"], rep["со_сторожами"], rep["с_кейсами"],
+                 rep["статус"], rep["причина"]))
+        return 0 if rep["статус"] == "verified-in-scope" else 1
 
     if "--history" in argv:
         root = Path(argv[argv.index("--history") + 1])
