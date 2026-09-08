@@ -6,7 +6,10 @@
 коэффициентов. Этот сторож проверяет именно машинный вопрос протокола:
 аналитический источник с формулой и номером уравнения отсутствует, поэтому
 элемент получает код ``analytic_source_absent`` и статус ``not-evaluated``.
-Это не научный вердикт и не новая внешняя константа.
+Отсутствие или повреждение самого протокола получает отдельный код
+``bblm_protocol_input_unavailable``: это не следует смешивать с
+отсутствующим аналитическим источником. Ни один из этих кодов не является
+научным вердиктом или новой внешней константой.
 """
 from __future__ import annotations
 
@@ -21,6 +24,7 @@ PROTOCOL = HERE / "bblm_protocol.json"
 OUT = HERE / "bblm_coefficient_rederivation_guard.json"
 ELEMENT = "coefficient_rederivation"
 QUESTION_CODE = "analytic_source_absent"
+INPUT_UNAVAILABLE_CODE = "bblm_protocol_input_unavailable"
 
 
 def _load(path: Path) -> tuple[dict | None, str | None]:
@@ -40,7 +44,7 @@ def inspect(path: Path = PROTOCOL) -> dict:
     if error:
         return {
             "статус": "not-evaluated",
-            "код_вопроса": QUESTION_CODE,
+            "код_вопроса": INPUT_UNAVAILABLE_CODE,
             "причина": error,
             "источник_наблюдения": str(path),
         }
@@ -130,9 +134,10 @@ def selftest() -> int:
         root = Path(directory)
         missing = root / "нет.json"
         result = inspect(missing)
-        check("отсутствующий протокол оставляет машинный вопрос",
+        check("отсутствующий протокол получает отдельный код входа",
               result["статус"] == "not-evaluated"
-              and result["код_вопроса"] == QUESTION_CODE)
+              and result["код_вопроса"] == INPUT_UNAVAILABLE_CODE
+              and result["код_вопроса"] != QUESTION_CODE)
 
         question = root / "вопрос.json"
         question.write_text(json.dumps({
@@ -176,6 +181,13 @@ def selftest() -> int:
         }, ensure_ascii=False), encoding="utf-8")
         check("дублированный элемент отвергается",
               inspect(duplicate)["статус"] == "unsupported")
+
+        malformed = root / "повреждённый.json"
+        malformed.write_text("{", encoding="utf-8")
+        result = inspect(malformed)
+        check("повреждённый протокол не маскируется под отсутствие источника",
+              result["статус"] == "not-evaluated"
+              and result["код_вопроса"] == INPUT_UNAVAILABLE_CODE)
 
     print("самопроверка сторожа coefficient_rederivation: пройдено %d, "
           "провалено %d" % (passed, failed))

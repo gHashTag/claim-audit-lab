@@ -92,7 +92,7 @@ audit_guards:
     positive_fixture: bblm_protocol.json с отсутствующим аналитическим источником
     negative_fixture: дублированный элемент и заявленный вывод без источника
     mutation_target: подмена отсутствующего источника статусом доказанного вывода
-    sensitivity: 4/4 самопроверки
+    sensitivity: 5/5 самопроверок
     status_class: verified-in-scope
   artifact_path_boundary:
     role: >-
