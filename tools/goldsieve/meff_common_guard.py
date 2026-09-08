@@ -373,14 +373,21 @@ def selftest() -> int:
 def main(argv: list[str]) -> int:
     if argv == ["--selftest"]:
         return selftest()
-    if argv == ["--scan"]:
+    if argv in (["--scan"], ["--audit"]):
         report = scan()
         OUT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n",
                        encoding="utf-8")
-        print("сторож общего M_eff: архивов %d, открытых %d" %
-              (report["архивов_с_несколькими_С20"], report["открытых_архивов"]))
+        # Режим audit предъявляет наблюдаемый статус даже когда общий
+        # ансамбль не может быть подтверждён. Молчание не считается покрытием.
+        print("сторож общего M_eff: статус %s; архивов %d, открытых %d" %
+              (report["статус"], report["архивов_с_несколькими_С20"],
+               report["открытых_архивов"]))
+        for item in report["наблюдения"]:
+            print("  архив %s: статус %s; %s" %
+                  (item["источник_наблюдения"], item["статус"],
+                   item["причина"]))
         return 0
-    print("использование: --selftest или --scan")
+    print("использование: --selftest, --scan или --audit")
     return 2
 
 
