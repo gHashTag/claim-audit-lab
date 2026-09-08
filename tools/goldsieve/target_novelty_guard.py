@@ -120,12 +120,19 @@ def declares_external_target(path: Path) -> bool:
 def audit(cases_dir: Path = CASES) -> dict:
     groups: dict[str, list[str]] = {}
     unreadable = []
-    for path in sorted(cases_dir.glob("*.py")):
+    files = sorted(cases_dir.glob("*.py")) if cases_dir.is_dir() else []
+    read_count = 0
+    read_errors = []
+    for path in files:
         try:
             targets = extract_targets(path)
         except SyntaxError:
             unreadable.append(path.name + ":syntax")
             continue
+        except (OSError, UnicodeError) as exc:
+            read_errors.append(path.name + ":" + type(exc).__name__)
+            continue
+        read_count += 1
         for t in targets:
             fp = fingerprint(t)
             if fp is None:
@@ -134,12 +141,23 @@ def audit(cases_dir: Path = CASES) -> dict:
             groups.setdefault(fp, []).append(path.name)
     dup = {k: sorted(set(v)) for k, v in groups.items()
            if len(set(v)) > 1}
+    if not cases_dir.is_dir():
+        input_status = "unsupported"
+    elif not files:
+        input_status = "not-evaluated"
+    elif read_errors:
+        input_status = "unsupported"
+    else:
+        input_status = "verified-in-scope"
     return {
         "кейсов_с_целью": len({n for v in groups.values() for n in v}),
         "различных_целей": len(groups),
         "групп_повторов": len(dup),
         "повторяющихся_кейсов": sum(len(v) for v in dup.values()),
         "нечитаемых_целей": unreadable,
+        "прочитано_файлов": read_count,
+        "ошибок_чтения": read_errors,
+        "статус_входа": input_status,
         "повторы": dup,
     }
 
@@ -291,6 +309,9 @@ def main(argv: list[str]) -> int:
               % (rep["групп_повторов"], base["групп_повторов"]))
         return 0
 
+    print("статус входа: %s; прочитано файлов %d; ошибок чтения %d"
+          % (rep["статус_входа"], rep["прочитано_файлов"],
+             len(rep["ошибок_чтения"])))
     print("кейсов с целью %d, различных целей %d, групп повторов %d, "
           "кейсов в повторах %d, нечитаемых %d"
           % (rep["кейсов_с_целью"], rep["различных_целей"],
