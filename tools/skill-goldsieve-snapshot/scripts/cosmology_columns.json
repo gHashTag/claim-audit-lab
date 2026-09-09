@@ -1,0 +1,842 @@
+[
+ {
+  "claim": "Ω_Λ = γ⁸π⁴/φ² даёт 0,688",
+  "source": "docs/papers/README_FOR_SCIENTISTS.md:71",
+  "verdict": "ОПРОВЕРГНУТО",
+  "notes": "",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md": "7424155384454ccb",
+    "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md @commit": "04430c0"
+   },
+   "отпечаток рецепта": "7c1831e863a88684",
+   "alpha": 0.05,
+   "tolerance": 0.003
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 0.45848916884986013
+    },
+    "seconds": 6.4373016357421875e-06
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "FAIL",
+    "detail": "value +50.06%",
+    "numbers": {
+     "value": 0.5005807045036149
+    },
+    "seconds": 1.430511474609375e-05
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "FAIL",
+    "detail": "value +50.06%",
+    "numbers": {
+     "value": 0.5005807045036149
+    },
+    "seconds": 0.0001766681671142578
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +50.00%; подставка 2 отклонена: value -50.00%; подставка 3 отклонена: value -99.92%",
+    "numbers": {},
+    "seconds": 1.9788742065429688e-05
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "позитивный контроль даёт эталон: value +0.00%",
+    "numbers": {},
+    "seconds": 1.0967254638671875e-05
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "FAIL",
+    "detail": "value +50.06% (полуширина 0.00%, z +inf)",
+    "numbers": {
+     "value": Infinity,
+     "сопоставлено_с_заявленным": 1
+    },
+    "seconds": 0.05047273635864258
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик",
+    "numbers": {},
+    "seconds": 0.002254962921142578
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 2.4318695068359375e-05
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 10 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.00010967254638671875
+   }
+  ]
+ },
+ {
+  "claim": "Формула γ⁸π⁴/φ² предсказывает Ω_Λ из Planck 2018",
+  "source": "docs/papers/README_FOR_SCIENTISTS.md:71",
+  "verdict": "ПУСТО",
+  "notes": "",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md": "7424155384454ccb",
+    "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md @commit": "04430c0"
+   },
+   "отпечаток рецепта": "cf02d28b7d81a634",
+   "alpha": 0.05,
+   "tolerance": 0.0
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 0.45848916884986013
+    },
+    "seconds": 1.1682510375976562e-05
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 1.1444091796875e-05
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 5.9604644775390625e-06
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +50.00%; подставка 2 отклонена: value -50.00%; подставка 3 отклонена: value -99.92%",
+    "numbers": {},
+    "seconds": 1.52587890625e-05
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "позитивный контроль даёт эталон: value +0.00%",
+    "numbers": {},
+    "seconds": 1.0251998901367188e-05
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "PASS",
+    "detail": "value +0.00% (полуширина 0.00%, z +0.0)",
+    "numbers": {
+     "value": 0.0,
+     "сопоставлено_с_заявленным": 1
+    },
+    "seconds": 0.0021657943725585938
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик",
+    "numbers": {},
+    "seconds": 0.0022377967834472656
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 2.2649765014648438e-05
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "FAIL",
+    "detail": "внешнее 0.6889 +- 0.0056; сигм_формула -41.14; сигм_цель -0.1607 | порог 5.06 сигма ВЫВЕДЕН: перебор 123201, alpha=0.05, локальный alpha=4.16e-07 по Шидаку",
+    "numbers": {
+     "формула": 0.45848916884986013,
+     "сигм_формула": -41.144791276810686,
+     "цель_в_корпусе": 0.688,
+     "сигм_цель": -0.16071428571428784,
+     "внешнее": 0.6889,
+     "погрешность": 0.0056,
+     "порог_сигм": 5.0613316768538885
+    },
+    "seconds": 0.5145339965820312
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "VOID",
+    "detail": "ожидаемых случайных попаданий 113; p_глоб 1; случайная цель накрывается в 100.0% случаев | попадание ожидается случайно",
+    "numbers": {
+     "ожидаемых_попаданий": 112.7675,
+     "p_глоб": 1.0,
+     "доля_случайных_целей_с_попаданием": 1.0
+    },
+    "seconds": 0.045958518981933594
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "FAIL",
+    "detail": "описание 16.91 бит против совпадения 5.94 бит (выигрыш -10.97) | сжатия нет",
+    "numbers": {
+     "бит_описания": 16.91065444060912,
+     "бит_совпадения": 5.942723940636245,
+     "выигрыш": -10.967930499972876
+    },
+    "seconds": 2.2649765014648438e-05
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.384185791015625e-06
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "PASS",
+    "detail": "ошибка арифметики 1.83e-16; предел 8.13e-05 (сотая доля погрешности сравнения 8.13e-03)",
+    "numbers": {
+     "ошибка_арифметики": 1.8297939238371012e-16,
+     "предел": 8.1289011467557e-05,
+     "погрешность": 0.008128901146755699
+    },
+    "seconds": 0.01791834831237793
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 6 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ПУСТО",
+    "numbers": {},
+    "seconds": 0.04825615882873535
+   }
+  ]
+ },
+ {
+  "claim": "Ω_DM = γ⁴π²/φ даёт 0,257",
+  "source": "docs/papers/README_FOR_SCIENTISTS.md:72",
+  "verdict": "ОПРОВЕРГНУТО",
+  "notes": "",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md": "7424155384454ccb",
+    "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md @commit": "04430c0"
+   },
+   "отпечаток рецепта": "ea0bd920760259fc",
+   "alpha": 0.05,
+   "tolerance": 0.01
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 0.018943508716548436
+    },
+    "seconds": 1.7404556274414062e-05
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "FAIL",
+    "detail": "value +1256.67%",
+    "numbers": {
+     "value": 12.566652505905262
+    },
+    "seconds": 1.4066696166992188e-05
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "FAIL",
+    "detail": "value +1256.67%",
+    "numbers": {
+     "value": 12.566652505905262
+    },
+    "seconds": 0.0001666545867919922
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +50.00%; подставка 2 отклонена: value -50.00%; подставка 3 отклонена: value +3474.41%",
+    "numbers": {},
+    "seconds": 2.09808349609375e-05
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "позитивный контроль даёт эталон: value +0.00%",
+    "numbers": {},
+    "seconds": 1.2159347534179688e-05
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "FAIL",
+    "detail": "value +1256.67% (полуширина 0.00%, z +inf)",
+    "numbers": {
+     "value": Infinity,
+     "сопоставлено_с_заявленным": 1
+    },
+    "seconds": 0.0024535655975341797
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик",
+    "numbers": {},
+    "seconds": 0.0022830963134765625
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 2.3365020751953125e-05
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 10 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 9.298324584960938e-05
+   }
+  ]
+ },
+ {
+  "claim": "Колонка Error для α_s(M_Z) равна 0,005 %",
+  "source": "docs/papers/README_FOR_SCIENTISTS.md:40",
+  "verdict": "ОПРОВЕРГНУТО",
+  "notes": "",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md": "7424155384454ccb",
+    "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md @commit": "04430c0"
+   },
+   "отпечаток рецепта": "abeda04fd0a75799",
+   "alpha": 0.05,
+   "tolerance": 0.0
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 0.17412642543600532
+    },
+    "seconds": 1.4781951904296875e-05
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "FAIL",
+    "detail": "value -97.13%",
+    "numbers": {
+     "value": -0.9712852314777598
+    },
+    "seconds": 1.2636184692382812e-05
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "FAIL",
+    "detail": "value -97.13%",
+    "numbers": {
+     "value": -0.9712852314777598
+    },
+    "seconds": 7.081031799316406e-05
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +900.00%; подставка 2 отклонена: value -90.00%; подставка 3 отклонена: value -100.00%",
+    "numbers": {},
+    "seconds": 1.7642974853515625e-05
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "позитивный контроль даёт эталон: value -0.00%",
+    "numbers": {},
+    "seconds": 9.298324584960938e-06
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "FAIL",
+    "detail": "value -97.13% (полуширина 0.00%, z +inf)",
+    "numbers": {
+     "value": Infinity,
+     "сопоставлено_с_заявленным": 1
+    },
+    "seconds": 0.002244710922241211
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик",
+    "numbers": {},
+    "seconds": 0.0022962093353271484
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value -0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": -1.6147117261627463e-13
+    },
+    "seconds": 2.4080276489257812e-05
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 2.1457672119140625e-06
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 10 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 8.749961853027344e-05
+   }
+  ]
+ },
+ {
+  "claim": "Колонка Error для sin²θ₁₃ равна 0,008 %",
+  "source": "docs/papers/README_FOR_SCIENTISTS.md:43",
+  "verdict": "ОПРОВЕРГНУТО",
+  "notes": "",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md": "7424155384454ccb",
+    "/home/user/workspace/corpus/trinity/docs/papers/README_FOR_SCIENTISTS.md @commit": "04430c0"
+   },
+   "отпечаток рецепта": "184fcfe9332e9e32",
+   "alpha": 0.05,
+   "tolerance": 0.0
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 1.6175314794164786
+    },
+    "seconds": 3.647804260253906e-05
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "FAIL",
+    "detail": "value -99.51%",
+    "numbers": {
+     "value": -0.9950541920810803
+    },
+    "seconds": 2.7418136596679688e-05
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "FAIL",
+    "detail": "value -99.51%",
+    "numbers": {
+     "value": -0.9950541920810803
+    },
+    "seconds": 0.00015306472778320312
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +900.00%; подставка 2 отклонена: value -90.00%; подставка 3 отклонена: value -100.00%",
+    "numbers": {},
+    "seconds": 3.0040740966796875e-05
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "позитивный контроль даёт эталон: value -0.00%",
+    "numbers": {},
+    "seconds": 2.288818359375e-05
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "FAIL",
+    "detail": "value -99.51% (полуширина 0.00%, z +inf)",
+    "numbers": {
+     "value": Infinity,
+     "сопоставлено_с_заявленным": 1
+    },
+    "seconds": 0.01796889305114746
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик",
+    "numbers": {},
+    "seconds": 0.0023720264434814453
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 1.0295530925546507e-14
+    },
+    "seconds": 3.910064697265625e-05
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.384185791015625e-06
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 10 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.00011491775512695312
+   }
+  ]
+ }
+]

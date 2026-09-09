@@ -1,0 +1,235 @@
+[
+ {
+  "claim": "Отчёт Golden Chain v2.46 отделяет запоминание фраз от связной генерации",
+  "source": "docs/docs/research/trinity-golden-chain-v2-46-word-trigram-report.md:1-220",
+  "verdict": "ДОПУЩЕНИЕ НЕ ПРОВЕРЕНО",
+  "notes": "Наблюдение, эталон и reference_alt строят одну структурную карту разными маршрутами по разным разделам. Результат не подтверждает качество модели, переносимость PPL или независимость отчёта; он проверяет, что заявленное запоминание фраз не выдано за связное сочинение.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-46-word-trigram-report.md": "e0f1fbf13a01503f",
+    "/home/user/workspace/corpus/trinity/docs/docs/research/trinity-golden-chain-v2-46-word-trigram-report.md @commit": "04430c0"
+   },
+   "отпечаток рецепта": "55df6f5f7ff32ea1",
+   "alpha": 0.05,
+   "tolerance": 0.0,
+   "паспорт цели": "3b44950ac21c05f5",
+   "ключ новизны": "golden_chain:v246:phrase_memorization_recipe:v1",
+   "предпосылка независимости": "unknown",
+   "статус предпосылки": "assumption-unverified"
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "фразовое_воспроизведение": 1.0,
+     "низкая_температура": 1.0,
+     "не_связные_предложения": 1.0,
+     "оценочная_перплексия": 21.16
+    },
+    "seconds": 0.0002372264862060547,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "фразовое_воспроизведение +0.00%, низкая_температура +0.00%, не_связные_предложения +0.00%, оценочная_перплексия +0.00%",
+    "numbers": {
+     "фразовое_воспроизведение": 0.0,
+     "низкая_температура": 0.0,
+     "не_связные_предложения": 0.0,
+     "оценочная_перплексия": 0.0
+    },
+    "seconds": 0.0002567768096923828,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "фразовое_воспроизведение +0.00%, низкая_температура +0.00%, не_связные_предложения +0.00%, оценочная_перплексия +0.00% | порог поднят до печатной точности заявленного числа 0.05",
+    "numbers": {
+     "фразовое_воспроизведение": 0.0,
+     "низкая_температура": 0.0,
+     "не_связные_предложения": 0.0,
+     "оценочная_перплексия": 0.0
+    },
+    "seconds": 0.015691041946411133,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: не_связные_предложения -100.00%",
+    "numbers": {},
+    "seconds": 0.00087738037109375,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "негативный контроль отличается от эталона: фразовое_воспроизведение -100.00%",
+    "numbers": {},
+    "seconds": 0.00037670135498046875,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.384185791015625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "фразовое_воспроизведение +0.00%, низкая_температура +0.00%, не_связные_предложения +0.00%, оценочная_перплексия +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "фразовое_воспроизведение": 0.0,
+     "низкая_температура": 0.0,
+     "не_связные_предложения": 0.0,
+     "оценочная_перплексия": 0.0
+    },
+    "seconds": 0.02059769630432129,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 3.814697265625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.9073486328125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.9073486328125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.9073486328125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.384185791015625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С20 эффективное число попыток",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С21 алгебраическая объяснимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 13 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подставка 1: ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.08066082000732422,
+    "reason_code": "",
+    "auto_skip": false
+   }
+  ]
+ }
+]

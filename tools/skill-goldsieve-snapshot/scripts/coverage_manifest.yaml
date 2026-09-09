@@ -1,0 +1,497 @@
+# Coverage manifest детектора косвенной тавтологии (пункт 3 приказа тика 41).
+#
+# ЭТО ОБЪЯВЛЕНИЕ, А НЕ ДОКАЗАТЕЛЬСТВО. Каждая строка сверяется кодом
+# (coverage_manifest.py) с фактическим составом корпуса фикстур и каталога
+# мутаций: расхождение объявления с фактом закрывает гейт. Иначе манифест
+# превратился бы ровно в то, чем был отчёт тика 39 — заявление о покрытии,
+# которого нет.
+#
+# Поля по каждому конструкту:
+#   supported        — разбирается ли конструкция (true/false)
+#   positive         — сколько положительных фикстур ОБЯЗАНО быть в корпусе
+#   negative         — сколько негативных фикстур ОБЯЗАНО быть
+#   mutation_targets — имена мутаций, целящихся в код именно этого разбора
+#   fallback         — что делает детектор, когда разбор не удаётся
+#   limits           — известные ограничения внутри поддержанного класса
+
+runtimes:
+  # Версии, на которых прогон фактически состоялся. Формулировка «проверено на
+  # указанных версиях CPython», а НЕ «платформонезависимо»: другая ОС в матрице
+  # отсутствует (пункт 5 приказа), статус — not-evaluated.
+  verified:
+    - CPython 3.14.3
+    - CPython 3.14.4
+  partial:
+    - id: CPython 3.12.13
+      reason: >-
+        нет numpy и pyyaml: каскад сит и калибровка на реестре физически
+        непрогоняемы; разбор конструкций (корпус фикстур и мутации) от этих
+        пакетов не зависит и прогоняется полностью
+  platforms:
+    verified:
+      - Linux (песочница)
+    not_evaluated:
+      - id: Windows
+        reason: устройство недоступно
+    platform_unverified:
+      - id: macOS
+        reason: >-
+          после двух последовательных not-evaluated (тики 57 и 60) без
+          доступного runner SLA запретил расширение до verified-in-scope;
+          задача остаётся в очереди pending/os-matrix.yaml
+        pending: pending/os-matrix.yaml
+
+# Регрессионные guards, добавленные для режима «закрытие научного долга».
+# Это машинное объявление охвата, а не ручное утверждение результата:
+# gue_label_guard.py запускается ci_gate.sh, имеет отрицательную фикстуру и
+# мутационную цель; диагностические tick*-selftest/state-файлы относятся к
+# audit_log и не являются утверждениями корпуса.
+audit_guards:
+  gue_label_guard:
+    script: gue_label_guard.py
+    gate_step: запрет метки exact_gue на 0,4220
+    negative_fixture: отрицательная фикстура в selftest
+    mutation_target: обход дерева с exact GUE
+    audit_log_globs:
+      - append_tick*.py
+      - tick*_state.md
+      - tick*_state.txt
+      - tick*_state.json
+      - tick*_summary.md
+      - tick*_summary.txt
+      - tick*_summary.json
+      - tick*-selftest.txt
+      - tick*-selftest.json
+      - tick*-state.md
+      - tick*-state.txt
+      - tick*-state.json
+      - tick*-audit.txt
+      - tick*-audit.json
+
+constructs:
+  прямые формы:
+    supported: true
+    positive: 3
+    negative: 8
+    mutation_targets:
+      - разбор прямых вызовов (calls и имя-функция)
+    fallback: нет
+    limits: []
+
+  globals:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - извлечение глобального состояния (_tainted_globals)
+      - наполнители глобального состояния (_tainted_writers)
+    fallback: при неразрешимом имени возвращается False (подозрение снимается)
+    limits:
+      - запись в глобальное состояние из другого модуля не отслеживается
+
+  # Новый класс тика 42 (пункт 2 приказа). Ведётся ОТДЕЛЬНО от globals:
+  # там состояние только наполняется, а здесь изменяется — порядок записи
+  # относительно наблюдения, тени, alias в контейнере и `global` — свои формы.
+  mutable globals:
+    supported: true
+    positive: 7
+    negative: 5
+    mutation_targets:
+      - запись в глобальный контейнер (оба пути)
+      - загрязнение из тела функции (обход всего дерева)
+    fallback: при неразрешимом имени возвращается False (подозрение снимается)
+    limits:
+      - >-
+        временной порядок не различается: загрязнение считается по ВСЕМУ
+        телу модуля, поэтому запись ПОСЛЕ объявления наблюдения даёт тот же
+        вердикт, что и ДО (консервативно в сторону подозрения)
+      - >-
+        запись в состояние из ДРУГОГО модуля по-прежнему не отслеживается:
+        межмодульный граф (modgraph) разрешает только передачу вызова,
+        а не запись в глобальное состояние чужого модуля
+      - >-
+        ветка `ast.Subscript` в `_tainted_globals` избыточна (измерено
+        трассировкой в тике 42): обход цели всё равно даёт корневое `ast.Name`,
+        поэтому одноточечная мутация этой ветки НЕ различается и заменена
+        мутацией, убирающей оба пути
+
+  closure:
+    supported: true
+    positive: 8
+    negative: 3
+    mutation_targets:
+      - чтение захваченного значения (_closure_value)
+      - вложенные определения (_local_defs)
+    fallback: при недоступной ячейке возвращается False
+    limits:
+      - ячейка, заполняемая после первого вызова, читается как пустая
+
+  descriptor:
+    supported: true
+    positive: 6
+    negative: 5
+    mutation_targets:
+      - разбор дескриптора (_descriptor_origin)
+      - игнор параметров протокола (PROTOCOL_PARAMS)
+      - база разобранного атрибута (resolved_bases)
+    fallback: >-
+      при неизвестном виде дескриптора возвращается None, и разбор идёт по
+      прежнему пути (чтение поля объекта)
+    limits:
+      - >-
+        имя читаемого поля, собранное в __set_name__ и известное только в
+        рантайме, не связывается с полем, заполненным в __init__ (фикстура в
+        LIMITATIONS)
+
+  bound method:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - приёмник связанного объекта (self/cls)
+      - разбор поля объекта (_field_from_ref)
+    fallback: нет
+    limits: []
+
+  callable object:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - разбор вызываемого объекта (__call__)
+    fallback: нет
+    limits: []
+
+  decorator:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - разбор обёртки декоратора (__wrapped__)
+    fallback: нет
+    limits:
+      - декоратор, подменяющий источник данных без __wrapped__, не прослеживается
+
+  default arg:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - значение по умолчанию от эталона
+    fallback: нет
+    limits: []
+
+  lambda:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - разбор lambda (_node_for)
+    fallback: при недоступном исходном тексте возвращается False
+    limits: []
+
+  partial:
+    supported: true
+    positive: 3
+    negative: 1
+    mutation_targets:
+      - нормализация functools.partial
+    fallback: нет
+    limits: []
+
+  # --- конструкции, охват по которым НЕ заявлен -----------------------------
+  # Приказ тика 41: глубина вместо ширины. Эти классы не берутся, пока closures
+  # и descriptors не доведены до позитивных, негативных и мутационных
+  # доказательств. Перечислены явно, чтобы «не заявлено» нельзя было прочитать
+  # как «работает».
+  exec/eval:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: исходный текст недоступен, возвращается False
+    limits: [охват не заявлен; фикстур нет]
+
+  генераторы:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: разбор тела идёт как у обычной функции, yield не отслеживается
+    limits: [охват не заявлен; фикстур нет]
+
+  корутины:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: await не отслеживается
+    limits: [охват не заявлен; фикстур нет]
+
+  метаклассы:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: атрибут, созданный метаклассом, читается как обычный
+    limits: [охват не заявлен; фикстур нет]
+
+  contextvars:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: значение из контекста не отслеживается
+    limits: [охват не заявлен; фикстур нет]
+
+  C-расширения:
+    supported: false
+    positive: 0
+    negative: 0
+    mutation_targets: []
+    fallback: исходный текст недоступен, возвращается False
+    limits: [охват не заявлен; исходного текста нет в принципе]
+
+# --- анализаторы (тик 42) ---------------------------------------------------
+# Отдельно от конструктов: это не классы конструкций, а МОДУЛИ разбора. Для
+# каждого объявлено, чем доказано, что он вообще работал, и какие причины отказа
+# он умеет называть. Список причин сверяется кодом с закрытым списком в модуле.
+analyzers:
+  proof:
+    role: машинный след анализатора (files_parsed, functions_seen, nodes_visited,
+      edges_resolved, chains_expanded, причины unsupported)
+    selftest_checks: 17
+    execution_proof: >-
+      реальный маршрут CLI (`python3 -m goldsieve run cases/…`) в подпроцессе с
+      GOLDSIEVE_PROOF; пустой или тривиальный след — авария CI (execution_proof.py)
+    affects_verdict: false
+  modgraph:
+    role: межмодульный граф импортов; только статически разрешимые рёбра
+    selftest_checks: 17
+    execution_proof: >-
+      самопроверка модуля включает подставку «граф не исполняет код»
+      (файл с `raise SystemExit` разбирается, но не запускается)
+    affects_verdict: false
+    unsupported_reasons_from: goldsieve.proof.REASONS
+
+# --- границы применимости (считаются КОДОМ, не пишутся руками) --------------
+# Наблюдаемая специфичность 1,0000 не означает нулевой доли ложных: при N
+# честных отрицательных примерах и нуле срабатываний грубая 95 %-верхняя граница
+# доли по правилу трёх равна 3/N. Прежняя формулировка «около 5 % на 60
+# наблюдениях» отозвана: считать нужно по числу НЕГАТИВНЫХ фикстур.
+bounds:
+  negative_fixtures: 28
+  false_positives: 0
+  observed_specificity: 1.0
+  rule_of_three_upper: 0.1071
+  note: >-
+    доля ложных срабатываний НЕ измерена как нулевая; измерено лишь отсутствие
+    срабатываний на 28 честных отрицательных примерах, что даёт верхнюю оценку
+    около 11 % (3/28). Формулировки «детектор полностью верен» и «нулевая
+    вероятность ложного срабатывания» запрещены.
+
+# --- оболочка тика и её обвязка (тик 43) ------------------------------------
+# Молчание проверки — не покрытие. Каждая проверка ниже обязана: (1) быть в
+# составе отпечатка baseline, (2) стоять отдельным шагом гейта, (3) давать
+# объявленное число утверждений. Первые два условия ловят самый частый отказ:
+# проверка написана, но в гейт не включена — и её падение никого не блокирует.
+shell_checks:
+  goldsieve/chain.py:
+    gate_step: хеш-цепочка журнала
+    selftest_cmd: [-m, goldsieve.chain]
+    selftest_checks: 29
+    role: >-
+      append-only цепочка JSONL (seq, prev_hash, entry_hash, каноническое
+      представление), обнаружение изменения, удаления, вставки,
+      перестановки, подмены prev_hash, обрыва записи и сегмента без
+      ссылки на checkpoint; префиксный отпечаток для растущего журнала
+    limits: >-
+      цепочка НЕ подпись: она обнаруживает правку проверяемой копии,
+      но не доказывает автора записей и не защищает от полной подмены
+      журнала ВМЕСТЕ с checkpoint; временные метки — не доверенное время
+  tri:
+    gate_step: цепочка живого журнала
+    selftest_cmd: null
+    selftest_checks: 0
+    role: >-
+      проверка цепочки НАСТОЯЩЕГО журнала песочницы (`tri log
+      verify`): машинный JSON и ненулевой код при нарушении
+    skip_run_reason: >-
+      шаг гейта И ЕСТЬ прогон на живом журнале; повторный вызов из
+      манифеста дописал бы в тот же журнал ещё две записи — проверка
+      меняла бы то, что проверяет; число утверждений каскада цепочки
+      проверяется шагом goldsieve/chain.py
+  goldsieve/runlog.py:
+    gate_step: журнал вызовов (run_id)
+    selftest_cmd: [-m, goldsieve.runlog]
+    selftest_checks: 27
+    role: единый run_id, статусы, замок, чтение неполного журнала
+  snapshot_manifest.py:
+    gate_step: проверяемый снимок
+    selftest_cmd: [snapshot_manifest.py, selftest]
+    selftest_checks: 13
+    role: >-
+      SHA-256 входов, отчётов и журналов; перепроверка без сети;
+      checkpoint (имя журнала, last_seq, head_hash, SHA-256 снимка) и
+      append-only сверка префикса журнала вместо sha целого файла
+  archive_contract.py:
+    gate_step: контракт архива скила
+    selftest_cmd: [archive_contract.py, selftest]
+    selftest_checks: 9
+    role: предел записей, порядок, дубликаты, детерминированный zip
+  chain_overhead.py:
+    gate_step: статистика стоимости цепочки
+    selftest_cmd: [chain_overhead.py, --selftest]
+    selftest_checks: 8
+    role: >-
+      сравнение дозаписи журнала без цепочки и с цепочкой; median/p95/min/max,
+      сырые точки, правило «разность меньше разброса повторов — замедление НЕ
+      измерено», объявленная причина малого числа повторов у полного гейта
+  bench.py:
+    gate_step: статистика измерителя
+    selftest_cmd: [bench.py, --selftest]
+    selftest_checks: 8
+    role: median/p95/min/max, cold/warm, объявленные причины малого числа повторов
+  tri_integration_test.py:
+    gate_step: интеграционные тесты оболочки
+    selftest_cmd: null
+    selftest_checks: 15
+    skip_run_reason: >-
+      сам файл И ЕСТЬ прогон (запускает tri подпроцессом, спит и убивает
+      процессы, около двенадцати секунд); повторный запуск внутри манифеста
+      удвоил бы время гейта без нового знания. Число утверждений проверяется
+      шагом гейта.
+    role: фон, одновременный watch, crash, обрыв журнала, lock collision, abort
+  goldsieve/cover_chunks.py:
+    gate_step: чанкинг cover
+    selftest_cmd: [-m, goldsieve.cover_chunks]
+    selftest_checks: 6
+    role: >-
+      разведка корпуса чанками с коротким тайм-аутом, атомарным JSON-чекпоинтом
+      и продолжением с последнего успешно обработанного файла; тайм-аут
+      чанка возвращает частичный триаж и не срывает тик
+    mutation_target: >-
+      сдвиг next_index в конец при пропущенном результате обязан быть замечен
+      guard-ом целостности чекпоинта
+    sensitivity_fixture: пять файлов фикстурного корпуса, два файла в первом
+      чанке и все пять после продолжения
+    limits: тайм-аут проверяется между файлами; один уже начатый файл завершается
+  calibrate_sieves.py:
+    gate_step: калибровка сит С4 С5 С16
+    selftest_cmd: [calibrate_sieves.py]
+    selftest_checks: 15
+    role: >-
+      измеряет чувствительность С4, С5 и С16 на положительных, отрицательных
+      и мутированных фикстурах; отдельный guard проверяет реальную загрузку
+      кейса через module_from_spec без регистрации в sys.modules
+    mutation_target: >-
+      точное совпадение для С4, signal-like negative для С5 и ожидаемое
+      попадание либо p_global выше alpha для С16 обязаны менять статус
+    sensitivity_fixture: 15 проверок, из них 7 мутационных и 3 маршрута
+      реального кейса
+    limits: синтетическая калибровка не является вердиктом корпуса
+  fixed_point_audit.py:
+    gate_step: неподвижная точка проверок
+    selftest_cmd: [fixed_point_audit.py]
+    selftest_checks: 9
+    role: >-
+      проверяет, что машинный отчёт не меняет решение входной проверки;
+      фикстура с module_from_spec без регистрации в sys.modules; мутация
+      исключения audit_log обязана обнаруживаться
+    mutation_target: удаление роли audit_log для файла с нарушением
+    sensitivity_fixture: 1/1 мутация роли поймана; 3/3 отчётных вставки
+      не изменили решение
+
+# --- новые классы решений аудита --------------------------------------------
+# Это не новый синтаксический конструкт, поэтому он не смешивается с таблицей
+# constructs. Guard проверяется самопроверкой и реальным кейсом через CLI:
+# отсутствие любого обязательного поля рецепта должно давать отдельный
+# reason-code, а удаление подсказки не должно тихо создавать этот код.
+decision_guards:
+  metrics_incommensurable:
+    role: >-
+      несопоставимые метрики при отсутствии общей шкалы, токенизации,
+      усреднения или стадии обучения; это ВОПРОС, а не опровержение
+    selftest_checks: 2
+    mutation_target: очистка reason_code_hint не должна выдавать этот подтип
+    fixture: cases/golden_chain_v240_train_ppl_20260815.py
+
+tooling_guards:
+  c20_empty_family:
+    role: >-
+      пустое семейство получает OPEN внутри С20 и итоговый ВОПРОС с
+      reason_code meff_unstable; OPEN не может молча стать подтверждением
+    fixture: cases/c20_empty_family_guard_20260815.py
+    positive_sensitivity: 1/1
+    negative_specificity: 1/1
+    mutation_score: 1/1
+    loader_guard: module_from_spec без регистрации в sys.modules
+    mutation_target: подмена доли независимых единицей для пустого семейства
+  os_matrix_completeness:
+    role: >-
+      общий успех GitHub Actions не должен скрывать отсутствие, незавершённость,
+      дублирование или подмену одного из шести заданий матрицы ОС и CPython;
+      проверка читает сохранённый ответ API и не подменяет область гейта корпуса
+    fixture: os_matrix_audit.py --selftest
+    positive_sensitivity: 1/1
+    mutation_score: 4/4
+    mutation_target: >-
+      удаление, незавершённость, дублирование или подмена задания матрицы
+    sensitivity: 4/4 мутаций пойманы; положительный контроль 1/1
+    status_class: verified-in-scope
+  external_target_integrity:
+    role: >-
+      нечисловая, нефинитная или лишённая URL внешняя цель не должна
+      превращаться в обычное согласие С15
+    fixture: goldsieve/selftest.py
+    mutation_target: удаление проверки конечности внешней цели
+    sensitivity: 2/2 отрицательные фикстуры; 1/1 мутация поймана
+    status_class: verified-in-scope
+
+# Кейсные проверки корпуса (не синтаксические конструкции детектора).
+# Здесь явно фиксируется измеренная чувствительность нового риска, чтобы
+# молчание проверки не читалось как покрытие.
+case_audits:
+  jepa_experiment_consistency_20260817:
+    fixture: cases/jepa_experiment_consistency_20260817.py
+    mutation_target: замена лучшего шага и рассогласование сводного начального MSE
+    sensitivity: 1/1 (С2 обнаруживает рассогласование сводки и таблицы)
+    negative_control: 1/1 (С5 отличает минимум AvgMSE10 от минимума MSE)
+    loader_guard: module_from_spec без регистрации в sys.modules
+  sacred_two_formula_composition_recipe_20260817:
+    fixture: cases/sacred_two_formula_composition_recipe_20260817.py
+    mutation_target: замена неполного инвентаря полным рецептом и подмена нулевого состояния единицей
+    sensitivity: 1/1 (С4 ловит подстановку полного рецепта)
+    negative_control: 1/1 (С5 отличает контроль единицы от неполного рецепта)
+    mutation_score: 1/1 (С14 сохраняет ОПРОВЕРГНУТО для подстановки)
+    loader_guard: module_from_spec без регистрации в sys.modules
+  vsa_simd_benchmark_recipe_20260818:
+    fixture: cases/vsa_simd_benchmark_recipe_20260818.py
+    mutation_target: подмена задержки dot product и удаление аппаратной среды из структурной карты
+    sensitivity: 1/1 (С4 ловит подмену задержки)
+    negative_control: 1/1 (С5 отличает неполную нулевую карту)
+    mutation_score: 1/1 (С14 сохраняет ОПРОВЕРГНУТО для подстановки)
+    loader_guard: module_from_spec без регистрации в sys.modules
+
+# --- терминологический guard 0,4220 -----------------------------------------
+# Все активные подписи числа 0,4220… обязаны явно называть Wigner–surmise
+# approximation; отрицательная фикстура с exact_gue обязана падать.
+terminology_guards:
+  gue_04220:
+    required_label: Wigner–surmise approximation
+    covered_records:
+      - corpus/trinity/data/zeta/zeta_gue_analysis_results.md
+      - corpus/trinity/data/zeta/zeta_bin_analysis_update.md
+      - claims.yaml
+      - zeta_std_gue_20260815.json
+      - zeta_std_unfolding_passport_20260815.json
+    mutation_target: замена подписи Wigner–surmise approximation на exact_gue
+    sensitivity: 1/1 отрицательная фикстура; 1/1 положительная фикстура
+    scope: активные записи корпуса, реестра и машинных паспортов
+    diagnostic_log_patterns:
+      - tick*-gate.txt
+      - tick*-record.py
+      - state-*.md
+    diagnostic_log_reason: >-
+      диагностические записи самого гейта не являются утверждениями о GUE;
+      их роль объявляется кодом и покрывается мутационной проверкой

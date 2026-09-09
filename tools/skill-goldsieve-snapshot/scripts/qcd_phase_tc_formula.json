@@ -1,0 +1,130 @@
+[
+ {
+  "claim": "Формула QCD phase даёт 156,5 МэВ",
+  "source": "docs/docs/math-foundations/sacred-formulas.md:201",
+  "verdict": "ПОДТВЕРЖДЕНО",
+  "notes": "Сравнение выполняется на точности источника: один знак после запятой. Статус строки «Unmeasured» не расширяется до проверки внешнего физического эксперимента.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md": "ecdcc1ebcfb4cdd0",
+    "/home/user/workspace/corpus/trinity/docs/docs/math-foundations/sacred-formulas.md @commit": "bcd46a5"
+   },
+   "отпечаток рецепта": "35af0f4d5f066658",
+   "alpha": 0.05,
+   "tolerance": 0.0
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 156.5
+    },
+    "seconds": 9.5367431640625e-06
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 2.002716064453125e-05
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.00023126602172851562
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value -0.64%; подставка 2 отклонена: value +0.64%; подставка 3 отклонена: value +61.79%",
+    "numbers": {},
+    "seconds": 2.5272369384765625e-05
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "негативный контроль отличается от эталона: value +61.79%",
+    "numbers": {},
+    "seconds": 1.0013580322265625e-05
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "PASS",
+    "detail": "value +0.00% (полуширина 0.00%, z +0.0)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.07458257675170898
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик",
+    "numbers": {},
+    "seconds": 0.002451181411743164
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.004261016845703125
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 5 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.004183769226074219
+   }
+  ]
+ }
+]

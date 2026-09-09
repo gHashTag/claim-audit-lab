@@ -1,0 +1,44 @@
+{
+ "checked": 3,
+ "degenerate_count": 2,
+ "degenerate": [
+  "tick210_external_measurement.json",
+  "tick211_external_measurement.json"
+ ],
+ "rule": "артефакт внешней сверки обязан содержать наблюдаемое из корпуса и путь к файлу корпуса; иначе сверка проходит при любом значении корпусных формул",
+ "why_this_check_exists": "тики 210 и 211 подали сверку внешнего источника с самим собой как содержательную цель: 0 и 0,0111 сигмы ни о чём не свидетельствуют",
+ "rows": [
+  {
+   "file": "tick210_external_measurement.json",
+   "target": "постоянная Ридберга",
+   "class": "вырожденная_сверка",
+   "degenerate": true,
+   "verdict_if_submitted": "ПУСТО",
+   "reasons": [
+    "нет корпусного наблюдаемого: сверяется внешний источник сам с собой"
+   ],
+   "observed_key": null,
+   "source": ""
+  },
+  {
+   "file": "tick211_external_measurement.json",
+   "target": "масса электрона",
+   "class": "вырожденная_сверка",
+   "degenerate": true,
+   "verdict_if_submitted": "ПУСТО",
+   "reasons": [
+    "нет корпусного наблюдаемого: сверяется внешний источник сам с собой"
+   ],
+   "observed_key": null,
+   "source": ""
+  },
+  {
+   "file": "tick212_external_measurement.json",
+   "target": "радиус электрона",
+   "class": "измерение_о_корпусе",
+   "degenerate": false,
+   "observed_key": "наблюдаемое_из_корпуса",
+   "source": "/home/user/workspace/corpus/trinity/docs/research/FORMULAS_SUMMARY.md"
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "source_of_truth": "bblm_elements.json (elements_closed_by_code)",
+ "closed_by_code": [
+  "error_estimate_method",
+  "out_of_sample_check",
+  "per_bin_heights",
+  "shape_vs_scale_discrimination"
+ ],
+ "open_with_machine_question": [
+  "coefficient_rederivation"
+ ],
+ "spec_present": [
+  "error_estimate_method",
+  "formula",
+  "height_parameters",
+  "out_of_sample_check",
+  "per_bin_heights",
+  "shape_vs_scale_discrimination",
+  "unfolding_mode"
+ ],
+ "divergence": [],
+ "divergence_count": 0,
+ "why_this_check_exists": "тики 172–204 докладывали 3 из 8 элементов, потому что учёт имел два источника истины; расхождение обнаружено разбором писем, а не кодом, поэтому теперь его ловит гейт"
+}

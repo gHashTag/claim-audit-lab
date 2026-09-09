@@ -1,0 +1,60 @@
+{
+ "protocol": "BBLM finite-height correction",
+ "verdict": "ВОПРОС",
+ "verdict_basis": "вердикт ВОПРОС вынесен кодом по числу отсутствующих обязательных элементов; это НЕ находка и НЕ опровержение",
+ "required_total": 8,
+ "present_count": 7,
+ "missing_count": 1,
+ "elements": [
+  {
+   "element": "formula",
+   "title": "формула поправки с явными выражениями",
+   "present": true,
+   "declared_present": true
+  },
+  {
+   "element": "coefficient_rederivation",
+   "title": "независимый вывод численных коэффициентов",
+   "present": false,
+   "declared_present": false,
+   "needed": "файл с аналитическими выражениями коэффициентов (формула + номер уравнения статьи), после чего вывод считается кодом и сравнивается с 0.230158 и 1.4720 при нулевом допуске"
+  },
+  {
+   "element": "height_parameters",
+   "title": "параметры высоты выборки нулей",
+   "present": true,
+   "declared_present": true
+  },
+  {
+   "element": "per_bin_heights",
+   "title": "L по каждой корзине бинного анализа",
+   "present": true,
+   "declared_present": true
+  },
+  {
+   "element": "unfolding_mode",
+   "title": "режим развёртки с проверяемым паспортом",
+   "present": true,
+   "declared_present": true
+  },
+  {
+   "element": "error_estimate_method",
+   "title": "метод оценки погрешности предсказания",
+   "present": true,
+   "declared_present": true
+  },
+  {
+   "element": "out_of_sample_check",
+   "title": "проверка вне выборки",
+   "present": true,
+   "declared_present": true
+  },
+  {
+   "element": "shape_vs_scale_discrimination",
+   "title": "разделение масштаба и формы",
+   "present": true,
+   "declared_present": true
+  }
+ ],
+ "status_class": "not-evaluated"
+}

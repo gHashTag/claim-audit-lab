@@ -1,0 +1,683 @@
+[
+ {
+  "claim": "γ = 0,274 занимает 10-е место из 13 по спектральной дисперсии",
+  "source": "docs/docs/research/delta-001/phase4-consistency.md:63-88",
+  "verdict": "ПОДТВЕРЖДЕНО",
+  "notes": "Эталон пересчитан из формул и определения критерия; положительный контроль использует mpmath и не возвращает число из корпуса. Проверяется именно ранг γ=0,274, а не напечатанное значение дисперсии.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md": "5e321473565ec35f",
+    "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md @commit": "04430c0",
+    "/home/user/workspace/corpus/trinity/src/gravity/delta_001_phase2_numerical.zig": "3635065f7e04c8b0",
+    "/home/user/workspace/corpus/trinity/src/gravity/delta_001_phase2_numerical.zig @commit": "04430c0"
+   },
+   "отпечаток рецепта": "e05fa7ad050b168d",
+   "alpha": 0.05,
+   "tolerance": 1e-12,
+   "предпосылка независимости": "not-declared",
+   "статус предпосылки": "irrelevant"
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 10.0
+    },
+    "seconds": 4.1961669921875e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 5.364418029785156e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "value +0.00% | порог поднят до печатной точности заявленного числа 0.005",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.013918161392211914,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value -90.00%; подставка 2 отклонена: value -50.00%; подставка 3 отклонена: value +30.00%",
+    "numbers": {},
+    "seconds": 5.984306335449219e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "позитивный контроль даёт эталон: value +0.00%",
+    "numbers": {},
+    "seconds": 0.0016677379608154297,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.384185791015625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "значимость не проверяема: выборка детерминированная, полуширина интервала равна нулю (value +0.00% (полуширина 0.00%, z +0.0))",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.0530552864074707,
+    "reason_code": "significance_untestable",
+    "auto_skip": true
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик с определённым разбросом",
+    "numbers": {},
+    "seconds": 0.002429962158203125,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.021519184112548828,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 2.86102294921875e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.9073486328125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "PASS",
+    "detail": "все параметры внутри объявленных границ",
+    "numbers": {},
+    "seconds": 3.337860107421875e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "PASS",
+    "detail": "ошибка арифметики 0.00e+00; предел 1.00e-17 (сотая доля погрешности сравнения 1.00e-15)",
+    "numbers": {
+     "ошибка_арифметики": 0.0,
+     "предел": 1e-17,
+     "погрешность": 1e-15
+    },
+    "seconds": 0.0003936290740966797,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С20 эффективное число попыток",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.384185791015625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С21 алгебраическая объяснимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 10 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подставка 1: ОПРОВЕРГНУТО; подставка 2: ОПРОВЕРГНУТО; подставка 3: ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.1996140480041504,
+    "reason_code": "",
+    "auto_skip": false
+   }
+  ]
+ },
+ {
+  "claim": "В таблице DELTA-001 две сильные φ-коинциденции с ошибкой менее 1%",
+  "source": "docs/docs/research/delta-001/phase4-consistency.md:23-31",
+  "verdict": "ПОДТВЕРЖДЕНО",
+  "notes": "Эталон пересчитан из формул и определения критерия; положительный контроль использует mpmath и не возвращает число из корпуса. Порог 1% применён к двум формульным парам из таблицы.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md": "5e321473565ec35f",
+    "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md @commit": "04430c0",
+    "/home/user/workspace/corpus/trinity/src/gravity/delta_001_phase2_numerical.zig": "3635065f7e04c8b0",
+    "/home/user/workspace/corpus/trinity/src/gravity/delta_001_phase2_numerical.zig @commit": "04430c0"
+   },
+   "отпечаток рецепта": "9d81af5d37c7d749",
+   "alpha": 0.05,
+   "tolerance": 1e-12,
+   "предпосылка независимости": "not-declared",
+   "статус предпосылки": "irrelevant"
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 2.0
+    },
+    "seconds": 1.6450881958007812e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 1.3828277587890625e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "value +0.00% | порог поднят до печатной точности заявленного числа 0.025",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.010820388793945312,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value -100.00%; подставка 2 отклонена: value -50.00%; подставка 3 отклонена: value +50.00%",
+    "numbers": {},
+    "seconds": 2.384185791015625e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "позитивный контроль даёт эталон: value +0.00%",
+    "numbers": {},
+    "seconds": 0.00018024444580078125,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "значимость не проверяема: выборка детерминированная, полуширина интервала равна нулю (value +0.00% (полуширина 0.00%, z +0.0))",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.00244140625,
+    "reason_code": "significance_untestable",
+    "auto_skip": true
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик с определённым разбросом",
+    "numbers": {},
+    "seconds": 0.0023195743560791016,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.011228322982788086,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 2.1457672119140625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "PASS",
+    "detail": "все параметры внутри объявленных границ",
+    "numbers": {},
+    "seconds": 3.814697265625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "PASS",
+    "detail": "ошибка арифметики 0.00e+00; предел 1.00e-17 (сотая доля погрешности сравнения 1.00e-15)",
+    "numbers": {
+     "ошибка_арифметики": 0.0,
+     "предел": 1e-17,
+     "погрешность": 1e-15
+    },
+    "seconds": 7.867813110351562e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С20 эффективное число попыток",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.6226043701171875e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С21 алгебраическая объяснимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 10 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подставка 1: ОПРОВЕРГНУТО; подставка 2: ОПРОВЕРГНУТО; подставка 3: ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.2022089958190918,
+    "reason_code": "",
+    "auto_skip": false
+   }
+  ]
+ },
+ {
+  "claim": "В таблице DELTA-001 две слабые φ-коинциденции с ошибкой 1–5%",
+  "source": "docs/docs/research/delta-001/phase4-consistency.md:32-41",
+  "verdict": "ОПРОВЕРГНУТО",
+  "notes": "Эталон пересчитан из формул и определения критерия; положительный контроль использует mpmath и не возвращает число из корпуса. Диапазон 1–5% пересчитан по формулам строк; их напечатанные значения не используются.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md": "5e321473565ec35f",
+    "/home/user/workspace/corpus/trinity/docs/docs/research/delta-001/phase4-consistency.md @commit": "04430c0",
+    "/home/user/workspace/corpus/trinity/src/gravity/delta_001_phase2_numerical.zig": "3635065f7e04c8b0",
+    "/home/user/workspace/corpus/trinity/src/gravity/delta_001_phase2_numerical.zig @commit": "04430c0"
+   },
+   "отпечаток рецепта": "ef331c4731951f7b",
+   "alpha": 0.05,
+   "tolerance": 1e-12,
+   "предпосылка независимости": "not-declared",
+   "статус предпосылки": "irrelevant"
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 1.811981201171875e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "FAIL",
+    "detail": "value +200.00%",
+    "numbers": {
+     "value": 2.0
+    },
+    "seconds": 1.4543533325195312e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "FAIL",
+    "detail": "value +200.00% | порог поднят до печатной точности заявленного числа 0.025",
+    "numbers": {
+     "value": 2.0
+    },
+    "seconds": 0.018882036209106445,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +100.00%; подставка 2 отклонена: value +300.00%; подставка 3 отклонена: value +400.00%",
+    "numbers": {},
+    "seconds": 2.2411346435546875e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "позитивный контроль даёт эталон: value +0.00%",
+    "numbers": {},
+    "seconds": 0.00020837783813476562,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.1457672119140625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "значимость не проверяема: выборка детерминированная, полуширина интервала равна нулю (value абсолютная разность +2 (полуширина 0, z +inf))",
+    "numbers": {
+     "value": Infinity
+    },
+    "seconds": 0.002458333969116211,
+    "reason_code": "significance_untestable",
+    "auto_skip": true
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "меньше трёх статистик с определённым разбросом",
+    "numbers": {},
+    "seconds": 0.010439157485961914,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 0.0
+    },
+    "seconds": 0.019566059112548828,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 2.384185791015625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "PASS",
+    "detail": "все параметры внутри объявленных границ",
+    "numbers": {},
+    "seconds": 4.5299530029296875e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "PASS",
+    "detail": "ошибка арифметики 0.00e+00; предел 1.00e-17 (сотая доля погрешности сравнения 1.00e-15)",
+    "numbers": {
+     "ошибка_арифметики": 0.0,
+     "предел": 1e-17,
+     "погрешность": 1e-15
+    },
+    "seconds": 8.726119995117188e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С20 эффективное число попыток",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.86102294921875e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С21 алгебраическая объяснимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 10 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подставка 1: ОПРОВЕРГНУТО; подставка 2: ОПРОВЕРГНУТО; подставка 3: ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.17820310592651367,
+    "reason_code": "",
+    "auto_skip": false
+   }
+  ]
+ }
+]

@@ -1,0 +1,231 @@
+[
+ {
+  "claim": "Агрегат прогресса Golden Chain согласован с детальной таблицей",
+  "source": ".trinity/ralph/golden_chain/GOLDEN_CHAIN_FINAL_REPORT.md:1-180",
+  "verdict": "ОПРОВЕРГНУТО",
+  "notes": "Наблюдение извлекается из строки Overall. Эталон выводится из семи детальных строк; альтернативный эталон использует Decimal и CSV-разбор. Расхождение проверяет внутреннюю согласованность, а не добавляет новое подтверждение простой арифметикой напечатанных чисел.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/trinity/.trinity/ralph/golden_chain/GOLDEN_CHAIN_FINAL_REPORT.md": "16fa51fc320678b9",
+    "/home/user/workspace/corpus/trinity/.trinity/ralph/golden_chain/GOLDEN_CHAIN_FINAL_REPORT.md @commit": "04430c0"
+   },
+   "отпечаток рецепта": "47f40e3b6629cc9c",
+   "alpha": 0.05,
+   "tolerance": 1e-12,
+   "паспорт цели": "ca3db9da7ff7e33f",
+   "ключ новизны": "golden_chain:final_report:aggregate_consistency:v1",
+   "предпосылка независимости": "unknown",
+   "статус предпосылки": "assumption-unverified"
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "готово": 39.0,
+     "всего": 42.0,
+     "процент": 92.85714285714286
+    },
+    "seconds": 4.982948303222656e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "FAIL",
+    "detail": "готово +7.69%, всего +28.57%, процент -16.00%",
+    "numbers": {
+     "готово": 0.07692307692307693,
+     "всего": 0.2857142857142857,
+     "процент": -0.16000000000000003
+    },
+    "seconds": 6.747245788574219e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "FAIL",
+    "detail": "готово +7.69%, всего +28.57%, процент -16.00% | порог поднят до печатной точности заявленного числа 0.00119",
+    "numbers": {
+     "готово": 0.07692307692307693,
+     "всего": 0.2857142857142857,
+     "процент": -0.16000000000000003
+    },
+    "seconds": 0.01219797134399414,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: всего +28.57%",
+    "numbers": {},
+    "seconds": 0.00010395050048828125,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "негативный контроль отличается от эталона: готово -97.44%",
+    "numbers": {},
+    "seconds": 8.249282836914062e-05,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.6689300537109375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "готово +0.00%, всего +0.00%, процент +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "готово": 0.0,
+     "всего": 0.0,
+     "процент": 0.0
+    },
+    "seconds": 0.006428718566894531,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 2.1457672119140625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С20 эффективное число попыток",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С21 алгебраическая объяснимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 4.76837158203125e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 13 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подставка 1: ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 0.05838632583618164,
+    "reason_code": "",
+    "auto_skip": false
+   }
+  ]
+ }
+]

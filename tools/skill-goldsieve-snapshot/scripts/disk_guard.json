@@ -1,0 +1,10 @@
+{
+ "free_mb": 5789.7,
+ "min_free_mb": 1024,
+ "leaked_fixture_dirs": 0,
+ "leaked_bytes": 0,
+ "cleaned": 0,
+ "root_cause_fixed_at_tick": 215,
+ "root_cause": "goldsieve/identity_corpus.py создавал рабочий каталог фикстур на процесс и не удалял его; добавлен atexit-уборщик, чувствительность измерена подпроцессом",
+ "why_this_check_exists": "тик 214 не выполнил ни одного шага: «No space left on device» до гейта"
+}

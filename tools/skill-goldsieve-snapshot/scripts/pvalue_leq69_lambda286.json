@@ -1,0 +1,130 @@
+[
+ {
+  "claim": "P(X <= 69) при Poisson(lambda=286) = 1.46894459373474e-53",
+  "source": "t27/scripts/trinity-pellis-pipeline/output/pvalue_table.md:22-26; monte_carlo_pvalue.json:3-11",
+  "verdict": "ПОДТВЕРЖДЕНО",
+  "notes": "",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/corpus/t27/scripts/trinity-pellis-pipeline/output/pvalue_table.md": "2ab076ef8674c777",
+    "/home/user/workspace/corpus/t27/scripts/trinity-pellis-pipeline/output/pvalue_table.md @commit": "b928725",
+    "/home/user/workspace/corpus/t27/scripts/trinity-pellis-pipeline/output/monte_carlo_pvalue.json": "e8f915354f99df26",
+    "/home/user/workspace/corpus/t27/scripts/trinity-pellis-pipeline/output/monte_carlo_pvalue.json @commit": "b928725"
+   },
+   "отпечаток рецепта": "064382a1f65f1579",
+   "alpha": 0.05,
+   "tolerance": 1e-10
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "PASS",
+    "detail": "эталон пересчитан",
+    "numbers": {
+     "value": 1.4689445937346615e-53
+    },
+    "seconds": 3.8623809814453125e-05
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 5.3500183501056816e-14
+    },
+    "seconds": 2.0742416381835938e-05
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "PASS",
+    "detail": "value +0.00%",
+    "numbers": {
+     "value": 5.5393995306403955e-14
+    },
+    "seconds": 7.534027099609375e-05
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "PASS",
+    "detail": "подставка 1 отклонена: value +9900.00%",
+    "numbers": {},
+    "seconds": 1.33514404296875e-05
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "PASS",
+    "detail": "позитивный контроль даёт эталон: value +0.00%",
+    "numbers": {},
+    "seconds": 1.3113021850585938e-05
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 2.384185791015625e-06
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "PASS",
+    "detail": "value +0.00% (порог 0.00% — измеренный разброс второго метода)",
+    "numbers": {
+     "value": 5.5393995306403955e-14
+    },
+    "seconds": 1.3113021850585938e-05
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 6 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "PASS",
+    "detail": "подделка получила вердикт ОПРОВЕРГНУТО",
+    "numbers": {},
+    "seconds": 8.487701416015625e-05
+   }
+  ]
+ }
+]
