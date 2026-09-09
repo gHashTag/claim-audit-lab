@@ -1,0 +1,224 @@
+[
+ {
+  "claim": "Общий M_eff для 12 архивов предъявлен однозначно",
+  "source": "meff_common_guard.json и 12 архивов *_external_*.json",
+  "verdict": "ВОПРОС",
+  "notes": "Пересчитано 12 архивов: в каждом есть несколько записей С20, но общий M_eff и идентификатор общего ансамбля не предъявлены. Итог не является подтверждением или опровержением zeta/GUE: это машинный ВОПРОС с причиной meff_unstable.",
+  "provenance": {
+   "python": "3.14.3",
+   "numpy": "2.5.2",
+   "scipy": "1.18.0",
+   "inputs": {
+    "/home/user/workspace/goldsieve/meff_common_guard.json": "703c417f18180f0d",
+    "/home/user/workspace/goldsieve/appendix_external_targets_20260813.json": "bfe49b15986a5c0f",
+    "/home/user/workspace/goldsieve/ckm_vtd_vts_vub_external_20260814.json": "d92bbbb492415105",
+    "/home/user/workspace/goldsieve/formulas_deploy_external_20260814.json": "5d67ead71e468596",
+    "/home/user/workspace/goldsieve/formulas_external_targets_20260813.json": "fb4a140827b2ae9d",
+    "/home/user/workspace/goldsieve/formulas_summary_external_20260814.json": "28a641a7fad8a22e",
+    "/home/user/workspace/goldsieve/jarlskog_theta13_external_20260814.json": "425702acb5babc5c",
+    "/home/user/workspace/goldsieve/neutrino_mixing_external_20260814.json": "a895e27f306c580d",
+    "/home/user/workspace/goldsieve/pellis_external_targets_20260814.json": "ec24da27c1d4063a",
+    "/home/user/workspace/goldsieve/pointer_architecture_external_20260814.json": "26a4e56c8ccbef03",
+    "/home/user/workspace/goldsieve/sacred_formula_complete_v2_external_20260814.json": "7041156ce34d8394",
+    "/home/user/workspace/goldsieve/sacred_formula_full_external_20260814.json": "a571c05195aeb7d1",
+    "/home/user/workspace/goldsieve/trinity_external_targets_20260813.json": "2c9640c6c93b5042"
+   },
+   "отпечаток рецепта": "cc70d701b011142f",
+   "alpha": 0.05,
+   "tolerance": 0.0,
+   "предпосылка независимости": "not-declared",
+   "статус предпосылки": "irrelevant"
+  },
+  "results": [
+   {
+    "sieve": "С1 регенерируемость",
+    "status": "OPEN",
+    "detail": "эталон не вычисляем: рецепта нет, только значение",
+    "numbers": {},
+    "seconds": 3.814697265625e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С2 заявленное=эталон",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 3.337860107421875e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С3 данные=эталон",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С4 подставка ловится",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С5 контроль",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С6 сходимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С7 выбор оценки",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.1920928955078125e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С8 бюджет точности",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С9 конечный размер",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С10 неопределённость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С11 слишком хорошо",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С12 независимый метод",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 9.5367431640625e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С15 внешняя цель",
+    "status": "SKIP",
+    "detail": "утверждение о самом числе, не о внешней величине",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С16 подгонка под ответ",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С17 описание короче данных",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С18 объявленная область",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С19 достаточность арифметики",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 3.337860107421875e-06,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С20 эффективное число попыток",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С21 алгебраическая объяснимость",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 7.152557373046875e-07,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С13 объявленные пропуски",
+    "status": "PASS",
+    "detail": "все 18 пропуска объявлены",
+    "numbers": {},
+    "seconds": 0.0,
+    "reason_code": "",
+    "auto_skip": false
+   },
+   {
+    "sieve": "С14 сквозная подставка",
+    "status": "SKIP",
+    "detail": "",
+    "numbers": {},
+    "seconds": 1.430511474609375e-06,
+    "reason_code": "",
+    "auto_skip": false
+   }
+  ]
+ }
+]

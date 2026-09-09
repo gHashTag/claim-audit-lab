@@ -1,200 +1,122 @@
-# claim-audit-lab
+# Золотое сито
 
-A public, symmetric, falsifiable register of audits of theoretical-physics,
-numeric-format, and metaphysical claims that invoke the golden ratio phi,
-Fibonacci/Lucas structure, or related "fundamental constant" framings.
+Инструмент, чтобы разбирать численные математические утверждения быстро и
+одинаково: утверждение описывается один раз как данные, дальше его прогоняет
+фиксированный каскад сит. Каждое сито — независимая причина НЕ поверить.
 
-This repository applies the same five-label epistemic framework to itself
-that it applies to other published programmes. **The framework is non-negotiable
-and applied symmetrically.**
+    python -m goldsieve selftest                проверить сам инструмент
+    python -m goldsieve run cases/zeta_gue.py   прогнать задачу
+    python -m goldsieve new cases/my_task.py    заготовка новой задачи
 
----
+Код возврата ненулевой, если есть ОПРОВЕРГНУТО или ПУСТО — сито можно ставить
+в CI.
 
-## Why this exists
+## Сита
 
-Phi-anchored theories form a recognisable cluster across number systems,
-cosmology, consciousness studies, architecture, and ML. Some of those
-programmes are careful: they label their claims, state their falsifiers, and
-record their negative results. Some are not. The distinction matters and is
-rarely made explicit in one place.
+| сито | что ловит |
+|---|---|
+| С1 регенерируемость | эталон процитирован, а не вычислим — сравнивать не с чем |
+| С2 заявленное=эталон | заявленное число против пересчитанного |
+| С3 данные=эталон | измерение из данных против пересчитанного |
+| С4 подставка ловится | проверка, которая прошла бы и на неверном ответе |
+| С5 контроль | негативный: шум не должен давать эталон; позитивный: генерическая модель обязана его дать |
+| С6 сходимость | результат зависит от сетки/разрешения |
+| С7 выбор оценки | вывод меняет знак при законной смене оценки |
+| С8 бюджет точности | заявленный эффект меньше погрешности входа |
+| С9 конечный размер | расхождение объясняется конечностью выборки |
 
-This lab takes published claims (the authors' own words, with source URLs)
-and assigns each one a single epistemic label from a fixed taxonomy. It does
-this for outside programmes AND for the maintainers' own work (see
-[`cases/CASE-00-self-audit.md`](cases/CASE-00-self-audit.md)).
+## Вердикты
 
-**This is not a debunking site.** Many programmes audited here contain
-[Verified] arithmetic, [Empirical fit] data, and honestly labelled [Open
-conjectures] with stated falsification paths. The lab records what each
-programme is, in its own terms, against a fixed standard.
+- **ПОДТВЕРЖДЕНО** — все применимые сита прошли.
+- **ОПРОВЕРГНУТО** — расхождение с вычисляемым эталоном при живых контролях.
+- **ВОПРОС** — не хватает рецепта, или вывод зависит от оценки, сетки, размера
+  выборки. Это не находка.
+- **ПУСТО** — проверка вырождена: она прошла бы и на неверном ответе.
 
----
+Порядок правил в своде не переставляется: вырожденная проверка бьёт всё,
+отсутствие вычисляемого эталона бьёт любое расхождение.
 
-## The framework (one paragraph)
+## Правила, встроенные в инструмент
 
-Every claim gets exactly one of five labels:
+1. Эталон обязан быть вычислимым. Голое десятичное число в колонке «expected» —
+   это не эталон, это цитата.
+2. У каждой проверки обязана быть подставка — заведомо неверный ответ той же
+   формы. Если подставка проходит, проверка ничего не значит.
+3. Подставка ставится там, где неверный ответ реально отличается, а не в точке
+   пересечения кривых. Сито С4 показывает величину различения в процентах.
+4. Прежде чем назвать расхождение находкой, конвейер обязан отвергнуть шум
+   (С5) и не объясниться конечным размером выборки (С9).
 
-- **[Verified]** -- exact-by-construction or directly measured by a
-  deterministic harness.
-- **[Empirical fit]** -- matches data but at least one parameter was chosen
-  post-hoc.
-- **[Open conjecture]** -- plausible; **must carry a stated falsification
-  path (Fpath)**.
-- **[Risk]** / **[High-risk]** -- weak venue, no Fpath, unbounded
-  look-elsewhere, or a control matches.
-- **[Retracted]** -- withdrawn; never to be cited as evidence again.
+## Задачи в комплекте
 
-Full rules and examples: [`FRAMEWORK.md`](FRAMEWORK.md).
+- `cases/zeta_gue.py` — расстояния между нулями дзета-функции против точного
+  закона зазоров GUE (детерминант Фредгольма с синус-ядром, не surmise).
+- `cases/khinchin.py` — константа Хинчина у частных цепной дроби; эталон
+  считается по произведению Хинчина.
 
----
+## Как добавить задачу
 
-## Repository charter
+`python -m goldsieve new cases/my_task.py`, затем заполнить `reference`
+(вычисляемый эталон), `wrong` (заведомо неверный ответ), `null_model` (шум или
+генерическая модель, с `null_kind`). Всё остальное необязательно и просто
+пропускается.
 
-- **No ad hominem.** Claims, not people. Every entry quotes the author's own
-  words with a source URL.
-- **Symmetric application.** The lab's own work (IGLA, GoldenFloat, phi-paper)
-  is audited under the same rules in CASE-00.
-- **English + ASCII only.** Public artefact discipline.
-- **Banned words in entries:** see the list inside the fenced block in
-  `FRAMEWORK.md` (the CI scanner skips fenced blocks and blockquotes, so the
-  policy can list the forbidden tokens without tripping itself). State labels,
-  not insults.
-- **Corrections welcome.** Open a PR or an issue. If a subject of a case file
-  documents that we misread their claim, the case is updated and the prior
-  version is preserved in `archive/`.
-- **Right of reply.** Subjects of any CASE file may submit a one-page reply;
-  it is included verbatim in the case file under "Subject's reply" with a
-  link to the source.
 
-See [`CHARTER.md`](CHARTER.md) for the full text.
+## Версия 2 (13 августа 2026): что добавлено
 
----
+Каскад расширен с девяти сит до двенадцати плюс два мета-сита. Самопроверка:
+35 проверок (`GOLDSIEVE_FULL=1 python3 -m goldsieve.selftest`).
 
-## Index of cases
+| Сито | Что делает |
+|---|---|
+| С10 неопределённость | масштаб расхождения — полуширина бутстрэп-интервала с поправкой Шидака; терпимость выводится, а не назначается |
+| С11 слишком хорошо | согласие точнее выборочного шума по нескольким статистикам — признак числа, списанного из теории |
+| С12 независимый метод | эталон подтверждается вторым, принципиально иным путём; порог берётся из измеренного разброса второго метода |
+| С13 объявленные пропуски | каждый `skip` обязан иметь причину под точным номером сита |
+| С14 сквозная подставка | подделка прогоняется через весь каскад; ПОДТВЕРЖДЕНО на подделке = ПУСТО |
 
-| ID       | Subject                                | Domain                              | Status |
-|----------|----------------------------------------|-------------------------------------|--------|
-| [CASE-00](cases/CASE-00-self-audit.md) | self-audit (lab maintainers) | numeric formats / ML training | draft |
-| [CASE-01](cases/CASE-01-savchenko-pointer-architecture.md) | A. Savchenko -- Pointer Architecture v9.0 | consciousness / dark matter | draft |
-| [CASE-02](cases/CASE-02-stakhov-mathematics-of-harmony.md) | A. Stakhov -- Mathematics of Harmony | number systems / phi-universalism | draft |
-| [CASE-03](cases/CASE-03-el-naschie-e-infinity.md) | M.S. El Naschie -- E-infinity theory | quantum spacetime / dimensions | draft |
-| [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | S.V. Petoukhov -- Matrix Genetics | bioinformatics / phi-matrices | draft |
-| [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | M.A. Kramer & W. Klimesch -- Golden EEG Rhythms | neuroscience (positive control) | draft |
-| [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot -- Phi-period economic cycles | econometrics (positive control) | draft |
-| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan -- M_pl coincidence class | adjacent class declined in v2.1 | draft |
-| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev -- BNF equivalence-class result (v2.3 self-audit) | symbolic regression / methodology calibration | draft |
-| [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM CATALOG vs closed rule (self-audit) | numeric formats / ROM consistency | draft |
-| [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III -- v2.3 BNF rank 2/394 for G_phi (Conj, Pellis-gated) | symbolic regression / MDL-optimality | draft |
+Ещё:
 
----
+* `С4` принимает СПИСОК подставок и различает «плоха подставка» и «вырождена проверка»;
+* `goldsieve power <case>` — минимально различимое отклонение;
+* `goldsieve cover <корень> --registry claims.yaml` — покрытие корпуса (помечено как ТРИАЖ, не аудит);
+* провенанс в каждом отчёте: sha256 входов, коммит корпуса, версии, α, терпимость и **отпечаток рецепта** (sha256 исходного текста эталона/подставки/наблюдения — машинный аналог пре-регистрации);
+* `refs/khinchin_reference.py` — эталон с аналитическим хвостом (устойчивость 2.7e-10 вместо 5.6e-05);
+* `refs/gue_montecarlo.py` — независимый эталон GUE по спектрам случайных матриц.
 
-## Scorecard dashboard
+Правило свода дополнено: расхождение по С2/С3 считается ОПРОВЕРГНУТО только если
+С10 признал его значимым; иначе — ВОПРОС. Провал С11 или С12 тоже даёт ВОПРОС,
+а не подтверждение.
 
-Claim counts per CASE file, machine-readable source in
-[`data/scorecard.json`](data/scorecard.json). Label taxonomy in
-[`data/labels.json`](data/labels.json). Counts are bulleted top-level
-claims inside each inventory section; joint or sub-claims may share a
-bullet, so the table is a calibration aid, not a precise inventory.
-Label changes are recorded in [`PROMOTION-LEDGER.md`](PROMOTION-LEDGER.md).
+## Сита С15-С18 (добавлены в версии 3)
 
-| Case | Subject | V | EF | OC+Fpath | R | HR | Ret | Fpath executable | Reply |
-|---|---|---:|---:|---:|---:|---:|---:|---|---|
-| [CASE-00](cases/CASE-00-self-audit.md) | self-audit (maintainers) | 4 | 1 | 2 | 2 | 0 | 1 | yes | n/a |
-| [CASE-01](cases/CASE-01-savchenko-pointer-architecture.md) | A. Savchenko | 7 | 3 | 4 | 3 | 0 | 1 | partial | pending |
-| [CASE-02](cases/CASE-02-stakhov-mathematics-of-harmony.md) | A. Stakhov | 6 | 1 | 2 | 4 | 1 | 0 | partial | pending |
-| [CASE-03](cases/CASE-03-el-naschie-e-infinity.md) | M.S. El Naschie | 3 | 0 | 0 | 2 | 3 | 0 | no | pending |
-| [CASE-04](cases/CASE-04-petoukhov-matrix-genetics.md) | S.V. Petoukhov | 3 | 2 | 1 | 4 | 0 | 0 | pending | pending |
-| [CASE-05](cases/CASE-05-kramer-klimesch-golden-rhythms.md) | Kramer & Klimesch (positive control) | 2 | 2 | 1 | 2 | 0 | 0 | yes | pending |
-| [CASE-06](cases/CASE-06-de-groot-economic-cycles.md) | B. de Groot (positive control) | 3 | 1 | 1 | 3 | 0 | 0 | yes | pending |
-| [CASE-07](cases/CASE-07-carroll-kaplan-m-planck.md) | Carroll/Kaplan M_pl class | 0 | 0 | 0 | 3 | 0 | 0 | partial | n/a |
-| [CASE-08](cases/CASE-08-vasilev-bnf-equivalence-class.md) | Vasilev BNF (v2.3 self-audit) | 1 | 0 | 3 | 0 | 0 | 0 | yes | pending |
-| [CASE-09](cases/CASE-09-corona-rom-vs-closed-rule.md) | Corona ROM vs closed rule (self-audit) | 1 | 0 | 3 | 0 | 0 | 0 | yes | n/a |
-| [CASE-10](cases/CASE-10-phi-bias-coincidence-scan.md) | PHI_BIAS coincidence-class survey (self-audit) | 0 | 0 | 1 | 0 | 0 | 0 | yes | n/a |
-| [CASE-12](cases/CASE-12-g-phi-rank-2-of-394/README.md) | Vasilev II + Pellis III v2.3 BNF rank 2/394 | 1 | 0 | 3 | 0 | 0 | 0 | yes | n/a |
-| **Totals (v0.6, CASE-12)** | 12 cases | **31** | **10** | **21** | **23** | **4** | **2** | -- | -- |
+| Сито | Что ловит | Как срабатывает |
+|---|---|---|
+| С15 внешняя цель | предсказательное утверждение, сверенное с числом из того же документа | при `claim_kind="prediction"` без `external_target` даёт VOID -> ПУСТО; иначе меряет отклонение в сигмах погрешности внешней величины, порог 3 сигма |
+| С16 подгонка под ответ | попадание, ожидаемое по случаю при переборе формул | VOID если ожидаемых попаданий >= 1 или случайная цель накрывается в >= 50 % случаев; FAIL если p_глоб > alpha |
+| С17 описание короче данных | формула не сжимает данные (MDL Риссанена) | FAIL -> ВОПРОС, если биты совпадения <= биты описания |
+| С18 объявленная область | фактический перебор шире объявленного | FAIL -> ОПРОВЕРГНУТО |
 
-**Reading the table.** `V` = [Verified], `EF` = [Empirical fit],
-`OC+Fpath` = [Open conjecture] with stated falsification path, `R` =
-[Risk], `HR` = [High-risk], `Ret` = [Retracted]. `Fpath executable` =
-whether the largest [Open] claim's falsification path can be run by an
-outside reader today. `Reply` = whether the subject's right-of-reply
-(CHARTER.md s 3) has been exercised (`pending` = invitation open, no
-reply received; `n/a` = self-audit).
+Зачем они нужны: тик крона выдал восемь вердиктов ПОДТВЕРЖДЕНО на утверждениях
+вида «формула даёт напечатанное рядом число». Такая проверка тавтологична — она
+прошла бы при любом значении формулы. С15 ловит это машинно.
 
-**What the v0.2 baseline shows.** The cleanest [Open conjecture] with
-an executable Fpath in the catalog is CASE-05 (Kramer-Klimesch),
-followed by CASE-06 (de Groot). Both are deliberately included as
-**positive controls** -- the test of whether the framework recognises
-responsibly-labelled, peer-reviewed phi work as such. CASE-00
-(self-audit) carries the only [Retracted] entry in the register, by
-construction (delta_CP = 3/phi^2, withdrawn). CASE-03 (El Naschie)
-carries the highest [High-risk] count in the register.
+## Модуль family.py
 
-The framework itself is labelled [Open conjecture] -- see
-[`methodology/README.md`](methodology/README.md) Section 0 and the
-`framework_self_label` block in `data/labels.json`.
+Перечисление семейства `n*3^k*pi^m*phi^p*e^q`, поправка на множественность
+(эмпирически и аналитически), биты описания по MDL, проверка выхода за
+объявленные границы. 14 собственных самопроверок, включая guard «наивная оценка
+плотности обязана расходиться с правильной».
 
-### Adjacent (not audited as a primary subject)
+Порог разрешающей способности: совпадение несёт информацию только при
+eps < ln10 * D / (2M). Для M = 123 201 и D = 5 декад это eps* ~ 8e-5
+(Монте-Карло подтверждает аналитику с расхождением 7 %).
 
-- **Scott A. Olsen** -- co-author of the Pellis-Vasilev-Olsen short paper that
-  this lab's CASE-00 self-audit is partly built around. As a current
-  collaborator he is conflict-of-interest excluded from being a primary audit
-  subject; his contribution is therefore part of the self-audit (CASE-00) and
-  the symmetric-mirror sections of CASE-02 / CASE-03 / CASE-04, not a
-  standalone case file. See [`phi_theorists_catalog.md`](phi_theorists_catalog.md)
-  entry #9 for the catalog record.
+## Команда regress
 
-### Cases under consideration (not yet written)
+    python3 -m goldsieve regress --registry claims.yaml [--update]
 
-See [`phi_theorists_catalog.md`](phi_theorists_catalog.md) for the working
-list of 14 candidate subjects ranked by independent-publication weight.
-Not every candidate will receive a full CASE file: under-verified subjects
-(no confirmed primary URL) are skipped; fringe-adjacent entries that have no
-falsifiable claim are catalog-only.
-
----
-
-## How to read a case
-
-Every CASE file has fixed sections:
-
-1. **Identity** -- who, where, primary claim, source URLs.
-2. **Programme claims** -- verbatim quotes of the main claims.
-3. **Tier mapping** -- author's own labelling (if any) mapped to our 5-label
-   framework.
-4. **[Verified] inventory** -- what survives [Verified] under our framework.
-5. **[Empirical fit] / [Open conjecture] inventory** -- post-hoc fits and
-   stated-or-implied conjectures, with explicit Fpath when given.
-6. **[Risk] / [Retracted] inventory** -- claims that fail one or more of:
-   stated Fpath, look-elsewhere control, peer-reviewed venue, reproducibility.
-7. **Symmetric mirror** -- a comparable claim from our own work, classified
-   under the same rule. This is non-optional.
-8. **Sources** -- every URL fetched, with date.
-9. **Subject's reply** -- empty unless the subject sends a reply.
-
----
-
-## Contributing
-
-PRs welcome for: new cases (one author per case), corrections, source URL
-additions, subject replies.
-
-PRs rejected for: ad hominem, removal of [Verified] labels we honestly
-assigned, removal of CASE-00 self-audit, edits without source URLs.
-
----
-
-## License
-
-Text in this repository is licensed under [CC-BY-4.0](LICENSE-CC).
-Code (if any) is licensed under [MIT](LICENSE-MIT).
-
-Quoted material from other authors is used under fair-use / fair-dealing for
-purposes of scholarly criticism and review, with attribution and source URL
-to every quotation.
-
----
-
-**Maintainers:** Dmitrii Vasilev (`@gHashTag`).
-**Contact:** open an issue.
-**Last index update:** 2026-06-07 (v0.6 -- CASE-12 added: v2.3 BNF rank 2/394 result, Conj, Pellis-gated).
+Перепрогоняет весь реестр и сравнивает вердикты с записанными. Нужна потому, что
+усиление каскада может молча перевернуть прежние вердикты: без перепрогона
+ведомость начинает противоречить инструменту. С `--update` записывает новые
+вердикты в реестр. Сопоставление имён устойчиво к регистру и лишним пробелам.

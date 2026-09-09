@@ -1,7 +1,7 @@
 {
   "статус": "unsupported",
-  "прочитано_кейсов": 119,
-  "проверено_в_области": 61,
+  "прочитано_кейсов": 122,
+  "проверено_в_области": 62,
   "статусы_кейсов": [
     {
       "путь": "/home/user/workspace/goldsieve/cases/_template_probe.py",
@@ -284,6 +284,11 @@
       "неохваченных_конструкций": 0
     },
     {
+      "путь": "/home/user/workspace/goldsieve/cases/independence_assumption_audit_20260908.py",
+      "статус": "unsupported",
+      "неохваченных_конструкций": 1
+    },
+    {
       "путь": "/home/user/workspace/goldsieve/cases/jarlskog_theta13_external_20260814.py",
       "статус": "unsupported",
       "неохваченных_конструкций": 3
@@ -335,6 +340,11 @@
     },
     {
       "путь": "/home/user/workspace/goldsieve/cases/master_catalog_msme_error.py",
+      "статус": "unsupported",
+      "неохваченных_конструкций": 1
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/meff_common_audit_20260908.py",
       "статус": "unsupported",
       "неохваченных_конструкций": 1
     },
@@ -579,6 +589,11 @@
       "неохваченных_конструкций": 0
     },
     {
+      "путь": "/home/user/workspace/goldsieve/cases/zeta_recipe_ambiguity_audit_20260908.py",
+      "статус": "verified-in-scope",
+      "неохваченных_конструкций": 0
+    },
+    {
       "путь": "/home/user/workspace/goldsieve/cases/zeta_shape.py",
       "статус": "verified-in-scope",
       "неохваченных_конструкций": 0
@@ -599,7 +614,7 @@
       "неохваченных_конструкций": 1
     }
   ],
-  "неохваченные_конструкции": 128,
+  "неохваченные_конструкции": 130,
   "наблюдения": [
     {
       "путь": "/home/user/workspace/goldsieve/cases/appendix_external_targets_20260813.py",
@@ -1057,6 +1072,13 @@
       "причина": "анализатор не заявляет поддержку этой конструкции"
     },
     {
+      "путь": "/home/user/workspace/goldsieve/cases/independence_assumption_audit_20260908.py",
+      "строка": 63,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
       "путь": "/home/user/workspace/goldsieve/cases/jarlskog_theta13_external_20260814.py",
       "строка": 268,
       "риск": "генератор",
@@ -1129,6 +1151,13 @@
     {
       "путь": "/home/user/workspace/goldsieve/cases/master_catalog_msme_error.py",
       "строка": 112,
+      "риск": "генератор",
+      "статус": "unsupported",
+      "причина": "анализатор не заявляет поддержку этой конструкции"
+    },
+    {
+      "путь": "/home/user/workspace/goldsieve/cases/meff_common_audit_20260908.py",
+      "строка": 74,
       "риск": "генератор",
       "статус": "unsupported",
       "причина": "анализатор не заявляет поддержку этой конструкции"

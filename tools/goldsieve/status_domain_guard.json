@@ -13,7 +13,7 @@
   },
   "отчёты": [
     {
-      "путь": "/home/user/workspace/goldsieve/arb_interval_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/arb_interval_guard.json",
       "прочитано": true,
       "статус": "verified-in-scope",
       "поле": "статус",
@@ -21,7 +21,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/artifact_path_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/artifact_path_guard.json",
       "прочитано": true,
       "статус": "not-evaluated",
       "поле": "status",
@@ -29,7 +29,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/artifact_uniqueness_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/artifact_uniqueness_guard.json",
       "прочитано": true,
       "статус": "not-evaluated",
       "поле": "статус",
@@ -37,7 +37,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/bblm_elements.json",
+      "путь": "/tmp/cal/tools/goldsieve/bblm_elements.json",
       "прочитано": true,
       "статус": "verified-in-scope",
       "поле": "status_class",
@@ -45,7 +45,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/bblm_height.json",
+      "путь": "/tmp/cal/tools/goldsieve/bblm_height.json",
       "прочитано": true,
       "статус": "verified-in-scope",
       "поле": "status_class",
@@ -53,7 +53,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/bblm_protocol.json",
+      "путь": "/tmp/cal/tools/goldsieve/bblm_protocol.json",
       "прочитано": true,
       "статус": "not-evaluated",
       "поле": "status_class",
@@ -61,7 +61,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/chi2_dof_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/chi2_dof_guard.json",
       "прочитано": true,
       "статус": "verified-in-scope",
       "поле": "статус",
@@ -69,7 +69,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/chi2_dof_rederivation.json",
+      "путь": "/tmp/cal/tools/goldsieve/chi2_dof_rederivation.json",
       "прочитано": true,
       "статус": "verified-in-scope",
       "поле": "статус",
@@ -77,7 +77,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/chi2_dof_semantics_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/chi2_dof_semantics_guard.json",
       "прочитано": true,
       "статус": "not-evaluated",
       "поле": "статус",
@@ -85,13 +85,13 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/external_target_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/external_target_guard.json",
       "прочитано": true,
       "статус": "not-evaluated",
       "причина": "верхнеуровневое поле статуса отсутствует"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/external_uncertainty_type_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/external_uncertainty_type_guard.json",
       "прочитано": true,
       "статус": "not-evaluated",
       "поле": "статус",
@@ -99,7 +99,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/independence_assumption_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/independence_assumption_guard.json",
       "прочитано": true,
       "статус": "not-evaluated",
       "поле": "статус",
@@ -107,7 +107,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/journal_signature_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/journal_signature_guard.json",
       "прочитано": true,
       "статус": "not-evaluated",
       "поле": "status",
@@ -115,7 +115,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/journal_signature_scope_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/journal_signature_scope_guard.json",
       "прочитано": true,
       "статус": "not-evaluated",
       "поле": "статус",
@@ -123,7 +123,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/json_duplicate_key_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/json_duplicate_key_guard.json",
       "прочитано": true,
       "статус": "verified-in-scope",
       "поле": "статус",
@@ -131,7 +131,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/json_numeric_type_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/json_numeric_type_guard.json",
       "прочитано": true,
       "статус": "verified-in-scope",
       "поле": "статус",
@@ -139,7 +139,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/meff_common_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/meff_common_guard.json",
       "прочитано": true,
       "статус": "not-evaluated",
       "поле": "статус",
@@ -147,7 +147,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/numeric_domain_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/numeric_domain_guard.json",
       "прочитано": true,
       "статус": "verified-in-scope",
       "поле": "статус",
@@ -155,7 +155,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/unit_consistency_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/unit_consistency_guard.json",
       "прочитано": true,
       "статус": "verified-in-scope",
       "поле": "статус",
@@ -163,7 +163,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/zeta_passport_provenance_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/zeta_passport_provenance_guard.json",
       "прочитано": true,
       "статус": "verified-in-scope",
       "поле": "статус",
@@ -171,7 +171,7 @@
       "причина": "статус входит в разрешённый словарь"
     },
     {
-      "путь": "/home/user/workspace/goldsieve/zeta_recipe_ambiguity_guard.json",
+      "путь": "/tmp/cal/tools/goldsieve/zeta_recipe_ambiguity_guard.json",
       "прочитано": true,
       "статус": "not-evaluated",
       "поле": "статус",

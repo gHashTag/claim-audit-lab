@@ -1,0 +1,531 @@
+{
+  "всего": 40,
+  "классы": {
+    "устанавливает": 40,
+    "пустой": 0,
+    "без-статусов": 0
+  },
+  "долг_пустых": 0,
+  "сторожа": [
+    {
+      "сторож": "arb_interval_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "artifact_path_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 3,
+        "unsupported": 1,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "artifact_uniqueness_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 3,
+        "unsupported": 1,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "audit_substance_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "bblm_coefficient_rederivation_guard.py",
+      "режим": "(без аргументов)",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 1,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "bblm_shape_scale_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "bblm_status_consistency_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "chi2_dof_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "chi2_dof_semantics_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 2,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "external_target_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 20,
+        "not-evaluated": 4,
+        "unsupported": 1,
+        "platform-unverified": 1
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "external_uncertainty_type_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 2,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "gue_label_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "independence_assumption_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 2,
+        "unsupported": 1,
+        "platform-unverified": 1
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "journal_signature_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 1,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "journal_signature_scope_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 1,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "json_duplicate_key_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 2,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "json_numeric_type_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 2,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "meff_common_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 13,
+        "not-evaluated": 13,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "numeric_domain_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 2,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "provenance_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "recipe_tautology_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 1,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "reference_tautology_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "registry_case_path_guard.py",
+      "режим": "(без аргументов)",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "registry_identity_guard.py",
+      "режим": "(без аргументов)",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "regression_cache_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 2,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "regression_result_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "report_artifact_digest_guard.py",
+      "режим": "(без аргументов)",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 1,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "report_artifact_provenance_guard.py",
+      "режим": "(без аргументов)",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "report_contract_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "runlog_record_guard.py",
+      "режим": "(без аргументов)",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "scope_provenance_guard.py",
+      "режим": "(без аргументов)",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "skip_reason_contract_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "source_fragment_guard.py",
+      "режим": "(без аргументов)",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "source_path_boundary_guard.py",
+      "режим": "(без аргументов)",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "status_domain_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 2,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "target_novelty_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "unit_consistency_guard.py",
+      "режим": "(без аргументов)",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 1,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "unsupported_construct_guard.py",
+      "режим": "--scan",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 1,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "zeta_passport_provenance_guard.py",
+      "режим": "(без аргументов)",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 0,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    },
+    {
+      "сторож": "zeta_recipe_ambiguity_guard.py",
+      "режим": "--audit",
+      "код": 0,
+      "статусы": {
+        "verified-in-scope": 1,
+        "not-evaluated": 1,
+        "unsupported": 0,
+        "platform-unverified": 0
+      },
+      "класс": "устанавливает",
+      "причина": ""
+    }
+  ]
+}

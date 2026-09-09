@@ -1,0 +1,226 @@
+{
+  "тик": 434,
+  "кейс": "/home/user/workspace/goldsieve/cases/bblm_analytic_source_audit_20260908.py",
+  "вердикт": "ВОПРОС",
+  "подтип_каскада": "no_computable_reference",
+  "машинная_причина_сита": "analytic_source_absent",
+  "статус_научный": "not-evaluated",
+  "статус_входа": "verified-in-scope",
+  "протокол_не_предъявляет": true,
+  "источник_не_предъявлен": true,
+  "отчёты": [
+    {
+      "claim": "Аналитический первоисточник коэффициентов BBLM предъявлен",
+      "source": "bblm_protocol.json и bblm_spec.yaml: блок coefficient_rederivation",
+      "verdict": "ВОПРОС",
+      "notes": "Ссылка на arxiv.org/abs/nlin/0601006 и численная запись коэффициентов не считаются аналитическим выводом. До предъявления формул и номеров уравнений научный статус остаётся not-evaluated.",
+      "provenance": {
+        "python": "3.14.3",
+        "numpy": "2.5.2",
+        "scipy": "1.18.0",
+        "inputs": {
+          "/home/user/workspace/goldsieve/bblm_protocol.json": "9d3e1e37a0990d5c",
+          "/home/user/workspace/goldsieve/bblm_spec.yaml": "15e5770310261dcd"
+        },
+        "отпечаток рецепта": "65ac15b757a4d9b8",
+        "alpha": 0.05,
+        "tolerance": 0.0,
+        "предпосылка независимости": "unknown",
+        "статус предпосылки": "assumption-unverified"
+      },
+      "results": [
+        {
+          "sieve": "С1 регенерируемость",
+          "status": "OPEN",
+          "detail": "эталон не вычисляем: рецепта нет, только значение",
+          "numbers": {},
+          "seconds": 3.337860107421875e-06,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С2 заявленное=эталон",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 1.9073486328125e-06,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С3 данные=эталон",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 1.430511474609375e-06,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С4 подставка ловится",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С5 контроль",
+          "status": "PASS",
+          "detail": "контроль воспроизводится",
+          "numbers": {},
+          "seconds": 6.866455078125e-05,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С6 сходимость",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 1.1920928955078125e-06,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С7 выбор оценки",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С8 бюджет точности",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С9 конечный размер",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 7.152557373046875e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С10 неопределённость",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С11 слишком хорошо",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С12 независимый метод",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 9.5367431640625e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С15 внешняя цель",
+          "status": "SKIP",
+          "detail": "утверждение о самом числе, не о внешней величине",
+          "numbers": {},
+          "seconds": 9.5367431640625e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С16 подгонка под ответ",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 9.5367431640625e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С17 описание короче данных",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С18 объявленная область",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 7.152557373046875e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С19 достаточность арифметики",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С20 эффективное число попыток",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С21 алгебраическая объяснимость",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 9.5367431640625e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С13 объявленные пропуски",
+          "status": "PASS",
+          "detail": "все 17 пропуска объявлены",
+          "numbers": {},
+          "seconds": 0.0,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С14 сквозная подставка",
+          "status": "PASS",
+          "detail": "подставка 1: ВОПРОС",
+          "numbers": {},
+          "seconds": 0.00016617774963378906,
+          "reason_code": "",
+          "auto_skip": false
+        }
+      ],
+      "reason_code": "no_computable_reference",
+      "action": "восстановить рецепт эталона: сравнивать пока не с чем"
+    }
+  ]
+}

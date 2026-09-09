@@ -19,6 +19,21 @@
     "leading_pooled_10bins",
     "leading_bin_mean_of_std"
   ],
+  "пересчитанные_воспроизводящие_варианты": [
+    "leading_lower_ddof1_all",
+    "leading_lower_ddof0_all",
+    "leading_lower_renormalised",
+    "leading_upper",
+    "leading_mid",
+    "theta_exact",
+    "theta_renormalised",
+    "theta_trim_1",
+    "theta_trim_10",
+    "leading_pooled_10bins",
+    "leading_bin_mean_of_std"
+  ],
+  "список_попаданий_согласован": true,
+  "допуск_сопоставления": 5e-05,
   "причина": "наблюдаемое воспроизводят несколько законных вариантов; рецепт не идентифицирован однозначно",
   "ограничение": "сторож проверяет неоднозначность рецепта, но не оценивает истинность закона GUE",
   "паспорт_прочитан": true,

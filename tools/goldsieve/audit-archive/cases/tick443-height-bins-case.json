@@ -1,0 +1,244 @@
+{
+  "тик": 443,
+  "кейс": "/home/user/workspace/goldsieve/cases/zeta_height_bins_consistency_audit_20260909.py",
+  "вердикт": "ВОПРОС",
+  "подтип_каскада": "no_computable_reference",
+  "машинная_причина_сита": "height_bin_summary_mismatch",
+  "статус_научный": "not-evaluated",
+  "статус_входа": "verified-in-scope",
+  "суть_наблюдения": {
+    "число_корзин": 10,
+    "среднее_csv": 1.72519,
+    "разброс_csv": 0.02021486829044405,
+    "среднее_сводки": 1.7186,
+    "разброс_сводки": 0.0045,
+    "первая_строка_p95": 1.784,
+    "минимум_csv": 1.7103,
+    "максимум_csv": 1.784,
+    "среднее_совпадает": false,
+    "разброс_совпадает": false,
+    "есть_несоответствие": true,
+    "статус_входа": "verified-in-scope",
+    "научный_статус": "not-evaluated",
+    "код_вопроса": "height_bin_summary_mismatch"
+  },
+  "отчёты": [
+    {
+      "claim": "Сводка p95 по высотным корзинам согласуется с десятью строками CSV",
+      "source": "data/zeta/zeta_bin_analysis_update.md:15 и data/zeta/zeta_figure1_p95.csv",
+      "verdict": "ВОПРОС",
+      "notes": "CSV даёт среднее 1,72519 и популяционный разброс около 0,02021, тогда как сводка заявляет 1,7186 ± 0,0045. Первая строка CSV равна 1,784; без неё среднее приближается к 1,7186, но это не доказывает, что строка ошибочна. Машинный итог — ВОПРОС, научный статус — not-evaluated.",
+      "provenance": {
+        "python": "3.14.3",
+        "numpy": "2.5.2",
+        "scipy": "1.18.0",
+        "inputs": {
+          "/home/user/workspace/corpus/trinity/data/zeta/zeta_figure1_p95.csv": "64e613216591266e",
+          "/home/user/workspace/corpus/trinity/data/zeta/zeta_figure1_p95.csv @commit": "04430c0",
+          "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md": "1afa4fbd550fdef7",
+          "/home/user/workspace/corpus/trinity/data/zeta/zeta_bin_analysis_update.md @commit": "04430c0"
+        },
+        "отпечаток рецепта": "ce10e9a423d49aff",
+        "alpha": 0.05,
+        "tolerance": 0.0,
+        "паспорт цели": "983dbd3beb2535c4",
+        "ключ новизны": "trinity:zeta:height-bin-summary:20260909",
+        "предпосылка независимости": "unknown",
+        "статус предпосылки": "assumption-unverified"
+      },
+      "results": [
+        {
+          "sieve": "С1 регенерируемость",
+          "status": "OPEN",
+          "detail": "эталон не вычисляем: рецепта нет, только значение",
+          "numbers": {},
+          "seconds": 3.337860107421875e-06,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С2 заявленное=эталон",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 2.384185791015625e-06,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С3 данные=эталон",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 1.1920928955078125e-06,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С4 подставка ловится",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 9.5367431640625e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С5 контроль",
+          "status": "PASS",
+          "detail": "контроль воспроизводится",
+          "numbers": {},
+          "seconds": 0.00013375282287597656,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С6 сходимость",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 1.1920928955078125e-06,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С7 выбор оценки",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С8 бюджет точности",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С9 конечный размер",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 7.152557373046875e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С10 неопределённость",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 7.152557373046875e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С11 слишком хорошо",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С12 независимый метод",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.291534423828125e-06,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С15 внешняя цель",
+          "status": "SKIP",
+          "detail": "утверждение о самом числе, не о внешней величине",
+          "numbers": {},
+          "seconds": 9.5367431640625e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С16 подгонка под ответ",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 7.152557373046875e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С17 описание короче данных",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 7.152557373046875e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С18 объявленная область",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С19 достаточность арифметики",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С20 эффективное число попыток",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 4.76837158203125e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С21 алгебраическая объяснимость",
+          "status": "SKIP",
+          "detail": "",
+          "numbers": {},
+          "seconds": 7.152557373046875e-07,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С13 объявленные пропуски",
+          "status": "PASS",
+          "detail": "все 17 пропуска объявлены",
+          "numbers": {},
+          "seconds": 0.0,
+          "reason_code": "",
+          "auto_skip": false
+        },
+        {
+          "sieve": "С14 сквозная подставка",
+          "status": "PASS",
+          "detail": "подставка 1: ВОПРОС",
+          "numbers": {},
+          "seconds": 0.0003006458282470703,
+          "reason_code": "",
+          "auto_skip": false
+        }
+      ],
+      "reason_code": "no_computable_reference",
+      "action": "восстановить рецепт эталона: сравнивать пока не с чем"
+    }
+  ]
+}

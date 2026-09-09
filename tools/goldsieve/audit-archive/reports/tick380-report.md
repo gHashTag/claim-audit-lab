@@ -1,0 +1,27 @@
+# Доклад тика 380 — непрерывный аудит «золотое сито»
+
+## (1) что исправлено в инструменте
+
+Добавлен `registry_case_path_guard.py`: проверка существования файла `case` теперь дополнена проверкой разрешённого пути. Переход `../` и симлинк, выводящий модуль за пределы рабочей копии, классифицируются как `unsupported`; наблюдение привязано к `claims.yaml`. В сторож добавлены позитивная фикстура, отрицательная фикстура перехода наружу и отрицательная фикстура симлинка; самопроверка дала 3/3. Новый риск подключён к `ci_gate.sh` и объявлен в `coverage_manifest.yaml`. Рабочая копия не восстанавливалась из репозитория.
+
+**чем этот тик отличается от предыдущего:** тик 379 устранил неоднозначные хвосты поля `source`; этот тик закрывает другую границу — существующий файл `case` мог быть формально предъявлен, но через переход или симлинк загрузка могла выйти за пределы рабочей копии. Финальный гейт завершился кодом 0: 127 `ok`, 2 штатных пропуска в CPython 3.12 без `numpy/pyyaml`, 0 провалов. Инкрементальный регресс завершился кодом 0: выбрано 4, пропущено 112, совпало 7, изменений ситом 0, изменений корпусом 0, несопоставленных 0; ротация — сегмент 5/8, кэш — 175 попаданий и 0 пересчётов. `tick_aborted_timeout` не увеличивался.
+
+ОС-матрица запуска 34013988791 предъявила пять успешных заданий из шести; `ubuntu-latest / py3.12` остался в очереди, поэтому итог области — `platform-unverified`, а не покрытие. Проверено на указанных версиях CPython, а не объявлено платформонезависимым результатом.
+
+## (2) что установлено о zeta/GUE
+
+Нового научного вердикта о zeta/GUE не установлено. Наблюдаемое прочитано из `/home/user/workspace/corpus/trinity/data/zeta/zeta_gue_analysis_results.md`; происхождение паспорта остаётся `verified-in-scope`, а неоднозначность рецепта остаётся `not-evaluated`, поскольку воспроизводятся 11 вариантов для напечатанного значения 0,4009. В прочитанном документе 0,4009 сопоставлено с приближением Вигнера—сюрмиса 0,4220; точный эталон GUE в машинном отчёте — 0,4242576222. Это не доказывает универсальность закона GUE, перенос результата на другие окна и среды или причинность внешних сверок.
+
+Новые внешние константы и новые внешние цели в этот тик не добавлялись. Долг повторов внешних целей сохранён на 7 группах при признанном долге 7; три исторические записи остаются `ПУСТО`, а не находками. Границы протокола сохранены: `STANDARD_RANGES=20412`, `ACTUAL_RANGES=123201`; каталог = 83 формата; аппаратное объединение около 49–55/83; кремний = отправлен на изготовление.
+
+## (3) что осталось недоказанным
+
+BBLM остаётся машинным `ВОПРОСОМ`: протокол предъявляет 7 из 8 элементов, а `coefficient_rederivation` имеет код `analytic_source_absent`; аналитический источник коэффициентов с формулой и номером уравнения не предъявлен. Это не находка и не опровержение. Общий `M_eff` остаётся `not-evaluated` для 12 архивов; предпосылка независимости остаётся `not-evaluated` для 132 из 133 кейсов и `unsupported` для одного. Смысл χ²/dof остаётся `not-evaluated`, шаровая арифметика Arb остаётся `not-evaluated` (прочитаны 3 файла, предъявлено 0 интервалов). Криптографическая подпись журнала и область её действия остаются `not-evaluated`, предъявлено 0 подписей.
+
+Не доказаны однозначность рецепта zeta, независимость наблюдаемого и эталонного путей, переносимость за пределами указанных версий CPython, а также научная универсальность GUE. Молчание проверки не считается покрытием; статусы `not-evaluated`, `unsupported` и `platform-unverified` сохранены.
+
+## (4) какие артефакты и тесты это подтверждают
+
+Новый сторож и отрицательные тесты: `/home/user/workspace/goldsieve/registry_case_path_guard.py`, `/home/user/workspace/goldsieve/registry_case_path_guard.json`, `/home/user/workspace/goldsieve/ci_gate.sh`, `/home/user/workspace/goldsieve/coverage_manifest.yaml`, `/home/user/workspace/cron_tracking/20fee222/tick380-case-path-selftest.txt`; самопроверка — 3 пройдено, 0 провалено. Финальный гейт подтверждён `/home/user/workspace/cron_tracking/20fee222/tick380-gate-final.log` и `/home/user/workspace/cron_tracking/20fee222/tick380-gate-final.rc`; итог — 127/2/0. Инкрементальный регресс подтверждён `/home/user/workspace/cron_tracking/20fee222/tick380-regression.log` и `/home/user/workspace/cron_tracking/20fee222/tick380-regression.rc`; снимки подтверждены `/home/user/workspace/cron_tracking/20fee222/tick380-baseline-snapshot.txt` и `/home/user/workspace/cron_tracking/20fee222/tick380-tri-snapshot.txt`.
+
+ОС-матрица подтверждена `/home/user/workspace/cron_tracking/20fee222/tick380-os-matrix.md` и `/home/user/workspace/cron_tracking/20fee222/tick380-os-payload.json`: пять из шести заданий успешны, одно в очереди, поэтому область `platform-unverified`; штатный сторож матрицы не изменялся. BBLM и открытые долги подтверждены `/home/user/workspace/cron_tracking/20fee222/tick380-bblm-protocol.txt`, `/home/user/workspace/cron_tracking/20fee222/tick380-bblm-accounting.txt`, `/home/user/workspace/goldsieve/bblm_protocol.json`, `/home/user/workspace/goldsieve/meff_common_guard.json`, `/home/user/workspace/goldsieve/independence_assumption_guard.json`, `/home/user/workspace/goldsieve/chi2_dof_semantics_guard.json`, `/home/user/workspace/goldsieve/arb_interval_guard.json`, `/home/user/workspace/goldsieve/journal_signature_scope_guard.json`. Zeta и запрет повторов подтверждены `/home/user/workspace/cron_tracking/20fee222/tick380-zeta.txt`, `/home/user/workspace/cron_tracking/20fee222/tick380-target-novelty.txt` и `/home/user/workspace/cron_tracking/20fee222/tick380-external-target.txt`.
